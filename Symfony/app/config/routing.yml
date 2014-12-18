@@ -1,0 +1,3 @@
+cf_main:
+    resource: "@CFMainBundle/Resources/config/routing.yml"
+    prefix:   /

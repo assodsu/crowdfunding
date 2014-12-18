@@ -1,0 +1,3 @@
+cf_main_homepage:
+    path:     /
+    defaults: { _controller: CFMainBundle:Default:index }
