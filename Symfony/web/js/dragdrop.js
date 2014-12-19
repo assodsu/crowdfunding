@@ -15,8 +15,8 @@ $(function () {
 	});
 
     // there's the gallery and the trash
-    var $gallery = $( "#gallery" ),
-      $trash = $( "#trash" );
+    var $gallery = $( "#vignettes" ),
+      $trash = $( "#search" );
  
     // let the gallery items be draggable
     $( "li", $gallery ).draggable({
@@ -28,7 +28,7 @@ $(function () {
  
     // let the trash be droppable, accepting the gallery items
     $trash.droppable({
-      accept: "#gallery > li",
+      accept: "#vignettes > li",
       activeClass: "ui-state-highlight",
       drop: function( event, ui ) {
         deleteImage( ui.draggable );
@@ -38,7 +38,7 @@ $(function () {
  
     // let the gallery be droppable as well, accepting items from the trash
     $gallery.droppable({
-      accept: "#trash li",
+      accept: "#search li",
       activeClass: "custom-state-active",
       drop: function( event, ui ) {
         recycleImage( ui.draggable );
@@ -55,7 +55,7 @@ $(function () {
         $item.append( recycle_icon ).appendTo( $list ).fadeIn(function() {
           $item.find( "img" );
         });
-		document.getElementById("trash").value = document.getElementById("trash").value + $item.attr("value") + " ";
+		document.getElementById("search").value = document.getElementById("search").value + $item.attr("value") + " ";
       });
     }
  
