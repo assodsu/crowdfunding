@@ -1,0 +1,101 @@
+{% extends "CFMainBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block header %}
+	{{ parent() }}
+	<div id="reseaux_sociaux">
+		<a href="#" id="facebook"><span class="fa fa-facebook"></span> Facebook</a>
+		<a href="#" id="twitter"><span class="fa fa-twitter"></span> Twitter</a>
+		<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> Google+</a>
+	</div>
+{% endblock %}
+
+{% block body %}
+	<svg width="0" height="0" display"none">
+		<clipPath id="imgPolygon">
+			<polygon points="0 200,200 200,300 0,100 0">
+			</polygon>
+		</clipPath>
+		<clipPath id="menuPolygon">
+			<polygon points="0 200,150 200,250 0,0 0">
+			</polygon>
+		</clipPath>
+	</svg>
+	
+	<!-- Carousel -->
+	<div id='carousel-container'>
+		<div id='menu_carousel'>
+			<a href='#'>projets à la une</a>
+			<a href='#'>touche à sa fin</a>
+			<a href='#'>nouveaux</a>
+			<a href='#'>tous les</br>projets</a>
+		</div>
+		<div class="carousel" id="carousel-horizontal">
+			<ul>
+				<li><img src="{{ asset('images/1.jpg') }}"/></li>
+				<li><img src="{{ asset('images/2.jpg') }}"/></li>
+				<li><img src="{{ asset('images/3.jpg') }}"/></li>
+				<li><img src="{{ asset('images/4.jpg') }}"/></li>
+				<li><img src="{{ asset('images/5.jpg') }}"/></li>
+				<li><img src="{{ asset('images/6.jpg') }}"/></li>
+				<li><img src="{{ asset('images/3.jpg') }}"/></li>
+				<li><img src="{{ asset('images/4.jpg') }}"/></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- Barre de recherche -->
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container">
+			<div class="collapse navbar-collapse">					
+				<form class="navbar-form active" role="search">
+					<div class="input-group">
+						<input type="text" id="search" class="form-control" placeholder="Tapez une recherche ou glissez vos boutons de centres d'intérêts..."/>
+						<span class="input-group-btn">
+							<button type="reset" class="btn btn-default">
+								<span class="glyphicon glyphicon-remove">
+									<span class="sr-only">Close</span>
+								</span>
+							</button>
+							<button type="submit" class="btn btn-default">
+								<span class="glyphicon glyphicon-search">
+									<span class="sr-only">Search</span>
+								</span>
+							</button>
+						</span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</nav>
+	
+	<!-- Vignettes drag and drop -->
+	<div class="dragdrop-button-container">
+		<ul id="vignettes">
+			<li class="btn btn-primary btn-lg" value="Sport"><span class="fa fa-trophy"></span> Sport</li>
+			<li class="btn btn-primary btn-lg" value="Loisirs"><span class="glyphicon glyphicon-send"></span> Loisirs</li>
+			<li class="btn btn-primary btn-lg" value="Tourisme"><span class="glyphicon glyphicon-camera"></span> Tourisme</li>
+			<li class="btn btn-primary btn-lg" value="Associatif"><span class="glyphicon glyphicon-heart-empty"></span> Associatif</li>
+			<li class="btn btn-primary btn-lg" value="Culture"><span class="glyphicon glyphicon-music"></span> Culture</li>
+			<li class="btn btn-primary btn-lg" value="Ville"><span class="fa fa-home"></span> Ville</li>
+		</ul>
+	</div>
+{% endblock %}
+
+{% block javascript %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{asset('js/carousel.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('js/dragdrop.js') }}"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#carousel-horizontal').scrollingCarousel( {
+				scrollerAlignment : 'horizontal',
+				autoScroll: true,
+				autoScrollSpeed: 40000
+			});
+		});
+	</script>
+{% endblock %}

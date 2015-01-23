@@ -1,103 +1,10 @@
 {% extends "::base.html.twig" %}
 
 {% block header %}
-	<!-- Menu -->
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="{{ path('cf_main_homepage') }}">COCEPTIO</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li {% block navbarHome %}{% endblock %}><a href="{{ path('cf_main_homepage') }}">Accueil</a></li>
-					<li {% block navbarProjects %}{% endblock %} class="dropdown">
-						<a href="" class="dropdown-toggle" data-toggle="dropdown">Les projets <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="{{ path('cf_main_allProjects') }}">Tous</a></li>
-							<li class="divider"></li>
-							<li><a href="{{ path('cf_main_highlightProjects') }}">A la une</a></li>
-							<li><a href="{{ path('cf_main_endingProjects') }}">Bientôt terminé</a></li>
-							<li><a href="{{ path('cf_main_newProjects') }}">Nouveaux</a></li>
-						</ul>
-					</li>
-					<li {% block navbarProfil %}{% endblock %}><a href="{{ path('cf_main_profil') }}">Mon profil</a></li>
-					<li {% block navbarProject %}{% endblock %}><a href="{{ path('cf_main_project', { 'id': 1 }) }}">//TEST : PROJET\\</a></li>
-				</ul>
-				<form class="navbar-form" role="search">
-					<div class="input-group">
-						<input type="text" class="form-control pull-right" style="width: 300px; margin-right: 35px, border: 1px solid black; background-color: #e5e5e5;" placeholder="Search">
-						<span class="input-group-btn">
-							<button type="reset" class="btn btn-default">
-								<span class="glyphicon glyphicon-remove">
-									<span class="sr-only">Close</span>
-								</span>
-							</button>
-							<button type="submit" class="btn btn-default">
-								<span class="glyphicon glyphicon-search">
-									<span class="sr-only">Search</span>
-								</span>
-							</button>
-						</span>
-					</div>
-				</form>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
-	
-	<!-- Titres et réseaux sociaux -->
-	<h1>C O C E P T I O</h1>
+	<h1>COCEPTIO</h1>
 	<h2>concevoir | ensemble</h2>
-	<div id="reseaux_sociaux">
-		<a href="#" id="facebook"><span class="fa fa-facebook"></span> Facebook</a>
-		<a href="#" id="twitter"><span class="fa fa-twitter"></span> Twitter</a>
-		<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> Google+</a>
-	</div>
 {% endblock %}
 
 {% block footer %}
-    <div class="footer" id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3  col-md-2 col-sm-4 col-xs-4">
-                    <h3>Aide</h3>
-                    <ul>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3  col-md-2 col-sm-4 col-xs-4">
-                    <h3>Mentions légales</h3>
-                    <ul>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3  col-md-2 col-sm-4 col-xs-4">
-                    <h3>Conditions Générales</h3>
-                    <ul>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3  col-md-2 col-sm-4 col-xs-4">
-                    <h3>Contact</h3>
-                    <ul>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
-                    </ul>
-                </div>
-            </div>
-            <!--/.row--> 
-        </div>
-        <!--/.container--> 
-    </div>
+	<p>made with <span class="glyphicon glyphicon-heart"></span> by the project team</p>
 {% endblock %}

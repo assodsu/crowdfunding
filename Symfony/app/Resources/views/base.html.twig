@@ -4,7 +4,6 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>{% block title %}COCEPTIO{% endblock %}</title>
-		<link rel="icon" href="{{asset('favicon.ico')}}" />
 		{% block stylesheet %}
 			<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"/>
 			<link href="{{ asset('css/theme.css') }}" rel="stylesheet"/>
@@ -13,20 +12,20 @@
 	</head>
 	
 	<body>
-		<header>
+		<div id="header">
 		{% block header %}
 		{% endblock %}
-		</header>
+		</div>
 		
 		<div id="body">
 		{% block body %}
 		{% endblock %}
 		</div>			
 			
-		<footer>
+		<div id="footer">
 		{% block footer %}	
 		{% endblock %}
-		</footer>
+		</div>
 	</body>
 	
 	{% block javascript %}

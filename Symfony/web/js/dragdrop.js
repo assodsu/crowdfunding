@@ -15,18 +15,11 @@ $(function () {
 	});
 
     // there's the gallery and the trash
-    var $categorie = $( "#categories" ),$ville = $( "#villes" ),
-      $depot = $( "#search" );
+    var $gallery = $( "#vignettes" ),
+      $trash = $( "#search" );
  
     // let the gallery items be draggable
-    $( "li", $categorie ).draggable({
-      cancel: "a.ui-icon", // clicking an icon won't initiate dragging
-      revert: "invalid", // when not dropped, the item will revert back to its initial position
-      containment: "document",
-      helper: "clone"
-    });
-	
-	$( "li", $ville ).draggable({
+    $( "li", $gallery ).draggable({
       cancel: "a.ui-icon", // clicking an icon won't initiate dragging
       revert: "invalid", // when not dropped, the item will revert back to its initial position
       containment: "document",
@@ -34,8 +27,8 @@ $(function () {
     });
  
     // let the trash be droppable, accepting the gallery items
-    $depot.droppable({
-      accept: "#categories > li, #villes > li",
+    $trash.droppable({
+      accept: "#vignettes > li",
       activeClass: "ui-state-highlight",
       drop: function( event, ui ) {
         deleteImage( ui.draggable );
@@ -44,15 +37,7 @@ $(function () {
     });
  
     // let the gallery be droppable as well, accepting items from the trash
-    $categorie.droppable({
-      accept: "#search li",
-      activeClass: "custom-state-active",
-      drop: function( event, ui ) {
-        recycleImage( ui.draggable );
-      }
-    });
-	
-	$ville.droppable({
+    $gallery.droppable({
       accept: "#search li",
       activeClass: "custom-state-active",
       drop: function( event, ui ) {
@@ -64,8 +49,9 @@ $(function () {
     var recycle_icon = "<span class='glyphicon glyphicon-remove'></span>";
     function deleteImage( $item ) {
       $item.fadeOut(function() {
-        var $list = $( "ul", $depot ).length ?
-          $( "ul", $depot ) :
+        var $list = $( "ul", $trash ).length ?
+          $( "ul", $trash ) :
+          $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $trash );
         $item.append( recycle_icon ).appendTo( $list ).fadeIn(function() {
           $item.find( "img" );
         });
@@ -80,9 +66,9 @@ $(function () {
           .find( "span.glyphicon-remove" )
             .remove()
           .end()
-          .appendTo( $item.attr("app") )
+          .appendTo( $gallery )
           .fadeIn()
 		  .css('margin', '2.5px');
       });
     }
- });
+  });
