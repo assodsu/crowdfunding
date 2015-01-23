@@ -133,7 +133,79 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->redirect($pathinfo.'/', 'cf_main_homepage');
             }
 
-            return array (  '_controller' => 'CF\\MainBundle\\Controller\\DefaultController::indexAction',  '_route' => 'cf_main_homepage',);
+            return array (  '_controller' => 'CF\\MainBundle\\Controller\\PageController::indexAction',  '_route' => 'cf_main_homepage',);
+        }
+
+        if (0 === strpos($pathinfo, '/pro')) {
+            // cf_main_profil
+            if ($pathinfo === '/profil') {
+                return array (  '_controller' => 'CF\\MainBundle\\Controller\\PageController::profilAction',  '_route' => 'cf_main_profil',);
+            }
+
+            if (0 === strpos($pathinfo, '/projet')) {
+                // cf_main_project
+                if (preg_match('#^/projet/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_cf_main_project;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'cf_main_project')), array (  '_controller' => 'CF\\MainBundle\\Controller\\ProjectController::showAction',));
+                }
+                not_cf_main_project:
+
+                if (0 === strpos($pathinfo, '/projets')) {
+                    // cf_main_allProjects
+                    if ($pathinfo === '/projets') {
+                        return array (  '_controller' => 'CF\\MainBundle\\Controller\\ProjectController::showAllAction',  '_route' => 'cf_main_allProjects',);
+                    }
+
+                    // cf_main_endingProjects
+                    if (rtrim($pathinfo, '/') === '/projets/bientot-fini') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'cf_main_endingProjects');
+                        }
+
+                        return array (  '_controller' => 'CF\\MainBundle\\Controller\\ProjectController::showEndingAction',  '_route' => 'cf_main_endingProjects',);
+                    }
+
+                    // cf_main_newProjects
+                    if (rtrim($pathinfo, '/') === '/projets/nouveaux') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'cf_main_newProjects');
+                        }
+
+                        return array (  '_controller' => 'CF\\MainBundle\\Controller\\ProjectController::showNewAction',  '_route' => 'cf_main_newProjects',);
+                    }
+
+                    // cf_main_highlightProjects
+                    if (rtrim($pathinfo, '/') === '/projets/populaire') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'cf_main_highlightProjects');
+                        }
+
+                        return array (  '_controller' => 'CF\\MainBundle\\Controller\\ProjectController::showHighlightsAction',  '_route' => 'cf_main_highlightProjects',);
+                    }
+
+                    // cf_main_addProjects
+                    if (rtrim($pathinfo, '/') === '/projets/creer') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_cf_main_addProjects;
+                        }
+
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'cf_main_addProjects');
+                        }
+
+                        return array (  '_controller' => 'CF\\MainBundle\\Controller\\ProjectController::addAction',  '_route' => 'cf_main_addProjects',);
+                    }
+                    not_cf_main_addProjects:
+
+                }
+
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
