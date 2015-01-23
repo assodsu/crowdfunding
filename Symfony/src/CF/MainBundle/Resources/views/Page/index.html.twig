@@ -1,0 +1,116 @@
+{% extends "CFMainBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block navbarHome %} class="active" {% endblock %}
+
+{% block stylesheet %}
+	{{ parent() }}
+	<link href="{{asset('css/style_index.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+	<!-- Carousel -->
+	<div class='carousel'>
+		<div id='menu_carousel'>
+			<a href='#' class='selected'>Projets à la une</a>
+			<a href='#'>Touche à sa fin</a>
+			<a href='#'>Nouveaux</a>
+			<a href='#'>Tous les</br>projets</a>
+		</div>
+			<span class="glyphicon glyphicon-chevron-left"></span>
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		<div id="carousel-horizontal">
+			<ul>
+				<li>
+					<div class='project-title'>Nom projet</div>
+					<div><img src="{{ asset('images/1.jpg') }}"/></div>
+				</li>
+				<li>
+					<div class='project-title'>Nom projet</div>
+					<div><img src="{{ asset('images/2.jpg') }}"/></div>
+				</li>
+				<li>
+					<div class='project-title'>Nom projet</div>
+					<div><img src="{{ asset('images/3.jpg') }}"/></div>
+				</li>
+				<li>
+					<div class='project-title'>Nom projet</div>
+					<div><img src="{{ asset('images/4.jpg') }}"/></div>
+				</li>
+				<li>
+					<div class='project-title'>Nom projet</div>
+					<div><img src="{{ asset('images/5.jpg') }}"/></div>
+				</li>
+				<li>
+					<div class='project-title'>Nom projet</div>
+					<div><img src="{{ asset('images/6.jpg') }}"/></div>
+				</li>
+				<li>
+					<div class='project-title'>Nom projet</div>
+					<div><img src="{{ asset('images/3.jpg') }}"/></div>
+				</li>
+				<li>
+					<div class='project-title'>Nom projet</div>
+					<div><img src="{{ asset('images/4.jpg') }}"/></div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- Barre de recherche-->
+	<nav class="search-default">
+		<ul class="search">
+			<form class="search-form" role="search">
+				<div class="input-group">
+					<input type="text" class="form-control" id='search' placeholder="Saisissez votre recherche...">
+					<span class="input-group-btn">
+						<button type="submit" class="btn btn-default">
+							<span class="glyphicon glyphicon-search">
+								<span class="sr-only">Rechercher...</span>
+							</span>
+						</button>
+					</span>
+				</div>
+			</form>
+		</ul>
+	</nav>
+	
+	<!-- Vignettes drag and drop -->
+	<div class="dragdrop-button-container">
+		<p><i class="fa fa-arrow-up"></i> Glissez les boutons de centre d'interêt dans la barre de recherche <i class="fa fa-arrow-up"></i></p>
+		<ul id="categories">
+			<li class="btn btn-primary btn-lg" value="Sport" app="#categories"><span class="fa fa-trophy"></span> Sport</li>
+			<li class="btn btn-primary btn-lg" value="Loisirs" app="#categories"><span class="glyphicon glyphicon-send"></span> Loisirs</li>
+			<li class="btn btn-primary btn-lg" value="Tourisme" app="#categories"><span class="glyphicon glyphicon-camera"></span> Tourisme</li>
+			<li class="btn btn-primary btn-lg" value="Associatif" app="#categories"><span class="glyphicon glyphicon-heart-empty"></span> Associatif</li>
+			<li class="btn btn-primary btn-lg" value="Culture" app="#categories"><span class="glyphicon glyphicon-music"></span> Culture</li>
+			<li class="btn btn-primary btn-lg" value="Ville" app="#categories"><span class="fa fa-home"></span> Ville</li>
+		</ul>
+		<ul id="villes">
+			<li class="btn btn-primary btn-lg" value="Boulogne" app="#villes">Boulogne</li>
+			<li class="btn btn-primary btn-lg" value="Calais" app="#villes">Calais</li>
+			<li class="btn btn-primary btn-lg" value="Dunkerques" app="#villes">Dunkerques</li>
+			<li class="btn btn-primary btn-lg" value="St Omer" app="#villes">St Omer</li>
+			<li class="btn btn-primary btn-lg" value="Lens" app="#villes">Lens</li>
+			<li class="btn btn-primary btn-lg" value="Lille" app="#villes">Lille</li>
+		</ul>
+	</div>
+{% endblock %}
+
+{% block javascript %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{asset('js/carousel.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('js/dragdrop.js') }}"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#carousel-horizontal').scrollingCarousel( {
+				scrollerAlignment : 'horizontal',
+				autoScroll: true,
+				autoScrollSpeed: 40000
+			});
+		});
+	</script>
+{% endblock %}
