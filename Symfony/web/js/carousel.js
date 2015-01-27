@@ -446,8 +446,6 @@
 							clearInterval(autoScrollInterval);
 							autoScrollInterval = 0;
 						}
-		     			obj.unbind('mouseenter');
-		     			obj.unbind('mouseleave');
 		     			$(obj).data('scrollingCarousel', false);
 		     			return;
 		     			break;

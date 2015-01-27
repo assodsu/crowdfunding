@@ -11,6 +11,18 @@
 	<link href="{{asset('css/style_index.css')}}" rel="stylesheet"/>
 {% endblock %}
 
+{% block header %}
+	<!-- Titres et réseaux sociaux -->
+	<h1>C O C E P T I O</h1>
+	<h2>concevoir | ensemble</h2>
+	<div id="reseaux_sociaux">
+		<a href="#" id="facebook"><span class="fa fa-facebook"></span> Facebook</a>
+		<a href="#" id="twitter"><span class="fa fa-twitter"></span> Twitter</a>
+		<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> Google+</a>
+	</div>
+	{{ parent() }}
+{% endblock %}
+
 {% block body %}
 	<!-- Carousel -->
 	<div class='carousel'>
@@ -25,35 +37,35 @@
 		<div id="carousel-horizontal">
 			<ul>
 				<li>
-					<div class='project-title'>Nom projet</div>
+					<div class='project-title'><a href='#'>Nom projet</a></div>
 					<div><img src="{{ asset('images/1.jpg') }}"/></div>
 				</li>
 				<li>
-					<div class='project-title'>Nom projet</div>
+					<div class='project-title'><a href='#'>Nom projet</a></div>
 					<div><img src="{{ asset('images/2.jpg') }}"/></div>
 				</li>
 				<li>
-					<div class='project-title'>Nom projet</div>
+					<div class='project-title'><a href='#'>Nom projet</a></div>
 					<div><img src="{{ asset('images/3.jpg') }}"/></div>
 				</li>
 				<li>
-					<div class='project-title'>Nom projet</div>
+					<div class='project-title'><a href='#'>Nom projet</a></div>
 					<div><img src="{{ asset('images/4.jpg') }}"/></div>
 				</li>
 				<li>
-					<div class='project-title'>Nom projet</div>
+					<div class='project-title'><a href='#'>Nom projet</a></div>
 					<div><img src="{{ asset('images/5.jpg') }}"/></div>
 				</li>
 				<li>
-					<div class='project-title'>Nom projet</div>
+					<div class='project-title'><a href='#'>Nom projet</a></div>
 					<div><img src="{{ asset('images/6.jpg') }}"/></div>
 				</li>
 				<li>
-					<div class='project-title'>Nom projet</div>
+					<div class='project-title'><a href='#'>Nom projet</a></div>
 					<div><img src="{{ asset('images/3.jpg') }}"/></div>
 				</li>
 				<li>
-					<div class='project-title'>Nom projet</div>
+					<div class='project-title'><a href='#'>Nom projet</a></div>
 					<div><img src="{{ asset('images/4.jpg') }}"/></div>
 				</li>
 			</ul>
@@ -106,7 +118,7 @@
 	<script type="text/javascript" src="{{ asset('js/dragdrop.js') }}"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#carousel-horizontal').scrollingCarousel( {
+			var carousel = $('#carousel-horizontal').scrollingCarousel( {
 				scrollerAlignment : 'horizontal',
 				autoScroll: true,
 				autoScrollSpeed: 40000
