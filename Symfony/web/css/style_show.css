@@ -88,9 +88,12 @@
 }
 #project-ressources {
 	height:250px;
+	position:relative;
+	width:82%;
+	margin-left:18%;
 }
 #content-ressources {
-	width:980px;
+	width:100%;
 	height:100%;
 	float:right;
 	background-color: rgba(150,150,150,.4);

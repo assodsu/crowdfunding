@@ -28,9 +28,9 @@
 	<div class='carousel'>
 		<div id='menu_carousel'>
 			<a href='#' class='selected'>Projets à la une</a>
-			<a href='#'>Touche à sa fin</a>
-			<a href='#'>Nouveaux</a>
-			<a href='#'>Tous les</br>projets</a>
+			<a href='#' class='menuButton'>Touche à sa fin</a>
+			<a href='#' class='menuButton'>Nouveaux</a>
+			<a href='#' class='menuButton'>Tous les</br>projets</a>
 		</div>
 			<span class="glyphicon glyphicon-chevron-left"></span>
 			<span class="glyphicon glyphicon-chevron-right"></span>
@@ -104,7 +104,7 @@
 		<ul id="villes">
 			<li class="btn btn-primary btn-lg" value="Boulogne" app="#villes">Boulogne</li>
 			<li class="btn btn-primary btn-lg" value="Calais" app="#villes">Calais</li>
-			<li class="btn btn-primary btn-lg" value="Dunkerques" app="#villes">Dunkerques</li>
+			<li class="btn btn-primary btn-lg" value="Dunkerque" app="#villes">Dunkerque</li>
 			<li class="btn btn-primary btn-lg" value="St Omer" app="#villes">St Omer</li>
 			<li class="btn btn-primary btn-lg" value="Lens" app="#villes">Lens</li>
 			<li class="btn btn-primary btn-lg" value="Lille" app="#villes">Lille</li>
@@ -123,6 +123,12 @@
 				autoScroll: true,
 				autoScrollSpeed: 40000
 			});
+
+
+			$('.menuButton').click(function(){
+				$('.selected').removeClass('selected');
+			});
+
 		});
 	</script>
 {% endblock %}
