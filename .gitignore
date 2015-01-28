@@ -33,3 +33,4 @@
 
 # Composer PHAR
 /composer.phar
+Symfony/app/cache/dev/profiler/index.csv
