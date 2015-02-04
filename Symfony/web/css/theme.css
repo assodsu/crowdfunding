@@ -12,6 +12,16 @@ body{
 /**** MENU BARRE DE NAVIGATION ****/
 .navbar {
 	margin-bottom:1px;
+	border-radius:0;
+	border:none;
+}
+.navbar-default .navbar-nav .active a:hover{
+	background:none;
+}
+.nav li a:hover, .navbar-default .navbar-nav .active a {
+	border-bottom:5px solid #63a2e8;
+	color:#63a2e8;
+	padding-bottom:10px;
 }
 .navbar-collapse {
 	position: relative;
@@ -78,7 +88,13 @@ body{
 		width: 100%;
 	}
 }
-
+.dropdown-menu li a:hover {
+	border-left:3px solid #63a2e8;
+	border-bottom:0;
+	padding-bottom:3px;
+	padding-left:17px;
+	background:none;
+}
 /**** FOOTER ****/
 .footer {
 	background: none;

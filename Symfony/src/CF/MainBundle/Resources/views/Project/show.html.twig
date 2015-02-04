@@ -19,7 +19,7 @@
 		<div class='content'>
 			<div id='infos-asso'>
 				<div id='content-infos'>
-					<h1>Centre de Ressource des Associations Boulonnaises</h1>
+					<h1>Centre de Ressources des Associations Boulonnaises</h1>
 					<div id='content-infos-second-row'>
 						<div id='town-asso'>Boulogne sur Mer</div>
 						<div id="reseaux_sociaux">
@@ -36,20 +36,29 @@
 			</div>
 			<div id='project-ressources'>
 				<div id='content-ressources'>
+					<div id='text-ressources'>
+						<div id='left-ressources'>
+							<div id='text-ressource-info'>Informations <i class="fa fa-tag"></i></div>
+							<div id='text-ressource-financiere'>Financières <i class="fa fa-bar-chart"></i></div>
+						</div>
+						<div id='right-ressources'>
+							<div id='text-ressource-humaine'><i class="fa fa-users"></i> Humaines</div>
+							<div id='text-ressource-materiel'><i class="fa fa-desktop"></i> Matériels</div>
+						</div>
+					</div>
 					<div id='diagramme'>
 						<svg height="150" width="150">
 							<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
 						</svg>
 						<div class='pie-content'>
-							<div class='percentage'>73%</div>
-							<div class='name'>ressources</div>
+							<div class='percentage'>70%</div>
+							<div class='name'>Total</div>
 						</div>
 						<ul class="pie">
-							<li class="visualize" data-value="20" data-color="rgba(0,0,0,0)"></li>
-							<li class="visualize" data-value="23"></li>
-							<li class="visualize" data-value="27"></li>
-							<li class="visualize" data-value="20"></li>
-							<li class="visualize" data-value="10"></li>
+							<li class="visualize ressource-materiel" data-color='#5cb85c' data-value="20"></li>
+							<li class="visualize ressource-financiere" data-color='#d9534f' data-value="23"></li>
+							<li class="visualize" data-value="30" data-color="rgba(0,0,0,0)"></li>
+							<li class="visualize ressource-humain" data-color='#5bc0de' data-value="27"></li>
 						</ul>
 					</div>
 					<a href='#' class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a>
@@ -70,7 +79,66 @@
 		<div class="panel-body">
 			<div class="tab-content">
 				<div class="tab-pane fade in active" id="tabproject">
-					Default 1
+					<div class='tab-box aside'>
+						<h1>Ressources</h1>
+						<p>Chaise - 1/10 (10%)</p>
+						<div class="progress">
+							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
+								<span class="sr-only">10% Complete</span>
+							</div>
+						</div>
+						<hr>
+						<p>Table - 2/2 (100%)</p>
+						<div class="progress">
+							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+								<span class="sr-only">100% Complete</span>
+							</div>
+						</div>
+						<hr>
+						<p>Bénévoles - 3/6 (50%)</p>
+						<div class="progress">
+							<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+								<span class="sr-only">50% Complete</span>
+							</div>
+						</div>
+						<hr>
+						<p>Financier - 30€ / 100€ (30%)</p>
+						<div class="progress">
+							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
+								<span class="sr-only">30% Complete</span>
+							</div>
+						</div>
+						<hr>
+						<a href='#' class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a>
+					</div>
+					<div class='tab-box full aside'>
+						<h1>Le projet</h1>
+						<h2>1. Description</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+							sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+						<p><img src="{{ asset('images/2.jpg') }}"/><img src="{{ asset('images/4.jpg') }}"/></p>
+						<h2>2. Qui sommes nous ?</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+							sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+						<h2>3. Création</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+							sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+					</div>
 				</div>
 				<div class="tab-pane fade" id="tabhistory">
 					<h1 class='tab-title'><i class="fa fa-quote-left"></i> Redynamiser le développement numérique à Boulogne sur mer <i class="fa fa-quote-right"></i></h1>
@@ -91,13 +159,113 @@
 					</div>
 				</div>
 				<div class="tab-pane fade" id="tabupdates">
-					Default 3
+					<div class='tab-box full'>
+						<div class='update-date'>Le 25 janvier 2015 - 11h38</div>
+						<h1>Ma Deuxième update</h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+							sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+						<p><img src="{{ asset('images/3.jpg') }}"/></p>
+						<p>
+							<ul>
+								<li>Blablabla</li>
+								<li>Blablabla</li>
+								<li>Blablabla</li>
+								<li>Blablabla</li>
+								<li>Blablabla</li>
+							</ul>
+						</p>
+						<a href='#' class='btn'>Commentaires</a>
+					</div>
+					<div class='tab-box full'>
+						<div class='update-date'>Le 21 janvier 2015 - 21h34</div>
+						<h1>Ma première update</h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+							sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+						<p><img src="{{ asset('images/4.jpg') }}"/></p>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+							sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+						<p><img src="{{ asset('images/1.jpg') }}"/></p>
+						<a href='#' class='btn'>Commentaires</a>
+					</div>
 				</div>
 				<div class="tab-pane fade" id="tabcomments">
-					Default 4
+					<div class='tab-box full comment'>
+						<div class='comment-avatar'><img src="{{ asset('images/1.jpg') }}"/></div>
+						<div class='comment-author'>Michel</div><div class='comment-hour'>- 15h45</div><div class='comment-date'>08/02/2015</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat.
+						</p>
+					</div>
+					<div class='tab-box full comment'>
+						<div class='comment-avatar'><img src="{{ asset('images/2.jpg') }}"/></div>
+						<div class='comment-author'>Michel</div><div class='comment-hour'>- 15h45</div><div class='comment-date'>08/02/2015</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat.
+						</p>
+					</div>
+					<div class='tab-box full comment'>
+						<div class='comment-avatar'><img src="{{ asset('images/3.jpg') }}"/></div>
+						<div class='comment-author'>Michel</div><div class='comment-hour'>- 15h45</div><div class='comment-date'>08/02/2015</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat.
+						</p>
+					</div>
+					<div class='tab-box full comment'>
+						<div class='comment-avatar'><img src="{{ asset('images/4.jpg') }}"/></div>
+						<div class='comment-author'>Michel</div><div class='comment-hour'>- 15h45</div><div class='comment-date'>08/02/2015</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat.
+						</p>
+					</div>
 				</div>
 				<div class="tab-pane fade" id="tabmore">
-					Default 5
+					<div class='tab-box full'>
+						<h1>Plus d'informations</h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+							sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+							sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+							sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -107,14 +275,5 @@
 {% block javascript %}
 	{{ parent() }}
 	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('.pie').visualize({
-				width: 150,
-				height: 150,
-				type: 'pie', // pie or chart
-				legend: false
-			});
-		});
-	</script>
+	<script type="text/javascript" src="{{asset('js/diagramme.js')}}"></script>
 {% endblock %}
