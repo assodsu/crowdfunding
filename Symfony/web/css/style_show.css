@@ -8,7 +8,7 @@
 	position:absolute;
 	width:100%;
 	height:100%;
-	background-color: rgba(10,10,10,.36);
+	background-color: rgba(10,10,10,.4);
 }
 #background-img {
 	width:100%;
@@ -22,6 +22,24 @@
 /**** INFORMATIONS HEADER ASSOCIATION ****/
 #infos-asso {
 	height:150px;
+}
+#certification {
+	position:absolute;
+	text-align:center;
+	margin-left:40px;
+	margin-top:10px;
+}
+#certification #label {
+	color:rgb(138, 202, 139);
+	padding:10px 25px;
+	border:3px solid rgb(138, 202, 139);
+	border-radius:5px;
+}
+#certification #logo {
+	width:150px;
+	height:150px;
+	border-radius:75px;
+	border:1px solid rgba(0,0,0,.4);
 }
 #content-infos{
 	width:700px;
@@ -180,6 +198,23 @@
 #text-ressource-materiel {
 	color:#5cb85c;
 }
+#project-tags {
+	float:right;
+	height:46px;
+	padding-left:40px;
+	background-color: rgba(200,200,200,.6);
+	-webkit-clip-path: polygon(0px 45px,100% 45px,100% 0px,40px 0px);
+}
+#project-tags .tag {
+	cursor:default;
+	display:inline-block;
+	color:white;
+	background-color:rgb(218, 74, 74);
+	padding:5px 10px;
+	padding-left:30px;
+	margin:10px;
+	-webkit-clip-path: polygon(30px 0px,0px 16px,30px 32px,100% 32px,100% 0px);
+}
 /**** MENU ****/
 .panel-heading {
 	padding-top:20px;
@@ -232,13 +267,13 @@
 .tab-box {
 	background-color:#fff;
 	border-radius: 5px;
-	width:45%;
+	width:47%;
 	min-height:300px;
 	display:inline-block;
 	padding:10px;
 	vertical-align:top;
-	margin-left:2%;
-	margin-right:2%;
+	margin-left:1%;
+	margin-right:1%;
 	margin-top:20px;
 	border:1px solid rgba(0,0,0,.1);
 }
@@ -252,6 +287,8 @@
 }
 .tab-box p {
 	font-size:12pt;
+	text-align: justify;
+    text-justify: inter-word;
 }
 .tab-box img {
 	width:100%;
@@ -259,8 +296,9 @@
 }
 .tab-box.full {
 	width: 95%;
+	padding:20px;
 }
-.tab-box.full p {
+.tab-box.full p.picture {
 	text-align:center;
 }
 .tab-box.full img {
@@ -274,8 +312,14 @@
 .tab-box.aside a{
 	width:100%;
 }
+.tab-box.aside p {
+	margin:0;
+}
+.tab-box.aside .progress {
+	background-color:#dadada;
+}
 .tab-box.full.aside {
-	width:65%;
+	width:70%;
 }
 /**** COMMENTAIRES ****/
 .tab-box.comment {

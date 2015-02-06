@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block header %}
+	{{ parent() }}
 	<!-- Titres et réseaux sociaux -->
 	<h1>C O C E P T I O</h1>
 	<h2>concevoir | ensemble</h2>
@@ -20,7 +21,6 @@
 		<a href="#" id="twitter"><span class="fa fa-twitter"></span> Twitter</a>
 		<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> Google+</a>
 	</div>
-	{{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -79,11 +79,11 @@
 				<div class="input-group">
 					<input type="text" class="form-control" id='search' placeholder="Saisissez votre recherche...">
 					<span class="input-group-btn">
-						<button type="submit" class="btn btn-default">
+						<a href='#'>
 							<span class="glyphicon glyphicon-search">
 								<span class="sr-only">Rechercher...</span>
 							</span>
-						</button>
+						</a>
 					</span>
 				</div>
 			</form>
@@ -92,7 +92,7 @@
 	
 	<!-- Vignettes drag and drop -->
 	<div class="dragdrop-button-container">
-		<p><i class="fa fa-arrow-up"></i> Glissez les boutons de centre d'interêt dans la barre de recherche <i class="fa fa-arrow-up"></i></p>
+		<p>... ou glissez les boutons de centre d'interêt dans la barre de recherche</p>
 		<ul id="categories">
 			<li class="btn btn-primary btn-lg" value="Sport" app="#categories"><span class="fa fa-trophy"></span> Sport</li>
 			<li class="btn btn-primary btn-lg" value="Loisirs" app="#categories"><span class="glyphicon glyphicon-send"></span> Loisirs</li>
@@ -124,11 +124,30 @@
 				autoScrollSpeed: 40000
 			});
 
-
 			$('.menuButton').click(function(){
 				$('.selected').removeClass('selected');
 			});
-
+			
+			$.fn.onclickout = function(callback){
+				var elm = this;
+				$(document).on("click", function(evt){
+					if($(evt.target).closest(elm).size() === 0){
+						callback.call(elm, evt);
+					}
+				});
+				return elm;
+			};
+			 
+			$('#search').click(function(){
+				$(this).attr('placeholder','');
+			});
+			
+			$('.search').click(function() {
+				$('#search').focus();
+				$('#search').attr('placeholder','');
+			}).onclickout(function(){ 
+				$('#search').attr('placeholder','Saisissez votre recherche...');
+			});
 		});
 	</script>
 {% endblock %}

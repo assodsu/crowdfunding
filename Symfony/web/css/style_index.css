@@ -8,6 +8,9 @@ header{
 header h1 {
 	margin-top:20px;
 }
+header h1, header h2 {
+	cursor:default;
+}
 #reseaux_sociaux {
 	margin-top:20px;
 	margin-bottom:30px;
@@ -33,6 +36,8 @@ header h1 {
 	width:100%;
 	height:302px;
 	margin-bottom:40px;
+	border-top: 1px solid #ececec;
+	border-bottom: 1px solid #ececec;
 }
 #carousel-horizontal {
 	/*filter: blur(1px);
@@ -76,10 +81,12 @@ header h1 {
 	width:400px;
 	text-align:center;
 	z-index:2;
-	color:white;
 	font-size:16pt;
 	padding:10px 10px;
 	background-color: rgba(100,100,100,0.5);
+}
+.carousel .project-title a {
+	color:white;
 }
 
 /**** MENU CAROUSEL ****/
@@ -87,7 +94,7 @@ header h1 {
 	position:absolute;
 	width: 300px;
 	height: 300px;
-	background-color: #b7b7ba;
+	background-color: #ececec;
 	z-index:3;
 	
 	/*Chrome,Safari*/
@@ -116,7 +123,7 @@ header h1 {
 }
 .glyphicon-chevron-left, .glyphicon-chevron-right {
 	position:absolute;
-	color:white;
+	color:#ececec;
 	font-size: 30px;
 	z-index:3;
 	pointer-events:none;
@@ -132,9 +139,8 @@ header h1 {
 
 /**** BARRE DE RECHERCHE ****/
 .search-default {
-	background-color:rgba(100,100,100,0.5);
+	background-color:#ececec;
 	border:none;
-	margin-top:30px;
 	margin-bottom:30px;
 	height:85px;
 	
@@ -154,27 +160,17 @@ header h1 {
 }
 .search-default form input, .search-default form input:focus {
 	border:none;
-	color: #a8a1a0;
 	padding: 16px 12px;
-	font-size: 14pt;
+	font-size: 20pt;
 	box-shadow: none;
 	height:80px;
 	background:none;
 }
 .search-default .glyphicon-search {
 	font-size:25px;
+	color:#555;
 }
-.input-group {
-	width:100%;
-}
-.search-default button, .search-default button:hover, .search-default button:active, .search-default button:focus {
-	border-width: 0px;
-	color: #a8a1a0;
-	background:none;
-	border:none;
-	outline:none;
-}
-.search-default button:hover {
+.search-default .glyphicon-search:hover {
 	color:#449cfa;
 }
 
@@ -202,5 +198,10 @@ header h1 {
 	z-index:4;
 	cursor:move;
 	margin:5px;
-	background:none;
+	background:#323749;
+	border-color:#ECECEC;
+}
+.dragdrop-button-container ul li:hover, .dragdrop-button-container ul li:active{
+	background:#555B6F;
+	border-color:#ECECEC;
 }
