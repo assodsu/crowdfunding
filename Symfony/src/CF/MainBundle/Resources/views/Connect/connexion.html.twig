@@ -52,7 +52,7 @@
 			    {{ form_label(form.password, "mot de passe", {'label_attr': {'class': 'col-sm-5 control-label'}}) }}
 
 			    {# Affichage des erreurs pour ce champ précis. #}
-			    {{ form_errors(form.identifiant) }}
+			    {{ form_errors(form.password) }}
 			  
 				<div class="col-sm-5">
 				{# Génération de l'input. #}
@@ -60,6 +60,20 @@
 				</div>
 			</div>
 			
+			<div class="form-group" id='checkbox'>
+			    
+			    {# Génération du label. #}
+			    {{ form_label(form.save, "Ce souvenir de moi", {'label_attr': {'class': 'col-sm-5 control-label'}}) }}
+
+			    {# Affichage des erreurs pour ce champ précis. #}
+			    {{ form_errors(form.save) }}
+			  
+				<div class="col-sm-5">
+				{# Génération de l'input. #}
+        		{{ form_widget(form.save, {'attr': {'class': ''}}) }}
+				</div>
+			</div>
+
 			<div class="col-sm-15" id="liens">
 				<a href="#">Mot de passe perdu</a>
 				<br/>

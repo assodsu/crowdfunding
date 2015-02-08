@@ -19,6 +19,7 @@ class ConnectController extends Controller
     	$formBuilder
     		->add('identifiant',	'text')
     		->add('password',	'password')
+            ->add('save','checkbox')
     		->add('connexion',		'submit')
     	;
 
