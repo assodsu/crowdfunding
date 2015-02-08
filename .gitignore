@@ -4,6 +4,9 @@
 /Symfony/app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
+/Symfony\app\cache\*
+/app\cache\dev\*
+
 
 # Cache and logs (Symfony3)
 /var/cache/*
@@ -22,7 +25,7 @@
 !bin/console
 !bin/symfony_requirements
 /vendor/
-
+/vendor\
 # Assets and user uploads
 /web/bundles/
 /web/uploads/
@@ -34,3 +37,5 @@
 # Composer PHAR
 /composer.phar
 Symfony/app/cache/dev/profiler/index.csv
+Symfony/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/Annotation/Target.php
+Symfony/app/cache/dev/appDevDebugProjectContainer.php

@@ -1,0 +1,85 @@
+{% extends "CFMainBundle::layout.html.twig" %}
+
+{% block title %}
+	Connexion-{{ parent() }}
+{% endblock %}
+
+{% block navbarConnect %} class="active" {% endblock %}
+
+{% block stylesheet %}
+	{{ parent() }}
+	<link href="{{asset('css/style_connect.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+
+
+{% block body %}
+
+	<div id='containerPage'>
+
+		
+
+		<div id='form'>
+			
+			<div class="col-sm-12">
+				<h3>Connectez vous pour accéder à votre compte utilisateur</h3>
+			</div>	
+
+			{# mise en place d'une classe pour le formulaire #}
+			{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+			
+			{# gestion des erreurs générales du formulaire #}
+			{{ form_errors(form) }}
+			
+			<div class="form-group">
+			    
+			    {# Génération du label. #}
+			    {{ form_label(form.identifiant, "identifiant", {'label_attr': {'class': 'col-sm-5 control-label'}}) }}
+
+			    {# Affichage des erreurs pour ce champ précis. #}
+			    {{ form_errors(form.identifiant) }}
+			  
+			  	<div class="col-sm-5">
+				{# Génération de l'input. #}
+        		{{ form_widget(form.identifiant, {'attr': {'class': 'form-control'}}) }}
+				</div>
+
+			</div>
+			
+			<div class="form-group">
+			    
+			    {# Génération du label. #}
+			    {{ form_label(form.password, "mot de passe", {'label_attr': {'class': 'col-sm-5 control-label'}}) }}
+
+			    {# Affichage des erreurs pour ce champ précis. #}
+			    {{ form_errors(form.identifiant) }}
+			  
+				<div class="col-sm-5">
+				{# Génération de l'input. #}
+        		{{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+			
+			<div class="col-sm-15" id="liens">
+				<a href="#">Mot de passe perdu</a>
+				<br/>
+				<a href="#">Inscription</a>
+			</div>
+			
+			<div class="form-group" id="valid">
+	    		<div class="col-sm-offset-5 col-sm-10">		
+					{{ form_widget(form.connexion, {'attr': {'class': 'btn btn-primary'}}) }}
+				</div>
+			</div>	
+	  		{{ form_rest(form) }}
+  
+  			{# Fermeture de la balise <form> du formulaire HTML #}
+  			{{ form_end(form) }}
+
+
+
+		</div>
+
+	</div>
+
+{% endblock %}

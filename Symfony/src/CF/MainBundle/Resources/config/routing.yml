@@ -34,3 +34,11 @@ cf_main_addProjects:
     defaults: { _controller: CFMainBundle:Project:add }
     requirements:
         _method: GET|POST
+
+cf_main_connect:
+    path:    /login
+    defaults: { _controller: CFMainBundle:Connect:index}
+
+cf_main_register:
+    path:    /inscription
+    defaults: { _controller: CFMainBundle:Register:index}
