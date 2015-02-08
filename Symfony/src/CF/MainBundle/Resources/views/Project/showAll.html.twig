@@ -1,0 +1,90 @@
+{% extends "CFMainBundle::layout.html.twig" %}
+
+{% block title %}
+  Projets - {{ parent() }}
+{% endblock %}
+
+{% block navbarProject %} class="active" {% endblock %}
+
+{% block stylesheet %}
+	{{ parent() }}
+	<link href="{{asset('css/style_showAll.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+			<h1 id="CategoryTitle">Catégorie</h1>
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Art</a></li>
+            <li><a href="#">Aventure et sport</a></li>
+            <li><a href="#">Design et invention</a></li>
+            <li><a href="#">Ecologie</a></li>
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Film et vidéo</a></li>
+            <li><a href="#">Food</a></li>
+            <li><a href="#">Jeux</a></li>
+            <li><a href="#">Journalisme</a></li>
+            <li><a href="#">Livre et édition</a></li>
+            <li><a href="#">Mode</a></li>
+            <li><a href="#">Musique</a></li>
+            <li><a href="#">Photographie</a></li>
+            <li><a href="#">Solidarité</a></li>
+            <li><a href="#">Spectacle vivant</a></li>
+            <li><a href="#">Web et techno</a></li>
+          </ul>
+        </div>
+		<div class="sidebar2">
+          <ul class="nav nav-sidebar">
+            <li><a href="#">Art</a></li>
+            <li><a href="#">Aventure et sport</a></li>
+            <li><a href="#">Design et invention</a></li>
+            <li><a href="#">Ecologie</a></li>
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Film et vidéo</a></li>
+            <li><a href="#">Food</a></li>
+            <li><a href="#">Jeux</a></li>
+            <li><a href="#">Journalisme</a></li>
+            <li><a href="#">Livre et édition</a></li>
+            <li><a href="#">Mode</a></li>
+            <li><a href="#">Musique</a></li>
+            <li><a href="#">Photographie</a></li>
+            <li><a href="#">Solidarité</a></li>
+            <li><a href="#">Spectacle vivant</a></li>
+            <li><a href="#">Web et techno</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	<div class="content">
+		<div class="apercu">
+			<img src="{{ asset('images/1.jpg') }}"/>
+		</div>
+		
+		<div class="apercu">
+			<img src="{{ asset('images/2.jpg') }}"/>
+		</div>
+		
+		<div class="apercu">
+			<img src="{{ asset('images/3.jpg') }}"/>
+		</div>
+		
+		<div class="apercu">
+			<img src="{{ asset('images/4.jpg') }}"/>
+		</div>
+		
+		<div class="apercu">
+			<img src="{{ asset('images/5.jpg') }}"/>
+		</div>
+		
+		<div class="apercu">
+			<img src="{{ asset('images/6.jpg') }}"/>
+		</div>
+	</div>
+{% endblock %}
+	
+{% block javascript %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{asset('js/script_showAll.js')}}"></script>
+{% endblock %}
