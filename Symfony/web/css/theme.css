@@ -75,3 +75,11 @@ body{
 	display: block;
 	color: #78828D
 }
+
+#connect{
+	text-align: right;
+}
+
+#inscription{
+	text-align: right;
+}

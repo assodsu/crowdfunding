@@ -41,4 +41,24 @@ cf_main_connect:
 
 cf_main_register:
     path:    /inscription
-    defaults: { _controller: CFMainBundle:Register:index}
+    defaults: { _controller: CFMainBundle:Insc:index}
+    requirements:
+        _method: GET|POST
+
+cf_main_registerAsso:
+    path:    /inscription/association
+    defaults: { _controller: CFMainBundle:Insc:asso}
+    requirements:
+        _method: GET|POST
+
+cf_main_registerEntr:
+    path:    /inscription/entreprise
+    defaults: { _controller: CFMainBundle:Insc:entr}
+    requirements:
+        _method: GET|POST
+
+cf_main_registerPart:
+    path:    /inscription/particulier
+    defaults: { _controller: CFMainBundle:Insc:part}
+    requirements:
+        _method: GET|POST
