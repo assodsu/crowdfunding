@@ -1,9 +1,9 @@
 <?php
-// src/CF/MainBundle/Entity/ConnexionForm.php
+// src/CF/MainBundle/Entity/Connect.php
 
 namespace CF\MainBundle\Entity; 
 
-class ConnexionForm{
+class Connect{
 
 	/*attributs de la classe*/
 	private $identifiant;	//identifiant de l'utilisateur

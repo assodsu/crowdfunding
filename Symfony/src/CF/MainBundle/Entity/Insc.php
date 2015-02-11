@@ -1,9 +1,9 @@
 <?php
-// src/CF/MainBundle/Entity/InscriptionBeggin.php
+// src/CF/MainBundle/Entity/Insc.php
 
 namespace CF\MainBundle\Entity;
 
-class InscriptionBeggin{
+class Insc{
 /*classe du formulaire de determination de type (asso,entreprise,personne)*/
 
 	/*attributs*/
