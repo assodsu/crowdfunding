@@ -35,10 +35,6 @@ cf_main_addProjects:
     requirements:
         _method: GET|POST
 
-cf_main_connect:
-    path:    /login
-    defaults: { _controller: CFMainBundle:Connect:index}
-
 cf_main_register:
     path:    /inscription
     defaults: { _controller: CFMainBundle:Insc:index}

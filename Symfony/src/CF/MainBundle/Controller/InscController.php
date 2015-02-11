@@ -10,31 +10,9 @@ class InscController extends Controller
 {
 	/*indexAction -> determination du type d'utilisateur*/	
 	public function indexAction(){
-		//création d'une instance de InscriptionBeggin
-		$inscBeg=new InscriptionBeggin();
 
-		//creation du formulaire grace au service form factory
-    	$formBuilder=$this->get('form.factory')->createBuilder('form',$inscBeg);
-
-    	//ajout des bottons radio et de la validation
-    	$formBuilder
-    		->add('type','choice',array(
-    				'choices' => array('asso'=>'association','entr'=>'entreprise','part'=>'particulier'),
-    				'multiple' => false,
-    				'expanded' => true,
-    			)
-    		)
-    		->add('valider','submit')
-    	;
-
-    	//generation du formulaire
-    	$form=$formBuilder->getForm();
-
-    	
     	//retour de la vue et création de la vue du formulaire par la methode createView()
-        return $this->render('CFMainBundle:Inscription:inscriptionIndex.html.twig',array(
-        	'form'=>$form->createView(),
-        	));
+        return $this->render('CFMainBundle:Inscription:inscriptionIndex.html.twig');
 
 	}
 

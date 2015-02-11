@@ -14,86 +14,41 @@
 
 
 {% block body %}
+	
 
-	<div id='containerPage'>
-
-		
-
-		<div id='form'>
+		<div id='form' class="center-block">
 			
 			<div class="col-sm-12">
 				<h3>Connectez vous pour accéder à votre compte utilisateur</h3>
-			</div>	
-
-			{# mise en place d'une classe pour le formulaire #}
-			{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-			
-			{# gestion des erreurs générales du formulaire #}
-			{{ form_errors(form) }}
-			
-			<div class="form-group">
-			    
-			    {# Génération du label. #}
-			    {{ form_label(form.identifiant, "identifiant", {'label_attr': {'class': 'col-sm-5 control-label'}}) }}
-
-			    {# Affichage des erreurs pour ce champ précis. #}
-			    {{ form_errors(form.identifiant) }}
-			  
-			  	<div class="col-sm-5">
-				{# Génération de l'input. #}
-        		{{ form_widget(form.identifiant, {'attr': {'class': 'form-control'}}) }}
-				</div>
-
-			</div>
-			
-			<div class="form-group">
-			    
-			    {# Génération du label. #}
-			    {{ form_label(form.password, "mot de passe", {'label_attr': {'class': 'col-sm-5 control-label'}}) }}
-
-			    {# Affichage des erreurs pour ce champ précis. #}
-			    {{ form_errors(form.password) }}
-			  
-				<div class="col-sm-5">
-				{# Génération de l'input. #}
-        		{{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
-				</div>
-			</div>
-			
-			<div class="form-group" id='checkbox'>
-			    
-			    {# Génération du label. #}
-			    {{ form_label(form.save, "Ce souvenir de moi", {'label_attr': {'class': 'col-sm-5 control-label'}}) }}
-
-			    {# Affichage des erreurs pour ce champ précis. #}
-			    {{ form_errors(form.save) }}
-			  
-				<div class="col-sm-5">
-				{# Génération de l'input. #}
-        		{{ form_widget(form.save, {'attr': {'class': ''}}) }}
-				</div>
 			</div>
 
-			<div class="col-sm-15" id="liens">
-				<a href="#">Mot de passe perdu</a>
-				<br/>
-				<a href="#">Inscription</a>
-			</div>
+			<div class="form-horizontal">
+				{# mise en place d'une classe pour le formulaire #}
+				{{	form_start(form) }}
+				
+				{# gestion des erreurs générales du formulaire #}
+				{{ form_errors(form) }}
+				
+				{{ form_widget(form) }}
 			
-			<div class="form-group" id="valid">
-	    		<div class="col-sm-offset-5 col-sm-10">		
-					{{ form_widget(form.connexion, {'attr': {'class': 'btn btn-primary'}}) }}
+
+				<div class="col-sm-15" id="liens">
+					<a href="#">Mot de passe perdu</a>
+					<br/>
+					<p>Pas encore inscrit ? <a href="{{ path('cf_main_register') }}">inscrivez vous</a></p>
 				</div>
-			</div>	
-	  		{{ form_rest(form) }}
-  
-  			{# Fermeture de la balise <form> du formulaire HTML #}
-  			{{ form_end(form) }}
-
-
+				
+				<div class="form-group" id="valid">
+		    		<div class="col-sm-offset-5 col-sm-10">		
+						{{ form_widget(form.connexion, {'attr': {'class': 'btn btn-primary'}}) }}
+					</div>
+				</div>	
+	  
+	  			{# Fermeture de la balise <form> du formulaire HTML #}
+	  			{{ form_end(form) }}
+			</div>
 
 		</div>
 
-	</div>
 
 {% endblock %}

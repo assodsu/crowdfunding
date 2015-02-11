@@ -15,46 +15,11 @@
 
 	<div id='containerPage'>
 		
-		<div id='form'>
-			
-			<div class="col-sm-12">
-				<h3>1 ère étape - Vous êtes :</h3>
-			</div>	
+		<div id="Header"><h3>Cliquez sur le lien qui vous correspond pour commencer l'inscription<h3></div>
 
-			{# mise en place d'une classe pour le formulaire #}
-			{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-			
-			{# gestion des erreurs générales du formulaire #}
-			{{ form_errors(form) }}
-
-			<div class="form-group">
-	
-				{# Génération du label. #}
-			    {{ form_label(form.type, "Un(e)", {'label_attr': {'class': 'col-sm-5 control-label'}}) }}
-
-			    {# Affichage des erreurs pour ce champ précis. #}
-			    {{ form_errors(form.type) }}
-
-			    <div class="col-sm-5">
-				{# Génération de l'input. #}
-        		{{ form_widget(form.type, {'attr': {'class': 'this'}}) }}
-				</div>
-
-			</div>
-
-			<div class="form-group" id="valid">
-	    		<div class="col-sm-offset-3 col-sm-10">		
-					{{ form_widget(form.valider, {'attr': {'class': 'btn btn-primary'}}) }}
-				</div>
-			</div>	
-				
-			{{ form_rest(form) }}
-  
-  			{# Fermeture de la balise <form> du formulaire HTML #}
-  			{{ form_end(form) }}
-
-
-		</div>
+		<div id="lienAsso" class="lien"><a href="{{ path('cf_main_registerAsso') }}">Association</a></div>
+		<div id="lienEntr" class="lien"><a href="{{ path('cf_main_registerEntr') }}">Entreprise</a></div>
+		<div id="lienPart" class="lien"><a href="{{ path('cf_main_registerPart') }}">Particulier</a></div>
 
 	</div>
 
