@@ -4,17 +4,17 @@ fos_user_security:
     prefix: /
 
 fos_user_profile:
-    resource: routing/profile.xml
+    resource: routing/profile.yml
     prefix: /profil
 
 fos_user_register:
-    resource: routing/registration.xml
+    resource: routing/registration.yml
     prefix: /inscription
 
 fos_user_resetting:
-    resource: routing/resetting.xml
+    resource: routing/resetting.yml
     prefix: /resetting
 
 fos_user_change_password:
-    resource: routing/change_password.xml
+    resource: routing/change_password.yml
     prefix: /profil

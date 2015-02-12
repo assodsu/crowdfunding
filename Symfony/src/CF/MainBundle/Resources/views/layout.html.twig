@@ -29,8 +29,8 @@
 					<li {% block navbarProfil %}{% endblock %}><a href="{{ path('cf_main_profil') }}"><i class="fa fa-user"></i> Mon profil</a></li>
 					<li {% block navbarContact %}{% endblock %}><a href=""><i class="fa fa-envelope"></i> Contact</a></li>
 					<li><a href="{{ path('cf_main_project', { 'id': 1 }) }}">Projet 1</a></li>
-                    <li id='connect' {% block navbarConnect %}{% endblock %}><a href="#">Connexion</a></li>
-                    <li id='inscription' {% block navbarRegister %}{% endblock %}><a href="{{ path('cf_main_register') }}">Inscription</a></li>
+                    <li id='connect' {% block navbarConnect %}{% endblock %}><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                    <li id='inscription' {% block navbarRegister %}{% endblock %}><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
 				</ul>
 			</div>
 		</div>

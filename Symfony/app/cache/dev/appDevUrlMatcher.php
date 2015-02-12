@@ -162,7 +162,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_fos_user_profile_show:
 
             // fos_user_profile_edit
-            if ($pathinfo === '/profil/edit') {
+            if ($pathinfo === '/profil/editer') {
                 return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
             }
 
@@ -267,7 +267,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // fos_user_change_password
-        if ($pathinfo === '/profil/change-password') {
+        if ($pathinfo === '/profil/modifier-mdp') {
             if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                 $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                 goto not_fos_user_change_password;
@@ -355,53 +355,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
 
             }
-
-        }
-
-        if (0 === strpos($pathinfo, '/inscription')) {
-            // cf_main_register
-            if ($pathinfo === '/inscription') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_cf_main_register;
-                }
-
-                return array (  '_controller' => 'CF\\MainBundle\\Controller\\InscController::indexAction',  '_route' => 'cf_main_register',);
-            }
-            not_cf_main_register:
-
-            // cf_main_registerAsso
-            if ($pathinfo === '/inscription/association') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_cf_main_registerAsso;
-                }
-
-                return array (  '_controller' => 'CF\\MainBundle\\Controller\\InscController::assoAction',  '_route' => 'cf_main_registerAsso',);
-            }
-            not_cf_main_registerAsso:
-
-            // cf_main_registerEntr
-            if ($pathinfo === '/inscription/entreprise') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_cf_main_registerEntr;
-                }
-
-                return array (  '_controller' => 'CF\\MainBundle\\Controller\\InscController::entrAction',  '_route' => 'cf_main_registerEntr',);
-            }
-            not_cf_main_registerEntr:
-
-            // cf_main_registerPart
-            if ($pathinfo === '/inscription/particulier') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_cf_main_registerPart;
-                }
-
-                return array (  '_controller' => 'CF\\MainBundle\\Controller\\InscController::partAction',  '_route' => 'cf_main_registerPart',);
-            }
-            not_cf_main_registerPart:
 
         }
 
