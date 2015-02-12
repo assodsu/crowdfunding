@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new CF\MainBundle\CFMainBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
+            new CF\UserBundle\CFUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

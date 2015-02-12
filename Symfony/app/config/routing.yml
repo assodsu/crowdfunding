@@ -1,6 +1,6 @@
+cf_user:
+    resource: "@CFUserBundle/Resources/config/routing.yml"
+
 cf_main:
     resource: "@CFMainBundle/Resources/config/routing.yml"
     prefix:   /
-
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
