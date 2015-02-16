@@ -24,3 +24,20 @@ label{
 	font-size:80%;
 }
 
+#header{
+	background-color:#226D79;
+	color:white;
+}
+
+#header a{
+	color:#011FFF;
+}
+
+.panel-body{
+	background-color:#ACC6C9;
+}
+
+#loginbox{
+	width:60%;
+	height:100%;
+}
