@@ -1,5 +1,5 @@
-.sidebar{
-	margin-top:52px;
+.menu,.sous-menu{
+	margin-top:50px;
 	padding:0;
 	position:fixed;
 	height:100%;
@@ -9,32 +9,62 @@
 	-webkit-clip-path: polygon(0px 100%,300px 100%,400px 0px,0px 0px);
 	width:400px;
 }
-.sidebar2{
+
+.sous-menu{
 	display:none;
-	margin-top:52px;
-	margin-left:300px;
-	padding:0 0 0 100px;
-	position:fixed;
-	height:100%;
-	background-color: #f8f8f8;
-	border-color: #e7e7e7;
 	z-index:1;
-	-webkit-clip-path: polygon(0px 100%,300px 100%,400px 0px,0px 0px);
-	width:400px;
+	margin-left:300px;
 	opacity:0.8;
 }
 
-.sidebar li a,.sidebar2 li a{
-	color:#777;
-	padding:0;
-	font-size:1.5em;
-	padding-left:20px;
+.tab-content ul{
+	border:0;
 }
 
-.sidebar li a:hover{
-	border-left:6px solid #63a2e8;
-	padding-left:14px;
-	color: #63a2e8;
+.col-md-6{
+	margin:0;
+	padding:0;
+}
+
+.menu li,.sous-menu li{
+	width:100%;
+	display:block;
+	padding:0;
+	font-size:1.5em;
+}
+
+.menu li a,.sous-menu li a{
+	margin:0;
+	padding:2px 20px;
+	color:#777;
+	
+}
+
+.sous-menu li a{
+	padding:2px 100px;
+}
+
+.menu li a:hover{
+	border:0;
+	margin:0;
+	border:0;
+	padding:2px 100px;
+	color:#428bca;
+	text-decoration:none;
+}
+
+.sous-menu li a:hover{
+	border:0;
+	margin:0;
+	border:0;
+	padding:2px 100px;
+	color:#428bca;
+	text-decoration:none;
+}
+
+.menu li a:hover{
+	border:0;
+	padding:2px 20px;
 }
 
 #CategoryTitle{
@@ -46,7 +76,7 @@ header{
 	position:fixed;
 	top:0;
 	width:100%;
-	z-index:1;
+	z-index:3;
 }
 
 footer{
@@ -55,10 +85,6 @@ footer{
 	bottom:0;
 	height:5%;
 	z-index:1;
-}
-
-.content{
-	margin-top:52px;
 }
 
 .apercu{

@@ -1,13 +1,29 @@
 $(document).ready(function(){
-$(".sidebar li a").hover(function(){
-	$(".sidebar2").css("display","inline-block");
-});
+	var x=0;
+
+    $(".panel").hover(function(){
+		if(x==0)$(".sous-menu").toggle(800);
+	});
+	
+	$(".menu li a").hover(
+	function(){
+		var ref = $(this).attr("href");
+		$(".tab-pane").removeClass(" active");
+		$(ref).removeClass(" fade").addClass(" active");
+		x=0;
+	});
+	
+	$(".sous-menu").click(
+	function(){
+		x=1;
+		$(this).css("display","inline-block");
+	});
 
 $(window).scroll(function() {
     if($(window).scrollTop() + $(window).height() == $(document).height()) {
-		$(".content").append("<div class=\"apercu\"><img src=\"{{ asset('images/1.jpg') }}\"/></div><div class=\"apercu\"><img src=\"{{ asset('images/2.jpg') }}\"/></div><div class=\"apercu\"><img src=\"{{ asset('images/3.jpg') }}\"/></div><div class=\"apercu\"><img src=\"{{ asset('images/4.jpg') }}\"/></div><div class=\"apercu\"><img src=\"{{ asset('images/5.jpg') }}\"/></div>");
-    }
+	setTimeout(function() {
+		$(".content").append("<div class='apercu'>		</div>");
+	}, 2000);
+	}
   });
-  
-  
 });
