@@ -157,14 +157,25 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return $this->redirect($pathinfo.'/', 'fos_user_profile_show');
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::showAction',  '_route' => 'fos_user_profile_show',);
+                return array (  '_controller' => 'CF\\UserBundle\\Controller\\ProfileController::showAction',  '_route' => 'fos_user_profile_show',);
             }
             not_fos_user_profile_show:
 
             // fos_user_profile_edit
             if ($pathinfo === '/profil/editer') {
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
+                return array (  '_controller' => 'CF\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
             }
+
+            // fos_user_profile_user_show
+            if (preg_match('#^/profil/(?P<username>[a-zA-Z]+)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_fos_user_profile_user_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_profile_user_show')), array (  '_controller' => 'CF\\UserBundle\\Controller\\ProfileController::userShowAction',));
+            }
+            not_fos_user_profile_user_show:
 
         }
 

@@ -1,0 +1,265 @@
+/**** BANNER ****/
+#banner {
+	width:100%;
+	height:300px;
+    position:absolute;
+
+	-webkit-filter: blur(2px);
+	-moz-filter: blur(2px);
+	-o-filter: blur(2px);
+	-ms-filter: blur(2px);
+
+	filter: blur(2px);
+}
+#layer {
+	position: absolute;
+	width: 100%;
+	height: 300px;
+	background-color: rgba(10,10,10,.4);
+}
+.logo-name {
+	position:absolute;
+	margin-left:60px;
+	margin-top:75px;
+}
+.logo-username {
+	display:inline-block;
+	margin-left:20px;
+	vertical-align: middle;
+}
+.logo-name h1, .logo-name h2 {
+	color:#fff;
+	margin:0;
+}
+.logo-name h1 {
+	font-size:40pt;
+}
+.logo-name h2 {
+	font-size: 12pt;
+}
+#logo {
+	width:150px;
+	height:150px;
+}
+#block-body {
+	background-color:#eee;
+	margin-top:1px;
+	padding-bottom:80px;
+}
+/**** MENU ****/
+.panel-heading {
+	padding:0;
+	width:100%;
+}
+.content-panel-heading {
+	text-align: center;
+	height:300px;
+}
+.btn-group {
+	margin-top:275px;
+    text-align: center;
+    display: inline-block;
+}
+.nav-tabs {
+	border:none;
+}
+.nav-tabs li.active {
+	background-color:#fff;
+	border-bottom:3px solid #428bca;
+}
+.nav-tabs li {
+	padding:0;
+}
+.nav-tabs li:hover {
+	background-color:#fff;
+	border-bottom:3px solid #428bca;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus, .nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
+	border:1px solid #fff;
+	color:#428bca;
+	background-color:#fff;
+}
+.nav-tabs>li>a {
+	border:1px solid #fff;
+	color:grey;
+	background-color:#fff;
+}
+/**** BOITES DANS LES SOUS MENUS ****/
+.tab-box {
+	background-color:#fff;
+	border-radius: 5px;
+	width:47%;
+	min-height:300px;
+	display:inline-block;
+	padding:0 10px;
+	vertical-align:top;
+	margin-left:1%;
+	margin-right:1%;
+	margin-top:20px;
+	border:1px solid rgba(0,0,0,.1);
+}
+.tab-box h1 {
+	font-size:20pt;
+	padding-bottom:10px;
+	border-bottom:1px solid #eee;
+}
+.tab-box h2 {
+	font-size:16pt;
+}
+.tab-box p {
+	font-size:12pt;
+	text-align: justify;
+    text-justify: inter-word;
+}
+.tab-box img {
+	width:100%;
+	height: auto;
+}
+.tab-box.full {
+	width: 100%;
+	padding:0 20px;
+	margin:0;
+	margin-top:20px;
+}
+.tab-box.full p.picture {
+	text-align:center;
+}
+.tab-box.full img {
+	width:500px;
+	height: 300px;
+	border:1px solid rgba(0,0,0,0.2);
+}
+.tab-box.aside {
+	width:25%;
+}
+.tab-box.aside a{
+	width:100%;
+}
+.tab-box.aside p {
+	margin:0;
+}
+.tab-box.aside .progress {
+	background-color:#dadada;
+}
+.tab-box.full.aside {
+	width:70%;
+}
+/**** ACHIEVEMENTS ****/
+.achievement-box {
+	background-color:#fff;
+	border-radius: 5px;
+	width:47%;
+	padding:0 10px;
+	vertical-align:top;
+	margin-left:1%;
+	margin-right:1%;
+	margin-top:20px;
+	border:1px solid rgb(20, 178, 28);
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+}
+.achievement-content {
+	width:70%;
+}
+.achievement-content h1 {
+	color: rgb(20, 178, 28);
+}
+.achievement-desc {
+	margin-left:20px;
+	font-style: italic;
+	color:#999999;
+}
+.achievement-logo {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	text-align: center;
+	overflow: hidden;
+	width:25%;
+}
+.achievement-logo img{
+	height:100%;
+	width:100%;
+}
+/**** TIMELINE ****/
+.timeline {
+  list-style: none;
+  padding: 20px 0 20px;
+  position: relative;
+}
+.timeline:before {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 3px;
+  background-color: #eeeeee;
+  right: 25px;
+  margin-left: -1.5px;
+}
+.timeline > li {
+  margin-bottom: 20px;
+  position: relative;
+}
+.timeline > li:before, .timeline > li:after {
+  content: " ";
+  display: table;
+}
+.timeline > li:after {
+  clear: both;
+}
+.timeline > li > .timeline-panel {
+  width: calc( 100% - 75px );
+  float: left;
+  border: 1px solid #d4d4d4;
+  border-radius: 2px;
+  padding: 20px;
+  position: relative;
+  background-color: #fff;
+}
+.timeline > li > .timeline-panel:before, .timeline > li > .timeline-panel:after {
+	position: absolute;
+	display: inline-block;
+	content: " ";
+}
+.timeline > li > .timeline-panel:before {
+  top: 26px;
+  right: -15px;
+  border-top: 15px solid transparent;
+  border-left: 15px solid #ccc;
+  border-right: 0 solid #ccc;
+  border-bottom: 15px solid transparent;
+}
+.timeline > li > .timeline-panel:after {
+  top: 27px;
+  right: -14px;
+  border-top: 14px solid transparent;
+  border-left: 14px solid #fff;
+  border-right: 0 solid #fff;
+  border-bottom: 14px solid transparent;
+}
+.timeline-heading > h3 {
+	margin-top:0;
+	font-style: italic;
+}
+.timeline > li > .timeline-badge {
+	position: absolute;
+	top: 16px;
+	right: 0px;
+}
+.timeline > li > .timeline-badge > img {
+	height:50px;
+	width:50px;
+}
+.timeline-title {
+  margin-top: 0;
+  color: inherit;
+}
+.timeline-body > p, .timeline-body > ul {
+  margin-bottom: 0;
+}
+.timeline-body > p + p {
+  margin-top: 5px;
+}

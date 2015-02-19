@@ -271,6 +271,7 @@
 	min-height:300px;
 	display:inline-block;
 	padding:10px;
+	padding-top:0;
 	vertical-align:top;
 	margin-left:1%;
 	margin-right:1%;
@@ -297,6 +298,7 @@
 .tab-box.full {
 	width: 95%;
 	padding:20px;
+	padding-top:0;
 }
 .tab-box.full p.picture {
 	text-align:center;
@@ -324,6 +326,7 @@
 /**** COMMENTAIRES ****/
 .tab-box.comment {
 	min-height:0;
+	padding:10px;
 }
 .tab-box.comment .comment-author, .tab-box.comment .comment-date, .tab-box.comment .comment-avatar, .tab-box.comment .comment-hour {
 	display: inline-block;

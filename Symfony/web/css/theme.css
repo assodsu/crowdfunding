@@ -29,7 +29,9 @@ body{
 	padding-top: 30px !important;
 	max-height: 270px;
 }
-
+div#collapse {
+	margin-left: 100px;
+}
 @media (min-width: 768px) {
 	.navbar-collapse {
 		padding-top: 0px !important;
@@ -74,12 +76,4 @@ body{
 	padding: 0 0 5px 0;
 	display: block;
 	color: #78828D
-}
-
-#connect{
-	text-align: right;
-}
-
-#inscription{
-	text-align: right;
 }
