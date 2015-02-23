@@ -2,10 +2,6 @@ cf_main_homepage:
     path:     /
     defaults: { _controller: CFMainBundle:Page:index }
 
-cf_main_profil:
-    path:     /profil
-    defaults: { _controller: CFMainBundle:Page:profil }
-
 cf_main_project:
     path:     /projet/{id}
     defaults: { _controller: CFMainBundle:Project:show }
@@ -13,24 +9,6 @@ cf_main_project:
         _method: GET
         id: \d+
 
-cf_main_allProjects:
-    path:     /projets
-    defaults: { _controller: CFMainBundle:Project:showAll }
-
-cf_main_endingProjects:
-    path:     /projets/bientot-fini/
-    defaults: { _controller: CFMainBundle:Project:showEnding }
-
-cf_main_newProjects:
-    path:     /projets/nouveaux/
-    defaults: { _controller: CFMainBundle:Project:showNew }
-
-cf_main_highlightProjects:
-    path:     /projets/populaire/
-    defaults: { _controller: CFMainBundle:Project:showHighlights }
-
-cf_main_addProjects:
-    path:     /projets/creer/
-    defaults: { _controller: CFMainBundle:Project:add }
-    requirements:
-        _method: GET|POST
+cf_main_projects:
+    resource: routing/projects.yml
+    prefix: /projets

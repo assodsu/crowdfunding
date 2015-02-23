@@ -10,9 +10,4 @@ class PageController extends Controller
     {
         return $this->render('CFMainBundle:Page:index.html.twig');
     }
-	
-	public function profilAction()
-	{
-		return $this->render('CFMainBundle:Page:profil.html.twig');
-	}
 }

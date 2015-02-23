@@ -1,0 +1,32 @@
+pugx_multi_user:
+    users:
+        association:
+            entity: 
+                class: CF\UserBundle\Entity\Association
+            registration:
+                form: 
+                    type: CF\UserBundle\Form\Type\RegistrationAssociationFormType
+                template: CFUserBundle:Registration:association.html.twig
+            profile:
+                form:
+                    type: CF\UserBundle\Form\Type\ProfileAssociationFormType
+        entreprise:
+            entity: 
+                class: CF\UserBundle\Entity\Entreprise
+            registration:
+                form: 
+                    type: CF\UserBundle\Form\Type\RegistrationEntrepriseFormType
+                template: CFUserBundle:Registration:entreprise.html.twig
+            profile:
+                form:
+                    type: CF\UserBundle\Form\Type\ProfileEntrepriseFormType
+        particulier:
+            entity:
+                class: CF\UserBundle\Entity\Particulier
+            registration:
+                form:
+                    type: CF\UserBundle\Form\Type\RegistrationParticulierFormType
+                template: CFUserBundle:Registration:particulier.html.twig
+            profile:
+                form:
+                    type: CF\UserBundle\Form\Type\ProfileParticulierFormType

@@ -1,5 +1,7 @@
 {% extends "CFUserBundle::layout.html.twig" %}
 
-{% block fos_user_content %}
-{% include "CFUserBundle:Registration:register_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block body %}
+	<a class="btn btn-default" href="{{ path('association_registration') }}">Association</a>
+	<a class="btn btn-default" href="{{ path('entreprise_registration') }}">Entreprise</a>
+	<a class="btn btn-default" href="{{ path('particulier_registration') }}">Particulier</a>
+{% endblock %}

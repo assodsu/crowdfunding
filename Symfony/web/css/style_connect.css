@@ -1,43 +1,19 @@
-#body{
-	height:100%;
-}
-#container{
-	width:100%;
-	height:100%;
-
-}
-#form{
-	margin :auto;
-	width:40%;
-	height:100%;
-	font-weight: 600;
-	color:white;
-	
-}
-
 label{
 	font-size: 1.2em;
 }
-
-
 #input-checkbox{
 	font-size:80%;
 }
-
 #header{
 	background-color:#226D79;
 	color:white;
 }
-
 #header a{
 	color:#011FFF;
 }
-
 .panel-body{
 	background-color:#ACC6C9;
 }
-
 #loginbox{
 	width:60%;
-	height:100%;
 }

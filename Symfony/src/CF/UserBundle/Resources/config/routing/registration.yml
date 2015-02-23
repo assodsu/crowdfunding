@@ -19,3 +19,15 @@ fos_user_registration_confirmed:
     defaults: { _controller: FOSUserBundle:Registration:confirmed }
     requirements:
         _method: GET
+
+association_registration:
+    pattern:  /association
+    defaults: { _controller: CFUserBundle:RegistrationAssociation:register }
+
+entreprise_registration:
+    pattern:  /entreprise
+    defaults: { _controller: CFUserBundle:RegistrationEntreprise:register }
+
+particulier_registration:
+    pattern:  /particulier
+    defaults: { _controller: CFUserBundle:RegistrationParticulier:register }

@@ -13,4 +13,4 @@ fos_user_profile_user_show:
     defaults: { _controller: FOSUserBundle:Profile:userShow}
     requirements:
         _method: GET
-        username: "[a-zA-Z]+"
+        username: "[a-zA-Z-0-9]+"
