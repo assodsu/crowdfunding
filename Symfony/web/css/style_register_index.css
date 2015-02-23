@@ -1,0 +1,33 @@
+p, label {
+	color:white;
+	margin-right: 5px;
+	font-size: 1.9em;
+}
+#body {
+	width:500px;
+	margin-left:auto;
+	margin-right: auto;
+	margin-top:9%;
+}
+input[type=file] {
+	color:white;
+}
+
+.btn-primary{
+	margin-top:20px;
+	margin-bottom:10px;
+	background-color: #E6E6E6;
+	color:black;
+}
+
+#asso:hover{
+	background-color: #045FB4;
+}
+
+#part:hover{
+	background-color: #04B404;
+}
+
+#entr:hover{
+	background-color: #B40404;
+}

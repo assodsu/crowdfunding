@@ -1,7 +1,22 @@
 {% extends "CFUserBundle::layout.html.twig" %}
 
+{% block title %}
+	Inscription - {{ parent() }}
+{% endblock %}
+
+{% block navbarRegister %} class="active" {% endblock %}
+
+{% block stylesheet %}
+	{{ parent() }}
+	<link href="{{asset('css/style_register_index.css')}}" rel="stylesheet"/>
+{% endblock %}
+
 {% block body %}
-	<a class="btn btn-default" href="{{ path('association_registration') }}">Association</a>
-	<a class="btn btn-default" href="{{ path('entreprise_registration') }}">Entreprise</a>
-	<a class="btn btn-default" href="{{ path('particulier_registration') }}">Particulier</a>
+	<div class="center-block">
+		<p class="text-center">Choisissez le type d'inscription que vous voulez poursuivre</p>
+		<a class="btn btn-primary btn-lg btn-block" href="{{ path('association_registration') }}" role="button" id="asso">Association</a>
+		<a class="btn btn-primary btn-lg btn-block" href="{{ path('entreprise_registration') }}" role="button" id="entr">Entreprise</a>
+		<a class="btn btn-primary btn-lg btn-block" href="{{ path('particulier_registration') }}" role="button" id="part">Particulier</a>
+
+	</div>
 {% endblock %}
