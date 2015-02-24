@@ -40,84 +40,60 @@
 			</div>
 			<div class="content-panel-heading">
 				<ul class="nav nav-tabs btn-group" role='group'>
-					<li class="btn btn-default active"><a href="#tab1" data-toggle="tab">Profil</a></li>
-					<li class="btn btn-default"><a href="#tab2" data-toggle="tab">Accomplissements</a></li>
-					<li class="btn btn-default"><a href="#tab3" data-toggle="tab">Notifications</a></li>
-					<li class="btn btn-default"><a href="#tab4" data-toggle="tab">Participations</a></li>
-					<li class="btn btn-default"><a href="{{ path('fos_user_profile_edit') }}">Modifier</a></li>
+					{% if user.typeUser == "Association" %}
+						<li class="btn btn-default active"><a href="#tab1" data-toggle="tab">Profil</a></li>
+						<li class="btn btn-default"><a href="#tab2" data-toggle="tab">Projets</a></li>
+						{% if app.user.username == user.username %}
+							<li class="btn btn-default"><a href="#tab3" data-toggle="tab">Notifications</a></li>
+							<li class="btn btn-default"><a href="{{ path('fos_user_profile_edit') }}">Modifier</a></li>
+						{% endif %}
+                	{% elseif user.typeUser == "Entreprise" %}
+						<li class="btn btn-default active"><a href="#tab1" data-toggle="tab">Profil</a></li>
+						<li class="btn btn-default"><a href="#tab2" data-toggle="tab">Participations</a></li>
+						{% if app.user.username == user.username %}
+							<li class="btn btn-default"><a href="#tab3" data-toggle="tab">Notifications</a></li>
+							<li class="btn btn-default"><a href="{{ path('fos_user_profile_edit') }}">Modifier</a></li>
+						{% endif %}
+                	{% else %}
+						<li class="btn btn-default active"><a href="#tab1" data-toggle="tab">Profil</a></li>
+						<li class="btn btn-default"><a href="#tab2" data-toggle="tab">Participations</a></li>
+						<li class="btn btn-default"><a href="#tab3" data-toggle="tab">Accomplissements</a></li>
+						{% if app.user.username == user.username %}
+							<li class="btn btn-default"><a href="#tab4" data-toggle="tab">Notifications</a></li>
+							<li class="btn btn-default"><a href="{{ path('fos_user_profile_edit') }}">Modifier</a></li>
+						{% endif %}
+					{% endif %}
 				</ul>
 			</div>
 		</div>
 		<div class="panel-body">
 			<div class="tab-content">
 				<div class="tab-pane fade in active" id="tab1">
-					<div class="tab-box full">
-					    <h1>Profil</h1>
-		              	<div class="row">
-		                  	<table class="table">
-			                    <tbody>
-			                    	{% if user.typeUser == "Association" %}
-										{% include "CFUserBundle:Profile:tab1/association.html.twig" %}
-			                    	{% elseif user.typeUser == "Entreprise" %}
-										{% include "CFUserBundle:Profile:tab1/entreprise.html.twig" %}
-			                    	{% else %}
-										{% include "CFUserBundle:Profile:tab1/particulier.html.twig" %}
-									{% endif %}
-									{% if user.site %}
-										<tr><td>Site web :</td><td><a href="{{ user.site }}" target="_blank">{{ user.site }}</a></td></tr>
-									{% endif %}
-									<tr><td>Réseaux sociaux :</td>
-										<td>
-											{% if user.facebook %}
-												<a href="{{ user.facebook }}" id="facebook" target="_blank"><span class="fa fa-facebook"></span> Facebook</a><br>
-											{% endif %}
-											{% if user.twitter %}
-												<a href="{{ user.twitter }}" id="twitter" target="_blank"><span class="fa fa-twitter"></span> Twitter</a><br>
-											{% endif %}
-											{% if user.googleplus %}
-												<a href="{{ user.googleplus }}" id="googleplus" target="_blank"><span class="fa fa-google-plus"></span> Google+</a>
-											{% endif %}
-										</td>
-									</tr>
-			                    </tbody>
-			                </table>
-		             	</div>
-		            </div>
+					{% if user.typeUser == "Association" %}
+						{% include "CFUserBundle:Profile:tabProfil/association.html.twig" %}
+                	{% elseif user.typeUser == "Entreprise" %}
+						{% include "CFUserBundle:Profile:tabProfil/entreprise.html.twig" %}
+                	{% else %}
+						{% include "CFUserBundle:Profile:tabProfil/particulier.html.twig" %}
+					{% endif %}
 				</div>
 				<div class="tab-pane fade" id="tab2">
-					{% for i in 1..5 %}
-						<div class="achievement-box">
-							<div class="achievement-content">
-								<h1><i class="fa fa-check"></i> Bénévole attitude</h1>
-								<p class="achievement-desc">- S'enregistrer en tant que bénévole.</p>
-								<p><i class="fa fa-calendar"></i> Achevé le {{i*3+10}}/02/2015</p>
-							</div>
-							<div class="achievement-logo">
-								<img src="{{asset('images/150x150.gif')}}"/>
-							</div>
-						</div>
-					{% endfor %}
+					<div class="tab-box full">
+						<h1>En construction...</h1>
+					</div>
 				</div>
 				<div class="tab-pane fade" id="tab3">
-					<ul class="timeline">
-						{% for i in 1..5 %}
-					        <li>
-					          	<div class="timeline-badge"><img class="img-circle" src="{{asset('images/'~ i ~'.jpg')}}"/></div>
-					          	<div class="timeline-panel">
-					            	<div class="timeline-heading">
-					            		<h3><i class="fa fa-file-text-o"></i> Projet : <a href="{{ path('cf_main_project', { 'id': 1 }) }}">Création d'un espace de co-working</a></h3>
-					              		<h4 class="timeline-title"><a href="">Centre de Ressources des Associations Boulonnaises</a></h4>
-					              		<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> le 21/01/2015 à 11h23</small></p>
-					            	</div>
-					            	<div class="timeline-body">
-					              	<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-					            	</div>
-					          	</div>
-					        </li>
-				    	{% endfor %}
-				    </ul>
+					{% if user.typeUser == "Particulier" %}
+						{% include "CFUserBundle:Profile:achievements_content.html.twig" %}
+                	{% else %}
+						{% include "CFUserBundle:Profile:notifications_content.html.twig" %}
+                	{% endif %}
 				</div>
-				<div class="tab-pane fade" id="tab4"></div>
+				<div class="tab-pane fade" id="tab4">
+					{% if user.typeUser == "Particulier" %}
+						{% include "CFUserBundle:Profile:notifications_content.html.twig" %}
+                	{% endif %}
+				</div>
 			</div>
 		</div>
 	</div>

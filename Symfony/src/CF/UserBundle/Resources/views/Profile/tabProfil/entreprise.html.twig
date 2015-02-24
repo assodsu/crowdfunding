@@ -1,0 +1,51 @@
+<div class="tab-box">
+	<h1>Description</h1>
+	<p>Date de création : {{ user.dateCreationEntreprise|date("d/m/Y") }}</p>
+	<p>N° SIRET : {{ user.numSiret }}</p>
+</div>
+<div class="tab-box">
+	<h1>Informations</h1>
+  	<table class="table">
+        <tbody>
+        	{% if user.site %}
+				<tr><td>Site web :</td><td><a href="http://{{ user.site }}" target="_blank">{{ user.site }}</a></td></tr>
+			{% endif %}
+			<tr><td>Réseaux sociaux :</td>
+				<td>
+					{% if user.facebook %}
+						<a href="http://{{ user.facebook }}" id="facebook" target="_blank"><span class="fa fa-facebook"></span> Facebook</a><br>
+					{% endif %}
+					{% if user.twitter %}
+						<a href="http://{{ user.twitter }}" id="twitter" target="_blank"><span class="fa fa-twitter"></span> Twitter</a><br>
+					{% endif %}
+					{% if user.googleplus %}
+						<a href="http://{{ user.googleplus }}" id="googleplus" target="_blank"><span class="fa fa-google-plus"></span> Google+</a>
+					{% endif %}
+				</td>
+			</tr>
+			<tr><td>Adresse Email :</td><td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td></tr>
+			<!-- Affichage du n° de téléphone après modification : de '0321000000' vers '03.21.00.00.00' -->
+			{% set phone = user.telephone|split('', 2) %}
+			{% set phoneNb = "" %}
+			{% for number in phone %}
+				{% set phoneNb = phoneNb ~ number ~ '.' %}
+			{% endfor %}
+			<tr><td>Tél. :</td><td>{{ phoneNb|trim('.') }}</td></tr>
+        </tbody>
+    </table>
+</div>
+<div class="tab-box full">
+	<h1><i class="fa fa-map-marker"></i> Adresse</h1>
+	<div class="inner-left">
+      	<table class="table">
+            <tbody>
+				<tr><td>Ville :</td><td>{{ user.ville }}</td></tr>
+				<tr><td>Code postal :</td><td>{{ user.cp }}</td></tr>
+				<tr><td>Adresse :</td><td>{{ user.adresse }}</td></tr>
+            </tbody>
+    	</table>
+	</div>
+	<div class="inner-right">
+		<img src="{{ asset('images/google-map.png') }}"  class="center-block" />
+	</div>
+</div>

@@ -1,0 +1,17 @@
+<ul class="timeline">
+	{% for i in 1..5 %}
+        <li>
+          	<div class="timeline-badge"><img class="img-circle" src="{{asset('images/'~ i ~'.jpg')}}"/></div>
+          	<div class="timeline-panel">
+            	<div class="timeline-heading">
+            		<h3><i class="fa fa-file-text-o"></i> Projet : <a href="{{ path('cf_main_project', { 'id': 1 }) }}">Création d'un espace de co-working</a></h3>
+              		<h4 class="timeline-title"><a href="">Centre de Ressources des Associations Boulonnaises</a></h4>
+              		<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> le 21/01/2015 à 11h23</small></p>
+            	</div>
+            	<div class="timeline-body">
+              	<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+            	</div>
+          	</div>
+        </li>
+	{% endfor %}
+</ul>
