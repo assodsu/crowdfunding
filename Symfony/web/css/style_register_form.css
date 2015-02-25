@@ -1,0 +1,97 @@
+#SingupForm{ 
+        padding:5%;
+}
+
+.container-page{
+        margin-top: 3%;
+}
+
+.stepDiv{ 
+        background-color:#BDBDBD;
+        border-radius: 10px;
+        padding: 5px;
+}
+
+.form{ 
+        width:50%;
+        margin-left:25%;
+        padding:0px;
+        margin-bottom:1%;
+}
+
+legend { 
+        font-size:18px; 
+        margin:0px;
+        padding:10px 0px;
+        color:#b0232a;
+        font-weight:bold;
+}
+
+label { 
+        display:inline-block; 
+        margin:15px 0 5px;
+        font-size: 1.2em;
+        width:40%;
+}
+
+.prev { 
+        margin-top:5px;
+        float:left;
+}
+
+.next { 
+        margin-top:5px;
+        float:right;
+}
+
+#steps {
+        list-style:none;
+        width:50%; 
+        overflow:hidden;
+        margin-left:25%;
+        padding:0px;
+}
+
+#steps li {
+        font-size:24px;
+        float:left;
+        padding:10px;
+        color:#b0b1b3;
+}
+
+#steps li span {
+        font-size:11px;
+        display:block;
+}
+
+#steps li.current { 
+        color:#FFFFFF;
+}
+
+#makeWizard { 
+        background-color:#b0232a;
+        color:#fff; padding:5px 10px;
+        text-decoration:none; 
+        font-size:18px;
+}
+
+#makeWizard:hover { 
+        background-color:#000;
+}
+
+input[type='text'],input[type='email'],input[type='password'],#fos_user_registration_form_dateCreationAsso{
+        display: inline-block;
+        width:40%;
+        height:7%;
+        border-radius: 5px;
+}
+
+#valider{
+        float:right;
+}
+
+h1{
+        color:white;
+        text-align: center;
+        width:100%;
+}
