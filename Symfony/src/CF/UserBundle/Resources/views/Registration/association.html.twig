@@ -15,15 +15,13 @@
 
     <div class="center-block container-page">
         <form action="{{ path('association_registration') }}" {{ form_enctype(form) }} method="POST" id="SignupForm" class="form-horizontal form">
-
-            
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
                 <fieldset>
                     
                     <legend>Première étape - Identifiants</legend>
                    
-                        {{ form_label(form.email) }}
-                        {{ form_errors(form.email) }}
-                        {{ form_widget(form.email) }}
+                        {{ form_row(form.email) }}
 
                         {{ form_errors(form.plainPassword) }}
                         {{ form_widget(form.plainPassword) }}
@@ -35,22 +33,14 @@
                 <fieldset>
                     
                     <legend>Deuxième étape - Renseignements</legend>
-                    
-                    {{ form_label(form.nomAsso) }}
-                    {{ form_errors(form.nomAsso) }}
-                    {{ form_widget(form.nomAsso) }}
+                
+                    {{ form_row(form.nomAsso) }}
 
-                    {{ form_label(form.numWaldec) }}
-                    {{ form_errors(form.numWaldec) }}
-                    {{ form_widget(form.numWaldec) }}
+                    {{ form_row(form.numWaldec) }}
+                   
+                    {{ form_row(form.dateCreationAsso) }}
                     
-                    {{ form_label(form.dateCreationAsso) }}
-                    {{ form_errors(form.dateCreationAsso) }}
-                    {{ form_widget(form.dateCreationAsso) }}
-                    
-                    {{ form_label(form.telephone) }}
-                    {{ form_errors(form.telephone) }}
-                    {{ form_widget(form.telephone) }}
+                    {{ form_row(form.telephone) }}
                     
 
                 </fieldset>
@@ -62,17 +52,11 @@
 
                     <legend>Troisième étape - Adresse</legend>
 
-                    {{ form_label(form.adresse) }}
-                    {{ form_errors(form.adresse) }}
-                    {{ form_widget(form.adresse) }}
+                    {{ form_row(form.adresse) }}
 
-                    {{ form_label(form.cp) }}
-                    {{ form_errors(form.cp) }}
-                    {{ form_widget(form.cp) }}
+                    {{ form_row(form.cp) }}
 
-                    {{ form_label(form.ville) }}
-                    {{ form_errors(form.ville) }}
-                    {{ form_widget(form.ville) }}
+                    {{ form_row(form.ville) }}
 
                 </fieldset>
            
@@ -82,21 +66,14 @@
                         
                     <legend>Quatrième étape - Reseaux sociaux</legend>
 
-                    {{ form_label(form.site) }}
-                    {{ form_errors(form.site) }}
-                    {{ form_widget(form.site) }}
+                    {{ form_row(form.site) }}
 
-                    {{ form_label(form.facebook) }}
-                    {{ form_errors(form.facebook) }}
-                    {{ form_widget(form.facebook) }}
                     
-                    {{ form_label(form.twitter) }}
-                    {{ form_errors(form.twitter) }}
-                    {{ form_widget(form.twitter) }}
+                    {{ form_row(form.facebook) }}
+                    
+                    {{ form_row(form.twitter) }}
 
-                    {{ form_label(form.googleplus) }}
-                    {{ form_errors(form.googleplus) }}
-                    {{ form_widget(form.googleplus) }}
+                    {{ form_row(form.googleplus) }}
 
 
                 </fieldset>
@@ -106,10 +83,8 @@
                 <fieldset>
          
                     <legend>Cinquième étape - Description</legend>
-                    
-                    {{ form_label(form.descriptionAsso) }}
-                    {{ form_errors(form.descriptionAsso) }}
-                    {{ form_widget(form.descriptionAsso) }}
+      
+                    {{ form_row(form.descriptionAsso) }}
                     
                 
                 </fieldset>
@@ -128,7 +103,7 @@
                 </fieldset>
            
 
-
+            {{ form_end(form) }}
         </form>
     </div>
 {% endblock %}
