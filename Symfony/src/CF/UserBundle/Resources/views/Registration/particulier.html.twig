@@ -6,28 +6,106 @@
 
 {% block stylesheet %}
 	{{ parent() }}
-	<link href="{{ asset('css/style_register.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('css/style_register_form.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
-	<h1>Inscription d'une Association</h1>
+	<h1>Inscription d'un Particulier</h1>
 
     <div class="center-block container-page">
         <form action="{{ path('association_registration') }}" {{ form_enctype(form) }} method="POST" id="SignupForm" class="form-horizontal form">
+                
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
+                
                 <fieldset>
-                        <legend></legend>
+                        
+                        <legend>Première étape - Identifiants</legend>
+                        
+                        {{ form_row(form.pseudo) }}
+                        
+                        {{ form_row(form.email) }}
+
+                        {{ form_errors(form.plainPassword) }}
+                        {{ form_widget(form.plainPassword) }}
+
 
                 </fieldset>
 
+                <fieldset>
+                        
+                        <legend>Deuxième étape - Renseignements</legend>
+                        
+                           
+                        {{ form_row(form.sexe) }}
+
+                        {{ form_row(form.nom) }}
+                        
+                        {{ form_row(form.prenom) }}
+
+                        {{ form_row(form.dateNaissance) }}
+
+                        {{ form_row(form.telephone) }}
+
+                </fieldset> 
+
+                <fieldset>
+
+                        <legend>Troisième étape - Adresse</legend>
+
+                        {{ form_row(form.adresse) }}
+
+                        {{ form_row(form.cp) }}
+
+                        {{ form_row(form.ville) }}
+
+                </fieldset>
+
+                <fieldset>
+                        
+                        <legend>Quatrième étape - Réseaux Sociaux</legend>
+                        
+                        {{ form_row(form.site) }}
+
+                        {{ form_row(form.facebook) }}
+
+                        {{ form_row(form.twitter) }}
+
+                        {{ form_row(form.googleplus) }}  
 
 
+                </fieldset>
 
+                <fieldset>
 
+                        <legend>Cinquième étape - Bénévolat</legend>
 
-        <div>
-            <input type="submit" value="S'inscrire"  class="btn btn-success"/>
-        </div>
+                       {{ form_row(form.benevole) }}
+
+                </fieldset>
+
+                <fieldset>
+
+                        <legend>Sixième étape - Logo</legend>
+
+                        {{ form_errors(form.logo) }}
+                        {{ form_widget(form.logo) }}
+
+                        <input type="submit" id="valider" value="Terminer"  class="btn btn-primary"/>
+
+                </fieldset>
+
+            {{ form_end(form) }}
+
     </form>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{asset('js/formToWizard.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/controle_form_part.js')}}"></script>
+    <script type="text/javascript">
+        $("#SignupForm").formToWizard();
+    </script>
 {% endblock %}

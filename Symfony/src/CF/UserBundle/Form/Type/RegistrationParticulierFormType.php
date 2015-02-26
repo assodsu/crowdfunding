@@ -57,7 +57,8 @@ class RegistrationParticulierFormType extends AbstractType{
 
             ->add('googleplus', null, array('label' => "Google+ : "))
 
-            ->add('benevole', 'choice', array('label' => "Bénévole : ",
+            ->add('benevole', 'choice', array('label' => "Voudriez vous participer à du bénévolat ? ",
+                                          'block_name' => "optionsRadios",
                                           'choices' => array('1' => 'Oui', '0' => 'Non'),
                                              'expanded' => true,
                                              'multiple' => false,

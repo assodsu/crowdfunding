@@ -79,11 +79,16 @@ label {
         background-color:#000;
 }
 
-input[type='text'],input[type='email'],input[type='password'],#fos_user_registration_form_dateCreationAsso,#fos_user_registration_form_dateCreationEntreprise{
+input[type='text'],input[type='email'],input[type='password'],#fos_user_registration_form_dateCreationAsso,#fos_user_registration_form_dateCreationEntreprise,#fos_user_registration_form_dateNaissance{
         display: inline-block;
         width:35%;
         height:7%;
         border-radius: 5px;
+}
+
+input[type='radio']{
+        display:inline-block;
+        width:2%;
 }
 
 #valider{
@@ -95,3 +100,4 @@ h1{
         text-align: center;
         width:100%;
 }
+
