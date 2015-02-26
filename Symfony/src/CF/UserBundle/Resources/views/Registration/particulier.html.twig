@@ -10,9 +10,22 @@
 {% endblock %}
 
 {% block body %}
-	<p>Inscription Particulier</p>
-    <form action="{{ path('particulier_registration') }}" {{ form_enctype(form) }} method="POST">
-        {{ form_widget(form) }}
+	<h1>Inscription d'une Association</h1>
+
+    <div class="center-block container-page">
+        <form action="{{ path('association_registration') }}" {{ form_enctype(form) }} method="POST" id="SignupForm" class="form-horizontal form">
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                <fieldset>
+                        <legend></legend>
+
+                </fieldset>
+
+
+
+
+
+
         <div>
             <input type="submit" value="S'inscrire"  class="btn btn-success"/>
         </div>

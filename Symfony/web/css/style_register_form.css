@@ -79,9 +79,9 @@ label {
         background-color:#000;
 }
 
-input[type='text'],input[type='email'],input[type='password'],#fos_user_registration_form_dateCreationAsso{
+input[type='text'],input[type='email'],input[type='password'],#fos_user_registration_form_dateCreationAsso,#fos_user_registration_form_dateCreationEntreprise{
         display: inline-block;
-        width:40%;
+        width:35%;
         height:7%;
         border-radius: 5px;
 }

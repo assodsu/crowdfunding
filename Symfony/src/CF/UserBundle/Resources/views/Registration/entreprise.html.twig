@@ -6,15 +6,88 @@
 
 {% block stylesheet %}
 	{{ parent() }}
-	<link href="{{ asset('css/style_register.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('css/style_register_form.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
-	<p>Inscription Entreprise</p>
-    <form action="{{ path('entreprise_registration') }}" {{ form_enctype(form) }} method="POST">
-        {{ form_widget(form) }}
-        <div>
-            <input type="submit" value="S'inscrire" class="btn btn-success" />
-        </div>
-    </form>
+	 <h1>Inscription d'une Entreprise</h1>
+
+    <div class="center-block container-page">
+        
+        <form action="{{ path('association_registration') }}" {{ form_enctype(form) }} method="POST" id="SignupForm" class="form-horizontal form">
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+
+            <fieldset>
+                        
+                    <legend>Première étape - Identifiants</legend>
+                       
+                    {{ form_row(form.email) }}
+
+                    {{ form_errors(form.plainPassword) }}
+                    {{ form_widget(form.plainPassword) }}
+                        
+            </fieldset>
+
+            <fieldset>
+
+                    <legend>Deuxième étape - Renseignements</legend>
+
+                    {{ form_row(form.nomEntreprise) }}
+
+                    {{ form_row(form.numSiret) }}
+    
+                    {{ form_row(form.dateCreationEntreprise) }}
+
+                    {{ form_row(form.telephone) }}
+
+            </fieldset>
+
+            <fieldset>
+
+                    <legend>Troisième étape - Adresse</legend>
+
+                    {{ form_row(form.adresse) }}
+
+                    {{ form_row(form.cp) }}
+
+                    {{ form_row(form.ville) }}
+
+            </fieldset>
+
+            <fieldset>
+
+                    <legend>Quatrième étape - Reseaux sociaux</legend>
+
+                    {{ form_row(form.site) }}
+                    
+                    {{ form_row(form.facebook) }}
+                    
+                    {{ form_row(form.twitter) }}
+
+                    {{ form_row(form.googleplus) }}
+
+            </fieldset>
+
+            <fieldset>
+    
+                    <legend>Cinquième étape - Logo</legend>
+
+                    {{ form_errors(form.logo) }}
+                    {{ form_widget(form.logo) }}
+                    <input type="submit" id="valider" value="Terminer" class="btn btn-primary"/>
+
+            </fieldset>
+            {{ form_end(form) }}
+         </form>
+
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{asset('js/formToWizard.js')}}"></script>
+    <script type="text/javascript">
+        $("#SignupForm").formToWizard();
+    </script>
 {% endblock %}
