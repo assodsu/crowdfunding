@@ -13,7 +13,7 @@
 	<h1>Inscription d'un Particulier</h1>
 
     <div class="center-block container-page">
-        <form action="{{ path('association_registration') }}" {{ form_enctype(form) }} method="POST" id="SignupForm" class="form-horizontal form">
+        <form action="{{ path('particulier_registration') }}" {{ form_enctype(form) }} method="POST" id="SignupForm" class="form-horizontal form">
                 
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
