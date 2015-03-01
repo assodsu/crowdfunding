@@ -1,0 +1,15 @@
+{% extends "CFUserBundle::layout.html.twig" %}
+
+{% block title %}
+	Inscription - {{ parent() }}
+{% endblock %}
+
+{% block stylesheet %}
+	{{ parent() }}
+	<link href="{{ asset('css/style_register_form.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+	 <h1>Félicitations, vous pouvez maintenant profiter pleinement de nos services !</h1>
+
+{% endblock %}

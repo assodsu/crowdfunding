@@ -1,0 +1,6 @@
+services:
+    CF_user.registration_completed:
+        class: CF\UserBundle\EventListener\RegistrationConfirmedListener
+        arguments: [@router]
+        tags:
+            - { name: kernel.event_subscriber }

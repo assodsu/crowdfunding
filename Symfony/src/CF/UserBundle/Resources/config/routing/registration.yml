@@ -31,3 +31,7 @@ entreprise_registration:
 particulier_registration:
     pattern:  /particulier
     defaults: { _controller: CFUserBundle:RegistrationParticulier:register }
+
+inscription_confirmee:
+    pattern: /confirmation
+    defaults: { _controller: CFUserBundle:RegistrationConfirm:confirmed }

@@ -84,7 +84,8 @@
          
                     <legend>Cinquième étape - Description</legend>
       
-                    {{ form_row(form.descriptionAsso) }}
+                    {{ form_errors(form.descriptionAsso) }}
+                    {{ form_widget(form.descriptionAsso) }}
                     
                 
                 </fieldset>
@@ -111,6 +112,7 @@
 {% block javascript %}
     {{ parent() }}
     <script type="text/javascript" src="{{asset('js/formToWizard.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/controle_form_asso.js')}}"></script>
     <script type="text/javascript">
         $("#SignupForm").formToWizard();
     </script>
