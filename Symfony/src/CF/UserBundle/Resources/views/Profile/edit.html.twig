@@ -1,19 +1,67 @@
 {% extends "CFUserBundle::layout.html.twig" %}
 
 {% block title %}
-	Modifier - Profil - {{ parent() }}
+	Editer - Profil - {{ parent() }}
 {% endblock %}
+
+{% block navbarProfile %} class="active" {% endblock %}
 
 {% block stylesheet %}
 	{{ parent() }}
-	<link href="{{ asset('css/style_register.css') }}" rel="stylesheet"/>
+	<link href="{{asset('css/style_profile.css')}}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
-	<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-	    {{ form_widget(form) }}
-	    <div>
-	        <input type="submit" value="Valider" class="btn btn-success" />
-	    </div>
-	</form>
+	<div id="block-body">
+		<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+			{{ form_start(form) }}
+			<div class="panel-heading">
+				<img src="{{ asset('images/6.jpg')}}" id="banner"/>
+				<div id="layer"></div>
+				<div class="logo-name">
+					<img id='logo' class="img-circle" src="{{asset( app.user.logo.AssetPath )}}" alt="Logo" />
+					<div class="logo-username">
+						<h1>
+							{% if app.user.typeUser == "Association" %}
+								{{ app.user.nomAsso }}
+	                    	{% elseif app.user.typeUser == "Entreprise" %}
+								{{ app.user.nomEntreprise }}
+	                    	{% else %}
+								{{ app.user.pseudo }}
+							{% endif %}
+						</h1>
+						<!-- Affichage du type d'utilisateur -->
+						<h2>
+							{% if (app.user.typeUser == "Particulier") and (app.user.benevole == 1) %}
+								- Bénévole
+							{% else %}
+								- {{ app.user.typeUser }}
+							{% endif %}
+						</h2>
+					</div>
+				</div>
+				<div class="content-panel-heading">
+					<ul class="nav nav-tabs btn-group" role='group'>
+						<li class="btn btn-default"><a href="{{ path('fos_user_profile_show') }}">Annuler</a></li>
+						<li class="btn btn-default"><input type="submit" value="Enregistrer"/></li>
+					</ul>
+				</div>
+			</div>
+			<div class="panel-body">				
+                {{ form_errors(form) }}
+				<div class="tab-content">
+					<div class="tab-pane fade in active" id="tab1">
+						{% if app.user.typeUser == "Association" %}
+							{% include "CFUserBundle:Profile:tabProfil/association_edit.html.twig" %}
+	                	{% elseif app.user.typeUser == "Entreprise" %}
+							{% include "CFUserBundle:Profile:tabProfil/entreprise_edit.html.twig" %}
+	                	{% else %}
+							{% include "CFUserBundle:Profile:tabProfil/particulier_edit.html.twig" %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			{{ form_end(form) }}
+		</form>
+	</div>
 {% endblock %}

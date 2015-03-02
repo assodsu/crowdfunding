@@ -8,9 +8,29 @@ $(document).ready(function(){
 	$('#step4Next').attr("disabled",true);
 
 	//controle à l'appui d'une touche sur le champ du second password
+	$('#fos_user_registration_form_email').keyup(function(){
+
+		if (($('#fos_user_registration_form_email').val().length!=0) && ($('#fos_user_registration_form_plainPassword_first').val().length!=0) && ($('#fos_user_registration_form_plainPassword_second').val().length!=0) ) {
+			$('#step0Next').attr("disabled",false);
+		}
+		else { 
+			$('#step0Next').attr("disabled",true);
+		}
+
+	});
+	$('#fos_user_registration_form_plainPassword_first').keyup(function(){
+
+		if (($('#fos_user_registration_form_email').val().length!=0) && ($('#fos_user_registration_form_plainPassword_first').val().length!=0) && ($('#fos_user_registration_form_plainPassword_second').val().length!=0) ) {
+			$('#step0Next').attr("disabled",false);
+		}
+		else { 
+			$('#step0Next').attr("disabled",true);
+		}
+
+	});
 	$('#fos_user_registration_form_plainPassword_second').keyup(function(){
 
-		if (($('#fos_user_registration_form_email').length!=0) && ($('#fos_user_registration_form_plainPassword_first').length!=0) ) {
+		if (($('#fos_user_registration_form_email').val().length!=0) && ($('#fos_user_registration_form_plainPassword_first').val().length!=0) && ($('#fos_user_registration_form_plainPassword_second').val().length!=0) ) {
 			$('#step0Next').attr("disabled",false);
 		}
 		else { 
@@ -20,7 +40,7 @@ $(document).ready(function(){
 	});
 
 	//controle à l'appui d'une touche dans le champ de téléphone
-	$('#fos_user_registration_form_telephone').keyup(function(){
+	/*$('#fos_user_registration_form_telephone').keyup(function(){
 
 		if (($('#fos_user_registration_form_nomAsso').length!=0) && ($('#fos_user_registration_form_numWaldec').length!=0) ) {
 			$('#step1Next').attr("disabled",false);
@@ -53,7 +73,7 @@ $(document).ready(function(){
 			$('#step4Next').attr("disabled",true);
 		}
 
-	});
+	});*/
 
 
 });

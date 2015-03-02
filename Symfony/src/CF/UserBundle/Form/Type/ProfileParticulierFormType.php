@@ -24,49 +24,45 @@ class ProfileParticulierFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pseudo', null, array('label' => "Pseudo : "))
+            ->add('nom', null, array('label' => false))
 
-            ->add('nom', null, array('label' => "Nom : "))
+            ->add('prenom', null, array('label' => false))
 
-            ->add('prenom', null, array('label' => "Prénom : "))
-
-            ->add('sexe', 'choice', array('label' => "Sexe : ",
+            ->add('sexe', 'choice', array('label' => false,
                                           'choices' => array('m' => 'Homme', 'f' => 'Femme'),
                                              'expanded' => true,
                                              'multiple' => false,
                                              'data' => 'm'
                                           ))
 
-            ->add('dateNaissance', null, array('label' => "Date de naissance : ",
+            ->add('dateNaissance', null, array('label' => false,
                                               'years' => range(date('Y')-100,date('Y')))
                                               )
 
-            ->add('ville', null, array('label' => "Ville : "))
+            ->add('ville', null, array('label' => false))
 
-            ->add('cp', null, array('label' => "Code postal : "))
+            ->add('cp', null, array('label' => false))
 
-            ->add('adresse', null, array('label' => "Adresse : "))
+            ->add('adresse', null, array('label' => false))
 
-            ->add('telephone', null, array('label' => "Numéro de téléphone : "))
+            ->add('telephone', null, array('label' => false))
 
-            ->add('site', null, array('label' => "Site internet : "))
+            ->add('site', null, array('label' => false))
 
-            ->add('facebook', null, array('label' => "Facebook : "))
+            ->add('facebook', null, array('label' => false))
 
-            ->add('twitter', null, array('label' => "Twitter : "))
+            ->add('twitter', null, array('label' => false))
 
-            ->add('googleplus', null, array('label' => "Google+ : "))
+            ->add('googleplus', null, array('label' => false))
 
-            ->add('benevole', 'choice', array('label' => "Bénévole : ",
+            ->add('benevole', 'choice', array('label' => false,
                                           'choices' => array('1' => 'Oui', '0' => 'Non'),
                                              'expanded' => true,
                                              'multiple' => false,
                                              'data' => '0'
                                           ))
 
-            ->add('logo', new MediaType(), array('label' => "Logo/Avatar : "))
-
-            ->add('email', 'email', array('label' => 'Adresse e-mail : '))
+            ->add('email', 'email', array('label' => false))
         ;
     }
 

@@ -1,0 +1,28 @@
+<div class="tab-box">
+	<h1>Description</h1>
+	<p>Date de naissance : {{ form_row(form.dateNaissance) }}</p>
+	<p>Bénévole : {{ form_row(form.benevole) }}</p>
+	<p>Nom : {{ form_row(form.nom) }}</p>
+	<p>Prénom : {{ form_row(form.prenom) }}</p>
+	<p>Sexe : {{ form_row(form.sexe) }}</p>
+	<p>Ville : {{ form_row(form.ville) }}</p>
+	<p>Code postal : {{ form_row(form.cp) }}</p>
+	<p>Adresse : {{ form_row(form.adresse) }}</p>
+</div>
+<div class="tab-box">
+	<h1>Informations</h1>
+  	<table class="table">
+        <tbody>
+			<tr><td>Site web :</td><td>{{ form_row(form.site) }}</td></tr>
+			<tr><td>Réseaux sociaux :</td>
+				<td>
+					<span class="fa fa-facebook"></span> <div class="reseaux_sociaux"> {{ form_row(form.facebook) }}</div><br>
+                    <span class="fa fa-twitter"></span> <div class="reseaux_sociaux">{{ form_row(form.twitter) }}</div><br>
+                    <span class="fa fa-google-plus"></span> <div class="reseaux_sociaux">{{ form_row(form.googleplus) }}</div>
+				</td>
+			</tr>
+			<tr><td>Adresse Email :</td><td>{{ form_row(form.email) }}</td></tr>
+			<tr><td>Tél. :</td><td>{{ form_row(form.telephone) }}</td></tr>
+        </tbody>
+    </table>
+</div>

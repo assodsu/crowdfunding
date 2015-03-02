@@ -24,35 +24,25 @@ class ProfileAssociationFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nomAsso', null, array('label' => "Nom de l'association : "))
+            ->add('email', 'email', array('label' => false))
 
-            ->add('numWaldec', null, array('label' => "Numéro WALDEC : "))
+            ->add('ville', null, array('label' => false))
 
-            ->add('dateCreationAsso', null, array('label' => "Date de création : ",
-                                                  'years' => range(date('Y')-100,date('Y')))
-                                                  )
+            ->add('cp', null, array('label' => false))
 
-            ->add('ville', null, array('label' => "Ville : "))
+            ->add('adresse', null, array('label' => false))
 
-            ->add('cp', null, array('label' => "Code postal : "))
+            ->add('telephone', null, array('label' => false))
 
-            ->add('adresse', null, array('label' => "Adresse : "))
+            ->add('descriptionAsso', null, array('label' => false))
 
-            ->add('telephone', null, array('label' => "Numéro de téléphone : "))
+            ->add('site', null, array('label' => false))
 
-            ->add('descriptionAsso', null, array('label' => "Description : "))
+            ->add('facebook', null, array('label' => false))
 
-            ->add('site', null, array('label' => "Site internet : "))
+            ->add('twitter', null, array('label' => false))
 
-            ->add('facebook', null, array('label' => "Facebook : "))
-
-            ->add('twitter', null, array('label' => "Twitter : "))
-
-            ->add('googleplus', null, array('label' => "Google+ : "))
-
-            ->add('logo', new MediaType(), array('label' => "Logo/Avatar : "))
-
-            ->add('email', 'email', array('label' => 'Adresse e-mail : '))
+            ->add('googleplus', null, array('label' => false))
         ;
     }
 
