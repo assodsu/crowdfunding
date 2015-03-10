@@ -30,4 +30,9 @@ class ProjectController extends Controller
     {
         return $this->render('CFMainBundle:Project:showHighlights.html.twig');
     }
+
+    public function addAction()
+    {
+        return $this->render('CFMainBundle:Project:add.html.twig');
+    }
 }
