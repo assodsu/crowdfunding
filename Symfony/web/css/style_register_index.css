@@ -18,16 +18,35 @@ input[type=file] {
 	margin-bottom:10px;
 	background-color: #E6E6E6;
 	color:black;
+	border-color:#E6E6E6;
+}
+
+.select{
+	margin-top:20px;
+	margin-bottom:10px;
+	background-color: #E6E6E6;
+	color:black;
+}
+
+.btn .btn-primary .btn-lg .btn-block {
+	margin-top:20px;
+	margin-bottom:10px;
+	background-color: #E6E6E6;
+	color:black;
+	border-color:#E6E6E6;
 }
 
 #asso:hover{
 	background-color: #045FB4;
+	border-color:#045FB4;
 }
 
 #part:hover{
 	background-color: #04B404;
+	border-color:#04B404;
 }
 
 #entr:hover{
 	background-color: #B40404;
+	border-color:#B40404;
 }

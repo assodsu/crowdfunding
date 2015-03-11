@@ -14,8 +14,3 @@ cf_main_highlightProjects:
     path:     /populaire/
     defaults: { _controller: CFMainBundle:Project:showHighlights }
 
-cf_main_addProjects:
-    path:     /creer/
-    defaults: { _controller: CFMainBundle:Project:add }
-    requirements:
-        _method: GET|POST

@@ -20,6 +20,7 @@ class Particulier extends User
 
         $this->setTypeUser('Particulier');
         $this->setUsername(uniqid());
+        $this->setRoles(array('ROLE_USER'));
     }
 
 
@@ -195,8 +196,10 @@ class Particulier extends User
     {
         $this->benevole = $benevole;
 
-        if($benevole == true)
+        if($benevole == true){
             $this->setTypeUser('Bénévole');
+            $this->setRoles(array('ROLE_BENEVOLE'));
+        }
         else
             $this->setTypeUser('Particulier');
 

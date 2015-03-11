@@ -26,4 +26,5 @@ security:
         - { path: ^/connexion$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/inscription$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/projet/creer/, role: ROLE_ASSOCIATION}
         - { path: ^/admin/, role: ROLE_ADMIN }
