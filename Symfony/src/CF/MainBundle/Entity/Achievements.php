@@ -5,12 +5,12 @@ namespace CF\MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Tags
+ * Achievements
  *
- * @ORM\Table(name="tags")
+ * @ORM\Table(name="achievements")
  * @ORM\Entity
  */
-class Tags
+class Achievements
 {
     /**
      * @var integer
@@ -29,10 +29,20 @@ class Tags
     private $nom;
 
     /**
-    *@ORM\ManyToMany(targetEntity="CF\MainBundle\Entity\Projet")
-    */
-    private $projets;
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="icone", type="text")
+     */
+    private $icone;
+
+    
     /**
     *@ORM\ManyToMany(targetEntity="CF\UserBundle\Entity\Particulier")
     */
@@ -52,7 +62,7 @@ class Tags
      * Set nom
      *
      * @param string $nom
-     * @return Tags
+     * @return Achievements
      */
     public function setNom($nom)
     {
@@ -70,55 +80,67 @@ class Tags
     {
         return $this->nom;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->projets = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->particuliers = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add projets
+     * Set description
      *
-     * @param \CF\MainBundle\Entity\Projets $projets
-     * @return Tags
+     * @param string $description
+     * @return Achievements
      */
-    public function addProjet(\CF\MainBundle\Entity\Projets $projets)
+    public function setDescription($description)
     {
-        $this->projets[] = $projets;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Remove projets
+     * Get description
      *
-     * @param \CF\MainBundle\Entity\Projets $projets
+     * @return string 
      */
-    public function removeProjet(\CF\MainBundle\Entity\Projets $projets)
+    public function getDescription()
     {
-        $this->projets->removeElement($projets);
+        return $this->description;
     }
 
     /**
-     * Get projets
+     * Set icone
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param string $icone
+     * @return Achievements
      */
-    public function getProjets()
+    public function setIcone($icone)
     {
-        return $this->projets;
+        $this->icone = $icone;
+
+        return $this;
+    }
+
+    /**
+     * Get icone
+     *
+     * @return string 
+     */
+    public function getIcone()
+    {
+        return $this->icone;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->particuliers = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Add particuliers
      *
-     * @param \CF\UserBundle\Entity\Particulier $particuliers
-     * @return Tags
+     * @param \CF\UserBundle\Entity\Partculier $particuliers
+     * @return Achievements
      */
-    public function addParticulier(\CF\UserBundle\Entity\Particulier $particuliers)
+    public function addParticulier(\CF\UserBundle\Entity\Partculier $particuliers)
     {
         $this->particuliers[] = $particuliers;
 
@@ -128,9 +150,9 @@ class Tags
     /**
      * Remove particuliers
      *
-     * @param \CF\UserBundle\Entity\Particulier $particuliers
+     * @param \CF\UserBundle\Entity\Partculier $particuliers
      */
-    public function removeParticulier(\CF\UserBundle\Entity\Particulier $particuliers)
+    public function removeParticulier(\CF\UserBundle\Entity\Partculier $particuliers)
     {
         $this->particuliers->removeElement($particuliers);
     }

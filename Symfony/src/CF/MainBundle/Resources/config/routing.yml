@@ -18,3 +18,9 @@ cf_main_addProjects:
 cf_main_projects:
     resource: routing/projects.yml
     prefix: /projets
+
+fos_comment_api:
+    type: rest
+    resource: "@FOSCommentBundle/Resources/config/routing.yml"
+    prefix: /api
+    defaults: { _format: html }
