@@ -1,7 +1,7 @@
 {% extends "CFMainBundle::layout.html.twig" %}
 
 {% block title %}
-  Projet {{ id }} - {{ parent() }}
+  Projet {{ projet.id }} - {{ parent() }}
 {% endblock %}
 
 {% block stylesheet %}
@@ -21,21 +21,19 @@
 					<img id='logo' src="{{asset('images/150x150.gif')}}"/>
 				</div>
 				<div id='content-infos'>
-					<h1>Centre de Ressources des Associations Boulonnaises</h1>
+					<h1>{{ projet.idAsso.nomAsso }}</h1>
 					<div id='content-infos-second-row'>
-						<div id='town-asso'>Boulogne sur Mer</div>
+						<div id='town-asso'>{{ projet.idAsso.ville }}</div>
 						<div id="reseaux_sociaux">
 							<a href="#" id="facebook"><span class="fa fa-facebook"></span> Facebook</a>
 							<a href="#" id="twitter"><span class="fa fa-twitter"></span> Twitter</a>
 							<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> Google+</a>
 						</div>
 					</div>
-					<a href='#' class='btn btn-default'>Voir le profil <i class="fa fa-search"></i></a>
+					<a href="{{ path('fos_user_profile_user_show', { 'username': projet.idAsso.username }) }}" class='btn btn-default'>Voir le profil <i class="fa fa-search"></i></a>
 				</div>
 			</div>
-			<div id='project-title'>
-				Création d'un espace de co-working
-			</div>
+			<div id='project-title'>{{ projet.nom }}</div>
 			<div id='project-ressources'>
 				<div id='content-ressources'>
 					<div id='text-ressources'>
@@ -117,38 +115,14 @@
 							</div>
 						</div>
 						<hr>
-						<h2><i class="fa fa-clock-o"></i> <strong>Temps restant :</strong> 21 jours</h2>
+						<h2><i class="fa fa-clock-o"></i> <strong>Temps restant :</strong> {{ projet.dateFin|date("d") - "now"|date("d") }} jours</h2>
 						<h2><i class="fa fa-user"></i> <strong>Donateurs :</strong> 7</h2>
 						<hr>
 						<p><a href='#' class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a><p>
 					</div>
 					<div class='tab-box full aside'>
 						<h1>Le projet</h1>
-						<h2>1. Description</h2>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-							sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-						<p class='picture'><img src="{{ asset('images/2.jpg') }}"/> <img src="{{ asset('images/4.jpg') }}"/></p>
-						<h2>2. Qui sommes nous ?</h2>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-							sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-						<h2>3. Création</h2>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-							sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
+						{{ projet.description|raw|nl2br }}
 					</div>
 				</div>
 				<div class="tab-pane fade" id="tabhistory">
@@ -255,27 +229,8 @@
 				<div class="tab-pane fade" id="tabmore">
 					<div class='tab-box full'>
 						<h1>Plus d'informations</h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-							sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-							sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-							sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
+						{{ projet.infoSup|nl2br }}
+
 					</div>
 				</div>
 			</div>

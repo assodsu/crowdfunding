@@ -38,7 +38,7 @@ class Media
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    public $path;
+    private $path;
 
     /**
      * @Assert\File(maxSize="1M", mimeTypes = {"image/jpeg", "image/png"}, mimeTypesMessage = "Vous devez choisir un fichier valide (.jpeg, .png)")
@@ -119,6 +119,13 @@ class Media
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
     }
 
     public function getPath()

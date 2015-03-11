@@ -69,6 +69,13 @@ class Projet
      */
     protected $background;
 
+    /**
+     *  @ORM\ManyToOne(targetEntity="CF\UserBundle\Entity\Association")
+     *  @ORM\JoinColumn(name="idAsso", referencedColumnName="id")
+     *  @ORM\JoinColumn(nullable=false)
+     */
+    protected $idAsso;
+
 
     /**
      * Get id
@@ -239,5 +246,28 @@ class Projet
     public function getBackground()
     {
         return $this->background;
+    }
+
+    /**
+     * Set idAsso
+     *
+     * @param \CF\UserBundle\Entity\Association $idAsso
+     * @return Projet
+     */
+    public function setIdAsso(\CF\UserBundle\Entity\Association $idAsso = null)
+    {
+        $this->idAsso = $idAsso;
+
+        return $this;
+    }
+
+    /**
+     * Get idAsso
+     *
+     * @return \CF\UserBundle\Entity\Association 
+     */
+    public function getIdAsso()
+    {
+        return $this->idAsso;
     }
 }

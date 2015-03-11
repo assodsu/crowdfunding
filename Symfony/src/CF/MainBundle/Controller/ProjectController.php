@@ -8,7 +8,14 @@ class ProjectController extends Controller
 {
 	public function showAction($id)
     {
-        return $this->render('CFMainBundle:Project:show.html.twig', array('id'=>$id));
+        $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
+
+        if (!$projet) {
+            throw $this->createNotFoundException(
+                'Aucun projet trouvé pour cet id : '.$id
+            );
+        }
+        return $this->render('CFMainBundle:Project:show.html.twig', array('projet'=>$projet));
     }
 	
     public function showAllAction()

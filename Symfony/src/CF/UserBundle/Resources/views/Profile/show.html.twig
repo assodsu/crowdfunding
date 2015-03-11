@@ -43,9 +43,11 @@
 					{% if user.typeUser == "Association" %}
 						<li class="btn btn-default active"><a href="#tab1" data-toggle="tab">Profil</a></li>
 						<li class="btn btn-default"><a href="#tab2" data-toggle="tab">Projets</a></li>
-						{% if app.user.username == user.username %}
-							<li class="btn btn-default"><a href="#tab3" data-toggle="tab">Notifications</a></li>
-							<li class="btn btn-default"><a href="{{ path('fos_user_profile_edit') }}">Modifier</a></li>
+						{% if app.user %}
+							{% if user.username == app.user.username %}
+								<li class="btn btn-default"><a href="#tab3" data-toggle="tab">Notifications</a></li>
+								<li class="btn btn-default"><a href="{{ path('fos_user_profile_edit') }}">Modifier</a></li>
+							{% endif %}
 						{% endif %}
                 	{% elseif user.typeUser == "Entreprise" %}
 						<li class="btn btn-default active"><a href="#tab1" data-toggle="tab">Profil</a></li>
