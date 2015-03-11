@@ -20,6 +20,7 @@ class Association extends User
 
         $this->setTypeUser('Association');
         $this->setUsername(uniqid());
+        $this->setRoles(array('ROLE_ASSOCIATION'));
     }
 
     /**

@@ -6,11 +6,6 @@
         margin-top: 3%;
 }
 
-.stepDiv{ 
-        background-color:#BDBDBD;
-        border-radius: 10px;
-        padding: 5px;
-}
 
 .form{ 
         width:50%;
@@ -19,12 +14,29 @@
         margin-bottom:1%;
 }
 
+fieldset{
+        width: calc(100% - 40px);
+        padding: 0 20px;
+        margin-left: 20px;
+        margin-top: 20px;
+        background-color:#fff;
+        border-radius: 5px;
+        padding-bottom:2px;
+        display:inline-block;
+        vertical-align:top;
+        border:1px solid rgba(0,0,0,.1);
+}
+
 legend { 
-        font-size:18px; 
-        margin:0px;
-        padding:10px 0px;
+        border-radius: 5px;
+        width: 100%;
+        padding:3px;
+        background-color:#fff;
         color:#b0232a;
         font-weight:bold;
+        font-size:20pt;
+        float: left;
+        border-bottom:1px solid #eee;
 }
 
 label { 
@@ -35,13 +47,15 @@ label {
 }
 
 .prev { 
-        margin-top:5px;
+        margin-top:6px;
         float:left;
+        bottom:0;
 }
 
 .next { 
-        margin-top:5px;
+        margin-top:6px;
         float:right;
+        bottom:0;
 }
 
 #steps {

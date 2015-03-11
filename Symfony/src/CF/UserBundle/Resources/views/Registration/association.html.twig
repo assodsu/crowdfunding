@@ -14,9 +14,11 @@
     <h1>Inscription d'une Association</h1>
 
     <div class="center-block container-page">
+        
         <form action="{{ path('association_registration') }}" {{ form_enctype(form) }} method="POST" id="SignupForm" class="form-horizontal form">
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
+                
                 <fieldset>
                     
                     <legend>Première étape - Identifiants</legend>
@@ -27,7 +29,7 @@
                         {{ form_widget(form.plainPassword) }}
                     
                 </fieldset>
-          
+                
 
             
                 <fieldset>
@@ -106,6 +108,7 @@
 
             {{ form_end(form) }}
         </form>
+    
     </div>
 {% endblock %}
 

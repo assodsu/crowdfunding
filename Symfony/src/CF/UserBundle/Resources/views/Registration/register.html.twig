@@ -1,5 +1,20 @@
 {% extends "CFUserBundle::layout.html.twig" %}
 
+{% block javascript %}
+	{{ parent() }}
+	<script type='text/javascript'>
+	$(document).ready(function(){
+		$(".btn btn-primary btn-lg btn-block").click(function(){
+
+			$(".btn btn-primary btn-lg btn-block").fadeout();
+
+
+
+			});
+	});
+	</script>
+{% endblock %}
+
 {% block title %}
 	Inscription - {{ parent() }}
 {% endblock %}
@@ -20,3 +35,4 @@
 
 	</div>
 {% endblock %}
+

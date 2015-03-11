@@ -9,6 +9,12 @@ cf_main_project:
         _method: GET
         id: \d+
 
+cf_main_addProjects:
+    path:     /projet/creer/
+    defaults: { _controller: CFMainBundle:Project:add }
+    requirements:
+        _method: GET|POST
+
 cf_main_projects:
     resource: routing/projects.yml
     prefix: /projets
