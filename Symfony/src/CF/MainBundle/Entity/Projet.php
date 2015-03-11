@@ -254,7 +254,7 @@ class Projet
      * @param \CF\UserBundle\Entity\Association $idAsso
      * @return Projet
      */
-    public function setIdAsso(\CF\UserBundle\Entity\Association $idAsso = null)
+    public function setIdAsso(\CF\UserBundle\Entity\Association $idAsso)
     {
         $this->idAsso = $idAsso;
 
