@@ -1,6 +1,6 @@
 <?php
 
-namespace CF\MainBundle\Entity;
+namespace CF\CommentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\CommentBundle\Entity\Comment as BaseComment;
@@ -23,7 +23,7 @@ class Comment extends BaseComment implements SignedCommentInterface
      * Thread du commentaire
      *
      * @var Thread
-     * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Thread")
+     * @ORM\ManyToOne(targetEntity="CF\CommentBundle\Entity\Thread")
      */
     protected $thread;
 
@@ -42,15 +42,30 @@ class Comment extends BaseComment implements SignedCommentInterface
 
     public function getAuthor()
     {
+        if($this->author === null)
+        {
+            return null;
+        }
         return $this->author;
     }
 
     public function getAuthorName()
     {
         if (null === $this->getAuthor()) {
-            return 'Anonymous';
+            return 'Anonyme';
         }
-
-        return $this->getAuthor()->getUsername();
+        if( $this->getAuthor()->getTypeUser() === 'Association') {
+            return $this->getAuthor()->getNomAsso();
+        }
+        else if( $this->getAuthor()->getTypeUser() === 'Entreprise') {
+            return $this->getAuthor()->getNomEntreprise();
+        }
+        else if( $this->getAuthor()->getTypeUser() === 'Particulier') {
+            return $this->getAuthor()->getPseudo();
+        }
+        else if( $this->getAuthor()->getTypeUser() === 'Bénévole') {
+            return $this->getAuthor()->getPseudo();
+        }
+        return 'Anonyme';
     }
 }

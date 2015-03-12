@@ -185,42 +185,8 @@
 					</div>
 				</div>
 				<div class="tab-pane fade" id="tabcomments">
-					<div class='tab-box full comment'>
-						<div class='comment-avatar'><img src="{{ asset('images/1.jpg') }}"/></div>
-						<div class='comment-author'>Michel</div><div class='comment-hour'>- 15h45</div><div class='comment-date'>08/02/2015</div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
-					<div class='tab-box full comment'>
-						<div class='comment-avatar'><img src="{{ asset('images/2.jpg') }}"/></div>
-						<div class='comment-author'>Michel</div><div class='comment-hour'>- 15h45</div><div class='comment-date'>08/02/2015</div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
-					<div class='tab-box full comment'>
-						<div class='comment-avatar'><img src="{{ asset('images/3.jpg') }}"/></div>
-						<div class='comment-author'>Michel</div><div class='comment-hour'>- 15h45</div><div class='comment-date'>08/02/2015</div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
-					<div class='tab-box full comment'>
-						<div class='comment-avatar'><img src="{{ asset('images/4.jpg') }}"/></div>
-						<div class='comment-author'>Michel</div><div class='comment-hour'>- 15h45</div><div class='comment-date'>08/02/2015</div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
+					<div id="loading"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+					{% include 'CFCommentBundle:Thread:async.html.twig' with {'id': projet.id} %}
 				</div>
 				<div class="tab-pane fade" id="tabmore">
 					<div class='tab-box full'>
@@ -238,4 +204,14 @@
 	{{ parent() }}
 	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/diagramme.js')}}"></script>
+	<script>
+		$(document)
+	    .on('fos_comment_before_load_thread', function (data) {
+	        $("#loading").show();
+	    })
+	    .on('fos_comment_load_thread', function (data) {
+        	$("#loading").fadeOut(200);
+    	});
+
+	</script>
 {% endblock %}

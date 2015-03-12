@@ -35,7 +35,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ "FOSCommentBundle", "CFCommentBundle" ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -86,8 +86,5 @@ fos_comment:
     db_driver: orm
     class:
         model:
-            comment: CF\MainBundle\Entity\Comment
-            thread: CF\MainBundle\Entity\Thread
-
-assetic:
-    bundles: [ "FOSCommentBundle" ]
+            comment: CF\CommentBundle\Entity\Comment
+            thread: CF\CommentBundle\Entity\Thread

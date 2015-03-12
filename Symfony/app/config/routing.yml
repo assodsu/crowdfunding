@@ -1,3 +1,7 @@
+cf_comment:
+    resource: "@CFCommentBundle/Resources/config/routing.yml"
+    prefix:   /
+
 cf_user:
     resource: "@CFUserBundle/Resources/config/routing.yml"
 

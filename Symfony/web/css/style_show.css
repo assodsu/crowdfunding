@@ -295,3 +295,10 @@
 	padding-top:5px;
 	margin-left: 55px;
 }
+/**** LOADING ****/
+#loading {
+	width:50px;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+}
