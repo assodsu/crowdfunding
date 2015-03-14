@@ -77,6 +77,12 @@ class Projet
     protected $idAsso;
 
 
+    public function __construct()
+    {
+        $this->setDateCreation(new \DateTime());
+        $this->setPourcentageTotal("0");
+    }
+
     /**
      * Get id
      *

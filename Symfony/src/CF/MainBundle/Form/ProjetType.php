@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use CF\MainBundle\Form\MediaType;
+
 class ProjetType extends AbstractType
 {
     /**
@@ -15,14 +17,11 @@ class ProjetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pourcentageTotal')
-            ->add('dateCreation')
-            ->add('dateFin')
-            ->add('description')
-            ->add('nom')
-            ->add('infoSup')
-            ->add('background')
-            ->add('idAsso')
+            ->add('nom', null, array('label' => "Nom du projet : "))
+            ->add('dateFin', 'date', array('label' => "Date de fin : "))
+            ->add('description', 'textarea',  array('label' => "Description : ", 'attr' => array('class' => 'ckeditor')))
+            ->add('infoSup', 'textarea',  array('label' => "Informations supplémentaires : ", 'attr' => array('class' => 'ckeditor')))
+            ->add('background', new MediaType(),  array('label' => "Image de fond : "))
         ;
     }
     

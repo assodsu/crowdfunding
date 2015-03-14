@@ -111,7 +111,35 @@
 							</div>
 						</div>
 						<hr>
-						<h2><i class="fa fa-clock-o"></i> <strong>Temps restant :</strong> {{ projet.dateFin|date("d") - "now"|date("d") }} jours</h2>
+						
+						{% set difference = projet.dateFin.diff(date('now')) %}
+						{% set leftDays = difference.days %}
+						{% set leftHours = difference.h %}
+						{% set leftMinutes = difference.i %}
+
+						<h2>
+							<i class="fa fa-clock-o"></i> 
+							{% if projet.dateFin > date('now') %}
+								<strong>Temps restant :</strong> 
+								{% if leftDays > 1 %}
+									{{ leftDays }} jours
+								{% elseif leftDays == 1 %}
+									{{ leftDays }} jour
+								{% else %}
+									{% if leftHours > 1 %}
+										{{ leftHours }} heures
+									{% elseif leftHours == 1 %}
+										{{ leftHours }} heure
+									{% else %}
+										{% if leftMinutes > 0 %}
+											{{ leftMinutes }} minutes
+										{% endif %}
+									{% endif %}
+								{% endif %}
+							{% else %}
+								Projet terminé
+							{% endif %}
+						</h2>
 						<h2><i class="fa fa-user"></i> <strong>Donateurs :</strong> 7</h2>
 						<hr>
 						<p><a href='#' class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a><p>
@@ -191,7 +219,7 @@
 				<div class="tab-pane fade" id="tabmore">
 					<div class='tab-box full'>
 						<h1>Plus d'informations</h1>
-						{{ projet.infoSup|nl2br }}
+						{{ projet.infoSup|raw|nl2br }}
 
 					</div>
 				</div>
