@@ -23,7 +23,7 @@
                             <li><a href="{{ path('cf_main_newProjects') }}">Nouveaux</a></li>
                         </ul>
                     </li>
-                    <li {% block navbarContact %}{% endblock %}><a href="#"><i class="fa fa-envelope"></i> Contact</a></li>
+                    <li {% block navbarContact %}{% endblock %}><a href="{{ path('cf_main_contact') }}"><i class="fa fa-envelope"></i> Contact</a></li>
                     <li><a href="{{ path('cf_main_project', { 'id': 1 }) }}">TEST | Projet 1</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

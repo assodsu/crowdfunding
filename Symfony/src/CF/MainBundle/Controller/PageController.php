@@ -12,4 +12,9 @@ class PageController extends Controller
 
         return $this->render('CFMainBundle:Page:index.html.twig', array('projets'=>$projets));
     }
+
+    public function contactAction()
+    {
+    	return $this->render('CFMainBundle:Page:contact.html.twig');
+    }
 }

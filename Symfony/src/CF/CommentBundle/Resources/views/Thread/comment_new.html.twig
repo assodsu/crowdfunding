@@ -6,14 +6,20 @@
 {% endif %}
 
 {% block fos_comment_comment_form_holder %}
-    <div class="fos_comment_comment_form_holder">
+    <div class="fos_comment_comment_form_holder tab-box full comment">
         {% block fos_comment_form_title %}
             {% if first %}
-                <h3>{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline_first{% endtrans %}</h3>
+               
+                    <h3>{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline_first{% endtrans %}</h3>
+          
             {% elseif parent is not null %}
-                <h3>{% trans with {"%name%": parent.authorName } from 'FOSCommentBundle' %}fos_comment_comment_reply_reply_to{% endtrans %}</h3>
+               
+                    <h3>{% trans with {"%name%": parent.authorName } from 'FOSCommentBundle' %}fos_comment_comment_reply_reply_to{% endtrans %}</h3>
+                
             {% else %}
-                <h3>{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline{% endtrans %}</h3>
+                
+                    <h3>{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline{% endtrans %}</h3>
+                
             {% endif %}
         {% endblock %}
 
@@ -35,7 +41,7 @@
                         {% if parent is not null %}
                             <input type="button" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_reply_cancel{% endtrans %}" class="fos_comment_comment_reply_cancel" />
                         {% endif %}
-                        <input type="submit" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_submit{% endtrans %}" class="btn btn-primary"/>
+                        <input type="submit" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_submit{% endtrans %}" class="btn btn-default"/>
                     {% endblock %}
                 </div>
 
