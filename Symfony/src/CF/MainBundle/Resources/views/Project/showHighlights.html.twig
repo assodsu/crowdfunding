@@ -11,119 +11,38 @@
 	<link href="{{asset('css/style_showAll.css')}}" rel="stylesheet"/>
 {% endblock %}
 
-{% block body %}<div class="content">
-		<div class="content">
+{% block body %}
+<div class="content">
+	{% for projet in projets %}
 		<div class="apercu">
-			<img src="{{ asset('images/1.jpg') }}"/>
-			<div class="titre_projet">CRÉATION D'UN ESPACE DE CO-WORKING</div>
-			<div class="nom_asso">Centre de Ressources des Associations Boulonnaises</div>
-			<div class='diagramme'>
-				<svg height="150" width="150">
-					<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-				</svg>
-				<div class='pie-content'>
-					<div class='percentage'>70%</div>
-					<div class='name'>Ressources</div>
+			<img src="{{asset( projet.background.AssetPath )}}"/>
+			<div class="filtre">
+			<div class="nom_asso">{{ projet.idAsso.nomAsso }}</div>
+			<div class="titre_projet">{{ projet.nom }}</div>
+			<div class="desc">{{ projet.description }}</div>
+				<div class='diagramme'>
+					<svg height="150" width="150">
+						<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
+					</svg>
+					<div class='pie-content'>
+						<div class='percentage'>{{ projet.pourcentageTotal }}%</div>
+						<div class='name'>Ressources</div>
+					</div>
+					<ul class="pie">
+						<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
+						<li class="visualize ressource-materiel" data-color="#5bc0de" data-value="25"></li>
+						<li class="visualize" data-color="rgba(0,0,0,0)" data-value="5"></li>
+					</ul>
 				</div>
-				<ul class="pie">
-					<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-				</ul>
 			</div>
 		</div>
-		
-		<div class="apercu">
-			<img src="{{ asset('images/1.jpg') }}"/>
-			<div class="titre_projet">CRÉATION D'UN ESPACE DE CO-WORKING</div>
-			<div class="nom_asso">Centre de Ressources des Associations Boulonnaises</div>
-			<div class='diagramme'>
-				<svg height="150" width="150">
-					<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-				</svg>
-				<div class='pie-content'>
-					<div class='percentage'>70%</div>
-					<div class='name'>Ressources</div>
-				</div>
-				<ul class="pie">
-					<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-				</ul>
-			</div>
-		</div>
-		
-		<div class="apercu">
-			<img src="{{ asset('images/1.jpg') }}"/>
-			<div class="titre_projet">CRÉATION D'UN ESPACE DE CO-WORKING</div>
-			<div class="nom_asso">Centre de Ressources des Associations Boulonnaises</div>
-			<div class='diagramme'>
-				<svg height="150" width="150">
-					<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-				</svg>
-				<div class='pie-content'>
-					<div class='percentage'>70%</div>
-					<div class='name'>Ressources</div>
-				</div>
-				<ul class="pie">
-					<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-				</ul>
-			</div>
-		</div>
-		
-		<div class="apercu">
-			<img src="{{ asset('images/1.jpg') }}"/>
-			<div class="titre_projet">CRÉATION D'UN ESPACE DE CO-WORKING</div>
-			<div class="nom_asso">Centre de Ressources des Associations Boulonnaises</div>
-			<div class='diagramme'>
-				<svg height="150" width="150">
-					<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-				</svg>
-				<div class='pie-content'>
-					<div class='percentage'>70%</div>
-					<div class='name'>Ressources</div>
-				</div>
-				<ul class="pie">
-					<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-				</ul>
-			</div>
-		</div>
-		
-		<div class="apercu">
-			<img src="{{ asset('images/1.jpg') }}"/>
-			<div class="titre_projet">CRÉATION D'UN ESPACE DE CO-WORKING</div>
-			<div class="nom_asso">Centre de Ressources des Associations Boulonnaises</div>
-			<div class='diagramme'>
-				<svg height="150" width="150">
-					<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-				</svg>
-				<div class='pie-content'>
-					<div class='percentage'>70%</div>
-					<div class='name'>Ressources</div>
-				</div>
-				<ul class="pie">
-					<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-				</ul>
-			</div>
-		</div>
-		
-		<div class="apercu">
-			<img src="{{ asset('images/1.jpg') }}"/>
-			<div class="titre_projet">CRÉATION D'UN ESPACE DE CO-WORKING</div>
-			<div class="nom_asso">Centre de Ressources des Associations Boulonnaises</div>
-			<div class='diagramme'>
-				<svg height="150" width="150">
-					<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-				</svg>
-				<div class='pie-content'>
-					<div class='percentage'>70%</div>
-					<div class='name'>Ressources</div>
-				</div>
-				<ul class="pie">
-					<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	{% endfor %}
+</div>
 {% endblock %}
 	
 {% block javascript %}
 	{{ parent() }}
+	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/diagramme.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/script_showAll.js')}}"></script>
 {% endblock %}
