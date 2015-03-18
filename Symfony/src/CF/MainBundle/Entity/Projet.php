@@ -76,6 +76,11 @@ class Projet
      */
     protected $idAsso;
 
+    /**
+    * @ORM\OneToMany(targetEntity="CF\MainBundle\Entity\Besoins", cascade={"persist"}, mappedBy="projet")
+    */
+    private $besoins;
+
 
     public function __construct()
     {
@@ -275,5 +280,38 @@ class Projet
     public function getIdAsso()
     {
         return $this->idAsso;
+    }
+
+    /**
+     * Add besoins
+     *
+     * @param \CF\MainBundle\Entity\Besoins $besoins
+     * @return Projet
+     */
+    public function addBesoin(\CF\MainBundle\Entity\Besoins $besoins)
+    {
+        $this->besoins[] = $besoins;
+
+        return $this;
+    }
+
+    /**
+     * Remove besoins
+     *
+     * @param \CF\MainBundle\Entity\Besoins $besoins
+     */
+    public function removeBesoin(\CF\MainBundle\Entity\Besoins $besoins)
+    {
+        $this->besoins->removeElement($besoins);
+    }
+
+    /**
+     * Get besoins
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBesoins()
+    {
+        return $this->besoins;
     }
 }

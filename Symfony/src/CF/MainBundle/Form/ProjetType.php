@@ -22,6 +22,10 @@ class ProjetType extends AbstractType
             ->add('description', 'textarea',  array('label' => "Description : ", 'attr' => array('class' => 'ckeditor')))
             ->add('infoSup', 'textarea',  array('label' => "Informations supplémentaires : ", 'attr' => array('class' => 'ckeditor')))
             ->add('background', new MediaType(),  array('label' => "Image de fond : "))
+            ->add('besoins', 'collection', array('type' => new BesoinsType(),
+                'allow_add'    => true,
+                'allow_delete' => true
+                ))
         ;
     }
     

@@ -87,7 +87,7 @@
 				<div class="tab-pane fade in active" id="tabproject">
 					<div class='tab-box aside'>
 						<h1>Ressources</h1>
-						{% for besoin in besoins %}
+						{% for besoin in projet.besoins %}
 							<p><strong>{{ besoin.idRessource.nom }}</strong><span class="pull-right label label-success">Collecté : {{ besoin.quantiteActuelle }} sur {{ besoin.quantiteDemande }}</span></p>
 							{% set pourcentage = ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
 							<div class="progress">

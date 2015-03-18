@@ -12,14 +12,13 @@ class ProjectController extends Controller
 	public function showAction($id)
     {
         $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
-        $besoins = $this->getDoctrine()->getRepository('CFMainBundle:Besoins')->findBy(array('idProjet' => $id));
 
         if (!$projet) {
             throw $this->createNotFoundException(
                 'Aucun projet trouvé pour cet id : '.$id
             );
         }
-        return $this->render('CFMainBundle:Project:show.html.twig', array('projet'=>$projet, 'besoins'=>$besoins));
+        return $this->render('CFMainBundle:Project:show.html.twig', array('projet'=>$projet));
     }
 	
     public function showAllAction()

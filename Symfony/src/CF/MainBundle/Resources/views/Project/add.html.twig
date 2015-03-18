@@ -8,19 +8,195 @@
 
 {% block stylesheet %}
 	{{ parent() }}
+	<link href="{{asset('css/style_new_project.css')}}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
-	
+	<div class="row form-group">
+        <div class="col-xs-12">
+            <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+                <li class="active"><a href="#step-1">
+                    <h4 class="list-group-item-heading">Général</h4>
+                    <p class="list-group-item-text">Définition des éléments principaux</p>
+                </a></li>
+                <li class="disabled"><a href="#step-2">
+                    <h4 class="list-group-item-heading">Description</h4>
+                    <p class="list-group-item-text">Description du projet</p>
+                </a></li>
+                <li class="disabled"><a href="#step-3">
+                    <h4 class="list-group-item-heading">Ressources</h4>
+                    <p class="list-group-item-text">Third step description</p>
+                </a></li>
+                <li class="disabled"><a href="#step-4">
+                    <h4 class="list-group-item-heading">Informations</h4>
+                    <p class="list-group-item-text">Informations supplémentaires</p>
+                </a></li>
+            </ul>
+        </div>
+	</div>
 	<form action="{{ path('cf_main_addProjects')}}" method="post" {{ form_enctype(form) }}>
+	    {{ form_start(form) }}
+		{{ form_errors(form) }}
+
+	    <div class="row setup-content" id="step-1">
+	        <div class="col-xs-12">
+	            <div class="col-md-12 well text-center">
+	                <h1>Général</h1>
+                	{{ form_row(form.nom) }}
+
+                	{{ form_row(form.dateFin) }}
+
+                	{{ form_row(form.background) }}
+
+	                <button id="activate-step-2" class="btn btn-primary btn-lg">Etape suivante</button>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="row setup-content" id="step-2">
+	        <div class="col-xs-12">
+	            <div class="col-md-12 well text-center">
+	                <h1>Description</h1>
+                	{{ form_row(form.description) }}
+
+	                <button id="activate-step-3" class="btn btn-primary btn-lg">Etape suivante</button>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="row setup-content" id="step-3">
+	        <div class="col-xs-12">
+	            <div class="col-md-12 well text-center">
+	                <h1>Ressources</h1>
+                	{{ form_row(form.besoins) }}
+
+	                <button id="activate-step-4" class="btn btn-primary btn-lg">Etape suivante</button>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="row setup-content" id="step-4">
+	        <div class="col-xs-12">
+	            <div class="col-md-12 well text-center">
+	                <h1>Informations supplémentaires</h1>
+                	{{ form_row(form.infoSup) }}
+
+	    			<input type="submit" value="Créer !"/>
+	            </div>
+	        </div>
+	    </div>
+	    {{ form_end(form) }}
+	</form>
+	
+	<!--<form action="{{ path('cf_main_addProjects')}}" method="post" {{ form_enctype(form) }}>
 	    {{ form_widget(form) }}
 
 	    <input type="submit" />
-	</form>
+	</form>-->
 
 {% endblock %}
 
 {% block javascript %}
 	{{ parent() }}
 	<script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+		  // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
+		  var $container = $('div#cf_mainbundle_projet_besoins');
+
+		  // On ajoute un lien pour ajouter une nouvelle catégorie
+		  var $lienAjout = $('<a href="#" id="ajout_categorie" class="btn btn-success">Ajouter un besoin</a>');
+		  $container.append($lienAjout);
+
+		  // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
+		  $lienAjout.click(function(e) {
+		    ajouterCategorie($container);
+		    e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+		    return false;
+		  });
+
+		  // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
+		  var index = $container.find(':input').length;
+
+		  // On ajoute un premier champ directement s'il n'en existe pas déjà un (cas d'un nouvel article par exemple).
+		  if (index == 0) {
+		    ajouterCategorie($container);
+		  } else {
+		    // Pour chaque catégorie déjà existante, on ajoute un lien de suppression
+		    $container.children('div').each(function() {
+		      ajouterLienSuppression($(this));
+		    });
+		  }
+
+		  // La fonction qui ajoute un formulaire Categorie
+		  function ajouterCategorie($container) {
+		    // Dans le contenu de l'attribut « data-prototype », on remplace :
+		    // - le texte "__name__label__" qu'il contient par le label du champ
+		    // - le texte "__name__" qu'il contient par le numéro du champ
+		    var $prototype = $($container.attr('data-prototype').replace(/__name__label__/g, 'Besoin n°' + (index+1))
+		                                                        .replace(/__name__/g, index));
+
+		    // On ajoute au prototype un lien pour pouvoir supprimer la catégorie
+		    ajouterLienSuppression($prototype);
+
+		    // On ajoute le prototype modifié à la fin de la balise <div>
+		    $container.append($prototype);
+
+		    // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+		    index++;
+		  }
+
+		  // La fonction qui ajoute un lien de suppression d'une catégorie
+		  function ajouterLienSuppression($prototype) {
+		    // Création du lien
+		    $lienSuppression = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+
+		    // Ajout du lien
+		    $prototype.append($lienSuppression);
+
+		    // Ajout du listener sur le clic du lien
+		    $lienSuppression.click(function(e) {
+		      $prototype.remove();
+		      e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+		      return false;
+		    });
+		  }
+
+		  // Steps
+		  var navListItems = $('ul.setup-panel li a'),
+		        allWells = $('.setup-content');
+
+		    allWells.hide();
+
+		    navListItems.click(function(e)
+		    {
+		        e.preventDefault();
+		        var $target = $($(this).attr('href')),
+		            $item = $(this).closest('li');
+		        
+		        if (!$item.hasClass('disabled')) {
+		            navListItems.closest('li').removeClass('active');
+		            $item.addClass('active');
+		            allWells.hide();
+		            $target.show();
+		        }
+		    });
+		    
+		    $('ul.setup-panel li.active a').trigger('click');
+		    
+		    $('#activate-step-2').on('click', function(e) {
+		        $('ul.setup-panel li:eq(1)').removeClass('disabled');
+		        $('ul.setup-panel li a[href="#step-2"]').trigger('click');
+		        $(this).remove();
+		    })
+		    $('#activate-step-3').on('click', function(e) {
+		        $('ul.setup-panel li:eq(2)').removeClass('disabled');
+		        $('ul.setup-panel li a[href="#step-3"]').trigger('click');
+		        $(this).remove();
+		    })    
+		    $('#activate-step-4').on('click', function(e) {
+		        $('ul.setup-panel li:eq(3)').removeClass('disabled');
+		        $('ul.setup-panel li a[href="#step-4"]').trigger('click');
+		        $(this).remove();
+		    })    
+		});
+	</script>
 {% endblock %}
