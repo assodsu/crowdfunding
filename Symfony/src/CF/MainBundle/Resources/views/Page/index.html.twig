@@ -27,49 +27,54 @@
 	<!-- Carousel -->
 	<div class='carousel'>
 		<div id='menu_carousel'>
-			<a href='#' class='selected'>Projets à la une</a>
+			<a href='#' class='menuButton selected'>Projets à la une</a>
 			<a href='#' class='menuButton'>Touche à sa fin</a>
 			<a href='#' class='menuButton'>Nouveaux</a>
 			<a href='#' class='menuButton'>Tous les</br>projets</a>
 		</div>
-			<span class="glyphicon glyphicon-chevron-left"></span>
-			<span class="glyphicon glyphicon-chevron-right"></span>
-		<div id="carousel-horizontal">
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		<span class="glyphicon glyphicon-chevron-right"></span>
+		<div class="slider text-center" id="carousel">
+			<div id="filter-left"></div>
+			<div id="filter-right"></div>
+			<div class="bx-wrapper">
+				<div class="bx-viewport">
+					<div class="bxslider">
+						{% for projet in projets %}
+						<div class="slide">
+							<a href="{{ path('cf_main_project', {'id' : projet.id}) }}">
+								<img src="{{ asset(projet.background.AssetPath) }}">
+								<div class="project-title">
+									<h2>{{ projet.nom }}</h2>
+									<p>{{ projet.idAsso.nomAsso }}</p>
+								</div>
+							</a>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Ancien carousel -->
+		<div id="carousel-horizontal" style="display:none;">
 			<ul>
-				<li>
-					<div class='project-title'><a href='#'>Nom projet</a></div>
-					<div><img src="{{ asset('images/1.jpg') }}"/></div>
-				</li>
-				<li>
-					<div class='project-title'><a href='#'>Nom projet</a></div>
-					<div><img src="{{ asset('images/2.jpg') }}"/></div>
-				</li>
-				<li>
-					<div class='project-title'><a href='#'>Nom projet</a></div>
-					<div><img src="{{ asset('images/3.jpg') }}"/></div>
-				</li>
-				<li>
-					<div class='project-title'><a href='#'>Nom projet</a></div>
-					<div><img src="{{ asset('images/4.jpg') }}"/></div>
-				</li>
-				<li>
-					<div class='project-title'><a href='#'>Nom projet</a></div>
-					<div><img src="{{ asset('images/5.jpg') }}"/></div>
-				</li>
-				<li>
-					<div class='project-title'><a href='#'>Nom projet</a></div>
-					<div><img src="{{ asset('images/6.jpg') }}"/></div>
-				</li>
-				<li>
-					<div class='project-title'><a href='#'>Nom projet</a></div>
-					<div><img src="{{ asset('images/3.jpg') }}"/></div>
-				</li>
-				<li>
-					<div class='project-title'><a href='#'>Nom projet</a></div>
-					<div><img src="{{ asset('images/4.jpg') }}"/></div>
-				</li>
+				{% for projet in projets %}
+					<li>
+						<div class='project-title'><a href=''>{{ projet.nom }}</a></div>
+						<div><img src="{{ asset(projet.background.AssetPath) }}"/></div>
+					</li>
+				{% endfor %}
+				{% for projet in projets %}
+					<li>
+						<div class='project-title'><a href=''>{{ projet.nom }}</a></div>
+						<div><img src="{{ asset(projet.background.AssetPath) }}"/></div>
+					</li>
+				{% endfor %}
 			</ul>
 		</div>
+		<!-- Ancien carousel -->
+
 	</div>
 	
 	<!-- Barre de recherche-->
@@ -116,27 +121,38 @@
 	{{ parent() }}
 	<script type="text/javascript" src="{{asset('js/carousel.js')}}"></script>
 	<script type="text/javascript" src="{{ asset('js/dragdrop.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/bxslider.min.js') }}"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			var carousel = $('#carousel-horizontal').scrollingCarousel( {
+			/*var carousel = $('#carousel-horizontal').scrollingCarousel( {
 				scrollerAlignment : 'horizontal',
 				autoScroll: true,
 				autoScrollSpeed: 40000
-			});
+			});*/
+			var carousel = $('.bxslider').show().bxSlider({
+			    auto: true,
+			    controls: false,
+			    pause: 2000,
+			    speed: 2000,
+			    pager: false,
+			    slideMargin: 0,
+			    autoHover: true
+		    });
+
+		    $('#filter-right').click(function() {
+			    carousel.goToNextSlide();
+			    return false;
+		    });
+
+		    $('#filter-left').click(function() {
+			    carousel.goToPrevSlide();
+			    return false;
+		    });
 
 			$('.menuButton').click(function(){
 				$('.selected').removeClass('selected');
+				$(this).addClass('selected');
 			});
-			
-			$.fn.onclickout = function(callback){
-				var elm = this;
-				$(document).on("click", function(evt){
-					if($(evt.target).closest(elm).size() === 0){
-						callback.call(elm, evt);
-					}
-				});
-				return elm;
-			};
 			 
 			$('#search').click(function(){
 				$(this).attr('placeholder','');

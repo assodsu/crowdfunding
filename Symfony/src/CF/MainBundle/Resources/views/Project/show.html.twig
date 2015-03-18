@@ -12,13 +12,13 @@
 {% block body %}
 	<div id='block-head'>
 		<div class='content'>
-			<img id='background-img' src="{{asset('images/bg.jpg')}}"/>
+			<img id='background-img' src="{{asset(projet.background.AssetPath) }}"/>
 		</div>
 		<div class='content'>
 			<div id='infos-asso'>
 				<div id='certification'>
 					<p id='label'>Association certifiée <i class="fa fa-check"></i></p>
-					<img id='logo' src="{{asset('images/150x150.gif')}}"/>
+					<img id='logo' src="{{asset( projet.idAsso.logo.AssetPath) }}"/>
 				</div>
 				<div id='content-infos'>
 					<h1>{{ projet.idAsso.nomAsso }}</h1>
@@ -87,20 +87,16 @@
 				<div class="tab-pane fade in active" id="tabproject">
 					<div class='tab-box aside'>
 						<h1>Ressources</h1>
-						<p><strong>Chaise</strong><span class="pull-right label label-success">Collecté : 1 sur 10</span></p>
-						<div class="progress">
-							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
-								<span class="sr-only">10% Complete</span>
+						{% for besoin in besoins %}
+							<p><strong>{{ besoin.idRessource.nom }}</strong><span class="pull-right label label-success">Collecté : {{ besoin.quantiteActuelle }} sur {{ besoin.quantiteDemande }}</span></p>
+							{% set pourcentage = ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+							<div class="progress">
+								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ pourcentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ pourcentage }}%">
+									<span class="sr-only">{{ pourcentage }}% Complete</span>
+								</div>
 							</div>
-						</div>
-						<hr>
-						<p><strong>Table</strong><span class="pull-right label label-success">Collecté : 2 sur 2</span></p>
-						<div class="progress">
-							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-								<span class="sr-only">100% Complete</span>
-							</div>
-						</div>
-						<hr>
+							<hr>
+						{% endfor %}
 						<p><strong>Bénévoles</strong><span class="pull-right label label-info">Collecté : 3 sur 6</span></p>
 						<div class="progress">
 							<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
@@ -115,7 +111,35 @@
 							</div>
 						</div>
 						<hr>
-						<h2><i class="fa fa-clock-o"></i> <strong>Temps restant :</strong> {{ projet.dateFin|date("d") - "now"|date("d") }} jours</h2>
+						
+						{% set difference = projet.dateFin.diff(date('now')) %}
+						{% set leftDays = difference.days %}
+						{% set leftHours = difference.h %}
+						{% set leftMinutes = difference.i %}
+
+						<h2>
+							<i class="fa fa-clock-o"></i> 
+							{% if projet.dateFin > date('now') %}
+								<strong>Temps restant :</strong> 
+								{% if leftDays > 1 %}
+									{{ leftDays }} jours
+								{% elseif leftDays == 1 %}
+									{{ leftDays }} jour
+								{% else %}
+									{% if leftHours > 1 %}
+										{{ leftHours }} heures
+									{% elseif leftHours == 1 %}
+										{{ leftHours }} heure
+									{% else %}
+										{% if leftMinutes > 0 %}
+											{{ leftMinutes }} minutes
+										{% endif %}
+									{% endif %}
+								{% endif %}
+							{% else %}
+								Projet terminé
+							{% endif %}
+						</h2>
 						<h2><i class="fa fa-user"></i> <strong>Donateurs :</strong> 7</h2>
 						<hr>
 						<p><a href='#' class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a><p>
@@ -189,47 +213,13 @@
 					</div>
 				</div>
 				<div class="tab-pane fade" id="tabcomments">
-					<div class='tab-box full comment'>
-						<div class='comment-avatar'><img src="{{ asset('images/1.jpg') }}"/></div>
-						<div class='comment-author'>Michel</div><div class='comment-hour'>- 15h45</div><div class='comment-date'>08/02/2015</div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
-					<div class='tab-box full comment'>
-						<div class='comment-avatar'><img src="{{ asset('images/2.jpg') }}"/></div>
-						<div class='comment-author'>Michel</div><div class='comment-hour'>- 15h45</div><div class='comment-date'>08/02/2015</div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
-					<div class='tab-box full comment'>
-						<div class='comment-avatar'><img src="{{ asset('images/3.jpg') }}"/></div>
-						<div class='comment-author'>Michel</div><div class='comment-hour'>- 15h45</div><div class='comment-date'>08/02/2015</div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
-					<div class='tab-box full comment'>
-						<div class='comment-avatar'><img src="{{ asset('images/4.jpg') }}"/></div>
-						<div class='comment-author'>Michel</div><div class='comment-hour'>- 15h45</div><div class='comment-date'>08/02/2015</div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
+					<div id="loading"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+					{% include 'CFCommentBundle:Thread:async.html.twig' with {'id': projet.id} %}
 				</div>
 				<div class="tab-pane fade" id="tabmore">
 					<div class='tab-box full'>
 						<h1>Plus d'informations</h1>
-						{{ projet.infoSup|nl2br }}
+						{{ projet.infoSup|raw|nl2br }}
 
 					</div>
 				</div>
@@ -242,4 +232,14 @@
 	{{ parent() }}
 	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/diagramme.js')}}"></script>
+	<script>
+		$(document)
+	    .on('fos_comment_before_load_thread', function (data) {
+	        $("#loading").show();
+	    })
+	    .on('fos_comment_load_thread', function (data) {
+        	$("#loading").fadeOut(200);
+    	});
+
+	</script>
 {% endblock %}

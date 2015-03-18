@@ -295,3 +295,21 @@
 	padding-top:5px;
 	margin-left: 55px;
 }
+.tab-box.comment textarea{
+	width:100%;
+	height:100px;
+}
+.tab-box.comment h3{
+	font-size:18pt;
+	font-weight:bold;
+	margin-bottom:5px;
+	margin-left:5px;
+	font-family: arial;
+}
+/**** LOADING ****/
+#loading {
+	width:50px;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+}

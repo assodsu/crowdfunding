@@ -77,6 +77,12 @@ class Projet
     protected $idAsso;
 
 
+    public function __construct()
+    {
+        $this->setDateCreation(new \DateTime());
+        $this->setPourcentageTotal("0");
+    }
+
     /**
      * Get id
      *
@@ -254,7 +260,7 @@ class Projet
      * @param \CF\UserBundle\Entity\Association $idAsso
      * @return Projet
      */
-    public function setIdAsso(\CF\UserBundle\Entity\Association $idAsso = null)
+    public function setIdAsso(\CF\UserBundle\Entity\Association $idAsso)
     {
         $this->idAsso = $idAsso;
 

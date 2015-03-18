@@ -1,0 +1,30 @@
+{% extends "CFMainBundle::layout.html.twig" %}
+
+{% block title %}
+  Nous contacter - {{ parent() }}
+{% endblock %}
+
+{% block navbarContact %} class="active" {% endblock %}
+
+{% block stylesheet %}
+	{{ parent() }}
+	<link href="{{asset('css/style_contact.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body%}
+	
+	<h1>Contactez le CRAB via les réseaux sociaux</h1>
+	<div id="reseaux_sociaux">
+		<a href="#" id="facebook"><span class="fa fa-facebook"></span> Facebook du crab </a>
+		<a href="#" id="twitter"><span class="fa fa-twitter"></span> Twitter</a>
+		<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> Google+</a>
+	</div>
+	
+	<h1>Un problème lié à un projet?</h1>
+	<div id="problemes_projets">
+		<a href="#"id="plainte">Dépot d'une plainte</a>
+	</div>
+
+{% endblock %}
+
+

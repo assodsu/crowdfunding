@@ -8,11 +8,19 @@
 
 {% block stylesheet %}
 	{{ parent() }}
-	<link href="{{asset('css/style_showAll.css')}}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
 	
-	Test  !!!!!!
+	<form action="{{ path('cf_main_addProjects')}}" method="post" {{ form_enctype(form) }}>
+	    {{ form_widget(form) }}
 
+	    <input type="submit" />
+	</form>
+
+{% endblock %}
+
+{% block javascript %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
 {% endblock %}
