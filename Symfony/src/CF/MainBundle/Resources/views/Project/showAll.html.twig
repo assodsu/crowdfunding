@@ -12,25 +12,19 @@
 {% endblock %}
 
 {% block body %}
-<div class="col-md-6">
             <div class="panel with-nav-tabs panel-default">
                 <div class="panel-heading menu">
 				<h1 id="CategoryTitle">Catégorie</h1>
 					<ul>
 						<li><a href="#Art" data-toggle="tab">Art</a></li>
-						<li><a href="#Aventure" data-toggle="tab">Aventure et sport</a></li>
+						<li><a href="#Food" data-toggle="tab">Cuisine</a></li>
 						<li><a href="#Design" data-toggle="tab">Design et invention</a></li>
-						<li><a href="#Ecologie" data-toggle="tab">Ecologie</a></li>
-						<li><a href="#Education" data-toggle="tab">Education</a></li>
 						<li><a href="#Film" data-toggle="tab">Film et vidéo</a></li>
-						<li><a href="#Food" data-toggle="tab">Food</a></li>
 						<li><a href="#Jeux" data-toggle="tab">Jeux</a></li>
 						<li><a href="#Journalisme" data-toggle="tab">Journalisme</a></li>
 						<li><a href="#Livre" data-toggle="tab">Livre et édition</a></li>
 						<li><a href="#Mode" data-toggle="tab">Mode</a></li>
 						<li><a href="#Musique" data-toggle="tab">Musique</a></li>
-						<li><a href="#Photo" data-toggle="tab">Photographie</a></li>
-						<li><a href="#Solidarite" data-toggle="tab">Solidarité</a></li>
 						<li><a href="#Spectacle" data-toggle="tab">Spectacle vivant</a></li>
 						<li><a href="#Web" data-toggle="tab">Web et techno</a></li>
 					</ul>
@@ -39,226 +33,133 @@
                     <div class="tab-content">
                         <div class="tab-pane fade" id="Art">
 							<ul>
-								<li><a href="#">Art numerique</a></li>
-								<li><a href="#">Illustration</a></li>
-								<li><a href="#">Installation</a></li>
-								<li><a href="#">Patrimoine</a></li>
-								<li><a href="#">Peinture</a></li>
-								<li><a href="#">Performance</a></li>
-								<li><a href="#">Street art</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Aventure">
-							<ul>
-							
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Design">
-							<ul>
-								<li><a href="#">Graphique</a></li>
-								<li><a href="#">Objet</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Ecologie">
-							<ul>
-							
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Education">
-							<ul>
-							
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Film">
-							<ul>
-								<li><a href="#">Court-métrage</a></li>
-								<li><a href="#">Documentaire</a></li>
-								<li><a href="#">Long-métrage</a></li>
-								<li><a href="#">Webdocumentaire</a></li>
-								<li><a href="#">Websérie</a></li>
+								<li><a href="#artnumerique" class="tag">Art numerique</a></li>
+								<li><a href="#illustration" class="tag">Illustration</a></li>
+								<li><a href="#patrimoine" class="tag">Patrimoine</a></li>
+								<li><a href="#peinture" class="tag">Peinture</a></li>
+								<li><a href="#performance" class="tag">Performance</a></li>
+								<li><a href="#streetart" class="tag">Street art</a></li>
+								<li><a href="#photoart" class="tag">Photo d'art</a></li>
 							</ul>
 						</div>
                         <div class="tab-pane fade" id="Food">
 							<ul>
-								<li><a href="#">Agriculture</a></li>
-								<li><a href="#">Restaurant</a></li>
+								<li><a href="#" class="tag">Agriculture</a></li>
+								<li><a href="#" class="tag">Restaurant</a></li>
+							</ul>
+						</div>
+                        <div class="tab-pane fade" id="Design">
+							<ul>
+								<li><a href="#" class="tag">Graphique</a></li>
+								<li><a href="#" class="tag">Objet</a></li>
+							</ul>
+						</div>
+                        <div class="tab-pane fade" id="Film">
+							<ul>
+								<li><a href="#" class="tag">Court-métrage</a></li>
+								<li><a href="#" class="tag">Documentaire</a></li>
+								<li><a href="#" class="tag">Long-métrage</a></li>
+								<li><a href="#" class="tag">Webdocumentaire</a></li>
+								<li><a href="#" class="tag">Websérie</a></li>
 							</ul>
 						</div>
                         <div class="tab-pane fade" id="Jeux">
 							<ul>
-								<li><a href="#">Jeux de société</a></li>
-								<li><a href="#">Jeux vidéo</a></li>
+								<li><a href="#" class="tag">Jeux de société</a></li>
+								<li><a href="#" class="tag">Jeux vidéo</a></li>
 							</ul>
 						</div>
                         <div class="tab-pane fade" id="Journalisme">
 							<ul>
-								<li><a href="#">Investigation</a></li>
-								<li><a href="#">Reportage</a></li>
+								<li><a href="#" class="tag">Investigation</a></li>
+								<li><a href="#" class="tag">Reportage</a></li>
+								<li><a href="#" class="tag">Photo-reportage</a></li>
 							</ul>
 						</div>
                         <div class="tab-pane fade" id="Livre">
 							<ul>
-								<li><a href="#">Bande dessinée</a></li>
-								<li><a href="#">Jeunesse</a></li>
-								<li><a href="#">Livre d'art</a></li>
-								<li><a href="#">Roman</a></li>
+								<li><a href="#" class="tag">Bande dessinée</a></li>
+								<li><a href="#" class="tag">Jeunesse</a></li>
+								<li><a href="#" class="tag">Livre d'art</a></li>
+								<li><a href="#" class="tag">Roman</a></li>
 							</ul>
 						</div>
                         <div class="tab-pane fade" id="Mode">
 							<ul>
-								<li><a href="#">Accessoires</a></li>
-								<li><a href="#">Haute couture</a></li>
-								<li><a href="#">Prêt-à-porter</a></li>
+								<li><a href="#" class="tag">Accessoires</a></li>
+								<li><a href="#" class="tag">Haute couture</a></li>
+								<li><a href="#" class="tag">Prêt-à-porter</a></li>
 							</ul>
 						</div>
                         <div class="tab-pane fade" id="Musique">
 							<ul>
-								<li><a href="#">Clip</a></li>
-								<li><a href="#">Concert</a></li>
-								<li><a href="#">Enregistrement</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Photo">
-							<ul>
-								<li><a href="#">Photo d'art</a></li>
-								<li><a href="#">Photo-reportage</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Solidarite">
-							<ul>
-							
+								<li><a href="#" class="tag">Clip</a></li>
+								<li><a href="#" class="tag">Concert</a></li>
+								<li><a href="#" class="tag">Enregistrement</a></li>
 							</ul>
 						</div>
                         <div class="tab-pane fade" id="Spectacle">
 							<ul>
-								<li><a href="#">Danse</a></li>
-								<li><a href="#">Théâtre</a></li>
+								<li><a href="#" class="tag">Danse</a></li>
+								<li><a href="#" class="tag">Théâtre</a></li>
 							</ul>
 						</div>
                         <div class="tab-pane fade" id="Web">
 							<ul>
-								<li><a href="#">Appli</a></li>
-								<li><a href="#">Hardware</a></li>
-								<li><a href="#">Site web</a></li>
+								<li><a href="#" class="tag">Application</a></li>
+								<li><a href="#" class="tag">Hardware</a></li>
+								<li><a href="#" class="tag">Site web</a></li>
 							</ul>
 						</div>
                     </div>
                 </div>
             </div>
-        </div>
-
 	<div class="content">
+	{% for projet in projets %}
+	{% if projet.tag == app.request.attributes.get('_route') %}
 		<div class="apercu">
-			<img src="{{ asset('images/1.jpg') }}"/>
-			<div class="titre_projet">CRÉATION D'UN ESPACE DE CO-WORKING</div>
-			<div class="nom_asso">Centre de Ressources des Associations Boulonnaises</div>
-			<div class='diagramme'>
-				<svg height="150" width="150">
-					<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-				</svg>
-				<div class='pie-content'>
-					<div class='percentage'>70%</div>
-					<div class='name'>Ressources</div>
+			<img src="{{asset( projet.background.AssetPath )}}"/>
+			<div class="filtre">
+			<div class="nom_asso">{{ projet.idAsso.nomAsso }}</div>
+			<div class="titre_projet">{{ projet.nom }}</div>
+			<div class="desc">{{ projet.description }}</div>
+				<div class='diagramme'>
+					<svg height="150" width="150">
+						<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
+					</svg>
+					<div class='pie-content'>
+						<div class='percentage'>{{ projet.pourcentageTotal }}%</div>
+						<div class='name'>Ressources</div>
+					</div>
+					<ul class="pie">
+						<li class="visualize" data-color="#5cb85c" data-value="70"></li>
+						<li class="visualize" data-color="#5bc0de" data-value="25"></li>
+						<li class="visualize" data-color="rgba(0,0,0,0)" data-value="5"></li>
+					</ul>
 				</div>
-				<ul class="pie">
-					<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-				</ul>
 			</div>
 		</div>
-		
-		<div class="apercu">
-			<img src="{{ asset('images/1.jpg') }}"/>
-			<div class="titre_projet">CRÉATION D'UN ESPACE DE CO-WORKING</div>
-			<div class="nom_asso">Centre de Ressources des Associations Boulonnaises</div>
-			<div class='diagramme'>
-				<svg height="150" width="150">
-					<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-				</svg>
-				<div class='pie-content'>
-					<div class='percentage'>70%</div>
-					<div class='name'>Ressources</div>
-				</div>
-				<ul class="pie">
-					<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-				</ul>
-			</div>
-		</div>
-		
-		<div class="apercu">
-			<img src="{{ asset('images/1.jpg') }}"/>
-			<div class="titre_projet">CRÉATION D'UN ESPACE DE CO-WORKING</div>
-			<div class="nom_asso">Centre de Ressources des Associations Boulonnaises</div>
-			<div class='diagramme'>
-				<svg height="150" width="150">
-					<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-				</svg>
-				<div class='pie-content'>
-					<div class='percentage'>70%</div>
-					<div class='name'>Ressources</div>
-				</div>
-				<ul class="pie">
-					<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-				</ul>
-			</div>
-		</div>
-		
-		<div class="apercu">
-			<img src="{{ asset('images/1.jpg') }}"/>
-			<div class="titre_projet">CRÉATION D'UN ESPACE DE CO-WORKING</div>
-			<div class="nom_asso">Centre de Ressources des Associations Boulonnaises</div>
-			<div class='diagramme'>
-				<svg height="150" width="150">
-					<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-				</svg>
-				<div class='pie-content'>
-					<div class='percentage'>70%</div>
-					<div class='name'>Ressources</div>
-				</div>
-				<ul class="pie">
-					<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-				</ul>
-			</div>
-		</div>
-		
-		<div class="apercu">
-			<img src="{{ asset('images/1.jpg') }}"/>
-			<div class="titre_projet">CRÉATION D'UN ESPACE DE CO-WORKING</div>
-			<div class="nom_asso">Centre de Ressources des Associations Boulonnaises</div>
-			<div class='diagramme'>
-				<svg height="150" width="150">
-					<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-				</svg>
-				<div class='pie-content'>
-					<div class='percentage'>70%</div>
-					<div class='name'>Ressources</div>
-				</div>
-				<ul class="pie">
-					<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-				</ul>
-			</div>
-		</div>
-		
-		<div class="apercu">
-			<img src="{{ asset('images/1.jpg') }}"/>
-			<div class="titre_projet">CRÉATION D'UN ESPACE DE CO-WORKING</div>
-			<div class="nom_asso">Centre de Ressources des Associations Boulonnaises</div>
-			<div class='diagramme'>
-				<svg height="150" width="150">
-					<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-				</svg>
-				<div class='pie-content'>
-					<div class='percentage'>70%</div>
-					<div class='name'>Ressources</div>
-				</div>
-				<ul class="pie">
-					<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	{% endif %}
+	{% endfor %}
+</div>
 {% endblock %}
 	
 {% block javascript %}
 	{{ parent() }}
+	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/script_showAll.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/diagramme.js')}}"></script>
+	<script>
+	$(document).ready(function(){
+		$(".tag").click(function(){
+			var tags = $(this).attr("href").value;
+			alert(tags);
+
+			function ajax(tagsjs){
+				$.get("showAll.html.twig",{tags: tagsjs});
+			}
+			ajax($("#tags").val());
+		});
+	});
+	</script>
 {% endblock %}

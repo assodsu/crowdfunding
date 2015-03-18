@@ -22,23 +22,42 @@ class ProjectController extends Controller
     }
 	
     public function showAllAction()
-    {
-        return $this->render('CFMainBundle:Project:showAll.html.twig');
+    {	
+	
+		//$tag=$_POST["tag"];
+		
+		$all = $this->getDoctrine()->getEntityManager()
+		->createQuery('SELECT p FROM CFMainBundle:Projet p WHERE p.dateFin > CURRENT_DATE()')
+        ->getResult();
+		
+        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$all));
     }
 	
     public function showEndingAction()
     {
-        return $this->render('CFMainBundle:Project:showEnding.html.twig');
+		$ending = $this->getDoctrine()->getEntityManager()
+		->createQuery('SELECT p FROM CFMainBundle:Projet p WHERE p.dateFin > CURRENT_DATE() ORDER BY p.dateFin ASC')
+        ->getResult();
+		
+        return $this->render('CFMainBundle:Project:showEnding.html.twig',array('projets'=>$ending));
     }
 	
     public function showNewAction()
     {
-        return $this->render('CFMainBundle:Project:showNew.html.twig');
+		$new = $this->getDoctrine()->getEntityManager()
+		->createQuery('SELECT p FROM CFMainBundle:Projet p WHERE p.dateFin > CURRENT_DATE() ORDER BY p.dateCreation ASC')
+        ->getResult();
+		
+        return $this->render('CFMainBundle:Project:showNew.html.twig',array('projets'=>$new));
     }
 	
     public function showHighlightsAction()
     {
-        return $this->render('CFMainBundle:Project:showHighlights.html.twig');
+		$high = $this->getDoctrine()->getEntityManager()
+		->createQuery('SELECT p FROM CFMainBundle:Projet p WHERE p.dateFin > CURRENT_DATE() ORDER BY p.pourcentageTotal DESC')
+        ->getResult();
+		
+        return $this->render('CFMainBundle:Project:showHighlights.html.twig',array('projets'=>$high));
     }
 
     public function addAction(Request $request)
