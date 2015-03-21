@@ -63,10 +63,9 @@
 					</div>
 					<a href='#' class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a>
 					<div id='project-tags'>
-						<div class='tag'>Culture</div>
-						<div class='tag'>Informatique</div>
-						<div class='tag'>Jeunesse</div>
-						<div class='tag'>Projets</div>
+						{% for tag in projet.tags %}
+							<div class='tag'>{{ tag.nom }}</div>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
@@ -88,7 +87,7 @@
 					<div class='tab-box aside'>
 						<h1>Ressources</h1>
 						{% for besoin in projet.besoins %}
-							<p><strong>{{ besoin.idRessource.nom }}</strong><span class="pull-right label label-success">Collecté : {{ besoin.quantiteActuelle }} sur {{ besoin.quantiteDemande }}</span></p>
+							<p><strong>{{ besoin.ressource }}</strong><span class="pull-right label label-success">Collecté : {{ besoin.quantiteActuelle }} sur {{ besoin.quantiteDemande }}</span></p>
 							{% set pourcentage = ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
 							<div class="progress">
 								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ pourcentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ pourcentage }}%">
@@ -152,20 +151,12 @@
 				<div class="tab-pane fade" id="tabhistory">
 					<h1 class='tab-title'><i class="fa fa-quote-left"></i> Redynamiser le développement numérique à Boulogne sur mer <i class="fa fa-quote-right"></i></h1>
 					<div class='tab-media'><iframe width="100%" height="400" src="https://www.youtube.com/embed/ScMzIvxBSi4" frameborder="0" allowfullscreen></iframe></div>
-					<div class='tab-box'>
-						<h1>Dans le plan de rénovation urbaine</h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-							sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-					</div>
-					<div class='tab-box'>
-						<h1>C'est quoi un espace de "co-working" ?</h1>
-						<p class='picture'><img src="{{ asset('images/2.jpg') }}"/></p>
-					</div>
+					{% for box in projet.boxs %}
+						<div class='tab-box'>
+							<h1>{{ box.titre }}</h1>
+							<p>{{ box.contenu }}</p>
+						</div>
+					{% endfor %}
 				</div>
 				<div class="tab-pane fade" id="tabupdates">
 					<div class='tab-box full'>

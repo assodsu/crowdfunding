@@ -81,11 +81,26 @@ class Projet
     */
     private $besoins;
 
+    /**
+    * @ORM\ManyToMany(targetEntity="CF\MainBundle\Entity\Tags", cascade={"persist"})
+    * @ORM\JoinTable(name="projet_tags")
+    */
+    private $tags;
+
+    /**
+    * @ORM\OneToMany(targetEntity="CF\MainBundle\Entity\Box", cascade={"persist"}, mappedBy="projet")
+    */
+    private $boxs;
+
 
     public function __construct()
     {
         $this->setDateCreation(new \DateTime());
+        $date = new \DateTime();
+        $this->setDateFin($date->add(new \DateInterval('P4M')));
         $this->setPourcentageTotal("0");
+        $this->besoins = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->boxs = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -313,5 +328,71 @@ class Projet
     public function getBesoins()
     {
         return $this->besoins;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \CF\MainBundle\Entity\Tags $tags
+     * @return Projet
+     */
+    public function addTag(\CF\MainBundle\Entity\Tags $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \CF\MainBundle\Entity\Tags $tags
+     */
+    public function removeTag(\CF\MainBundle\Entity\Tags $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Add boxs
+     *
+     * @param \CF\MainBundle\Entity\Box $boxs
+     * @return Projet
+     */
+    public function addBox(\CF\MainBundle\Entity\Box $boxs)
+    {
+        $this->boxs[] = $boxs;
+
+        return $this;
+    }
+
+    /**
+     * Remove boxs
+     *
+     * @param \CF\MainBundle\Entity\Box $boxs
+     */
+    public function removeBox(\CF\MainBundle\Entity\Box $boxs)
+    {
+        $this->boxs->removeElement($boxs);
+    }
+
+    /**
+     * Get boxs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBoxs()
+    {
+        return $this->boxs;
     }
 }

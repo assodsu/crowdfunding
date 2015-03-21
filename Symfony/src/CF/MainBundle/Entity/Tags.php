@@ -29,16 +29,6 @@ class Tags
     private $nom;
 
     /**
-    *@ORM\ManyToMany(targetEntity="CF\MainBundle\Entity\Projet")
-    */
-    private $projets;
-
-    /**
-    *@ORM\ManyToMany(targetEntity="CF\UserBundle\Entity\Particulier")
-    */
-    private $particuliers;
-
-    /**
      * Get id
      *
      * @return integer 
@@ -69,79 +59,5 @@ class Tags
     public function getNom()
     {
         return $this->nom;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->projets = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->particuliers = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add projets
-     *
-     * @param \CF\MainBundle\Entity\Projets $projets
-     * @return Tags
-     */
-    public function addProjet(\CF\MainBundle\Entity\Projets $projets)
-    {
-        $this->projets[] = $projets;
-
-        return $this;
-    }
-
-    /**
-     * Remove projets
-     *
-     * @param \CF\MainBundle\Entity\Projets $projets
-     */
-    public function removeProjet(\CF\MainBundle\Entity\Projets $projets)
-    {
-        $this->projets->removeElement($projets);
-    }
-
-    /**
-     * Get projets
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProjets()
-    {
-        return $this->projets;
-    }
-
-    /**
-     * Add particuliers
-     *
-     * @param \CF\UserBundle\Entity\Particulier $particuliers
-     * @return Tags
-     */
-    public function addParticulier(\CF\UserBundle\Entity\Particulier $particuliers)
-    {
-        $this->particuliers[] = $particuliers;
-
-        return $this;
-    }
-
-    /**
-     * Remove particuliers
-     *
-     * @param \CF\UserBundle\Entity\Particulier $particuliers
-     */
-    public function removeParticulier(\CF\UserBundle\Entity\Particulier $particuliers)
-    {
-        $this->particuliers->removeElement($particuliers);
-    }
-
-    /**
-     * Get particuliers
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getParticuliers()
-    {
-        return $this->particuliers;
     }
 }
