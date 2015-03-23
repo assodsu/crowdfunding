@@ -76,7 +76,7 @@ $(document).ready(function() {
 	}
 
 	function ajouterLienSuppressionBox($prototype) {
-		$lienSuppression = $('<a href="#" class="btn btn-danger"><i class="fa fa-minus"></i></a>');
+		$lienSuppression = $('<a href="#" class="btn btn-danger" id="suppr_box"><i class="fa fa-minus"></i></a>');
 		$prototype.append($lienSuppression);
 
 		$lienSuppression.click(function(e) {

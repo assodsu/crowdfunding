@@ -1,36 +1,37 @@
 #boites, #ressources {
 	text-align: left;
+	background-color: rgb(66, 139, 202);
+	padding: 20px;
+	border: 1px solid;
+}
+#cf_mainbundle_projet_boxs > div, #cf_mainbundle_projet_besoins > div {
+	margin:5px;
+	width: 200px;
+	height:auto;
+	display:inline-block;
+	padding:10px;
+	border:1px solid black;
+	border-radius: 5px;
+	background: whitesmoke;
 }
 #cf_mainbundle_projet_boxs > div{
-	width: 100%;
-	margin:5px;
-	height:auto;
-	display:inline-block;
-	padding:10px;
-	border:1px solid black;
-	border-radius: 5px;
+	width: calc(50% - 10px);
 }
-#cf_mainbundle_projet_besoins > div{
-	width: 200px;
-	margin:5px;
-	height:auto;
-	display:inline-block;
-	padding:10px;
-	border:1px solid black;
-	border-radius: 5px;
-}
-#ajout_besoin {
+#ajout_besoin, #ajout_box {
   height: 90px;
   line-height: 75px;
   width: 90px;
   margin: 64px 60px;
   vertical-align: top;
 }
-#ajout_besoin > i {
+#ajout_box {
+	margin: 64px calc(25% - 49px);
+}
+#ajout_besoin > i, #ajout_box > i {
   font-size: 30pt;
   vertical-align: middle;
 }
-#suppr_besoin {
+#suppr_besoin, #suppr_box {
   margin-left: 25%;
   margin-top: 10px;
   width: 50%;
@@ -42,6 +43,7 @@ h1 {
 }
 .container {
 	margin-bottom:20px;
+	width:100%;
 }
 #body > div > div > ul, #body > div {
 	margin-bottom: 0.5px;

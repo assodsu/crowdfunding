@@ -100,7 +100,7 @@
 		                <div class="container">
 	                		{{ form_row(form.infoSup) }}
 			            </div>
-		    			<input type="submit" value="Créer !"/>
+		    			<input type="submit" value="Créer !" class="btn btn-success"/>
 		            </div>
 		        </div>
 		    </div>
@@ -114,14 +114,4 @@
 	{{ parent() }}
 	<script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/create_project.js')}}"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			/*$('#addBox').click(function(){
-				var titre = $('#titre').val();
-				var contenu = CKEDITOR.instances['contenu'].getData()
-				$('#boites').append('<div class="boxHistoire"><h1>'+titre+'</h1><p>'+contenu+'</p></div>');
-				$('#closeModal').click();
-			});*/
-		});
-	</script>
 {% endblock %}

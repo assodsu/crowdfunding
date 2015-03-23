@@ -16,7 +16,7 @@ class BoxType extends AbstractType
     {
         $builder
             ->add('titre','text', array('label' => 'Titre : ', 'attr' => array('class' => 'form-control')))
-            ->add('contenu','textarea', array('label' => 'Contenu : ','attr' => array('class' => 'ckeditor')))
+            ->add('contenu','textarea', array('label' => 'Contenu : ','attr' => array('class' => 'form-control')))
         ;
     }
     
