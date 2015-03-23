@@ -12,14 +12,13 @@ class ProjectController extends Controller
 	public function showAction($id)
     {
         $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
-        $besoins = $this->getDoctrine()->getRepository('CFMainBundle:Besoins')->findBy(array('idProjet' => $id));
 
         if (!$projet) {
             throw $this->createNotFoundException(
                 'Aucun projet trouvé pour cet id : '.$id
             );
         }
-        return $this->render('CFMainBundle:Project:show.html.twig', array('projet'=>$projet, 'besoins'=>$besoins));
+        return $this->render('CFMainBundle:Project:show.html.twig', array('projet'=>$projet));
     }
 	
     public function showAllAction()
@@ -86,4 +85,46 @@ class ProjectController extends Controller
 
         return $this->render('CFMainBundle:Project:add.html.twig', array('form' => $form->createView()));
     }
+
+      public function redigerActuAction($id,Request $request)
+    {
+
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            if(!$user)
+            {
+                    return $this->redirect('fos_user_security_login');
+            }
+            else
+            {
+                $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
+                if (!$projet) 
+                {
+                    throw $this->createNotFoundException(
+                        'Aucun projet trouvé pour cet id : '.$id
+                    );
+                }
+                
+                $actu = new Actualites();
+                $form= $this->createForm(new ActualitesType(),$actu);
+
+                $actu->setIdProjet($projet);
+
+                if($request->getMethod()=='POST')
+                {
+                    $form->bind($request);
+                    if($form->isValid())
+                    {
+                        $em=$this->getDoctrine()->getEntityManager();
+                        $actu = $form->getData();
+
+                        $em->persist($actu);
+                        $em->flush();
+
+                        return $this->redirect('cf_main_project',array('id'=>$actu->getIdProjet()));
+                    }
+                }
+                return $this->render('CFMainBundle:Project:redigerActu.html.twig',array('projet'=>$projet));
+            }
+            
+        }
 }

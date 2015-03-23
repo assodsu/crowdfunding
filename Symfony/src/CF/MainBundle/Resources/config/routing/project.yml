@@ -1,0 +1,19 @@
+cf_main_project:
+    path:     /{id}
+    defaults: { _controller: CFMainBundle:Project:show }
+    requirements:
+        _method: GET
+        id: \d
+
+cf_main_addProjects:
+    path:     /creer/
+    defaults: { _controller: CFMainBundle:Project:add }
+    requirements:
+        _method: GET|POST
+
+cf_main_newActualite:
+    path:    /rediger-actualite/{id}
+    defaults: { _controller: CFMainBundle:Project:redigerActu }
+    requirements:
+        _method: GET|POST
+        id: \d

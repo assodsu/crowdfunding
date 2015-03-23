@@ -43,16 +43,23 @@ class Besoins
     private $pourcentage;
 
     /**
-    * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Projet")
-    * @ORM\JoinColumn(name="idProjet",referencedColumnName="id")
-    */
-    private $idProjet;
-
-    /**
-    * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Ressources")
+    * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Ressources", cascade={"persist"})
     * @ORM\JoinColumn(name="idRessource",referencedColumnName="id")
     */
     private $idRessource;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Projet", inversedBy="besoins")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $projet;
+
+
+    public function __construct()
+    {
+        $this->setQuantiteActuelle(0);
+        $this->setPourcentage("0");
+    }
 
 
     /**
@@ -135,29 +142,6 @@ class Besoins
     }
 
     /**
-     * Set idProjet
-     *
-     * @param \CF\MainBundle\Entity\Projet $idProjet
-     * @return Besoins
-     */
-    public function setIdProjet(\CF\MainBundle\Entity\Projet $idProjet)
-    {
-        $this->idProjet = $idProjet;
-
-        return $this;
-    }
-
-    /**
-     * Get idProjet
-     *
-     * @return \CF\MainBundle\Entity\Projet 
-     */
-    public function getIdProjet()
-    {
-        return $this->idProjet;
-    }
-
-    /**
      * Set idRessource
      *
      * @param \CF\MainBundle\Entity\Ressources $idRessource
@@ -178,5 +162,28 @@ class Besoins
     public function getIdRessource()
     {
         return $this->idRessource;
+    }
+
+    /**
+     * Set projet
+     *
+     * @param \CF\MainBundle\Entity\Projet $projet
+     * @return Besoins
+     */
+    public function setProjet(\CF\MainBundle\Entity\Projet $projet)
+    {
+        $this->projet = $projet;
+
+        return $this;
+    }
+
+    /**
+     * Get projet
+     *
+     * @return \CF\MainBundle\Entity\Projet 
+     */
+    public function getProjet()
+    {
+        return $this->projet;
     }
 }

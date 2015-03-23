@@ -3,17 +3,8 @@ cf_main_homepage:
     defaults: { _controller: CFMainBundle:Page:index }
 
 cf_main_project:
-    path:     /projet/{id}
-    defaults: { _controller: CFMainBundle:Project:show }
-    requirements:
-        _method: GET
-        id: \d+
-
-cf_main_addProjects:
-    path:     /projet/creer/
-    defaults: { _controller: CFMainBundle:Project:add }
-    requirements:
-        _method: GET|POST
+    resource: routing/project.yml
+    prefix: /projet
 
 cf_main_projects:
     resource: routing/projects.yml
@@ -22,3 +13,5 @@ cf_main_projects:
 cf_main_contact:
     path:    /contact/
     defaults: { _controller: CFMainBundle:Page:contact }
+    requirements:
+        _method: GET

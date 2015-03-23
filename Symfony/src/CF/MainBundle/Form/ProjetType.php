@@ -17,11 +17,27 @@ class ProjetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom', null, array('label' => "Nom du projet : "))
-            ->add('dateFin', 'date', array('label' => "Date de fin : "))
-            ->add('description', 'textarea',  array('label' => "Description : ", 'attr' => array('class' => 'ckeditor')))
+            ->add('nom', null, array('label' => "Nom du projet : ", 'attr' => array('class' => 'form-control')))
+            ->add('description', 'textarea',  array('label' => false, 'attr' => array('class' => 'ckeditor')))
             ->add('infoSup', 'textarea',  array('label' => "Informations supplémentaires : ", 'attr' => array('class' => 'ckeditor')))
-            ->add('background', new MediaType(),  array('label' => "Image de fond : "))
+            ->add('background', new MediaType(),  array('label' => "Image de fond : ", 'attr' => array('class' => 'file')))
+            ->add('besoins', 'collection', array('label' => false,
+                'type' => new BesoinsType(),
+                'allow_add'    => true,
+                'allow_delete' => true
+                ))
+            ->add('tags',  'entity', array('attr' => array('class' => 'form-control'),
+                'class'    => 'CFMainBundle:Tags',
+                'property' => 'nom',
+                'multiple' => true
+                ))
+            ->add('boxs', 'collection', array('label' => false,
+                'type' => new BoxType(),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+                ))
         ;
     }
     

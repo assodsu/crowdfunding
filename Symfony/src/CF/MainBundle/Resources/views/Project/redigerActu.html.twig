@@ -1,0 +1,30 @@
+{% extends "CFMainBundle::layout.html.twig" %}
+
+{% block title %}
+  Projets - {{ parent() }}
+{% endblock %}
+
+{% block navbarProject %} class="active" {% endblock %}
+
+{% block stylesheet %}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	{% if app.user %}
+		{% if projet.idAsso == app.user.id %}
+		<form action="{{ path('cf_main_newActualite')}}" method="post" {{ form_enctype(form) }}>
+		    {{ form_widget(form) }}
+
+		    <input type="submit" />
+		</form>
+		{% else %}
+			<h3>Veuillez vous connecter à nos services afin de rédiger des annonces concernants vos projets</h3>
+		{% endif %}
+	{% endif %}
+{% endblock %}
+
+{% block javascript %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
+{% endblock %}http://localhost/crowdfunding/Symfony/web/app_dev.php

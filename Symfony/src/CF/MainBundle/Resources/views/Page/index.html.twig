@@ -14,12 +14,10 @@
 {% block header %}
 	{{ parent() }}
 	<!-- Titres et réseaux sociaux -->
-	<h1>C O C E P T I O</h1>
-	<h2>concevoir | ensemble</h2>
-	<div id="reseaux_sociaux">
-		<a href="#" id="facebook"><span class="fa fa-facebook"></span> Facebook</a>
-		<a href="#" id="twitter"><span class="fa fa-twitter"></span> Twitter</a>
-		<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> Google+</a>
+	<div id="header_title">
+		<h1>COCEPTIO</h1>
+		<h2 id="header_left">concevoir - </h2>
+		<h2 id="header_right"> - ensemble</h2>
 	</div>
 {% endblock %}
 
@@ -31,50 +29,39 @@
 			<a href='#' class='menuButton'>Touche à sa fin</a>
 			<a href='#' class='menuButton'>Nouveaux</a>
 			<a href='#' class='menuButton'>Tous les</br>projets</a>
+			<div id="reseaux_sociaux">
+				<a href="#" id="facebook"><span class="fa fa-facebook"></span> Facebook</a>
+				<a href="#" id="twitter"><span class="fa fa-twitter"></span> Twitter</a>
+				<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> Google+</a>
+			</div>
 		</div>
-		<span class="glyphicon glyphicon-chevron-left"></span>
-		<span class="glyphicon glyphicon-chevron-right"></span>
-		<div class="slider text-center" id="carousel">
-			<div id="filter-left"></div>
-			<div id="filter-right"></div>
-			<div class="bx-wrapper">
-				<div class="bx-viewport">
-					<div class="bxslider">
-						{% for projet in projets %}
-						<div class="slide">
-							<a href="{{ path('cf_main_project', {'id' : projet.id}) }}">
-								<img src="{{ asset(projet.background.AssetPath) }}">
-								<div class="project-title">
-									<h2>{{ projet.nom }}</h2>
-									<p>{{ projet.idAsso.nomAsso }}</p>
-								</div>
-							</a>
+		<div id="panel-carousel">
+			<div class="slider text-center" id="carousel">
+				<div id="filter-left">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</div>
+				<div id="filter-right">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</div>
+				<div class="bx-wrapper">
+					<div class="bx-viewport">
+						<div class="bxslider">
+							{% for projet in projets %}
+							<div class="slide">
+								<a href="{{ path('cf_main_project', {'id' : projet.id}) }}">
+									<img src="{{ asset(projet.background.AssetPath) }}">
+									<div class="project-title">
+										<h2>{{ projet.nom }}</h2>
+										<p>{{ projet.idAsso.nomAsso }}</p>
+									</div>
+								</a>
+							</div>
+							{% endfor %}
 						</div>
-						{% endfor %}
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<!-- Ancien carousel -->
-		<div id="carousel-horizontal" style="display:none;">
-			<ul>
-				{% for projet in projets %}
-					<li>
-						<div class='project-title'><a href=''>{{ projet.nom }}</a></div>
-						<div><img src="{{ asset(projet.background.AssetPath) }}"/></div>
-					</li>
-				{% endfor %}
-				{% for projet in projets %}
-					<li>
-						<div class='project-title'><a href=''>{{ projet.nom }}</a></div>
-						<div><img src="{{ asset(projet.background.AssetPath) }}"/></div>
-					</li>
-				{% endfor %}
-			</ul>
-		</div>
-		<!-- Ancien carousel -->
-
 	</div>
 	
 	<!-- Barre de recherche-->
@@ -97,7 +84,6 @@
 	
 	<!-- Vignettes drag and drop -->
 	<div class="dragdrop-button-container">
-		<p>... ou glissez les boutons de centre d'interêt dans la barre de recherche</p>
 		<ul id="categories">
 			<li class="btn btn-primary btn-lg" value="Sport" app="#categories"><span class="fa fa-trophy"></span> Sport</li>
 			<li class="btn btn-primary btn-lg" value="Loisirs" app="#categories"><span class="glyphicon glyphicon-send"></span> Loisirs</li>
@@ -119,16 +105,10 @@
 
 {% block javascript %}
 	{{ parent() }}
-	<script type="text/javascript" src="{{asset('js/carousel.js')}}"></script>
 	<script type="text/javascript" src="{{ asset('js/dragdrop.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/bxslider.min.js') }}"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/*var carousel = $('#carousel-horizontal').scrollingCarousel( {
-				scrollerAlignment : 'horizontal',
-				autoScroll: true,
-				autoScrollSpeed: 40000
-			});*/
 			var carousel = $('.bxslider').show().bxSlider({
 			    auto: true,
 			    controls: false,
