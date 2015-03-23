@@ -117,7 +117,6 @@
 #content-ressources {
 	width:100%;
 	height:100%;
-	/*-webkit-clip-path: polygon(0px 250px,100% 250px,100% 0px,155px 0px);*/
 }
 #content-ressources #diagramme {
 	position:relative;
@@ -202,8 +201,6 @@
 	float:right;
 	height:46px;
 	padding-left:40px;
-	background-color: rgba(200,200,200,.6);
-	-webkit-clip-path: polygon(0px 45px,100% 45px,100% 0px,40px 0px);
 }
 #project-tags .tag {
 	cursor:default;
@@ -305,6 +302,10 @@
 	margin-bottom:5px;
 	margin-left:5px;
 	font-family: arial;
+}
+.fos_comment_comment_form_holder.tab-box.full.comment {
+  background: none;
+  border: none;
 }
 /**** LOADING ****/
 #loading {

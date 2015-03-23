@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Box
  *
- * @ORM\Table()
+ * @ORM\Table(name="box")
  * @ORM\Entity
  */
 class Box
@@ -35,11 +35,11 @@ class Box
      */
     private $contenu;
 
-     /**
-     *  @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Projet")
-     *  @ORM\JoinColumn(name="projet", referencedColumnName="id")
-     */
-     private $projet;
+    /**
+    * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Projet", inversedBy="boxs")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $projet;
 
     /**
      * Get id
@@ -98,25 +98,25 @@ class Box
     }
 
     /**
-     * Set idProjet
+     * Set projet
      *
-     * @param \CF\MainBundle\Entity\Projet $idProjet
+     * @param \CF\MainBundle\Entity\Projet $projet
      * @return Box
      */
-    public function setIdProjet(\CF\MainBundle\Entity\Projet $idProjet)
+    public function setProjet(\CF\MainBundle\Entity\Projet $projet)
     {
-        $this->idProjet = $idProjet;
+        $this->projet = $projet;
 
         return $this;
     }
 
     /**
-     * Get idProjet
+     * Get projet
      *
      * @return \CF\MainBundle\Entity\Projet 
      */
-    public function getIdProjet()
+    public function getProjet()
     {
-        return $this->idProjet;
+        return $this->projet;
     }
 }

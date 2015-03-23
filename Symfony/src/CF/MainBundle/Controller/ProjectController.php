@@ -75,6 +75,18 @@ class ProjectController extends Controller
             {
                 $em = $this->getDoctrine()->getEntityManager();
                 $projet = $form->getData();
+
+                $besoins = $projet->getBesoins();
+                foreach($besoins as $besoin)
+                {
+                    $besoin->setProjet($projet);
+                }
+
+                $boxs = $projet->getBoxs();
+                foreach($boxs as $box)
+                {
+                    $box->setProjet($projet);
+                }
                 
                 $em->persist($projet);
                 $em->flush();

@@ -15,12 +15,8 @@ class BesoinsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('quantiteDemande')
-            ->add('idRessource', 'entity', array(
-                  'class'    => 'CFMainBundle:Ressources',
-                  'property' => 'nom',
-                  'multiple' => false
-                  ))
+            ->add('quantiteDemande', null ,array('label' => "Quantité : ", 'attr' => array('class' => 'form-control')))
+            ->add('ressource', 'text', array('label' => "Nom : ", 'attr' => array('class' => 'form-control')))
         ;
     }
     

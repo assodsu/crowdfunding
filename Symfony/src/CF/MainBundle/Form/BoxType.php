@@ -15,9 +15,8 @@ class BoxType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre')
-            ->add('contenu')
-            ->add('idProjet')
+            ->add('titre','text', array('label' => 'Titre : ', 'attr' => array('class' => 'form-control')))
+            ->add('contenu','textarea', array('label' => 'Contenu : ','attr' => array('class' => 'ckeditor')))
         ;
     }
     
