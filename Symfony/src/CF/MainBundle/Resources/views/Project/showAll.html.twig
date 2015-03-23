@@ -116,7 +116,8 @@
             </div>
 	<div class="content">
 	{% for projet in projets %}
-	{% if projet.tag == app.request.attributes.get('_route') %}
+	<!--{# for tag in tags #}-->
+	<!--{# if (tag.id.projet_id == projet.id ) and ( tag.nom == tags ) #}-->
 		<div class="apercu">
 			<img src="{{asset( projet.background.AssetPath )}}"/>
 			<div class="filtre">
@@ -134,12 +135,14 @@
 					<ul class="pie">
 						<li class="visualize" data-color="#5cb85c" data-value="70"></li>
 						<li class="visualize" data-color="#5bc0de" data-value="25"></li>
+						<li class="visualize" data-color="#d9534f" data-value="0"></li>
 						<li class="visualize" data-color="rgba(0,0,0,0)" data-value="5"></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-	{% endif %}
+	<!--{# endif #}-->
+	<!--{# endfor #}-->
 	{% endfor %}
 </div>
 {% endblock %}
@@ -152,13 +155,13 @@
 	<script>
 	$(document).ready(function(){
 		$(".tag").click(function(){
-			var tags = $(this).attr("href").value;
-			alert(tags);
+			var tagsjs = $(this).attr("href");
+			alert(tagsjs);
 
 			function ajax(tagsjs){
 				$.get("showAll.html.twig",{tags: tagsjs});
 			}
-			ajax($("#tags").val());
+			ajax(tagsjs);
 		});
 	});
 	</script>

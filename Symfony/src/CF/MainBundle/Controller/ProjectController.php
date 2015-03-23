@@ -24,14 +24,14 @@ class ProjectController extends Controller
 	
     public function showAllAction()
     {	
-	
-		//$tag=$_POST["tag"];
-		
 		$all = $this->getDoctrine()->getEntityManager()
 		->createQuery('SELECT p FROM CFMainBundle:Projet p WHERE p.dateFin > CURRENT_DATE()')
         ->getResult();
+		$tagprojet = $this->getDoctrine()->getEntityManager()
+		->createQuery('SELECT t FROM CFMainBundle:Tags t')
+        ->getResult();
 		
-        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$all));
+        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$all,'tags'=>$tagprojet));
     }
 	
     public function showEndingAction()
