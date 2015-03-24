@@ -11,7 +11,7 @@ cf_main_projects:
     prefix: /projets
 
 cf_main_contact:
-    path:    /contact/
+    path:    /contact
     defaults: { _controller: CFMainBundle:Page:contact }
     requirements:
         _method: GET

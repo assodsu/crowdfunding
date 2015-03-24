@@ -65,11 +65,12 @@ class ProjectController extends Controller
         $projet = new Projet();
         $form = $this->createForm(new ProjetType(), $projet);
 
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        $projet->setIdAsso($user);
         
         if($request->getMethod() == 'POST')
         {
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $projet->setIdAsso($user);
+            
             $form->bind($request);
             if($form->isValid())
             {

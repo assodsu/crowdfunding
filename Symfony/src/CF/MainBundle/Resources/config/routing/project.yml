@@ -3,10 +3,10 @@ cf_main_project:
     defaults: { _controller: CFMainBundle:Project:show }
     requirements:
         _method: GET
-        id: \d
+        id: \d+
 
 cf_main_addProjects:
-    path:     /creer/
+    path:     /creer
     defaults: { _controller: CFMainBundle:Project:add }
     requirements:
         _method: GET|POST
@@ -16,4 +16,4 @@ cf_main_newActualite:
     defaults: { _controller: CFMainBundle:Project:redigerActu }
     requirements:
         _method: GET|POST
-        id: \d
+        id: \d+
