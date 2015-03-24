@@ -15,6 +15,11 @@ class BesoinsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('type', 'choice', array(
+                    'choices'   => array('materiel' => 'Matériel', 'financier' => 'Financier', 'benevole' => 'Bénévole', 'communication' => 'Communication'),
+                    'required'  => true,
+                    'attr' => array('class' => 'form-control'),
+                ))
             ->add('quantiteDemande', null ,array('label' => "Quantité : ", 'attr' => array('class' => 'form-control')))
             ->add('ressource', 'text', array('label' => "Nom : ", 'attr' => array('class' => 'form-control')))
         ;

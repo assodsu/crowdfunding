@@ -50,6 +50,13 @@ class Besoins
     private $ressource;
 
     /**
+    * @var string
+    * 
+    * @ORM\Column(name="type", type="string", length=150)
+    */
+    private $type;
+
+    /**
     * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Projet", inversedBy="besoins")
     * @ORM\JoinColumn(nullable=false)
     */
@@ -186,5 +193,28 @@ class Besoins
     public function getRessource()
     {
         return $this->ressource;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Besoins
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
