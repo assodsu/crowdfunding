@@ -10,29 +10,60 @@
 {% endblock %}
 
 {% block body %}
-	 <h1>Inscription d'une Entreprise</h1>
+	<div class="row form-group">
+        <div class="col-xs-12">
+            <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+                <li class="active"><a href="#step-1">
+                    <h4 class="list-group-item-heading">Identifiants</h4>
+                    <p class="list-group-item-text">Etape 1</p>
+                </a></li>
+                <li class="disabled"><a href="#step-2">
+                    <h4 class="list-group-item-heading">Renseignements</h4>
+                    <p class="list-group-item-text">Etape 2</p>
+                </a></li>
+                <li class="disabled"><a href="#step-3">
+                    <h4 class="list-group-item-heading">Adresse</h4>
+                    <p class="list-group-item-text">Etape 3</p>
+                </a></li>
+                <li class="disabled"><a href="#step-4">
+                    <h4 class="list-group-item-heading">Reseaux sociaux</h4>
+                    <p class="list-group-item-text">Etape 4</p>
+                </a></li>
+                <li class="disabled"><a href="#step-5">
+                    <h4 class="list-group-item-heading">Image de profil</h4>
+                    <p class="list-group-item-text">Etape 5</p>
+                </a></li>
 
-    <div class="center-block container-page">
+            </ul>
+        </div>
+    </div>
         
-        <form action="{{ path('entreprise_registration') }}" {{ form_enctype(form) }} method="POST" id="SignupForm" class="form-horizontal form">
+        <form action="{{ path('entreprise_registration') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal form">
+            <div class='form-group'>
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
 
-            <fieldset>
-                        
+            
+                <div class="row setup-content" id="step-1">
+                    <div class="col-xs-12">
+                    <div class="col-md-12 well text-center">   
                     <legend>Première étape - Identifiants</legend>
-                       
+                     <div class='container'>  
                     {{ form_row(form.email) }}
 
                     {{ form_errors(form.plainPassword) }}
                     {{ form_widget(form.plainPassword) }}
-                        
-            </fieldset>
+                    </div>
+                    <button id="activate-step-2" class="btn btn-primary btn-lg">Etape suivante</button>
+                </div></div></div>        
+            
 
-            <fieldset>
+             <div class="row setup-content" id="step-2">
+                <div class="col-xs-12">
+                    <div class="col-md-12 well text-center">
 
                     <legend>Deuxième étape - Renseignements</legend>
-
+                    <div class='container'>
                     {{ form_row(form.nomEntreprise) }}
 
                     {{ form_row(form.numSiret) }}
@@ -40,44 +71,54 @@
                     {{ form_row(form.dateCreationEntreprise) }}
 
                     {{ form_row(form.telephone) }}
+                    </div>
+                    <button id="activate-step-3" class="btn btn-primary btn-lg">Etape suivante</button>
+            </div></div></div>  
 
-            </fieldset>
-
-            <fieldset>
+             <div class="row setup-content" id="step-3">
+                <div class="col-xs-12">
+                    <div class="col-md-12 well text-center">
 
                     <legend>Troisième étape - Adresse</legend>
+                    <div class='container'>
+                        {{ form_row(form.adresse) }}
 
-                    {{ form_row(form.adresse) }}
+                        {{ form_row(form.cp) }}
 
-                    {{ form_row(form.cp) }}
+                        {{ form_row(form.ville) }}
+                    </div>
+                    <button id="activate-step-4" class="btn btn-primary btn-lg">Etape suivante</button>
+            </div></div></div>  
 
-                    {{ form_row(form.ville) }}
-
-            </fieldset>
-
-            <fieldset>
+             <div class="row setup-content" id="step-4">
+                <div class="col-xs-12">
+                    <div class="col-md-12 well text-center">
 
                     <legend>Quatrième étape - Reseaux sociaux</legend>
+                    <div class='container'>
+                        {{ form_row(form.site) }}
+                        
+                        {{ form_row(form.facebook) }}
+                        
+                        {{ form_row(form.twitter) }}
 
-                    {{ form_row(form.site) }}
-                    
-                    {{ form_row(form.facebook) }}
-                    
-                    {{ form_row(form.twitter) }}
+                        {{ form_row(form.googleplus) }}
+                    </div>
+                    <button id="activate-step-5" class="btn btn-primary btn-lg">Etape suivante</button>
+            </div></div></div>  
 
-                    {{ form_row(form.googleplus) }}
-
-            </fieldset>
-
-            <fieldset>
+            <div class="row setup-content" id="step-5">
+                <div class="col-xs-12">
+                    <div class="col-md-12 well text-center">
     
                     <legend>Cinquième étape - Logo</legend>
+                    <div class='container'>
+                        {{ form_errors(form.logo) }}
+                        {{ form_widget(form.logo) }}
+                    </div>
+                    <input type="submit" id="valider" value="Terminer" class="btn btn-success"/>
 
-                    {{ form_errors(form.logo) }}
-                    {{ form_widget(form.logo) }}
-                    <input type="submit" id="valider" value="Terminer" class="btn btn-primary"/>
-
-            </fieldset>
+            </div></div></div>  
             {{ form_end(form) }}
          </form>
 

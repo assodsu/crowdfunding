@@ -9,34 +9,19 @@
 
 .form{ 
         width:50%;
-        margin-left:25%;
         padding:0px;
         margin-bottom:1%;
 }
 
-fieldset{
-        width: calc(100% - 40px);
-        padding: 0 20px;
-        margin-left: 20px;
-        margin-top: 20px;
-        background-color:#fff;
-        border-radius: 5px;
-        padding-bottom:2px;
-        display:inline-block;
-        vertical-align:top;
-        border:1px solid rgba(0,0,0,.1);
-}
 
 legend { 
         border-radius: 5px;
         width: 100%;
         padding:3px;
-        background-color:#fff;
-        color:#b0232a;
         font-weight:bold;
-        font-size:20pt;
+        font-size:17pt;
         float: left;
-        border-bottom:1px solid #eee;
+        border-bottom:2px solid #bbb;
 }
 
 label { 
@@ -46,72 +31,29 @@ label {
         width:40%;
 }
 
-.prev { 
-        margin-top:6px;
-        float:left;
-        bottom:0;
-}
-
-.next { 
-        margin-top:6px;
-        float:right;
-        bottom:0;
-}
-
-#steps {
-        list-style:none;
-        width:50%; 
-        overflow:hidden;
-        margin-left:25%;
-        padding:0px;
-}
-
-#steps li {
-        font-size:24px;
-        float:left;
-        padding:10px;
-        color:#b0b1b3;
-}
-
-#steps li span {
-        font-size:11px;
-        display:block;
-}
-
-#steps li.current { 
-        color:#FFFFFF;
-}
-
-#makeWizard { 
-        background-color:#b0232a;
-        color:#fff; padding:5px 10px;
-        text-decoration:none; 
-        font-size:18px;
-}
-
-#makeWizard:hover { 
-        background-color:#000;
-}
-
-input[type='text'],input[type='email'],input[type='password'],#fos_user_registration_form_dateCreationAsso,#fos_user_registration_form_dateCreationEntreprise,#fos_user_registration_form_dateNaissance{
-        display: inline-block;
-        width:35%;
-        height:7%;
-        border-radius: 5px;
-}
-
-input[type='radio']{
-        display:inline-block;
-        width:2%;
-}
 
 #valider{
         float:right;
 }
 
+h1 {
+  border-bottom: 1px solid #333333;
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+.container {        
+        width:100%;
+}
+#body > div > div > ul, #body > div {
+        margin-bottom: 0.5px;
+}
+#body > form {
+        width:80%;
+        margin-left:auto;
+        margin-right:auto;
+}
 h1{
         color:white;
         text-align: center;
         width:100%;
 }
-
