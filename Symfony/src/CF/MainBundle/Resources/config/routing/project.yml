@@ -17,3 +17,10 @@ cf_main_newActualite:
     requirements:
         _method: GET|POST
         id: \d+
+
+cf_main_participate:
+    path:    /participer/{id}
+    defaults: { _controller: CFMainBundle:Project:participate }
+    requirements:
+        _method: GET|POST
+        id: \d+

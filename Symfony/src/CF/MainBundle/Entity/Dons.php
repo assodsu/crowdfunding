@@ -29,16 +29,17 @@ class Dons
     private $quantite;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idFournisseur", type="integer")
-     */
-    private $idFournisseur;
-
-    /**
-    * @ORM\ManyToMany(targetEntity="CF\MainBundle\Entity\Ressources")
+    * @ORM\ManyToOne(targetEntity="CF\UserBundle\Entity\User")
+    * @ORM\JoinColumn(name="fournisseur", referencedColumnName="id")
+    * @ORM\JoinColumn(nullable=false)
     */
-    private $ressources;
+    private $fournisseur;
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Besoins", inversedBy="dons")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $besoin;
 
     /**
      * Get id
@@ -74,65 +75,48 @@ class Dons
     }
 
     /**
-     * Set idFournisseur
+     * Set fournisseur
      *
-     * @param integer $idFournisseur
+     * @param \CF\UserBundle\Entity\User $fournisseur
      * @return Dons
      */
-    public function setIdFournisseur($idFournisseur)
+    public function setFournisseur(\CF\UserBundle\Entity\User $fournisseur = null)
     {
-        $this->idFournisseur = $idFournisseur;
+        $this->fournisseur = $fournisseur;
 
         return $this;
     }
 
     /**
-     * Get idFournisseur
+     * Get fournisseur
      *
-     * @return integer 
+     * @return \CF\UserBundle\Entity\User 
      */
-    public function getIdFournisseur()
+    public function getFournisseur()
     {
-        return $this->idFournisseur;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->ressources = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->fournisseur;
     }
 
     /**
-     * Add ressources
+     * Set besoin
      *
-     * @param \CF\MainBundle\Entity\Ressources $ressources
+     * @param \CF\MainBundle\Entity\Besoins $besoin
      * @return Dons
      */
-    public function addRessource(\CF\MainBundle\Entity\Ressources $ressources)
+    public function setBesoin(\CF\MainBundle\Entity\Besoins $besoin)
     {
-        $this->ressources[] = $ressources;
+        $this->besoin = $besoin;
 
         return $this;
     }
 
     /**
-     * Remove ressources
+     * Get besoin
      *
-     * @param \CF\MainBundle\Entity\Ressources $ressources
+     * @return \CF\MainBundle\Entity\Besoins 
      */
-    public function removeRessource(\CF\MainBundle\Entity\Ressources $ressources)
+    public function getBesoin()
     {
-        $this->ressources->removeElement($ressources);
-    }
-
-    /**
-     * Get ressources
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getRessources()
-    {
-        return $this->ressources;
+        return $this->besoin;
     }
 }

@@ -1,7 +1,7 @@
 {% extends "CFMainBundle::layout.html.twig" %}
 
 {% block title %}
-  Projet {{ projet.id }} - {{ parent() }}
+  {{ projet.nom }} - {{ parent() }}
 {% endblock %}
 
 {% block stylesheet %}
@@ -52,29 +52,35 @@
 					{% set pourcentageBenevole = 0.0 %}
 					{% set pourcentageMateriel = 0.0 %}
 					{% set pourcentageCommunication = 0.0 %}
-					{% set nbTotal = 1 %}
-					{% set nbFinancier = 1 %}
-					{% set nbBenevole = 1 %}
-					{% set nbMateriel = 1 %}
-					{% set nbCommunication = 1 %}
+					{% set nbTotal = 0 %}
+					{% set nbFinancier = 0 %}
+					{% set nbBenevole = 0 %}
+					{% set nbMateriel = 0 %}
+					{% set nbCommunication = 0 %}
 
 					{% for besoin in projet.besoins %}
-						{% set pourcentageTotal = pourcentageTotal+((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+						{% set pourcentageTotal = pourcentageTotal + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
 						{% set nbTotal = nbTotal + 1 %}
 						{% if besoin.type == "financier" %}
-							{% set pourcentageFinancier = pourcentageFinancier + +((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
-							{% set nbFinancier = nbFinancier + 1 %}
+							{% set pourcentageFinancier = pourcentageFinancier + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+							{% set nbFinancier = nbFinancier + besoin.quantiteDemande %}
 						{% elseif besoin.type == "benevole" %}
-							{% set pourcentageBenevole = pourcentageBenevole + +((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
-							{% set nbBenevole = nbBenevole + 1 %}
+							{% set pourcentageBenevole = pourcentageBenevole + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+							{% set nbBenevole = nbBenevole + besoin.quantiteDemande %}
 						{% elseif besoin.type == "materiel" %}
-							{% set pourcentageMateriel = pourcentageMateriel + +((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
-							{% set nbMateriel = nbMateriel + 1 %}
+							{% set pourcentageMateriel = pourcentageMateriel + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+							{% set nbMateriel = nbMateriel + besoin.quantiteDemande %}
 						{% elseif besoin.type == "communication" %}
-							{% set pourcentageCommunication = pourcentageCommunication + +((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
-							{% set nbCommunication = nbCommunication + 1 %}
+							{% set pourcentageCommunication = pourcentageCommunication + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+							{% set nbCommunication = nbCommunication + besoin.quantiteDemande %}
 						{% endif %}
 					{% endfor %}
+
+					{% if nbTotal == 0 %}{% set nbTotal = 1 %}{% endif %}
+					{% if nbFinancier == 0 %}{% set nbFinancier = 1 %}{% endif %}
+					{% if nbBenevole == 0 %}{% set nbBenevole = 1 %}{% endif %}
+					{% if nbMateriel == 0 %}{% set nbMateriel = 1 %}{% endif %}
+					{% if nbCommunication == 0 %}{% set nbCommunication = 1 %}{% endif %}
 
 					{% set pourcentageTotal = (pourcentageTotal / nbTotal)|number_format(0) %}
 					{% set pourcentageFinancier = (pourcentageFinancier / nbFinancier)|number_format(0) %}

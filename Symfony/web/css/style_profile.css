@@ -17,10 +17,17 @@
 	height: 300px;
 	background-color: rgba(10,10,10,.4);
 }
+#label {
+	color:rgb(138, 202, 139);
+	padding:10px 25px;
+	border:3px solid rgb(138, 202, 139);
+	border-radius:5px;
+	width:200px;
+}
 .logo-name {
 	position:absolute;
 	margin-left:60px;
-	margin-top:75px;
+	margin-top:45px;
 	width: calc(100% - 60px);
 }
 .logo-username {
@@ -42,6 +49,7 @@
 #logo {
 	width:150px;
 	height:150px;
+	margin-left:25px;
 }
 #block-body {
 	background-color:#eee;

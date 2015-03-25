@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use CF\MainBundle\Entity\Projet;
 use CF\MainBundle\Form\ProjetType;
+use CF\MainBundle\Entity\Dons;
+use CF\MainBundle\Form\DonsType;
 
 class ProjectController extends Controller
 {
@@ -99,7 +101,7 @@ class ProjectController extends Controller
         return $this->render('CFMainBundle:Project:add.html.twig', array('form' => $form->createView()));
     }
 
-      public function redigerActuAction($id,Request $request)
+    public function redigerActuAction($id,Request $request)
     {
 
             $user = $this->container->get('security.context')->getToken()->getUser();
@@ -139,5 +141,32 @@ class ProjectController extends Controller
                 return $this->render('CFMainBundle:Project:redigerActu.html.twig',array('projet'=>$projet));
             }
             
+        }
+
+        public function participateAction($id, Request $request) 
+        {
+            $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
+
+            if (!$projet) {
+                throw $this->createNotFoundException(
+                    'Aucun projet trouvé pour cet id : '.$id
+                );
+            }
+
+            $dons = new Dons();
+            $form= $this->createForm(new DonsType(),$dons);
+
+            if($request->getMethod() == 'POST')
+            {
+                //Traitement BDD
+                $form->bind($request);
+                if($form->isValid())
+                {
+                    $dons = $form->getData();
+                    return $this->render('CFMainBundle:Project:show.html.twig',array('id'=>$id));
+                }
+            }
+                
+            return $this->render('CFMainBundle:Project:participate.html.twig',array('form' => $form->createView(), 'projet'=>$projet));
         }
 }

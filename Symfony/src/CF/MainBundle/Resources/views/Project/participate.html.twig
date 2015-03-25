@@ -1,0 +1,31 @@
+{% extends "CFMainBundle::layout.html.twig" %}
+
+{% block title %}
+  Participer - {{ projet.nom }} - {{ parent() }}
+{% endblock %}
+
+{% block stylesheet %}
+	{{ parent() }}
+	<link href="{{asset('css/style_participate.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+	<form action="{{ path('cf_main_addProjects')}}" method="post" {{ form_enctype(form) }}>
+		<div class="form-group">
+		    {{ form_start(form) }}
+			{{ form_errors(form) }}
+
+			{{ form_row(form.besoin) }}
+
+			{{ form_row(form.quantite) }}
+
+			<input type="submit" class="btn btn-primary" value="Valider"/>
+
+			{{ form_end(form) }}
+		</div>
+	</form>
+{% endblock %}
+
+{% block javascript %}
+	{{ parent() }}
+{% endblock %}

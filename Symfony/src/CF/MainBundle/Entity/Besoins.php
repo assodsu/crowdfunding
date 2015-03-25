@@ -62,13 +62,23 @@ class Besoins
     */
     private $projet;
 
+    /**
+    * @ORM\OneToMany(targetEntity="CF\MainBundle\Entity\Dons", cascade={"persist"}, mappedBy="besoin")
+    */
+    private $dons;
+
 
     public function __construct()
     {
         $this->setQuantiteActuelle(0);
         $this->setPourcentage("0");
+        $this->dons = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->ressource;
+    }
 
     /**
      * Get id
@@ -216,5 +226,39 @@ class Besoins
     public function getType()
     {
         return $this->type;
+    }
+
+
+    /**
+     * Add dons
+     *
+     * @param \CF\MainBundle\Entity\Dons $dons
+     * @return Projet
+     */
+    public function addDon(\CF\MainBundle\Entity\Dons $dons)
+    {
+        $this->dons[] = $dons;
+
+        return $this;
+    }
+
+    /**
+     * Remove dons
+     *
+     * @param \CF\MainBundle\Entity\Dons $dons
+     */
+    public function removeDon(\CF\MainBundle\Entity\Dons $dons)
+    {
+        $this->dons->removeElement($dons);
+    }
+
+    /**
+     * Get dons
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDons()
+    {
+        return $this->dons;
     }
 }

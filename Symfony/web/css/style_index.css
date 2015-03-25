@@ -130,8 +130,8 @@ h2#header_right {
 	clip-path: url(../svg/carouselMenu.svg#svgClip);
 }
 #panel-carousel {
-  margin-left: 150px;
-  width: calc(100% - 150px);
+  margin-left: 110px;
+  width: calc(100% - 125px);
 }
 #menu_carousel a {
 	margin-top:25px;
