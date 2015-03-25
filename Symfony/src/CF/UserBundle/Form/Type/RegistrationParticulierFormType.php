@@ -24,15 +24,16 @@ class RegistrationParticulierFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pseudo', null, array('label' => "Pseudo : "))
+            ->add('pseudo', null, array('label' => "Pseudo : ","attr"=>array('class'=>'form-control')))
 
-            ->add('nom', null, array('label' => "Nom : "))
+            ->add('nom', null, array('label' => "Nom : ","attr"=>array('class'=>'form-control')))
 
-            ->add('prenom', null, array('label' => "Prénom : "))
+            ->add('prenom', null, array('label' => "Prénom : ","attr"=>array('class'=>'form-control')))
 
             ->add('sexe', 'choice', array('label' => "Sexe : ",
-                                          'choices' => array('m' => 'Homme', 'f' => 'Femme'),
-                                             'expanded' => true,
+                                          "attr"=>array('class'=>'form-control'),
+                                          'choices' => array('m' => 'Homme', 'f' => 'Femme','n'=>'Ne souahite pas communiquer'),
+                                             'expanded' => false,
                                              'multiple' => false,
                                              'data' => 'm'
                                           ))
@@ -41,33 +42,34 @@ class RegistrationParticulierFormType extends AbstractType{
                                               'years' => range(date('Y')-100,date('Y')))
                                               )
 
-            ->add('ville', null, array('label' => "Ville : "))
+            ->add('ville', null, array('label' => "Ville : ","attr"=>array('class'=>'form-control')))
 
-            ->add('cp', null, array('label' => "Code postal : "))
+            ->add('cp', null, array('label' => "Code postal : ","attr"=>array('class'=>'form-control')))
 
-            ->add('adresse', null, array('label' => "Adresse : "))
+            ->add('adresse', null, array('label' => "Adresse : ","attr"=>array('class'=>'form-control')))
 
-            ->add('telephone', null, array('label' => "Numéro de téléphone : "))
+            ->add('telephone', null, array('label' => "Numéro de téléphone : ","attr"=>array('class'=>'form-control')))
 
-            ->add('site', null, array('label' => "Site internet : "))
+            ->add('site', null, array('label' => "Site internet : ","attr"=>array('class'=>'form-control')))
 
-            ->add('facebook', null, array('label' => "Facebook : "))
+            ->add('facebook', null, array('label' => "Facebook : ", "attr"=>array('class'=>'form-control')))
 
-            ->add('twitter', null, array('label' => "Twitter : "))
+            ->add('twitter', null, array('label' => "Twitter : ","attr"=>array('class'=>'form-control')))
 
-            ->add('googleplus', null, array('label' => "Google+ : "))
+            ->add('googleplus', null, array('label' => "Google+ : ","attr"=>array('class'=>'form-control')))
 
             ->add('benevole', 'choice', array('label' => "Voudriez vous participer à du bénévolat ? ",
                                           'block_name' => "optionsRadios",
-                                          'choices' => array('1' => 'Oui', '0' => 'Non'),
-                                             'expanded' => true,
+                                             "attr"=>array('class'=>'form-control'),                                        
+                                             'choices' => array('1' => 'Oui', '0' => 'Non'),
+                                             'expanded' => false,
                                              'multiple' => false,
                                              'data' => '0'
                                           ))
 
             ->add('logo', new MediaType(), array('label' => "Logo/Avatar : "))
 
-            ->add('email', 'email', array('label' => 'Adresse e-mail : '))
+            ->add('email', 'email', array('label' => 'Adresse e-mail : ',"attr"=>array('class'=>'form-control')))
 
             ->add('plainPassword', 'repeated', array(
                 'type' => 'password',
