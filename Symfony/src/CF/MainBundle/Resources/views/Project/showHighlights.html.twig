@@ -14,12 +14,108 @@
 {% block body %}
 <div class="content">
 	{% for projet in projets %}
+	{% set bool = false %}
+	<!--         -->
+	{% set pourcentageTotal = 0.0 %}
+	{% set pourcentageFinancier = 0.0 %}
+	{% set pourcentageBenevole = 0.0 %}
+	{% set pourcentageMateriel = 0.0 %}
+	{% set pourcentageCommunication = 0.0 %}
+	{% set nbTotal = 0 %}
+	{% set nbFinancier = 0 %}
+	{% set nbBenevole = 0 %}
+	{% set nbMateriel = 0 %}
+	{% set nbCommunication = 0 %}
+	{% set diffBenevole = 0 %}
+	{% set diffMateriel = 0 %}
+	{% set diffCommunication = 0 %}
+	{% set calcBenevole = 0 %}
+	{% set calcMateriel = 0 %}
+	{% set calcCommunication = 0 %}
+	
+	{% for besoin in projet.besoins %}
+	{% if besoin.type == "financier" %}
+		{% set nbFinancier = nbFinancier + 1 %}
+		{% set nbTotal = nbTotal + 1 %}
+				
+	{% elseif besoin.type == "benevole" %}
+		{% set nbBenevole = nbBenevole + besoin.quantiteDemande %}
+		{% set nbTotal = nbTotal + besoin.quantiteDemande %}
+		{% set diffBenevole = diffBenevole + 1 %}
+		{% set calcBenevole = calcBenevole + besoin.quantiteActuelle %}
+	{% elseif besoin.type == "materiel" %}
+		{% set nbMateriel = nbMateriel + besoin.quantiteDemande %}
+		{% set nbTotal = nbTotal + besoin.quantiteDemande %}
+		{% set diffMateriel = diffMateriel + 1 %}
+		{% set calcMateriel = calcMateriel + besoin.quantiteActuelle %}
+	{% elseif besoin.type == "communication" %}
+		{% set nbCommunication = nbCommunication + besoin.quantiteDemande %}
+		{% set nbTotal = nbTotal + besoin.quantiteDemande %}
+		{% set diffCommunication = diffCommunication + 1 %}
+		{% set calcCommunication = calcCommunication + besoin.quantiteActuelle %}
+	{% endif %}
+
+	{% endfor %}
+
+	{% if diffBenevole == 0 %}
+		{% set diffBenevole = 1 %}
+	{% endif %}
+	{% if diffMateriel == 0 %}
+		{% set diffMateriel = 1 %}
+	{% endif %}
+		{% if diffCommunication == 0 %}
+			{% set diffCommunication = 1 %}
+		{% endif %}
+
+	{% for besoin in projet.besoins %}
+		{% if besoin.type == "financier" %}
+			{% set pourcentageFinancier = (pourcentageFinancier + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100))  %}
+		{% elseif besoin.type == "benevole" %}
+			{% set pourcentageBenevole = pourcentageBenevole + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+		{% elseif besoin.type == "materiel" %}
+			{% set pourcentageMateriel = pourcentageMateriel + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+		{% elseif besoin.type == "communication" %}
+			{% set pourcentageCommunication = pourcentageCommunication + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+		{% endif %}
+	{% endfor %}
+
+	{% if nbTotal == 0 %} 
+		{% set nbTotal = 1 %}
+	{% endif %}
+	{% if nbFinancier == 0 %}
+		{% set nbFinancier = 1 %}
+	{% endif %}
+	{% if nbBenevole == 0 %}
+		{% set nbBenevole = 1 %}
+	{% endif %}
+	{% if nbMateriel == 0 %}
+		{% set nbMateriel = 1 %}
+	{% endif %}
+	{% if nbCommunication == 0 %}
+		{% set nbCommunication = 1 %}
+	{% endif %}
+	{% set calcBenevole = ((calcBenevole / nbBenevole) * 100)|number_format(0) %}
+	{% set calcMateriel = ((calcMateriel / nbMateriel) * 100)|number_format(0) %}
+	{% set calcCommunication = ((calcCommunication / nbCommunication) * 100)|number_format(0) %}
+	{% set pourcentageFinancier = (pourcentageFinancier / nbFinancier )|number_format(0) %}
+	{% set pourcentageBenevole = (pourcentageBenevole / diffBenevole )|number_format(0) %}
+	{% set pourcentageMateriel = (pourcentageMateriel / diffMateriel )|number_format(0) %}
+	{% set pourcentageCommunication = (pourcentageCommunication / diffCommunication )|number_format(0) %}
+	{% set pourcentageTotal = (pourcentageTotal + (pourcentageFinancier * nbFinancier / nbTotal) + (pourcentageBenevole * nbBenevole / nbTotal) + (pourcentageMateriel * nbMateriel / nbTotal) + (pourcentageCommunication * nbCommunication / nbTotal))|number_format(0) %}
+<!--  -->
+	
+	<a href="{{ path('cf_main_project', {'id' : projet.id}) }}">
 		<div class="apercu">
 			<img src="{{asset( projet.background.AssetPath )}}"/>
 			<div class="filtre">
-			<div class="nom_asso">{{ projet.idAsso.nomAsso }}</div>
-			<div class="titre_projet">{{ projet.nom }}</div>
-			<div class="desc">{{ projet.description }}</div>
+				<div class="nom_asso">{{ projet.idAsso.nomAsso }}</div>
+				<div class="titre_projet">{{ projet.nom }}</div>
+				<div class="besoin">
+					<div class="box"><div id='text-ressource-info'><i class="fa fa-tag"></i> Informations : {{ calcCommunication }}%</div></div>
+					<div class="box"><div id='text-ressource-financiere'><i class="fa fa-bar-chart"></i> Financières : {{ pourcentageFinancier }}%</div></div>
+					<div class="box"><div id='text-ressource-humaine'><i class="fa fa-users"></i> Humaines : {{ calcBenevole }}%</div></div>
+					<div class="box"><div id='text-ressource-materiel'><i class="fa fa-desktop"></i> Matériels : {{ calcMateriel }}%</div></div>
+				</div>
 				<div class='diagramme'>
 					<svg height="150" width="150">
 						<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
@@ -29,13 +125,15 @@
 						<div class='name'>Ressources</div>
 					</div>
 					<ul class="pie">
-						<li class="visualize ressource-materiel" data-color="#5cb85c" data-value="70"></li>
-						<li class="visualize ressource-materiel" data-color="#5bc0de" data-value="25"></li>
-						<li class="visualize" data-color="rgba(0,0,0,0)" data-value="5"></li>
+						<li class="visualize" data-color="#5cb85c" data-value="{{ calcMateriel }}"></li>
+						<li class="visualize" data-color="#5bc0de" data-value="{{ calcBenevole }}"></li>
+						<li class="visualize" data-color="#d9534f" data-value="{{ pourcentageFinancier }}"></li>
+						<li class="visualize" data-color="rgba(0,0,0,0)" data-value="{{ (100 - pourcentageTotal) }}"></li>
 					</ul>
 				</div>
 			</div>
 		</div>
+	</a>
 	{% endfor %}
 </div>
 {% endblock %}

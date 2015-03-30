@@ -23,16 +23,11 @@ class ProjectController extends Controller
         return $this->render('CFMainBundle:Project:show.html.twig', array('projet'=>$projet));
     }
 	
-    public function showAllAction()
+    public function showAllAction($nom)
     {	
-		$all = $this->getDoctrine()->getEntityManager()
-		->createQuery('SELECT p FROM CFMainBundle:Projet p WHERE p.dateFin > CURRENT_DATE()')
-        ->getResult();
-		$tagprojet = $this->getDoctrine()->getEntityManager()
-		->createQuery('SELECT t FROM CFMainBundle:Tags t')
-        ->getResult();
+		$all = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findAll();
 		
-        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$all,'tags'=>$tagprojet));
+        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$all,'categories'=>$nom));
     }
 	
     public function showEndingAction()

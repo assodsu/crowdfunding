@@ -1,6 +1,6 @@
 cf_main_allProjects:
-    path:     /
-    defaults: { _controller: CFMainBundle:Project:showAll }
+    path:     /categorie/{nom}
+    defaults: { _controller: CFMainBundle:Project:showAll ,nom:'All'}
 
 cf_main_endingProjects:
     path:     /bientot-fini/
