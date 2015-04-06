@@ -1,15 +1,18 @@
 .menu,.sous-menu{
 	padding:0;
-	padding:0;
+	margin:0;
 	position:fixed;
 	height:100%;
-	background-color: #f8f8f8;
+	background-color: #ececec;
 	border-color: #e7e7e7;
 	z-index:2;
 	-webkit-clip-path: polygon(0px 100%,300px 100%,400px 0px,0px 0px);
 	width:400px;
-	margin:0;
 	margin-top:15px;
+}
+
+.menu ul{
+	-webkit-padding-start:0;
 }
 
 .sous-menu{
@@ -24,7 +27,14 @@
 	padding-top:75px;
 }
 
-.menu li,.sous-menu li{
+.menu li{
+	width:100%;
+	display:block;
+	padding:0 20px;
+	font-size:1.5em;
+}
+
+.sous-menu li{
 	width:100%;
 	display:block;
 	padding:0;
@@ -33,7 +43,7 @@
 
 .menu li a,.sous-menu li a{
 	margin:0;
-	padding:2px 20px;
+	padding:2px 0px;
 	color:#777;
 	
 }
@@ -43,12 +53,16 @@
 }
 
 .menu li a:hover{
-	border:0;
 	margin:0;
 	border:0;
-	padding:2px 100px;
 	color:#428bca;
 	text-decoration:none;
+	padding:2px 0px;
+}
+
+.menu li:hover{
+	padding-left:15px;
+	border-left:5px solid #428bca;
 }
 
 .sous-menu li a:hover{
@@ -58,11 +72,6 @@
 	padding:2px 100px;
 	color:#428bca;
 	text-decoration:none;
-}
-
-.menu li a:hover{
-	border:0;
-	padding:2px 20px;
 }
 
 #CategoryTitle{
@@ -78,11 +87,7 @@ header{
 }
 
 footer{
-	display:inline-block;
-	position:fixed;
-	bottom:0;
-	height:5%;
-	z-index:1;
+	display:none;
 }
 body{
 	margin-top:30px;
@@ -110,37 +115,41 @@ body{
 	height:250px;
 }
 
-.titre_projet{
-	margin-top:60px;
-	text-align:right;
-	font-size:25pt;
-	color:white;
-	text-transform:uppercase;
-	vertical-align:center;
-	margin-right: 200px;
-}
-
 .nom_asso{
 	position:absolute;
 	right:0;
 	color: white;
 	font-size: 15pt;
-	padding-top: 25px;
-	margin-top: 0px;
+	margin-top: 10px;
 	margin-right: 200px;
 }
 
-.desc{
+.titre_projet{
+	text-align:right;
+	font-size:25pt;
+	color:white;
+	text-transform:uppercase;
+	margin-top:35px;
+	margin-right: 200px;
+}
+
+.besoin{
 	position:absolute;
 	right:0;
 	text-align:right;
-	width:750px;
-	height:100px;
+	max-height:150px;
 	font-size:12pt;
+	width:300px;
 	color:white;
-	vertical-align:center;
 	margin-right: 200px;
-	margin-top:40px;
+	margin-top:10px;
+	overflow:hidden;
+}
+
+.box{
+	display:inline-block;
+	width:200px;
+	overflow:hidden;
 }
 
 .diagramme {
@@ -150,7 +159,6 @@ body{
 	width:150px;
 	height:150px;
 	margin-right:25px;
-	pointer-events:none;
 }
 
 .pie, svg, .pie-content {
@@ -178,4 +186,24 @@ svg {
 .pie-content .percentage {
 	font-size:25pt;
 	margin-bottom:5px;
+}
+
+#text-ressource-info{
+	color:grey;
+	font-weight:bold;
+}
+
+#text-ressource-financiere{
+	color:#d9534f;
+	font-weight:bold;
+}
+
+#text-ressource-humaine{
+	color:#5bc0de;
+	font-weight:bold;
+}
+
+#text-ressource-materiel{
+	color:#5cb85c;
+	font-weight:bold;
 }
