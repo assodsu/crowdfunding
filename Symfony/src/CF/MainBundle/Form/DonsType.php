@@ -5,9 +5,22 @@ namespace CF\MainBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
+use Doctrine\ORM\EntityRepository;
+
+use CF\MainBundle\Entity\Projet;
 
 class DonsType extends AbstractType
 {
+
+    private $projet;
+
+    public function __construct(Projet $projet)
+    {
+        $this->projet = $projet;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -16,7 +29,14 @@ class DonsType extends AbstractType
     {
         $builder
             ->add('quantite')
-            ->add('besoin')
+            ->add('besoin', 'entity', array(
+                'class' => 'CFMainBundle:Besoins',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('b')
+                    ->Where('b.projet = :id')
+                    ->setParameter('id', $this->projet->getId());
+                }
+            ))
         ;
     }
     

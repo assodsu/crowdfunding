@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block body %}
-	<form action="{{ path('cf_main_addProjects')}}" method="post" {{ form_enctype(form) }}>
+	<form action="{{ path('cf_main_participate', { id : projet.id } )}}" method="post" {{ form_enctype(form) }}>
 		<div class="form-group">
 		    {{ form_start(form) }}
 			{{ form_errors(form) }}

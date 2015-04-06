@@ -19,7 +19,7 @@ cf_main_newActualite:
         id: \d+
 
 cf_main_participate:
-    path:    /participer/{id}
+    path:    /{id}/participer
     defaults: { _controller: CFMainBundle:Project:participate }
     requirements:
         _method: GET|POST

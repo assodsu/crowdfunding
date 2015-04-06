@@ -154,7 +154,7 @@ class ProjectController extends Controller
             }
 
             $dons = new Dons();
-            $form= $this->createForm(new DonsType(),$dons);
+            $form= $this->createForm(new DonsType($projet),$dons);
 
             if($request->getMethod() == 'POST')
             {
@@ -162,8 +162,13 @@ class ProjectController extends Controller
                 $form->bind($request);
                 if($form->isValid())
                 {
-                    $dons = $form->getData();
-                    return $this->render('CFMainBundle:Project:show.html.twig',array('id'=>$id));
+                    $em=$this->getDoctrine()->getEntityManager();
+                    $don = $form->getData();
+
+                    $em->persist($don);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('cf_main_project', array('id' => $projet->getId())));
                 }
             }
                 
