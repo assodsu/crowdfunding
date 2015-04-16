@@ -5,6 +5,12 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+    public function init()
+    {
+        date_default_timezone_set( 'Europe/Paris' );
+        parent::init();
+    }
+    
     public function registerBundles()
     {
         $bundles = array(
@@ -20,6 +26,7 @@ class AppKernel extends Kernel
             new CF\MainBundle\CFMainBundle(),
             new CF\UserBundle\CFUserBundle(),
             new CF\CommentBundle\CFCommentBundle(),
+            new CF\NotificationBundle\CFNotificationBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
