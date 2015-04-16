@@ -6,8 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use CF\MainBundle\Entity\Projet;
 use CF\MainBundle\Form\ProjetType;
-use CF\MainBundle\Entity\Dons;
-use CF\MainBundle\Form\DonsType;
+use CF\MainBundle\Entity\Participation;
+use CF\MainBundle\Form\ParticipationType;
 
 class ProjectController extends Controller
 {
@@ -98,75 +98,85 @@ class ProjectController extends Controller
 
     public function redigerActuAction($id,Request $request)
     {
-
-            $user = $this->container->get('security.context')->getToken()->getUser();
-            if(!$user)
-            {
-                    return $this->redirect('fos_user_security_login');
-            }
-            else
-            {
-                $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
-                if (!$projet) 
-                {
-                    throw $this->createNotFoundException(
-                        'Aucun projet trouvé pour cet id : '.$id
-                    );
-                }
-                
-                $actu = new Actualites();
-                $form= $this->createForm(new ActualitesType(),$actu);
-
-                $actu->setIdProjet($projet);
-
-                if($request->getMethod()=='POST')
-                {
-                    $form->bind($request);
-                    if($form->isValid())
-                    {
-                        $em=$this->getDoctrine()->getEntityManager();
-                        $actu = $form->getData();
-
-                        $em->persist($actu);
-                        $em->flush();
-
-                        return $this->redirect('cf_main_project',array('id'=>$actu->getIdProjet()));
-                    }
-                }
-                return $this->render('CFMainBundle:Project:redigerActu.html.twig',array('projet'=>$projet));
-            }
-            
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if(!$user)
+        {
+                return $this->redirect('fos_user_security_login');
         }
-
-        public function participateAction($id, Request $request) 
+        else
         {
             $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
-
-            if (!$projet) {
+            if (!$projet) 
+            {
                 throw $this->createNotFoundException(
                     'Aucun projet trouvé pour cet id : '.$id
                 );
             }
+            
+            $actu = new Actualites();
+            $form= $this->createForm(new ActualitesType(),$actu);
 
-            $dons = new Dons();
-            $form= $this->createForm(new DonsType($projet),$dons);
+            $actu->setIdProjet($projet);
 
-            if($request->getMethod() == 'POST')
+            if($request->getMethod()=='POST')
             {
-                //Traitement BDD
                 $form->bind($request);
                 if($form->isValid())
                 {
                     $em=$this->getDoctrine()->getEntityManager();
-                    $don = $form->getData();
+                    $actu = $form->getData();
 
-                    $em->persist($don);
+                    $em->persist($actu);
                     $em->flush();
 
-                    return $this->redirect($this->generateUrl('cf_main_project', array('id' => $projet->getId())));
+                    return $this->redirect('cf_main_project',array('id'=>$actu->getIdProjet()));
                 }
             }
-                
-            return $this->render('CFMainBundle:Project:participate.html.twig',array('form' => $form->createView(), 'projet'=>$projet));
+            return $this->render('CFMainBundle:Project:redigerActu.html.twig',array('projet'=>$projet));
         }
+        
+    }
+
+    public function participateAction($id, Request $request) 
+    {
+        $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
+
+        if (!$projet) {
+            throw $this->createNotFoundException(
+                'Aucun projet trouvé pour cet id : '.$id
+            );
+        }
+
+        $participation = new Participation();
+        $form= $this->createForm(new ParticipationType($projet),$participation);
+
+        if($request->getMethod() == 'POST')
+        {
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $participation->setFournisseur($user);
+            //Traitement BDD
+            $form->bind($request);
+            if($form->isValid())
+            {
+                $em=$this->getDoctrine()->getEntityManager();
+                $participation = $form->getData();
+                $projet->setNbDonateur($projet->getNbDonateur()+1);
+
+                $dons = $participation->getDons();
+                foreach($dons as $don)
+                {
+                    $don->setParticipation($participation);
+                    $besoin = $don->getBesoin();
+                    $besoin->setQuantiteActuelle($besoin->getQuantiteActuelle()+$don->getQuantite());
+                }
+
+                $em->persist($participation);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('cf_main_project', array('id' => $projet->getId())));
+            }
+        }
+            
+        return $this->render('CFMainBundle:Project:participate.html.twig',array('form' => $form->createView(), 'projet'=>$projet));
+    }
 }

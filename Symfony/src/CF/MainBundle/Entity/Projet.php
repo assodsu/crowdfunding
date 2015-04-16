@@ -70,6 +70,13 @@ class Projet
     protected $background;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbDonateur", type="integer")
+     */
+    private $nbDonateur;
+
+    /**
      *  @ORM\ManyToOne(targetEntity="CF\UserBundle\Entity\Association")
      *  @ORM\JoinColumn(name="idAsso", referencedColumnName="id")
      *  @ORM\JoinColumn(nullable=false)
@@ -95,6 +102,7 @@ class Projet
 
     public function __construct()
     {
+        $this->setNbDonateur(0);
         $this->setDateCreation(new \DateTime());
         $date = new \DateTime();
         $this->setDateFin($date->add(new \DateInterval('P4M')));
@@ -134,6 +142,29 @@ class Projet
     public function getPourcentageTotal()
     {
         return $this->pourcentageTotal;
+    }
+
+    /**
+     * Set nbDonateur
+     *
+     * @param string $nbDonateur
+     * @return Projet
+     */
+    public function setNbDonateur($nbDonateur)
+    {
+        $this->nbDonateur = $nbDonateur;
+
+        return $this;
+    }
+
+    /**
+     * Get nbDonateur
+     *
+     * @return string 
+     */
+    public function getNbDonateur()
+    {
+        return $this->nbDonateur;
     }
 
     /**

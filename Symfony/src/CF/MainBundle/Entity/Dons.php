@@ -27,19 +27,18 @@ class Dons
      * @ORM\Column(name="quantite", type="integer")
      */
     private $quantite;
-
-    /**
-    * @ORM\ManyToOne(targetEntity="CF\UserBundle\Entity\User")
-    * @ORM\JoinColumn(name="fournisseur", referencedColumnName="id")
-    * @ORM\JoinColumn(nullable=false)
-    */
-    private $fournisseur;
     
     /**
     * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Besoins", inversedBy="dons")
     * @ORM\JoinColumn(nullable=false)
     */
     private $besoin;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Participation", inversedBy="dons")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $participation;
 
     /**
      * Get id
@@ -75,29 +74,6 @@ class Dons
     }
 
     /**
-     * Set fournisseur
-     *
-     * @param \CF\UserBundle\Entity\User $fournisseur
-     * @return Dons
-     */
-    public function setFournisseur(\CF\UserBundle\Entity\User $fournisseur = null)
-    {
-        $this->fournisseur = $fournisseur;
-
-        return $this;
-    }
-
-    /**
-     * Get fournisseur
-     *
-     * @return \CF\UserBundle\Entity\User 
-     */
-    public function getFournisseur()
-    {
-        return $this->fournisseur;
-    }
-
-    /**
      * Set besoin
      *
      * @param \CF\MainBundle\Entity\Besoins $besoin
@@ -118,5 +94,28 @@ class Dons
     public function getBesoin()
     {
         return $this->besoin;
+    }
+
+    /**
+     * Set participation
+     *
+     * @param \CF\MainBundle\Entity\Participation $participation
+     * @return Dons
+     */
+    public function setParticipation(\CF\MainBundle\Entity\Participation $participation)
+    {
+        $this->participation = $participation;
+
+        return $this;
+    }
+
+    /**
+     * Get participation
+     *
+     * @return \CF\MainBundle\Entity\Participation 
+     */
+    public function getParticipation()
+    {
+        return $this->participation;
     }
 }

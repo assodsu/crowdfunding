@@ -1,0 +1,3 @@
+cf_notification:
+    path:     /
+    defaults: { _controller: CFNotificationBundle:Notification:index }

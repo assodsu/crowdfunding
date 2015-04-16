@@ -38,8 +38,11 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
+        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('idAsso' => $user->getId()));
+
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
-            'user' => $user
+            'user' => $user,
+            'projets' => $projets
         ));
     }
 

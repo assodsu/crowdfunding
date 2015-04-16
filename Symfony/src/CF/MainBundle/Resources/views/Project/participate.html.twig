@@ -15,9 +15,7 @@
 		    {{ form_start(form) }}
 			{{ form_errors(form) }}
 
-			{{ form_row(form.besoin) }}
-
-			{{ form_row(form.quantite) }}
+			{{ form_row(form.dons) }}
 
 			<input type="submit" class="btn btn-primary" value="Valider"/>
 
@@ -28,4 +26,5 @@
 
 {% block javascript %}
 	{{ parent() }}
+	<script type="text/javascript" src="{{asset('js/participate_project.js')}}"></script>
 {% endblock %}

@@ -1,3 +1,7 @@
+cf_notification:
+    resource: "@CFNotificationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 cf_comment:
     resource: "@CFCommentBundle/Resources/config/routing.yml"
     prefix:   /
