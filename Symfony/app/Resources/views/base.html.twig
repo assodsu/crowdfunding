@@ -1,37 +1,76 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<title>{% block title %}Coceptio{% endblock %}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{% block title %}COCEPTIO{% endblock %}</title>
 		<link rel="icon" href="{{asset('favicon.ico')}}" />
-		{% block stylesheet %}
-			<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"/>
-			<link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
-			<link href="{{ asset('css/theme.css') }}" rel="stylesheet"/>
+		<meta charset="utf8" />
+		{% block stylesheets %}
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 		{% endblock %}
 	</head>
-	
+
 	<body>
-		<header>
-		{% block header %}
-		{% endblock %}
-		</header>
-		
-		<div id="body">
-		{% block body %}
-		{% endblock %}
-		</div>			
-			
+		<div id="top-page">
+			<header>
+				<div class="container-inner">
+					<div id="header-logo">
+						<a href="{{ path('cf_main_homepage') }}">COCEPTIO</a>
+					</div>
+
+					<nav>
+						<div id="header-nav">
+							<a href="{{ path('cf_main_allProjects') }}">Les projets</a>
+							<div class="separator"></div>
+							<a href="#">Comment ça marche ?</a>
+							<div class="separator"></div>
+							<a href="{{ path('cf_main_addProjects') }}">Lancez votre projet</a>
+						</div>
+						<div id="header-log">
+							<a href="{{ path('fos_user_security_login') }}">Connexion</a>
+							<div class="separator"></div>
+							<a href="{{ path('fos_user_registration_register') }}">Inscription</a>
+						</div>
+					</nav>
+				</div>
+			</header>
+
+			<section id="title-page">
+				<div class="container-inner">
+					<h1>{% block page_title %}Titre de page à renseigner{% endblock %}</h1>
+					<h2>{% block page_subtitle %}Sous-titre également à renseigner{% endblock %}</h2>
+				</div>
+			</section>
+		</div>
+
+		<section id="main">
+			{% block body %}
+
+			{% endblock %}
+		</section>
+
 		<footer>
-		{% block footer %}	
-		{% endblock %}
+			<div class="container-inner">
+				<div class="footer-menu">
+					<h3>Aide</h3>
+				</div>
+				<div class="footer-menu">
+					<h3>Mentions légales</h3>
+				</div>
+				<div class="footer-menu">
+					<h3>Conditions générales</h3>
+				</div>
+				<div class="footer-menu">
+					<h3>Contact</h3>
+				</div>
+			</div>
 		</footer>
-	</body>
+
 	
-	{% block javascript %}
-		<script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
-		<script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
-		<script type="text/javascript" src="{{asset('js/bootstrap.js')}}"></script>
-	{% endblock %}
+		{% block javascripts %}
+			<script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
+			<script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
+			<script type="text/javascript" src="{{asset('js/bootstrap.js')}}"></script>
+		{% endblock %}
 </html>

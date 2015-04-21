@@ -1,117 +1,165 @@
 {% extends "CFMainBundle::layout.html.twig" %}
 
 {% block title %}
-  Projets - {{ parent() }}
+  	{{ parent() }} - Lancer votre projet
 {% endblock %}
 
-{% block navbarProject %} class="active" {% endblock %}
+{% block page_title %}Lancez votre projet{% endblock %}
+{% block page_subtitle %}Vous avez un projet ambitieux ? Suivez ces étapes une à une et lancez votre projet !{% endblock %}
 
-{% block stylesheet %}
+{% block stylesheets %}
 	{{ parent() }}
 	<link href="{{asset('css/style_new_project.css')}}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
-	<div class="row form-group">
-        <div class="col-xs-12">
-            <ul class="nav nav-pills nav-justified thumbnail setup-panel">
-                <li class="active"><a href="#step-1">
-                    <h4 class="list-group-item-heading">Général</h4>
-                    <p class="list-group-item-text">Définition des éléments principaux</p>
-                </a></li>
-                <li class="disabled"><a href="#step-2">
-                    <h4 class="list-group-item-heading">Description</h4>
-                    <p class="list-group-item-text">Description du projet</p>
-                </a></li>
-                <li class="disabled"><a href="#step-3">
-                    <h4 class="list-group-item-heading">Histoire</h4>
-                    <p class="list-group-item-text">L'histoire du projet</p>
-                </a></li>
-                <li class="disabled"><a href="#step-4">
-                    <h4 class="list-group-item-heading">Ressources</h4>
-                    <p class="list-group-item-text">Ressources pour le projet</p>
-                </a></li>
-                <li class="disabled"><a href="#step-5">
-                    <h4 class="list-group-item-heading">Informations</h4>
-                    <p class="list-group-item-text">Informations supplémentaires</p>
-                </a></li>
-            </ul>
-        </div>
+<div class="container-inner">
+	<div class="stepwizard">
+	    <div class="stepwizard-row">
+	        <div class="stepwizard-step"><a href="#step-1">
+	            <button type="button" class="btn btn-primary btn-circle">1</button></a>
+	            <p>Général</p>
+	        </div>
+	        <div class="stepwizard-step"><a href="#step-2">
+	            <button type="button" class="btn btn-default btn-circle" disabled="disabled">2</button></a>
+	            <p>Description</p>
+	        </div>
+	        <div class="stepwizard-step"><a href="#step-3">
+	            <button type="button" class="btn btn-default btn-circle" disabled="disabled">3</button></a>
+	            <p>Histoire</p>
+	        </div> 
+	         <div class="stepwizard-step"><a href="#step-4">
+	            <button type="button" class="btn btn-default btn-circle" disabled="disabled">4</button></a>
+	            <p>Ressources</p>
+	        </div>
+	        <div class="stepwizard-step"><a href="#step-5">
+	            <button type="button" class="btn btn-default btn-circle" disabled="disabled">5</button></a>
+	            <p>Informations</p>
+	        </div> 
+	    </div>
 	</div>
+
 	<form action="{{ path('cf_main_addProjects')}}" method="post" {{ form_enctype(form) }}>
-		<div class="form-group">
-		    {{ form_start(form) }}
-			{{ form_errors(form) }}
+		{{ form_start(form) }}
+		{{ form_errors(form) }}
 
-		    <div class="row setup-content" id="step-1">
-		        <div class="col-xs-12">
-		            <div class="col-md-12 well text-center">
-		                <h1>Général</h1>
-		                <div class="container">
-		                	{{ form_row(form.nom) }}
-		                	{{ form_row(form.background) }}
-		                	{{ form_row(form.tags) }}
+		<div class="row step-content" id="step-1">
+			<div class="fieldset">
+				<div class="fieldset-form">
+					<form>
+						<div class="form-group">
+						    {{ form_row(form.nom) }}
 						</div>
-		                <button id="activate-step-2" class="btn btn-primary btn-lg">Etape suivante</button>
-		            </div>
-		        </div>
-		    </div>
-		    <div class="row setup-content" id="step-2">
-		        <div class="col-xs-12">
-		            <div class="col-md-12 well text-center">
-		                <h1>Description</h1>
-		                 <div class="container">
-	                		{{ form_row(form.description) }}
-	                	</div>
-		                <button id="activate-step-3" class="btn btn-primary btn-lg">Etape suivante</button>
-		            </div>
-		        </div>
-		    </div>
-		    <div class="row setup-content" id="step-3">
-		        <div class="col-xs-12">
-		            <div class="col-md-12 well text-center">
-		                <h1>Histoire</h1>
-		                <div class="container">
-			                <div id="boites">
-	      						{{ form_row(form.boxs) }}
-			                </div>
-		                </div>
-		                <button id="activate-step-4" class="btn btn-primary btn-lg">Etape suivante</button>
-		            </div>
-		        </div>
-		    </div>
-		    <div class="row setup-content" id="step-4">
-		        <div class="col-xs-12">
-		            <div class="col-md-12 well text-center">
-		                <h1>Ressources</h1>
-		                <div class="container">
-			                <div id="ressources">
-								{{ form_row(form.besoins) }}
-			                </div>
-		                </div>
-		                <button id="activate-step-5" class="btn btn-primary btn-lg">Etape suivante</button>
-		            </div>
-		        </div>
-		    </div>
-		    <div class="row setup-content" id="step-5">
-		        <div class="col-xs-12">
-		            <div class="col-md-12 well text-center">
-		                <h1>Informations supplémentaires</h1>
-		                <div class="container">
-	                		{{ form_row(form.infoSup) }}
-			            </div>
-		    			<input type="submit" value="Créer !" class="btn btn-success"/>
-		            </div>
-		        </div>
-		    </div>
-		    {{ form_end(form) }}
-		</div>
-	</form>
+					</form>
+				</div>
 
+				<div class="fieldset-separator"></div>
+
+				<div class="fieldset-infos">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. Etiam luctus lorem non velit congue molestie. Vivamus pulvinar nibh velit, nec rutrum arcu interdum eu.
+				</div>
+			</div>
+
+			<div class="fieldset">
+				<div class="fieldset-form">
+					<div class="row">
+						<div class="col-md-4">
+							<img src="{{ asset('images/image.png') }}" alt="image" style="height: 100px;" />
+						</div>
+						<div class="col-md-8">
+								<div class="form-group">
+							    {{ form_row(form.background) }}
+							  </div>
+						</div>
+					</div>
+				</div>
+
+				<div class="fieldset-separator"></div>
+
+				<div class="fieldset-infos">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. 
+				</div>
+			</div>
+
+			<div class="fieldset">
+				<div class="fieldset-form">
+			        {{ form_row(form.tags) }}
+				</div>
+				<div class="fieldset-separator"></div>
+
+				<div class="fieldset-infos">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. Etiam luctus lorem non velit congue molestie. Vivamus pulvinar nibh velit, nec rutrum arcu interdum eu.
+				</div>
+			</div>
+
+			<div class="fieldset-btn">
+				<a id="activate-step-2" class="btn btn-primary btn-lg">Etape suivante</a>
+			</div>
+		</div>
+
+		<div class="row step-content" id="step-2">
+			<div class="fieldset">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. 
+				</p>
+				<div class="row">
+					<div class="form-group">
+				   		{{ form_row(form.description) }}
+				  	</div>
+				</div>
+			</div>
+
+			<div class="fieldset-btn">
+				<a id="activate-step-3" class="btn btn-primary btn-lg">Etape suivante</a>
+			</div>
+	    </div>
+
+	    <div class="row step-content" id="step-3">
+	        <div class="fieldset">
+	            <div class="col-md-12 text-center">
+	                <div id="boites">
+  						{{ form_row(form.boxs) }}
+	                </div>
+                </div>
+	       	</div>
+
+	       	<div class="fieldset-btn">
+				<a id="activate-step-4" class="btn btn-primary btn-lg">Etape suivante</a>
+			</div>
+	    </div>
+
+	    <div class="row step-content" id="step-4">
+	        <div class="fieldset">
+	            <div class="col-md-12 text-center">
+	                <div id="ressources">
+						{{ form_row(form.besoins) }}
+	                </div>
+                </div>
+	        </div>     
+            <div class="fieldset-btn">
+				<a id="activate-step-5" class="btn btn-primary btn-lg">Etape suivante</a>
+			</div>
+	    </div>
+
+	    <div class="row step-content" id="step-5">
+	        <div class="fieldset">
+	            <div class="col-md-12 text-center">
+	                <h1>Informations supplémentaires</h1>
+	                <div class="container">
+                		{{ form_row(form.infoSup) }}
+		            </div>
+	    			<button type="submit" class="btn btn-success btn-lg"/>Créer !</button>
+	            </div>
+	        </div>
+	    </div>
+
+	    {{ form_end(form) }}
+	</form>
+</div>
 {% endblock %}
 
-{% block javascript %}
+{% block javascripts %}
 	{{ parent() }}
-	<script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/create_project.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/create_project.js') }}"></script>
 {% endblock %}

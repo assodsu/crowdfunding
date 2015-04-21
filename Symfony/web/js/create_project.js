@@ -87,44 +87,39 @@ $(document).ready(function() {
 	}
 
 	/**** NAVIGATION ****/
-	var navListItems = $('ul.setup-panel li a'), allWells = $('.setup-content');
+	var step = $('.stepwizard a');
+	var allForms = $('.step-content');
 
-	allWells.hide();
+	allForms.hide();
+	$('#step-1').show();
 
-	navListItems.click(function(e)
-	{
-	    e.preventDefault();
-	    var $target = $($(this).attr('href')),
-	        $item = $(this).closest('li');
-	    
-	    if (!$item.hasClass('disabled')) {
-	        navListItems.closest('li').removeClass('active');
-	        $item.addClass('active');
-	        allWells.hide();
-	        $target.show();
-	    }
+	step.click(function(e) {
+		var $target = $($(this).attr('href'));
+
+		e.preventDefault();
+		allForms.hide(0);
+		$target.slideDown(1000);
+		step.closest('a').children().switchClass("btn-primary", "btn-default", 1000, "easeInOutQuad");
+		$(this).children().switchClass("btn-default", "btn-primary", 1000, "easeInOutQuad");
 	});
 
-	$('ul.setup-panel li.active a').trigger('click');
-
 	$('#activate-step-2').on('click', function(e) {
-	    $('ul.setup-panel li:eq(1)').removeClass('disabled');
-	    $('ul.setup-panel li a[href="#step-2"]').trigger('click');
-	    $(this).remove();
-	})
+		allForms.hide();
+		$('a[href="#step-2"] button').removeAttr('disabled').trigger('click');
+	});
+
 	$('#activate-step-3').on('click', function(e) {
-	    $('ul.setup-panel li:eq(2)').removeClass('disabled');
-	    $('ul.setup-panel li a[href="#step-3"]').trigger('click');
-	    $(this).remove();
-	})    
+		allForms.hide();
+		$('a[href="#step-3"] button').removeAttr('disabled').trigger('click');
+	});
+
 	$('#activate-step-4').on('click', function(e) {
-	    $('ul.setup-panel li:eq(3)').removeClass('disabled');
-	    $('ul.setup-panel li a[href="#step-4"]').trigger('click');
-	    $(this).remove();
-	})    
+		allForms.hide();
+		$('a[href="#step-4"] button').removeAttr('disabled').trigger('click');
+	});
+
 	$('#activate-step-5').on('click', function(e) {
-	    $('ul.setup-panel li:eq(4)').removeClass('disabled');
-	    $('ul.setup-panel li a[href="#step-5"]').trigger('click');
-	    $(this).remove();
-	})    
+		allForms.hide();
+		$('a[href="#step-5"] button').removeAttr('disabled').trigger('click');
+	});
 });

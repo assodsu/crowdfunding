@@ -1,6 +1,24 @@
 {% extends "CFUserBundle::layout.html.twig" %}
 
-{% block javascript %}
+{% block title %}
+	{{ parent() }} - Inscription à Coceptio
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('css/style_register_index.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+<div class="container-inner">
+	<p class="text-center">Choisissez le type d'inscription que vous voulez poursuivre</p>
+	<a class="btn btn-primary btn-lg btn-block" href="{{ path('association_registration') }}" role="button" id="asso">Association</a>
+	<a class="btn btn-primary btn-lg btn-block" href="{{ path('entreprise_registration') }}" role="button" id="entr">Entreprise</a>
+	<a class="btn btn-primary btn-lg btn-block" href="{{ path('particulier_registration') }}" role="button" id="part">Particulier</a>
+</div>
+{% endblock %}
+
+{% block javascripts %}
 	{{ parent() }}
 	<script type='text/javascript'>
 	$(document).ready(function(){
@@ -13,26 +31,5 @@
 			});
 	});
 	</script>
-{% endblock %}
-
-{% block title %}
-	Inscription - {{ parent() }}
-{% endblock %}
-
-{% block navbarRegister %} class="active" {% endblock %}
-
-{% block stylesheet %}
-	{{ parent() }}
-	<link href="{{asset('css/style_register_index.css')}}" rel="stylesheet"/>
-{% endblock %}
-
-{% block body %}
-	<div class="center-block">
-		<p class="text-center">Choisissez le type d'inscription que vous voulez poursuivre</p>
-		<a class="btn btn-primary btn-lg btn-block" href="{{ path('association_registration') }}" role="button" id="asso">Association</a>
-		<a class="btn btn-primary btn-lg btn-block" href="{{ path('entreprise_registration') }}" role="button" id="entr">Entreprise</a>
-		<a class="btn btn-primary btn-lg btn-block" href="{{ path('particulier_registration') }}" role="button" id="part">Particulier</a>
-
-	</div>
 {% endblock %}
 
