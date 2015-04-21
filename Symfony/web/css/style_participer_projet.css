@@ -243,7 +243,6 @@ label.checkbox {
 .besoin-box.grey .styled-select.body-besoin span {
 	color: #99a5af;
 }
-
 #cf_mainbundle_projet_dons > div {
 	height: auto;
 	display:inline-block;
@@ -256,3 +255,68 @@ label.checkbox {
   margin-top: 10px;
   width: 50%;
 }
+
+/* BOITES DES RESSOURCES 
+.besoin-box > span {
+	position:absolute;
+	right:0;
+	margin-right: 2.5px;
+	margin-top:1.5px;
+	color:white;
+}
+.header-besoin-box {
+	padding-top:6px;
+	height: 80px;
+}
+.header-besoin-box > span {
+	color:white;
+	display:block;
+	text-align: center;
+	margin-bottom:5px;
+	font-size: 20pt;
+}
+.besoin-box, #add-besoin-box {
+	width:250px;
+	height:220px;
+	display:inline-block;
+	vertical-align: top;
+	border-radius:8px;
+	margin:28px;
+	position: relative;
+}
+.body-besoin-box input {
+	border-radius: 5px;
+	margin-top: 15px;
+	height: 40px;
+	width: 85%;
+	display: block;
+	margin-left:auto;
+	margin-right:auto;
+	padding-left: 5px;
+}
+.body-besoin-box .input-group {
+	margin-top:15px;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.body-besoin-box > p {
+	font-size:10pt;
+	font-weight: bold;
+	padding:10px;
+}
+.body-besoin-box > p > .red {
+	color:red;
+}
+
+#add-besoin-box {
+	font-size: 130pt;
+	font-weight: 100;
+	vertical-align: middle;
+	line-height: 220px;
+	text-align: center;
+}
+#add-besoin-box > a {
+	color:#5d5d5d;
+}*/
+>>>>>>> 85cc9b7a65b89a21f0f6d12488f8028f8d7b25fa

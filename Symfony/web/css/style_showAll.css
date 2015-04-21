@@ -1,4 +1,4 @@
-.menu,.sous-menu{
+.menu, .sous-menu{
 	padding:0;
 	margin:0;
 	position:fixed;
@@ -77,20 +77,6 @@
 #CategoryTitle{
 	color:#777;
 	padding-left:20px;
-}
-
-header{
-	position:fixed;
-	top:0;
-	width:100%;
-	z-index:3;
-}
-
-footer{
-	display:none;
-}
-body{
-	margin-top:30px;
 }
 
 .apercu{

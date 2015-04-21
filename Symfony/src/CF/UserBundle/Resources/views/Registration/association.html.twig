@@ -1,15 +1,16 @@
 {% extends "CFUserBundle::layout.html.twig" %}
 
 {% block title %}
-	Inscription - {{ parent() }}
+	{{ parent() }} Inscription : Associations
 {% endblock %}
 
-{% block stylesheet %}
+{% block stylesheets %}
 	{{ parent() }}
 	<link href="{{ asset('css/style_register_form.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
+    <div class="container">
   <div class="row form-group">
         <div class="col-xs-12">
             <ul class="nav nav-pills nav-justified thumbnail setup-panel">
@@ -158,9 +159,10 @@
         </form>
     
         </div>
+</div>
 {% endblock %}
 
-{% block javascript %}
+{% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{asset('js/formToWizard.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/controle_form_asso.js')}}"></script>

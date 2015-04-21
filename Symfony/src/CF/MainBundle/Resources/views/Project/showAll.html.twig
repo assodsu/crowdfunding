@@ -1,14 +1,12 @@
 {% extends "CFMainBundle::layout.html.twig" %}
 
 {% block title %}
-  Projets - {{ parent() }}
+  	{{ parent() }} - Tous les projets
 {% endblock %}
 
-{% block navbarProject %} class="active" {% endblock %}
-
-{% block stylesheet %}
+{% block stylesheets %}
 	{{ parent() }}
-	<link href="{{asset('css/style_showAll.css')}}" rel="stylesheet"/>
+	<link href="{{ asset('css/style_showAll.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
@@ -251,7 +249,7 @@
 </div>
 {% endblock %}
 	
-{% block javascript %}
+{% block javascripts %}
 	{{ parent() }}
 	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/script_showAll.js')}}"></script>
