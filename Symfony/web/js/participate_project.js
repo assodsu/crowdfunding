@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	var $containerDons = $('div#cf_mainbundle_projet_dons');
 
-	var $lienAjoutDons = $('<a href="#" id="ajout_don" class="btn btn-success"><i class="fa fa-plus"></i></a>');
+	var $lienAjoutDons = $('<div id="add-besoin-box"><a href="#">+</a></div>');
 
 	$lienAjoutDons.click(function(e) {
 		ajouterDon($containerDons);
@@ -41,4 +41,36 @@ $(document).ready(function() {
 			return false;
 		});
 	}
+
+	$(".header-besoin-box select").change(function () {
+	  var parent = $(this).parent().parent().parent();
+	  var color = parent.attr('class');
+	  var span = $(this).parent().parent().children('span');
+
+      var newColor = "";
+      var icon = "";
+
+      if($(this).val() == 1)
+      {
+      	newColor = "green";
+      	icon = "user";
+      }
+      else if($(this).val() == 2)
+      {
+      	newColor = "red";
+      	icon = "euro";
+      }
+      else if($(this).val() == 3)
+      {
+      	newColor = "purple";
+      	icon = "tag";
+      }
+      else if($(this).val() == 4)
+      {
+      	newColor = "grey";
+      	icon = "tag";
+      }
+      span.attr('class', "glyphicon glyphicon-"+icon);
+      parent.attr('class', "besoin-box "+newColor);
+    });
 });

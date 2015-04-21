@@ -7,6 +7,8 @@
 {% block stylesheet %}
 	{{ parent() }}
 	<link href="{{asset('css/style_show.css')}}" rel="stylesheet"/>
+	<link href="{{asset('css/flat-ui.min.css')}}" rel="stylesheet"/>
+	<link href="{{asset('css/style_participer_projet.css')}}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
@@ -163,7 +165,7 @@
 							<li class="visualize ressource-humain" data-color='#5bc0de' data-value="{{ calcBenevole }}"></li>
 						</ul>
 					</div>
-					<a href='{{path('cf_main_participate', { 'id': projet.id })}}' class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a>
+					<a  data-toggle="modal" data-target="#myModal" class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a>
 					<div id='project-tags'>
 						{% for tag in projet.tags %}
 							<div class='tag'>{{ tag.nom }}</div>
@@ -174,6 +176,7 @@
 		</div>
 	</div>
 	<div id='block-body'>
+		{{ render(controller('CFMainBundle:Project:participate', { id : projet.id } )) }}
 		<div class="panel-heading">
 			<ul class="nav nav-tabs btn-group" role='group'>
 				<li class="btn btn-default active"><a href="#tabproject" data-toggle="tab">Le projet</a></li>
@@ -347,5 +350,11 @@
         	$("#loading").fadeOut(200);
     	});
 
+	</script>
+	<script type="text/javascript" src="{{asset('js/participate_project.js')}}"></script>
+	<script type="text/javascript">
+		$('#myModal').on('shown.bs.modal', function () {
+		  $('#myInput').focus()
+		})
 	</script>
 {% endblock %}

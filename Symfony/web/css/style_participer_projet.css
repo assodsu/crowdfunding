@@ -1,0 +1,341 @@
+/* MODAL */
+.modal-dialog {
+	width: 930px;
+}
+
+/* HEADER DU MODAL */
+.modal-title {
+	text-align: center;
+	letter-spacing: 2px;
+	color: #fff;
+}
+
+/* CORPS DU MODAL */
+.modal-body {
+	padding:0;
+	background:#fff;
+}
+.modal-content {
+	background:rgba(100,100,100,.6);
+}
+h1#body-title {
+	font-size: 14pt;
+	letter-spacing: 1px;
+	text-align: center;
+	margin:0;
+	padding-top:15px;
+}
+.modal-body > hr {
+	width:30%;
+	border-top: 2px solid #9E9E9E;
+}
+
+/* BOITES DES RESSOURCES */
+.besoin-box > span {
+	position:absolute;
+	right:0;
+	margin-right: 2.5px;
+	margin-top:1.5px;
+	color:white;
+}
+.header-besoin-box {
+	padding-top:6px;
+	height: 80px;
+}
+.header-besoin-box > span {
+	color:white;
+	display:block;
+	text-align: center;
+	margin-bottom:5px;
+	font-size: 20pt;
+}
+.besoin-box, #add-besoin-box {
+	width:250px;
+	height:220px;
+	display:inline-block;
+	vertical-align: top;
+	border-radius:8px;
+	margin:28px;
+	position: relative;
+}
+.body-besoin-box input {
+	border-radius: 5px;
+	margin-top: 15px;
+	height: 40px;
+	width: 85%;
+	display: block;
+	margin-left:auto;
+	margin-right:auto;
+	padding-left: 5px;
+}
+.body-besoin-box .input-group {
+	margin-top:15px;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.body-besoin-box > p {
+	font-size:10pt;
+	font-weight: bold;
+	padding:10px;
+}
+.body-besoin-box > p > .red {
+	color:red;
+}
+
+/* AJOUT BOITE RESSOURCES */
+#add-besoin-box {
+	font-size: 130pt;
+	font-weight: 100;
+	vertical-align: middle;
+	line-height: 220px;
+	text-align: center;
+}
+#add-besoin-box > a {
+	color:#5d5d5d;
+}
+
+/* STYLE POUR INPUT FINANCIER */
+.body-besoin-box .input-group input {
+	margin-top:0;
+	width:79% !important;
+	margin-left:auto !important;
+	margin-right:auto !important;
+}
+span.input-group-addon {
+	height:40px!important;
+	display: inherit;
+}
+
+/* STYLE POUR LES SELECTS */
+.styled-select {
+	width:85%;
+	height:30px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 10px;
+	overflow: hidden;
+	position:relative;
+}
+.styled-select > span {
+	position:absolute;
+	right:5px;
+	margin-top:5px;
+	color:white;
+	pointer-events:none;
+}
+.styled-select > select {
+	position:absolute;
+	background: transparent;
+	color:white;
+	border:none;
+	width:100%;
+	height:30px;
+	padding: 5px;
+	font-size: 16px;
+	line-height: 1;
+	-webkit-appearance: none;
+}
+.styled-select > select:focus {
+	outline:0;
+}
+.styled-select > select > option {
+	color:black;
+}
+.styled-select.body-besoin {
+	border-radius: 5px;
+	margin-top: 15px;
+	height: 40px;
+}
+.styled-select.body-besoin select {
+	color: grey;
+	height: 35px;
+}
+.styled-select.body-besoin span {
+	margin-top:8px;
+}
+
+/* FOOTER DU MODAL */
+.modal-footer {
+	background:#585f6a;
+}
+label.checkbox {
+	width: 680px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	color:#fff;
+	padding-left:0;
+	font-size:12pt;
+}
+#btn-soutenir {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 250px;
+}
+#infos-sup {
+	margin-left:15px;
+}
+
+/* COULEURS DES BOITES */
+.besoin-box.green {
+	border:3px solid #70d48d;
+}
+.besoin-box.green .header-besoin-box,
+.besoin-box.green span.input-group-addon {
+	background: #70d48d;
+}
+.besoin-box.green .styled-select.body-besoin,
+.besoin-box.green .body-besoin-box input,
+.besoin-box.green span.input-group-addon {
+	border: 2px solid #70d48d;
+}
+.besoin-box.green .styled-select.body-besoin span {
+	color: #70d48d;
+}
+.besoin-box.red {
+	border:3px solid #ea5f50;
+}
+.besoin-box.red .header-besoin-box,
+.besoin-box.red span.input-group-addon {
+	background: #ea5f50;
+}
+.besoin-box.red .styled-select.body-besoin,
+.besoin-box.red .body-besoin-box input,
+.besoin-box.red span.input-group-addon {
+	border: 2px solid #ea5f50;
+}
+.besoin-box.red .styled-select.body-besoin span {
+	color: #ea5f50;
+}
+.besoin-box.purple {
+	border:3px solid #a66abe;
+}
+.besoin-box.purple .header-besoin-box,
+.besoin-box.purple span.input-group-addon {
+	background: #a66abe;
+}
+.besoin-box.purple .styled-select.body-besoin,
+.besoin-box.purple .body-besoin-box input,
+.besoin-box.purple span.input-group-addon {
+	border: 2px solid #a66abe;
+}
+.besoin-box.purple .styled-select.body-besoin span {
+	color: #a66abe;
+}
+.besoin-box.grey {
+	border:3px solid #99a5af;
+}
+.besoin-box.grey .header-besoin-box,
+.besoin-box.grey span.input-group-addon {
+	background: #99a5af;
+}
+.besoin-box.grey .styled-select.body-besoin,
+.besoin-box.grey .body-besoin-box input,
+.besoin-box.grey span.input-group-addon {
+	border: 2px solid #99a5af;
+}
+.besoin-box.grey .styled-select.body-besoin span {
+	color: #99a5af;
+}
+
+
+
+
+
+
+
+
+#cf_mainbundle_projet_dons > div {
+	margin:5px;
+	width: 200px;
+	height:auto;
+	display:inline-block;
+	padding:10px;
+	border:1px solid black;
+	border-radius: 5px;
+	background: whitesmoke;
+}
+#ajout_don {
+	font-size: 130pt;
+	font-weight: 100;
+	vertical-align: middle;
+	line-height: 220px;
+	text-align: center;
+}
+#ajout_don > i {
+  font-size: 30pt;
+  vertical-align: middle;
+}
+#suppr_don {
+  margin-left: 25%;
+  margin-top: 10px;
+  width: 50%;
+}
+
+
+
+/* BOITES DES RESSOURCES 
+.besoin-box > span {
+	position:absolute;
+	right:0;
+	margin-right: 2.5px;
+	margin-top:1.5px;
+	color:white;
+}
+.header-besoin-box {
+	padding-top:6px;
+	height: 80px;
+}
+.header-besoin-box > span {
+	color:white;
+	display:block;
+	text-align: center;
+	margin-bottom:5px;
+	font-size: 20pt;
+}
+.besoin-box, #add-besoin-box {
+	width:250px;
+	height:220px;
+	display:inline-block;
+	vertical-align: top;
+	border-radius:8px;
+	margin:28px;
+	position: relative;
+}
+.body-besoin-box input {
+	border-radius: 5px;
+	margin-top: 15px;
+	height: 40px;
+	width: 85%;
+	display: block;
+	margin-left:auto;
+	margin-right:auto;
+	padding-left: 5px;
+}
+.body-besoin-box .input-group {
+	margin-top:15px;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.body-besoin-box > p {
+	font-size:10pt;
+	font-weight: bold;
+	padding:10px;
+}
+.body-besoin-box > p > .red {
+	color:red;
+}
+
+#add-besoin-box {
+	font-size: 130pt;
+	font-weight: 100;
+	vertical-align: middle;
+	line-height: 220px;
+	text-align: center;
+}
+#add-besoin-box > a {
+	color:#5d5d5d;
+}*/
