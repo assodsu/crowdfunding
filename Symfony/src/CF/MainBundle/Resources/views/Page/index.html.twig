@@ -9,7 +9,10 @@
 	<link href="{{ asset('css/style_index.css') }}" rel="stylesheet"/>
 {% endblock %}
 
+{% block section_title_page %} {% endblock %}
+
 {% block body %}
+<section id="main-without-title">
 	<!-- Carousel -->
 	<div class="carousel">
 		<div id="menu_carousel">
@@ -89,6 +92,7 @@
 			<li class="btn btn-primary btn-lg" value="Lille" app="#villes">Lille</li>
 		</ul>
 	</div>
+</section>
 {% endblock %}
 
 {% block javascripts %}

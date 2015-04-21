@@ -10,12 +10,15 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-inner">
-	<p class="text-center">Choisissez le type d'inscription que vous voulez poursuivre</p>
-	<a class="btn btn-primary btn-lg btn-block" href="{{ path('association_registration') }}" role="button" id="asso">Association</a>
-	<a class="btn btn-primary btn-lg btn-block" href="{{ path('entreprise_registration') }}" role="button" id="entr">Entreprise</a>
-	<a class="btn btn-primary btn-lg btn-block" href="{{ path('particulier_registration') }}" role="button" id="part">Particulier</a>
-</div>
+
+<section id="main-with-title">
+	<div class="container-inner">
+		<p class="text-center">Choisissez le type d'inscription que vous voulez poursuivre</p>
+		<a class="btn btn-primary btn-lg btn-block" href="{{ path('association_registration') }}" role="button" id="asso">Association</a>
+		<a class="btn btn-primary btn-lg btn-block" href="{{ path('entreprise_registration') }}" role="button" id="entr">Entreprise</a>
+		<a class="btn btn-primary btn-lg btn-block" href="{{ path('particulier_registration') }}" role="button" id="part">Particulier</a>
+	</div>
+</section>
 {% endblock %}
 
 {% block javascripts %}
