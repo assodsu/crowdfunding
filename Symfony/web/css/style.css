@@ -30,7 +30,6 @@ body {
 
 
 #top-page {
-	height: 250px;
 	background: url('../images/background.png') repeat-x;
 }
 
@@ -94,7 +93,7 @@ nav .separator {
 }
 
 #title-page {
-	height: 196px;
+	height: 202px;
 	text-align: center;
 	padding-top: 30px;
 	background: rgba(0,0,0,0.35);
@@ -117,9 +116,14 @@ nav .separator {
 	color: #FFFFFF;
 }
 
-#main {
-	padding-top: 10px;
-    min-height: calc(100% - 250px);
+#main-with-title {
+    padding-top: 10px;
+    min-height: calc(100% - 250px - 234px);
+}
+
+#main-without-title {
+    padding-top: 10px;
+    min-height: calc(100% - 50px - 200px);
 }
 
 footer {

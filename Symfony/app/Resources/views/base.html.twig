@@ -36,19 +36,19 @@
 				</div>
 			</header>
 
+			{% block section_title_page %}
 			<section id="title-page">
 				<div class="container-inner">
 					<h1>{% block page_title %}Titre de page à renseigner{% endblock %}</h1>
 					<h2>{% block page_subtitle %}Sous-titre également à renseigner{% endblock %}</h2>
 				</div>
 			</section>
+			{% endblock %}
 		</div>
 
-		<section id="main">
-			{% block body %}
+		{% block body %}
 
-			{% endblock %}
-		</section>
+		{% endblock %}
 
 		<footer>
 			<div class="container-inner">
