@@ -47,10 +47,9 @@ $(document).ready(function() {
 			return false;
 		});
 	}
+	$(document).on('change', '.header-besoin-box select', function(){
 
-	$(".header-besoin-box select").change(function () {
 	  var parent = $(this).parent().parent().parent();
-	  var color = parent.attr('class');
 	  var span = $(this).parent().parent().children('span');
 
       var newColor = "";

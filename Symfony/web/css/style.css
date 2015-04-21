@@ -140,3 +140,66 @@ footer .footer-menu h3 {
 	padding-bottom: 12px;
 	border-bottom: 2px solid #FFFFFF;
 }
+
+/* ------------------ */
+/* --   TAB-BOX s   -- */
+/* ------------------ */
+
+.tab-box {
+	background-color:#fff;
+	border-radius: 5px;
+	width: calc(50% - 32px);
+	min-height:300px;
+	display:inline-block;
+	padding: 20px;
+	vertical-align:top;
+	margin-left: 20px;
+	margin-top:20px;
+	border:1px solid rgba(0,0,0,.1);
+}
+.tab-box h1 {
+	font-size:20pt;
+	padding-bottom:10px;
+	border-bottom:1px solid #eee;
+	margin-top:0;
+}
+.tab-box h2 {
+	font-size:16pt;
+}
+.tab-box p {
+	font-size:12pt;
+	text-align: justify;
+    text-justify: inter-word;
+}
+.tab-box img {
+	width:100%;
+	height: auto;
+}
+.tab-box.full {
+	width: calc(100% - 40px);
+	margin-left: 20px;
+	margin-top: 20px;
+}
+.tab-box.full p.picture {
+	text-align:center;
+}
+.tab-box.full img {
+	width:500px;
+	height: 300px;
+	border:1px solid rgba(0,0,0,0.2);
+}
+.tab-box.aside {
+	width:25%;
+}
+.tab-box.aside a{
+	width:100%;
+}
+.tab-box.aside p {
+	margin:0;
+}
+.tab-box.aside .progress {
+	background-color:#dadada;
+}
+.tab-box.full.aside {
+	width:70%;
+}
