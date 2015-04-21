@@ -1,0 +1,351 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700');
+
+/* ------------- */
+/* -- GENERAL -- */
+/* ------------- */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans';
+	font-size: 13px;
+}
+
+.pull-right {
+	float: right;
+}
+
+/* ------------------ */
+/* -- MISE EN PAGE -- */
+/* ------------------ */
+
+.container-inner {
+	width: 960px;
+	margin: 0px auto;
+}
+
+
+#top-page {
+	height: 250px;
+	background: url('../images/background.png') repeat-x;
+}
+
+header {
+	border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+	line-height: 50px;
+	margin-top: -2px;
+}
+
+#header-logo {
+	display: inline-block;
+	vertical-align: middle;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 24px;
+	color: #FFFFFF;
+	margin-right: 20px;
+	width: 112px;
+}
+
+nav {
+	display: inline-block;
+}
+
+#header-nav, #header-log {
+	display: inline-block;
+	vertical-align: middle;
+	text-transform: uppercase;
+}
+#header-nav { width: 624px;}
+
+nav a {
+	display: inline-block;
+	vertical-align: top;
+	color: rgba(255, 255, 255, 0.8);
+	text-decoration: none;
+	padding: 0px 8px;
+}
+
+nav a:hover {
+	background: rgba(255, 255, 255, 0.15);
+	color: rgba(255, 255, 255, 0.8);
+	text-decoration: none;
+	padding: 0px 8px;
+}
+
+nav .separator {
+	display: inline-block;
+	vertical-align: middle;
+	width: 2px;
+	height: 30px;
+	background: rgba(255, 255, 255, 0.32);
+}
+
+#title-page {
+	height: 196px;
+	text-align: center;
+	padding-top: 30px;
+	background: rgba(0,0,0,0.35);
+	margin-bottom: 20px;
+}
+
+#title-page h1 {
+	font-size: 3em;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	color: #FFFFFF;
+	margin-bottom: 0px;
+}
+
+#title-page h2 {
+	font-size: 1.4em;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	color: #FFFFFF;
+}
+
+#main {
+	
+}
+
+footer {
+	background: rgb(10, 46, 57);
+}
+
+footer .footer-menu {
+	display: inline-block;
+	width: 220px;
+	margin: 0px 8px;
+}
+
+footer .footer-menu h3 {
+	font-size: 16px;
+	text-align: center;
+	color: #FFFFFF;
+	padding-bottom: 12px;
+	border-bottom: 2px solid #FFFFFF;
+}
+
+/* ----------- */
+/* -- STEPS -- */
+/* ----------- */
+.stepwizard-step p {
+    margin: 0px auto;
+    margin-top: 10px;
+    width: 190px;
+    text-align: center;  
+}
+
+.stepwizard-row {
+    display: table-row;
+}
+
+.stepwizard {
+    display: table;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.stepwizard-step button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important;
+}
+
+.stepwizard-row:before {
+    top: 22px;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 950px;
+    height: 1px;
+    background-color: #ccc;
+    z-order: 0;
+    
+}
+
+.stepwizard-step {    
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+
+.btn-circle {
+  width: 46px;
+  height: 46px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 23px;
+}
+
+/* -------------- */
+/* -- FIELDSET -- */
+/* -------------- */
+.fieldset {
+	margin-bottom: 60px;
+}
+
+.fieldset .fieldset-form {
+	display: inline-block;
+	vertical-align: middle;
+	width: 525px;
+	margin-right: 10px;
+}
+
+.fieldset .fieldset-separator {
+	display: inline-block;
+	vertical-align: middle;
+	width: 8px;
+	height: 100px;
+	background: #286090;
+	margin-right: 10px;
+}
+
+.fieldset .fieldset-infos {
+	display: inline-block;
+	vertical-align: middle;
+	width: 400px;
+}
+
+.fieldset form label {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+.fieldset-btn {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+/* ---------- */
+/* -- TAGS -- */
+/* ---------- */
+
+.bootstrap-tagsinput .tag {
+    position: relative;
+    display: inline-block;
+    height: 27px;
+    padding: 6px 21px;
+    margin: 0 5px 5px 0;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 15px;
+    color: #7b8996;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #ebedef;
+    border-radius: 4px;
+    -webkit-transition: .25s linear;
+    transition: .25s linear
+}
+
+.bootstrap-tagsinput .tag>span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    padding: 0 10px 0 0;
+    font-size: 12px;
+    color: #fff;
+    text-align: right;
+    text-decoration: none;
+    cursor: pointer;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transition: opacity .25s linear;
+    transition: opacity .25s linear
+}
+
+.bootstrap-tagsinput .tag>span:after {
+    font-family: Flat-UI-Pro-Icons;
+    line-height: 27px;
+    content: "\e609";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.bootstrap-tagsinput .tag:hover {
+    padding-right: 28px;
+    padding-left: 14px;
+    color: #fff;
+    background-color: #16a085
+}
+
+.bootstrap-tagsinput .tag:hover>span {
+    filter: none;
+    opacity: 1;
+    -webkit-filter: none
+}
+
+.bootstrap-tagsinput input[type=text] {
+    width: auto !important;
+    min-width: 80px;
+    max-width: inherit;
+    height: 29px;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    color: #34495e;
+    vertical-align: top;
+    background-color: transparent;
+    border: none;
+    outline: 0;
+    box-shadow: none
+}
+
+.bootstrap-tagsinput input[type=text]:first-child {
+    height: 23px;
+    margin: 3px 0 8px
+}
+
+.tags_clear {
+    width: 100%;
+    height: 0;
+    clear: both
+}
+
+.not_valid {
+    margin-left: 5px !important;
+    color: #90111a !important;
+    background: #fbd8db !important
+}
+
+.tagsinput-primary {
+    padding-top: 6px;
+    padding-left: 6px;
+    border: 2px solid #1abc9c;
+    border-radius: 6px;
+}
+
+.tagsinput-primary .bootstrap-tagsinput {
+    margin-bottom: 0;
+    border-color: #1abc9c
+}
+
+.tagsinput-primary .tag {
+    color: #fff;
+    background-color: #1abc9c
+}
+
+.tagsinput-primary .tag:hover {
+    color: #fff;
+    background-color: #16a085
+}
+
+.bootstrap-tagsinput .twitter-typeahead {
+    width: auto;
+    vertical-align: top
+}
+
+.bootstrap-tagsinput .twitter-typeahead .tt-input {
+    min-width: 200px
+}
+
+.bootstrap-tagsinput .twitter-typeahead .tt-dropdown-menu {
+    width: auto;
+    min-width: 120px;
+    margin-top: 11px
+}
