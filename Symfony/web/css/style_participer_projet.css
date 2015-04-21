@@ -31,12 +31,13 @@ h1#body-title {
 }
 
 /* BOITES DES RESSOURCES */
-.besoin-box > span {
+.besoin-box > .delete-button {
 	position:absolute;
 	right:0;
 	margin-right: 2.5px;
 	margin-top:1.5px;
 	color:white;
+	z-index:2;
 }
 .header-besoin-box {
 	padding-top:6px;
@@ -58,7 +59,7 @@ h1#body-title {
 	margin:28px;
 	position: relative;
 }
-.body-besoin-box input {
+.styled-input {
 	border-radius: 5px;
 	margin-top: 15px;
 	height: 40px;
@@ -93,6 +94,7 @@ h1#body-title {
 }
 #add-besoin-box > a {
 	color:#5d5d5d;
+ 	text-decoration: none;
 }
 
 /* STYLE POUR INPUT FINANCIER */
@@ -146,6 +148,8 @@ span.input-group-addon {
 	border-radius: 5px;
 	margin-top: 15px;
 	height: 40px;
+
+  margin-left: 7%;
 }
 .styled-select.body-besoin select {
 	color: grey;
@@ -187,7 +191,7 @@ label.checkbox {
 	background: #70d48d;
 }
 .besoin-box.green .styled-select.body-besoin,
-.besoin-box.green .body-besoin-box input,
+.besoin-box.green .styled-input,
 .besoin-box.green span.input-group-addon {
 	border: 2px solid #70d48d;
 }
@@ -202,7 +206,7 @@ label.checkbox {
 	background: #ea5f50;
 }
 .besoin-box.red .styled-select.body-besoin,
-.besoin-box.red .body-besoin-box input,
+.besoin-box.red .styled-input,
 .besoin-box.red span.input-group-addon {
 	border: 2px solid #ea5f50;
 }
@@ -217,7 +221,7 @@ label.checkbox {
 	background: #a66abe;
 }
 .besoin-box.purple .styled-select.body-besoin,
-.besoin-box.purple .body-besoin-box input,
+.besoin-box.purple .styled-input,
 .besoin-box.purple span.input-group-addon {
 	border: 2px solid #a66abe;
 }
@@ -232,7 +236,7 @@ label.checkbox {
 	background: #99a5af;
 }
 .besoin-box.grey .styled-select.body-besoin,
-.besoin-box.grey .body-besoin-box input,
+.besoin-box.grey .styled-input,
 .besoin-box.grey span.input-group-addon {
 	border: 2px solid #99a5af;
 }
@@ -240,102 +244,15 @@ label.checkbox {
 	color: #99a5af;
 }
 
-
-
-
-
-
-
-
 #cf_mainbundle_projet_dons > div {
-	margin:5px;
-	width: 200px;
-	height:auto;
+	height: auto;
 	display:inline-block;
-	padding:10px;
-	border:1px solid black;
-	border-radius: 5px;
-	background: whitesmoke;
-}
-#ajout_don {
-	font-size: 130pt;
-	font-weight: 100;
-	vertical-align: middle;
-	line-height: 220px;
-	text-align: center;
-}
-#ajout_don > i {
-  font-size: 30pt;
-  vertical-align: middle;
+	vertical-align: top;
+	border-radius: 8px;
+	position: relative;
 }
 #suppr_don {
   margin-left: 25%;
   margin-top: 10px;
   width: 50%;
 }
-
-
-
-/* BOITES DES RESSOURCES 
-.besoin-box > span {
-	position:absolute;
-	right:0;
-	margin-right: 2.5px;
-	margin-top:1.5px;
-	color:white;
-}
-.header-besoin-box {
-	padding-top:6px;
-	height: 80px;
-}
-.header-besoin-box > span {
-	color:white;
-	display:block;
-	text-align: center;
-	margin-bottom:5px;
-	font-size: 20pt;
-}
-.besoin-box, #add-besoin-box {
-	width:250px;
-	height:220px;
-	display:inline-block;
-	vertical-align: top;
-	border-radius:8px;
-	margin:28px;
-	position: relative;
-}
-.body-besoin-box input {
-	border-radius: 5px;
-	margin-top: 15px;
-	height: 40px;
-	width: 85%;
-	display: block;
-	margin-left:auto;
-	margin-right:auto;
-	padding-left: 5px;
-}
-.body-besoin-box .input-group {
-	margin-top:15px;
-	width: 85%;
-	margin-left: auto;
-	margin-right: auto;
-}
-.body-besoin-box > p {
-	font-size:10pt;
-	font-weight: bold;
-	padding:10px;
-}
-.body-besoin-box > p > .red {
-	color:red;
-}
-
-#add-besoin-box {
-	font-size: 130pt;
-	font-weight: 100;
-	vertical-align: middle;
-	line-height: 220px;
-	text-align: center;
-}
-#add-besoin-box > a {
-	color:#5d5d5d;
-}*/

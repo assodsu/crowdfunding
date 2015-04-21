@@ -14,10 +14,10 @@
         <form action="{{ path('cf_main_participate', { id : projet.id } )}}" method="post" {{ form_enctype(form) }}>
         	{{ form_start(form) }}
 			{{ form_errors(form) }}
-
-			{{ form_row(form.dons) }}
+            {{ form_row(form.dons) }}
+<!--
         <div class="besoin-box green">
-        	<span class="glyphicon glyphicon-remove"></span>
+        	<a href="#" class="delete-button"><span class="glyphicon glyphicon-remove"></span></a>
         	<div class="header-besoin-box">
         		<span class="glyphicon glyphicon-user"></span>
         		<div class="styled-select">
@@ -112,7 +112,7 @@
         </div>
         <div id="add-besoin-box">
         	<a href="#">+</a>
-        </div>
+        </div>-->
       </div>
       <div class="modal-footer">
       	<label class="checkbox" for="checkbox1">
@@ -123,6 +123,7 @@
         <button type="button" id="btn-soutenir" class="btn btn-success">Je soutiens ce projet <span class="glyphicon glyphicon-ok"></span></button>
 
 			{{ form_end(form) }}
+        </form>
 		</div>
       </div>
     </div>
