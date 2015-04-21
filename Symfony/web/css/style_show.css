@@ -260,6 +260,10 @@
 	margin-right:auto;
 	margin-bottom:40px;
 }
+.tab-media {
+  width: 55%;
+  margin: 0 auto;
+}
 /**** COMMENTAIRES ****/
 .tab-box.comment {
 	min-height:0;

@@ -257,7 +257,7 @@
 						</h2>
 						<h2><i class="fa fa-user"></i> <strong>{% if projet.nbDonateur > 1 %}Donateurs :{% else %}Donateur :{% endif %}</strong> {{ projet.nbDonateur }}</h2>
 						<hr>
-						<p><a href='{{path('cf_main_participate', { 'id': projet.id })}}' class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a><p>
+						<p><a data-toggle="modal" data-target="#myModal" class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a><p>
 					</div>
 					<div class='tab-box full aside'>
 						<h1>Le projet</h1>

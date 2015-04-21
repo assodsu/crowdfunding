@@ -11,6 +11,9 @@
 }
 
 /* CORPS DU MODAL */
+form {
+	margin:0;
+}
 .modal-body {
 	padding:0;
 	background:#fff;
@@ -29,7 +32,6 @@ h1#body-title {
 	width:30%;
 	border-top: 2px solid #9E9E9E;
 }
-
 /* BOITES DES RESSOURCES */
 .besoin-box > .delete-button {
 	position:absolute;
@@ -97,6 +99,13 @@ h1#body-title {
  	text-decoration: none;
 }
 
+#cf_mainbundle_projet_dons > div {
+	height: auto;
+	display:inline-block;
+	vertical-align: top;
+	border-radius: 8px;
+	position: relative;
+}
 /* STYLE POUR INPUT FINANCIER */
 .body-besoin-box .input-group input {
 	margin-top:0;
@@ -171,6 +180,7 @@ label.checkbox {
 	color:#fff;
 	padding-left:0;
 	font-size:12pt;
+	font-weight: 300;
 }
 #btn-soutenir {
   margin-left: auto;
@@ -242,19 +252,4 @@ label.checkbox {
 }
 .besoin-box.grey .styled-select.body-besoin span {
 	color: #99a5af;
-}
-#cf_mainbundle_projet_dons > div {
-	height: auto;
-	display:inline-block;
-	vertical-align: top;
-	border-radius: 8px;
-	position: relative;
-}
-#suppr_don {
-  margin-left: 25%;
-  margin-top: 10px;
-  width: 50%;
-}
-form {
-	margin:0;
 }
