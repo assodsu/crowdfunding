@@ -10,156 +10,275 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-  <div class="row form-group">
-        <div class="col-xs-12">
-            <ul class="nav nav-pills nav-justified thumbnail setup-panel">
-                <li class="active"><a href="#step-1">
-                    <h4 class="list-group-item-heading">Identifiants</h4>
-                    <p class="list-group-item-text">Etape 1</p>
-                </a></li>
-                <li class="disabled"><a href="#step-2">
-                    <h4 class="list-group-item-heading">Renseignements</h4>
-                    <p class="list-group-item-text">Etape 2</p>
-                </a></li>
-                <li class="disabled"><a href="#step-3">
-                    <h4 class="list-group-item-heading">Adresse</h4>
-                    <p class="list-group-item-text">Etape 3</p>
-                </a></li>
-                <li class="disabled"><a href="#step-4">
-                    <h4 class="list-group-item-heading">Reseaux sociaux</h4>
-                    <p class="list-group-item-text">Etape 4</p>
-                </a></li>
-                <li class="disabled"><a href="#step-5">
-                    <h4 class="list-group-item-heading">Description</h4>
-                    <p class="list-group-item-text">Etape 5</p>
-                </a></li>
-                 <li class="disabled"><a href="#step-6">
-                    <h4 class="list-group-item-heading">Image de profil</h4>
-                    <p class="list-group-item-text">Etape 6</p>
-                </a></li>
-
-            </ul>
+<section id="main-with-title">
+    <div class="container-inner">
+        <div class="stepwizard">
+            <div class="stepwizard-row">
+                <div class="stepwizard-step"><a href="#step-1">
+                    <button type="button" class="btn btn-primary btn-circle">1</button></a>
+                    <p>Identifiants</p>
+                </div>
+                <div class="stepwizard-step"><a href="#step-2">
+                    <button type="button" class="btn btn-default btn-circle" disabled="disabled">2</button></a>
+                    <p>Renseignements</p>
+                </div>
+                <div class="stepwizard-step"><a href="#step-3">
+                    <button type="button" class="btn btn-default btn-circle" disabled="disabled">3</button></a>
+                    <p>Adresse</p>
+                </div> 
+                 <div class="stepwizard-step"><a href="#step-4">
+                    <button type="button" class="btn btn-default btn-circle" disabled="disabled">4</button></a>
+                    <p>Réseaux sociaux</p>
+                </div>
+                <div class="stepwizard-step"><a href="#step-5">
+                    <button type="button" class="btn btn-default btn-circle" disabled="disabled">5</button></a>
+                    <p>Description</p>
+                </div> 
+            </div>
         </div>
-    </div>
 
-        
+            
         <form action="{{ path('association_registration') }}" {{ form_enctype(form) }} method="POST" >
-            <div class='form-group'>
-                {{ form_start(form) }}
-                {{ form_errors(form) }}
-                
-              <div class="row setup-content" id="step-1">
-                <div class="col-xs-12">
-                    <div class="col-md-12 well text-center">
-                    <legend>Première étape - Identifiants</legend>
-                    <div id="container">
-                        {{ form_row(form.email) }}
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
 
-                        {{ form_errors(form.plainPassword) }}
-                        {{ form_widget(form.plainPassword) }}
+            <div class="row step-content" id="step-1">
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
                     </div>
-                        <button id="activate-step-2" class="btn btn-primary btn-lg">Etape suivante</button>
 
-                    </div></div></div>
-                
-                
+                    <div class="fieldset-separator"></div>
 
-            
-               <div class="row setup-content" id="step-2">
-                <div class="col-xs-12">
-                    <div class="col-md-12 well text-center">
+                    <div class="fieldset-infos">
+                        L'adresse e-mail est très importante. C'est grâce à cette adresse que pourrez confirmer l'inscription de votre compte et ausi grâce à elle que vous pourrez vous connecter sur le site.
+                    </div>
+                </div>
+
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.plainPassword.first) }}
+                        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+                    <div class="fieldset-separator"></div>
+
+                    <div class="fieldset-infos">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. 
+                    </div>
+                </div>
+
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.plainPassword.second) }}
+                        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }} 
+                    </div>
+                    <div class="fieldset-separator"></div>
+
+                    <div class="fieldset-infos">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. Etiam luctus lorem non velit congue molestie. Vivamus pulvinar nibh velit, nec rutrum arcu interdum eu.
+                    </div>
+                </div>
+
+                <div class="fieldset-btn">
+                    <a id="activate-step-2" class="btn btn-primary btn-lg">Etape suivante</a>
+                </div>
+            </div>
+
+            <div class="row step-content" id="step-2">
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.nomAsso) }}
+                        {{ form_widget(form.nomAsso, { 'attr': {'class': 'form-control'} }) }} 
+                    </div>
+
+                    <div class="fieldset-separator"></div>
+
+                    <div class="fieldset-infos">
+                        L'adresse e-mail est très importante. C'est grâce à cette adresse que pourrez confirmer l'inscription de votre compte et ausi grâce à elle que vous pourrez vous connecter sur le site.
+                    </div>
+                </div>
+
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                       {{ form_label(form.logo) }}
+                        {{ form_widget(form.logo) }} 
+                    </div>
+                    <div class="fieldset-separator"></div>
+
+                    <div class="fieldset-infos">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. Etiam luctus lorem non velit congue molestie. Vivamus pulvinar nibh velit, nec rutrum arcu interdum eu.
+                    </div>
+                </div>
+
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.numWaldec) }}
+                        {{ form_widget(form.numWaldec, { 'attr': {'class': 'form-control'} }) }} 
+                    </div>
+
+                    <div class="fieldset-separator"></div>
+
+                    <div class="fieldset-infos">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. 
+                    </div>
+                </div>
+
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                       {{ form_label(form.dateCreationAsso) }}
+                        {{ form_widget(form.dateCreationAsso) }} 
+                    </div>
+                    <div class="fieldset-separator"></div>
+
+                    <div class="fieldset-infos">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. Etiam luctus lorem non velit congue molestie. Vivamus pulvinar nibh velit, nec rutrum arcu interdum eu.
+                    </div>
+                </div>
+
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.telephone) }}
+                        {{ form_widget(form.telephone, { 'attr': {'class': 'form-control'} }) }} 
+                    </div>
+                    <div class="fieldset-separator"></div>
+
+                    <div class="fieldset-infos">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. Etiam luctus lorem non velit congue molestie. Vivamus pulvinar nibh velit, nec rutrum arcu interdum eu.
+                    </div>
+                </div>
+
+                <div class="fieldset-btn">
+                    <a id="activate-step-3" class="btn btn-primary btn-lg">Etape suivante</a>
+                </div>
+            </div>
                     
-                    <legend>Deuxième étape - Renseignements</legend>
-                    <div id="container">
-                        {{ form_row(form.nomAsso) }}
-
-                        {{ form_row(form.numWaldec) }}
-                       
-                        {{ form_row(form.dateCreationAsso) }}
-                        
-                        {{ form_row(form.telephone) }}
+            <div class="row step-content" id="step-3">
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.adresse) }}
+                        {{ form_widget(form.adresse, { 'attr': {'class': 'form-control'} }) }}
                     </div>
-                    <button id="activate-step-3" class="btn btn-primary btn-lg">Etape suivante</button>
 
+                    <div class="fieldset-separator"></div>
 
-               </div></div></div>
-            
-            
-
-         
-                <div class="row setup-content" id="step-3">
-                <div class="col-xs-12">
-                    <div class="col-md-12 well text-center">
-                    <legend>Troisième étape - Adresse</legend>
-                    <div id="container">
-                        {{ form_row(form.adresse) }}
-
-                        {{ form_row(form.cp) }}
-
-                        {{ form_row(form.ville) }}
+                    <div class="fieldset-infos">
+                        L'adresse e-mail est très importante. C'est grâce à cette adresse que pourrez confirmer l'inscription de votre compte et ausi grâce à elle que vous pourrez vous connecter sur le site.
                     </div>
-                    <button id="activate-step-4" class="btn btn-primary btn-lg">Etape suivante</button>
+                </div>
 
-
-                </div></div></div>
-           
-
-            
-                <div class="row setup-content" id="step-4">
-                <div class="col-xs-12">
-                    <div class="col-md-12 well text-center">
-                    <legend>Quatrième étape - Reseaux sociaux</legend>
-                    <div id="container">
-                        {{ form_row(form.site) }}
-
-                        
-                        {{ form_row(form.facebook) }}
-                        
-                        {{ form_row(form.twitter) }}
-
-                        {{ form_row(form.googleplus) }}
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.cp) }}
+                        {{ form_widget(form.cp, { 'attr': {'class': 'form-control'} }) }}
                     </div>
-                    <button id="activate-step-5" class="btn btn-primary btn-lg">Etape suivante</button>
 
+                    <div class="fieldset-separator"></div>
 
-                </div></div></div>
-            
-
-           
-               <div class="row setup-content" id="step-5">
-                <div class="col-xs-12">
-                    <div class="col-md-12 well text-center">
-                    <legend>Cinquième étape - Description</legend>
-                    <div id="container">
-                        {{ form_errors(form.descriptionAsso) }}
-                        {{ form_widget(form.descriptionAsso) }}
+                    <div class="fieldset-infos">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. 
                     </div>
-                    <button id="activate-step-6" class="btn btn-primary btn-lg">Etape suivante</button>
+                </div>
 
-                
-                </div></div></div>
-        
-            
-           <div class="row setup-content" id="step-6">
-                <div class="col-xs-12">
-                    <div class="col-md-12 well text-center">
-                    <legend>Sixième étape - Logo</legend>
-                    
-                    <div id="container">
-                        {{ form_errors(form.logo) }}
-                        {{ form_widget(form.logo) }}
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.ville) }}
+                        {{ form_widget(form.ville, { 'attr': {'class': 'form-control'} }) }} 
                     </div>
-                    <input type="submit" id="valider" value="Terminer" class="btn btn-primary"/>
+                    <div class="fieldset-separator"></div>
 
-                </div></div></div>
-           
+                    <div class="fieldset-infos">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. Etiam luctus lorem non velit congue molestie. Vivamus pulvinar nibh velit, nec rutrum arcu interdum eu.
+                    </div>
+                </div>
 
+                <div class="fieldset-btn">
+                    <a id="activate-step-4" class="btn btn-primary btn-lg">Etape suivante</a>
+                </div>
+            </div>  
+
+            <div class="row step-content" id="step-4">
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.site) }}
+                        {{ form_widget(form.site, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+                    <div class="fieldset-separator"></div>
+
+                    <div class="fieldset-infos">
+                        L'adresse e-mail est très importante. C'est grâce à cette adresse que pourrez confirmer l'inscription de votre compte et ausi grâce à elle que vous pourrez vous connecter sur le site.
+                    </div>
+                </div>
+
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.facebook) }}
+                        {{ form_widget(form.facebook, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+                    <div class="fieldset-separator"></div>
+
+                    <div class="fieldset-infos">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. 
+                    </div>
+                </div>
+
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.twitter) }}
+                        {{ form_widget(form.twitter, { 'attr': {'class': 'form-control'} }) }} 
+                    </div>
+                    <div class="fieldset-separator"></div>
+
+                    <div class="fieldset-infos">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. Etiam luctus lorem non velit congue molestie. Vivamus pulvinar nibh velit, nec rutrum arcu interdum eu.
+                    </div>
+                </div>
+
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.googleplus) }}
+                        {{ form_widget(form.googleplus, { 'attr': {'class': 'form-control'} }) }} 
+                    </div>
+                    <div class="fieldset-separator"></div>
+
+                    <div class="fieldset-infos">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. Etiam luctus lorem non velit congue molestie. Vivamus pulvinar nibh velit, nec rutrum arcu interdum eu.
+                    </div>
+                </div>
+
+                <div class="fieldset-btn">
+                    <a id="activate-step-5" class="btn btn-primary btn-lg">Etape suivante</a>
+                </div>
+            </div>      
+               
+            <div class="row step-content" id="step-5">
+                <div class="fieldset">
+                    <div class="fieldset-form">
+                        {{ form_label(form.descriptionAsso) }}
+                        {{ form_widget(form.descriptionAsso, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+                    <div class="fieldset-separator"></div>
+
+                    <div class="fieldset-infos">
+                        L'adresse e-mail est très importante. C'est grâce à cette adresse que pourrez confirmer l'inscription de votre compte et ausi grâce à elle que vous pourrez vous connecter sur le site.
+                    </div>
+                </div>
+
+                <div class="fieldset-btn">
+                    <button type="submit" class="btn btn-success btn-lg">S'inscrire !</button>
+                </div>
+            </div>
+            
             {{ form_end(form) }}
         </form>
-    
-        </div>
-</div>
+        
+            </div>
+    </div>
+</section>
 {% endblock %}
 
 {% block javascripts %}

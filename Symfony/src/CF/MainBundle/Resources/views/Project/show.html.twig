@@ -10,7 +10,10 @@
 	<link href="{{asset('css/style_participer_projet.css')}}" rel="stylesheet"/>
 {% endblock %}
 
+{% block section_title_page %}{% endblock %}
+
 {% block body %}
+<section id="main-without-title">
 	<div id='block-head'>
 		<div class='content'>
 			<img id='background-img' src="{{asset(projet.background.AssetPath) }}"/>
@@ -334,6 +337,7 @@
 			</div>
 		</div>
 	</div>
+</section>
 {% endblock %}
 
 {% block javascripts %}
