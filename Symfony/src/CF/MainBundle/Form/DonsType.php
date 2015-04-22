@@ -36,7 +36,7 @@ class DonsType extends AbstractType
                     ->setParameter('id', $this->projet->getId());
                 },
                 'attr' => array('class' => 'styled-select body-besoin'),
-                'label' => false
+                'label' => false,
             ))
             ->add('quantite', null, array(
                 'label' => false,

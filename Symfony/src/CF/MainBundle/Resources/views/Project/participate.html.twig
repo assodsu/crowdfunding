@@ -1,10 +1,11 @@
+{% form_theme form 'CFMainBundle:Form:fields.html.twig' %}
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-participate" tabindex="-1" role="dialog" aria-labelledby="modal-participate-label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Contribuer à ce projet</h4>
+        <h4 class="modal-title" id="modal-participate-label">Contribuer à ce projet</h4>
       </div>
       <div class="modal-body">
         <h1 id="body-title">
@@ -12,13 +13,13 @@
         </h1>
         <hr>
         <form action="{{ path('cf_main_participate', { id : projet.id } )}}" method="post" {{ form_enctype(form) }}>
-            {{ form_start(form) }}
-			{{ form_errors(form) }}
-            {{ form_row(form.dons) }}
+          {{ form_start(form) }}
+          {{ form_errors(form) }}
+          {{ form_row(form.dons) }}
       </div>
       <div class="modal-footer">
-      	<label class="checkbox" for="checkbox1">
-            <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox" required/>
+      	<label class="checkbox" for="checkbox-participate">
+            <input type="checkbox" value="" id="checkbox-participate" data-toggle="checkbox" class="custom-checkbox" required/>
             Je m'engage à respecter l'apport de ces ressources pour ce projet merveilleux <a href="#" id="infos-sup">+ d'infos</a>
         </label>
         <button type="submit" id="btn-soutenir" class="btn btn-success">Je soutiens ce projet <span class="glyphicon glyphicon-ok"></span></button>
