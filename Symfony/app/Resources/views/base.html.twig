@@ -29,9 +29,18 @@
 							<a href="{{ path('cf_main_addProjects') }}">Lancez votre projet</a>
 						</div>
 						<div id="header-log">
-							<a href="{{ path('fos_user_security_login') }}">Connexion</a>
-							<div class="separator"></div>
-							<a href="{{ path('fos_user_registration_register') }}">Inscription</a>
+							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			                    {% if is_granted("ROLE_ADMIN") %}
+			                    	Admin
+			                    {% endif %}
+			                    <a href="{{ path('fos_user_profile_show') }}">Profil</a>
+								<div class="separator"></div>
+								<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+			                {% else %}
+			                    {{ render(controller('FOSUserBundle:Security:login')) }}
+								<div class="separator"></div>
+								<a href="{{ path('fos_user_registration_register') }}">Inscription</a>
+			                {% endif %}
 						</div>
 					</nav>
 				</div>

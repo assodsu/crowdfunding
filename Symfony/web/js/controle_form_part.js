@@ -1,106 +1,40 @@
-//script de controle du formulaire d'inscription d'un particulier
-//CODE FONCTIONNEL
 $(document).ready(function(){
-	//on désactive tous les boutons
-	$('#step0Next').attr("disabled",true);
-	$('#step1Next').attr("disabled",true);
-	$('#step2Next').attr("disabled",true);
-	
 
-	/*1ERE PARTIE DU FORMULAIRE*/
-	$('#fos_user_registration_form_pseudo').keyup(function(){
+	/**** NAVIGATION ****/
+	var step = $('.stepwizard a');
+	var allForms = $('.step-content');
 
-		if ((($('#fos_user_registration_form_pseudo').val().length)!=0) && ($('#fos_user_registration_form_email').val().length!=0) && ($('#fos_user_registration_form_plainPassword_first').val().length!=0) && ($('#fos_user_registration_form_plainPassword_second').val().length!=0)) {
-			$('#step0Next').attr("disabled",false);
-		}
-		else { 
-			$('#step0Next').attr("disabled",true);
-		}
+	allForms.hide();
+	$('#step-1').show();
 
+	step.click(function(e) {
+		var $target = $($(this).attr('href'));
+
+		e.preventDefault();
+		allForms.hide(0);
+		$target.slideDown(1000);
+		step.closest('a').children().switchClass("btn-primary", "btn-default", 1000, "easeInOutQuad");
+		$(this).children().switchClass("btn-default", "btn-primary", 1000, "easeInOutQuad");
 	});
 
-
-	$('#fos_user_registration_form_email').keyup(function(){
-
-		if ((($('#fos_user_registration_form_pseudo').val().length)!=0) && ($('#fos_user_registration_form_email').val().length!=0) && ($('#fos_user_registration_form_plainPassword_first').val().length!=0) && ($('#fos_user_registration_form_plainPassword_second').val().length!=0)) {
-			$('#step0Next').attr("disabled",false);
-		}
-		else { 
-			$('#step0Next').attr("disabled",true);
-		}
-
+	$('#activate-step-2').on('click', function(e) {
+		allForms.hide();
+		$('a[href="#step-2"] button').removeAttr('disabled').trigger('click');
 	});
 
-	$('#fos_user_registration_form_plainPassword_first').keyup(function(){
-
-		if ((($('#fos_user_registration_form_pseudo').val().length)!=0) && ($('#fos_user_registration_form_email').val().length!=0) && ($('#fos_user_registration_form_plainPassword_first').val().length!=0) && ($('#fos_user_registration_form_plainPassword_second').val().length!=0)) {
-			$('#step0Next').attr("disabled",false);
-		}
-		else { 
-			$('#step0Next').attr("disabled",true);
-		}
-
+	$('#activate-step-3').on('click', function(e) {
+		allForms.hide();
+		$('a[href="#step-3"] button').removeAttr('disabled').trigger('click');
 	});
 
-
-	$('#fos_user_registration_form_plainPassword_second').keyup(function(){
-
-		if ((($('#fos_user_registration_form_pseudo').val().length)!=0) && ($('#fos_user_registration_form_email').val().length!=0) && ($('#fos_user_registration_form_plainPassword_first').val().length!=0) && ($('#fos_user_registration_form_plainPassword_second').val().length!=0)) {
-			$('#step0Next').attr("disabled",false);
-		}
-		else { 
-			$('#step0Next').attr("disabled",true);
-		}
-
+	$('#activate-step-4').on('click', function(e) {
+		allForms.hide();
+		$('a[href="#step-4"] button').removeAttr('disabled').trigger('click');
 	});
 
-	/*2EME PARTIE DU FORMULAIRE*/
-	$('#fos_user_registration_form_telephone').keyup(function(){
-
-		if ( (($('#fos_user_registration_form_nom').val().length)!=0) && ($('#fos_user_registration_form_prenom').val().length!=0) ) {
-			$('#step1Next').attr("disabled",false);
-		}
-		else { 
-			$('#step2Next').attr("disabled",true);
-		}
-
+	$('#activate-step-5').on('click', function(e) {
+		allForms.hide();
+		$('a[href="#step-5"] button').removeAttr('disabled').trigger('click');
 	});
-
-	$('#fos_user_registration_form_nom').keyup(function(){
-
-		if ( (($('#fos_user_registration_form_nom').val().length)!=0) && ($('#fos_user_registration_form_prenom').val().length!=0) ) {
-			$('#step1Next').attr("disabled",false);
-		}
-		else { 
-			$('#step2Next').attr("disabled",true);
-		}
-
-	});
-
-	$('#fos_user_registration_form_prenom').keyup(function(){
-
-		if ( (($('#fos_user_registration_form_nom').val().length)!=0) && ($('#fos_user_registration_form_prenom').val().length!=0) ) {
-			$('#step1Next').attr("disabled",false);
-		}
-		else { 
-			$('#step2Next').attr("disabled",true);
-		}
-
-	});
-
-	/*3EME PARTIE DU FORMULAIRE*/
-	$('#fos_user_registration_form_ville').keyup(function(){
-
-		if ( (($('#fos_user_registration_form_ville').val().length)!=0)) {
-			$('#step2Next').attr("disabled",false);
-		}
-		else { 
-			$('#step2Next').attr("disabled",true);
-		}
-
-	});
-
-
-
 
 });

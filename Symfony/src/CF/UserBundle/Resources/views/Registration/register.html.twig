@@ -12,11 +12,23 @@
 {% block body %}
 
 <section id="main-with-title">
-	<div class="container-inner">
-		<p class="text-center">Choisissez le type d'inscription que vous voulez poursuivre</p>
-		<a class="btn btn-primary btn-lg btn-block" href="{{ path('association_registration') }}" role="button" id="asso">Association</a>
-		<a class="btn btn-primary btn-lg btn-block" href="{{ path('entreprise_registration') }}" role="button" id="entr">Entreprise</a>
-		<a class="btn btn-primary btn-lg btn-block" href="{{ path('particulier_registration') }}" role="button" id="part">Particulier</a>
+	<div class="container-inner container-register">
+		<p>Qui êtes-vous ?</p>
+		<div id="icons">
+			<div class="icon">
+				<a href="{{ path('association_registration') }}" id="asso"><img src="{{ asset('images/user/asso.png') }}" alt="Association" /></a>
+				<div class="texte">Association</div>
+			</div>
+			<div class="icon">
+				<a href="{{ path('entreprise_registration') }}" id="entr"><img src="{{ asset('images/user/entreprise.png') }}" alt="Entreprise" /></a>
+				<div class="texte">Entreprise</div>
+			</div>
+			<div class="icon">
+				<a href="{{ path('particulier_registration') }}" id="part"><img src="{{ asset('images/user/particulier.png') }}" alt="Particulier" /></a>
+				<div class="texte">Particulier</div>
+			</div>
+		</div>
+		</div>
 	</div>
 </section>
 {% endblock %}

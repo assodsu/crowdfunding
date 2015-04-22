@@ -4,9 +4,7 @@
   Nous contacter - {{ parent() }}
 {% endblock %}
 
-{% block navbarContact %} class="active" {% endblock %}
-
-{% block stylesheet %}
+{% block stylesheets %}
 	{{ parent() }}
 	<link href="{{asset('css/style_contact.css')}}" rel="stylesheet"/>
 {% endblock %}

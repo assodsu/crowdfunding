@@ -1,51 +1,35 @@
-p, label {
+.container-register {
+	text-align: center;
+}
+
+p {
 	margin-right: 5px;
-	font-size: 1.9em;
-}
-#body {
-	width:500px;
-	margin-left:auto;
-	margin-right: auto;
-	margin-top:9%;
-}
-input[type=file] {
-	color:white;
+	font-size: 4em;
 }
 
-.btn-primary{
-	margin-top:20px;
-	margin-bottom:10px;
-	background-color: #E6E6E6;
-	color:black;
-	border-color:#E6E6E6;
+#icons {
+	margin: 50px auto;
 }
 
-.select{
-	margin-top:20px;
-	margin-bottom:10px;
-	background-color: #E6E6E6;
-	color:black;
+a {
+	padding: 0px 20px;
 }
 
-.btn .btn-primary .btn-lg .btn-block {
-	margin-top:20px;
-	margin-bottom:10px;
-	background-color: #E6E6E6;
-	color:black;
-	border-color:#E6E6E6;
+.icon {
+	display: inline-block;
 }
 
-#asso:hover{
-	background-color: #045FB4;
-	border-color:#045FB4;
+.icon a {
+	display: block;
 }
 
-#part:hover{
-	background-color: #04B404;
-	border-color:#04B404;
+.icon .texte {
+	display: block;
+	padding-top: 20px;
+	font-size: 32px;
+	font-weight: 300;
 }
 
-#entr:hover{
-	background-color: #B40404;
-	border-color:#B40404;
+#icons img:hover {
+	opacity: 0.86;
 }
