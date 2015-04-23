@@ -1,12 +1,16 @@
 /* MODAL */
-.modal-dialog {
+.modal-participer-dialog {
 	width: 930px;
+	box-shadow: none;
 }
 
 /* HEADER DU MODAL */
 .modal-title {
+	text-transform: uppercase;
 	text-align: center;
-	letter-spacing: 2px;
+	font-weight: 300;
+	letter-spacing: 8px;
+	font-size: 26px;
 	color: #fff;
 }
 
@@ -19,7 +23,9 @@ form {
 	background:#fff;
 }
 .modal-content {
-	background:rgba(100,100,100,.6);
+	background: #5A5F69;
+	border-radius: 0px;
+	box-shadow: none;
 }
 h1#body-title {
 	font-size: 14pt;
@@ -170,7 +176,7 @@ span.input-group-addon {
 
 /* FOOTER DU MODAL */
 .modal-footer {
-	background:#585f6a;
+	background:#5A5F69;
 }
 label.checkbox {
 	width: 680px;
