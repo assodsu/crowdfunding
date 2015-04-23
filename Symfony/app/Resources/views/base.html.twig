@@ -37,7 +37,7 @@
 								<div class="separator"></div>
 								<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
 			                {% else %}
-			                    {{ render(controller('FOSUserBundle:Security:login')) }}
+			                    {{ render(controller('FOSUserBundle:Security:loginModal')) }}
 								<div class="separator"></div>
 								<a href="{{ path('fos_user_registration_register') }}">Inscription</a>
 			                {% endif %}

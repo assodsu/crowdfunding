@@ -84,6 +84,13 @@ nav a:hover {
 	padding: 0px 8px;
 }
 
+nav a:focus {
+	border: none;
+	outline: none;
+	color: rgba(255, 255, 255, 0.8);
+	text-decoration: none;
+}
+
 nav .separator {
 	display: inline-block;
 	vertical-align: middle;
@@ -222,7 +229,7 @@ footer .footer-menu h3 {
 .stepwizard {
     display: table;
     position: relative;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .stepwizard-step button[disabled] {
@@ -300,4 +307,101 @@ footer .footer-menu h3 {
 
 .fieldset select {
 	height: 60px;
+}
+
+/* --------------------- */
+/* -- MODAL CONNEXION -- */
+/* --------------------- */
+.modal-connexion-dialog {
+	width: 400px;
+	margin: 20px auto;
+}
+.modal-connexion-content {
+	margin: auto;
+}
+.modal-connexion-header {
+	background: #5A5F69;
+	padding: 6px 12px;
+}
+
+.modal-connexion-title {
+	text-transform: uppercase;
+	font-weight: 300;
+	letter-spacing: 8px;
+	font-size: 26px;
+	color: #FFFFFF;
+	text-align: center;
+	padding: 12px 0px;
+	margin: 0;
+}
+
+.modal-connexion-body {
+	background: #FFFFFF;
+	padding: 20px;
+	line-height: normal;
+}
+
+.modal-connexion-body p {
+	text-transform: none;
+	text-align: justify;
+	margin-bottom: 30px;
+}
+
+.modal-connexion-body input {
+	border: none;
+	padding-bottom: 8px;
+	width: 100%;
+	border-bottom: 1px solid #5A5F69;
+}
+
+.modal-connexion-body input:focus {
+	border: none;
+	outline:  none;
+	border-bottom: 1px solid #5A5F69;
+}
+
+.modal-connexion-body label {
+	font-weight: normal;
+	text-transform: none;
+}
+
+.modal-connexion-body a {
+	color: #5A5F69;
+	padding: 0;
+}
+
+.modal-connexion-body a:hover {
+	color: #5A5F69;
+	padding: 0;
+	text-decoration: underline;
+}
+
+input#remember_me.modal-connexion-checkbox {
+	width: 20px;
+}
+
+p.modal-connexion-center {
+	text-align: center;
+	line-height: 26px;
+	margin-top: 30px;
+	margin-bottom: 0px;
+}
+
+.modal-connexion-footer {
+	background: #5A5F69;
+	padding: 16px;
+	text-align: center;
+}
+
+.modal-connexion-footer .btn-success {
+	background: #73D78C;
+	text-transform: uppercase;
+	letter-spacing: 6px;
+	text-align: center;
+	border: none;
+	border-radius: 0px;
+}
+
+.modal-connexion-footer .btn-success:hover {
+	opacity: 0.85;
 }

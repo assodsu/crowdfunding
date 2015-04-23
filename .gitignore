@@ -11,3 +11,6 @@ Symfony/vendor/*
 Symfony/web/bundles/*
 Symfony/web/uploads/*
 Symfony/app/cache/dev/profiler/index.csv
+
+# Parameter
+Symfony/app/config/parameters.yml
