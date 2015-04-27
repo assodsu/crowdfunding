@@ -31,7 +31,7 @@
 						<div id="header-log">
 							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			                    {% if is_granted("ROLE_ADMIN") %}
-			                    	Admin
+			                    	<a href="{{ path('sonata_admin_dashboard') }}">Administration</a>
 			                    {% endif %}
 			                    <a href="{{ path('fos_user_profile_show') }}">Profil</a>
 								<div class="separator"></div>

@@ -15,12 +15,14 @@ security:
             - ROLE_BENEVOLE
             - ROLE_ENTREPRISE
             - ROLE_ASSOCIATION
+            - ROLE_SONATA_ADMIN
         ROLE_SUPER_ADMIN: 
             - ROLE_USER
             - ROLE_ADMIN
             - ROLE_BENEVOLE
             - ROLE_ENTREPRISE
             - ROLE_ASSOCIATION
+            - ROLE_SONATA_ADMIN
 
     access_control:
         - { path: ^/connexion$, role: IS_AUTHENTICATED_ANONYMOUSLY }

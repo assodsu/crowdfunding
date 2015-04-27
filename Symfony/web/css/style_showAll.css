@@ -10,7 +10,7 @@
 }
 footer {
 	position: fixed;
-	bottom: 0;
+	bottom: -140px;
  	width: 100%;
  	z-index:10;
 }
@@ -92,7 +92,7 @@ footer {
     overflow: auto;
 	margin-top: 52px;
 	position:relative;
-	height: calc( 100% - 252px );
+	height: calc( 100% - 112px );
 }
 #content > a {
 	display:block;
