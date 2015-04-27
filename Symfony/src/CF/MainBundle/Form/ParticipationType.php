@@ -28,7 +28,7 @@ class ParticipationType extends AbstractType
             ->add('dons', 'collection', array('label' => false,
                 'type' => new DonsType($this->projet),
                 'allow_add'    => true,
-                'allow_delete' => true
+                'allow_delete' => true,
                 ))
         ;
     }

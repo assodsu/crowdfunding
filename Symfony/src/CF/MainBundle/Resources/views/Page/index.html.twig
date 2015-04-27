@@ -1,34 +1,25 @@
 {% extends "CFMainBundle::layout.html.twig" %}
 
 {% block title %}
-  Accueil - {{ parent() }}
+  	{{ parent() }} - Accueil
 {% endblock %}
 
-{% block navbarHome %} class="active" {% endblock %}
-
-{% block stylesheet %}
+{% block stylesheets %}
 	{{ parent() }}
-	<link href="{{asset('css/style_index.css')}}" rel="stylesheet"/>
+	<link href="{{ asset('css/style_index.css') }}" rel="stylesheet"/>
 {% endblock %}
 
-{% block header %}
-	{{ parent() }}
-	<!-- Titres et réseaux sociaux -->
-	<div id="header_title">
-		<h1>COCEPTIO</h1>
-		<h2 id="header_left">concevoir - </h2>
-		<h2 id="header_right"> - ensemble</h2>
-	</div>
-{% endblock %}
+{% block section_title_page %} {% endblock %}
 
 {% block body %}
+<section id="main-without-title">
 	<!-- Carousel -->
-	<div class='carousel'>
-		<div id='menu_carousel'>
-			<a href='#' class='menuButton selected'>Projets à la une</a>
-			<a href='#' class='menuButton'>Touche à sa fin</a>
-			<a href='#' class='menuButton'>Nouveaux</a>
-			<a href='#' class='menuButton'>Tous les</br>projets</a>
+	<div class="carousel">
+		<div id="menu_carousel">
+			<a href="#" class="menuButton selected">Projets à la une</a>
+			<a href="#" class="menuButton">Touche à sa fin</a>
+			<a href="#" class="menuButton">Nouveaux</a>
+			<a href="#" class="menuButton">Tous les</br>projets</a>
 			<div id="reseaux_sociaux">
 				<a href="#" id="facebook"><span class="fa fa-facebook"></span> Facebook</a>
 				<a href="#" id="twitter"><span class="fa fa-twitter"></span> Twitter</a>
@@ -71,9 +62,9 @@
 				<div class="input-group">
 					<input type="text" class="form-control" id='search' placeholder="Saisissez votre recherche...">
 					<span class="input-group-btn">
-						<a href='#'>
+						<a href="#">
 							<span class="glyphicon glyphicon-search">
-								<span class="sr-only">Rechercher...</span>
+								<span class="sr-only">Saisissez ici votre recherche</span>
 							</span>
 						</a>
 					</span>
@@ -101,9 +92,10 @@
 			<li class="btn btn-primary btn-lg" value="Lille" app="#villes">Lille</li>
 		</ul>
 	</div>
+</section>
 {% endblock %}
 
-{% block javascript %}
+{% block javascripts %}
 	{{ parent() }}
 	<script type="text/javascript" src="{{ asset('js/dragdrop.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/bxslider.min.js') }}"></script>

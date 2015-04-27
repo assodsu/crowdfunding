@@ -1,0 +1,21 @@
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+    <div class="connexion-content">
+        {% if invalid_username is defined %}
+            <div class="alert alert-info alert-dismissible" role="alert">
+                L'adresse e-mail <q>{{ invalid_username }}</q> que vous avez entré n'existe pas.
+            </div>
+        {% endif %}
+
+        <p>
+            Vous avez oublié votre mot de passe ? Entrez ci-dessous votre adresse email associé à votre compte et nous vous enverrons un lien par e-mail permettant de redéfinir votre mot de passe.
+        </p>
+
+        <div class="form-group">
+            <input placeholder="Entrez votre adresse e-mail" type="text" id="username" name="username" required="required" />
+        </div>
+
+    </div>
+    <div class="connexion-footer">
+        <input type="submit" class="btn btn-success btn-lg" value="Réinitialiser" />
+    </div>
+</form>

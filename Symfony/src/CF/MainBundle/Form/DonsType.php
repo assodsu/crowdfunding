@@ -28,14 +28,19 @@ class DonsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('quantite')
             ->add('besoin', 'entity', array(
                 'class' => 'CFMainBundle:Besoins',
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('b')
                     ->Where('b.projet = :id')
                     ->setParameter('id', $this->projet->getId());
-                }
+                },
+                'attr' => array('class' => 'styled-select body-besoin'),
+                'label' => false,
+            ))
+            ->add('quantite', null, array(
+                'label' => false,
+                'attr' => array('class'=>'styled-input')
             ))
         ;
     }

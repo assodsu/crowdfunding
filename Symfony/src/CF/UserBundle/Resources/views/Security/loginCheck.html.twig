@@ -1,0 +1,61 @@
+{% extends "CFUserBundle::layout.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Connexion au site
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('css/style_user_form.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block page_title %}Se connecter sur Coceptio{% endblock %}
+{% block page_subtitle %}Prêt à lancer un nouveau projet ou tout simplement prêt à contribuer à un projet déjà existant ?{% endblock %}
+
+{% block body %}
+<section id="main-with-title">
+    <div class="container-inner">
+    	<div class="connexion">
+	    	<div class="connexion-content">
+	    		{% if error %}
+				    <div class="alert alert-info alert-dismissible" role="alert">
+						L'adresse e-mail ou le mot de passe que vous avez entré semble incorrect !
+					</div>
+				{% endif %}
+		        <form action="{{ path("fos_user_security_check") }}" method="post">
+		          <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+		          <div class="form-group">
+		            <input placeholder="Entrez votre adresse e-mail"type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+		          </div>
+
+		           <div class="form-group">
+		            <input placeholder="Entrez votre mot de passe" type="password" id="password" name="_password" required="required" />
+		          </div>
+
+		          <div class="form-group">
+		            <input class="modal-connexion-checkbox" type="checkbox" id="remember_me" name="_remember_me" value="on" />
+		            <label for="remember_me">Se souvenir de moi</label>
+		          </div>
+
+		        <p class="connexion-center">
+		          Vous avez oubliez votre mot de passe ? <a href="#">Cliquez ici</a> !<br />
+		          Vous n'êtes pas encore inscrit sur le site ? <a href="#">Inscrivez-vous</a> !
+		        </p>
+		    </div>
+	        <div class="connexion-footer">
+	            <input type="submit" id="_submit" name="_submit" class="btn btn-success btn-lg" value="Se connecter" />
+	        </div>
+	    </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{asset('js/formToWizard.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/controle_form_asso.js')}}"></script>
+    <script type="text/javascript">
+        $("#SignupForm").formToWizard();
+    </script>
+{% endblock %}

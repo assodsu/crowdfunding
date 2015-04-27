@@ -1,259 +1,168 @@
 {% extends "CFMainBundle::layout.html.twig" %}
 
 {% block title %}
-  Projets - {{ parent() }}
+  	{{ parent() }} - Tous les projets
 {% endblock %}
 
-{% block navbarProject %} class="active" {% endblock %}
-
-{% block stylesheet %}
+{% block stylesheets %}
 	{{ parent() }}
-	<link href="{{asset('css/style_showAll.css')}}" rel="stylesheet"/>
+	<link href="{{ asset('css/style_showAll.css') }}" rel="stylesheet"/>
 {% endblock %}
+
+{% block section_title_page %}{% endblock %}
 
 {% block body %}
-            <div class="panel with-nav-tabs panel-default">
-                <div class="panel-heading menu">
-				<h1 id="CategoryTitle">Catégorie</h1>
-					<ul>
-						<li><a href="#Art" data-toggle="tab">Art</a></li>
-						<li><a href="#Food" data-toggle="tab">Cuisine</a></li>
-						<li><a href="#Design" data-toggle="tab">Design et invention</a></li>
-						<li><a href="#Film" data-toggle="tab">Film et vidéo</a></li>
-						<li><a href="#Jeux" data-toggle="tab">Jeux</a></li>
-						<li><a href="#Journalisme" data-toggle="tab">Journalisme</a></li>
-						<li><a href="#Livre" data-toggle="tab">Livre et édition</a></li>
-						<li><a href="#Mode" data-toggle="tab">Mode</a></li>
-						<li><a href="#Musique" data-toggle="tab">Musique</a></li>
-						<li><a href="#Spectacle" data-toggle="tab">Spectacle vivant</a></li>
-						<li><a href="#Web" data-toggle="tab">Web et techno</a></li>
-					</ul>
-                </div>
-                <div class="panel-body sous-menu">
-                    <div class="tab-content">
-                        <div class="tab-pane fade" id="Art">
-							<ul>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Art numérique'}) }}" class="tag">Art numerique</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Illustration'}) }}" class="tag">Illustration</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Patrimoine'}) }}" class="tag">Patrimoine</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Peinture'}) }}" class="tag">Peinture</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Performance'}) }}" class="tag">Performance</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Street art'}) }}" class="tag">Street art</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'photo art'}) }}" class="tag">Photo d'art</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Food">
-							<ul>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Agriculture'}) }}" class="tag">Agriculture</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Restaurant'}) }}" class="tag">Restaurant</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Design">
-							<ul>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Graphique'}) }}" class="tag">Graphique</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Objet'}) }}" class="tag">Objet</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Film">
-							<ul>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Court-métrage'}) }}" class="tag">Court-métrage</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Documentaire'}) }}" class="tag">Documentaire</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Long-métrage'}) }}" class="tag">Long-métrage</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Webdocumentaire'}) }}" class="tag">Webdocumentaire</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Websérie'}) }}" class="tag">Websérie</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Jeux">
-							<ul>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Jeux de société'}) }}" class="tag">Jeux de société</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Jeux vidéo'}) }}" class="tag">Jeux vidéo</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Journalisme">
-							<ul>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Investigation'}) }}" class="tag">Investigation</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Reportage'}) }}" class="tag">Reportage</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Photo-reportage'}) }}" class="tag">Photo-reportage</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Livre">
-							<ul>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Bande dessinée'}) }}" class="tag">Bande dessinée</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Jeunesse'}) }}" class="tag">Jeunesse</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Livre art'}) }}" class="tag">Livre d'art</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Roman'}) }}" class="tag">Roman</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Mode">
-							<ul>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Accessoires'}) }}" class="tag">Accessoires</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Haute couture'}) }}" class="tag">Haute couture</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Prêt-à-porter'}) }}" class="tag">Prêt-à-porter</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Musique">
-							<ul>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Clip'}) }}" class="tag">Clip</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Concert'}) }}" class="tag">Concert</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Enregistrement'}) }}" class="tag">Enregistrement</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Spectacle">
-							<ul>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Danse'}) }}" class="tag">Danse</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Théâtre'}) }}" class="tag">Théâtre</a></li>
-							</ul>
-						</div>
-                        <div class="tab-pane fade" id="Web">
-							<ul>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Application'}) }}" class="tag">Application</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Hardware'}) }}" class="tag">Hardware</a></li>
-								<li><a href="{{ path('cf_main_allProjects',{'nom':'Site web'}) }}" class="tag">Site web</a></li>
-							</ul>
-						</div>
-                    </div>
-                </div>
-            </div>
-	<div class="content">
-	{% for projet in projets %}
-	{% set bool = false %}
-	<!--         -->
-	{% set pourcentageTotal = 0.0 %}
-	{% set pourcentageFinancier = 0.0 %}
-	{% set pourcentageBenevole = 0.0 %}
-	{% set pourcentageMateriel = 0.0 %}
-	{% set pourcentageCommunication = 0.0 %}
-	{% set nbTotal = 0 %}
-	{% set nbFinancier = 0 %}
-	{% set nbBenevole = 0 %}
-	{% set nbMateriel = 0 %}
-	{% set nbCommunication = 0 %}
-	{% set diffBenevole = 0 %}
-	{% set diffMateriel = 0 %}
-	{% set diffCommunication = 0 %}
-	{% set calcBenevole = 0 %}
-	{% set calcMateriel = 0 %}
-	{% set calcCommunication = 0 %}
-	
-	{% for besoin in projet.besoins %}
-	{% if besoin.type == "financier" %}
-		{% set nbFinancier = nbFinancier + 1 %}
-		{% set nbTotal = nbTotal + 1 %}
-				
-	{% elseif besoin.type == "benevole" %}
-		{% set nbBenevole = nbBenevole + besoin.quantiteDemande %}
-		{% set nbTotal = nbTotal + besoin.quantiteDemande %}
-		{% set diffBenevole = diffBenevole + 1 %}
-		{% set calcBenevole = calcBenevole + besoin.quantiteActuelle %}
-	{% elseif besoin.type == "materiel" %}
-		{% set nbMateriel = nbMateriel + besoin.quantiteDemande %}
-		{% set nbTotal = nbTotal + besoin.quantiteDemande %}
-		{% set diffMateriel = diffMateriel + 1 %}
-		{% set calcMateriel = calcMateriel + besoin.quantiteActuelle %}
-	{% elseif besoin.type == "communication" %}
-		{% set nbCommunication = nbCommunication + besoin.quantiteDemande %}
-		{% set nbTotal = nbTotal + besoin.quantiteDemande %}
-		{% set diffCommunication = diffCommunication + 1 %}
-		{% set calcCommunication = calcCommunication + besoin.quantiteActuelle %}
-	{% endif %}
-
-	{% endfor %}
-
-	{% if diffBenevole == 0 %}
-		{% set diffBenevole = 1 %}
-	{% endif %}
-	{% if diffMateriel == 0 %}
-		{% set diffMateriel = 1 %}
-	{% endif %}
-		{% if diffCommunication == 0 %}
-			{% set diffCommunication = 1 %}
-		{% endif %}
-
-	{% for besoin in projet.besoins %}
-		{% if besoin.type == "financier" %}
-			{% set pourcentageFinancier = (pourcentageFinancier + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100))  %}
-		{% elseif besoin.type == "benevole" %}
-			{% set pourcentageBenevole = pourcentageBenevole + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
-		{% elseif besoin.type == "materiel" %}
-			{% set pourcentageMateriel = pourcentageMateriel + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
-		{% elseif besoin.type == "communication" %}
-			{% set pourcentageCommunication = pourcentageCommunication + ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
-		{% endif %}
-	{% endfor %}
-
-	{% if nbTotal == 0 %} 
-		{% set nbTotal = 1 %}
-	{% endif %}
-	{% if nbFinancier == 0 %}
-		{% set nbFinancier = 1 %}
-	{% endif %}
-	{% if nbBenevole == 0 %}
-		{% set nbBenevole = 1 %}
-	{% endif %}
-	{% if nbMateriel == 0 %}
-		{% set nbMateriel = 1 %}
-	{% endif %}
-	{% if nbCommunication == 0 %}
-		{% set nbCommunication = 1 %}
-	{% endif %}
-	{% set calcBenevole = ((calcBenevole / nbBenevole) * 100)|number_format(0) %}
-	{% set calcMateriel = ((calcMateriel / nbMateriel) * 100)|number_format(0) %}
-	{% set calcCommunication = ((calcCommunication / nbCommunication) * 100)|number_format(0) %}
-	{% set pourcentageFinancier = (pourcentageFinancier / nbFinancier )|number_format(0) %}
-	{% set pourcentageBenevole = (pourcentageBenevole / diffBenevole )|number_format(0) %}
-	{% set pourcentageMateriel = (pourcentageMateriel / diffMateriel )|number_format(0) %}
-	{% set pourcentageCommunication = (pourcentageCommunication / diffCommunication )|number_format(0) %}
-	{% set pourcentageTotal = (pourcentageTotal + (pourcentageFinancier * nbFinancier / nbTotal) + (pourcentageBenevole * nbBenevole / nbTotal) + (pourcentageMateriel * nbMateriel / nbTotal) + (pourcentageCommunication * nbCommunication / nbTotal))|number_format(0) %}
-<!--  -->
-	{% if categories == "All" %}
-		{% set bool = true %}
-	{% else %}
-		{% for tag in projet.tags %}
-			{% if tag.nom == categories %}
-				{% set bool = true %}
-			{% endif %}
-		{% endfor %}
-	{% endif %}
-	
-	{% if bool == true %}
-	<a href="{{ path('cf_main_project', {'id' : projet.id}) }}">
-		<div class="apercu">
-			<img src="{{asset( projet.background.AssetPath )}}"/>
-			<div class="filtre">
-				<div class="nom_asso">{{ projet.idAsso.nomAsso }}</div>
-				<div class="titre_projet">{{ projet.nom }}</div>
-				<div class="besoin">
-					<div class="box"><div id='text-ressource-info'><i class="fa fa-tag"></i> Informations : {{ calcCommunication }}%</div></div>
-					<div class="box"><div id='text-ressource-financiere'><i class="fa fa-bar-chart"></i> Financières : {{ pourcentageFinancier }}%</div></div>
-					<div class="box"><div id='text-ressource-humaine'><i class="fa fa-users"></i> Humaines : {{ calcBenevole }}%</div></div>
-					<div class="box"><div id='text-ressource-materiel'><i class="fa fa-desktop"></i> Matériels : {{ calcMateriel }}%</div></div>
-				</div>
-				<div class='diagramme'>
-					<svg height="150" width="150">
-						<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-					</svg>
-					<div class='pie-content'>
-						<div class='percentage'>{{ projet.pourcentageTotal }}%</div>
-						<div class='name'>Ressources</div>
-					</div>
-					<ul class="pie">
-						<li class="visualize" data-color="#5cb85c" data-value="{{ calcMateriel }}"></li>
-						<li class="visualize" data-color="#5bc0de" data-value="{{ calcBenevole }}"></li>
-						<li class="visualize" data-color="#d9534f" data-value="{{ pourcentageFinancier }}"></li>
-						<li class="visualize" data-color="rgba(0,0,0,0)" data-value="{{ (100 - pourcentageTotal) }}"></li>
-					</ul>
-				</div>
-			</div>
+	<aside id="menu">
+		<div id="header-menu">
+			<h1>Catégories</h1>
 		</div>
-	</a>
-	{% endif %}
-	{% endfor %}
+		<div id="body-menu">
+			<ul>
+				<li><a href="#Art" data-toggle="tab">Art</a></li>
+				<li><a href="#Food" data-toggle="tab">Cuisine</a></li>
+				<li><a href="#Design" data-toggle="tab">Design et invention</a></li>
+				<li><a href="#Film" data-toggle="tab">Film et vidéo</a></li>
+				<li><a href="#Jeux" data-toggle="tab">Jeux</a></li>
+				<li><a href="#Journalisme" data-toggle="tab">Journalisme</a></li>
+				<li><a href="#Livre" data-toggle="tab">Livre et édition</a></li>
+				<li><a href="#Mode" data-toggle="tab">Mode</a></li>
+				<li><a href="#Musique" data-toggle="tab">Musique</a></li>
+				<li><a href="#Spectacle" data-toggle="tab">Spectacle vivant</a></li>
+				<li><a href="#Web" data-toggle="tab">Web et techno</a></li>
+			</ul>
+		</div>
+	</aside>
+	<aside id="sub-menu">
+		<div class="sub-menu-categories hidden" id="Art">
+			<ul>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Art numérique'}) }}" class="tag">Art numerique</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Illustration'}) }}" class="tag">Illustration</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Patrimoine'}) }}" class="tag">Patrimoine</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Peinture'}) }}" class="tag">Peinture</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Performance'}) }}" class="tag">Performance</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Street art'}) }}" class="tag">Street art</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'photo art'}) }}" class="tag">Photo d'art</a></li>
+			</ul>
+		</div>
+	    <div class="sub-menu-categories hidden" id="Food">
+			<ul>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Agriculture'}) }}" class="tag">Agriculture</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Restaurant'}) }}" class="tag">Restaurant</a></li>
+			</ul>
+		</div>
+	    <div class="sub-menu-categories hidden" id="Design">
+			<ul>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Graphique'}) }}" class="tag">Graphique</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Objet'}) }}" class="tag">Objet</a></li>
+			</ul>
+		</div>
+	    <div class="sub-menu-categories hidden" id="Film">
+			<ul>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Court-métrage'}) }}" class="tag">Court-métrage</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Documentaire'}) }}" class="tag">Documentaire</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Long-métrage'}) }}" class="tag">Long-métrage</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Webdocumentaire'}) }}" class="tag">Webdocumentaire</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Websérie'}) }}" class="tag">Websérie</a></li>
+			</ul>
+		</div>
+	    <div class="sub-menu-categories hidden" id="Jeux">
+			<ul>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Jeux de société'}) }}" class="tag">Jeux de société</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Jeux vidéo'}) }}" class="tag">Jeux vidéo</a></li>
+			</ul>
+		</div>
+	    <div class="sub-menu-categories hidden" id="Journalisme">
+			<ul>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Investigation'}) }}" class="tag">Investigation</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Reportage'}) }}" class="tag">Reportage</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Photo-reportage'}) }}" class="tag">Photo-reportage</a></li>
+			</ul>
+		</div>
+	    <div class="sub-menu-categories hidden" id="Livre">
+			<ul>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Bande dessinée'}) }}" class="tag">Bande dessinée</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Jeunesse'}) }}" class="tag">Jeunesse</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Livre art'}) }}" class="tag">Livre d'art</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Roman'}) }}" class="tag">Roman</a></li>
+			</ul>
+		</div>
+	    <div class="sub-menu-categories hidden" id="Mode">
+			<ul>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Accessoires'}) }}" class="tag">Accessoires</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Haute couture'}) }}" class="tag">Haute couture</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Prêt-à-porter'}) }}" class="tag">Prêt-à-porter</a></li>
+			</ul>
+		</div>
+	    <div class="sub-menu-categories hidden" id="Musique">
+			<ul>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Clip'}) }}" class="tag">Clip</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Concert'}) }}" class="tag">Concert</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Enregistrement'}) }}" class="tag">Enregistrement</a></li>
+			</ul>
+		</div>
+	    <div class="sub-menu-categories hidden" id="Spectacle">
+			<ul>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Danse'}) }}" class="tag">Danse</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Théâtre'}) }}" class="tag">Théâtre</a></li>
+			</ul>
+		</div>
+	    <div class="sub-menu-categories hidden" id="Web">
+			<ul>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Application'}) }}" class="tag">Application</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Hardware'}) }}" class="tag">Hardware</a></li>
+				<li><a href="{{ path('cf_main_allProjects',{'nom':'Site web'}) }}" class="tag">Site web</a></li>
+			</ul>
+		</div>
+	</aside>
+	<div id="content-scrolling">
+		<div id="content">
+
+		{% for projet in projets %}
+			<a href="{{ path('cf_main_project', {'id' : projet.id}) }}">
+				<div class="apercu">
+					<img src="{{asset( projet.background.AssetPath )}}"/>
+					<div class="filter"></div>
+					<div class="nom_asso">{{ projet.idAsso.nomAsso }}</div>
+					<div class="titre_projet">{{ projet.nom }}</div>
+					<div class="besoin">
+						<div class="box"><div id='text-ressource-info'><i class="fa fa-tag"></i> Informations : 12%</div></div>
+						<div class="box"><div id='text-ressource-financiere'><i class="fa fa-bar-chart"></i> Financières : 30%</div></div>
+						<div class="box"><div id='text-ressource-humaine'><i class="fa fa-users"></i> Humaines : 25%</div></div>
+						<div class="box"><div id='text-ressource-materiel'><i class="fa fa-desktop"></i> Matériels : 33%</div></div>
+					</div>
+					<div class='diagramme'>
+						<svg height="150" width="150">
+							<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
+						</svg>
+						<div class='pie-content'>
+							<div class='percentage'>75%</div>
+							<div class='name'>Ressources</div>
+						</div>
+						<ul class="pie">
+							<li class="visualize" data-color="#5cb85c" data-value="12"></li>
+							<li class="visualize" data-color="#5bc0de" data-value="30"></li>
+							<li class="visualize" data-color="#d9534f" data-value="25"></li>
+							<li class="visualize" data-color="#d9534f" data-value="33"></li>
+							<li class="visualize" data-color="rgba(0,0,0,0)" data-value="75"></li>
+						</ul>
+					</div>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
 </div>
 {% endblock %}
 	
-{% block javascript %}
+{% block javascripts %}
 	{{ parent() }}
 	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/script_showAll.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/diagramme.js')}}"></script>
+	<script type="text/javascript">
+		$('.pie').visualize({
+			width: 150,
+			height: 150,
+			type: 'pie',
+			legend: false
+		});
+	</script>
 {% endblock %}

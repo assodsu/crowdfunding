@@ -53,8 +53,11 @@ class ProfileController extends Controller
     {
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->findUserByUsername($username);
+        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('idAsso' => $user->getId()));
+
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
-            'user' => $user
+            'user' => $user,
+            'projets' => $projets
         ));
     }
 

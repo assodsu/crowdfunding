@@ -1,14 +1,12 @@
 {% extends "CFUserBundle::layout.html.twig" %}
 
 {% block title %}
-	Profil - {{ parent() }}
+	{{ parent() }} - Profil utilisateur
 {% endblock %}
 
-{% block navbarProfile %} class="active" {% endblock %}
-
-{% block stylesheet %}
+{% block stylesheets %}
 	{{ parent() }}
-	<link href="{{asset('css/style_profile.css')}}" rel="stylesheet"/>
+	<link href="{{ asset('css/style_profile.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}

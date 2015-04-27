@@ -252,7 +252,6 @@
 #block-body {
 	background-color:#eee;
 	margin-top:1px;
-	padding-bottom:80px;
 }
 .tab-title {
 	width:65%;
@@ -260,6 +259,10 @@
 	margin-left:auto;
 	margin-right:auto;
 	margin-bottom:40px;
+}
+.tab-media {
+  width: 55%;
+  margin: 0 auto;
 }
 /**** COMMENTAIRES ****/
 .tab-box.comment {

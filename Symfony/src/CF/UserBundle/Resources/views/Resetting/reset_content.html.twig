@@ -1,0 +1,28 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+    <div class="connexion-content">
+       {% if form_errors(form.plainPassword.first) %}
+		    <div class="alert alert-info alert-dismissible" role="alert">
+				Les mot de passes doivent être identique !
+			</div>
+		{% endif %}
+
+        <p>
+            Veuillez indiquer dans les champs ci-dessous votre nouveau mot de passe.
+        </p>
+
+        <div class="form-group">
+            {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Entrez un nouveau mot de passe'} }) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Confirmez nouveau mot de passe'} }) }}
+        </div>
+
+        {{ form_rest(form) }}
+
+    </div>
+    <div class="connexion-footer">
+        <input type="submit" class="btn btn-success btn-lg" value="Réinitialiser" />
+    </div>
+</form>

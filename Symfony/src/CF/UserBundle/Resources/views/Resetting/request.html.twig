@@ -1,0 +1,23 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Redéfinir mon mot de passe
+{% endblock %}
+
+{% block page_title %}Mot de passe oublié ?{% endblock %}
+{% block page_subtitle %}{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('css/style_user_form.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block fos_user_content %}
+<section id="main-with-title">
+    <div class="container-inner">
+    	<div class="connexion">
+	    	{% include "FOSUserBundle:Resetting:request_content.html.twig" %}		
+	    </div>
+    </div>
+</section>
+{% endblock fos_user_content %}

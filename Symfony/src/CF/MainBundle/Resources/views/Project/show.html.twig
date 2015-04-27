@@ -4,12 +4,16 @@
   {{ projet.nom }} - {{ parent() }}
 {% endblock %}
 
-{% block stylesheet %}
+{% block stylesheets %}
 	{{ parent() }}
 	<link href="{{asset('css/style_show.css')}}" rel="stylesheet"/>
+	<link href="{{asset('css/style_participer_projet.css')}}" rel="stylesheet"/>
 {% endblock %}
 
+{% block section_title_page %}{% endblock %}
+
 {% block body %}
+<section id="main-without-title">
 	<div id='block-head'>
 		<div class='content'>
 			<img id='background-img' src="{{asset(projet.background.AssetPath) }}"/>
@@ -163,7 +167,7 @@
 							<li class="visualize ressource-humain" data-color='#5bc0de' data-value="{{ calcBenevole }}"></li>
 						</ul>
 					</div>
-					<a href='{{path('cf_main_participate', { 'id': projet.id })}}' class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a>
+					<a  data-toggle="modal" data-target="#modal-participate" class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a>
 					<div id='project-tags'>
 						{% for tag in projet.tags %}
 							<div class='tag'>{{ tag.nom }}</div>
@@ -174,6 +178,7 @@
 		</div>
 	</div>
 	<div id='block-body'>
+		{{ render(controller('CFMainBundle:Project:participate', { id : projet.id } )) }}
 		<div class="panel-heading">
 			<ul class="nav nav-tabs btn-group" role='group'>
 				<li class="btn btn-default active"><a href="#tabproject" data-toggle="tab">Le projet</a></li>
@@ -255,7 +260,7 @@
 						</h2>
 						<h2><i class="fa fa-user"></i> <strong>{% if projet.nbDonateur > 1 %}Donateurs :{% else %}Donateur :{% endif %}</strong> {{ projet.nbDonateur }}</h2>
 						<hr>
-						<p><a href='{{path('cf_main_participate', { 'id': projet.id })}}' class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a><p>
+						<p><a data-toggle="modal" data-target="#modal-participate" class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a><p>
 					</div>
 					<div class='tab-box full aside'>
 						<h1>Le projet</h1>
@@ -332,13 +337,15 @@
 			</div>
 		</div>
 	</div>
+</section>
 {% endblock %}
 
-{% block javascript %}
+{% block javascripts %}
 	{{ parent() }}
 	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/diagramme.js')}}"></script>
-	<script>
+	<script type="text/javascript" src="{{asset('js/participate_project.js')}}"></script>
+	<script type="text/javascript">
 		$(document)
 	    .on('fos_comment_before_load_thread', function (data) {
 	        $("#loading").show();
@@ -346,6 +353,178 @@
 	    .on('fos_comment_load_thread', function (data) {
         	$("#loading").fadeOut(200);
     	});
+		$(document).ready(function() {
+		    var $containerDons = $('div#cf_mainbundle_projet_dons');
 
+			var $lienAjoutDons = $('<div id="add-besoin-box"><a href="#">+</a></div>');
+
+			$lienAjoutDons.click(function(e) {
+				ajouterDon($containerDons);
+				e.preventDefault();
+				return false;
+			});
+
+			var indexDon = $containerDons.find(':input').length;
+
+			if (indexDon == 0) {
+				ajouterDon($containerDons);
+			}
+			else {
+				$containerDons.children('div').each(function() {
+					ajouterLienSuppressionDon($(this));
+				});
+			}
+
+			function ajouterDon($containerDons) {
+				var $prototype = $($containerDons.attr('data-prototype').replace(/__name__label__/g, '').replace(/__name__/g, indexDon));
+				
+				ajouterLienSuppressionDon($prototype);
+				$containerDons.append($prototype);
+				$containerDons.append('</div>');
+
+				indexDon++;
+
+				$containerDons.append($lienAjoutDons);
+			}
+
+			function ajouterLienSuppressionDon($prototype) {
+				$lienSuppression = $('<a href="#" class="delete-button"><span class="glyphicon glyphicon-remove"></span></a>');
+				$boite = $('<div class="besoin-box green" id="box-'+indexDon+'"></div>');
+				$boite.append($lienSuppression);
+				$boite.append('<div class="header-besoin-box"><span class="glyphicon glyphicon-user"></span><div class="styled-select"><select><option value="1" selected>Humaines</option><option value="2">Financière</option><option value="3">Matérielles</option><option value="4">Informationel - Com.</option></select><span class="glyphicon glyphicon-menu-down"></span></div></div>');
+				$($prototype.children('div#cf_mainbundle_projet_dons_'+indexDon)).appendTo($boite);
+				$prototype.append($boite);
+
+				$lienSuppression.click(function(e) {
+					$prototype.remove();
+					e.preventDefault();
+					return false;
+				});
+			}
+
+			$(document).on('change', '.header-besoin-box select', function(){
+		
+				var parent = $(this).parent().parent().parent();
+				var span = $(this).parent().parent().children('span');
+
+				var newColor = "";
+				var icon = "";
+
+				var besoin = {
+					"besoins" : [
+					{% for besoin in projet.besoins %}
+					{
+						id: '{{ besoin.id }}',
+						ressource: '{{ besoin.ressource }}',
+					    type: '{{ besoin.type }}'
+					},
+					{% endfor %}
+					]
+				}
+
+				for(key in besoin.besoins) {
+					var unBesoin = besoin.besoins[key];
+					console.log("id = " + unBesoin.id);
+					console.log("ressource = "+ unBesoin.ressource);
+					console.log("type = "+unBesoin.type);
+					console.log("-+-+-+-+-+-+-+-++-+");
+				}
+
+				if($(this).val() == 1)
+				{
+					newColor = "green";
+					icon = "user";
+					$('#cf_mainbundle_projet_dons_1_besoin option').each( function(){
+				  	for(key in besoin.besoins) {
+						var unBesoin = besoin.besoins[key];
+						if(unBesoin.id == $(this).val())
+						{
+							console.log(' if ('+unBesoin.ressource+') '+unBesoin.type+' != benevole');
+							if(unBesoin.type != 'benevole')
+							{
+								console.log(unBesoin.ressource+' a masquer.');
+								$(this).hide();
+							}
+							else
+							{
+								$(this).show();
+							}
+						}
+				  	}
+					});
+				}
+				else if($(this).val() == 2)
+				{
+					newColor = "red";
+					icon = "euro";
+					$('.styled-select.body-besoin option').each( function(){
+				  	for(key in besoin.besoins) {
+						var unBesoin = besoin.besoins[key];
+						if(unBesoin.id == $(this).val())
+						{
+							console.log(' if ('+unBesoin.ressource+') '+unBesoin.type+' != financier');
+							if(unBesoin.type != 'financier')
+							{
+								console.log(unBesoin.ressource+' a masquer.');
+								$(this).hide();
+							}
+							else
+							{
+								$(this).show();
+							}
+						}
+				  	}
+					});
+				}
+				else if($(this).val() == 3)
+				{
+					newColor = "purple";
+					icon = "tag";
+					$('.styled-select.body-besoin option').each( function(){
+				  	for(key in besoin.besoins) {
+						var unBesoin = besoin.besoins[key];
+						if(unBesoin.id == $(this).val())
+						{
+							console.log(' if ('+unBesoin.ressource+') '+unBesoin.type+' != materiel');
+							if(unBesoin.type != 'materiel')
+							{
+								console.log(unBesoin.ressource+' a masquer.');
+								$(this).hide();
+							}
+							else
+							{
+								$(this).show();
+							}
+						}
+				  	}
+					});
+				}
+				else if($(this).val() == 4)
+				{
+					newColor = "grey";
+					icon = "tag";
+					$('.styled-select.body-besoin option').each( function(){
+				  	for(key in besoin.besoins) {
+						var unBesoin = besoin.besoins[key];
+						if(unBesoin.id == $(this).val())
+						{
+							console.log(' if ('+unBesoin.ressource+') '+unBesoin.type+' != communication');
+							if(unBesoin.type != 'communication')
+							{
+								console.log(unBesoin.ressource+' a masquer.');
+								$(this).hide();
+							}
+							else
+							{
+								$(this).show();
+							}
+						}
+				  	}
+					});
+				}
+				span.attr('class', "glyphicon glyphicon-"+icon);
+				parent.attr('class', "besoin-box "+newColor);
+		    });
+		});
 	</script>
 {% endblock %}

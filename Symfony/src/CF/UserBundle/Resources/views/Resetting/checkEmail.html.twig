@@ -1,0 +1,23 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Redéfinir mon mot de passe
+{% endblock %}
+
+{% block page_title %}Mot de passe oublié ?{% endblock %}
+{% block page_subtitle %}{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('css/style_user_form.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block fos_user_content %}
+<section id="main-with-title">
+    <div class="container-inner">
+    	<p>
+    		Un e-mail vient de vous être envoyé. Il contient un lien qui permettra de redéfinir votre mot de passe.
+    	</p>
+    </div>
+</section>
+{% endblock fos_user_content %}

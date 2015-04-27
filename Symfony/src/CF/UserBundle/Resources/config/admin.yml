@@ -1,0 +1,31 @@
+services:
+    sonata.admin.association:
+        class: CF\UserBundle\Admin\AssociationAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Utilisateurs", label: "Association" }
+        arguments:
+            - ~
+            - CF\UserBundle\Entity\Association
+            - ~
+        calls:
+            - [ setTranslationDomain, [CFUserBundle]]
+    sonata.admin.particulier:
+        class: CF\UserBundle\Admin\ParticulierAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Utilisateurs", label: "Particulier" }
+        arguments:
+            - ~
+            - CF\UserBundle\Entity\Particulier
+            - ~
+        calls:
+            - [ setTranslationDomain, [CFUserBundle]]
+    sonata.admin.entreprise:
+        class: CF\UserBundle\Admin\EntrepriseAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Utilisateurs", label: "Entreprise" }
+        arguments:
+            - ~
+            - CF\UserBundle\Entity\Entreprise
+            - ~
+        calls:
+            - [ setTranslationDomain, [CFUserBundle]]
