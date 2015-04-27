@@ -16,6 +16,17 @@ class EntrepriseAdmin extends Admin
             ->add('nomEntreprise')
             ->add('email')
             ->add('numSiret')
+            ->add('adresse')
+            ->add('ville')
+            ->add('cp')
+            ->add('telephone')
+            ->add('site')
+            ->add('facebook')
+            ->add('twitter')
+            ->add('googleplus')
+            ->add('dateCreationEntreprise')
+            ->add('roles')
+            ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
 
@@ -24,6 +35,9 @@ class EntrepriseAdmin extends Admin
     {
         $datagridMapper
             ->add('nomEntreprise')
+            ->add('email')
+            ->add('numSiret')
+            ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
 
@@ -31,9 +45,11 @@ class EntrepriseAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('id')
             ->addIdentifier('nomEntreprise')
             ->add('email')
             ->add('numSiret')
+            ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
 }

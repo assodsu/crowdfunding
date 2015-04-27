@@ -2,7 +2,7 @@ services:
     sonata.admin.projet:
         class: CF\MainBundle\Admin\ProjetAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Projet" }
+            - { name: sonata.admin, manager_type: orm, group: "Projets", label: "Projet" }
         arguments:
             - ~
             - CF\MainBundle\Entity\Projet

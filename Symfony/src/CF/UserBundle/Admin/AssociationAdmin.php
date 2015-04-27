@@ -16,6 +16,18 @@ class AssociationAdmin extends Admin
             ->add('nomAsso')
             ->add('email')
             ->add('numWaldec')
+            ->add('adresse')
+            ->add('ville')
+            ->add('cp')
+            ->add('telephone')
+            ->add('site')
+            ->add('facebook')
+            ->add('twitter')
+            ->add('googleplus')
+            ->add('dateCreationAsso')
+            ->add('descriptionAsso')
+            ->add('roles')
+            ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
 
@@ -24,6 +36,9 @@ class AssociationAdmin extends Admin
     {
         $datagridMapper
             ->add('nomAsso')
+            ->add('email')
+            ->add('numWaldec')
+            ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
 
@@ -31,9 +46,11 @@ class AssociationAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('id')
             ->addIdentifier('nomAsso')
             ->add('email')
             ->add('numWaldec')
-        ;
+            ->add('enabled', null, array('label' => 'Activé', 'editable' => true))
+       ;
     }
 }

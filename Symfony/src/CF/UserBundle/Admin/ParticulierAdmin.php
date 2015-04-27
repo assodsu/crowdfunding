@@ -18,6 +18,18 @@ class ParticulierAdmin extends Admin
             ->add('nom')
             ->add('prenom')
             ->add('benevole')
+            ->add('sexe')
+            ->add('adresse')
+            ->add('ville')
+            ->add('cp')
+            ->add('telephone')
+            ->add('site')
+            ->add('facebook')
+            ->add('twitter')
+            ->add('googleplus')
+            ->add('dateNaissance')
+            ->add('roles')
+            ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
 
@@ -29,6 +41,7 @@ class ParticulierAdmin extends Admin
             ->add('nom')
             ->add('prenom')
             ->add('benevole')
+            ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
 
@@ -41,6 +54,7 @@ class ParticulierAdmin extends Admin
             ->add('nom')
             ->add('prenom')
             ->add('benevole')
+            ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
 }

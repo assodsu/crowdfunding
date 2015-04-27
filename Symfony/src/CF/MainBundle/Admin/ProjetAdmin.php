@@ -13,8 +13,13 @@ class ProjetAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('nom', 'text', array('label' => 'Nom du projet'))
-            ->add('description', 'text') //if no type is specified, SonataAdminBundle tries to guess it
+            ->add('nom')
+            ->add('description')
+            ->add('dateCreation','date')
+            ->add('dateFin','date')
+            ->add('infoSup')
+            ->add('idAsso.nomAsso', null, array('label' => 'Association'))
+            ->add('nbDonateur')
         ;
     }
 
@@ -23,6 +28,9 @@ class ProjetAdmin extends Admin
     {
         $datagridMapper
             ->add('nom')
+            ->add('idAsso.nomAsso', null, array('label' => 'Association'))
+            ->add('dateCreation')
+            ->add('dateFin')
         ;
     }
 
@@ -30,8 +38,11 @@ class ProjetAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('id')
             ->addIdentifier('nom')
-            ->add('idAsso')
+            ->add('idAsso.nomAsso', null, array('label' => 'Association'))
+            ->add('dateCreation')
+            ->add('dateFin')
         ;
     }
 }
