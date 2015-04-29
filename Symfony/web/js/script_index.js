@@ -1,10 +1,10 @@
 $(document).ready(function() {
-	//$('.carousel-front').css('background', 'url("../images/carousel-example2.jpg") center center no-repeat');
 
 	$('.search').on('click', function() {
 		$('.search input').focus();
 	});
-		$('.select').on('click', function() {
+	
+	$('.select').on('click', function() {
 		$select = $(this);
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');	
@@ -22,5 +22,26 @@ $(document).ready(function() {
     				return val + " " + $select.text();
     		});
 		}
+	});
+
+	$('.slider').slick({
+		slidesToShow: 5,
+		slidesToScroll: 1,
+		dots: false,
+		centerMode: false,
+		focusOnSelect: true,
+		prevArrow: '<button type="button" class="slick-prev"><</button>',
+		nextArrow: '<button type="button" class="slick-next">></button>'
+
+	});
+
+	$(".mask").css('opacity','0');
+
+	$(".item-slider").hover(function(){
+	    $(this).children('div.mask').animate({ opacity: "1" }, {queue: false});
+	    $(this).children('div.project-more-infos').animate({ bottom: "5px" }, {queue: false});
+	}, function() {
+	    $(this).children('div.mask').animate({ opacity: "0" }, {queue: false});
+	    $(this).children('div.project-more-infos').animate({ bottom: "-30px" }, {queue: false});
 	});
 });
