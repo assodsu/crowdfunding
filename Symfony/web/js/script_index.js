@@ -1,8 +1,4 @@
 $(document).ready(function() {
-<<<<<<< HEAD
-	$('.carousel-front').css('background', 'url("../images/carousel-example2.jpg") center center no-repeat').css('background-size', 'cover');
-=======
->>>>>>> origin/Accueil
 
 	$('.search').on('click', function() {
 		$('.search input').focus();

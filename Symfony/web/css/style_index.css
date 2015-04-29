@@ -161,7 +161,6 @@ body {
 	background: rgba(216, 216, 216, 0.5);
 	color: #FFFFFF;
 }
-<<<<<<< HEAD
 
 /** MEDIA QUERIES **/
 @media (max-width: 960px) {
@@ -205,7 +204,7 @@ body {
     .carousel-front {
         display: block;
     }
-=======
+}
 /*****************/
 /* SLIDER CONFIG */
 /*****************/
@@ -329,5 +328,4 @@ body {
 	z-index: 10;
 	overflow: hidden;
 	-webkit-filter: blur(6px);
->>>>>>> origin/Accueil
 }
