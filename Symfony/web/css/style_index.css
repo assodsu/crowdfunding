@@ -277,7 +277,7 @@ body {
 .project-infos > h1 {
 	text-align: center;
 	color:white;
-	line-height: 125px;
+	line-height: 62.5px;
 	vertical-align: middle;
 	text-shadow: 0px 0px 3px #000;
 } 
@@ -328,4 +328,39 @@ body {
 	z-index: 10;
 	overflow: hidden;
 	-webkit-filter: blur(6px);
+}
+
+
+
+/** MEDIA QUERIES **/
+@media (max-width: 960px) {
+    .sidebar-left {
+        font-size: 90%;
+        width: 100%;
+    	height: auto;
+    }   
+
+    .sidebar-projects {
+    	display: inline-block;
+    	width: 100%;
+    	text-align: center;
+    	height: auto;
+    	padding-top: 0px;
+    }
+
+    .sidebar-projects a {
+    	display: inline-block;
+    	padding-right: 10px;
+    }
+
+    .carousel-front {
+    	display: inline-block;
+    	width: 100%;    
+    }
+
+    .search input {
+    	width: 100%;
+    	padding-top: 20px;
+    	font-size: 13px;
+    }
 }

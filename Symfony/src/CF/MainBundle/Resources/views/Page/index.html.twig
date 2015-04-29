@@ -32,18 +32,19 @@
 			<p>
 				Aidez ce jeune homme à trouver un beau bonnet
 			</p>
-			<div class="btn-discover">Découvrir le projet</div>
+			<a href="#" id="hrefBtnDiscover"><button class="btn btn-success">Découvrir le projet</button></a>
 		</div>
 	</div>
 	
 	<div class="slider">
-		  <div class="item-slider">
-	  		<img src="{{ asset('images/1.jpg') }}" img="1.jpg" class="slide-image">
+		  {% for pa in projetsAccueil %}
+		  	<div class="item-slider">
+	  		<img src="{{ asset(pa.projet.background.AssetPath) }}" text="{{ pa.text }}" idProject="{{ pa.projet.id }}" img="{{ pa.projet.background.path }}" class="slide-image">
 	  		<div class="mask">
-			    <img src="{{ asset('images/1.jpg') }}" class="slide-image-blured">
+			    <img src="{{ asset(pa.projet.background.AssetPath) }}" class="slide-image-blured">
 			</div>
 	  		<div class="project-infos">
-	  			<h1>Projet 1</h1>
+	  			<h1>{{ pa.projet.nom }}</h1>
 	  		</div>
 	  		<div class="project-more-infos">
 	  			<div class="jauge">
@@ -56,101 +57,7 @@
 		  		</div>
 	  		</div>
 		  </div>
-		  <div class="item-slider">
-	  		<img src="{{ asset('images/2.jpg') }}" img="2.jpg" class="slide-image">
-	  		<div class="mask">
-			    <img src="{{ asset('images/2.jpg') }}" class="slide-image-blured">
-			</div>
-	  		<div class="project-infos">
-	  			<h1>Projet 2</h1>
-	  		</div>
-	  		<div class="project-more-infos">
-	  			<div class="jauge">
-	  				<div class="jauge-inner" style="width:66%;"></div>
-	  			</div>
-	  			<div class="text-infos">
-		  			<p>66%</p>
-		  			<p>|</p>
-		  			<p>17 acteurs</p>
-		  		</div>
-	  		</div>
-		  </div>
-		  <div class="item-slider">
-		  		<img src="{{ asset('images/3.jpg') }}" img="3.jpg" class="slide-image">
-		  		<div class="mask">
-				    <img src="{{ asset('images/3.jpg') }}" class="slide-image-blured">
-				</div>
-		  		<div class="project-infos">
-		  			<h1>Projet 3</h1>
-		  		</div>
-		  		<div class="project-more-infos">
-		  			<div class="jauge">
-		  				<div class="jauge-inner" style="width:66%;"></div>
-		  			</div>
-		  			<div class="text-infos">
-			  			<p>66%</p>
-			  			<p>|</p>
-			  			<p>17 acteurs</p>
-			  		</div>
-		  		</div>
-		  </div>
-		  <div class="item-slider">
-		  		<img src="{{ asset('images/4.jpg') }}" img="4.jpg" class="slide-image">
-		  		<div class="mask">
-				    <img src="{{ asset('images/4.jpg') }}" class="slide-image-blured">
-				</div>
-		  		<div class="project-infos">
-		  			<h1>Projet 4</h1>
-		  		</div>
-		  		<div class="project-more-infos">
-		  			<div class="jauge">
-		  				<div class="jauge-inner" style="width:66%;"></div>
-		  			</div>
-		  			<div class="text-infos">
-			  			<p>66%</p>
-			  			<p>|</p>
-			  			<p>17 acteurs</p>
-			  		</div>
-		  		</div>
-		  </div>
-		  <div class="item-slider">
-		  		<img src="{{ asset('images/5.jpg') }}" img="5.jpg" class="slide-image">
-		  		<div class="mask">
-				    <img src="{{ asset('images/5.jpg') }}" class="slide-image-blured">
-				</div>
-		  		<div class="project-infos">
-		  			<h1>Projet 5</h1>
-		  		</div>
-		  		<div class="project-more-infos">
-		  			<div class="jauge">
-		  				<div class="jauge-inner" style="width:66%;"></div>
-		  			</div>
-		  			<div class="text-infos">
-			  			<p>66%</p>
-			  			<p>|</p>
-			  			<p>17 acteurs</p>
-			  		</div>
-		  		</div>
-		  </div>
-		  <div class="item-slider">
-		  		<img src="{{ asset('images/6.jpg') }}" img="6.jpg" class="slide-image">
-		  		<div class="mask">
-				    <img src="{{ asset('images/6.jpg') }}" class="slide-image-blured">
-				</div>
-		  		<div class="project-infos">
-		  			<h1>Projet 6</h1>
-		  		</div>
-		  		<div class="project-more-infos">
-		  			<div class="jauge">
-		  				<div class="jauge-inner" style="width:66%;"></div>
-		  			</div>
-		  			<div class="text-infos">
-			  			<p>66%</p>
-			  			<p>|</p>
-			  			<p>17 acteurs</p>
-			  		</div>
-		  		</div>
-		  </div>
+		 {% endfor %}
 	</div>
 
 <div class="search">
@@ -191,11 +98,15 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var img = $("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('img');
-			$('.carousel-front').css('background', 'url("../images/'+img+'") center center no-repeat').css('background-size','cover');
+			$('.carousel-front').css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
+			$('.carousel-front p').text($("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('text'));
+			$('#hrefBtnDiscover').attr('href', 'projet/' + $("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('idProject'));
 			
 			$('.slick-prev, .slick-next, .item-slider').on('click', function(){
 				var img = $("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('img');
-				$('.carousel-front').css('background', 'url("../images/'+img+'") center center no-repeat').css('background-size','cover');
+				$('.carousel-front').css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
+				$('.carousel-front p').text($("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('text'));
+				$('#hrefBtnDiscover').attr('href', 'projet/' + $("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('idProject'));
 			});
 		});
 	</script>

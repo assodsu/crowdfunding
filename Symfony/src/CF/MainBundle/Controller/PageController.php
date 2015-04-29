@@ -9,8 +9,14 @@ class PageController extends Controller
     public function indexAction()
     {
     	$projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findAll();
+    	$projetsAccueil = $this->getDoctrine()->getRepository('CFMainBundle:ProjetAccueil')->findAll();
 
-        return $this->render('CFMainBundle:Page:index.html.twig', array('projets'=>$projets));
+        return $this->render('CFMainBundle:Page:index.html.twig', 
+        	array(
+        		'projets' => $projets,
+        		'projetsAccueil' => $projetsAccueil
+        		)
+        	);
     }
 
     public function contactAction()
