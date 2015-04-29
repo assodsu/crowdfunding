@@ -9,3 +9,14 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [CFMainBundle]]
+
+    sonata.admin.projet_accueil:
+        class: CF\MainBundle\Admin\ProjetAccueilAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Projets", label: "Accueil" }
+        arguments:
+            - ~
+            - CF\MainBundle\Entity\ProjetAccueil
+            - ~
+        calls:
+            - [ setTranslationDomain, [CFMainBundle]]
