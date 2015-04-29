@@ -343,8 +343,8 @@ body {
 	width: 60%;
 	background: transparent;
 	border: none;
-	font-size: 22px;
-	padding-top: 15px;
+	font-size: 18px;
+	padding-top: 16px;
 	text-align: center;
 	color: #4A4A4A;
 }
@@ -378,4 +378,48 @@ body {
 .selector .select:hover {
 	background: rgba(216, 216, 216, 0.5);
 	color: #FFFFFF;
+}
+
+/** MEDIA QUERIES **/
+@media (max-width: 960px) {
+    .sidebar-left {
+        font-size: 90%;
+        width: 100%;
+
+    	height: auto;
+    }   
+
+    .sidebar-projects {
+    	display: inline-block;
+    	width: 100%;
+    	text-align: center;
+    	height: auto;
+    	padding-top: 0px;
+    }
+
+    .sidebar-projects a {
+    	display: inline-block;
+    	padding-right: 10px;
+    }
+
+    .carousel-front {
+    	display: inline-block;
+    	width: 100%;    
+    }
+
+    .search input {
+    	width: 100%;
+    	padding-top: 20px;
+    	font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+.sidebar-left {
+
+    }   
+
+    .carousel-front {
+        display: block;
+    }
 }

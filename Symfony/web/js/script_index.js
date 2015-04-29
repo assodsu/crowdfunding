@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	//$('.carousel-front').css('background', 'url("../images/carousel-example2.jpg") center center no-repeat');
+	$('.carousel-front').css('background', 'url("../images/carousel-example2.jpg") center center no-repeat').css('background-size', 'cover');
 
 	$('.search').on('click', function() {
 		$('.search input').focus();
