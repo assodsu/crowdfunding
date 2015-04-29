@@ -8,6 +8,7 @@ $(document).ready(function() {
 		$select = $(this);
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');	
+			$(this).children('span').remove();
 			
 			var chaine = $('.search input').val();
   			chaine = chaine.replace($select.text(),'');
@@ -15,6 +16,7 @@ $(document).ready(function() {
   			$('.search input').val($.trim(chaine));
 		} else {
 			$(this).addClass('active');
+			$(this).append(' <span class="glyphicon glyphicon-ok red"></span>');
 			$('.search input').val( function( index, val ) {
     			if (val == "")
     				return $select.text();

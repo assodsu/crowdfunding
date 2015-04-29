@@ -36,6 +36,26 @@ body {
 	border-color: #4A4A4A;
 }
 
+.carousel-inner {
+	bottom: 10px;
+}
+#fade-quote-carousel.carousel .carousel-indicators {
+	bottom: -10px;
+}
+#fade-quote-carousel.carousel .carousel-indicators > li {
+	background-color: #e3e3e3;
+	border: none;
+}
+#fade-quote-carousel.carousel .carousel-indicators > li.active.green {
+	background-color: #83d29a;
+}
+#fade-quote-carousel.carousel .carousel-indicators > li.active.red {
+	background-color: #c0392b;
+}
+#fade-quote-carousel.carousel .carousel-indicators > li.active.blue {
+	background-color: #2980b9;
+}
+
 .sidebar-left-inscription {
 	text-align: center;
 	padding: 0px 10px;
@@ -106,6 +126,16 @@ body {
 	color: #5FCF80;
 }
 
+.carousel-front .jauge {
+	width:55%;
+	margin-top:20px;
+}
+
+.carousel-front .project-selected-infos {
+	font-size: 11pt;
+	margin-top: 8px;
+}
+
 .carousel-menu {
 	background: #22313F;
 	width: 100%;
@@ -136,6 +166,16 @@ body {
 	outline: none;
 }
 
+.search button {
+	right: 210px;
+	margin-top: -28px;
+	position: absolute;
+	border: none;
+	color: #3498DB;
+	background: none;
+	font-size: 18pt;
+}
+
 .selectors {
 	text-align: center;
 }
@@ -160,6 +200,10 @@ body {
 .selector .select:hover {
 	background: rgba(216, 216, 216, 0.5);
 	color: #FFFFFF;
+}
+
+.selector .select .glyphicon {
+	color:#5cb85c;
 }
 
 /** MEDIA QUERIES **/

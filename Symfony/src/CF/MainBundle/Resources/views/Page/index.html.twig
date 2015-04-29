@@ -17,7 +17,29 @@
 	<div class="sidebar-left-slogan">Concevoir<br />Ensemble</div>
 	<hr>
 	<div class="sidebar-left-inscription">
-		Je suis une association et j'ai besoin d'être soutenu pour mes projets !
+		<div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+			<!-- Carousel items -->
+			<div class="carousel-inner">
+				<div class="active item">
+					<p>Je suis une association et j'ai besoin d'être soutenu pour mes projets !</p>
+					<div class="profile-circle" style="background-color: #83d29a;"></div>
+				</div>
+				<div class="item">
+					<p>Je suis un particulier et je souhaites participer aux projets associatifs.</p>
+					<div class="profile-circle" style="background-color: #c0392b;"></div>
+				</div>
+				<div class="item">
+					<p>Je suis une entreprise et je désire supporter des projets associatifs.</p>
+					<div class="profile-circle" style="background-color: #2980b9;"></div>
+				</div>
+			</div>
+			<!-- Carousel indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#fade-quote-carousel" data-slide-to="0" class="active green"></li>
+				<li data-target="#fade-quote-carousel" data-slide-to="1" class="red"></li>
+				<li data-target="#fade-quote-carousel" data-slide-to="2" class="blue"></li>
+			</ol>
+		</div>
 	</div>
 	<button class="btn btn-success">Je m'inscris</button>
 
@@ -33,9 +55,13 @@
 				Aidez ce jeune homme à trouver un beau bonnet
 			</p>
 			<div class="btn-discover">Découvrir le projet</div>
+  			<div class="jauge">
+  				<div class="jauge-inner" style="width:66%;"></div>
+  			</div>
+			<p class="project-selected-infos">66% | 17 acteurs</p>
 		</div>
 	</div>
-	
+
 	<div class="slider">
 		  <div class="item-slider">
 	  		<img src="{{ asset('images/1.jpg') }}" img="1.jpg" class="slide-image">
@@ -43,16 +69,14 @@
 			    <img src="{{ asset('images/1.jpg') }}" class="slide-image-blured">
 			</div>
 	  		<div class="project-infos">
-	  			<h1>Projet 1</h1>
+				<h1>Projet 1</h1>
 	  		</div>
 	  		<div class="project-more-infos">
 	  			<div class="jauge">
 	  				<div class="jauge-inner" style="width:66%;"></div>
 	  			</div>
 	  			<div class="text-infos">
-		  			<p>66%</p>
-		  			<p>|</p>
-		  			<p>17 acteurs</p>
+		  			<p>66% | 17 acteurs</p>
 		  		</div>
 	  		</div>
 		  </div>
@@ -69,9 +93,7 @@
 	  				<div class="jauge-inner" style="width:66%;"></div>
 	  			</div>
 	  			<div class="text-infos">
-		  			<p>66%</p>
-		  			<p>|</p>
-		  			<p>17 acteurs</p>
+		  			<p>66% | 17 acteurs</p>
 		  		</div>
 	  		</div>
 		  </div>
@@ -88,9 +110,7 @@
 		  				<div class="jauge-inner" style="width:66%;"></div>
 		  			</div>
 		  			<div class="text-infos">
-			  			<p>66%</p>
-			  			<p>|</p>
-			  			<p>17 acteurs</p>
+			  			<p>66% | 17 acteurs</p>
 			  		</div>
 		  		</div>
 		  </div>
@@ -107,9 +127,7 @@
 		  				<div class="jauge-inner" style="width:66%;"></div>
 		  			</div>
 		  			<div class="text-infos">
-			  			<p>66%</p>
-			  			<p>|</p>
-			  			<p>17 acteurs</p>
+			  			<p>66% | 17 acteurs</p>
 			  		</div>
 		  		</div>
 		  </div>
@@ -126,9 +144,7 @@
 		  				<div class="jauge-inner" style="width:66%;"></div>
 		  			</div>
 		  			<div class="text-infos">
-			  			<p>66%</p>
-			  			<p>|</p>
-			  			<p>17 acteurs</p>
+			  			<p>66% | 17 acteurs</p>
 			  		</div>
 		  		</div>
 		  </div>
@@ -145,43 +161,42 @@
 		  				<div class="jauge-inner" style="width:66%;"></div>
 		  			</div>
 		  			<div class="text-infos">
-			  			<p>66%</p>
-			  			<p>|</p>
-			  			<p>17 acteurs</p>
+			  			<p>66% | 17 acteurs</p>
 			  		</div>
 		  		</div>
 		  </div>
 	</div>
 
-<div class="search">
-	<input type="text" placeholder="Tapez ici votre recherche ou sélectionnez vos critères ci-dessous" />
-</div>
-
-<div class="selectors">
-	<div class="selector">
-		<div class="select">Numérique</div>
-		<div class="select">Loisirs</div>
-		<div class="select">Culture</div>
+	<div class="search">
+		<input type="text" placeholder="Tapez ici votre recherche ou sélectionnez vos critères ci-dessous" />
+		<button><span class="glyphicon glyphicon-search"></span></button>
 	</div>
 
-	<div class="selector">
-		<div class="select">Samer</div>
-		<div class="select">Fiennes</div>
-		<div class="select">Boulogne Sur Mer</div>
-	</div>
+	<div class="selectors">
+		<div class="selector">
+			<div class="select">Numérique</div>
+			<div class="select">Loisirs</div>
+			<div class="select">Culture</div>
+		</div>
 
-	<div class="selector">
-		<div class="select">Samer</div>
-		<div class="select">Fiennes</div>
-		<div class="select">Boulogne Sur Mer</div>
-	</div>
+		<div class="selector">
+			<div class="select">Samer</div>
+			<div class="select">Fiennes</div>
+			<div class="select">Boulogne Sur Mer</div>
+		</div>
 
-	<div class="selector">
-		<div class="select">Samer</div>
-		<div class="select">Fiennes</div>
-		<div class="select">Boulogne Sur Mer</div>
+		<div class="selector">
+			<div class="select">Samer</div>
+			<div class="select">Fiennes</div>
+			<div class="select">Boulogne Sur Mer</div>
+		</div>
+
+		<div class="selector">
+			<div class="select">Samer</div>
+			<div class="select">Fiennes</div>
+			<div class="select">Boulogne Sur Mer</div>
+		</div>
 	</div>
-</div>
 {% endblock %}
 
 {% block javascripts %}
