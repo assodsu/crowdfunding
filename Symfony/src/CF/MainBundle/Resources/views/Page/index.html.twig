@@ -12,8 +12,65 @@
 {% block section_title_page %} {% endblock %}
 
 {% block body %}
-<section id="main-without-title">
-	<!-- Carousel -->
+<div class="sidebar-left">
+	<div class="sidebar-left-title">C<span class="blue">o</span>cepti<span class="blue">o</span></div>
+	<div class="sidebar-left-slogan">Concevoir<br />Ensemble</div>
+	<hr>
+	<div class="sidebar-left-inscription">
+		Je suis une association et j'ai besoin d'être soutenu pour mes projets !
+	</div>
+	<button class="btn btn-success">Je m'inscris</button>
+
+	<div class="sidebar-projects">
+		<a href="#">Les projets en pôle position</a>
+		<a href="#">Les projets aboutissants</a>
+		<a href="#">Les nouveaux nés</a>
+		<a href="#">Tous les projets</a>
+	</div>
+</div><div class="carousel-front">
+	<div class="carousel-front-texte">
+		<p>
+			Aidez ce jeune homme à trouver un beau bonnet
+		</p>
+		<div class="btn-discover">Découvrir le projet</div>
+	</div>
+</div>
+
+<div class="carousel-menu">
+
+</div>
+
+<div class="search">
+	<input type="text" placeholder="Tapez ici votre recherche ou sélectionnez vos critères ci-dessous" />
+</div>
+
+<div class="selectors">
+	<div class="selector">
+		<div class="select">Numérique</div>
+		<div class="select">Loisirs</div>
+		<div class="select">Culture</div>
+	</div>
+
+	<div class="selector">
+		<div class="select">Samer</div>
+		<div class="select">Fiennes</div>
+		<div class="select">Boulogne Sur Mer</div>
+	</div>
+
+	<div class="selector">
+		<div class="select">Samer</div>
+		<div class="select">Fiennes</div>
+		<div class="select">Boulogne Sur Mer</div>
+	</div>
+
+	<div class="selector">
+		<div class="select">Samer</div>
+		<div class="select">Fiennes</div>
+		<div class="select">Boulogne Sur Mer</div>
+	</div>
+</div>
+<!--<section id="main-without-title">
+	 Carousel
 	<div class="carousel">
 		<div id="menu_carousel">
 			<a href="#" class="menuButton selected">Projets à la une</a>
@@ -55,7 +112,6 @@
 		</div>
 	</div>
 	
-	<!-- Barre de recherche-->
 	<nav class="search-default">
 		<ul class="search">
 			<form class="search-form" role="search">
@@ -73,7 +129,7 @@
 		</ul>
 	</nav>
 	
-	<!-- Vignettes drag and drop -->
+	
 	<div class="dragdrop-button-container">
 		<ul id="categories">
 			<li class="btn btn-primary btn-lg" value="Sport" app="#categories"><span class="fa fa-trophy"></span> Sport</li>
@@ -92,13 +148,14 @@
 			<li class="btn btn-primary btn-lg" value="Lille" app="#villes">Lille</li>
 		</ul>
 	</div>
-</section>
+</section>-->
 {% endblock %}
 
 {% block javascripts %}
 	{{ parent() }}
 	<script type="text/javascript" src="{{ asset('js/dragdrop.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/bxslider.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/script_index.js') }}"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var carousel = $('.bxslider').show().bxSlider({

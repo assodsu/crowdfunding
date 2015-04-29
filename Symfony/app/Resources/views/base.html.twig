@@ -6,61 +6,52 @@
 		<link rel="icon" href="{{asset('favicon.ico')}}" />
 		<meta charset="utf8" />
 		{% block stylesheets %}
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-			<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/stylev2.css') }}">
+			<style>
+			
+			</style>
 		{% endblock %}
 	</head>
 
 	<body>
-		<div id="top-page">
-			<header>
-				<div class="container-inner">
-					<div id="header-logo">
-						<a href="{{ path('cf_main_homepage') }}">COCEPTIO</a>
-					</div>
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    	  <div class="container">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <div class="navbar-brand navbar-brand-centered logo"><a href="{{ path('cf_main_homepage') }}">COCEPTIO</a></div>
+		    </div>
 
-					<nav>
-						<div id="header-nav">
-							<a href="{{ path('cf_main_allProjects') }}">Les projets</a>
-							<div class="separator"></div>
-							<a href="#">Comment ça marche ?</a>
-							<div class="separator"></div>
-							<a href="{{ path('cf_main_addProjects') }}">Lancez votre projet</a>
-						</div>
-						<div id="header-log">
-							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-			                    {% if is_granted("ROLE_ADMIN") %}
-			                    	<a href="{{ path('sonata_admin_dashboard') }}">Administration</a>
-			                    {% endif %}
-			                    <a href="{{ path('fos_user_profile_show') }}">Profil</a>
-								<div class="separator"></div>
-								<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
-			                {% else %}
-			                    {{ render(controller('FOSUserBundle:Security:loginModal')) }}
-								<div class="separator"></div>
-								<a href="{{ path('fos_user_registration_register') }}">Inscription</a>
-			                {% endif %}
-						</div>
-					</nav>
-				</div>
-			</header>
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="navbar-brand-centered">
+		      <ul class="nav navbar-nav">
+		        <li><a href="{{ path('cf_main_allProjects') }}">Les projets</a></li>
+		        <li><a href="#">Comment ça marche ?</a></li>
+		      </ul>
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="{{ path('cf_main_addProjects') }}">Lancer mon projet</a></li>
+		        <li><a href="#">Partenaires</a></li>  
+		        <li>{{ render(controller('FOSUserBundle:Security:loginModal')) }}</li>   
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
 
-			{% block section_title_page %}
-			<section id="title-page">
-				<div class="container-inner">
-					<h1>{% block page_title %}Titre de page à renseigner{% endblock %}</h1>
-					<h2>{% block page_subtitle %}Sous-titre également à renseigner{% endblock %}</h2>
-				</div>
-			</section>
-			{% endblock %}
-		</div>
-
+		<section id="main">
 		{% block body %}
 
 		{% endblock %}
-
-		<footer>
+		</section>
+		
+		<!--<footer>
 			<div class="container-inner">
 				<div class="footer-menu">
 					<h3>Aide</h3>
@@ -75,12 +66,12 @@
 					<h3>Contact</h3>
 				</div>
 			</div>
-		</footer>
-
+		</footer>-->
 	
 		{% block javascripts %}
 			<script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
 			<script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
 			<script type="text/javascript" src="{{asset('js/bootstrap.js')}}"></script>
 		{% endblock %}
+	</body>
 </html>

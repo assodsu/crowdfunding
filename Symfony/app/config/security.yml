@@ -2,7 +2,6 @@ imports:
     - { resource: "@CFUserBundle/Resources/config/security.yml" }
 
 security:
-
     role_hierarchy:
         ROLE_ASSOCIATION: 
             - ROLE_USER

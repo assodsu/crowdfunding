@@ -1,3 +1,7 @@
+body {
+	background: #34495E;
+}
+
 /**** CARROUSEL ****/
 .slider{
     max-width:870px;
@@ -211,4 +215,167 @@
 .dragdrop-button-container ul li:hover, .dragdrop-button-container ul li:active{
 	background:#555B6F;
 	border-color:#ECECEC;
+}
+
+
+
+
+/* NEW VERSION */
+.sidebar-left {
+	display: inline-block;
+	background: #D8D8D8;
+	height: 470px;
+	width: 25%;
+	vertical-align: top;
+}
+
+.sidebar-left-title {
+	margin-top: 10px;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 10px;
+	font-size: 36px;
+	font-weight: 300;
+}
+
+.sidebar-left-title .blue {
+	color: #3498DB;
+}
+
+.sidebar-left-slogan {
+	text-transform: lowercase;
+	letter-spacing: 15px;
+	color: #4A4A4A;
+	text-align: center;
+}
+
+.sidebar-left hr {
+	width: 260px;
+	margin: 20px auto;
+	border-color: #4A4A4A;
+}
+
+.sidebar-left-inscription {
+	text-align: center;
+	padding: 0px 10px;
+}
+
+.sidebar-left button {
+	display: block;
+	width: 260px;
+	margin: 10px auto;
+}
+
+.sidebar-projects {
+	background: #34495E;
+	height: 242px;
+	padding-top: 10px;
+}
+
+.sidebar-projects a {
+	display: block;
+	line-height: 40px;
+	color: #FFFFFF;
+	text-indent: 20px;
+	border-left: 5px solid #34495E;
+	margin: 10px 0px;
+	font-size: 16px;
+	font-weight: 300;
+}
+
+.sidebar-projects a:hover {
+	text-decoration: none;
+	border-left: 5px solid #3498DB;
+	background: rgba(216, 216, 216, .25);
+}
+
+.carousel-front {
+	display: inline-block;
+	width: 75%;
+	background: blue;
+	height: 470px;
+	position: relative;
+	vertical-align: top;
+	background: url('../images/carousel-example.jpeg') center center no-repeat;
+	background-size: cover;
+}
+
+.carousel-front-texte {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 400px;
+	height: 200px;
+	background: rgba(0,0,0, 0.2);
+	padding: 30px 20px;
+	font-size: 22px;
+	font-weight: 300;
+	text-align: center;
+}
+
+.carousel-front .btn-discover {
+	font-size: 13px;
+	border: 2px solid #5FCF80;
+	border-radius: 5px;
+	display: inline-block;
+	padding: 6px;
+	width: 200px;
+	font-weight: 600;
+	color: #5FCF80;
+}
+
+.carousel-menu {
+	background: #22313F;
+	width: 100%;
+	height: 175px;
+}
+
+.search {
+	height: 60px;
+	width: 100%;
+	background: #D8D8D8;
+	cursor: text;
+}
+
+.search input {
+	display: block;
+	margin: 0px auto;
+	width: 60%;
+	background: transparent;
+	border: none;
+	font-size: 22px;
+	padding-top: 15px;
+	text-align: center;
+	color: #4A4A4A;
+}
+
+.search input:focus {
+	border: none;
+	outline: none;
+}
+
+.selectors {
+	text-align: center;
+}
+
+.selector {
+	display: inline-block;
+	width: 250px;
+	margin: 20px 20px;
+}
+
+.selector .select {
+	padding: 15px 0px;
+	background: #FFFFFF;
+	cursor: pointer;
+}
+
+.selector .select.active {
+	background: rgba(216, 216, 216, 0.25);
+	color: #FFFFFF;
+}
+
+.selector .select:hover {
+	background: rgba(216, 216, 216, 0.5);
+	color: #FFFFFF;
 }

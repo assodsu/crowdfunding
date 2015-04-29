@@ -68,21 +68,19 @@ nav {
 	vertical-align: middle;
 	text-transform: uppercase;
 }
-#header-nav { width: 624px;}
+#header-nav { width: 500px;}
 
 nav a {
 	display: inline-block;
 	vertical-align: top;
 	color: rgba(255, 255, 255, 0.8);
 	text-decoration: none;
-	padding: 0px 8px;
 }
 
 nav a:hover {
 	background: rgba(255, 255, 255, 0.15);
 	color: rgba(255, 255, 255, 0.8);
 	text-decoration: none;
-	padding: 0px 8px;
 }
 
 nav a:focus {
@@ -405,4 +403,19 @@ p.modal-connexion-center {
 
 .modal-connexion-footer .btn-success:hover {
 	opacity: 0.85;
+}
+
+@media screen and (min-width:768px){
+    .navbar-brand-centered {
+        position: absolute;
+        left: 50%;
+        display: block;
+        width: 160px;
+        text-align: center;
+        background-color: #eee;
+    }
+    .navbar>.container .navbar-brand-centered, 
+    .navbar>.container-fluid .navbar-brand-centered {
+        margin-left: -80px;
+    }
 }

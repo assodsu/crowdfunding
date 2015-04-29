@@ -1,0 +1,32 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700');
+
+body { 
+	font-family: 'Open Sans';
+    font-size: 13px;
+}
+
+.navbar {
+	background: #ECECEC;
+}
+
+.navbar-brand-centered {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 160px;
+    text-align: center;
+    background-color: transparent;
+}
+
+.navbar .logo a {
+    color: black;
+}
+
+.navbar>.container .navbar-brand-centered, 
+.navbar>.container-fluid .navbar-brand-centered {
+    margin-left: -80px;
+} 
+
+#main {
+	margin-top: 50px;
+}
