@@ -7,22 +7,22 @@ $(document).ready(function() {
 	$('.select').on('click', function() {
 		$select = $(this);
 		if ($(this).hasClass('active')) {
-			$(this).removeClass('active');	
-			$(this).children('span').remove();
+			$(this).removeClass('active');
+			$(this).parent().children('span').remove();
 			
 			var chaine = $('.search input').val();
-  			chaine = chaine.replace($select.text(),'');
-  			
-  			$('.search input').val($.trim(chaine));
+			chaine = chaine.replace($select.text(),'');
+			
+			$('.search input').val($.trim(chaine));
 		} else {
 			$(this).addClass('active');
-			$(this).append(' <span class="glyphicon glyphicon-ok red"></span>');
+			$(this).parent().append('<span class="glyphicon glyphicon-ok checkmark"></span>');
 			$('.search input').val( function( index, val ) {
-    			if (val == "")
-    				return $select.text();
-    			else
-    				return val + " " + $select.text();
-    		});
+				if (val == "")
+					return $select.text();
+				else
+					return val + " " + $select.text();
+			});
 		}
 	});
 
