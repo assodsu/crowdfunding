@@ -7,20 +7,57 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RechercheController extends Controller
 {
-	public function searchAction() 
+	public function searchAction(Request $request) 
 	{
-		$motcle = 'CRAB';
-         
-        $em = $this->getDoctrine()
-                   ->getEntityManager();
+		$form = $this->createFormBuilder()
+            ->add('recherche', 'text')
+            ->getForm();
+ 
+        if ($request->isMethod('POST'))
+        {
+            $form->bind($request);
+ 
+            $motcles = $request->request->get($form->getName());
+			$motcles = explode(' ', $motcles['recherche']);
+     
+	        $em = $this->getDoctrine()
+	                   ->getEntityManager();
 
-        $recherche = $em->getRepository('CFMainBundle:Projet')
-                		->getSearchList($motcle);
+	        $resultats = array();
 
-		return $this->render('CFMainBundle:Recherche:search.html.twig', array
+	        foreach ($motcles as $m) {
+	        	if (strlen($m) > 3) {
+	        		$resultats[] = $em->getRepository('CFMainBundle:Projet')
+	                		->getSearchList($m);
+	        	}
+	        }
+
+	        $recherche = array();
+	        foreach ($resultats as $resultat) {
+	        	foreach ($resultat as $r) {
+	        		$recherche[] = $r;
+	        	}
+	        }
+
+	        $recherche = array_unique($recherche);
+
+			return $this->render('CFMainBundle:Recherche:search.html.twig', array
+				(
+					'projets' => $recherche
+				)
+			);
+        }
+	}
+
+	public function renderSearchAction()
+	{
+		$form = $this->createFormBuilder()
+            ->add('recherche', 'text')
+            ->getForm();
+
+        return $this->render('CFMainBundle:Recherche:search_form.html.twig', array
 			(
-				'projets' => $recherche
-			)
-		);
+				'form' => $form->createView()
+			));
 	}
 }

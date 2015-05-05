@@ -36,6 +36,7 @@ class AssociationAdmin extends Admin
     {
         $datagridMapper
             ->add('nomAsso')
+            ->add('ville')
             ->add('email')
             ->add('numWaldec')
             ->add('enabled', null, array('label' => 'Activé'))
@@ -48,6 +49,7 @@ class AssociationAdmin extends Admin
         $listMapper
             ->add('id')
             ->addIdentifier('nomAsso')
+            ->add('ville')
             ->add('email')
             ->add('numWaldec')
             ->add('enabled', null, array('label' => 'Activé', 'editable' => true))

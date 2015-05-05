@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('cf_main_recherche') }}">
+	{{ form_widget(form.recherche, {'attr': {'placeholder': 'Tapez ici votre recherche ou sélectionnez vos critères ci-dessous'}}) }}
+	<button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+</form>

@@ -1,12 +1,12 @@
 {% extends "CFMainBundle::layout.html.twig" %}
 
 {% block title %}
-  	{{ parent() }} - Accueil
+  	{{ parent() }} - Résultat de la recherche
 {% endblock %}
 
 {% block body %}
-	{% for p in projets %}
-		{{ p.nom }}
+	{% for projet in projets %}
+		{{ projet.nom }}<br />	
 	{% else %}
 		Pas de projets trouvé !
 	{% endfor %}
