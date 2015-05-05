@@ -88,7 +88,7 @@
 	</div>
 
 	<div class="search">
-		<div id="search-bar"><input type="text" placeholder="Tapez ici votre recherche ou sélectionnez vos critères ci-dessous" /></div><div id="search-button"><button><span class="glyphicon glyphicon-search"></span></button></div>
+		{{ render(controller('CFMainBundle:Recherche:renderSearch')) }}
 	</div>
 
 	<div class="selectors">
@@ -118,25 +118,25 @@
 
 		<div class="selector">
 			<div class="container-select">
-				<div class="select">Samer</div>
+				<div class="select">Wimereux</div>
 			</div>
 			<div class="container-select">
-				<div class="select">Fiennes</div>
+				<div class="select">Lille</div>
 			</div>
 			<div class="container-select">
-				<div class="select">Boulogne Sur Mer</div>
+				<div class="select">Calais</div>
 			</div>
 		</div>
 
 		<div class="selector">
 			<div class="container-select">
-				<div class="select">Samer</div>
+				<div class="select">Santé</div>
 			</div>
 			<div class="container-select">
-				<div class="select">Fiennes</div>
+				<div class="select">Sports</div>
 			</div>
 			<div class="container-select">
-				<div class="select">Boulogne Sur Mer</div>
+				<div class="select">Formations</div>
 			</div>
 		</div>
 	</div>

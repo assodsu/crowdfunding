@@ -14,8 +14,10 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
     {  
         $qb = $this->createQueryBuilder('p');
          
-        $qb->where('p.nom LIKE :motcle')
-                  ->setParameter('motcle', '%'.$motcle.'%');
+        $qb->join('p.idAsso', 'a')
+        	->where('p.nom LIKE :motcle')
+        	->orWhere('a.ville LIKE :motcle')
+            ->setParameter('motcle', '%'.$motcle.'%');
                  
         return $qb->getQuery()->getResult();
     }

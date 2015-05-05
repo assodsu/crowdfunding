@@ -172,10 +172,6 @@ body {
 	cursor: text;
 }
 
-.search > div{
-	vertical-align: top;
-}
-
 .search #search-bar {
   width: 70%;
   height: 100%;
@@ -187,6 +183,7 @@ body {
   height: 100%;
   padding-top: 15px;
   display: inline-block;
+  vertical-align: top;
 }
 
 .search input {
@@ -221,7 +218,7 @@ body {
 .selector {
 	display: inline-block;
 	width: 250px;
-	margin: 20px 20px;
+	margin: 0px 20px;
 }
 
 .selector .select {
