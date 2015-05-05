@@ -23,10 +23,16 @@ body {
   background-color: transparent;
   border-bottom: 3px solid #3498DB;
   padding-bottom: 12px;
+  transition: all 0.2s;
 }
 
 .navbar .logo a {
     color: black;
+}
+
+.navbar .logo img {
+  height: 50px;
+  margin-top: -13px;
 }
 
 .navbar>.container .navbar-brand-centered, 
