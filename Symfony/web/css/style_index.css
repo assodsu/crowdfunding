@@ -78,16 +78,19 @@ body {
 	line-height: 40px;
 	color: #FFFFFF;
 	text-indent: 20px;
-	border-left: 5px solid #34495E;
 	margin: 10px 0px;
 	font-size: 16px;
 	font-weight: 300;
+	border-left: 0px;
+	transition: all 0.5s;
 }
 
 .sidebar-projects a:hover {
 	text-decoration: none;
-	border-left: 5px solid #3498DB;
+	border-left: 4px solid #3498DB;
 	background: rgba(216, 216, 216, .25);
+	text-indent: 16px;
+	transition: all 0.5s;
 }
 
 .carousel-front {
@@ -193,16 +196,23 @@ body {
 	position:absolute;
 	width:100%;
 	height:100%;
+	font-size: 11px;
 }
 
 .selector .select.active {
 	background: rgba(216, 216, 216, 0.25);
 	color: #FFFFFF;
+	font-weight: 400;
+	font-size: 13px;
+	transition: all 0.5s;
 }
 
 .selector .select:hover {
 	background: rgba(216, 216, 216, 0.5);
 	color: #FFFFFF;
+	font-weight: 400;
+	font-size: 13px;
+	transition: all 0.5s;
 }
 .selector .container-select {
 	width:250px;
@@ -275,7 +285,7 @@ body {
 }
 .slider {
 	width:100%;
-	height:125px;
+	height:150px;
 	position: relative;
 }
 
@@ -288,7 +298,7 @@ body {
 }
 .slider .item-slider {
 	width: 100%;
-	height:125px;
+	height:150px;
 	position:relative;
 	display:inline-block;
 	cursor:pointer;
@@ -297,7 +307,7 @@ body {
 .slide-image, .slide-image-blured {
 	position:absolute;
 	width:100%;
-	height: 125px;
+	height: 150px;
 }
 .slick-slider .slick-list { 
 	padding:0!important;
@@ -328,16 +338,21 @@ body {
 .project-infos {
 	position:absolute;
 	width:100%;
-	height:100%;
+	height:150px;
   	z-index: 12;
 }
-.project-infos > h1 {
+
+.project-infos span.title {
+	display: block;
+	margin-top: 50px;
 	text-align: center;
 	color:white;
-	line-height: 62.5px;
-	vertical-align: middle;
 	text-shadow: 0px 0px 3px #000;
-} 
+	font-size: 22px;
+	font-family: 'Open Sans', Arial, sans-serif;
+	text-transform: uppercase;
+}
+
 .project-more-infos {
 	position:absolute;
 	width:100%;

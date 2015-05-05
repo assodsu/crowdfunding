@@ -70,7 +70,7 @@
 			    <img src="{{ asset(pa.projet.background.AssetPath) }}" class="slide-image-blured">
 			</div>
 	  		<div class="project-infos">
-	  			<h1>{{ pa.projet.nom }}</h1>
+	  			<span class="title">{{ pa.projet.nom }}</span>
 	  		</div>
 	  		<div class="project-more-infos">
 	  			<div class="jauge">
@@ -148,13 +148,13 @@
 		$(document).ready(function() {
 			var img = $("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('img');
 			$('.carousel-front').css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
-			$('.carousel-front p').text($("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('text'));
+			$('.carousel-front p').first().text($("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('text'));
 			$('#hrefBtnDiscover').attr('href', 'projet/' + $("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('idProject'));
 			
 			$('.slick-prev, .slick-next, .item-slider').on('click', function(){
 				var img = $("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('img');
 				$('.carousel-front').css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
-				$('.carousel-front p').text($("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('text'));
+				$('.carousel-front p').first().text($("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('text'));
 				$('#hrefBtnDiscover').attr('href', 'projet/' + $("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('idProject'));
 			});
 		});
