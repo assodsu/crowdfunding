@@ -41,9 +41,10 @@ class RechercheController extends Controller
 
 	        $recherche = array_unique($recherche);
 
-			return $this->render('CFMainBundle:Recherche:search.html.twig', array
+			return $this->render('CFMainBundle:Project:showAll.html.twig', array
 				(
-					'projets' => $recherche
+					'projets' => $recherche,
+					'recherche' => $request->request->get($form->getName())['recherche']
 				)
 			);
         }

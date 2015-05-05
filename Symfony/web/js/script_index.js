@@ -65,24 +65,42 @@ $(document).ready(function() {
 	    $(this).children('div.project-more-infos').animate({ bottom: "-30px" }, {queue: false});
 	});
 
-
-	var firstProjectSlide = $("div.item-slider.slick-slide.slick-active").first();
-	var img = firstProjectSlide.children('img.slide-image').attr('img');
-	$('.carousel-front').css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
-	$('.carousel-front-texte').animate({right:'-400px'},0).animate({right:'0'},500);
-	$('.text-selected-project').text(firstProjectSlide.children('img.slide-image').attr('text'));
-	$('#hrefBtnDiscover').attr('href', 'projet/' + firstProjectSlide.children('img.slide-image').attr('idProject'));
-	$('.project-selected-infos').text(firstProjectSlide.children('div.project-more-infos').children('div.text-infos').children('p').text());
-	$('.carousel-front-texte .jauge').html(firstProjectSlide.children('div.project-more-infos').children('div.jauge').html());
-	
-	$('.slick-prev, .slick-next, .item-slider').on('click', function(){
-		firstProjectSlide = $("div.item-slider.slick-slide.slick-active").first();
-		img = firstProjectSlide.children('img.slide-image').attr('img');
+	function imagesSlide() {
+		var firstProjectSlide = $("div.item-slider.slick-slide.slick-active").first();
+		var img = firstProjectSlide.children('div.slide-image').attr('img');
 		$('.carousel-front').css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
-		$('.carousel-front-texte').animate({right:'-400px'},0).animate({right:'0'},500);
+		$('.carousel-front-texte').animate(
+		{
+			right:'-400px'
+		}, 
+		{
+		  duration: 0,
+		  queue: false
+		}).animate(
+		{
+			right:'0'
+		},
+		{
+			duration: 500,
+			queue: false
+		});
 		$('.text-selected-project').text(firstProjectSlide.children('img.slide-image').attr('text'));
 		$('#hrefBtnDiscover').attr('href', 'projet/' + firstProjectSlide.children('img.slide-image').attr('idProject'));
 		$('.project-selected-infos').text(firstProjectSlide.children('div.project-more-infos').children('div.text-infos').children('p').text());
 		$('.carousel-front-texte .jauge').html(firstProjectSlide.children('div.project-more-infos').children('div.jauge').html());
+	}
+
+	imagesSlide();
+	
+	$('.slick-prev, .slick-next, .item-slider').on('click', function(){
+		imagesSlide();
+	});
+	$( ".slide-image" ).each(function() {
+		var img = $(this).attr('img');
+		$(this).css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
+	});
+	$('.slide-image-blured').each(function() {
+		var img = $(this).parent().parent().children('div.slide-image').attr('img');
+		$(this).css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
 	});
 });

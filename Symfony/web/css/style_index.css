@@ -124,7 +124,8 @@ body {
   top: 0;
   right: 0;
   padding-top: 20px;
-  padding-left: 10px;
+  padding-left: 30px;
+  padding-right: 20px;
   width: 500px;
   background: rgba(0,0,0, 0.4);
   font-size: 22px;

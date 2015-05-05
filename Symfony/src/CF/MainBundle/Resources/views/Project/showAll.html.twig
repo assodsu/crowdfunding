@@ -12,6 +12,10 @@
 {% block section_title_page %}{% endblock %}
 
 {% block body %}
+	<div class="search">
+		{{ render(controller('CFMainBundle:Recherche:renderSearch')) }}
+	</div>
+
 	<aside id="menu">
 		<div id="header-menu">
 			<h1>Catégories</h1>
@@ -164,5 +168,6 @@
 			type: 'pie',
 			legend: false
 		});
+		$('#search-bar input').val('{{ recherche }}');
 	</script>
 {% endblock %}
