@@ -2,12 +2,20 @@ body {
 	background: #34495E;
 }
 /* NEW VERSION */
+#main-top {
+  position: relative;
+  width: 100%;
+  height: 470px;
+}
 .sidebar-left {
 	display: inline-block;
 	background: #D8D8D8;
-	height: 470px;
-	width: 25%;
+	height: 240px;
+	width: 22.5%;
+	position: absolute;
+	z-index: 5;
 	vertical-align: top;
+	-webkit-clip-path: polygon(0px 470px,70% 470px,100% 0px,0px 0px);
 }
 
 .sidebar-left-title {
@@ -28,19 +36,24 @@ body {
 	letter-spacing: 15px;
 	color: #4A4A4A;
 	text-align: center;
+	margin:0 14%;
+	width:70%;
 }
 
 .sidebar-left hr {
-	width: 260px;
-	margin: 20px auto;
+	width: 50%;
+	margin: 20px 21%;
 	border-color: #4A4A4A;
 }
 
 .carousel-inner {
 	bottom: 10px;
+	width: 88%;
+	margin: 0 1%;
 }
 #fade-quote-carousel.carousel .carousel-indicators {
 	bottom: -10px;
+	width:50%;
 }
 #fade-quote-carousel.carousel .carousel-indicators > li {
 	background-color: #e3e3e3;
@@ -63,8 +76,8 @@ body {
 
 .sidebar-left button {
 	display: block;
-	width: 260px;
-	margin: 10px auto;
+	width: 75%;
+	margin: 10px 6%;
 }
 
 .sidebar-projects {
@@ -80,7 +93,7 @@ body {
 	text-indent: 20px;
 	border-left: 5px solid #34495E;
 	margin: 10px 0px;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 300;
 }
 
@@ -92,10 +105,10 @@ body {
 
 .carousel-front {
 	display: inline-block;
-	width: 75%;
+	width: 100%;
 	background: blue;
-	height: 470px;
-	position: relative;
+	height: 595px;
+	position: absolute;
 	vertical-align: top;
 	background: url('../images/carousel-example.jpeg') center center no-repeat;
 	background-size: cover;
@@ -107,12 +120,17 @@ body {
 	right: 0;
 	width: 400px;
 	height: 200px;
-	background: rgba(0,0,0, 0.3);
+	background: rgba(0,0,0, 0.4);
 	padding: 30px 20px;
 	font-size: 22px;
 	font-weight: 300;
 	text-align: center;
 	color:white;
+	-webkit-clip-path: polygon(0px 100%,100% 100%,100% 0px,45px 0px);
+}
+
+.carousel-front-texte button span {
+	top:2px;
 }
 
 .carousel-front .btn-discover {
@@ -277,6 +295,7 @@ body {
 	width:100%;
 	height:125px;
 	position: relative;
+	background:#34495E;
 }
 
 /****************/

@@ -12,6 +12,7 @@
 {% block section_title_page %} {% endblock %}
 
 {% block body %}
+	<div id="main-top">
 <div class="sidebar-left">
 	<div class="sidebar-left-title">C<span class="blue">o</span>cepti<span class="blue">o</span></div>
 	<div class="sidebar-left-slogan">Concevoir<br />Ensemble</div>
@@ -41,7 +42,7 @@
 			</ol>
 		</div>
 	</div>
-	<button class="btn btn-success">Je m'inscris</button>
+	<button class="btn btn-success">Je m'inscris <span class="glyphicon glyphicon-user"></span></button>
 
 	<div class="sidebar-projects">
 		<a href="#">Les projets en pôle position</a>
@@ -51,17 +52,15 @@
 	</div>
 	</div><div class="carousel-front">
 		<div class="carousel-front-texte">
-			<p>
-				Aidez ce jeune homme à trouver un beau bonnet
-			</p>
-			<a href="#" id="hrefBtnDiscover"><button class="btn btn-success">Découvrir le projet</button></a>
+			<p class="text-selected-project"></p>
+			<a href="#" id="hrefBtnDiscover"><button class="btn btn-success">Découvrir le projet <span class="glyphicon glyphicon-menu-right"></span></button></a>
   			<div class="jauge">
   				<div class="jauge-inner" style="width:66%;"></div>
   			</div>
-			<p class="project-selected-infos">66% | 17 acteurs</p>
+			<p class="project-selected-infos"></p>
 		</div>
 	</div>
-
+	</div>
 	<div class="slider">
 		  {% for pa in projetsAccueil %}
 		  	<div class="item-slider">
@@ -73,11 +72,15 @@
 	  			<h1>{{ pa.projet.nom }}</h1>
 	  		</div>
 	  		<div class="project-more-infos">
+	  			{% set pourcentage = 0.0 %}
+	  			{% for besoin in pa.projet.besoins %}
+	  				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
+	  			{% endfor %}
 	  			<div class="jauge">
-	  				<div class="jauge-inner" style="width:66%;"></div>
+	  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%;"></div>
 	  			</div>
 	  			<div class="text-infos">
-		  			<p>66% | 17 acteurs</p>
+		  			<p>{{ pourcentage*100 }}% | {{ pa.projet.nbDonateur }} acteurs</p>
 		  		</div>
 	  		</div>
 		  </div>
@@ -144,19 +147,4 @@
 	{{ parent() }}
 	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
 	<script type="text/javascript" src="{{ asset('js/script_index.js') }}"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			var img = $("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('img');
-			$('.carousel-front').css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
-			$('.carousel-front p').text($("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('text'));
-			$('#hrefBtnDiscover').attr('href', 'projet/' + $("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('idProject'));
-			
-			$('.slick-prev, .slick-next, .item-slider').on('click', function(){
-				var img = $("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('img');
-				$('.carousel-front').css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
-				$('.carousel-front p').text($("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('text'));
-				$('#hrefBtnDiscover').attr('href', 'projet/' + $("div.item-slider.slick-slide.slick-active").first().children('img.slide-image').attr('idProject'));
-			});
-		});
-	</script>
 {% endblock %}
