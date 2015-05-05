@@ -10,6 +10,26 @@ namespace CF\MainBundle\Entity;
  */
 class ProjetRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getProjetsAboutissants()
+    {  
+        $qb = $this->createQueryBuilder('p');
+         
+        $qb->orderBy('p.dateFin', 'ASC')
+           ->setMaxResults(10);
+                 
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getProjetsNouveaux()
+    {  
+        $qb = $this->createQueryBuilder('p');
+         
+        $qb->orderBy('p.dateCreation', 'DESC')
+           ->setMaxResults(10);
+                 
+        return $qb->getQuery()->getResult();
+    }
+
 	public function getSearchList($motcle)
     {  
         $qb = $this->createQueryBuilder('p');

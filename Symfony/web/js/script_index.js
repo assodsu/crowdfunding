@@ -1,5 +1,20 @@
 $(document).ready(function() {
 
+	function changeCarousel(linkId, projetToActive) {
+		$(linkId).on('click', function(e) {
+			e.preventDefault();
+			$('.sidebar-projects .active').removeClass('active');
+			$('.slider.active').removeClass('active');
+			$(projetToActive).addClass('active');
+			$(linkId).addClass('active');
+			toSlick();
+		});
+	}
+
+	changeCarousel('#linkProjetsAccueil', '#projetsAccueil');
+	changeCarousel('#linkProjetsAboutissants', '#projetsAboutissants');
+	changeCarousel('#linkProjetsNouveaux', '#projetsNouveaux');
+
 	$('.search').on('click', function() {
 		$('.search input').focus();
 	});
@@ -26,34 +41,38 @@ $(document).ready(function() {
 		}
 	});
 	
-	if($(window).width() <= 960 )
-	{
-		console.log('Mode tablette');
-		$('.slider').slick({
-			slidesToShow: 3,
-			slidesToScroll: 1,
-			dots: false,
-			centerMode: false,
-			focusOnSelect: true,
-			prevArrow: '<button type="button" class="slick-prev"><</button>',
-			nextArrow: '<button type="button" class="slick-next">></button>'
+	function toSlick() {
+		if($(window).width() <= 960 )
+		{
+			console.log('Mode tablette');
+			$('.slider.active').slick({
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				dots: false,
+				centerMode: false,
+				focusOnSelect: true,
+				prevArrow: '<button type="button" class="slick-prev"><</button>',
+				nextArrow: '<button type="button" class="slick-next">></button>'
 
-		});
-	}
-	else
-	{
-		console.log('Mode ecran');
-		$('.slider').slick({
-			slidesToShow: 5,
-			slidesToScroll: 1,
-			dots: false,
-			centerMode: false,
-			focusOnSelect: true,
-			prevArrow: '<button type="button" class="slick-prev"><</button>',
-			nextArrow: '<button type="button" class="slick-next">></button>'
+			});
+		}
+		else
+		{
+			console.log('Mode ecran');
+			$('.slider.active').slick({
+				slidesToShow: 5,
+				slidesToScroll: 1,
+				dots: false,
+				centerMode: false,
+				focusOnSelect: true,
+				prevArrow: '<button type="button" class="slick-prev"><</button>',
+				nextArrow: '<button type="button" class="slick-next">></button>'
 
-		});
+			});
+		}
 	}
+
+	toSlick();
 
 	$(".mask").css('opacity','0');
 
@@ -66,7 +85,7 @@ $(document).ready(function() {
 	});
 
 
-	var firstProjectSlide = $("div.item-slider.slick-slide.slick-active").first();
+	var firstProjectSlide = $(".slider.active div.item-slider.slick-slide.slick-active").first();
 	var img = firstProjectSlide.children('img.slide-image').attr('img');
 	$('.carousel-front').css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
 	$('.carousel-front-texte').animate({right:'-400px'},0).animate({right:'0'},500);
@@ -76,7 +95,7 @@ $(document).ready(function() {
 	$('.carousel-front-texte .jauge').html(firstProjectSlide.children('div.project-more-infos').children('div.jauge').html());
 	
 	$('.slick-prev, .slick-next, .item-slider').on('click', function(){
-		firstProjectSlide = $("div.item-slider.slick-slide.slick-active").first();
+		firstProjectSlide = $(".slider.active div.item-slider.slick-slide.slick-active").first();
 		img = firstProjectSlide.children('img.slide-image').attr('img');
 		$('.carousel-front').css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
 		$('.carousel-front-texte').animate({right:'-400px'},0).animate({right:'0'},500);

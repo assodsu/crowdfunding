@@ -42,13 +42,13 @@
 			</ol>
 		</div>
 	</div>
-	<a href="{{ path('fos_user_registration_register') }}" class="btn btn-success">Je m'inscris <span class="glyphicon glyphicon-user"></span></a>
+	<button class="btn btn-success">Je m'inscris <span class="glyphicon glyphicon-user"></span></button>
 
 	<div class="sidebar-projects">
-		<a href="#" class="active">Les projets en pôle position</a>
-		<a href="#">Les projets aboutissants</a>
-		<a href="#">Les nouveaux nés</a>
-		<a href="#">Tous les projets</a>
+		<a id="linkProjetsAccueil" href="#" class="active">Les projets en pôle position</a>
+		<a id="linkProjetsAboutissants" href="#">Les projets aboutissants</a>
+		<a id="linkProjetsNouveaux">Les nouveaux nés</a>
+		<a href="{{ path('cf_main_allProjects') }}">Tous les projets</a>
 	</div>
 	</div><div class="carousel-front">
 		<div class="carousel-front-texte">
@@ -61,34 +61,87 @@
 		</div>
 	</div>
 	</div>
-	<div class="slider">
-		  {% for pa in projetsAccueil %}
-		  	<div class="item-slider">
-	  		<img src="{{ asset(pa.projet.background.AssetPath) }}" text="{{ pa.text }}" idProject="{{ pa.projet.id }}" img="{{ pa.projet.background.path }}" class="slide-image">
-	  		<div class="mask">
-			    <img src="{{ asset(pa.projet.background.AssetPath) }}" class="slide-image-blured">
-			</div>
-	  		<div class="project-infos">
-	  			<span class="title">{{ pa.projet.nom }}</span>
+	<div class="slider active" id="projetsAccueil">
+	  {% for pa in projetsAccueil %}
+	  	<div class="item-slider">
+  		<img src="{{ asset(pa.projet.background.AssetPath) }}" text="{{ pa.text }}" idProject="{{ pa.projet.id }}" img="{{ pa.projet.background.path }}" class="slide-image">
+  		<div class="mask">
+		    <img src="{{ asset(pa.projet.background.AssetPath) }}" class="slide-image-blured">
+		</div>
+  		<div class="project-infos">
+  			<span class="title">{{ pa.projet.nom }}</span>
+  		</div>
+  		<div class="project-more-infos">
+  			{% set pourcentage = 0.0 %}
+  			{% for besoin in pa.projet.besoins %}
+  				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
+  			{% endfor %}
+  			<div class="jauge">
+  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%;"></div>
+  			</div>
+  			<div class="text-infos">
+	  			<p>{{ pourcentage*100 }}% | {{ pa.projet.nbDonateur }} acteurs</p>
 	  		</div>
-	  		<div class="project-more-infos">
-	  			{% set pourcentage = 0.0 %}
-	  			{% for besoin in pa.projet.besoins %}
-	  				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
-	  			{% endfor %}
-	  			<div class="jauge">
-	  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%;"></div>
-	  			</div>
-	  			<div class="text-infos">
-		  			<p>{{ pourcentage*100 }}% | {{ pa.projet.nbDonateur }} acteurs</p>
-		  		</div>
-	  		</div>
-		  </div>
-		 {% endfor %}
+  		</div>
+	  </div>
+	 {% endfor %}
 	</div>
+
+	<div class="slider" id="projetsAboutissants">
+		 {% for p in projetsAboutissants %}
+	  	<div class="item-slider">
+  		<img src="{{ asset(p.background.AssetPath) }}" text="{{ p.nom }}" idProject="{{ p.id }}" img="{{ p.background.path }}" class="slide-image">
+  		<div class="mask">
+		    <img src="{{ asset(p.background.AssetPath) }}" class="slide-image-blured">
+		</div>
+  		<div class="project-infos">
+  			<span class="title">{{ p.nom }}</span>
+  		</div>
+  		<div class="project-more-infos">
+  			{% set pourcentage = 0.0 %}
+  			{% for besoin in p.besoins %}
+  				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
+  			{% endfor %}
+  			<div class="jauge">
+  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%;"></div>
+  			</div>
+  			<div class="text-infos">
+	  			<p>{{ pourcentage*100 }}% | {{ p.nbDonateur }} acteurs</p>
+	  		</div>
+  		</div>
+	  </div>
+	 {% endfor %}
+		</div>
+
+		<div class="slider" id="projetsNouveaux">
+		 {% for p in projetsNouveaux %}
+	  	<div class="item-slider">
+  		<img src="{{ asset(p.background.AssetPath) }}" text="{{ p.nom }}" idProject="{{ p.id }}" img="{{ p.background.path }}" class="slide-image">
+  		<div class="mask">
+		    <img src="{{ asset(p.background.AssetPath) }}" class="slide-image-blured">
+		</div>
+  		<div class="project-infos">
+  			<span class="title">{{ p.nom }}</span>
+  		</div>
+  		<div class="project-more-infos">
+  			{% set pourcentage = 0.0 %}
+  			{% for besoin in p.besoins %}
+  				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
+  			{% endfor %}
+  			<div class="jauge">
+  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%;"></div>
+  			</div>
+  			<div class="text-infos">
+	  			<p>{{ pourcentage*100 }}% | {{ p.nbDonateur }} acteurs</p>
+	  		</div>
+  		</div>
+	  </div>
+	 {% endfor %}
+		</div>
 
 	<div class="search">
 		{{ render(controller('CFMainBundle:Recherche:renderSearch')) }}
+		<!--<input type="text" placeholder="Tapez ici votre recherche ou sélectionnez vos critères ci-dessous" />-->
 	</div>
 
 	<div class="selectors">
