@@ -25,17 +25,35 @@ $(document).ready(function() {
 			});
 		}
 	});
+	
+	if($(window).width() <= 960 )
+	{
+		console.log('Mode tablette');
+		$('.slider').slick({
+			slidesToShow: 3,
+			slidesToScroll: 1,
+			dots: false,
+			centerMode: false,
+			focusOnSelect: true,
+			prevArrow: '<button type="button" class="slick-prev"><</button>',
+			nextArrow: '<button type="button" class="slick-next">></button>'
 
-	$('.slider').slick({
-		slidesToShow: 5,
-		slidesToScroll: 1,
-		dots: false,
-		centerMode: false,
-		focusOnSelect: true,
-		prevArrow: '<button type="button" class="slick-prev"><</button>',
-		nextArrow: '<button type="button" class="slick-next">></button>'
+		});
+	}
+	else
+	{
+		console.log('Mode ecran');
+		$('.slider').slick({
+			slidesToShow: 5,
+			slidesToScroll: 1,
+			dots: false,
+			centerMode: false,
+			focusOnSelect: true,
+			prevArrow: '<button type="button" class="slick-prev"><</button>',
+			nextArrow: '<button type="button" class="slick-next">></button>'
 
-	});
+		});
+	}
 
 	$(".mask").css('opacity','0');
 

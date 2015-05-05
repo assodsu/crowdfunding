@@ -50,6 +50,8 @@ body {
 	bottom: 10px;
 	width: 88%;
 	margin: 0 1%;
+	font-size: 12px;
+	font-weight: bold;
 }
 #fade-quote-carousel.carousel .carousel-indicators {
 	bottom: -10px;
@@ -74,7 +76,7 @@ body {
 	padding: 0px 10px;
 }
 
-.sidebar-left button {
+.sidebar-left a.btn {
 	display: block;
 	width: 75%;
 	margin: 10px 6%;
@@ -118,18 +120,18 @@ body {
 }
 
 .carousel-front-texte {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 400px;
-	height: 200px;
-	background: rgba(0,0,0, 0.4);
-	padding: 30px 20px;
-	font-size: 22px;
-	font-weight: 300;
-	text-align: center;
-	color:white;
-	-webkit-clip-path: polygon(0px 100%,100% 100%,100% 0px,45px 0px);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-top: 20px;
+  padding-left: 10px;
+  width: 500px;
+  background: rgba(0,0,0, 0.4);
+  font-size: 22px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+  -webkit-clip-path: polygon(0px 100%,100% 100%,100% 0px,33px 0px);
 }
 
 .carousel-front-texte button span {
@@ -170,15 +172,33 @@ body {
 	cursor: text;
 }
 
+.search > div{
+	vertical-align: top;
+}
+
+.search #search-bar {
+  width: 70%;
+  height: 100%;
+  display: inline-block;
+}
+
+.search #search-button {
+  width: 30%;
+  height: 100%;
+  padding-top: 15px;
+  display: inline-block;
+}
+
 .search input {
 	display: block;
-	margin: 0px auto;
-	width: 60%;
+	float: right;
+	width: 100%;
+	margin-right: 20px;
+	padding-left: 38%;
 	background: transparent;
 	border: none;
 	font-size: 18px;
 	padding-top: 16px;
-	text-align: center;
 	color: #4A4A4A;
 }
 
@@ -188,9 +208,6 @@ body {
 }
 
 .search button {
-	right: 210px;
-	margin-top: -28px;
-	position: absolute;
 	border: none;
 	color: #3498DB;
 	background: none;
@@ -249,12 +266,34 @@ body {
 
 /** MEDIA QUERIES **/
 @media (max-width: 960px) {
+
+    #main-top {
+    	height:700px;
+    }
+
     .sidebar-left {
         font-size: 90%;
         width: 100%;
-
+        position:relative;
     	height: auto;
+		-webkit-clip-path: none;
     }   
+    
+    .sidebar-left hr {
+	  	margin: 20px auto;
+	}
+
+	.carousel-inner {
+	  	margin: 0 auto;
+	}
+
+	#fade-quote-carousel.carousel .carousel-indicators {
+  		width: 60%;
+  	}
+
+  	.sidebar-left button {
+		margin: 10px auto;
+	}
 
     .sidebar-projects {
     	display: inline-block;
@@ -271,7 +310,9 @@ body {
 
     .carousel-front {
     	display: inline-block;
-    	width: 100%;    
+    	width: 100%;
+        position:relative;
+  		height: 431px;
     }
 
     .search input {

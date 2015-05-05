@@ -42,7 +42,7 @@
 			</ol>
 		</div>
 	</div>
-	<button class="btn btn-success">Je m'inscris <span class="glyphicon glyphicon-user"></span></button>
+	<a href="{{ path('fos_user_registration_register') }}" class="btn btn-success">Je m'inscris <span class="glyphicon glyphicon-user"></span></a>
 
 	<div class="sidebar-projects">
 		<a href="#">Les projets en pôle position</a>
@@ -88,8 +88,7 @@
 	</div>
 
 	<div class="search">
-		<input type="text" placeholder="Tapez ici votre recherche ou sélectionnez vos critères ci-dessous" />
-		<button><span class="glyphicon glyphicon-search"></span></button>
+		<div id="search-bar"><input type="text" placeholder="Tapez ici votre recherche ou sélectionnez vos critères ci-dessous" /></div><div id="search-button"><button><span class="glyphicon glyphicon-search"></span></button></div>
 	</div>
 
 	<div class="selectors">
