@@ -33,11 +33,12 @@
 		      <ul class="nav navbar-nav">
 		        <li><a href="{{ path('cf_main_allProjects') }}">Les projets</a></li>
 		        <li><a href="#">Comment ça marche ?</a></li>
+		        <li><a href="{{ path('cf_main_addProjects') }}">Lancer mon projet</a></li>
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
-		        <li><a href="{{ path('cf_main_addProjects') }}">Lancer mon projet</a></li>
+		      	<li>{{ render(controller('FOSUserBundle:Security:loginModal')) }}</li>
+		      	<li><a href="{{ path('fos_user_security_login') }}">Inscription</a></li>
 		        <li><a href="#">Partenaires</a></li>  
-		        <li>{{ render(controller('FOSUserBundle:Security:loginModal')) }}</li>   
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->

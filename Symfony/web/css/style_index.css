@@ -100,7 +100,7 @@ body {
 	transition: all 0.5s;
 }
 
-.sidebar-projects a:hover {
+.sidebar-projects a:hover, .sidebar-projects a.active {
 	text-decoration: none;
 	border-left: 4px solid #3498DB;
 	background: rgba(216, 216, 216, .25);
