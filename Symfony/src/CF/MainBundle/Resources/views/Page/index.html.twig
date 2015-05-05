@@ -64,9 +64,9 @@
 	<div class="slider">
 		  {% for pa in projetsAccueil %}
 		  	<div class="item-slider">
-	  		<img src="{{ asset(pa.projet.background.AssetPath) }}" text="{{ pa.text }}" idProject="{{ pa.projet.id }}" img="{{ pa.projet.background.path }}" class="slide-image">
+		  	<div class="slide-image" text="{{ pa.text }}" idProject="{{ pa.projet.id }}" img="{{ pa.projet.background.path }}"></div>
 	  		<div class="mask">
-			    <img src="{{ asset(pa.projet.background.AssetPath) }}" class="slide-image-blured">
+	  			<div class="slide-image-blured"></div>
 			</div>
 	  		<div class="project-infos">
 	  			<span class="title">{{ pa.projet.nom }}</span>
