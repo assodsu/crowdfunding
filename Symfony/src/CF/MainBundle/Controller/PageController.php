@@ -10,11 +10,15 @@ class PageController extends Controller
     {
     	$projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findAll();
     	$projetsAccueil = $this->getDoctrine()->getRepository('CFMainBundle:ProjetAccueil')->findAll();
+        $projetsAboutissants = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getProjetsAboutissants();
+        $projetsNouveaux = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getProjetsNouveaux();
 
         return $this->render('CFMainBundle:Page:index.html.twig', 
         	array(
         		'projets' => $projets,
-        		'projetsAccueil' => $projetsAccueil
+        		'projetsAccueil' => $projetsAccueil,
+                'projetsAboutissants' => $projetsAboutissants,
+                'projetsNouveaux' => $projetsNouveaux
         		)
         	);
     }

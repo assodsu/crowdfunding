@@ -168,6 +168,8 @@
 			type: 'pie',
 			legend: false
 		});
-		$('#search-bar input').val('{{ recherche }}');
+		{% if recherche %}
+			$('#search-bar input').val('{{ recherche }}');
+		{% endif %}
 	</script>
 {% endblock %}
