@@ -10,94 +10,82 @@
 {% endblock %}
 
 {% block body %}
-	<div class="search-content">
+	<div id="search-content">
 		<div class="selectors">
 			<div class="row">
-				<div class="col-xs-6 text-center titre-recherche">
-					rechercher par thème
+				<div class="col-xs-6 titre-recherche text-center">
+					rechecher par thème
 				</div>
-				<div class="col-xs-6 text-center titre-recherche">
+				<div class="col-xs-6 titre-recherche text-center">
 					rechercher par ville
 				</div>
 			</div>
-
-			<div class="row">
-				<div class="col-xs-6">
-					<div class="selector">
-						<div class="container-select">
-							<div class="select">Action humanitaire</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Action sociale</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Santé</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Opinions, droits et causes</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Loisirs</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Education, formations et insertion</div>
-						</div>
+			<div class="selector">
+				<div class="container-select">
+					<div class="select">Action humanitaire</div>
+				</div>
+				<div class="container-select">
+					<div class="select">Action sociale</div>
+				</div>
+				<div class="container-select">
+					<div class="select">Santé</div>
+				</div>
+				<div class="container-select">
+					<div class="select">Opinions, droits et causes</div>
+				</div>
+				<div class="container-select">
+					<div class="select">Loisirs</div>
+				</div>
+				<div class="container-select">
+					<div class="select">Education, formations et insertion</div>
+				</div>
+			</div><div class="selector">
+				<div class="container-select">
+					<div class="select">Sciences et numérique</div>
+				</div>
+				<div class="container-select">
+					<div class="select">Tourisme</div>
+				</div>
+				<div class="container-select">
+					<div class="select">Culture</div>
+				</div>
+				<div class="container-select">
+					<div class="select">Sport</div>
+				</div>
+				<div class="container-select">
+					<div class="select">Vie et développement local</div>
+				</div>
+				<div class="container-select">
+					<div class="select">Nature et environnements</div>
+				</div>
+			</div><div style="display: inline-block"><div class="selector">
+					<div class="container-select">
+						<div class="select">Wimereux</div>
 					</div>
-
-					<div class="selector">
-						<div class="container-select">
-							<div class="select">Sciences et numérique</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Tourisme</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Culture</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Sport</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Vie et développement local</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Nature et environnements</div>
-						</div>
+					<div class="container-select">
+						<div class="select">Lille</div>
+					</div>
+					<div class="container-select">
+						<div class="select">Calais</div>
+					</div>
+				</div><div class="selector">
+					<div class="container-select">
+						<div class="select">Boulogne sur mer</div>
+					</div>
+					<div class="container-select">
+						<div class="select">Samer</div>
+					</div>
+					<div class="container-select">
+						<div class="select">Fiennes</div>
 					</div>
 				</div>
 
-				<div class="col-xs-6">
-					<div class="selector">
-						<div class="container-select">
-							<div class="select">Wimereux</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Lille</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Calais</div>
-						</div>
-					</div>
-
-					<div class="selector">
-						<div class="container-select">
-							<div class="select">Boulogne sur mer</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Samer</div>
-						</div>
-						<div class="container-select">
-							<div class="select">Fiennes</div>
-						</div>
-					</div>
-
-					<div class="discover-map">
-						<div class="btn-discover-map">Découvrir sur carte intéractive</div>
-						<p>propulsé par OpenStreetMap</p>
-					</div>
+				<div class="discover-map">
+					<div class="btn-discover-map">Découvrir sur carte intéractive</div>
+					<p>propulsé par OpenStreetMap</p>
 				</div>
 			</div>
-		</div>
+		</div>	
 	</div>
 	<div class="search">
 		{{ render(controller('CFMainBundle:Recherche:renderSearch')) }}

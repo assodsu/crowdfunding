@@ -76,7 +76,11 @@ body {
   width: 100%;
   background: #D8D8D8;
   cursor: text;
-  margin-top: -1px;
+}
+
+#search-content {
+  max-width: 1200px;
+  margin: 0px auto;
 }
 
 .search #search-bar {
@@ -119,14 +123,15 @@ body {
 }
 
 .selectors {
+  display: inline-block;
   text-align: center;
   margin: 0px auto;
-  width: 91.5%;
 }
 
 .selector {
   display: inline-block;
-  width: 239px;
+  vertical-align: top;
+  width: 240px;
   margin: 0px 20px;
   margin-bottom: -4px;
 }
@@ -157,7 +162,7 @@ body {
   transition: all 0.5s;
 }
 .selector .container-select {
-  width:250px;
+  width:240px;
   height:50px;
   display:block;
   position:relative;

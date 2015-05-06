@@ -5,8 +5,8 @@ body {
 	background: #34495E;
 }
 
-.search-content {
-	margin: 0;
+.search {
+	margin-top: 4px;
 }
 
 .titre-recherche {
@@ -173,4 +173,13 @@ body {
 .pie-content .name {
 	font-size:11px;
 	color:#aaafb2;
+}
+
+/** MEDIA QUERIES **/
+@media (max-width: 1130px) {
+    .selector { margin: 0px 10px; }
+}
+
+@media (max-width: 520px) {
+    .selector { margin: 0px 0px; }
 }
