@@ -45,7 +45,7 @@
 	<div class="sidebar-projects">
 		<a id="linkProjetsAccueil" href="#" class="active">Les projets en pôle position</a>
 		<a id="linkProjetsAboutissants" href="#">Les projets aboutissants</a>
-		<a id="linkProjetsNouveaux">Les nouveaux nés</a>
+		<a id="linkProjetsNouveaux" href="#">Les nouveaux nés</a>
 		<a href="{{ path('cf_main_allProjects') }}">Tous les projets</a>
 	</div>
 	</div><div class="carousel-front">
@@ -114,7 +114,7 @@
 		<div class="slider" id="projetsNouveaux">
 		 {% for p in projetsNouveaux %}
 	  	<div class="item-slider">
-  		<img src="{{ asset(p.background.AssetPath) }}" text="{{ p.nom }}" idProject="{{ p.id }}" img="{{ p.background.path }}" class="slide-image">
+		<div class="slide-image" text="{{ p.nom }}" idProject="{{ p.id }}" img="{{ p.background.path }}"></div>
   		<div class="mask">
 		    <div class="slide-image-blured"></div>
 		</div>

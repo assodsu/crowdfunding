@@ -1,8 +1,27 @@
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700');
+@import url('http://fonts.googleapis.com/css?family=Lato');
+@font-face {
+    font-family: GothamMedium;
+    src: url('../fonts/Gotham Medium.otf');
+}
+@font-face {
+    font-family: GothamLight;
+    src: url('../fonts/Gotham Light.otf');
+}
+@font-face {
+    font-family: Avenir;
+    src: url('../fonts/AvenirLTStd-Book.otf');
+    font-weight: 100;
+}
 
 body { 
-	font-family: 'Open Sans';
+	font-family: 'Avenir';
     font-size: 13px;
+}
+
+.btn {
+  font-family: 'GothamMedium';
+  font-size:12px !important;
 }
 
 .navbar {
