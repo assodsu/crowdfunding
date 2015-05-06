@@ -3,14 +3,17 @@ cf_main_allProjects:
     defaults: { _controller: CFMainBundle:Project:showAll ,nom:'All'}
 
 cf_main_endingProjects:
-    path:     /bientot-fini/
+    path:     /bientot-fini
     defaults: { _controller: CFMainBundle:Project:showEnding }
 
 cf_main_newProjects:
-    path:     /nouveaux/
+    path:     /nouveaux
     defaults: { _controller: CFMainBundle:Project:showNew }
 
 cf_main_highlightProjects:
-    path:     /populaire/
+    path:     /populaire
     defaults: { _controller: CFMainBundle:Project:showHighlights }
 
+cf_main_recherche:
+    path:   /recherche
+    defaults: { _controller: CFMainBundle:Recherche:search }

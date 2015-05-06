@@ -18,6 +18,23 @@ $(document).ready(function() {
 	$('.search').on('click', function() {
 		$('.search input').focus();
 	});
+
+	function selectionSelect() {
+		$('.select').each(function() {
+			$(this).removeClass('active');
+			$(this).parent().children('span').remove();
+			if ($('.search input').val().toUpperCase().indexOf($(this).text().toUpperCase()) > -1) {
+				$(this).addClass('active');
+				$(this).parent().append('<span class="glyphicon glyphicon-ok checkmark"></span>');
+			}
+		});
+	}
+
+	selectionSelect();
+
+	$('.search input').keyup(function() {
+		selectionSelect();	
+	});
 	
 	$('.select').on('click', function() {
 		$select = $(this);

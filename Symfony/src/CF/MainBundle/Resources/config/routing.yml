@@ -15,7 +15,3 @@ cf_main_contact:
     defaults: { _controller: CFMainBundle:Page:contact }
     requirements:
         _method: GET
-
-cf_main_recherche:
-    path:   /recherche
-    defaults: { _controller: CFMainBundle:Recherche:search }

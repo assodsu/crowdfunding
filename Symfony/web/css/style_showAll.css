@@ -1,50 +1,38 @@
 /********/
 /* PAGE */
 /********/
-.search {
-	height: 60px;
-	width: 100%;
-	background: #D8D8D8;
-	cursor: text;
+body {
+	background: #34495E;
 }
 
-.search #search-bar {
-  width: 70%;
-  height: 100%;
-  display: inline-block;
+.search-content {
+	margin: 0;
 }
 
-.search #search-button {
-  width: 30%;
-  height: 100%;
-  padding-top: 15px;
-  display: inline-block;
-  vertical-align: top;
+.titre-recherche {
+	font-size: 20px;
+	font-weight: 300;
+	color: #FFFFFF;
+	padding: 10px 0px;
+}
+.discover-map {
+	margin-top: 80px;
 }
 
-.search input {
-	display: block;
-	float: right;
-	width: 100%;
-	margin-right: 20px;
-	padding-left: 38%;
-	background: transparent;
-	border: none;
-	font-size: 18px;
-	padding-top: 16px;
-	color: #4A4A4A;
+.btn-discover-map {
+	display: inline;
+	border: 2px solid #5FCF80;
+	padding: 10px 20px;
+	border-radius: 4px;
+	color: #5FCF80;
+	cursor: pointer;
 }
 
-.search input:focus {
-	border: none;
-	outline: none;
-}
-
-.search button {
-	border: none;
-	color: #3498DB;
-	background: none;
-	font-size: 18pt;
+.discover-map p {
+	margin-top: 18px;
+	margin-left: 39%;
+	text-align: left;
+	color: #FFFFFF;
 }
 /***********/
 /* CONTENU */
@@ -52,9 +40,7 @@
 #content-scrolling {
     overflow: auto;
 	position:absolute;
-	bottom:0;
 	width:100%;
-	height: calc( 100% - 475px );
 }
 #content > a {
 	display:block;

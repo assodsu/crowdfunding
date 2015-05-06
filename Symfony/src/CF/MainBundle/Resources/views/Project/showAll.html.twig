@@ -10,6 +10,95 @@
 {% endblock %}
 
 {% block body %}
+	<div class="search-content">
+		<div class="selectors">
+			<div class="row">
+				<div class="col-xs-6 text-center titre-recherche">
+					rechercher par thème
+				</div>
+				<div class="col-xs-6 text-center titre-recherche">
+					rechercher par ville
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-6">
+					<div class="selector">
+						<div class="container-select">
+							<div class="select">Action humanitaire</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Action sociale</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Santé</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Opinions, droits et causes</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Loisirs</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Education, formations et insertion</div>
+						</div>
+					</div>
+
+					<div class="selector">
+						<div class="container-select">
+							<div class="select">Sciences et numérique</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Tourisme</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Culture</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Sport</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Vie et développement local</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Nature et environnements</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xs-6">
+					<div class="selector">
+						<div class="container-select">
+							<div class="select">Wimereux</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Lille</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Calais</div>
+						</div>
+					</div>
+
+					<div class="selector">
+						<div class="container-select">
+							<div class="select">Boulogne sur mer</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Samer</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Fiennes</div>
+						</div>
+					</div>
+
+					<div class="discover-map">
+						<div class="btn-discover-map">Découvrir sur carte intéractive</div>
+						<p>propulsé par OpenStreetMap</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="search">
 		{{ render(controller('CFMainBundle:Recherche:renderSearch')) }}
 	</div>
@@ -46,18 +135,19 @@
 				</div>
 			</a>
 		{% endfor %}
+		</div>
+		<div class="scrolling-text">
+			<i class="fa fa-chevron-down"></i>
+			<p>Faire défiler pour découvrir</p>
+		</div>
 	</div>
-	<div class="scrolling-text">
-		<i class="fa fa-chevron-down"></i>
-		<p>Faire défiler pour découvrir</p>
-	</div>
-</div>
+
 {% endblock %}
 	
 {% block javascripts %}
 	{{ parent() }}
-	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/script_showAll.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('js/script_showAll.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/visualize.js') }}"></script>
 	<script type="text/javascript">
 		$('.pie').visualize({
 			width: 105,
@@ -66,7 +156,7 @@
 			legend: false
 		});
 		{% if recherche is defined %}
-			$('#search-bar input').val('{{ recherche }}');
+			$('.search input').val('{{ recherche }}');
 		{% endif %}
 
 		{% for projet in projets %}

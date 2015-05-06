@@ -120,19 +120,19 @@ body {
 }
 
 .carousel-front-texte {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding-top: 20px;
-  padding-left: 30px;
-  padding-right: 20px;
-  width: 500px;
-  background: rgba(0,0,0, 0.4);
-  font-size: 22px;
-  font-weight: 300;
-  text-align: center;
-  color: white;
-  -webkit-clip-path: polygon(0px 100%,100% 100%,100% 0px,33px 0px);
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding-top: 20px;
+	padding-left: 30px;
+	padding-right: 20px;
+	width: 500px;
+	background: rgba(0,0,0, 0.4);
+	font-size: 22px;
+	font-weight: 300;
+	text-align: center;
+	color: white;
+	-webkit-clip-path: polygon(0px 100%,100% 100%,100% 0px,33px 0px);
 }
 
 .carousel-front-texte button span {
@@ -174,17 +174,17 @@ body {
 }
 
 .search #search-bar {
-  width: 70%;
-  height: 100%;
-  display: inline-block;
+	width: 70%;
+	height: 100%;
+	display: inline-block;
 }
 
 .search #search-button {
-  width: 30%;
-  height: 100%;
-  padding-top: 15px;
-  display: inline-block;
-  vertical-align: top;
+	width: 30%;
+	height: 100%;
+	padding-top: 15px;
+	display: inline-block;
+	vertical-align: top;
 }
 
 .search input {
