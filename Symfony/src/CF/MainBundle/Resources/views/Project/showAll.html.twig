@@ -9,167 +9,116 @@
 	<link href="{{ asset('css/style_showAll.css') }}" rel="stylesheet"/>
 {% endblock %}
 
-{% block section_title_page %}{% endblock %}
-
 {% block body %}
+	<div class="search-content">
+		<div class="selectors">
+			<div class="row">
+				<div class="col-xs-6 text-center titre-recherche">
+					rechercher par thème
+				</div>
+
+				<div class="col-xs-6 text-center titre-recherche">
+					rechercher par ville
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-6">
+					<div class="selector">
+						<div class="container-select">
+							<div class="select">Action humanitaire</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Action sociale</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Santé</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Opinions, droits et causes</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Loisirs</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Education, formations et insertion</div>
+						</div>
+					</div>
+
+					<div class="selector">
+						<div class="container-select">
+							<div class="select">Sciences et numérique</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Tourisme</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Culture</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Sport</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Vie et développement local</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Nature et environnements</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xs-6">
+					<div class="selector">
+						<div class="container-select">
+							<div class="select">Wimereux</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Lille</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Calais</div>
+						</div>
+					</div>
+
+					<div class="selector">
+						<div class="container-select">
+							<div class="select">Boulogne sur mer</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Samer</div>
+						</div>
+						<div class="container-select">
+							<div class="select">Fiennes</div>
+						</div>
+					</div>
+
+					<div class="discover-map">
+						<div class="btn-discover-map">Découvrir sur carte intéractive</div>
+						<p>propulsé par OpenStreetMap</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="search">
 		{{ render(controller('CFMainBundle:Recherche:renderSearch')) }}
 	</div>
 
-	<aside id="menu">
-		<div id="header-menu">
-			<h1>Catégories</h1>
-		</div>
-		<div id="body-menu">
-			<ul>
-				<li><a href="#Art" data-toggle="tab">Art</a></li>
-				<li><a href="#Food" data-toggle="tab">Cuisine</a></li>
-				<li><a href="#Design" data-toggle="tab">Design et invention</a></li>
-				<li><a href="#Film" data-toggle="tab">Film et vidéo</a></li>
-				<li><a href="#Jeux" data-toggle="tab">Jeux</a></li>
-				<li><a href="#Journalisme" data-toggle="tab">Journalisme</a></li>
-				<li><a href="#Livre" data-toggle="tab">Livre et édition</a></li>
-				<li><a href="#Mode" data-toggle="tab">Mode</a></li>
-				<li><a href="#Musique" data-toggle="tab">Musique</a></li>
-				<li><a href="#Spectacle" data-toggle="tab">Spectacle vivant</a></li>
-				<li><a href="#Web" data-toggle="tab">Web et techno</a></li>
-			</ul>
-		</div>
-	</aside>
-	<aside id="sub-menu">
-		<div class="sub-menu-categories hidden" id="Art">
-			<ul>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Art numérique'}) }}" class="tag">Art numerique</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Illustration'}) }}" class="tag">Illustration</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Patrimoine'}) }}" class="tag">Patrimoine</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Peinture'}) }}" class="tag">Peinture</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Performance'}) }}" class="tag">Performance</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Street art'}) }}" class="tag">Street art</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'photo art'}) }}" class="tag">Photo d'art</a></li>
-			</ul>
-		</div>
-	    <div class="sub-menu-categories hidden" id="Food">
-			<ul>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Agriculture'}) }}" class="tag">Agriculture</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Restaurant'}) }}" class="tag">Restaurant</a></li>
-			</ul>
-		</div>
-	    <div class="sub-menu-categories hidden" id="Design">
-			<ul>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Graphique'}) }}" class="tag">Graphique</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Objet'}) }}" class="tag">Objet</a></li>
-			</ul>
-		</div>
-	    <div class="sub-menu-categories hidden" id="Film">
-			<ul>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Court-métrage'}) }}" class="tag">Court-métrage</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Documentaire'}) }}" class="tag">Documentaire</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Long-métrage'}) }}" class="tag">Long-métrage</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Webdocumentaire'}) }}" class="tag">Webdocumentaire</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Websérie'}) }}" class="tag">Websérie</a></li>
-			</ul>
-		</div>
-	    <div class="sub-menu-categories hidden" id="Jeux">
-			<ul>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Jeux de société'}) }}" class="tag">Jeux de société</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Jeux vidéo'}) }}" class="tag">Jeux vidéo</a></li>
-			</ul>
-		</div>
-	    <div class="sub-menu-categories hidden" id="Journalisme">
-			<ul>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Investigation'}) }}" class="tag">Investigation</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Reportage'}) }}" class="tag">Reportage</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Photo-reportage'}) }}" class="tag">Photo-reportage</a></li>
-			</ul>
-		</div>
-	    <div class="sub-menu-categories hidden" id="Livre">
-			<ul>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Bande dessinée'}) }}" class="tag">Bande dessinée</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Jeunesse'}) }}" class="tag">Jeunesse</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Livre art'}) }}" class="tag">Livre d'art</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Roman'}) }}" class="tag">Roman</a></li>
-			</ul>
-		</div>
-	    <div class="sub-menu-categories hidden" id="Mode">
-			<ul>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Accessoires'}) }}" class="tag">Accessoires</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Haute couture'}) }}" class="tag">Haute couture</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Prêt-à-porter'}) }}" class="tag">Prêt-à-porter</a></li>
-			</ul>
-		</div>
-	    <div class="sub-menu-categories hidden" id="Musique">
-			<ul>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Clip'}) }}" class="tag">Clip</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Concert'}) }}" class="tag">Concert</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Enregistrement'}) }}" class="tag">Enregistrement</a></li>
-			</ul>
-		</div>
-	    <div class="sub-menu-categories hidden" id="Spectacle">
-			<ul>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Danse'}) }}" class="tag">Danse</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Théâtre'}) }}" class="tag">Théâtre</a></li>
-			</ul>
-		</div>
-	    <div class="sub-menu-categories hidden" id="Web">
-			<ul>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Application'}) }}" class="tag">Application</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Hardware'}) }}" class="tag">Hardware</a></li>
-				<li><a href="{{ path('cf_main_allProjects',{'nom':'Site web'}) }}" class="tag">Site web</a></li>
-			</ul>
-		</div>
-	</aside>
-	<div id="content-scrolling">
-		<div id="content">
-
-		{% for projet in projets %}
-			<a href="{{ path('cf_main_project', {'id' : projet.id}) }}">
-				<div class="apercu">
-					<img src="{{asset( projet.background.AssetPath )}}"/>
-					<div class="filter"></div>
-					<div class="nom_asso">{{ projet.idAsso.nomAsso }}</div>
-					<div class="titre_projet">{{ projet.nom }}</div>
-					<div class="besoin">
-						<div class="box"><div id='text-ressource-info'><i class="fa fa-tag"></i> Informations : 12%</div></div>
-						<div class="box"><div id='text-ressource-financiere'><i class="fa fa-bar-chart"></i> Financières : 30%</div></div>
-						<div class="box"><div id='text-ressource-humaine'><i class="fa fa-users"></i> Humaines : 25%</div></div>
-						<div class="box"><div id='text-ressource-materiel'><i class="fa fa-desktop"></i> Matériels : 33%</div></div>
-					</div>
-					<div class='diagramme'>
-						<svg height="150" width="150">
-							<circle cx="75" cy="75" r="65" fill="rgba(100,100,100,0.8)" />
-						</svg>
-						<div class='pie-content'>
-							<div class='percentage'>75%</div>
-							<div class='name'>Ressources</div>
-						</div>
-						<ul class="pie">
-							<li class="visualize" data-color="#5cb85c" data-value="12"></li>
-							<li class="visualize" data-color="#5bc0de" data-value="30"></li>
-							<li class="visualize" data-color="#d9534f" data-value="25"></li>
-							<li class="visualize" data-color="#d9534f" data-value="33"></li>
-							<li class="visualize" data-color="rgba(0,0,0,0)" data-value="75"></li>
-						</ul>
-					</div>
-				</div>
-			</a>
+	{% if recherche is defined %}
+		{% for p in projets %}
+			{{ p.nom }}<br />
+		{% else %}
+			Pas de projets trouvé !
 		{% endfor %}
-	</div>
-</div>
+	{% endif %}
 {% endblock %}
 	
 {% block javascripts %}
 	{{ parent() }}
-	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/script_showAll.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('js/script_showAll.js') }}"></script>
 	<script type="text/javascript">
-		$('.pie').visualize({
-			width: 150,
-			height: 150,
-			type: 'pie',
-			legend: false
-		});
-		{% if recherche %}
-			$('#search-bar input').val('{{ recherche }}');
+		{% if recherche is defined %}
+			$('.search input').val('{{ recherche }}');
 		{% endif %}
 	</script>
 {% endblock %}
