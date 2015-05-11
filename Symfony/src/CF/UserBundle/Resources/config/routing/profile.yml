@@ -8,6 +8,10 @@ fos_user_profile_edit:
     path:     /editer
     defaults: { _controller: FOSUserBundle:Profile:edit }
 
+fos_user_profile_projects:
+    path:     /projets
+    defaults: { _controller: FOSUserBundle:Profile:projects }
+
 fos_user_profile_user_show:
     path:     /{username}
     defaults: { _controller: FOSUserBundle:Profile:userShow}

@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 	selectionSelect();
 
-	$('.search input').keyup(function() {
+	$('.search input').keypress(function() {
 		selectionSelect();	
 	});
 	

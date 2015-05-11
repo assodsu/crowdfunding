@@ -34,8 +34,8 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
     {  
         $qb = $this->createQueryBuilder('p');
          
-        $qb->join('p.idAsso', 'a')
-            ->join('p.tags', 't')
+        $qb->leftJoin('p.idAsso', 'a')
+            ->leftJoin('p.tags', 't')
         	->where('p.nom LIKE :motcle')
         	->orWhere('a.ville LIKE :motcle')
             ->orWhere('t.nom LIKE :motcle')

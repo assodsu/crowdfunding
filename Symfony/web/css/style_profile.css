@@ -1,3 +1,7 @@
+body {
+	background: rgb(55, 72, 93);
+}
+
 /**** BANNER ****/
 #banner {
 	width:100%;
@@ -237,4 +241,165 @@ textarea {
 }
 .timeline-body > p + p {
   margin-top: 5px;
+}
+
+/** NEW STYLE **/
+.block-new-project {
+	position: fixed;
+	z-index: 1;
+	bottom: 0;
+	left: 0;
+	padding: 30px;
+	background: rgb(53, 53, 53);
+	width: 25%;
+}
+
+.profile-left-menu {
+	display: inline-block;
+	width: 25%;
+	background: rgb(72, 72, 72);
+	position: fixed;
+	height: 100%;
+	padding-top: 10px;
+	color: #FFFFFF;
+}
+
+.profile-left-menu-title {
+	font-size: 32px;
+	text-transform: uppercase;
+	letter-spacing: 10px;
+}
+
+.profile-left-menu-subtitle {
+	text-transform: lowercase;
+	font-size: 12px;
+	letter-spacing: 10px;
+}
+
+.profile-menu {
+	margin-top: 40px;
+}
+
+.profile-menu-title {
+	text-indent: 30px;
+	color: rgb(158, 158, 158);
+	text-transform: uppercase;
+}
+
+.profile-menu-content {
+	margin-top: 10px;
+}
+
+.profile-menu a {
+	display: block;
+	padding: 10px 0px;
+	font-size: 18px;
+	font-weight: 400;
+	text-indent: 12px;
+	border-left: 5px solid rgb(72, 72, 72);
+	color: rgb(158, 158, 158);
+	text-decoration: none;
+}
+
+.profile-menu a:hover, .profile-menu a.active {
+	background: rgb(65, 65, 65);
+	border-left: 5px solid rgb(72, 149, 217);
+	color: #FFFFFF;
+}
+
+.profile-menu a i {
+	margin-right: 10px;
+}
+
+.profile-content {
+	display: inline-block;
+	margin-left: 25%;
+	width: 75%;
+	padding: 10px 30px;
+}
+
+.profile-alert {
+	width: 100%;
+	border: 3px solid rgb(242, 242, 242);
+	padding: 10px;
+	border-radius: 6px;
+	color: rgb(242, 242, 242);
+	font-size: 14px;
+	margin-bottom: 15px;
+}
+
+.profile-block {
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 20px;
+}
+
+.profile-block-title {
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-weight: 300;
+	padding: 5px;
+	border-radius: 5px 5px 0px 0px;
+}
+
+.profile-block-title.red {
+	background: rgb(225, 69, 63);
+}
+
+.profile-block-title.orange {
+	background: rgb(225, 125, 45);
+}
+
+.profile-block-title.purple {
+	background: rgb(155, 80, 181);
+}
+
+.profile-block-title.green {
+	background: rgb(101, 211, 130);
+}
+
+.profile-block-content {
+	background: #FFFFFF;
+	border-radius: 0px 0px 5px 5px;
+	height: 250px;
+}
+
+.profile-block-content table {
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.profile-block-content table thead td {
+	text-align: center;
+	width: 5%;
+	padding: 4px;
+}
+
+.profile-block-content table tbody tr:hover {
+	background: rgb(226, 226, 226);
+}
+
+.profile-block-content table tbody td {
+	text-align: center;
+	width: 5%;
+	padding: 6px;
+}
+
+.profile-projects-current {
+	width: 65%;
+	margin-right: 5%;
+}
+
+.profile-projects-advancement {
+	width: 30%;
+}
+
+.profile-projects-comments {
+	width: 30%;
+	margin-right: 5%;
+}
+
+.profile-projects-actors {
+	width: 65%;
 }

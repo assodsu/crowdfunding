@@ -112,4 +112,9 @@ class ProfileController extends Controller
             'form' => $form->createView()
         ));
     }
+
+    public function projectsAction()
+    {
+        return $this->render('CFUserBundle:Profile:projects.html.twig');
+    }
 }
