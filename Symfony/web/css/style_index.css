@@ -15,6 +15,11 @@ body {
 	position: absolute;
 	z-index: 5;
 	vertical-align: top;
+
+	/* Firefox*/
+	clip-path: url(../svg/index.svg#menuClip);
+
+	/*Chrome,Safari*/
 	-webkit-clip-path: polygon(0px 470px,70% 470px,100% 0px,0px 0px);
 }
 
@@ -132,6 +137,11 @@ body {
 	font-weight: 300;
 	text-align: center;
 	color: white;
+
+	/* Firefox*/
+	clip-path: url(../svg/index.svg#maskClip);
+
+	/*Chrome,Safari*/
 	-webkit-clip-path: polygon(0px 100%,100% 100%,100% 0px,33px 0px);
 }
 
@@ -473,7 +483,11 @@ body {
 	top: 30%;
 	z-index: 10;
 	overflow: hidden;
-	-webkit-filter: blur(6px);
+	filter: blur(6px);
+    -webkit-filter: blur(6px);
+    -moz-filter: blur(6px);
+    -o-filter: blur(6px);
+    -ms-filter: blur(6px);
 }
 
 /** MEDIA QUERIES **/

@@ -75,7 +75,7 @@
   				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
   			{% endfor %}
   			<div class="jauge">
-  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%;"></div>
+  				<div class="jauge-inner" style="width:{{ (pourcentage*100) }}%; max-width:100%;"></div>
   			</div>
   			<div class="text-infos">
 	  			<p>{{ pourcentage*100 }}% | {{ pa.projet.nbDonateur }} acteurs</p>
@@ -101,7 +101,7 @@
   				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
   			{% endfor %}
   			<div class="jauge">
-  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%;"></div>
+  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%; max-width:100%;"></div>
   			</div>
   			<div class="text-infos">
 	  			<p>{{ pourcentage*100 }}% | {{ p.nbDonateur }} acteurs</p>
@@ -127,7 +127,7 @@
   				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
   			{% endfor %}
   			<div class="jauge">
-  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%;"></div>
+  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%; max-width:100%;"></div>
   			</div>
   			<div class="text-infos">
 	  			<p>{{ pourcentage*100 }}% | {{ p.nbDonateur }} acteurs</p>

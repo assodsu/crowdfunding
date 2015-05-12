@@ -109,19 +109,25 @@
 							<circle cx="52.5" cy="52.5" r="45" fill="#34495E" />
 						</svg>
 						<div class='pie-content'>
-							<div class='percentage'>75%</div>
+							{% set pourcentage = 0.0 %}
+				  			{% for besoin in projet.besoins %}
+				  				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
+				  			{% endfor %}
+							<div class='percentage'>{{ pourcentage*100 }}%</div>
 							<div class='name'>ressources</br>collectées</div>
 						</div>
 						<ul class="pie">
-							<li class="visualize" data-color="#5cb85c" data-value="12"></li>
-							<li class="visualize" data-color="#5bc0de" data-value="30"></li>
-							<li class="visualize" data-color="#d9534f" data-value="25"></li>
-							<li class="visualize" data-color="#d9534f" data-value="33"></li>
-							<li class="visualize" data-color="rgba(0,0,0,0)" data-value="75"></li>
+							<li class="visualize" data-color="#5cb85c" data-value="{{ (pourcentage*100)/4 }}"></li>
+							<li class="visualize" data-color="#5bc0de" data-value="{{ (pourcentage*100)/4 }}"></li>
+							<li class="visualize" data-color="#d9534f" data-value="{{ (pourcentage*100)/4 }}"></li>
+							<li class="visualize" data-color="#d9534f" data-value="{{ (pourcentage*100)/4 }}"></li>
+							<li class="visualize" data-color="rgba(0,0,0,0)" data-value="{{ pourcentage*100 }}"></li>
 						</ul>
 					</div>
 				</div>
 			</a>
+		{% else %}
+			Aucun projet correspondant à vos critères de recherche.
 		{% endfor %}
 		</div>
 		<div class="scrolling-text">

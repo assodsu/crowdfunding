@@ -22,11 +22,67 @@ class Projet
     private $id;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="pourcentageTotal", type="decimal")
+     * @ORM\Column(name="nbRessources", type="integer")
      */
-    private $pourcentageTotal;
+    private $nbRessources;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbActuMateriel", type="integer")
+     */
+    private $nbActuMateriel;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbActuHumain", type="integer")
+     */
+    private $nbActuHumain;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbActuComm", type="integer")
+     */
+    private $nbActuComm;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbActuFinancier", type="integer")
+     */
+    private $nbActuFinancier;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbDemandeMateriel", type="integer")
+     */
+    private $nbDemandeMateriel;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbDemandeHumain", type="integer")
+     */
+    private $nbDemandeHumain;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbDemandeComm", type="integer")
+     */
+    private $nbDemandeComm;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbDemandeFinancier", type="integer")
+     */
+    private $nbDemandeFinancier;
 
     /**
      * @var \DateTime
@@ -103,10 +159,16 @@ class Projet
     public function __construct()
     {
         $this->setNbDonateur(0);
+
         $this->setDateCreation(new \DateTime());
         $date = new \DateTime();
         $this->setDateFin($date->add(new \DateInterval('P4M')));
-        $this->setPourcentageTotal("0");
+
+        $this->setNbActuMateriel(0);
+        $this->setNbActuFinancier(0);
+        $this->setNbActuHumain(0);
+        $this->setNbActuComm(0);
+
         $this->besoins = new \Doctrine\Common\Collections\ArrayCollection();
         $this->boxs = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -429,5 +491,221 @@ class Projet
     public function getBoxs()
     {
         return $this->boxs;
+    }
+
+    /**
+     * Set nbRessources
+     *
+     * @param integer $nbRessources
+     *
+     * @return Projet
+     */
+    public function setNbRessources($nbRessources)
+    {
+        $this->nbRessources = $nbRessources;
+
+        return $this;
+    }
+
+    /**
+     * Get nbRessources
+     *
+     * @return integer
+     */
+    public function getNbRessources()
+    {
+        return $this->nbRessources;
+    }
+
+    /**
+     * Set nbActuMateriel
+     *
+     * @param integer $nbActuMateriel
+     *
+     * @return Projet
+     */
+    public function setNbActuMateriel($nbActuMateriel)
+    {
+        $this->nbActuMateriel = $nbActuMateriel;
+
+        return $this;
+    }
+
+    /**
+     * Get nbActuMateriel
+     *
+     * @return integer
+     */
+    public function getNbActuMateriel()
+    {
+        return $this->nbActuMateriel;
+    }
+
+    /**
+     * Set nbActuHumain
+     *
+     * @param integer $nbActuHumain
+     *
+     * @return Projet
+     */
+    public function setNbActuHumain($nbActuHumain)
+    {
+        $this->nbActuHumain = $nbActuHumain;
+
+        return $this;
+    }
+
+    /**
+     * Get nbActuHumain
+     *
+     * @return integer
+     */
+    public function getNbActuHumain()
+    {
+        return $this->nbActuHumain;
+    }
+
+    /**
+     * Set nbActuComm
+     *
+     * @param integer $nbActuComm
+     *
+     * @return Projet
+     */
+    public function setNbActuComm($nbActuComm)
+    {
+        $this->nbActuComm = $nbActuComm;
+
+        return $this;
+    }
+
+    /**
+     * Get nbActuComm
+     *
+     * @return integer
+     */
+    public function getNbActuComm()
+    {
+        return $this->nbActuComm;
+    }
+
+    /**
+     * Set nbActuFinancier
+     *
+     * @param integer $nbActuFinancier
+     *
+     * @return Projet
+     */
+    public function setNbActuFinancier($nbActuFinancier)
+    {
+        $this->nbActuFinancier = $nbActuFinancier;
+
+        return $this;
+    }
+
+    /**
+     * Get nbActuFinancier
+     *
+     * @return integer
+     */
+    public function getNbActuFinancier()
+    {
+        return $this->nbActuFinancier;
+    }
+
+    /**
+     * Set nbDemandeMateriel
+     *
+     * @param integer $nbDemandeMateriel
+     *
+     * @return Projet
+     */
+    public function setNbDemandeMateriel($nbDemandeMateriel)
+    {
+        $this->nbDemandeMateriel = $nbDemandeMateriel;
+
+        return $this;
+    }
+
+    /**
+     * Get nbDemandeMateriel
+     *
+     * @return integer
+     */
+    public function getNbDemandeMateriel()
+    {
+        return $this->nbDemandeMateriel;
+    }
+
+    /**
+     * Set nbDemandeHumain
+     *
+     * @param integer $nbDemandeHumain
+     *
+     * @return Projet
+     */
+    public function setNbDemandeHumain($nbDemandeHumain)
+    {
+        $this->nbDemandeHumain = $nbDemandeHumain;
+
+        return $this;
+    }
+
+    /**
+     * Get nbDemandeHumain
+     *
+     * @return integer
+     */
+    public function getNbDemandeHumain()
+    {
+        return $this->nbDemandeHumain;
+    }
+
+    /**
+     * Set nbDemandeComm
+     *
+     * @param integer $nbDemandeComm
+     *
+     * @return Projet
+     */
+    public function setNbDemandeComm($nbDemandeComm)
+    {
+        $this->nbDemandeComm = $nbDemandeComm;
+
+        return $this;
+    }
+
+    /**
+     * Get nbDemandeComm
+     *
+     * @return integer
+     */
+    public function getNbDemandeComm()
+    {
+        return $this->nbDemandeComm;
+    }
+
+    /**
+     * Set nbDemandeFinancier
+     *
+     * @param integer $nbDemandeFinancier
+     *
+     * @return Projet
+     */
+    public function setNbDemandeFinancier($nbDemandeFinancier)
+    {
+        $this->nbDemandeFinancier = $nbDemandeFinancier;
+
+        return $this;
+    }
+
+    /**
+     * Get nbDemandeFinancier
+     *
+     * @return integer
+     */
+    public function getNbDemandeFinancier()
+    {
+        return $this->nbDemandeFinancier;
     }
 }

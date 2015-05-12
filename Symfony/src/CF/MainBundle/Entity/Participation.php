@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="participations")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class Participation
 {

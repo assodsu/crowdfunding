@@ -108,6 +108,7 @@ body {
   font-size: 18px;
   padding-top: 16px;
   color: #4A4A4A;
+  box-shadow: none;
 }
 
 .search input:focus {
