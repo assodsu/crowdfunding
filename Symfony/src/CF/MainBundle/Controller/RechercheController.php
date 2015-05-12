@@ -48,6 +48,9 @@ class RechercheController extends Controller
 				)
 			);
         }
+
+		$all = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findAll();
+        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$all,'categories'=>'All'));
 	}
 
 	public function renderSearchAction()

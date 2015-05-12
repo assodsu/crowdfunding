@@ -187,16 +187,16 @@
 	cursor:default;
 }
 #text-ressource-info {
-	color: grey;
+	color: #99a5af;
 }
 #text-ressource-financiere {
-	color: #d9534f;
+	color: #ea5f50;
 }
 #text-ressource-humaine {
-	color: #5bc0de;
+	color: #70d48d;
 }
 #text-ressource-materiel {
-	color:#5cb85c;
+	color:#a66abe;
 }
 #project-tags {
 	float:right;

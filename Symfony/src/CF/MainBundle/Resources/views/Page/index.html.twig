@@ -70,15 +70,12 @@
   			<span class="title">{{ pa.projet.nom }}</span>
   		</div>
   		<div class="project-more-infos">
-  			{% set pourcentage = 0.0 %}
-  			{% for besoin in pa.projet.besoins %}
-  				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
-  			{% endfor %}
+  			{% set pourcentage = (pa.projet.nbActuHumain + pa.projet.nbActuMateriel + pa.projet.nbActuComm + pa.projet.nbActuFinancier)/pa.projet.nbRessources %}
   			<div class="jauge">
-  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%;"></div>
+  				<div class="jauge-inner" style="width:{{ (pourcentage*100) }}%; max-width:100%;"></div>
   			</div>
   			<div class="text-infos">
-	  			<p>{{ pourcentage*100 }}% | {{ pa.projet.nbDonateur }} acteurs</p>
+	  			<p>{{ pourcentage*100|round }}% | {{ pa.projet.nbDonateur }} acteurs</p>
 	  		</div>
   		</div>
 	  </div>
@@ -96,15 +93,12 @@
   			<span class="title">{{ p.nom }}</span>
   		</div>
   		<div class="project-more-infos">
-  			{% set pourcentage = 0.0 %}
-  			{% for besoin in p.besoins %}
-  				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
-  			{% endfor %}
+  			{% set pourcentage = (p.nbActuHumain + p.nbActuMateriel + p.nbActuComm + p.nbActuFinancier)/p.nbRessources %}
   			<div class="jauge">
-  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%;"></div>
+  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%; max-width:100%;"></div>
   			</div>
   			<div class="text-infos">
-	  			<p>{{ pourcentage*100 }}% | {{ p.nbDonateur }} acteurs</p>
+	  			<p>{{ pourcentage*100|round }}% | {{ p.nbDonateur }} acteurs</p>
 	  		</div>
   		</div>
 	  </div>
@@ -122,15 +116,12 @@
   			<span class="title">{{ p.nom }}</span>
   		</div>
   		<div class="project-more-infos">
-  			{% set pourcentage = 0.0 %}
-  			{% for besoin in p.besoins %}
-  				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
-  			{% endfor %}
+  			{% set pourcentage = (p.nbActuHumain + p.nbActuMateriel + p.nbActuComm + p.nbActuFinancier)/p.nbRessources %}
   			<div class="jauge">
-  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%;"></div>
+  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%; max-width:100%;"></div>
   			</div>
   			<div class="text-infos">
-	  			<p>{{ pourcentage*100 }}% | {{ p.nbDonateur }} acteurs</p>
+	  			<p>{{ pourcentage*100|round }}% | {{ p.nbDonateur }} acteurs</p>
 	  		</div>
   		</div>
 	  </div>

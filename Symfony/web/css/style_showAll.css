@@ -53,6 +53,13 @@ body {
 	color: white;
 	font-size: 20px;
 	position: fixed;
+	display:none;
+}
+#content-scrolling .error {
+	color: white;
+	text-align: center;
+	font-size: 30px;
+	margin-top: 20px;
 }
 /***********/
 /* PROJETS */
@@ -69,6 +76,11 @@ body {
 	width:40%;
 	height:175px;
 	pointer-events:none;
+
+	/**/
+	clip-path: url(../svg/projects.svg#maskClip);
+
+	/*Chrome,Safari*/
 	-webkit-clip-path: polygon(0px 175px,100% 175px,80% 0px,0px 0px);
 }
 .project-title{  

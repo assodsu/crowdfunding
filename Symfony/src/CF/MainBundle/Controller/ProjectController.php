@@ -78,6 +78,23 @@ class ProjectController extends Controller
                 foreach($besoins as $besoin)
                 {
                     $besoin->setProjet($projet);
+                    if($besoin->getType() == 'financier')
+                    {
+                        $projet->setNbDemandeFinancier($projet->getNbDemandeFinancier()+$besoin->getQuantiteDemande());
+                    }
+                    else if($besoin->getType() == 'benevole')
+                    {
+                        $projet->setNbDemandeHumain($projet->getNbDemandeHumain()+$besoin->getQuantiteDemande());
+                    }
+                    else if($besoin->getType() == 'materiel')
+                    {
+                        $projet->setNbDemandeMateriel($projet->getNbDemandeMateriel()+$besoin->getQuantiteDemande());
+                    }
+                    else if($besoin->getType() == 'communication')
+                    {
+                        $projet->setNbDemandeComm($projet->getNbDemandeComm()+$besoin->getQuantiteDemande());
+                    }
+                    $projet->setNbRessources($projet->getNbRessources()+$besoin->getQuantiteDemande());
                 }
 
                 $boxs = $projet->getBoxs();
@@ -160,6 +177,7 @@ class ProjectController extends Controller
             {
                 $em=$this->getDoctrine()->getEntityManager();
                 $participation = $form->getData();
+
                 $projet->setNbDonateur($projet->getNbDonateur()+1);
 
                 $dons = $participation->getDons();
@@ -168,6 +186,23 @@ class ProjectController extends Controller
                     $don->setParticipation($participation);
                     $besoin = $don->getBesoin();
                     $besoin->setQuantiteActuelle($besoin->getQuantiteActuelle()+$don->getQuantite());
+
+                    if($besoin->getType() == 'financier')
+                    {
+                        $projet->setNbActuFinancier($projet->getNbActuFinancier()+$don->getQuantite());
+                    }
+                    else if($besoin->getType() == 'benevole')
+                    {
+                        $projet->setNbActuHumain($projet->getNbActuHumain()+$don->getQuantite());
+                    }
+                    else if($besoin->getType() == 'materiel')
+                    {
+                        $projet->setNbActuMateriel($projet->getNbActuMateriel()+$don->getQuantite());
+                    }
+                    else if($besoin->getType() == 'communication')
+                    {
+                        $projet->setNbActuComm($projet->getNbActuComm()+$don->getQuantite());
+                    }
                 }
 
                 $em->persist($participation);

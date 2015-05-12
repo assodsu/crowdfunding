@@ -1,13 +1,9 @@
-<a href="#" data-toggle="modal" data-target="#myModal">
-  Connexion
-</a>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="connection-modal" tabindex="-1" role="dialog" aria-labelledby="connection-modal-label" aria-hidden="true">
   <div class="modal-dialog modal-connexion-dialog">
     <div class="modal-connexion-content">
       <div class="modal-connexion-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-connexion-title" id="myModalLabel">Connexion</h4>
+        <h4 class="modal-connexion-title" id="connection-modal-label">Connexion</h4>
       </div>
       <div class="modal-connexion-body">
         <p>
@@ -31,7 +27,7 @@
 
         <p class="modal-connexion-center">
           Vous avez oubliez votre mot de passe ? <a href="{{ path('fos_user_resetting_request') }}">Cliquez ici</a> !<br />
-          Vous n'êtes pas encore inscrit sur le site ? <a href="#">Inscrivez-vous</a> !
+          Vous n'êtes pas encore inscrit sur le site ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous</a> !
         </p>
       </div>
       <div class="modal-connexion-footer">

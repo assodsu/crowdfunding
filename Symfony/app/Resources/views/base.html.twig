@@ -6,9 +6,9 @@
 		<link rel="icon" href="{{asset('favicon.ico')}}" />
 		<meta charset="utf8" />
 		{% block stylesheets %}
-			<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 			<link rel="stylesheet" type="text/css" href="{{ asset('css/stylev2.css') }}">
 		{% endblock %}
 	</head>
@@ -48,8 +48,8 @@
 		      	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			    	<li><a href="{{ path('fos_user_profile_edit') }}">Editer</a></li>
 			    {% else %}
-			    	<li>{{ render(controller('FOSUserBundle:Security:loginModal')) }}</li>
-			      	<li><a href="{{ path('fos_user_security_login') }}">Inscription</a></li>
+			    	<li><a href="#connexion" data-toggle="modal" data-target="#connection-modal">Connexion</a></li>
+			      	<li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
 		      	{% endif %}
 		        <li><a href="#">Partenaires</a></li>  
 		      </ul>
@@ -61,6 +61,7 @@
 		{% block body %}
 
 		{% endblock %}
+		{{ render(controller('FOSUserBundle:Security:loginModal')) }}
 		</section>
 	
 		{% block javascripts %}
