@@ -24,6 +24,16 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
+		      <div class="profile-navigation">
+				<div style="display: inline-block; vertical-align: middle">
+					<div class="menu-navigation"></div>
+					<div class="menu-navigation"></div>
+					<div class="menu-navigation"></div>
+				</div>
+				<div style="display: inline-block; vertical-align: middle">
+					Administration
+				</div>
+			</div>
 		      <div class="navbar-brand navbar-brand-centered logo"><a href="{{ path('cf_main_homepage') }}"><img src="{{ asset('images/logo2.png') }}" alt="Logo" /></a></div>
 		    </div>
 
@@ -31,12 +41,16 @@
 		    <div class="collapse navbar-collapse" id="navbar-brand-centered">
 		      <ul class="nav navbar-nav">
 		        <li><a href="{{ path('cf_main_allProjects') }}">Les projets</a></li>
-		        <li><a href="#">Comment ça marche ?</a></li>
+		        <!--<li><a href="#">Comment ça marche ?</a></li>-->
 		        <li><a href="{{ path('cf_main_addProjects') }}">Lancer mon projet</a></li>
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
-		      	<li>{{ render(controller('FOSUserBundle:Security:loginModal')) }}</li>
-		      	<li><a href="{{ path('fos_user_security_login') }}">Inscription</a></li>
+		      	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			    	<li><a href="{{ path('fos_user_profile_edit') }}">Editer</a></li>
+			    {% else %}
+			    	<li>{{ render(controller('FOSUserBundle:Security:loginModal')) }}</li>
+			      	<li><a href="{{ path('fos_user_security_login') }}">Inscription</a></li>
+		      	{% endif %}
 		        <li><a href="#">Partenaires</a></li>  
 		      </ul>
 		    </div><!-- /.navbar-collapse -->

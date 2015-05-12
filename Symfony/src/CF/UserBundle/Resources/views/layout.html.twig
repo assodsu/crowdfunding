@@ -1,8 +1,5 @@
 {% extends 'CFMainBundle::layout.html.twig' %}
-
-{% block page_title %}S'inscrire sur Coceptio{% endblock %}
-{% block page_subtitle %}Vous souhaitez déposer un projet ou tout simplement aider ? Inscrivez-vous !{% endblock %}
-    
+   
 {% block body %}
     {% for type, messages in app.session.flashBag.all %}
         {% for message in messages %}
