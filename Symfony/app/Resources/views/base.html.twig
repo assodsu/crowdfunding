@@ -6,9 +6,9 @@
 		<link rel="icon" href="{{asset('favicon.ico')}}" />
 		<meta charset="utf8" />
 		{% block stylesheets %}
-			<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 			<link rel="stylesheet" type="text/css" href="{{ asset('css/stylev2.css') }}">
 		{% endblock %}
 	</head>
@@ -31,13 +31,13 @@
 		    <div class="collapse navbar-collapse" id="navbar-brand-centered">
 		      <ul class="nav navbar-nav">
 		        <li><a href="{{ path('cf_main_allProjects') }}">Les projets</a></li>
-		        <li><a href="#">Comment ça marche ?</a></li>
+		        <li><a href="#commentcamarche">Comment ça marche ?</a></li>
 		        <li><a href="{{ path('cf_main_addProjects') }}">Lancer mon projet</a></li>
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
-		      	<li>{{ render(controller('FOSUserBundle:Security:loginModal')) }}</li>
-		      	<li><a href="{{ path('fos_user_security_login') }}">Inscription</a></li>
-		        <li><a href="#">Partenaires</a></li>  
+		      	<li><a href="#connexion" data-toggle="modal" data-target="#connection-modal">Connexion</a></li>
+		      	<li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+		        <li><a href="#partenaires">Partenaires</a></li>  
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
@@ -47,6 +47,7 @@
 		{% block body %}
 
 		{% endblock %}
+		{{ render(controller('FOSUserBundle:Security:loginModal')) }}
 		</section>
 	
 		{% block javascripts %}

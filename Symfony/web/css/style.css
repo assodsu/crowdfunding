@@ -319,7 +319,7 @@ footer .footer-menu h3 {
 /* -- MODAL CONNEXION -- */
 /* --------------------- */
 .modal-connexion-dialog {
-	width: 400px;
+	width: 400px !important;
 	margin: 20px auto;
 }
 .modal-connexion-content {
@@ -412,7 +412,7 @@ p.modal-connexion-center {
 	opacity: 0.85;
 }
 
-@media screen and (min-width:768px){
+@media (min-width: 768px){
     .navbar-brand-centered {
         position: absolute;
         left: 50%;

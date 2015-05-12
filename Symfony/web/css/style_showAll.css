@@ -55,6 +55,12 @@ body {
 	position: fixed;
 	display:none;
 }
+#content-scrolling .error {
+	color: white;
+	text-align: center;
+	font-size: 30px;
+	margin-top: 20px;
+}
 /***********/
 /* PROJETS */
 /***********/

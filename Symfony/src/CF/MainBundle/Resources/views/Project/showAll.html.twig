@@ -109,25 +109,21 @@
 							<circle cx="52.5" cy="52.5" r="45" fill="#34495E" />
 						</svg>
 						<div class='pie-content'>
-							{% set pourcentage = 0.0 %}
-				  			{% for besoin in projet.besoins %}
-				  				{% set pourcentage = pourcentage + (besoin.quantiteActuelle/besoin.quantiteDemande) %}
-				  			{% endfor %}
-							<div class='percentage'>{{ pourcentage*100 }}%</div>
+							{% set pourcentage = (projet.nbActuHumain + projet.nbActuMateriel + projet.nbActuComm + projet.nbActuFinancier)/projet.nbRessources %}
+							<div class='percentage'>{{ pourcentage*100|round }}%</div>
 							<div class='name'>ressources</br>collectées</div>
 						</div>
 						<ul class="pie">
-							<li class="visualize" data-color="#5cb85c" data-value="{{ (pourcentage*100)/4 }}"></li>
-							<li class="visualize" data-color="#5bc0de" data-value="{{ (pourcentage*100)/4 }}"></li>
-							<li class="visualize" data-color="#d9534f" data-value="{{ (pourcentage*100)/4 }}"></li>
-							<li class="visualize" data-color="#d9534f" data-value="{{ (pourcentage*100)/4 }}"></li>
-							<li class="visualize" data-color="rgba(0,0,0,0)" data-value="{{ pourcentage*100 }}"></li>
+							<li class='visualize ressource-materiel' data-color='#a66abe' data-value='{{ (projet.nbActuMateriel/projet.nbRessources)*100 }}'></li>
+							<li class='visualize ressource-financiere' data-color='#ea5f50' data-value='{{ (projet.nbActuFinancier/projet.nbRessources)*100 }}'></li>
+							<li class='visualize' data-value='{{ (100-(projet.nbActuMateriel/projet.nbRessources)*100 - (projet.nbActuFinancier/projet.nbRessources)*100 - (projet.nbActuHumain/projet.nbRessources)*100 - (projet.nbActuComm/projet.nbRessources)*100)|round }}' data-color='rgba(0,0,0,0)'></li><li class='visualize ressource-humain' data-color='#70d48d' data-value='{{ (projet.nbActuHumain/projet.nbRessources)*100 }}'></li>
+							<li class='visualize ressource-info' data-color='#99a5af' data-value='{{ (projet.nbActuComm/projet.nbRessources)*100 }}'></li>
 						</ul>
 					</div>
 				</div>
 			</a>
 		{% else %}
-			Aucun projet correspondant à vos critères de recherche.
+			<div class="error">Aucun projet correspondant à vos critères de recherche.</div>
 		{% endfor %}
 		</div>
 		<div class="scrolling-text">
