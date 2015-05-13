@@ -19,6 +19,10 @@ body {
   font-size: 13px;
 }
 
+.profile-navigation {
+    display: none;
+}
+
 .btn {
   font-family: 'GothamMedium';
   font-size:12px !important;

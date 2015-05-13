@@ -1,5 +1,5 @@
 body {
-	background: rgb(55, 72, 93);
+	background: #eee;
 }
 
 /**** BANNER ****/
@@ -15,12 +15,7 @@ body {
 
 	filter: blur(2px);
 }
-#layer {
-	position: absolute;
-	width: 100%;
-	height: 300px;
-	background-color: rgba(10,10,10,.4);
-}
+
 #label {
 	color:rgb(138, 202, 139);
 	padding:10px 25px;
@@ -29,10 +24,9 @@ body {
 	width:200px;
 }
 .logo-name {
-	position:absolute;
-	margin-left:60px;
-	margin-top:45px;
-	width: calc(100% - 60px);
+	padding: 60px;
+	width: 100%;
+	background: black;
 }
 .logo-username {
 	display:inline-block;
@@ -56,8 +50,6 @@ body {
 	margin-left:25px;
 }
 #block-body {
-	background-color:#eee;
-	margin-top:1px;
 	padding-bottom:80px;
 }
 .reseaux_sociaux {
@@ -94,10 +86,10 @@ textarea {
 }
 .content-panel-heading {
 	text-align: center;
-	height:300px;
+	height:30px;
 }
 .btn-group {
-	margin-top:275px;
+	margin-top:15px;
     text-align: center;
     display: inline-block;
 }
@@ -244,6 +236,26 @@ textarea {
 }
 
 /** NEW STYLE **/
+.profile-navigation {
+	display: none;
+	float: left;
+	margin-top: 8px;
+	margin-left: 8px;
+	z-index: 1;
+	background: white;
+	border-radius: 4px;
+	padding: 6px;
+	cursor: pointer;
+}
+
+.profile-navigation .menu-navigation {
+	height: 2px;
+	width: 20px;
+	background: black;
+	margin: 4px 8px;
+	margin-left: 0;
+}
+
 .block-new-project {
 	position: fixed;
 	z-index: 1;
@@ -315,91 +327,37 @@ textarea {
 	display: inline-block;
 	margin-left: 25%;
 	width: 75%;
-	padding: 10px 30px;
+}
+/** MEDIA QUERIES **/
+@media (min-width: 960px) {
+	.profile-left-menu {
+		display: inline-block;
+	}
 }
 
-.profile-alert {
-	width: 100%;
-	border: 3px solid rgb(242, 242, 242);
-	padding: 10px;
-	border-radius: 6px;
-	color: rgb(242, 242, 242);
-	font-size: 14px;
-	margin-bottom: 15px;
-}
+@media (max-width: 960px) {
+	.content-panel-heading {
+		display: none
+	}
 
-.profile-block {
-	display: inline-block;
-	vertical-align: top;
-	margin-bottom: 20px;
-}
+	.profile-navigation {
+		display: inline-block;
+	}
 
-.profile-block-title {
-	text-align: center;
-	color: #FFFFFF;
-	font-size: 14px;
-	font-weight: 300;
-	padding: 5px;
-	border-radius: 5px 5px 0px 0px;
-}
+	.block-new-project {
+		width: 100%;
+	}
 
-.profile-block-title.red {
-	background: rgb(225, 69, 63);
-}
+	.profile-left-menu {
+		display: none;
+		width: 100%;
+	}
 
-.profile-block-title.orange {
-	background: rgb(225, 125, 45);
-}
+	.profile-menu a {
+	}
 
-.profile-block-title.purple {
-	background: rgb(155, 80, 181);
-}
-
-.profile-block-title.green {
-	background: rgb(101, 211, 130);
-}
-
-.profile-block-content {
-	background: #FFFFFF;
-	border-radius: 0px 0px 5px 5px;
-	height: 250px;
-}
-
-.profile-block-content table {
-	font-size: 12px;
-	font-weight: 500;
-}
-
-.profile-block-content table thead td {
-	text-align: center;
-	width: 5%;
-	padding: 4px;
-}
-
-.profile-block-content table tbody tr:hover {
-	background: rgb(226, 226, 226);
-}
-
-.profile-block-content table tbody td {
-	text-align: center;
-	width: 5%;
-	padding: 6px;
-}
-
-.profile-projects-current {
-	width: 65%;
-	margin-right: 5%;
-}
-
-.profile-projects-advancement {
-	width: 30%;
-}
-
-.profile-projects-comments {
-	width: 30%;
-	margin-right: 5%;
-}
-
-.profile-projects-actors {
-	width: 65%;
+	.profile-content {
+		margin-left: 0;
+		width: 100%;
+	}
 }

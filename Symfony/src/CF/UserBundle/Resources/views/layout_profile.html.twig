@@ -1,0 +1,55 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('css/style_profile.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+<div class="block-new-project text-center">
+	<div class="btn btn-success">Nouveau projet</div>
+</div>
+
+<div class="profile-left-menu">
+	<div class="profile-left-menu-title text-center">
+		COCEPTIO
+	</div>
+	<div class="profile-left-menu-subtitle text-center">
+		Administration
+	</div>
+
+	<div class="profile-menu">
+		<div class="profile-menu-title">Projets et soutients</div>
+		<div class="profile-menu-content">
+			<a {% if menulink_currentProjects is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_projects') }}"><i class="fa fa-bar-chart"></i> Projets en cours</a>
+			<a href="#"><i class="fa fa-eye"></i> Projets suivis</a>
+			<a href="#"><i class="fa fa-clock-o"></i> Projets terminés</a>
+			<a href="#"><i class="fa fa-tag"></i> Projets soutenus</a>
+		</div>
+	</div>
+
+	<div class="profile-menu">
+		<div class="profile-menu-title">Profil et paramètres</div>
+		<div class="profile-menu-content">
+			<a href="#"><i class="fa fa-envelope-o"></i> Messages</a>
+			<a href="#"><i class="fa fa-comment-o"></i> Informations</a>
+			<a {% if menulink_param is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-gear"></i> Paramètres</a>
+			<a href="#"><i class="fa fa-support"></i> Badges</a>
+			<a href="#"><i class="fa fa-plus-square"></i> Plus</a>
+		</div>
+	</div>
+</div><div class="profile-content">
+	{% block cfuserbundle_body %}
+
+	{% endblock %}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+{% endblock %}
