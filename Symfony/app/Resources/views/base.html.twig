@@ -14,33 +14,26 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    	  <div class="container">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
-		      <div class="navbar-brand navbar-brand-centered logo"><a href="{{ path('cf_main_homepage') }}"><img src="{{ asset('images/logo2.png') }}" alt="Logo" /></a></div>
+		<nav>
+			<div class="navigation-bar">
+				<div class="nav-content">
+					<div class="nav-left-part">
+						<li><a href="{{ path('cf_main_allProjects') }}">Les projets</a></li>
+				        <li><a href="#commentcamarche">Comment ça marche ?</a></li>
+					</div>
+					<div class="nav-middle-part">
+						<li><a href="{{ path('cf_main_homepage') }}"><img src="{{ asset('images/logo2.png') }}" alt="Logo" /></a></li>
+					</div>
+					<div class="nav-right-part">
+				        <li><a href="{{ path('cf_main_addProjects') }}">Lancer mon projet</a></li>
+				        <li><a href="#partenaires">Partenaires</a></li>  
+				    </div>
+				</div>
+				<div class="navigation-bar-right">
+			      	<li><a href="#connexion" data-toggle="modal" data-target="#connection-modal"><i class="fa fa-sign-in"></i></a></li>
+			      	<li><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user-plus"></i></a></li>
+			    </div>
 		    </div>
-
-		    <!-- Collect the nav links, forms, and other content for toggling -->
-		    <div class="collapse navbar-collapse" id="navbar-brand-centered">
-		      <ul class="nav navbar-nav">
-		        <li><a href="{{ path('cf_main_allProjects') }}">Les projets</a></li>
-		        <li><a href="#commentcamarche">Comment ça marche ?</a></li>
-		        <li><a href="{{ path('cf_main_addProjects') }}">Lancer mon projet</a></li>
-		      </ul>
-		      <ul class="nav navbar-nav navbar-right">
-		      	<li><a href="#connexion" data-toggle="modal" data-target="#connection-modal">Connexion</a></li>
-		      	<li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
-		        <li><a href="#partenaires">Partenaires</a></li>  
-		      </ul>
-		    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
 		</nav>
 
 		<section id="main">
