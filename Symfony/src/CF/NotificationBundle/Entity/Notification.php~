@@ -57,7 +57,6 @@ class Notification
 
     public function __construct() {
         $this->date = new \Datetime;
-        $this->vu = 0;
     }
 
     /**

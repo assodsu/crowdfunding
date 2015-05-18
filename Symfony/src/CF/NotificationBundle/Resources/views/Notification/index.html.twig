@@ -1,25 +1,9 @@
-<ul class="timeline">
-	{% for notif in notifs %}
-        <li>
-          	<div class="timeline-badge"><img class="img-circle" src="{{ asset(notif.utilisateurSource.logo.AssetPath) }}"/></div>
-          	<div class="timeline-panel">
-            	<div class="timeline-heading">
-            		<h3><i class="fa fa-file-text-o"></i> Projet : <a href="{{ path('cf_main_project', { 'id': notif.projet.id }) }}">{{ notif.projet.nom }}</a></h3>
-              		<h4 class="timeline-title"><a href="{{ path('fos_user_profile_user_show' , { username: notif.utilisateurSource.username}) }}">{{ notif.utilisateurSource.nomAsso }}</a></h4>
-              		<p class="date-notif"><small class="text-muted"><i class="glyphicon glyphicon-time"></i> le {{ notif.date|date("d/m/Y") }} à {{ notif.date|date("H:i") }}</small></p>
-            	</div>
-            	<div class="timeline-body">
-              	<p>{{ notif.contenu }}</p>
-            	</div>
-          	</div>
-        </li>
-  {% else %}
-    <li>
-      <div class="timeline-panel">
-        <div class="timeline-body">
-          <p>Aucune notification pour le moment.</p>
-        </div>
-      </div>
-    </li>
-	{% endfor %}
+<ul style="width: 400px;" class="dropdown-menu" role="menu" aria-labelledby="drop-user">
+  {% for n in notifs %}
+    {% if n.type == 1 %}
+      <li><a href="{{ path('cf_notification') }}">{{ n.contenu }}</a></li>
+    {% elseif n.type == 2 %}
+      <li><a href="{{ path('fos_user_profile_projects') }}">{{ n.contenu }}</a></li>
+    {% endif %}
+  {% endfor %}
 </ul>

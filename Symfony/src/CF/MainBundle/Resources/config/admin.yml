@@ -31,3 +31,14 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [CFMainBundle]]
+
+    sonata.admin.notif:
+        class: CF\NotificationBundle\Admin\NotificationAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Notifications", label: "Notification" }
+        arguments:
+            - ~
+            - CF\NotificationBundle\Entity\Notification
+            - ~
+        calls:
+            - [ setTranslationDomain, [CFNotificationBundle]]
