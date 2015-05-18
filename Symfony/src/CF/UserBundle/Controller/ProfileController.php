@@ -115,6 +115,16 @@ class ProfileController extends Controller
 
     public function projectsAction()
     {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $notifs = $this->getDoctrine()->getRepository('CFNotificationBundle:Notification')->getProjetsEnCours($user);
+
+        $em = $this->getDoctrine()->getEntityManager();
+        foreach ($notifs as $n) {
+            $n->setVu(1);
+            $em->flush();
+        }
+
         return $this->render('CFUserBundle:Profile:projects.html.twig');
     }
 

@@ -22,16 +22,6 @@ class Conversation
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Message", mappedBy="conversation")
-     */
-    private $messages;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="CF\UserBundle\Entity\User", cascade={"persist"})
-     */
-    private $utilisateurs;
-
-    /**
      * Get id
      *
      * @return integer

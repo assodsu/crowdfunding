@@ -10,7 +10,7 @@ class NotificationController extends Controller
     {
     	$user = $this->container->get('security.context')->getToken()->getUser();
 
-    	$notifs = $this->getDoctrine()->getRepository('CFNotificationBundle:Notification')->findUserNotification($user);
+    	$notifs = $this->getDoctrine()->getRepository('CFNotificationBundle:Notification')->getNotificationsByUser($user);
 
         return $this->render('CFNotificationBundle:Notification:index.html.twig', array('notifs' => $notifs));
     }

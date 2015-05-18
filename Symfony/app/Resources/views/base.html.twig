@@ -31,7 +31,19 @@
 				</div>
 				<div class="navigation-bar-right">
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-						<li class="badge"><a href="#">5</a></li>
+						{% set nbNotifs = 0 %}
+						{% for n in app.user.notifications %}
+							{% if n.vu == 0 %}
+								{% set nbNotifs = nbNotifs + 1 %}
+							{% endif %}
+						{% endfor %}
+						<li class="dropdown">
+							<a id="drop-user" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+			                	<span class="badge">{{ nbNotifs }}</span>
+			                	<span class="caret"></span>
+			              	</a>
+			              	{{ render(controller('CFNotificationBundle:Notification:index'))}}
+			            </li>
 						<li class="dropdown">
 			              <a id="drop-user" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
 			                <img src="{{asset( app.user.logo.AssetPath )}}">

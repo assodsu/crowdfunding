@@ -29,11 +29,6 @@ class Message
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Conversation", mappedBy="messages")
-     */
-    private $conversation;
-
-    /**
      * Get id
      *
      * @return integer
