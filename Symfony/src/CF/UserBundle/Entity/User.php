@@ -29,6 +29,11 @@ abstract class User extends BaseUser
     protected $logo;
 
     /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $nom;
+
+    /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     protected $adresse = null;
@@ -318,5 +323,29 @@ abstract class User extends BaseUser
     public function getGoogleplus()
     {
         return $this->googleplus;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return User
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 }

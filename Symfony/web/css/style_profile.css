@@ -367,3 +367,89 @@ textarea {
 		width: 100%;
 	}
 }
+
+/* --------------------- */
+/* -- MODAL CONNEXION -- */
+/* --------------------- */
+.modal-message-dialog {
+	width: 600px !important;
+	margin: 20px auto;
+}
+.modal-message-content {
+	margin: auto;
+}
+.modal-message-header {
+	background: #5A5F69;
+	padding: 6px 12px;
+}
+
+.modal-message-title {
+	text-transform: uppercase;
+	font-weight: 300;
+	letter-spacing: 8px;
+	font-size: 26px;
+	color: #FFFFFF;
+	text-align: center;
+	padding: 12px 0px;
+	margin: 0;
+}
+
+.modal-message-body {
+	background: #FFFFFF;
+	padding-bottom: 20px;
+	line-height: normal;
+}
+.modal-message-body p:before, .modal-message-body p:after {
+	position: absolute;
+	display: inline-block;
+	content: " ";
+}
+.modal-message-body p:before {
+  right: -15px;
+  border-top: 15px solid transparent;
+  border-left: 15px solid rgb(90, 95, 105);
+  border-right: 0 solid rgb(90, 95, 105);
+  border-bottom: 15px solid transparent;
+}
+.modal-message-body p:after {
+  top: 11px;
+  right: -14px;
+  border-top: 14px solid transparent;
+  border-left: 14px solid rgb(232, 232, 255);
+  border-right: 0 solid rgb(232, 232, 255);
+  border-bottom: 14px solid transparent;
+}
+.modal-message-body p {
+	padding: 10px;
+	margin: 20px 80px;
+	border: 1px solid rgb(90, 95, 105);
+	background: rgb(232, 232, 255);
+	border-radius: 5px;
+	min-height: 60px;
+  	position: relative;
+}
+
+.modal-message-body input {
+	padding: 8px;
+	width: 80%;
+	height: 35px;
+	display:inline-block;
+	border-bottom: 1px solid #5A5F69;
+}
+
+.modal-message-body input:focus {
+	border: none;
+	outline:  none;
+	border-bottom: 1px solid #5A5F69;
+}
+
+.modal-message-body input.btn {
+	width:20%;
+	border-radius: 0;
+	border:none;
+}
+.modal-message-footer {
+	background: #5A5F69;
+	padding: 16px;
+	text-align: center;
+}

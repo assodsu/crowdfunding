@@ -32,11 +32,6 @@ class Entreprise extends User
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $nomEntreprise;
-
-    /**
      * @ORM\Column(type="string", length=10)
      */
     protected $numSiret;
@@ -54,29 +49,6 @@ class Entreprise extends User
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set nomEntreprise
-     *
-     * @param string $nomEntreprise
-     * @return Entreprise
-     */
-    public function setNomEntreprise($nomEntreprise)
-    {
-        $this->nomEntreprise = $nomEntreprise;
-
-        return $this;
-    }
-
-    /**
-     * Get nomEntreprise
-     *
-     * @return string 
-     */
-    public function getNomEntreprise()
-    {
-        return $this->nomEntreprise;
     }
 
     /**

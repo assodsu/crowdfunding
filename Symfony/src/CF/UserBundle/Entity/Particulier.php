@@ -32,11 +32,6 @@ class Particulier extends User
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $pseudo;
-
-    /**
      * @ORM\Column(type="string", length=50)
      */
     protected $nom;
@@ -115,29 +110,6 @@ class Particulier extends User
     public function getPrenom()
     {
         return $this->prenom;
-    }
-
-    /**
-     * Set pseudo
-     *
-     * @param string $pseudo
-     * @return Particulier
-     */
-    public function setPseudo($pseudo)
-    {
-        $this->pseudo = $pseudo;
-
-        return $this;
-    }
-
-    /**
-     * Get pseudo
-     *
-     * @return string 
-     */
-    public function getPseudo()
-    {
-        return $this->pseudo;
     }
 
     /**

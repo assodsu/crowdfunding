@@ -110,7 +110,7 @@
 						</svg>
 						<div class='pie-content'>
 							{% set pourcentage = (projet.nbActuHumain + projet.nbActuMateriel + projet.nbActuComm + projet.nbActuFinancier)/projet.nbRessources %}
-							<div class='percentage'>{{ pourcentage*100|round }}%</div>
+							<div class='percentage'>{{ (pourcentage*100)|round }}%</div>
 							<div class='name'>ressources</br>collectées</div>
 						</div>
 						<ul class="pie">

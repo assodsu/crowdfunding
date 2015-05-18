@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Message
  *
- * @ORM\Table()
+ * @ORM\Table(name="messages")
  * @ORM\Entity
  */
 class Message
@@ -29,9 +29,21 @@ class Message
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Conversation", mappedBy="messages")
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Conversation", inversedBy="messages")
      */
     private $conversation;
+
+    public function __construct()
+    {
+        $this->setDate(new \DateTime());
+    }
 
     /**
      * Get id
@@ -42,5 +54,76 @@ class Message
     {
         return $this->id;
     }
-}
 
+    /**
+     * Set content
+     *
+     * @param string $content
+     *
+     * @return Message
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set conversation
+     *
+     * @param \CF\MessageBundle\Entity\Conversation $conversation
+     *
+     * @return Message
+     */
+    public function setConversation(\CF\MessageBundle\Entity\Conversation $conversation = null)
+    {
+        $this->conversation = $conversation;
+
+        return $this;
+    }
+
+    /**
+     * Get conversation
+     *
+     * @return \CF\MessageBundle\Entity\Conversation
+     */
+    public function getConversation()
+    {
+        return $this->conversation;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Message
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+}

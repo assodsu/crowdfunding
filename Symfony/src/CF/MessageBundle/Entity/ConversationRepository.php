@@ -10,4 +10,14 @@ namespace CF\MessageBundle\Entity;
  */
 class ConversationRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getUserActu($user)
+	{
+		  $qb = $this->createQueryBuilder('c');
+         
+	      $qb->join('c.utilisateurs', 'u')
+	         ->where('u = :user')
+	         ->setParameter(':user', $user);
+               
+      return $qb->getQuery()->getResult();
+	}
 }

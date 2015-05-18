@@ -56,19 +56,19 @@
 			<div id='infos-asso'>
 				<div id='certification'>
 					<p id='label'>Association certifiée <i class="fa fa-check"></i></p>
-					<img id='logo' src="{{asset( projet.idAsso.logo.AssetPath) }}"/>
+					<img id='logo' src="{{asset( projet.association.logo.AssetPath) }}"/>
 				</div>
 				<div id='content-infos'>
-					<h1>{{ projet.idAsso.nomAsso }}</h1>
+					<h1>{{ projet.association.nom }}</h1>
 					<div id='content-infos-second-row'>
-						<div id='town-asso'>{{ projet.idAsso.ville }}</div>
+						<div id='town-asso'>{{ projet.association.ville }}</div>
 						<div id="reseaux_sociaux">
 							<a href="#" id="facebook"><span class="fa fa-facebook"></span> Facebook</a>
 							<a href="#" id="twitter"><span class="fa fa-twitter"></span> Twitter</a>
 							<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> Google+</a>
 						</div>
 					</div>
-					<a href="{{ path('fos_user_profile_user_show', { 'username': projet.idAsso.username }) }}" class='btn btn-default'>Voir le profil <i class="fa fa-search"></i></a>
+					<a href="{{ path('fos_user_profile_user_show', { 'username': projet.association.username }) }}" class='btn btn-default'>Voir le profil <i class="fa fa-search"></i></a>
 				</div>
 			</div>
 			<div id='project-title'>{{ projet.nom }}</div>

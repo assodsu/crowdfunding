@@ -1,0 +1,19 @@
+<div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-labelledby="message-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-message-dialog">
+    <div class="modal-message-content">
+      <div class="modal-message-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-message-title" id="message-modal-label">Messages</h4>
+      </div>
+      <div class="modal-message-body">
+      	{{ render(controller('CFMessageBundle:Message:add', { 'idConversation' : conversation.id } )) }}
+      	{% for message in conversation.messages|reverse %}
+      		<p>{{ message.content }}</p>
+      	{% endfor %}
+      </div>
+      <div class="modal-message-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

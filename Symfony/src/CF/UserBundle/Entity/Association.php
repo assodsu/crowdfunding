@@ -31,11 +31,6 @@ class Association extends User
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $nomAsso;
-
-    /**
      * @ORM\Column(type="string", length=10)
      */
     protected $numWaldec;
@@ -58,29 +53,6 @@ class Association extends User
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set nomAsso
-     *
-     * @param string $nomAsso
-     * @return Particulier
-     */
-    public function setNomAsso($nomAsso)
-    {
-        $this->nomAsso = $nomAsso;
-
-        return $this;
-    }
-
-    /**
-     * Get nomAsso
-     *
-     * @return string 
-     */
-    public function getNomAsso()
-    {
-        return $this->nomAsso;
     }
 
     /**

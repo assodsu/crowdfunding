@@ -8,6 +8,7 @@ use CF\MainBundle\Entity\Projet;
 use CF\MainBundle\Form\ProjetType;
 use CF\MainBundle\Entity\Participation;
 use CF\MainBundle\Form\ParticipationType;
+use CF\MessageBundle\Entity\Conversation;
 
 class ProjectController extends Controller
 {
@@ -180,6 +181,10 @@ class ProjectController extends Controller
 
                 $projet->setNbDonateur($projet->getNbDonateur()+1);
 
+                $conversation = new Conversation();
+                $conversation->addUtilisateur($user);
+                $conversation->addUtilisateur($projet->getIdAsso());
+
                 $dons = $participation->getDons();
                 foreach($dons as $don)
                 {
@@ -206,6 +211,7 @@ class ProjectController extends Controller
                 }
 
                 $em->persist($participation);
+                $em->persist($conversation);
                 $em->flush();
 
                 return $this->redirect($this->generateUrl('cf_main_project', array('id' => $projet->getId())));

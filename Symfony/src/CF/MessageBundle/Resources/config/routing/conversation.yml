@@ -1,5 +1,5 @@
 cf_conversation_list:
-    path:     /voir
+    path:     /liste
     defaults: { _controller: CFMessageBundle:Conversation:list }
 
 cf_conversation_show:

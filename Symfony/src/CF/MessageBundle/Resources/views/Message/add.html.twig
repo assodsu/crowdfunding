@@ -1,0 +1,8 @@
+<form action="{{ path('cf_message_add', { 'idConversation' : conversation.id }) }}" method="post" {{ form_enctype(form) }}>
+  {{ form_start(form) }}
+  {{ form_errors(form) }}
+  <div class="form-group">
+    {{ form_widget(form.content) }}<input type="submit" class="btn btn-success" value="Envoyer" />
+  </div>
+  {{ form_end(form) }}
+</form>

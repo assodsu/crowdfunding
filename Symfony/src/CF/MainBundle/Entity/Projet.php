@@ -134,10 +134,10 @@ class Projet
 
     /**
      *  @ORM\ManyToOne(targetEntity="CF\UserBundle\Entity\Association")
-     *  @ORM\JoinColumn(name="idAsso", referencedColumnName="id")
+     *  @ORM\JoinColumn(name="association", referencedColumnName="id")
      *  @ORM\JoinColumn(nullable=false)
      */
-    protected $idAsso;
+    protected $association;
 
     /**
     * @ORM\OneToMany(targetEntity="CF\MainBundle\Entity\Besoins", cascade={"persist"}, mappedBy="projet")
@@ -369,29 +369,6 @@ class Projet
     public function getBackground()
     {
         return $this->background;
-    }
-
-    /**
-     * Set idAsso
-     *
-     * @param \CF\UserBundle\Entity\Association $idAsso
-     * @return Projet
-     */
-    public function setIdAsso(\CF\UserBundle\Entity\Association $idAsso)
-    {
-        $this->idAsso = $idAsso;
-
-        return $this;
-    }
-
-    /**
-     * Get idAsso
-     *
-     * @return \CF\UserBundle\Entity\Association 
-     */
-    public function getIdAsso()
-    {
-        return $this->idAsso;
     }
 
     /**
@@ -707,5 +684,29 @@ class Projet
     public function getNbDemandeFinancier()
     {
         return $this->nbDemandeFinancier;
+    }
+
+    /**
+     * Set association
+     *
+     * @param \CF\UserBundle\Entity\Association $association
+     *
+     * @return Projet
+     */
+    public function setAssociation(\CF\UserBundle\Entity\Association $association = null)
+    {
+        $this->association = $association;
+
+        return $this;
+    }
+
+    /**
+     * Get association
+     *
+     * @return \CF\UserBundle\Entity\Association
+     */
+    public function getAssociation()
+    {
+        return $this->association;
     }
 }

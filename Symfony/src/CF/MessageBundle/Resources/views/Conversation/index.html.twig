@@ -1,0 +1,41 @@
+<ul class="timeline">
+	{% for conversation in conversations %}
+      {% set userSource = null %}
+      {% if conversation.utilisateurs[0].username == app.user.username %}
+        {% set userSource = conversation.utilisateurs[1] %}
+      {% else %}
+        {% set userSource = conversation.utilisateurs[0] %}
+      {% endif %}
+      <li>
+        	<div class="timeline-badge"><img class="img-circle" src="{{ asset(userSource.logo.AssetPath) }}"/></div>
+        	<div class="timeline-panel">
+            {% for message in conversation.messages|slice(1) %}
+            	<div class="timeline-heading">
+              		<h4 class="timeline-title"><a href="{{ path('fos_user_profile_user_show' , { username: userSource}) }}">{{ userSource.nom }}</a></h4>
+                  <p class="date-notif"><small class="text-muted"><i class="glyphicon glyphicon-time"></i> le {{ message.date|date("d/m/Y") }} à {{ message.date|date("H:i") }}</small></p>
+            	</div>
+            	<div class="timeline-body">
+              	<p><i>Dernier message :</i> "{{ message.content }}"</p>
+                <a data-toggle="modal" data-target="#message-modal" class='btn btn-success'>Nouveau message</a>
+            	</div>
+            {% else %}
+              <div class="timeline-heading">
+                  <h4 class="timeline-title"><a href="{{ path('fos_user_profile_user_show' , { username: userSource}) }}">{{ userSource.nom }}</a></h4>
+              </div>
+              <div class="timeline-body">
+                <a data-toggle="modal" data-target="#message-modal" class='btn btn-success'>Nouveau message</a>
+              </div>
+            {% endfor %}
+        	</div>
+      </li>
+      {{ render(controller('CFMessageBundle:Conversation:show', { 'id' : conversation.id } )) }}
+  {% else %}
+    <li>
+      <div class="timeline-panel">
+        <div class="timeline-body">
+          <p>Aucune conversation pour le moment.</p>
+        </div>
+      </div>
+    </li>
+	{% endfor %}
+</ul>
