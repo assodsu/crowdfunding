@@ -73,6 +73,11 @@ abstract class User extends BaseUser
      */
     protected $typeUser;
 
+    /**
+     * @ORM\OneToMany(targetEntity="CF\NotificationBundle\Entity\Notification", mappedBy="user")
+     */
+    private $notifications;
+
 
     public function __construct()
     {
