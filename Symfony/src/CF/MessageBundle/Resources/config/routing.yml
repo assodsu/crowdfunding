@@ -1,0 +1,7 @@
+cf_message_index:
+    resource: routing/message.yml
+    prefix:     /message
+
+cf_conversation_index:
+    resource: routing/conversation.yml
+    prefix:     /conversation

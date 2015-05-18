@@ -31,7 +31,20 @@
 				</div>
 				<div class="navigation-bar-right">
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-				    	<li><a href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-user"></i></a></li>
+						<li class="badge"><a href="#">5</a></li>
+						<li class="dropdown">
+			              <a id="drop-user" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+			                <img src="{{asset( app.user.logo.AssetPath )}}">
+			                <span class="caret"></span>
+			              </a>
+			              <ul class="dropdown-menu" role="menu" aria-labelledby="drop-user">
+						    <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-user"></i> Profil</a></li>
+						    <li><a href="{{ path('fos_user_profile_messages') }}"><i class="fa fa-comment-o"></i> Messages</a></li>
+						    <li><a href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-wrench"></i> Paramètres</a></li>
+						    <hr>
+						    <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Deconnexion</a></li>
+			              </ul>
+			            </li>
 				    {% else %}
 				      	<li><a href="#connexion" data-toggle="modal" data-target="#connection-modal"><i class="fa fa-sign-in"></i></a></li>
 				      	<li><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user-plus"></i></a></li>

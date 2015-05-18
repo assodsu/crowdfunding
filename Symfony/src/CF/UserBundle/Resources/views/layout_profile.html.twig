@@ -35,7 +35,7 @@
 	<div class="profile-menu">
 		<div class="profile-menu-title">Profil et paramètres</div>
 		<div class="profile-menu-content">
-			<a href="#"><i class="fa fa-envelope-o"></i> Messages</a>
+			<a href="{{ path('fos_user_profile_messages') }}"><i class="fa fa-envelope-o"></i> Messages</a>
 			<a href="#"><i class="fa fa-comment-o"></i> Informations</a>
 			<a {% if menulink_param is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-gear"></i> Paramètres</a>
 			<a href="#"><i class="fa fa-support"></i> Badges</a>

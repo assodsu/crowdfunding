@@ -6,7 +6,7 @@
             	<div class="timeline-heading">
             		<h3><i class="fa fa-file-text-o"></i> Projet : <a href="{{ path('cf_main_project', { 'id': notif.projet.id }) }}">{{ notif.projet.nom }}</a></h3>
               		<h4 class="timeline-title"><a href="{{ path('fos_user_profile_user_show' , { username: notif.utilisateurSource.username}) }}">{{ notif.utilisateurSource.nomAsso }}</a></h4>
-              		<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> le {{ notif.date|date("d/m/Y") }} à {{ notif.date|date("H:i") }}</small></p>
+              		<p class="date-notif"><small class="text-muted"><i class="glyphicon glyphicon-time"></i> le {{ notif.date|date("d/m/Y") }} à {{ notif.date|date("H:i") }}</small></p>
             	</div>
             	<div class="timeline-body">
               	<p>{{ notif.contenu }}</p>

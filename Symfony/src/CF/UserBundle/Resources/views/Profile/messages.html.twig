@@ -1,0 +1,22 @@
+{% extends "CFUserBundle::layout_profile.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Mes messages
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('css/style_profile.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block cfuserbundle_body %}
+	<div class="panel-heading">
+		<div id="layer"></div>
+		<div class="logo-name">
+			<div class="logo-username">
+				<h1><i class="fa fa-envelope-o"></i> Mes messages</h1>
+			</div>
+		</div>
+	</div>
+	{{ render(controller('CFNotificationBundle:Notification:index')) }}
+{% endblock %}

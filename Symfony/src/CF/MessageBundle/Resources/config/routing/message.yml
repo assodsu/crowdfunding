@@ -1,0 +1,3 @@
+cf_message_add:
+    path:     /ajouter
+    defaults: { _controller: CFMessageBundle:Message:add }

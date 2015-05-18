@@ -64,14 +64,20 @@ $(document).ready(function(){
 	});
 
 	$(window).scroll(function(){
-		if ($(this).scrollTop() > $('.search-content').height()) {
-	  		$('.search').css('position','fixed').css('z-index','5').css('top','51px');
-	  		$('#content-scrolling').css('margin-top','60px');
+		if ($(this).scrollTop() > $('#search-content').height()) {
+	  		$('.search').css('position','fixed').css('z-index','5').css('top','46px');
+	  		$('#content-scrolling').css('margin-top','50px');
 	  		$('.scrolling-text').show(200);
 		} else {
 	  		$('.search').css('position','relative').css('z-index','5').css('top','0');
 	  		$('#content-scrolling').css('margin-top','0');
 	  		$('.scrolling-text').hide(200);
 		}
+	});
+
+	$('.apercu').mouseenter(function(){
+		$(this).children('div.filter').animate({ width: '45%'}, {queue : false, duration:300});
+	}).mouseleave(function(){
+		$(this).children('div.filter').animate({ width: '40%'}, {queue : false, duration:300});
 	});
 });

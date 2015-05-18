@@ -157,6 +157,8 @@ textarea {
   list-style: none;
   padding: 20px 0 20px;
   position: relative;
+  width: 80%;
+  margin: 50px auto;
 }
 .timeline:before {
   top: 0;
@@ -234,7 +236,11 @@ textarea {
 .timeline-body > p + p {
   margin-top: 5px;
 }
-
+.date-notif {
+	position:absolute;
+	top:10px;
+	right:10px;
+}
 /** NEW STYLE **/
 .profile-navigation {
 	display: none;

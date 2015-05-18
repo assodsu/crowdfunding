@@ -117,4 +117,10 @@ class ProfileController extends Controller
     {
         return $this->render('CFUserBundle:Profile:projects.html.twig');
     }
+
+    public function messagesAction()
+    {
+        return $this->render('CFUserBundle:Profile:messages.html.twig');
+    }
+
 }
