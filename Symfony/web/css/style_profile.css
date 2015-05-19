@@ -479,6 +479,6 @@ textarea {
 	width: 100px;
 }
 
-.badge-profil .tooltip-inner {
-	margin-top: 20px;
+.badge-profil .tooltip-inner, .badge-profil .tooltip-arrow {
+	margin-top: 30px;
 }

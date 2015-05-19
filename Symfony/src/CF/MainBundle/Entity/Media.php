@@ -27,6 +27,10 @@ class Media
      */
     private $updated_at;
 
+    public function __toString() {
+        return $this->path;
+    }
+
     /**
      * @ORM\PostLoad()
      */

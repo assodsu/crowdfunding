@@ -7,6 +7,8 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
+use CF\MainBundle\Form\MediaType;
+
 class BadgeAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
@@ -15,6 +17,7 @@ class BadgeAdmin extends Admin
         $formMapper
             ->add('titre')
             ->add('description')
+            ->add('image', new MediaType())
         ;
     }
 

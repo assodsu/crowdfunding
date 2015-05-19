@@ -103,4 +103,28 @@ class Badge
     {
         return $this->description;
     }
+
+    /**
+     * Set image
+     *
+     * @param \CF\MainBundle\Entity\Media $image
+     *
+     * @return Badge
+     */
+    public function setImage(\CF\MainBundle\Entity\Media $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \CF\MainBundle\Entity\Media
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 }
