@@ -13,7 +13,7 @@ class AssociationAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('nomAsso')
+            ->add('nom')
             ->add('email')
             ->add('numWaldec')
             ->add('adresse')
@@ -27,6 +27,7 @@ class AssociationAdmin extends Admin
             ->add('dateCreationAsso')
             ->add('descriptionAsso')
             ->add('roles')
+            ->add('badges')
             ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
@@ -35,7 +36,7 @@ class AssociationAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('nomAsso')
+            ->add('nom')
             ->add('ville')
             ->add('email')
             ->add('numWaldec')
@@ -48,7 +49,7 @@ class AssociationAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->addIdentifier('nomAsso')
+            ->addIdentifier('nom')
             ->add('ville')
             ->add('email')
             ->add('numWaldec')

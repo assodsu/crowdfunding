@@ -83,6 +83,11 @@ abstract class User extends BaseUser
      */
     private $notifications;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="CF\BadgeBundle\Entity\Badge", cascade={"persist"})
+     */
+    private $badges;
+
 
     public function __construct()
     {
@@ -390,5 +395,39 @@ abstract class User extends BaseUser
     public function getNotifications()
     {
         return $this->notifications;
+    }
+
+    /**
+     * Add badge
+     *
+     * @param \CF\BadgeBundle\Entity\Badge $badge
+     *
+     * @return User
+     */
+    public function addBadge(\CF\BadgeBundle\Entity\Badge $badge)
+    {
+        $this->badges[] = $badge;
+
+        return $this;
+    }
+
+    /**
+     * Remove badge
+     *
+     * @param \CF\BadgeBundle\Entity\Badge $badge
+     */
+    public function removeBadge(\CF\BadgeBundle\Entity\Badge $badge)
+    {
+        $this->badges->removeElement($badge);
+    }
+
+    /**
+     * Get badges
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBadges()
+    {
+        return $this->badges;
     }
 }

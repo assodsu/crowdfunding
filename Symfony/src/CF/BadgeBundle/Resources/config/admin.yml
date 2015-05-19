@@ -1,0 +1,11 @@
+services:
+    sonata.admin.badge:
+        class: CF\BadgeBundle\Admin\BadgeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Badges", label: "Badge" }
+        arguments:
+            - ~
+            - CF\BadgeBundle\Entity\Badge
+            - ~
+        calls:
+            - [ setTranslationDomain, [CFBadgeBundle]]

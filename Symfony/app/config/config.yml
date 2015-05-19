@@ -5,6 +5,7 @@ imports:
     - { resource: "@CFUserBundle/Resources/config/config.yml" }
     - { resource: "@CFMainBundle/Resources/config/admin.yml" }
     - { resource: "@CFUserBundle/Resources/config/admin.yml" }
+    - { resource: "@CFBadgeBundle/Resources/config/admin.yml" }
 
 framework:
     #esi:             ~

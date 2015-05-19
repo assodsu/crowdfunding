@@ -453,3 +453,32 @@ textarea {
 	padding: 16px;
 	text-align: center;
 }
+
+/** BADGES **/
+.badge-profil {
+	display: inline-block;
+	vertical-align: top;
+	margin: 20px 40px;
+	text-align: center;
+}
+
+.badge-profil img {
+	margin: 10px 0;
+	width: 64px;
+	height: 64px;
+}
+
+.badge-profil .titre {
+	display: block;
+}
+
+.badge-profil .description {
+	display: block;
+	margin: 0px auto;
+	margin-top: -60px;
+	width: 100px;
+}
+
+.badge-profil .tooltip-inner {
+	margin-top: 20px;
+}

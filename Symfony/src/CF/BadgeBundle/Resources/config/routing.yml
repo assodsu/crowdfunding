@@ -1,0 +1,3 @@
+cf_badge_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: CFBadgeBundle:Default:index }

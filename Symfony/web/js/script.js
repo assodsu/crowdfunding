@@ -1,4 +1,7 @@
 $(document).ready(function(){
+	
+	$('[data-toggle="tooltip"]').tooltip();
+
 	$('.profile-navigation').on('click', function() {
 		if ($('.profile-left-menu').is(':visible')) {
 			$('.profile-left-menu').hide("slide", { direction: "left" }, 400);

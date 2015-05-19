@@ -29,6 +29,11 @@ abstract class User extends BaseUser
     protected $logo;
 
     /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $nom;
+
+    /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     protected $adresse = null;
@@ -77,6 +82,11 @@ abstract class User extends BaseUser
      * @ORM\OneToMany(targetEntity="CF\NotificationBundle\Entity\Notification", mappedBy="user")
      */
     private $notifications;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="CF\BadgeBundle\Entity\Badge", cascade={"persist"})
+     */
+    private $badges;
 
 
     public function __construct()
@@ -327,5 +337,63 @@ abstract class User extends BaseUser
     public function getGoogleplus()
     {
         return $this->googleplus;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return User
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Add notification
+     *
+     * @param \CF\NotificationBundle\Entity\Notification $notification
+     *
+     * @return User
+     */
+    public function addNotification(\CF\NotificationBundle\Entity\Notification $notification)
+    {
+        $this->notifications[] = $notification;
+
+        return $this;
+    }
+
+    /**
+     * Remove notification
+     *
+     * @param \CF\NotificationBundle\Entity\Notification $notification
+     */
+    public function removeNotification(\CF\NotificationBundle\Entity\Notification $notification)
+    {
+        $this->notifications->removeElement($notification);
+    }
+
+    /**
+     * Get notifications
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
     }
 }

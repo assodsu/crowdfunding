@@ -50,3 +50,12 @@
 		<img src="{{ asset('images/google-map.png') }}"  class="center-block" />
 	</div>
 </div>
+
+{% for b in user.badges %}
+	<div class="badge-profil">
+		<div class="titre badge">{{ b.titre }}</div>
+		<span data-toggle="tooltip" data-placement="bottom" title="{{ b.description }}">
+			<img src="{{ asset('images/twitter.png') }}" alt="{{ b.titre }}" />
+		</span>
+	</div>
+{% endfor %}
