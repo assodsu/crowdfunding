@@ -20,7 +20,7 @@
 				<div class="logo-username">
 					<h1>
 						{% if user.typeUser == "Association" %}
-							{{ user.nomAsso }}
+							{{ user.nom }}
                     	{% elseif user.typeUser == "Entreprise" %}
 							{{ user.nomEntreprise }}
                     	{% else %}
