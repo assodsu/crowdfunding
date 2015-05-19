@@ -27,6 +27,11 @@ class Conversation
     private $messages;
 
     /**
+     * @ORM\ManyToMany(targetEntity="CF\UserBundle\Entity\User")
+     */
+    private $utilisateurs;
+
+    /**
      * Get id
      *
      * @return integer

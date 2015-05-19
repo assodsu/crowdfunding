@@ -38,7 +38,7 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('idAsso' => $user->getId()));
+        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('association.id' => $user->getId()));
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
             'user' => $user,
@@ -53,7 +53,7 @@ class ProfileController extends Controller
     {
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->findUserByUsername($username);
-        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('idAsso' => $user->getId()));
+        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('association.id' => $user->getId()));
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
             'user' => $user,

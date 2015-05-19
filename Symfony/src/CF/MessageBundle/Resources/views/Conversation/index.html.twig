@@ -20,7 +20,7 @@
             	</div>
             {% else %}
               <div class="timeline-heading">
-                  <h4 class="timeline-title"><a href="{{ path('fos_user_profile_user_show' , { username: userSource}) }}">{{ userSource.nom }}</a></h4>
+                  <h4 class="timeline-title"><a href="{{ path('fos_user_profile_user_show' , { username: userSource.username}) }}">{{ userSource.nom }}</a></h4>
               </div>
               <div class="timeline-body">
                 <a data-toggle="modal" data-target="#message-modal" class='btn btn-success'>Nouveau message</a>
