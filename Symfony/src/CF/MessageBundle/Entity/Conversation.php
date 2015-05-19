@@ -22,6 +22,11 @@ class Conversation
     private $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="CF\MessageBundle\Entity\Message", mappedBy="conversation")
+     */
+    private $messages;
+
+    /**
      * Get id
      *
      * @return integer

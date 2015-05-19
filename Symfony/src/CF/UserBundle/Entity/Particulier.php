@@ -34,12 +34,12 @@ class Particulier extends User
     /**
      * @ORM\Column(type="string", length=50)
      */
-    protected $nom;
+    protected $name;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    protected $prenom;
+    protected $firstname;
 
     /**
      * @ORM\Column(type="string", length=1)

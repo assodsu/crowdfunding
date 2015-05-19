@@ -24,7 +24,7 @@ class RegistrationAssociationFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nomAsso', null, array('label' => "Nom de l'association : "))
+            ->add('nom', null, array('label' => "Nom de l'association : "))
 
             ->add('numWaldec', null, array('label' => "Numéro WALDEC : "))
 

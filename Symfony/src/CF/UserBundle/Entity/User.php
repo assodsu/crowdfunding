@@ -83,6 +83,11 @@ abstract class User extends BaseUser
      */
     private $notifications;
 
+    /**
+     * @ORM\OneToMany(targetEntity="CF\MessageBundle\Entity\Message", mappedBy="user")
+     */
+    private $messages;
+
 
     public function __construct()
     {
@@ -390,5 +395,39 @@ abstract class User extends BaseUser
     public function getNotifications()
     {
         return $this->notifications;
+    }
+
+    /**
+     * Add message
+     *
+     * @param \CF\MessageBundle\Entity\Message $message
+     *
+     * @return User
+     */
+    public function addMessage(\CF\MessageBundle\Entity\Message $message)
+    {
+        $this->messages[] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Remove message
+     *
+     * @param \CF\MessageBundle\Entity\Message $message
+     */
+    public function removeMessage(\CF\MessageBundle\Entity\Message $message)
+    {
+        $this->messages->removeElement($message);
+    }
+
+    /**
+     * Get messages
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMessages()
+    {
+        return $this->messages;
     }
 }

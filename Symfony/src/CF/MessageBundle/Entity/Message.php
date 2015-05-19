@@ -40,6 +40,11 @@ class Message
      */
     private $conversation;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="CF\UserBundle\Entity\User", inversedBy="messages")
+     */
+    private $user;
+
     public function __construct()
     {
         $this->setDate(new \DateTime());
@@ -125,5 +130,29 @@ class Message
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \CF\UserBundle\Entity\User $user
+     *
+     * @return Message
+     */
+    public function setUser(\CF\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \CF\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

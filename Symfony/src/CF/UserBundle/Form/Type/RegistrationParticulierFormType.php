@@ -24,11 +24,11 @@ class RegistrationParticulierFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pseudo', null, array('label' => "Pseudo : ","attr"=>array('class'=>'form-control')))
+            ->add('nom', null, array('label' => "Pseudo : ","attr"=>array('class'=>'form-control')))
 
-            ->add('nom', null, array('label' => "Nom : ","attr"=>array('class'=>'form-control')))
+            ->add('name', null, array('label' => "Nom : ","attr"=>array('class'=>'form-control')))
 
-            ->add('prenom', null, array('label' => "Prénom : ","attr"=>array('class'=>'form-control')))
+            ->add('firstname', null, array('label' => "Prénom : ","attr"=>array('class'=>'form-control')))
 
             ->add('sexe', 'choice', array('label' => "Sexe : ",
                                           "attr"=>array('class'=>'form-control'),
