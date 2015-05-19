@@ -32,6 +32,16 @@ class Conversation
     private $utilisateurs;
 
     /**
+     * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Projet")
+     */
+    private $projet;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CF\MainBundle\Entity\Dons", mappedBy="conversation")
+     */
+    private $dons;
+
+    /**
      * Get id
      *
      * @return integer
@@ -115,5 +125,63 @@ class Conversation
     public function getUtilisateurs()
     {
         return $this->utilisateurs;
+    }
+
+    /**
+     * Set projet
+     *
+     * @param \CF\MainBundle\Entity\Projet $projet
+     *
+     * @return Conversation
+     */
+    public function setProjet(\CF\MainBundle\Entity\Projet $projet = null)
+    {
+        $this->projet = $projet;
+
+        return $this;
+    }
+
+    /**
+     * Get projet
+     *
+     * @return \CF\MainBundle\Entity\Projet
+     */
+    public function getProjet()
+    {
+        return $this->projet;
+    }
+
+    /**
+     * Add don
+     *
+     * @param \CF\MainBundle\Entity\Dons $don
+     *
+     * @return Conversation
+     */
+    public function addDon(\CF\MainBundle\Entity\Dons $don)
+    {
+        $this->dons[] = $don;
+
+        return $this;
+    }
+
+    /**
+     * Remove don
+     *
+     * @param \CF\MainBundle\Entity\Dons $don
+     */
+    public function removeDon(\CF\MainBundle\Entity\Dons $don)
+    {
+        $this->dons->removeElement($don);
+    }
+
+    /**
+     * Get dons
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDons()
+    {
+        return $this->dons;
     }
 }

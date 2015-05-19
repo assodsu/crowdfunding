@@ -1,4 +1,4 @@
-<div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-labelledby="message-modal-label" aria-hidden="true">
+<div class="modal fade" id="message-modal-{{ conversation.id }}" tabindex="-1" role="dialog" aria-labelledby="message-modal-label" aria-hidden="true">
   <div class="modal-dialog modal-message-dialog">
     <div class="modal-message-content">
       <div class="modal-message-header">
@@ -6,11 +6,50 @@
         <h4 class="modal-message-title" id="message-modal-label">Messages</h4>
       </div>
       <div class="modal-message-body">
-      	{{ render(controller('CFMessageBundle:Message:add', { 'idConversation' : conversation.id } )) }}
-      	{% for message in conversation.messages|reverse %}
-      		<p>{{ message.content }}</p>
-      	{% endfor %}
+      	{{ render(controller('CFMessageBundle:Message:add', { 'id' : conversation.id } )) }}
+        <div class="loading"><i class="fa fa-spinner fa-pulse"></i></div>
+        <div class="messages-list messages-list-{{conversation.id}}">
+        	{% for message in conversation.messages|reverse %}
+            {% if message.user.username == app.user.username %}
+              <p class="fromYou"><small class="text-muted date-notif">Envoyé le {{ message.date|date("d/m/Y") }} à {{ message.date|date("H:i") }}</small><br>{{ message.content }}</p>
+            {% else %}
+              <p class="fromAnother"><small class="text-muted date-notif">Reçu le {{ message.date|date("d/m/Y") }} à {{ message.date|date("H:i") }}</small><br>{{ message.content }}</p>
+            {% endif %}
+        	{% endfor %}
+        </div>
       </div>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('.loading').hide();
+          $('#button-new-message-{{conversation.id}}').on('click', function(){
+            if($('.new-message-{{conversation.id}}').val().length > 0)
+            {
+              var params = "message="+$('.new-message-{{conversation.id}}').val();
+              $('.new-message-{{conversation.id}}').val('');
+              $(this).attr("disabled", "disabled");
+              $('.loading').show();
+              $.ajax({
+                type: 'POST',
+                data: params,
+                url: $('#form-new-message-{{ conversation.id }}').attr('action'),
+                success: function(data) {
+                  var currentdate = new Date(); 
+                  var date = currentdate.getDate() + "/"
+                                + (currentdate.getMonth()+1)  + "/" 
+                                + currentdate.getFullYear();
+
+                  var time = currentdate.getHours() + ":"  
+                                + currentdate.getMinutes();
+
+                  $('.messages-list-{{conversation.id}}').prepend('<p class="fromYou"><small class="text-muted date-notif">Envoyé le '+date+' à '+time+'</small><br>'+data.message+'</p>');
+                  $('#button-new-message-{{conversation.id}}').removeAttr("disabled");
+                  $('.loading').hide();
+                }
+              });
+            }
+          });
+        });
+      </script>
       <div class="modal-message-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
       </div>

@@ -186,6 +186,7 @@ class ProjectController extends Controller
                 $projet->setNbDonateur($projet->getNbDonateur()+1);
 
                 $conversation = new Conversation();
+                $conversation->setProjet($projet);
                 $conversation->addUtilisateur($user);
                 $conversation->addUtilisateur($projet->getAssociation());
 
@@ -194,6 +195,8 @@ class ProjectController extends Controller
                 {
                     $don->setParticipation($participation);
                     $besoin = $don->getBesoin();
+                    $conversation->addDon($don);
+
                     $besoin->setQuantiteActuelle($besoin->getQuantiteActuelle()+$don->getQuantite());
 
                     if($besoin->getType() == 'financier')

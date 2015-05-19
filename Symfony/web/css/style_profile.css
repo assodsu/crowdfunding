@@ -230,11 +230,8 @@ textarea {
   margin-top: 0;
   color: inherit;
 }
-.timeline-body > p, .timeline-body > ul {
-  margin-bottom: 0;
-}
-.timeline-body > p + p {
-  margin-top: 5px;
+.timeline-body > p {
+	margin:5px 0;
 }
 .date-notif {
 	position:absolute;
@@ -404,37 +401,64 @@ textarea {
 	display: inline-block;
 	content: " ";
 }
-.modal-message-body p:before {
+.modal-message-body p.fromYou:before {
   right: -15px;
   border-top: 15px solid transparent;
-  border-left: 15px solid rgb(90, 95, 105);
-  border-right: 0 solid rgb(90, 95, 105);
+  border-left: 15px solid rgb(184, 184, 184);
+  border-right: 0 solid rgb(184, 184, 184);
   border-bottom: 15px solid transparent;
 }
-.modal-message-body p:after {
+.modal-message-body p.fromYou:after {
   top: 11px;
   right: -14px;
   border-top: 14px solid transparent;
-  border-left: 14px solid rgb(232, 232, 255);
-  border-right: 0 solid rgb(232, 232, 255);
+  border-left: 14px solid rgb(225, 225, 225);
+  border-right: 0 solid rgb(225, 225, 225);
+  border-bottom: 14px solid transparent;
+}
+.modal-message-body p.fromAnother:before {
+  left: -15px;
+  border-top: 15px solid transparent;
+  border-left: 0 solid rgb(184, 184, 184);
+  border-right: 15px solid rgb(184, 184, 184);
+  border-bottom: 15px solid transparent;
+}
+.modal-message-body p.fromAnother:after {
+  top: 11px;
+  left: -14px;
+  border-top: 14px solid transparent;
+  border-left: 0 solid rgb(245, 245, 245);
+  border-right: 14px solid rgb(245, 245, 245);
   border-bottom: 14px solid transparent;
 }
 .modal-message-body p {
 	padding: 10px;
 	margin: 20px 80px;
-	border: 1px solid rgb(90, 95, 105);
-	background: rgb(232, 232, 255);
+	border: 1px solid rgb(184, 184, 184);
 	border-radius: 5px;
 	min-height: 60px;
   	position: relative;
+	font-size: 14px;
+	font-weight: bold;
 }
-
+.modal-message-body p.fromAnother {
+	background: rgb(245, 245, 245);
+}
+.modal-message-body p.fromYou {
+	background: rgb(225, 225, 225);
+}
+.modal-message-body p small {
+	font-size: 12px;
+	font-weight: 100;
+	top: 5px;
+}
 .modal-message-body input {
 	padding: 8px;
 	width: 80%;
 	height: 35px;
 	display:inline-block;
 	border-bottom: 1px solid #5A5F69;
+	border-radius: 0;
 }
 
 .modal-message-body input:focus {
@@ -445,7 +469,6 @@ textarea {
 
 .modal-message-body input.btn {
 	width:20%;
-	border-radius: 0;
 	border:none;
 }
 .modal-message-footer {
@@ -453,7 +476,15 @@ textarea {
 	padding: 16px;
 	text-align: center;
 }
-
+.messages-list {
+	max-height: 350px;
+	overflow:auto;
+}
+.loading {
+	text-align: center;
+	font-size: 50px;
+	color: rgb(95, 207, 128);
+}
 /** BADGES **/
 .badge-profil {
 	display: inline-block;

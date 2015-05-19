@@ -41,6 +41,11 @@ class Dons
     private $participation;
 
     /**
+     * @ORM\ManyToOne(targetEntity="CF\MessageBundle\Entity\Conversation", inversedBy="dons")
+     */
+    private $conversation;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -117,5 +122,29 @@ class Dons
     public function getParticipation()
     {
         return $this->participation;
+    }
+
+    /**
+     * Set conversation
+     *
+     * @param \CF\MessageBundle\Entity\Conversation $conversation
+     *
+     * @return Dons
+     */
+    public function setConversation(\CF\MessageBundle\Entity\Conversation $conversation = null)
+    {
+        $this->conversation = $conversation;
+
+        return $this;
+    }
+
+    /**
+     * Get conversation
+     *
+     * @return \CF\MessageBundle\Entity\Conversation
+     */
+    public function getConversation()
+    {
+        return $this->conversation;
     }
 }

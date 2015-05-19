@@ -1,3 +1,9 @@
 cf_message_add:
-    path:     /ajouter
+    path:     /ajouter/{id}
     defaults: { _controller: CFMessageBundle:Message:add }
+
+cf_message_update_ajax:
+    pattern:  /update/{id}
+    defaults: { _controller: CFMessageBundle:Message:update }
+    requirements:
+        _method: POST
