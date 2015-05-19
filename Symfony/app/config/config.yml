@@ -102,3 +102,9 @@ sonata_block:
 
 sonata_admin:
     title:      Coceptio Administration
+
+# Stof\DoctrineExtensionBundle configuration
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true

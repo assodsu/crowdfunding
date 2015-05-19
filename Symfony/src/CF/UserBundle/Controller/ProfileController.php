@@ -105,6 +105,8 @@ class ProfileController extends Controller
 
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
+            $this->get('session')->getFlashBag()->add('info', 'Votre profil a bien été modifié !');
+
             return $response;
         }
 

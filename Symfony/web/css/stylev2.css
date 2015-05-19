@@ -28,6 +28,21 @@ body {
   font-size:12px !important;
 }
 
+.alert-top {
+  display: none;
+  width: 800px;
+  top: 50px;
+  left: 50%;
+  margin-left: -400px;
+  background-color: rgb(116, 184, 164);
+  border-left: 8px solid rgb(46, 126, 106);
+  border-right: 8px solid rgb(46, 126, 106);
+  color: #FFFFFF;
+  z-index: 10;
+  position: absolute;
+  padding: 16px;
+}
+
 /*** NAVIGATION ***/
 nav {
   height:50px;

@@ -6,21 +6,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use CF\MainBundle\Entity\Projet;
 use CF\MainBundle\Form\ProjetType;
+use CF\MainBundle\Form\ProjetEditType;
 use CF\MainBundle\Entity\Participation;
 use CF\MainBundle\Form\ParticipationType;
 use CF\MessageBundle\Entity\Conversation;
 
 class ProjectController extends Controller
 {
-	public function showAction($id)
+	public function showAction(Projet $projet)
     {
-        $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
-
         if (!$projet) {
             throw $this->createNotFoundException(
-                'Aucun projet trouvé pour cet id : '.$id
+                'Aucun projet trouvé pour cet id : '.$projet->id
             );
         }
+
         return $this->render('CFMainBundle:Project:show.html.twig', array('projet'=>$projet));
     }
 	
@@ -106,8 +106,10 @@ class ProjectController extends Controller
                 
                 $em->persist($projet);
                 $em->flush();
+
+                $this->get('session')->getFlashBag()->add('info', 'Votre projet a bien été déposé, il est en attente de validation par un administrateur. Un e-mail vous sera envoyé pour savoir si oui ou non votre projet a été accepté');
                 
-                return $this->redirect($this->generateUrl('cf_main_project', array('id' => $projet->getId())));
+                return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
             }
         }
 
@@ -146,6 +148,8 @@ class ProjectController extends Controller
 
                     $em->persist($actu);
                     $em->flush();
+
+                    $this->get('session')->getFlashBag()->add('info', 'Votre actualité a bien été ajouté.');
 
                     return $this->redirect('cf_main_project',array('id'=>$actu->getIdProjet()));
                 }
@@ -214,10 +218,52 @@ class ProjectController extends Controller
                 $em->persist($conversation);
                 $em->flush();
 
+                $this->get('session')->getFlashBag()->add('info', 'Votre participation a bien été prise en compte.');
+
                 return $this->redirect($this->generateUrl('cf_main_project', array('id' => $projet->getId())));
             }
         }
             
         return $this->render('CFMainBundle:Project:participate.html.twig',array('form' => $form->createView(), 'projet'=>$projet));
+    }
+
+    public function modifierAction(Projet $projet, Request $request) 
+    {
+        if (!$projet) {
+            throw $this->createNotFoundException(
+                'Aucun projet trouvé pour cet id : '.$projet->getId());
+        }
+
+        $form = $this->createForm(new ProjetEditType(), $projet);
+
+        if($request->getMethod() == 'POST')
+        {
+            $form->bind($request);
+
+            if($form->isValid())
+            {
+                $em = $this->getDoctrine()->getEntityManager();
+                $projet = $form->getData();
+
+
+                $boxs = $projet->getBoxs();
+                foreach($boxs as $box)
+                {
+                    $box->setProjet($projet);
+                }
+                
+                $em->persist($projet);
+                $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'Votre projet a bien été modifié !');
+
+                return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
+            }
+        }
+
+        return $this->render('CFMainBundle:Project:modifier.html.twig', array(
+                'form' => $form->createView(),
+                'projet' => $projet
+            ));
     }
 }

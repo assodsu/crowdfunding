@@ -94,7 +94,7 @@
 	<div id="content-scrolling">
 		<div id="content">
 		{% for projet in projets %}
-			<a href="{{ path('cf_main_project', {'id' : projet.id}) }}" class="project">
+			<a href="{{ path('cf_main_project', {'slug' : projet.slug}) }}" class="project">
 				<div  id="project-{{ projet.id }}" class="apercu">
 					<div img="{{ projet.background.path }}" class="project-background"></div>
 					<div class="filter"></div>

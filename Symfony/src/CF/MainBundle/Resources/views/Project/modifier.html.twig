@@ -1,0 +1,74 @@
+{% extends "CFMainBundle::layout.html.twig" %}
+
+{% block title %}
+  {{ projet.nom }} - {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{asset('css/style_show.css')}}" rel="stylesheet"/>
+	<link href="{{asset('css/style_participer_projet.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+<form method="post">
+
+	{{ form_rest(form) }}
+
+	<button type="submit">Modifier</button>
+</form>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/create_project.js') }}"></script>
+	<script>
+		$(document).ready(function() {
+			/**** BOXS HISTOIRE ****/
+
+	var $containerBox = $('div#cf_mainbundle_projetedit_boxs');
+
+	var $lienAjoutBox = $('<a href="#" id="ajout_box" class="btn btn-success"><i class="fa fa-plus"></i></a>');
+
+	$lienAjoutBox.click(function(e) {
+		ajouterBox($containerBox);
+		e.preventDefault();
+		return false;
+	});
+
+	var indexBox = $containerBox.find(':input').length;
+
+	if (indexBox == 0) {
+		ajouterBox($containerBox);
+	} 
+	else {
+		$containerBox.children('div').each(function() {
+			ajouterLienSuppressionBox($(this));
+		});
+	}
+
+	function ajouterBox($containerBox) {
+		var $prototype = $($containerBox.attr('data-prototype').replace(/__name__label__/g, 'Boîte').replace(/__name__/g, indexBox));
+
+		ajouterLienSuppressionBox($prototype);
+		$containerBox.append($prototype);
+		indexBox++;
+
+		$containerBox.append($lienAjoutBox);
+	}
+
+	function ajouterLienSuppressionBox($prototype) {
+		$lienSuppression = $('<a href="#" class="btn btn-danger" id="suppr_box"><i class="fa fa-minus"></i></a>');
+		$prototype.append($lienSuppression);
+
+		$lienSuppression.click(function(e) {
+			$prototype.remove();
+			e.preventDefault();
+			return false;
+		});
+	}
+		});
+	</script>
+{% endblock %}

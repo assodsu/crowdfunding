@@ -82,7 +82,7 @@
 					<div class="tab-box full">
 						<h1>Vos projets :</h1>
 						{% for projet in projets %}
-							<p><a href="{{ path('cf_main_project', { id : projet.id }) }}">{{ projet.nom }}</a></p>
+							<p><a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a></p>
 						{% else %}
 							<p>Vous n'avez aucun projet pour l'instant.</p>
 							<p>Si vous le souhaitez, vous pouvez en déposer un en <a href="{{ path('cf_main_addProjects') }}">cliquant ici</a></p>

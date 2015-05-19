@@ -111,7 +111,7 @@ $(document).ready(function() {
 				{duration: 600,queue: false}
 			);
 		$('.text-selected-project').text(firstProjectSlide.children('div.slide-image').attr('text'));
-		$('#hrefBtnDiscover').attr('href', 'projet/' + firstProjectSlide.children('div.slide-image').attr('idProject'));
+		$('#hrefBtnDiscover').attr('href', 'projet/' + firstProjectSlide.children('div.slide-image').attr('slugProject'));
 		$('.project-selected-infos').text(firstProjectSlide.children('div.project-more-infos').children('div.text-infos').children('p').text());
 		$('.carousel-front-texte .jauge').html(firstProjectSlide.children('div.project-more-infos').children('div.jauge').html());
 		toSlick();

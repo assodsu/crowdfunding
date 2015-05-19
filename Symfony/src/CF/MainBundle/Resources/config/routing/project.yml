@@ -1,12 +1,12 @@
 cf_main_project:
-    path:     /{id}
+    path:     /{slug}
     defaults: { _controller: CFMainBundle:Project:show }
     requirements:
         _method: GET
-        id: \d+
+        slug: "[a-zA-Z0-9-]+"
 
 cf_main_addProjects:
-    path:     /creer
+    path:     /creer/lancer-projet
     defaults: { _controller: CFMainBundle:Project:add }
     requirements:
         _method: GET|POST
@@ -23,4 +23,10 @@ cf_main_participate:
     defaults: { _controller: CFMainBundle:Project:participate }
     requirements:
         _method: GET|POST
+        id: \d+
+
+cf_main_modifier_projet:
+    path:    /modifier/{id}
+    defaults: { _controller: CFMainBundle:Project:modifier }
+    requirements:
         id: \d+

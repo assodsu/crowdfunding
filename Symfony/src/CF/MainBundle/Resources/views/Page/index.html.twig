@@ -62,7 +62,7 @@
 	<div class="slider active" id="projetsAccueil">
 	  {% for pa in projetsAccueil %}
 	  	<div class="item-slider">
-		<div class="slide-image" text="{{ pa.text }}" idProject="{{ pa.projet.id }}" img="{{ pa.projet.background.path }}"></div>
+		<div class="slide-image" text="{{ pa.text }}" slugProject="{{ pa.projet.slug }}" img="{{ pa.projet.background.path }}"></div>
   		<div class="mask">
 		    <img src="{{ asset(pa.projet.background.AssetPath) }}" class="slide-image-blured">
 		</div>
@@ -85,7 +85,7 @@
 	<div class="slider" id="projetsAboutissants">
 		 {% for p in projetsAboutissants %}
 	  	<div class="item-slider">
-		<div class="slide-image" text="{{ p.nom }}" idProject="{{ p.id }}" img="{{ p.background.path }}"></div>
+		<div class="slide-image" text="{{ p.nom }}" slugProject="{{ p.slug }}" img="{{ p.background.path }}"></div>
   		<div class="mask">
 	  		<div class="slide-image-blured"></div>
 		</div>
@@ -108,7 +108,7 @@
 		<div class="slider" id="projetsNouveaux">
 		 {% for p in projetsNouveaux %}
 	  	<div class="item-slider">
-		<div class="slide-image" text="{{ p.nom }}" idProject="{{ p.id }}" img="{{ p.background.path }}"></div>
+		<div class="slide-image" text="{{ p.nom }}" slugProject="{{ p.slug }}" img="{{ p.background.path }}"></div>
   		<div class="mask">
 		    <div class="slide-image-blured"></div>
 		</div>

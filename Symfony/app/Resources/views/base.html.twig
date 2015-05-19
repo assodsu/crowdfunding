@@ -64,6 +64,18 @@
 			    </div>
 		    </div>
 		</nav>
+
+		<div class="alert-top">
+			couloucoucouloucoucou stach stach !
+		</div>
+		{% for type in ['info'] %}
+			{% for message in app.session.flashbag.get(type) %}
+				<div class="alert-top">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+
 <!--
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     	  <div class="container">
