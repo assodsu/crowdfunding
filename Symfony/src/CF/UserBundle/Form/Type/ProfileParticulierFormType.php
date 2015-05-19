@@ -24,9 +24,9 @@ class ProfileParticulierFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom', null, array('label' => false))
+            ->add('name', null, array('label' => false))
 
-            ->add('prenom', null, array('label' => false))
+            ->add('firstname', null, array('label' => false))
 
             ->add('sexe', 'choice', array('label' => false,
                                           'choices' => array('m' => 'Homme', 'f' => 'Femme'),

@@ -67,7 +67,7 @@ class ProjectController extends Controller
         if($request->getMethod() == 'POST')
         {
             $user = $this->container->get('security.context')->getToken()->getUser();
-            $projet->setIdAsso($user);
+            $projet->setAssociation($user);
             
             $form->bind($request);
             if($form->isValid())
@@ -183,7 +183,7 @@ class ProjectController extends Controller
 
                 $conversation = new Conversation();
                 $conversation->addUtilisateur($user);
-                $conversation->addUtilisateur($projet->getIdAsso());
+                $conversation->addUtilisateur($projet->getAssociation());
 
                 $dons = $participation->getDons();
                 foreach($dons as $don)

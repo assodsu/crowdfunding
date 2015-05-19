@@ -34,12 +34,12 @@ class Particulier extends User
     /**
      * @ORM\Column(type="string", length=50)
      */
-    protected $nom;
+    protected $name;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    protected $prenom;
+    protected $firstname;
 
     /**
      * @ORM\Column(type="string", length=1)
@@ -67,49 +67,49 @@ class Particulier extends User
     }
 
     /**
-     * Set nom
+     * Set name
      *
-     * @param string $nom
+     * @param string $name
      * @return Particulier
      */
-    public function setNom($nom)
+    public function setName($name)
     {
-        $this->nom = $nom;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get name
      *
      * @return string 
      */
-    public function getNom()
+    public function getName()
     {
-        return $this->nom;
+        return $this->name;
     }
 
     /**
-     * Set prenom
+     * Set firstname
      *
-     * @param string $prenom
+     * @param string $firstname
      * @return Particulier
      */
-    public function setPrenom($prenom)
+    public function setFirstname($firstname)
     {
-        $this->prenom = $prenom;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
     /**
-     * Get prenom
+     * Get firstname
      *
      * @return string 
      */
-    public function getPrenom()
+    public function getFirstname()
     {
-        return $this->prenom;
+        return $this->firstname;
     }
 
     /**

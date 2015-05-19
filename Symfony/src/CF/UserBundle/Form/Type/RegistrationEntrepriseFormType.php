@@ -24,7 +24,7 @@ class RegistrationEntrepriseFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nomEntreprise', null, array('label' => "Nom de l'entreprise : "))
+            ->add('nom', null, array('label' => "Nom de l'entreprise : "))
 
             ->add('numSiret', null, array('label' => "Numéro SIRET : "))
 

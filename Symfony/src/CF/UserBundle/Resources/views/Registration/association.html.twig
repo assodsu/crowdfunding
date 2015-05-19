@@ -42,7 +42,7 @@
             <div class="alert alert-danger alert-dismissible" role="alert">
                 {{ form_errors(form.email) }}
                 {{ form_errors(form.plainPassword.first) }}
-                {{ form_errors(form.nomAsso) }}
+                {{ form_errors(form.nom) }}
                 {{ form_errors(form.logo) }}
                 {{ form_errors(form.numWaldec) }}
                 {{ form_errors(form.dateCreationAsso) }}
@@ -101,8 +101,8 @@
             <div class="row step-content" id="step-2">
                 <div class="fieldset">
                     <div class="fieldset-form">
-                        {{ form_label(form.nomAsso) }}
-                        {{ form_widget(form.nomAsso, { 'attr': {'class': 'form-control'} }) }} 
+                        {{ form_label(form.nom) }}
+                        {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }} 
                     </div>
 
                     <div class="fieldset-separator"></div>

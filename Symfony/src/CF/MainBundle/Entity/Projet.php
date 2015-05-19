@@ -169,6 +169,11 @@ class Projet
         $this->setNbActuHumain(0);
         $this->setNbActuComm(0);
 
+        $this->setNbDemandeMateriel(0);
+        $this->setNbDemandeFinancier(0);
+        $this->setNbDemandeHumain(0);
+        $this->setNbDemandeComm(0);
+
         $this->besoins = new \Doctrine\Common\Collections\ArrayCollection();
         $this->boxs = new \Doctrine\Common\Collections\ArrayCollection();
     }
