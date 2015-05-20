@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new CF\CommentBundle\CFCommentBundle(),
             new CF\NotificationBundle\CFNotificationBundle(),
             new CF\MessageBundle\CFMessageBundle(),
+            new CF\SiteBundle\CFSiteBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),

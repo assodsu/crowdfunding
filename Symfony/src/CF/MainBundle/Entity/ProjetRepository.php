@@ -34,12 +34,21 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
     {  
         $qb = $this->createQueryBuilder('p');
          
-        $qb->leftJoin('p.idAsso', 'a')
+        $qb->leftJoin('p.association', 'a')
             ->leftJoin('p.tags', 't')
         	->where('p.nom LIKE :motcle')
         	->orWhere('a.ville LIKE :motcle')
             ->orWhere('t.nom LIKE :motcle')
             ->setParameter('motcle', '%'.$motcle.'%');
+                 
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getValidate()
+    {
+        $qb = $this->createQueryBuilder('p');
+         
+        $qb->where('p.valider = true');
                  
         return $qb->getQuery()->getResult();
     }

@@ -10,9 +10,8 @@
 			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 			<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 			<link rel="stylesheet" type="text/css" href="{{ asset('css/stylev2.css') }}">
-			
-			<script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
 		{% endblock %}
+		<script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
 	</head>
 
 	<body>
@@ -21,14 +20,14 @@
 				<div class="nav-content">
 					<div class="nav-left-part">
 						<li><a href="{{ path('cf_main_allProjects') }}">Les projets</a></li>
-				        <li><a href="#commentcamarche">Comment ça marche ?</a></li>
+				        <li><a href="{{ path('cf_site_commentcamarche') }}">Comment ça marche ?</a></li>
 					</div>
 					<div class="nav-middle-part">
 						<li><a href="{{ path('cf_main_homepage') }}"><img src="{{ asset('images/logo2.png') }}" alt="Logo" /></a></li>
 					</div>
 					<div class="nav-right-part">
 				        <li><a href="{{ path('cf_main_addProjects') }}">Lancer mon projet</a></li>
-				        <li><a href="#partenaires">Partenaires</a></li>  
+				        <li><a href="{{ path('cf_site_partenaires') }}">Partenaires</a></li>  
 				    </div>
 				</div>
 				<div class="navigation-bar-right">
@@ -67,9 +66,6 @@
 		    </div>
 		</nav>
 
-		<div class="alert-top">
-			couloucoucouloucoucou stach stach !
-		</div>
 		{% for type in ['info'] %}
 			{% for message in app.session.flashbag.get(type) %}
 				<div class="alert-top">

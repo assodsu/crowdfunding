@@ -91,6 +91,13 @@ body {
 	text-align: center;
 	width: calc(40% - 100px);
 }
+.time-remaining {
+	color: #FFF;
+	padding: 10px;
+	width: calc(40% - 100px);
+	position: absolute;
+	text-align: center;
+}
 .project-tags {
 	font-size: 14px;
 	color: white;

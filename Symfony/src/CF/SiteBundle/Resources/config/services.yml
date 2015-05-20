@@ -1,0 +1,4 @@
+services:
+#    cf_site.example:
+#        class: CF\SiteBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

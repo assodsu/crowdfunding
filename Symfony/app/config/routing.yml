@@ -1,3 +1,7 @@
+cf_site:
+    resource: "@CFSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
 cf_badge:
     resource: "@CFBadgeBundle/Resources/config/routing.yml"
     prefix:   /

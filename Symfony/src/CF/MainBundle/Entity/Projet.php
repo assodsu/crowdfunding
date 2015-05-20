@@ -163,9 +163,18 @@ class Projet
      */
     private $slug;
 
+    /**
+     * @var valider
+     *
+     * @ORM\Column(name="valider", type="boolean")
+     */
+    protected $valider;
+
 
     public function __construct()
     {
+        $this->setValider(false);
+
         $this->setNbDonateur(0);
 
         $this->setDateCreation(new \DateTime());
@@ -745,5 +754,29 @@ class Projet
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set valider
+     *
+     * @param boolean $valider
+     *
+     * @return Projet
+     */
+    public function setValider($valider)
+    {
+        $this->valider = $valider;
+
+        return $this;
+    }
+
+    /**
+     * Get valider
+     *
+     * @return boolean
+     */
+    public function getValider()
+    {
+        return $this->valider;
     }
 }

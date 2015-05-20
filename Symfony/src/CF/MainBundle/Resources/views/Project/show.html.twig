@@ -110,7 +110,9 @@
 		</div>
 	</div>
 	<div id='block-body'>
-		{{ render(controller('CFMainBundle:Project:participate', { id : projet.id } )) }}
+		{% if app.user != projet.association %}
+			{{ render(controller('CFMainBundle:Project:participate', { id : projet.id } )) }}
+		{% endif %}
 		<div class="panel-heading">
 			<ul class="nav nav-tabs btn-group" role='group'>
 				<li class="btn btn-default active"><a href="#tabproject" data-toggle="tab">Le projet</a></li>
@@ -191,8 +193,10 @@
 							{% endif %}
 						</h2>
 						<h2><i class="fa fa-user"></i> <strong>{% if projet.nbDonateur > 1 %}Donateurs :{% else %}Donateur :{% endif %}</strong> {{ projet.nbDonateur }}</h2>
-						<hr>
-						<p><a data-toggle="modal" data-target="#modal-participate" class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a><p>
+    					{% if app.user != projet.association %}
+							<hr>
+							<p><a data-toggle="modal" data-target="#modal-participate" class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a><p>
+						{% endif %}
 					</div>
 					<div class='tab-box full aside'>
 						<h1>Le projet</h1>
@@ -275,7 +279,6 @@
 {% block javascripts %}
 	{{ parent() }}
 	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/participate_project.js')}}"></script>
 	<script type="text/javascript">
 
 		fullfilDiagramme();
@@ -337,6 +340,10 @@
 	    .on('fos_comment_load_thread', function (data) {
         	$("#loading").fadeOut(200);
     	});
+
+    </script>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user != projet.association %}
+    <script type="text/javascript">
 		$(document).ready(function() {
 		    var $containerDons = $('div#cf_mainbundle_projet_dons');
 
@@ -375,7 +382,7 @@
 				$lienSuppression = $('<a href="#" class="delete-button"><span class="glyphicon glyphicon-remove"></span></a>');
 				$boite = $('<div class="besoin-box green" id="box-'+indexDon+'"></div>');
 				$boite.append($lienSuppression);
-				$boite.append('<div class="header-besoin-box"><span class="glyphicon glyphicon-user"></span><div class="styled-select"><select><option value="1" selected>Humaines</option><option value="2">Financière</option><option value="3">Matérielles</option><option value="4">Informationel - Com.</option></select><span class="glyphicon glyphicon-menu-down"></span></div></div>');
+				$boite.append('<div class="header-besoin-box"><span class="glyphicon glyphicon-user"></span><div class="styled-select"><select data-index-select="'+indexDon+'">{% if projet.nbDemandeHumain > 0 %}<option value="benevole" selected>Humaines</option>{% endif %}{% if projet.nbDemandeFinancier > 0 %}<option value="financier">Financière</option>{% endif %}{% if projet.nbDemandeMateriel > 0 %}<option value="materiel">Matérielles</option>{% endif %}{% if projet.nbDemandeComm > 0 %}<option value="communication">Informationel - Com.</option>{% endif %}</select><span class="glyphicon glyphicon-menu-down"></span></div></div>');
 				$($prototype.children('div#cf_mainbundle_projet_dons_'+indexDon)).appendTo($boite);
 				$prototype.append($boite);
 
@@ -387,9 +394,8 @@
 			}
 
 			$(document).on('change', '.header-besoin-box select', function(){
-		
-				var parent = $(this).parent().parent().parent();
-				var span = $(this).parent().parent().children('span');
+
+				var index = $(this).attr('data-index-select');
 
 				var newColor = "";
 				var icon = "";
@@ -406,109 +412,49 @@
 					]
 				}
 
-				for(key in besoin.besoins) {
-					var unBesoin = besoin.besoins[key];
-					console.log("id = " + unBesoin.id);
-					console.log("ressource = "+ unBesoin.ressource);
-					console.log("type = "+unBesoin.type);
-					console.log("-+-+-+-+-+-+-+-++-+");
-				}
+				$('#cf_mainbundle_projet_dons_'+index+'_besoin option').each( function(){
+					var test = $('#box-'+index).children('div.header-besoin-box').children('div.styled-select').children('select').val();
+				  	for(key in besoin.besoins) {
+						var unBesoin = besoin.besoins[key];
+						if(unBesoin.id == $(this).val()){
+							if(unBesoin.type != test)
+							{
+								$(this).hide();
+								$(this).removeAttr('selected');
+							}
+							else
+							{
+								$(this).show();
+								$(this).attr('selected','selected');
+							}
+						}
+				  	}
+				});
 
-				if($(this).val() == 1)
+				if($(this).val() == 'benevole')
 				{
 					newColor = "green";
 					icon = "user";
-					$('#cf_mainbundle_projet_dons_1_besoin option').each( function(){
-				  	for(key in besoin.besoins) {
-						var unBesoin = besoin.besoins[key];
-						if(unBesoin.id == $(this).val())
-						{
-							console.log(' if ('+unBesoin.ressource+') '+unBesoin.type+' != benevole');
-							if(unBesoin.type != 'benevole')
-							{
-								console.log(unBesoin.ressource+' a masquer.');
-								$(this).hide();
-							}
-							else
-							{
-								$(this).show();
-							}
-						}
-				  	}
-					});
 				}
-				else if($(this).val() == 2)
+				else if($(this).val() == 'financier')
 				{
 					newColor = "red";
 					icon = "euro";
-					$('.styled-select.body-besoin option').each( function(){
-				  	for(key in besoin.besoins) {
-						var unBesoin = besoin.besoins[key];
-						if(unBesoin.id == $(this).val())
-						{
-							console.log(' if ('+unBesoin.ressource+') '+unBesoin.type+' != financier');
-							if(unBesoin.type != 'financier')
-							{
-								console.log(unBesoin.ressource+' a masquer.');
-								$(this).hide();
-							}
-							else
-							{
-								$(this).show();
-							}
-						}
-				  	}
-					});
 				}
-				else if($(this).val() == 3)
+				else if($(this).val() == 'materiel')
 				{
 					newColor = "purple";
 					icon = "tag";
-					$('.styled-select.body-besoin option').each( function(){
-				  	for(key in besoin.besoins) {
-						var unBesoin = besoin.besoins[key];
-						if(unBesoin.id == $(this).val())
-						{
-							console.log(' if ('+unBesoin.ressource+') '+unBesoin.type+' != materiel');
-							if(unBesoin.type != 'materiel')
-							{
-								console.log(unBesoin.ressource+' a masquer.');
-								$(this).hide();
-							}
-							else
-							{
-								$(this).show();
-							}
-						}
-				  	}
-					});
 				}
-				else if($(this).val() == 4)
+				else if($(this).val() == 'communication')
 				{
 					newColor = "grey";
 					icon = "tag";
-					$('.styled-select.body-besoin option').each( function(){
-				  	for(key in besoin.besoins) {
-						var unBesoin = besoin.besoins[key];
-						if(unBesoin.id == $(this).val())
-						{
-							console.log(' if ('+unBesoin.ressource+') '+unBesoin.type+' != communication');
-							if(unBesoin.type != 'communication')
-							{
-								console.log(unBesoin.ressource+' a masquer.');
-								$(this).hide();
-							}
-							else
-							{
-								$(this).show();
-							}
-						}
-				  	}
-					});
 				}
-				span.attr('class', "glyphicon glyphicon-"+icon);
-				parent.attr('class', "besoin-box "+newColor);
+				$('#box-'+index).children('div.header-besoin-box').children('span').attr('class', "glyphicon glyphicon-"+icon);
+				$('#box-'+index).attr('class', "besoin-box "+newColor);
 		    });
 		});
 	</script>
+	{% endif %}
 {% endblock %}

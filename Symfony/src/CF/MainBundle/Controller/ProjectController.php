@@ -21,41 +21,21 @@ class ProjectController extends Controller
             );
         }
 
+        if($projet->getValider() == false)
+        {
+            $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate();
+        
+            return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$projets));
+        }
+
         return $this->render('CFMainBundle:Project:show.html.twig', array('projet'=>$projet));
     }
 	
-    public function showAllAction($nom)
+    public function showAllAction()
     {	
-		$all = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findAll();
+		$projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate();
 		
-        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$all,'categories'=>$nom));
-    }
-	
-    public function showEndingAction()
-    {
-		$ending = $this->getDoctrine()->getEntityManager()
-		->createQuery('SELECT p FROM CFMainBundle:Projet p WHERE p.dateFin > CURRENT_DATE() ORDER BY p.dateFin ASC')
-        ->getResult();
-		
-        return $this->render('CFMainBundle:Project:showEnding.html.twig',array('projets'=>$ending));
-    }
-	
-    public function showNewAction()
-    {
-		$new = $this->getDoctrine()->getEntityManager()
-		->createQuery('SELECT p FROM CFMainBundle:Projet p WHERE p.dateFin > CURRENT_DATE() ORDER BY p.dateCreation ASC')
-        ->getResult();
-		
-        return $this->render('CFMainBundle:Project:showNew.html.twig',array('projets'=>$new));
-    }
-	
-    public function showHighlightsAction()
-    {
-		$high = $this->getDoctrine()->getEntityManager()
-		->createQuery('SELECT p FROM CFMainBundle:Projet p WHERE p.dateFin > CURRENT_DATE() ORDER BY p.pourcentageTotal DESC')
-        ->getResult();
-		
-        return $this->render('CFMainBundle:Project:showHighlights.html.twig',array('projets'=>$high));
+        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$projets));
     }
 
     public function addAction(Request $request)
@@ -167,6 +147,13 @@ class ProjectController extends Controller
             throw $this->createNotFoundException(
                 'Aucun projet trouvé pour cet id : '.$id
             );
+        }
+
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        if($user == $projet->getAssociation())
+        {
+            return $this->render('CFMainBundle:Project:show.html.twig',array('projet' => $projet));
         }
 
         $participation = new Participation();

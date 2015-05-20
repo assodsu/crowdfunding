@@ -99,6 +99,33 @@
 					<div img="{{ projet.background.path }}" class="project-background"></div>
 					<div class="filter"></div>
 					<div class="project-title">{{ projet.nom }}</div>
+					<div class="time-remaining">
+						<i class="fa fa-clock-o"></i> 
+						{% set difference = projet.dateFin.diff(date('now')) %}
+						{% set leftDays = difference.days %}
+						{% set leftHours = difference.h %}
+						{% set leftMinutes = difference.i %}
+						{% if projet.dateFin > date('now') %}
+							<strong>Temps restant :</strong> 
+							{% if leftDays > 1 %}
+								{{ leftDays }} jours
+							{% elseif leftDays == 1 %}
+								{{ leftDays }} jour
+							{% else %}
+								{% if leftHours > 1 %}
+									{{ leftHours }} heures
+								{% elseif leftHours == 1 %}
+									{{ leftHours }} heure
+								{% else %}
+									{% if leftMinutes > 0 %}
+										{{ leftMinutes }} minutes
+									{% endif %}
+								{% endif %}
+							{% endif %}
+						{% else %}
+							Projet terminé
+						{% endif %}
+					</div>
 					<ul class="project-tags">
 						{% for tag in projet.tags %}
 							<li class="tag">{{ tag.nom }}</li>
