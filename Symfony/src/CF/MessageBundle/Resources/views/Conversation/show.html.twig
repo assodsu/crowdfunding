@@ -20,13 +20,15 @@
       </div>
       <script type="text/javascript">
         $(document).ready(function(){
+
           $('.loading').hide();
-          $('#button-new-message-{{conversation.id}}').on('click', function(){
+
+          function ajaxSubmitMessage () {
             if($('.new-message-{{conversation.id}}').val().length > 0)
             {
               var params = "message="+$('.new-message-{{conversation.id}}').val();
               $('.new-message-{{conversation.id}}').val('');
-              $(this).attr("disabled", "disabled");
+              $('#button-new-message-{{conversation.id}}').attr("disabled", "disabled");
               $('.loading').show();
               $.ajax({
                 type: 'POST',
@@ -47,6 +49,17 @@
                 }
               });
             }
+          }
+
+          $('.new-message-{{conversation.id}}').keypress(function (e) {
+            if (e.which == 13) {
+              e.preventDefault();
+              ajaxSubmitMessage();
+            }
+          });
+
+          $('#button-new-message-{{conversation.id}}').on('click', function(){
+            ajaxSubmitMessage();
           });
         });
       </script>

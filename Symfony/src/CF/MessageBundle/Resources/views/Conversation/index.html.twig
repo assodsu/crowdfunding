@@ -18,10 +18,14 @@
             	<div class="timeline-body">
               	<p><i>Dernier message dans la conversation :</i> <i class="fa fa-angle-double-left"></i> {{ message.content }} <i class="fa fa-angle-double-right"></i></p>
                 <p></p>
-                <p>Ressources :</p>
+                <p>Contributions :</p>
                 <ul>
                   {% for don in conversation.dons %}
-                    <li>{{ don.quantite }} {{ don.besoin.ressource }}</li>
+                    {% if don.quantite > 1 %}
+                      <li>{{ don.quantite }} {{ don.besoin.ressource }}s</li>
+                    {% else %}
+                      <li>{{ don.quantite }} {{ don.besoin.ressource }}</li>
+                    {% endif %}
                   {% endfor %}
                 </ul>
                 <a data-toggle="modal" data-target="#message-modal-{{ conversation.id }}" class='btn btn-success'>Voir les messages</a>
@@ -31,10 +35,14 @@
                   <h4 class="timeline-title"><a href="{{ path('fos_user_profile_user_show' , { username: userSource.username}) }}">{{ userSource.nom }}</a></h4>
               </div>
               <div class="timeline-body">
-                <p>Ressources :</p>
+                <p>Contributions :</p>
                 <ul>
                   {% for don in conversation.dons %}
-                    <li>{{ don.quantite }} {{ don.besoin.ressource }}</li>
+                    {% if don.quantite > 1 %}
+                      <li>{{ don.quantite }} {{ don.besoin.ressource }}s</li>
+                    {% else %}
+                      <li>{{ don.quantite }} {{ don.besoin.ressource }}</li>
+                    {% endif %}
                   {% endfor %}
                 </ul>
                 <a data-toggle="modal" data-target="#message-modal-{{ conversation.id }}" class='btn btn-success'>Débuter la conversation</a>

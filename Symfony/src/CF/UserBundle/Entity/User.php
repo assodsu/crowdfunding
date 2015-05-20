@@ -89,6 +89,11 @@ abstract class User extends BaseUser
     private $badges;
 
     /**
+     * @ORM\ManyToMany(targetEntity="CF\MessageBundle\Entity\Conversation", mappedBy="utilisateurs")
+     */
+    private $conversations;
+
+    /**
      * @ORM\OneToMany(targetEntity="CF\MessageBundle\Entity\Message", mappedBy="user")
      */
     private $messages;
@@ -468,5 +473,39 @@ abstract class User extends BaseUser
     public function getMessages()
     {
         return $this->messages;
+    }
+
+    /**
+     * Add conversation
+     *
+     * @param \CF\MessageBundle\Entity\Conversation $conversation
+     *
+     * @return User
+     */
+    public function addConversation(\CF\MessageBundle\Entity\Conversation $conversation)
+    {
+        $this->conversations[] = $conversation;
+
+        return $this;
+    }
+
+    /**
+     * Remove conversation
+     *
+     * @param \CF\MessageBundle\Entity\Conversation $conversation
+     */
+    public function removeConversation(\CF\MessageBundle\Entity\Conversation $conversation)
+    {
+        $this->conversations->removeElement($conversation);
+    }
+
+    /**
+     * Get conversations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConversations()
+    {
+        return $this->conversations;
     }
 }

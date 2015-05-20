@@ -185,18 +185,30 @@ class ProjectController extends Controller
 
                 $projet->setNbDonateur($projet->getNbDonateur()+1);
 
-                $conversation = new Conversation();
-                $conversation->setProjet($projet);
-                $conversation->addUtilisateur($user);
-                $conversation->addUtilisateur($projet->getAssociation());
+                $conversation = $this->getDoctrine()->getEntityManager()
+                    ->createQuery('SELECT c FROM CFMessageBundle:Conversation c JOIN c.utilisateurs u WHERE (u.id = :user AND c.projet = :projet)')
+                    ->setParameters(array(
+                        'user' => $user->getId(),
+                        'projet' => $projet,
+                    ))
+                    ->getOneOrNullResult();
+
+                if(!$conversation)
+                {
+                    $conversation = new Conversation();
+                    $conversation->setProjet($projet);
+                    $conversation->addUtilisateur($user);
+                    $conversation->addUtilisateur($projet->getAssociation());
+                }
+
 
                 $dons = $participation->getDons();
                 foreach($dons as $don)
                 {
                     $don->setParticipation($participation);
-                    $besoin = $don->getBesoin();
-                    $conversation->addDon($don);
+                    $don->setConversation($conversation);
 
+                    $besoin = $don->getBesoin();
                     $besoin->setQuantiteActuelle($besoin->getQuantiteActuelle()+$don->getQuantite());
 
                     if($besoin->getType() == 'financier')
@@ -223,7 +235,7 @@ class ProjectController extends Controller
 
                 $this->get('session')->getFlashBag()->add('info', 'Votre participation a bien été prise en compte.');
 
-                return $this->redirect($this->generateUrl('cf_main_project', array('id' => $projet->getId())));
+                return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
             }
         }
             
