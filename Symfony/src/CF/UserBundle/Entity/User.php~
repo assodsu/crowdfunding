@@ -88,6 +88,24 @@ abstract class User extends BaseUser
      */
     private $badges;
 
+    /**
+     * @ORM\OneToMany(targetEntity="CF\MessageBundle\Entity\Message", mappedBy="user")
+     */
+    private $messages;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="CF\MainBundle\Entity\Projet", cascade={"persist"})
+     */
+    private $projetsSuivis;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="CF\MainBundle\Entity\Projet", cascade={"persist"})
+     * @ORM\JoinTable(
+     *        name="user_projets_soutenus"
+     * )
+     */
+    private $projetsSoutenus;
+
 
     public function __construct()
     {
@@ -395,5 +413,152 @@ abstract class User extends BaseUser
     public function getNotifications()
     {
         return $this->notifications;
+    }
+
+    /**
+     * Add badge
+     *
+     * @param \CF\BadgeBundle\Entity\Badge $badge
+     *
+     * @return User
+     */
+    public function addBadge(\CF\BadgeBundle\Entity\Badge $badge)
+    {
+        $this->badges[] = $badge;
+
+        return $this;
+    }
+
+    /**
+     * Add message
+     *
+     * @param \CF\MessageBundle\Entity\Message $message
+     *
+     * @return User
+     */
+    public function addMessage(\CF\MessageBundle\Entity\Message $message)
+    {
+        $this->messages[] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Remove badge
+     *
+     * @param \CF\BadgeBundle\Entity\Badge $badge
+     */
+    public function removeBadge(\CF\BadgeBundle\Entity\Badge $badge)
+    {
+        $this->badges->removeElement($badge);
+    }
+
+    /**
+     * Get badges
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBadges()
+    {
+        return $this->badges;
+    }
+
+    /**
+     * Remove message
+     *
+     * @param \CF\MessageBundle\Entity\Message $message
+     */
+    public function removeMessage(\CF\MessageBundle\Entity\Message $message)
+    {
+        $this->messages->removeElement($message);
+    }
+
+    /**
+     * Get messages
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
+    /**
+     * Add projetsSuivi
+     *
+     * @param \CF\MainBundle\Entity\Projet $projetsSuivi
+     *
+     * @return User
+     */
+    public function addProjetsSuivi(\CF\MainBundle\Entity\Projet $projetsSuivi)
+    {
+        $this->projetsSuivis[] = $projetsSuivi;
+
+        return $this;
+    }
+
+    /**
+     * Remove projetsSuivi
+     *
+     * @param \CF\MainBundle\Entity\Projet $projetsSuivi
+     */
+    public function removeProjetsSuivi(\CF\MainBundle\Entity\Projet $projetsSuivi)
+    {
+        $this->projetsSuivis->removeElement($projetsSuivi);
+    }
+
+    /**
+     * Get projetsSuivis
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProjetsSuivis()
+    {
+        return $this->projetsSuivis;
+    }
+
+    public function hasProjetsSuivis($projet) {
+        $bool = false;
+        foreach($this->getProjetsSuivis() as $p) {
+            if ($p === $projet) {
+                $bool = true;
+            }
+        }
+
+        return $bool;
+    }
+
+    /**
+     * Add projetsSoutenus
+     *
+     * @param \CF\MainBundle\Entity\Projet $projetsSoutenus
+     *
+     * @return User
+     */
+    public function addProjetsSoutenus(\CF\MainBundle\Entity\Projet $projetsSoutenus)
+    {
+        $this->projetsSoutenus[] = $projetsSoutenus;
+
+        return $this;
+    }
+
+    /**
+     * Remove projetsSoutenus
+     *
+     * @param \CF\MainBundle\Entity\Projet $projetsSoutenus
+     */
+    public function removeProjetsSoutenus(\CF\MainBundle\Entity\Projet $projetsSoutenus)
+    {
+        $this->projetsSoutenus->removeElement($projetsSoutenus);
+    }
+
+    /**
+     * Get projetsSoutenus
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProjetsSoutenus()
+    {
+        return $this->projetsSoutenus;
     }
 }

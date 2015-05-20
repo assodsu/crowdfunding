@@ -93,6 +93,19 @@ abstract class User extends BaseUser
      */
     private $messages;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="CF\MainBundle\Entity\Projet", cascade={"persist"})
+     */
+    private $projetsSuivis;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="CF\MainBundle\Entity\Projet", cascade={"persist"})
+     * @ORM\JoinTable(
+     *        name="user_projets_soutenus"
+     * )
+     */
+    private $projetsSoutenus;
+
 
     public function __construct()
     {
@@ -468,5 +481,95 @@ abstract class User extends BaseUser
     public function getMessages()
     {
         return $this->messages;
+    }
+
+    /**
+     * Add projetsSuivi
+     *
+     * @param \CF\MainBundle\Entity\Projet $projetsSuivi
+     *
+     * @return User
+     */
+    public function addProjetsSuivi(\CF\MainBundle\Entity\Projet $projetsSuivi)
+    {
+        $this->projetsSuivis[] = $projetsSuivi;
+
+        return $this;
+    }
+
+    /**
+     * Remove projetsSuivi
+     *
+     * @param \CF\MainBundle\Entity\Projet $projetsSuivi
+     */
+    public function removeProjetsSuivi(\CF\MainBundle\Entity\Projet $projetsSuivi)
+    {
+        $this->projetsSuivis->removeElement($projetsSuivi);
+    }
+
+    /**
+     * Get projetsSuivis
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProjetsSuivis()
+    {
+        return $this->projetsSuivis;
+    }
+
+    public function hasProjetsSuivis($projet) {
+        $bool = false;
+        foreach($this->getProjetsSuivis() as $p) {
+            if ($p === $projet) {
+                $bool = true;
+            }
+        }
+
+        return $bool;
+    }
+
+    /**
+     * Add projetsSoutenus
+     *
+     * @param \CF\MainBundle\Entity\Projet $projetsSoutenus
+     *
+     * @return User
+     */
+    public function addProjetsSoutenus(\CF\MainBundle\Entity\Projet $projetsSoutenus)
+    {
+        $this->projetsSoutenus[] = $projetsSoutenus;
+
+        return $this;
+    }
+
+    /**
+     * Remove projetsSoutenus
+     *
+     * @param \CF\MainBundle\Entity\Projet $projetsSoutenus
+     */
+    public function removeProjetsSoutenus(\CF\MainBundle\Entity\Projet $projetsSoutenus)
+    {
+        $this->projetsSoutenus->removeElement($projetsSoutenus);
+    }
+
+    /**
+     * Get projetsSoutenus
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProjetsSoutenus()
+    {
+        return $this->projetsSoutenus;
+    }
+
+    public function hasProjetsSoutenus($projet) {
+        $bool = false;
+        foreach($this->getProjetsSuivis() as $p) {
+            if ($p === $projet) {
+                $bool = true;
+            }
+        }
+
+        return $bool;
     }
 }

@@ -16,6 +16,14 @@ fos_user_profile_messages:
     path:     /messages
     defaults: { _controller: FOSUserBundle:Profile:messages }
 
+cf_user_projetsSuivis:
+    path:   /projets-suivis
+    defaults: { _controller: CFUserBundle:Profile:projetsSuivis }
+
+cf_user_projetsSoutenus:
+    path:   /projets-soutenus
+    defaults: { _controller: CFUserBundle:Profile:projetsSoutenus }
+
 fos_user_profile_user_show:
     path:     /{username}
     defaults: { _controller: FOSUserBundle:Profile:userShow}

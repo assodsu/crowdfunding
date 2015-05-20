@@ -28,6 +28,7 @@ class AssociationAdmin extends Admin
             ->add('descriptionAsso')
             ->add('roles')
             ->add('badges')
+            ->add('projetsSuivis')
             ->add('enabled', null, array('label' => 'Activé'))
         ;
     }

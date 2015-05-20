@@ -118,6 +118,11 @@
 				<li class="btn btn-default"><a href="#tabupdates" data-toggle="tab">Les mises à jour</a></li>
 				<li class="btn btn-default"><a href="#tabcomments" data-toggle="tab">Vos commentaires</a></li>
 				<li class="btn btn-default"><a href="#tabmore" data-toggle="tab">Plus d'informations</a></li>
+				{% if app.user.hasProjetsSuivis(projet) %}
+					<li class="btn btn-default"><a href="{{ path('cf_main_not_suivre_projet', {id: projet.id}) }}">Ne plus suivre le projet</a></li>
+				{% else %}
+					<li class="btn btn-default"><a href="{{ path('cf_main_suivre_projet', {id: projet.id}) }}">Suivre le projet</a></li>
+				{% endif %}
 			</ul>
 		</div>
 		<div class="panel-body">

@@ -30,3 +30,15 @@ cf_main_modifier_projet:
     defaults: { _controller: CFMainBundle:Project:modifier }
     requirements:
         id: \d+
+
+cf_main_suivre_projet:
+    path:   /suivre/{id}
+    defaults: { _controller: CFMainBundle:Project:suivreProjet }
+    requirements:
+        id: \d+
+
+cf_main_not_suivre_projet:
+    path:   /stop-suivre/{id}
+    defaults: { _controller: CFMainBundle:Project:notSuivreProjet }
+    requirements:
+        id: \d+

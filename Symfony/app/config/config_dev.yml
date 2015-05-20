@@ -47,4 +47,4 @@ assetic:
 swiftmailer:
     transport: gmail
     username:  asso.dsu
-    password:  dsupava62
+    password:  non
