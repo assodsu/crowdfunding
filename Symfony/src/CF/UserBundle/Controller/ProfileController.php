@@ -53,7 +53,7 @@ class ProfileController extends Controller
     {
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->findUserByUsername($username);
-        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('association.id' => $user->getId()));
+        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('association' => $user));
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
             'user' => $user,
@@ -135,4 +135,11 @@ class ProfileController extends Controller
         return $this->render('CFUserBundle:Profile:messages.html.twig');
     }
 
+    public function projetsSuivisAction() {
+        return $this->render('CFUserBundle:Profile:projetsSuivis.html.twig');
+    }
+
+    public function projetsSoutenusAction() {
+        return $this->render('CFUserBundle:Profile:projetsSoutenus.html.twig');
+    }
 }

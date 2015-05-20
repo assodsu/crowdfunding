@@ -39,9 +39,9 @@
 		<div class="profile-menu-title">Projets et soutients</div>
 		<div class="profile-menu-content">
 			<a {% if menulink_currentProjects is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_projects') }}"><i class="fa fa-bar-chart"></i> Projets en cours ({{ nbNotif_projetsEnCours }})</a>
-			<a href="#"><i class="fa fa-eye"></i> Projets suivis</a>
-			<a href="#"><i class="fa fa-clock-o"></i> Projets terminés</a>
-			<a href="#"><i class="fa fa-tag"></i> Projets soutenus</a>
+			<a {% if menulink_projetsSuivis is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsSuivis') }}"><i class="fa fa-eye"></i> Projets suivis</a>
+			<a {% if menulink_projetsSoutenus is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsSoutenus') }}"><i class="fa fa-clock-o"></i> Projets soutenus</a>
+			<a href="#"><i class="fa fa-tag"></i> Projets terminés</a>
 		</div>
 	</div>
 

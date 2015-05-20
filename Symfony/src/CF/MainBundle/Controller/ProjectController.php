@@ -15,12 +15,6 @@ class ProjectController extends Controller
 {
 	public function showAction(Projet $projet)
     {
-        if (!$projet) {
-            throw $this->createNotFoundException(
-                'Aucun projet trouvé pour cet id : '.$projet->id
-            );
-        }
-
         if($projet->getValider() == false)
         {
             $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate();
@@ -28,7 +22,7 @@ class ProjectController extends Controller
             return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$projets));
         }
 
-        return $this->render('CFMainBundle:Project:show.html.twig', array('projet'=>$projet));
+        return $this->render('CFMainBundle:Project:show.html.twig', array('projet' => $projet));
     }
 	
     public function showAllAction()
@@ -96,7 +90,7 @@ class ProjectController extends Controller
         return $this->render('CFMainBundle:Project:add.html.twig', array('form' => $form->createView()));
     }
 
-    public function redigerActuAction($id,Request $request)
+    public function redigerActuAction(Projet $projet,Request $request)
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
         if(!$user)
@@ -105,14 +99,6 @@ class ProjectController extends Controller
         }
         else
         {
-            $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
-            if (!$projet) 
-            {
-                throw $this->createNotFoundException(
-                    'Aucun projet trouvé pour cet id : '.$id
-                );
-            }
-            
             $actu = new Actualites();
             $form= $this->createForm(new ActualitesType(),$actu);
 
@@ -139,16 +125,8 @@ class ProjectController extends Controller
         
     }
 
-    public function participateAction($id, Request $request) 
+    public function participateAction(Projet $projet, Request $request) 
     {
-        $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
-
-        if (!$projet) {
-            throw $this->createNotFoundException(
-                'Aucun projet trouvé pour cet id : '.$id
-            );
-        }
-
         $user = $this->container->get('security.context')->getToken()->getUser();
 
         if($user == $projet->getAssociation())
@@ -216,6 +194,10 @@ class ProjectController extends Controller
                     }
                 }
 
+                    $user->removeProjetsSoutenus($projet);
+                    $user->addProjetsSoutenus($projet);
+                    $em->persist($user);
+            
                 $em->persist($participation);
                 $em->persist($conversation);
                 $em->flush();
@@ -267,5 +249,41 @@ class ProjectController extends Controller
                 'form' => $form->createView(),
                 'projet' => $projet
             ));
+    }
+
+    public function suivreProjetAction(Projet $projet) 
+    {
+        $user = $this->getUser();
+
+        if (!$user->hasProjetsSuivis($projet)) {
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($user);
+            $user->addProjetsSuivi($projet);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add('info', 'Le projet a bien été ajouté à vos projets suivis, vous pouvez désormais suivre l\'avancement du projet dans les paramètres de votre compte.');
+        } else {
+            $this->get('session')->getFlashBag()->add('info', 'Vous suivez déjà ce projet.');
+        }
+
+        return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
+    }
+
+    public function notSuivreProjetAction(Projet $projet) 
+    {
+        $user = $this->getUser();
+
+        if ($user->hasProjetsSuivis($projet)) {
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($user);
+            $user->removeProjetsSuivi($projet);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add('info', 'Vous ne suivez plus ce projet.');
+        } else {
+            $this->get('session')->getFlashBag()->add('info', 'Vous ne suivez déjà pas ce projet.');
+        }
+
+        return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
     }
 }

@@ -1,0 +1,20 @@
+{% extends "CFUserBundle::layout_profile.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Modification de profil
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('css/style_profile.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% set menulink_projetsSuivis = 1 %}
+
+{% block cfuserbundle_body %}
+{% for p in app.user.projetsSuivis %}
+	{{ p.nom }}<br />
+{% else %}
+	Vous ne suivez aucun projet.
+{% endfor %}
+{% endblock %}
