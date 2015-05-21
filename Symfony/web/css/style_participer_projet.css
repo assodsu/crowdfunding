@@ -38,6 +38,10 @@ h1#body-title {
 	width:30%;
 	border-top: 2px solid #9E9E9E;
 }
+.modal-body.not-authenticated p{
+	text-align: center;
+	margin-bottom: 10px;
+}
 /* BOITES DES RESSOURCES */
 .besoin-box > .delete-button {
 	position:absolute;
@@ -64,7 +68,7 @@ h1#body-title {
 	display:inline-block;
 	vertical-align: top;
 	border-radius:8px;
-	margin:28px;
+	margin:27px;
 	position: relative;
 }
 .styled-input {
@@ -103,6 +107,9 @@ h1#body-title {
 #add-besoin-box > a {
 	color:#5d5d5d;
  	text-decoration: none;
+}
+#add-besoin-box > a:hover {
+	color:#70D48D;
 }
 
 #cf_mainbundle_projet_dons > div {
@@ -177,6 +184,7 @@ span.input-group-addon {
 /* FOOTER DU MODAL */
 .modal-footer {
 	background:#5A5F69;
+	border:none;
 }
 label.checkbox {
 	width: 680px;

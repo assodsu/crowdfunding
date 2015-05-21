@@ -7,6 +7,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="modal-participate-label">Contribuer à ce projet</h4>
       </div>
+
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
       <div class="modal-body">
         <h1 id="body-title">
         	Dîtes-nous avec quelles ressources vous souhaitez soutenir ce projet ambitieux :)
@@ -23,9 +26,24 @@
             Je m'engage à respecter l'apport de ces ressources pour ce projet merveilleux <a href="#" id="infos-sup">+ d'infos</a>
         </label>
         <button type="submit" id="btn-soutenir" class="btn btn-success">Je soutiens ce projet <span class="glyphicon glyphicon-ok"></span></button>
-			{{ form_end(form) }}
+		    {{ form_end(form) }}
         </form>
-	   </div>
+  	   </div>
+
+      {% else %}
+
+      <div class="modal-body not-authenticated">
+        <h1 id="body-title">
+          Vous devez être connecté pour participer à ce projet :)
+        </h1>
+        <hr>
+        <p><a href="{{ path('fos_user_security_login') }}" class="btn btn-success">Se connecter</a></p>
+        <p>Vous n'êtes pas encore inscrit ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous</a> !</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+
+      {% endif %}
       </div>
     </div>
   </div>

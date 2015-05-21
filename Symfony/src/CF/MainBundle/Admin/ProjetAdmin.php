@@ -14,11 +14,12 @@ class ProjetAdmin extends Admin
     {
         $formMapper
             ->add('nom')
+            ->add('valider', null, array('label' => 'Validé'))
             ->add('description')
             ->add('dateCreation','date')
             ->add('dateFin','date')
             ->add('infoSup')
-            ->add('idAsso.nomAsso', null, array('label' => 'Association'))
+            ->add('association.nom', null, array('label' => 'Association'))
             ->add('nbDonateur')
         ;
     }
@@ -28,9 +29,10 @@ class ProjetAdmin extends Admin
     {
         $datagridMapper
             ->add('nom')
-            ->add('idAsso.nomAsso', null, array('label' => 'Association'))
+            ->add('association.nom', null, array('label' => 'Association'))
             ->add('dateCreation')
             ->add('dateFin')
+            ->add('valider', null, array('label' => 'Validé'))
         ;
     }
 
@@ -40,9 +42,10 @@ class ProjetAdmin extends Admin
         $listMapper
             ->add('id')
             ->addIdentifier('nom')
-            ->add('idAsso.nomAsso', null, array('label' => 'Association'))
+            ->add('association.nom', null, array('label' => 'Association'))
             ->add('dateCreation')
             ->add('dateFin')
+            ->add('valider', null, array('label' => 'Validé', 'editable' => true))
         ;
     }
 }

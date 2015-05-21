@@ -17,41 +17,21 @@ class ProjectController extends Controller
     {
         $boxs = $this->getDoctrine()->getEntityManager()->getRepository('CFMainBundle:Box')->getBoxsCroissant($projet);
 
+        if($projet->getValider() == false)
+        {
+            $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate();
+        
+            return $this->render('CFMainBundle:Project:showAll.html.twig', array('projets'=>$projets));
+        }
+
         return $this->render('CFMainBundle:Project:show.html.twig', array('projet' => $projet, 'boxs' => $boxs));
     }
 	
-    public function showAllAction($nom)
+    public function showAllAction()
     {	
-		$all = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findAll();
+		$projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate();
 		
-        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$all,'categories'=>$nom));
-    }
-	
-    public function showEndingAction()
-    {
-		$ending = $this->getDoctrine()->getEntityManager()
-		->createQuery('SELECT p FROM CFMainBundle:Projet p WHERE p.dateFin > CURRENT_DATE() ORDER BY p.dateFin ASC')
-        ->getResult();
-		
-        return $this->render('CFMainBundle:Project:showEnding.html.twig',array('projets'=>$ending));
-    }
-	
-    public function showNewAction()
-    {
-		$new = $this->getDoctrine()->getEntityManager()
-		->createQuery('SELECT p FROM CFMainBundle:Projet p WHERE p.dateFin > CURRENT_DATE() ORDER BY p.dateCreation ASC')
-        ->getResult();
-		
-        return $this->render('CFMainBundle:Project:showNew.html.twig',array('projets'=>$new));
-    }
-	
-    public function showHighlightsAction()
-    {
-		$high = $this->getDoctrine()->getEntityManager()
-		->createQuery('SELECT p FROM CFMainBundle:Projet p WHERE p.dateFin > CURRENT_DATE() ORDER BY p.pourcentageTotal DESC')
-        ->getResult();
-		
-        return $this->render('CFMainBundle:Project:showHighlights.html.twig',array('projets'=>$high));
+        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$projets));
     }
 
     public function addAction(Request $request)
@@ -112,7 +92,7 @@ class ProjectController extends Controller
         return $this->render('CFMainBundle:Project:add.html.twig', array('form' => $form->createView()));
     }
 
-    public function redigerActuAction($id,Request $request)
+    public function redigerActuAction(Projet $projet,Request $request)
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
         if(!$user)
@@ -121,14 +101,6 @@ class ProjectController extends Controller
         }
         else
         {
-            $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
-            if (!$projet) 
-            {
-                throw $this->createNotFoundException(
-                    'Aucun projet trouvé pour cet id : '.$id
-                );
-            }
-            
             $actu = new Actualites();
             $form= $this->createForm(new ActualitesType(),$actu);
 
@@ -155,14 +127,13 @@ class ProjectController extends Controller
         
     }
 
-    public function participateAction($id, Request $request) 
+    public function participateAction(Projet $projet, Request $request) 
     {
-        $projet = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findOneById($id);
+        $user = $this->container->get('security.context')->getToken()->getUser();
 
-        if (!$projet) {
-            throw $this->createNotFoundException(
-                'Aucun projet trouvé pour cet id : '.$id
-            );
+        if($user == $projet->getAssociation())
+        {
+            return $this->render('CFMainBundle:Project:show.html.twig',array('projet' => $projet));
         }
 
         $participation = new Participation();

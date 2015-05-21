@@ -1,0 +1,11 @@
+cf_site_commentcamarche:
+    path:     /comment-ca-marche
+    defaults: { _controller: CFSiteBundle:Pages:commentcamarche }
+
+cf_site_partenaires:
+    path:     /partenaires
+    defaults: { _controller: CFSiteBundle:Pages:partenaires }
+
+cf_site_contact:
+    path:     /contact
+    defaults: { _controller: CFSiteBundle:Pages:contact }

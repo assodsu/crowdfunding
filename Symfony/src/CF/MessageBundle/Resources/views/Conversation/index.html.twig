@@ -32,7 +32,8 @@
             	</div>
             {% else %}
               <div class="timeline-heading">
-                  <h4 class="timeline-title"><a href="{{ path('fos_user_profile_user_show' , { username: userSource.username}) }}">{{ userSource.nom }}</a></h4>
+                  <h3><i class="fa fa-file-text-o"></i> Projet : <a href="#">{{ conversation.projet.nom }}</a></h3>
+                  <h4 class="timeline-title"><i class="fa fa-user"></i> Acteur : <a href="{{ path('fos_user_profile_user_show' , { username: userSource.username}) }}">{{ userSource.nom }}</a></h4>
               </div>
               <div class="timeline-body">
                 <p>Contributions :</p>
