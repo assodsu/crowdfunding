@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use CF\MessageBundle\Entity\Message;
 use CF\MessageBundle\Form\MessageType;
 use CF\MessageBundle\Entity\Conversation;
+use CF\NotificationBundle\Entity\Notification;
 
 class MessageController extends Controller
 {
@@ -16,6 +17,31 @@ class MessageController extends Controller
     {
 		$message = new Message();
         $form = $this->createForm(new MessageType(), $message);
+
+        foreach ($conversation->getUtilisateurs() as $u) {
+            if ($this->getUser() != $u)
+                $toUtilisateur = $u;
+            else
+                $fromUtilisateur = $u;
+        }
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Vous avez un nouveau message !')
+            ->setFrom('noreply@coceptio.fr')
+            ->setTo($toUtilisateur->getEmail())
+            ->setBody($this->renderView('CFMessageBundle:Message:email.txt.twig', array('u' => $toUtilisateur, 'u2' => $fromUtilisateur)))
+        ;
+        $this->get('mailer')->send($message);
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $notif = new Notification();
+        $notif->setType(1);
+        $notif->setContenu('Nouveau message');
+        $notif->setUser($toUtilisateur);
+
+        $em->persist($notif);
+        $em->flush();
 
         return $this->render('CFMessageBundle:Message:add.html.twig', array('form' => $form->createView(), 'conversation' => $conversation));
     }

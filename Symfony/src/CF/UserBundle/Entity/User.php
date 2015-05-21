@@ -589,6 +589,8 @@ abstract class User extends BaseUser
         }
 
         return $bool;
+    } 
+    
     /**
      * Remove conversation
      *

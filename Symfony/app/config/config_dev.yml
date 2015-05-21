@@ -46,5 +46,5 @@ assetic:
 
 swiftmailer:
     transport: gmail
-    username:  asso.dsu
-    password:  non
+    username:  rudy.devisscher.crab
+    password:  projet21

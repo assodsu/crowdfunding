@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Box
  *
  * @ORM\Table(name="box")
- * @ORM\Entity(repositoryClass="CF\MainBundle\Entity\BoxRepository")
+ * @ORM\Entity
  */
 class Box
 {
@@ -132,53 +132,5 @@ class Box
     public function getProjet()
     {
         return $this->projet;
-    }
-
-    /**
-     * Set fullWidth
-     *
-     * @param boolean $fullWidth
-     *
-     * @return Box
-     */
-    public function setFullWidth($fullWidth)
-    {
-        $this->fullWidth = $fullWidth;
-
-        return $this;
-    }
-
-    /**
-     * Get fullWidth
-     *
-     * @return boolean
-     */
-    public function getFullWidth()
-    {
-        return $this->fullWidth;
-    }
-
-    /**
-     * Set ordre
-     *
-     * @param integer $ordre
-     *
-     * @return Box
-     */
-    public function setOrdre($ordre)
-    {
-        $this->ordre = $ordre;
-
-        return $this;
-    }
-
-    /**
-     * Get ordre
-     *
-     * @return integer
-     */
-    public function getOrdre()
-    {
-        return $this->ordre;
     }
 }

@@ -10,6 +10,18 @@ namespace CF\MainBundle\Entity;
  */
 class ProjetRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getUnique($projet) {
+        $qb = $this->createQueryBuilder('p');
+         
+        $qb->join('p.boxs', 'b')
+           ->where('p.id = :idProjet')
+           ->setParameter('idProjet', $projet->getId())
+          // ->orderBy('b.ordre', 'DESC')
+           ;
+                 
+        return $qb->getQuery()->getSingleResult();
+    }
+
 	public function getProjetsAboutissants()
     {  
         $qb = $this->createQueryBuilder('p');

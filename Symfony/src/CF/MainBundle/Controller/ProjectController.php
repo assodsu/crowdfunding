@@ -15,7 +15,9 @@ class ProjectController extends Controller
 {
 	public function showAction(Projet $projet)
     {
-        return $this->render('CFMainBundle:Project:show.html.twig', array('projet' => $projet));
+        $boxs = $this->getDoctrine()->getEntityManager()->getRepository('CFMainBundle:Box')->getBoxsCroissant($projet);
+
+        return $this->render('CFMainBundle:Project:show.html.twig', array('projet' => $projet, 'boxs' => $boxs));
     }
 	
     public function showAllAction($nom)
@@ -174,6 +176,7 @@ class ProjectController extends Controller
             $form->bind($request);
             if($form->isValid())
             {
+                if (isset($_POST['accept'])) {
                 $em=$this->getDoctrine()->getEntityManager();
                 $participation = $form->getData();
 
@@ -234,6 +237,10 @@ class ProjectController extends Controller
                 $this->get('session')->getFlashBag()->add('info', 'Votre participation a bien été prise en compte.');
 
                 return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
+            } else {
+                $this->get('session')->getFlashBag()->add('info', 'Vous devez accepter les conditions dutilisations !');
+                return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
+            }
             }
         }
             
