@@ -269,7 +269,11 @@
 
 		$('#text-ressource-financiere').mouseenter(function(){
 			$('.pie').hide().html("<li class='visualize ressource-financiere' data-color='#ea5f50' data-value='{{pourcentageFinancier}}'></li><li class='visualize' data-color='rgba(0,0,0,0)' data-value='{{ 100 - pourcentageFinancier}}'></li>").fadeIn(speed);
+			{% if projet.nbDemandeFinancier == 0 %}
+			$('.pie-content').hide().html("<div class='name'>Non demandée</div>").fadeIn(speed);
+			{% else %}
 			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageFinancier|round}}%</div><div class='name'>Financières</div>").fadeIn(speed);
+			{% endif %}
 			drawDiagramme();
 		}).mouseleave(function(){
 			fullfilDiagramme();
@@ -277,7 +281,11 @@
 
 		$('#text-ressource-materiel').mouseenter(function(){
 			$('.pie').hide().html("<li class='visualize ressource-materiel' data-color='#a66abe' data-value='"+{{pourcentageMateriel}}+"'></li><li class='visualize' data-color='rgba(0,0,0,0)' data-value='"+(100 - {{pourcentageMateriel}})+"'></li>").fadeIn(speed);
+			{% if projet.nbDemandeMateriel == 0 %}
+			$('.pie-content').hide().html("<div class='name'>Non demandée</div>").fadeIn(speed);
+			{% else %}
 			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageMateriel|round}}%</div><div class='name'>Matérielles</div>").fadeIn(speed);
+			{% endif %}
 			drawDiagramme();
 		}).mouseleave(function(){
 			fullfilDiagramme();
@@ -285,7 +293,11 @@
 
 		$('#text-ressource-humaine').mouseenter(function(){
 			$('.pie').hide().html("<li class='visualize ressource-humaine' data-color='#70d48d' data-value='"+{{pourcentageHumain}}+"'></li><li class='visualize' data-color='rgba(0,0,0,0)' data-value='"+(100 - {{pourcentageHumain}})+"'></li>").fadeIn(speed);
+			{% if projet.nbDemandeHumain == 0 %}
+			$('.pie-content').hide().html("<div class='name'>Non demandée</div>").fadeIn(speed);
+			{% else %}
 			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageHumain|round}}%</div><div class='name'>Humaines</div>").fadeIn(speed);
+			{% endif %}
 			drawDiagramme();
 		}).mouseleave(function(){
 			fullfilDiagramme();
@@ -293,7 +305,11 @@
 
 		$('#text-ressource-info').mouseenter(function(){
 			$('.pie').hide().html("<li class='visualize ressource-info' data-color='#99a5af' data-value='"+{{pourcentageComm}}+"'></li><li class='visualize' data-color='rgba(0,0,0,0)' data-value='"+(100 - {{pourcentageComm}})+"'></li>").fadeIn(speed);
+			{% if projet.nbDemandeComm == 0 %}
+			$('.pie-content').hide().html("<div class='name'>Non demandée</div>").fadeIn(speed);
+			{% else %}
 			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageComm|round}}%</div><div class='name'>Communication</div>").fadeIn(speed);
+			{% endif %}
 			drawDiagramme();
 		}).mouseleave(function(){
 			fullfilDiagramme();
