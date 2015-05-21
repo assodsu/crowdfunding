@@ -5,12 +5,12 @@ namespace CF\MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Actualites
+ * Actualite
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class Actualites
+class Actualite
 {
     /**
      * @var integer
@@ -36,10 +36,10 @@ class Actualites
     private $contenu;
 
     /**
-    *@ @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Projet")
-    *  @ORM\JoinColumn(name="idProjet", referencedColumnName="id")
+    *@ @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Projet", inversedBy="actualites")
+    *  @ORM\JoinColumn(name="projet")
     */
-     private $idProjet;
+     private $projet;
 
 
     /**
@@ -99,25 +99,25 @@ class Actualites
     }
 
     /**
-     * Set idProjet
+     * Set projet
      *
-     * @param \CF\MainBundle\Entity\Projet $idProjet
+     * @param \CF\MainBundle\Entity\Projet $projet
      * @return Actualites
      */
-    public function setIdProjet(\CF\MainBundle\Entity\Projet $idProjet = null)
+    public function setProjet(\CF\MainBundle\Entity\Projet $projet = null)
     {
-        $this->idProjet = $idProjet;
+        $this->projet = $projet;
 
         return $this;
     }
 
     /**
-     * Get idProjet
+     * Get projet
      *
      * @return \CF\MainBundle\Entity\Projet 
      */
-    public function getIdProjet()
+    public function getProjet()
     {
-        return $this->idProjet;
+        return $this->projet;
     }
 }

@@ -1909,12 +1909,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PUGX/PUGXMultiUserBundle.git",
-                "reference": "b59310d1df12c378b8cf6ed7bd209fa63b46b210"
+                "reference": "7ceffa7b45295a691d49c28cbe6759d5cf4c91e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PUGX/PUGXMultiUserBundle/zipball/b59310d1df12c378b8cf6ed7bd209fa63b46b210",
-                "reference": "b59310d1df12c378b8cf6ed7bd209fa63b46b210",
+                "url": "https://api.github.com/repos/PUGX/PUGXMultiUserBundle/zipball/7ceffa7b45295a691d49c28cbe6759d5cf4c91e3",
+                "reference": "7ceffa7b45295a691d49c28cbe6759d5cf4c91e3",
                 "shasum": ""
             },
             "require": {
@@ -1952,7 +1952,7 @@
             "keywords": [
                 "user management multi user management"
             ],
-            "time": "2015-05-18 11:20:48"
+            "time": "2015-05-19 13:42:38"
         },
         {
             "name": "sensio/distribution-bundle",

@@ -170,6 +170,11 @@ class Projet
      */
     protected $valider;
 
+    /**
+    * @ORM\OneToMany(targetEntity="CF\MainBundle\Entity\Actualite", cascade={"persist"}, mappedBy="projet")
+    */
+    private $actualites;
+
 
     public function __construct()
     {
@@ -778,5 +783,39 @@ class Projet
     public function getValider()
     {
         return $this->valider;
+    }
+
+    /**
+     * Add actualite
+     *
+     * @param \CF\MainBundle\Entity\Actualite $actualite
+     *
+     * @return Projet
+     */
+    public function addActualite(\CF\MainBundle\Entity\Actualite $actualite)
+    {
+        $this->actualites[] = $actualite;
+
+        return $this;
+    }
+
+    /**
+     * Remove actualite
+     *
+     * @param \CF\MainBundle\Entity\Actualite $actualite
+     */
+    public function removeActualite(\CF\MainBundle\Entity\Actualite $actualite)
+    {
+        $this->actualites->removeElement($actualite);
+    }
+
+    /**
+     * Get actualites
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActualites()
+    {
+        return $this->actualites;
     }
 }

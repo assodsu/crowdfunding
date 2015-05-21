@@ -34,6 +34,15 @@ class NotificationRepository extends EntityRepository
 			->getResult();
 	}
 
+	public function getMessages($user)
+	{
+		return $this->createQueryBuilder('n')
+			->where('n.type = 1')
+			->andWhere('n.vu < 1')
+			->getQuery()
+			->getResult();
+	}
+
 	public function getNotificationsByUser($user)
 	{
 		return $this->createQueryBuilder('n')

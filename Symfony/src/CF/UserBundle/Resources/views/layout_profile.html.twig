@@ -38,7 +38,7 @@
 	<div class="profile-menu">
 		<div class="profile-menu-title">Projets et soutients</div>
 		<div class="profile-menu-content">
-			<a {% if menulink_currentProjects is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_projects') }}"><i class="fa fa-bar-chart"></i> Projets en cours ({{ nbNotif_projetsEnCours }})</a>
+			<a {% if menulink_currentProjects is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_projects') }}"><div class="notif">{{ nbNotif_projetsEnCours }}</div><i class="fa fa-bar-chart"></i> Projets en cours</a>
 			<a {% if menulink_projetsSuivis is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsSuivis') }}"><i class="fa fa-eye"></i> Projets suivis</a>
 			<a {% if menulink_projetsSoutenus is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsSoutenus') }}"><i class="fa fa-clock-o"></i> Projets soutenus</a>
 			<a href="#"><i class="fa fa-tag"></i> Projets terminés</a>
@@ -48,7 +48,7 @@
 	<div class="profile-menu">
 		<div class="profile-menu-title">Profil et paramètres</div>
 		<div class="profile-menu-content">
-			<a href="{{ path('fos_user_profile_messages') }}"><i class="fa fa-envelope-o"></i> Messages ({{ nbNotif_messages }})</a>
+			<a href="{{ path('fos_user_profile_messages') }}"><div class="notif">{{ nbNotif_messages }}</div><i class="fa fa-envelope-o"></i> Message</a>
 			<a href="#"><i class="fa fa-comment-o"></i> Informations</a>
 			<a {% if menulink_param is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-gear"></i> Paramètres</a>
 			<a href="#"><i class="fa fa-certificate"></i> Badges</a>

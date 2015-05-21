@@ -1,0 +1,16 @@
+{% extends "CFMainBundle::layout.html.twig" %}
+
+{% block title %}
+  	{{ parent() }} - Ajouter une mise à jour
+{% endblock %}
+
+{% block body %}
+<form method="post">
+	<p>
+		Etes vous sur de vouloir supprimer cette mise à jour ?
+	</p>
+	{{ form_rest(form) }}
+
+	<button type="submit">Oui</button>
+</form>
+{% endblock body %}
