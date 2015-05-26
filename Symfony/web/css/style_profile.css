@@ -305,6 +305,20 @@ textarea {
 	margin-top: 10px;
 }
 
+.profile-menu-content .notif {
+	float: right;
+	background: #DD0000;
+	color: #FFFFFF;
+	text-indent: 0px;
+	padding: 4px;
+	margin-right: 25px;
+	margin-top: -3px;
+	height: 30px;
+	width: 30px;
+	text-align: center;
+	border-radius: 15px;
+}
+
 .profile-menu a {
 	display: block;
 	padding: 10px 0px;

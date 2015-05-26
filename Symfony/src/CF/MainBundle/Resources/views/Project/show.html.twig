@@ -125,6 +125,7 @@
 				{% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 					<li class="btn btn-default"><a href="{{ path('cf_main_suivre_projet', {id: projet.id}) }}">Suivre le projet</a></li>
 				{% endif %}
+			{% endif %}
 			</ul>
 		</div>
 		<div class="panel-body">
@@ -224,50 +225,21 @@
 					{% endfor %}
 				</div>
 				<div class="tab-pane fade" id="tabupdates">
-					<div class='tab-box full'>
-						<div class='update-date'>Le 25 janvier 2015 - 11h38</div>
-						<h1>Ma Deuxième update</h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut
-							 enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-							sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-						<p class='picture'><img src="{{ asset('images/3.jpg') }}"/></p>
-						<p>
-							<ul>
-								<li>Blablabla</li>
-								<li>Blablabla</li>
-								<li>Blablabla</li>
-								<li>Blablabla</li>
-								<li>Blablabla</li>
-							</ul>
-						</p>
-						<a href='#' class='btn'>Commentaires</a>
-					</div>
-					<div class='tab-box full'>
-						<div class='update-date'>Le 21 janvier 2015 - 21h34</div>
-						<h1>Ma première update</h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-							sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-						<p class='picture'><img src="{{ asset('images/4.jpg') }}"/></p>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-							sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-						<p class='picture'><img src="{{ asset('images/1.jpg') }}"/></p>
-						<a href='#' class='btn'>Commentaires</a>
-					</div>
+					{% if app.user == projet.association %}
+					<a href="{{ path('cf_main_rediger_actu', {id: projet.id}) }}">Rédiger une actualité</a>
+					{% endif %}
+					{% for a in projet.actualites %}
+						<div class='tab-box full'>
+							{% if app.user == a.projet.association %}
+							<a href="{{ path('cf_main_edit_actu', {id: a.id}) }}">Editer</a> -
+							<a href="{{ path('cf_main_delete_actu', {id: a.id}) }}">Supprimer</a>
+							{% endif %}
+							<div class='update-date'>Le 25 janvier 2015 - 11h38</div>
+							<h1>{{ a.titre }}</h1>
+							{{ a.contenu }}
+						</div>
+					{% endfor %}
+
 				</div>
 				<div class="tab-pane fade" id="tabcomments">
 					{{ render(controller('CFCommentBundle:Thread:show', { 'id' : projet.id })) }}
@@ -295,7 +267,11 @@
 
 		$('#text-ressource-financiere').mouseenter(function(){
 			$('.pie').hide().html("<li class='visualize ressource-financiere' data-color='#ea5f50' data-value='{{pourcentageFinancier}}'></li><li class='visualize' data-color='rgba(0,0,0,0)' data-value='{{ 100 - pourcentageFinancier}}'></li>").fadeIn(speed);
+			{% if projet.nbDemandeFinancier == 0 %}
+			$('.pie-content').hide().html("<div class='name'>Non demandée</div>").fadeIn(speed);
+			{% else %}
 			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageFinancier|round}}%</div><div class='name'>Financières</div>").fadeIn(speed);
+			{% endif %}
 			drawDiagramme();
 		}).mouseleave(function(){
 			fullfilDiagramme();
@@ -303,7 +279,11 @@
 
 		$('#text-ressource-materiel').mouseenter(function(){
 			$('.pie').hide().html("<li class='visualize ressource-materiel' data-color='#a66abe' data-value='"+{{pourcentageMateriel}}+"'></li><li class='visualize' data-color='rgba(0,0,0,0)' data-value='"+(100 - {{pourcentageMateriel}})+"'></li>").fadeIn(speed);
+			{% if projet.nbDemandeMateriel == 0 %}
+			$('.pie-content').hide().html("<div class='name'>Non demandée</div>").fadeIn(speed);
+			{% else %}
 			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageMateriel|round}}%</div><div class='name'>Matérielles</div>").fadeIn(speed);
+			{% endif %}
 			drawDiagramme();
 		}).mouseleave(function(){
 			fullfilDiagramme();
@@ -311,7 +291,11 @@
 
 		$('#text-ressource-humaine').mouseenter(function(){
 			$('.pie').hide().html("<li class='visualize ressource-humaine' data-color='#70d48d' data-value='"+{{pourcentageHumain}}+"'></li><li class='visualize' data-color='rgba(0,0,0,0)' data-value='"+(100 - {{pourcentageHumain}})+"'></li>").fadeIn(speed);
+			{% if projet.nbDemandeHumain == 0 %}
+			$('.pie-content').hide().html("<div class='name'>Non demandée</div>").fadeIn(speed);
+			{% else %}
 			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageHumain|round}}%</div><div class='name'>Humaines</div>").fadeIn(speed);
+			{% endif %}
 			drawDiagramme();
 		}).mouseleave(function(){
 			fullfilDiagramme();
@@ -319,7 +303,11 @@
 
 		$('#text-ressource-info').mouseenter(function(){
 			$('.pie').hide().html("<li class='visualize ressource-info' data-color='#99a5af' data-value='"+{{pourcentageComm}}+"'></li><li class='visualize' data-color='rgba(0,0,0,0)' data-value='"+(100 - {{pourcentageComm}})+"'></li>").fadeIn(speed);
+			{% if projet.nbDemandeComm == 0 %}
+			$('.pie-content').hide().html("<div class='name'>Non demandée</div>").fadeIn(speed);
+			{% else %}
 			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageComm|round}}%</div><div class='name'>Communication</div>").fadeIn(speed);
+			{% endif %}
 			drawDiagramme();
 		}).mouseleave(function(){
 			fullfilDiagramme();

@@ -39,7 +39,7 @@ body {
   border-right: 8px solid rgb(46, 126, 106);
   color: #FFFFFF;
   z-index: 10;
-  position: absolute;
+  position: fixed;
   padding: 16px;
 }
 

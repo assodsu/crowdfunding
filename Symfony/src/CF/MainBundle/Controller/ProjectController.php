@@ -220,6 +220,7 @@ class ProjectController extends Controller
 
     public function modifierAction(Projet $projet, Request $request) 
     {
+        
         if (!$projet) {
             throw $this->createNotFoundException(
                 'Aucun projet trouvé pour cet id : '.$projet->getId());

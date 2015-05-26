@@ -132,6 +132,16 @@ class ProfileController extends Controller
 
     public function messagesAction()
     {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $notifs = $this->getDoctrine()->getRepository('CFNotificationBundle:Notification')->getMessages($user);
+
+        $em = $this->getDoctrine()->getEntityManager();
+        foreach ($notifs as $n) {
+            $n->setVu(1);
+            $em->flush();
+        }
+           
         return $this->render('CFUserBundle:Profile:messages.html.twig');
     }
 

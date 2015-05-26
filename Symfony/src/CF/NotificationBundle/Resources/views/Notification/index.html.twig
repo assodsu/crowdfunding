@@ -1,7 +1,7 @@
 <ul style="width: 400px;" class="dropdown-menu" role="menu" aria-labelledby="drop-user">
   {% for n in notifs %}
     {% if n.type == 1 %}
-      <li><a href="{{ path('cf_notification') }}">{{ n.contenu }}</a></li>
+      <li><a href="{{ path('fos_user_profile_messages') }}">{{ n.contenu }}</a></li>
     {% elseif n.type == 2 %}
       <li><a href="{{ path('fos_user_profile_projects') }}">{{ n.contenu }}</a></li>
     {% endif %}
