@@ -1,0 +1,11 @@
+services:
+    sonata.admin.comment:
+        class: CF\CommentBundle\Admin\CommentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Projets", label: "Commentaires" }
+        arguments:
+            - ~
+            - CF\CommentBundle\Entity\Comment
+            - ~
+        calls:
+            - [ setTranslationDomain, [CFCommentBundle]]

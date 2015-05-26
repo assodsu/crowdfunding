@@ -336,3 +336,8 @@ nav .navigation-bar .nav-middle-part img {
   color: #22D022;
   pointer-events:none;
 }
+
+/**** ICONES ****/
+.icon-medium {
+  width: 40px;
+}

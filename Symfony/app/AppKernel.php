@@ -25,16 +25,12 @@ class AppKernel extends Kernel
 
             new CF\MainBundle\CFMainBundle(),
             new CF\UserBundle\CFUserBundle(),
-            new CF\CommentBundle\CFCommentBundle(),
             new CF\NotificationBundle\CFNotificationBundle(),
             new CF\MessageBundle\CFMessageBundle(),
             new CF\SiteBundle\CFSiteBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
-
-            new FOS\RestBundle\FOSRestBundle(),
-            new FOS\CommentBundle\FOSCommentBundle(),
             
             new JMS\SerializerBundle\JMSSerializerBundle($this),
 
@@ -45,6 +41,7 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new CF\BadgeBundle\CFBadgeBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new CF\CommentBundle\CFCommentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

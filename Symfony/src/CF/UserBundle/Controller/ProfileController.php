@@ -21,6 +21,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+use CF\UserBundle\Entity\User;
+
 /**
  * Controller managing the user profile
  *
@@ -49,10 +51,8 @@ class ProfileController extends Controller
     /**
      * Consulting user's profile
      */
-    public function userShowAction($username)
+    public function userShowAction(User $user)
     {
-        $userManager = $this->container->get('fos_user.user_manager');
-        $user = $userManager->findUserByUsername($username);
         $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('association' => $user));
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(

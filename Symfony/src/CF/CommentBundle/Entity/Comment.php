@@ -3,69 +3,289 @@
 namespace CF\CommentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\CommentBundle\Entity\Comment as BaseComment;
-use FOS\CommentBundle\Model\SignedCommentInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
+ * Comment
+ *
+ * @ORM\Table()
  * @ORM\Entity
  */
-class Comment extends BaseComment implements SignedCommentInterface
+class Comment
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
-     * Thread du commentaire
+     * @var string
      *
-     * @var Thread
-     * @ORM\ManyToOne(targetEntity="CF\CommentBundle\Entity\Thread")
+     * @ORM\Column(name="content", type="text")
+     */
+    private $content;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="moderate", type="boolean")
+     */
+    private $moderate;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="report", type="integer")
+     */
+    private $report;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
+     *  @ORM\ManyToOne(targetEntity="CF\CommentBundle\Entity\Thread", inversedBy="comments")
+     *  @ORM\JoinColumn(nullable=false)
      */
     protected $thread;
 
-     /**
-     * Author of the comment
-     *
-     * @ORM\ManyToOne(targetEntity="CF\UserBundle\Entity\User")
-     * @var User
+    /**
+     *  @ORM\ManyToOne(targetEntity="CF\UserBundle\Entity\User")
+     *  @ORM\JoinColumn(nullable=false)
      */
-    protected $author;
+    protected $user;
 
-    public function setAuthor(UserInterface $author)
+    /**
+     *  @ORM\ManyToOne(targetEntity="CF\CommentBundle\Entity\Comment", inversedBy="childrens")
+     */
+    protected $parent;
+
+    /**
+     *  @ORM\OneToMany(targetEntity="CF\CommentBundle\Entity\Comment", mappedBy="parent")
+     */
+    protected $childrens;
+
+    public function __construct()
     {
-        $this->author = $author;
+        $this->setModerate(false);
+        $this->setDate(new \DateTime());
     }
 
-    public function getAuthor()
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
     {
-        if($this->author === null)
-        {
-            return null;
-        }
-        return $this->author;
+        return $this->id;
     }
 
-    public function getAuthorName()
+    /**
+     * Set content
+     *
+     * @param string $content
+     *
+     * @return Comment
+     */
+    public function setContent($content)
     {
-        if (null === $this->getAuthor()) {
-            return 'Anonyme';
-        }
-        if( $this->getAuthor()->getTypeUser() === 'Association') {
-            return $this->getAuthor()->getNomAsso();
-        }
-        else if( $this->getAuthor()->getTypeUser() === 'Entreprise') {
-            return $this->getAuthor()->getNomEntreprise();
-        }
-        else if( $this->getAuthor()->getTypeUser() === 'Particulier') {
-            return $this->getAuthor()->getPseudo();
-        }
-        else if( $this->getAuthor()->getTypeUser() === 'Bénévole') {
-            return $this->getAuthor()->getPseudo();
-        }
-        return 'Anonyme';
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set moderate
+     *
+     * @param boolean $moderate
+     *
+     * @return Comment
+     */
+    public function setModerate($moderate)
+    {
+        $this->moderate = $moderate;
+
+        return $this;
+    }
+
+    /**
+     * Get moderate
+     *
+     * @return boolean
+     */
+    public function getModerate()
+    {
+        return $this->moderate;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Comment
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set thread
+     *
+     * @param \CF\CommentBundle\Entity\Thread $thread
+     *
+     * @return Comment
+     */
+    public function setThread(\CF\CommentBundle\Entity\Thread $thread)
+    {
+        $this->thread = $thread;
+
+        return $this;
+    }
+
+    /**
+     * Get thread
+     *
+     * @return \CF\CommentBundle\Entity\Thread
+     */
+    public function getThread()
+    {
+        return $this->thread;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \CF\UserBundle\Entity\User $user
+     *
+     * @return Comment
+     */
+    public function setUser(\CF\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \CF\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \CF\CommentBundle\Entity\Comment $parent
+     *
+     * @return Comment
+     */
+    public function setParent(\CF\CommentBundle\Entity\Comment $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \CF\CommentBundle\Entity\Comment
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Add children
+     *
+     * @param \CF\CommentBundle\Entity\Comment $children
+     *
+     * @return Comment
+     */
+    public function addChildren(\CF\CommentBundle\Entity\Comment $children)
+    {
+        $this->childrens[] = $children;
+
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \CF\CommentBundle\Entity\Comment $children
+     */
+    public function removeChildren(\CF\CommentBundle\Entity\Comment $children)
+    {
+        $this->childrens->removeElement($children);
+    }
+
+    /**
+     * Get childrens
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChildrens()
+    {
+        return $this->childrens;
+    }
+
+    /**
+     * Set report
+     *
+     * @param integer $report
+     *
+     * @return Comment
+     */
+    public function setReport($report)
+    {
+        $this->report = $report;
+
+        return $this;
+    }
+
+    /**
+     * Get report
+     *
+     * @return integer
+     */
+    public function getReport()
+    {
+        return $this->report;
     }
 }

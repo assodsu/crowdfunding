@@ -6,6 +6,7 @@ imports:
     - { resource: "@CFMainBundle/Resources/config/admin.yml" }
     - { resource: "@CFUserBundle/Resources/config/admin.yml" }
     - { resource: "@CFBadgeBundle/Resources/config/admin.yml" }
+    - { resource: "@CFCommentBundle/Resources/config/admin.yml" }
 
 framework:
     #esi:             ~
@@ -38,7 +39,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ "FOSCommentBundle", "CFCommentBundle" ]
+    bundles:        []
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -83,14 +84,6 @@ fos_user:
     user_class: CF\UserBundle\Entity\User
     service:
         user_manager: pugx_user_manager
-
-#  FOSComment
-fos_comment:
-    db_driver: orm
-    class:
-        model:
-            comment: CF\CommentBundle\Entity\Comment
-            thread: CF\CommentBundle\Entity\Thread
 
 sonata_block:
     default_contexts: [cms]

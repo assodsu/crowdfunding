@@ -1,5 +1,15 @@
-fos_comment_api:
-    type: rest
-    resource: "@FOSCommentBundle/Resources/config/routing.yml"
-    prefix: /api
-    defaults: { _format: html }
+cf_comment_thread_show:
+    path:     /thread/{id}
+    defaults: { _controller: CFCommentBundle:Thread:show }
+
+cf_comment_comment_new:
+    path:     /thread/{id}/comment/new
+    defaults: { _controller: CFCommentBundle:Comment:new }
+
+cf_comment_comment_reply:
+    path:     /thread/{id}/comment/reply/{comment_id}
+    defaults: { _controller: CFCommentBundle:Comment:reply }
+
+cf_comment_comment_report:
+    path:     /thread/{id}/comment/report/{comment_id}
+    defaults: { _controller: CFCommentBundle:Comment:report }

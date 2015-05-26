@@ -6,6 +6,8 @@ namespace CF\UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
@@ -110,6 +112,12 @@ abstract class User extends BaseUser
      * )
      */
     private $projetsSoutenus;
+
+    /**
+     * @Gedmo\Slug(fields={"nom"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
 
 
     public function __construct()
@@ -609,5 +617,29 @@ abstract class User extends BaseUser
     public function getConversations()
     {
         return $this->conversations;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return User
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

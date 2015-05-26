@@ -1,0 +1,58 @@
+<h3>{{ thread.nbComment }} commentaires</h3>
+
+<h3>Ajouter un commentaire</h3>
+
+{{ render(controller('CFCommentBundle:Comment:new', { id : thread.id })) }}
+
+{% for comment in thread.comments|reverse %}
+
+	{% if comment.parent is null %}
+		<div id="comment_{{ comment.id }}" class="tab-box full comment">
+
+	    	<div class="comment-avatar">
+	    		<img src="{{ asset(comment.user.logo.AssetPath) }}" alt='logo'/>
+	    	</div>
+	        <span class="comment-author">
+	            {{ comment.user.nom }}
+	        </span>
+	        <div class="comment-hour">- {{ comment.date|date('H:i') }}</div>
+	        <div class="comment-date">
+	        	{{ comment.date|date('d/m/Y') }}
+				{{ render(controller('CFCommentBundle:Comment:report', { 'id' : thread.id, 'comment_id':comment.id })) }}
+			</div>
+	        {% if comment.moderate == false %}
+		    	<p>{{ comment.content|nl2br }}</p>
+		    {% else %}
+		    	<p style="color:rgb(216,28,28);">[[ Commentaire modéré ]]</p>
+		    {% endif %}
+	{% endif %}
+		    {% for commentChildren in comment.childrens %}
+		    	<div id="comment_{{ commentChildren.id }}" class="tab-box full comment">
+
+			    	<div class="comment-avatar">
+			    		<img src="{{ asset(commentChildren.user.logo.AssetPath) }}" alt='logo'/>
+			    	</div>
+			        <span class="comment-author">
+			            {{ commentChildren.user.nom }}
+			        </span>
+			        <div class="comment-hour">- {{ commentChildren.date|date('H:i') }}</div>
+			        <div class="comment-date">
+			        	{{ commentChildren.date|date('d/m/Y') }}
+						{{ render(controller('CFCommentBundle:Comment:report', { 'id' : thread.id, 'comment_id':commentChildren.id })) }}
+					</div>
+
+			        {% if commentChildren.moderate == false %}
+				    	<p>{{ commentChildren.content|nl2br }}</p>
+				    {% else %}
+				    	<p style="color:rgb(216,28,28);">[[ Commentaire modéré ]]</p>
+				    {% endif %}
+
+				</div>
+		    {% endfor %}
+
+	{% if comment.parent is null %}
+		<h3>Répondre :</h3>
+		{{ render(controller('CFCommentBundle:Comment:reply', { 'id':thread.id, 'comment_id':comment.id })) }}
+		</div>
+	{% endif %}
+{% endfor %}

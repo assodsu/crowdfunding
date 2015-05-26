@@ -485,6 +485,11 @@ textarea {
 	font-size: 50px;
 	color: rgb(95, 207, 128);
 }
+.errors {
+	color:red;
+	text-align: center;
+	font-weight: bold;
+}
 /** BADGES **/
 .badge-profil {
 	display: inline-block;

@@ -68,7 +68,7 @@
 							<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> Google+</a>
 						</div>
 					</div>
-					<a href="{{ path('fos_user_profile_user_show', { 'username': projet.association.username }) }}" class='btn btn-default'>Voir le profil <i class="fa fa-search"></i></a>
+					<a href="{{ path('fos_user_profile_user_show', { 'slug': projet.association.slug }) }}" class='btn btn-default'>Voir le profil <i class="fa fa-search"></i></a>
 				</div>
 			</div>
 			<div id='project-title'>{{ projet.nom }}</div>
@@ -118,11 +118,11 @@
 				<li class="btn btn-default active"><a href="#tabproject" data-toggle="tab">Le projet</a></li>
 				<li class="btn btn-default"><a href="#tabhistory" data-toggle="tab">Son histoire</a></li>
 				<li class="btn btn-default"><a href="#tabupdates" data-toggle="tab">Les mises à jour</a></li>
-				<li class="btn btn-default"><a href="#tabcomments" data-toggle="tab">Vos commentaires</a></li>
+				<li class="btn btn-default"><a href="#tabcomments" data-toggle="tab">Commentaires</a></li>
 				<li class="btn btn-default"><a href="#tabmore" data-toggle="tab">Plus d'informations</a></li>
-				{% if app.user.hasProjetsSuivis(projet) %}
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.hasProjetsSuivis(projet) %}
 					<li class="btn btn-default"><a href="{{ path('cf_main_not_suivre_projet', {id: projet.id}) }}">Ne plus suivre le projet</a></li>
-				{% else %}
+				{% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 					<li class="btn btn-default"><a href="{{ path('cf_main_suivre_projet', {id: projet.id}) }}">Suivre le projet</a></li>
 				{% endif %}
 			</ul>
@@ -270,8 +270,7 @@
 					</div>
 				</div>
 				<div class="tab-pane fade" id="tabcomments">
-					<div id="loading"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
-					{% include 'CFCommentBundle:Thread:async.html.twig' with {'id': projet.id} %}
+					{{ render(controller('CFCommentBundle:Thread:show', { 'id' : projet.id })) }}
 				</div>
 				<div class="tab-pane fade" id="tabmore">
 					<div class='tab-box full'>
@@ -342,14 +341,6 @@
 			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageTotal|round}}%</div><div class='name'>Ressources</div>").fadeIn(speed);
 			drawDiagramme();
 		}
-
-		$(document)
-	    .on('fos_comment_before_load_thread', function (data) {
-	        $("#loading").show();
-	    })
-	    .on('fos_comment_load_thread', function (data) {
-        	$("#loading").fadeOut(200);
-    	});
 
     </script>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user != projet.association %}

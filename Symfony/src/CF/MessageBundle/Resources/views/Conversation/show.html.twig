@@ -7,6 +7,7 @@
       </div>
       <div class="modal-message-body">
       	{{ render(controller('CFMessageBundle:Message:add', { 'id' : conversation.id } )) }}
+        <div class="errors"></div>
         <div class="loading"><i class="fa fa-spinner fa-pulse"></i></div>
         <div class="messages-list messages-list-{{conversation.id}}">
         	{% for message in conversation.messages|reverse %}
@@ -24,11 +25,13 @@
           $('.loading').hide();
 
           function ajaxSubmitMessage () {
-            if($('.new-message-{{conversation.id}}').val().length > 0)
+            if($('.new-message-{{conversation.id}}').val().length > 2)
             {
+              $('.errors').html('');
               var params = "message="+$('.new-message-{{conversation.id}}').val();
               $('.new-message-{{conversation.id}}').val('');
               $('#button-new-message-{{conversation.id}}').attr("disabled", "disabled");
+              $('.new-message-{{ conversation.id }}').attr("disabled", "disabled");
               $('.loading').show();
               $.ajax({
                 type: 'POST',
@@ -45,9 +48,14 @@
 
                   $('.messages-list-{{conversation.id}}').prepend('<p class="fromYou"><small class="text-muted date-notif">Envoyé le '+date+' à '+time+'</small><br>'+data.message+'</p>');
                   $('#button-new-message-{{conversation.id}}').removeAttr("disabled");
+                  $('.new-message-{{ conversation.id }}').removeAttr("disabled");
                   $('.loading').hide();
                 }
               });
+            }
+            else 
+            {
+              $('.errors').html('Votre message doit contenir au moins 3 caractères.');
             }
           }
 
