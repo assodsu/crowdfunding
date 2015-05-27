@@ -1,0 +1,15 @@
+{% extends "TwigBundle::layout.html.twig" %}
+
+{% block title %}
+  	{{ parent() }} - Erreur !
+{% endblock %}
+
+{% block body %}
+	
+    <div class="container">
+      <div class="jumbotron">
+	<h1>Oops! Une erreur s'est produite !</h1>
+	<h2>Le serveur a retourné une erreur "{{ status_code }} {{ status_text }}".</h2>
+      </div>
+    </div>
+{% endblock %}
