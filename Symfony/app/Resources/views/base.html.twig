@@ -17,6 +17,15 @@
 	<body>
 		<nav>
 			<div class="navigation-bar">
+				<div class="navigation-bar-left">
+					<li><a href="{{ path('cf_main_homepage') }}"><img src="{{ asset('images/logo2.png') }}" alt="Logo" /></a></li>
+				</div>
+				<div class="nav-content-res">
+					<li><a href="{{ path('cf_main_allProjects') }}">Les projets</a></li>
+			        <li><a href="{{ path('cf_site_commentcamarche') }}">Comment ça marche ?</a></li>
+			        <li><a href="{{ path('cf_main_addProjects') }}">Lancer mon projet</a></li>
+			        <li><a href="{{ path('cf_site_partenaires') }}">Partenaires</a></li>  
+				</div>
 				<div class="nav-content">
 					<div class="nav-left-part">
 						<li><a href="{{ path('cf_main_allProjects') }}">Les projets</a></li>
@@ -41,7 +50,6 @@
 						<li class="dropdown">
 							<a id="drop-user" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
 			                	<span class="badge">{{ nbNotifs }}</span>
-			                	<span class="caret"></span>
 			              	</a>
 			              	{{ render(controller('CFNotificationBundle:Notification:index'))}}
 			            </li>
@@ -69,6 +77,7 @@
 				      	<li><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user-plus"></i></a></li>
 			      	{% endif %}
 			    </div>
+			    <button id="toggle-menu"><i class="fa fa-bars"></i></button>
 		    </div>
 		</nav>
 

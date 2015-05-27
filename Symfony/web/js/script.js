@@ -3,6 +3,17 @@ $(document).ready(function(){
 		$('.alert-top').hide();
 	});
 
+	$('#toggle-menu').on('click', function(){
+		$('.nav-content-res').stop().slideToggle();
+	});
+
+	$(window).on('resize', function(){
+		if($(this).width() >= 760 && $('.nav-content-res').is(':visible'))
+		{
+			$('.nav-content-res').hide();
+		}
+	});
+
 	$('[data-toggle="tooltip"]').tooltip();
 
 	$('.profile-navigation').on('click', function() {
