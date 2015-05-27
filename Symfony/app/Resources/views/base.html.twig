@@ -72,6 +72,10 @@
 		    </div>
 		</nav>
 
+		<div class="alert-top">
+			<button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+			Lorem ipsum dolor sit amet, je sais plus c'est quoi la suite en fait. C'est juste pour mettre un texte et voir ce que ça donne.
+		</div>
 		{% for type in ['info'] %}
 			{% for message in app.session.flashbag.get(type) %}
 				<div class="alert-top">
