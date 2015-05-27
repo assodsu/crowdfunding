@@ -19,8 +19,9 @@ body {
   font-size: 13px;
 }
 
+
 .profile-navigation {
-    display: none;
+  display: none;
 }
 
 .btn {
@@ -336,4 +337,80 @@ nav .navigation-bar .nav-middle-part img {
 /**** ICONES ****/
 .icon-medium {
   width: 40px;
+}
+
+/**** FOOTER ****/
+footer {
+  margin-top: 50px;
+  text-align: center;
+}
+footer #footer-top {
+  min-height:200px;
+  background: #D8D8D8;
+  margin:0 auto;
+  display: inline-block;
+  width:100%;
+}
+footer #footer-bottom {
+  height:40px;
+  background: #000;
+}
+#footer-bottom {
+  color:#fff;
+  line-height: 40px;
+  vertical-align: middle;
+}
+#footer-top section {
+  display:inline-block;
+  color:#4A4A4A;
+}
+#footer-top h1 {
+  margin-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-size: 36px;
+  font-weight: 300;
+}
+#footer-top h1 .blue {
+  color: #3498DB;
+}
+#footer-top h2 {
+  text-transform: lowercase;
+  letter-spacing: 15px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+#footer-top section hr {
+  width:65%;
+  border-color:#919191;
+}
+#footer-top .social {
+  display: inline-block;
+  margin:0 10px;
+}
+#footer-top section + section {
+  border-left:1px solid #919191;
+  margin:15px;
+  padding:5px 20px;
+  text-align: left;
+}
+#footer-top section h4 {
+  font-size: 20px;
+  margin:0;
+  margin-bottom: 6px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+#footer-top ul {
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+#footer-top ul li a {
+  color:#919191;
+  line-height: 26px;
+  font-size: 12px;
 }
