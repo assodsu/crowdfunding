@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Comment
  *
- * @ORM\Table()
+ * @ORM\Table(name="cf_comment_comments")
  * @ORM\Entity
  */
 class Comment

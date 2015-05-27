@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Conversation
  *
- * @ORM\Table(name="conversations")
+ * @ORM\Table(name="cf_message_conversations")
  * @ORM\Entity(repositoryClass="CF\MessageBundle\Entity\ConversationRepository")
  */
 class Conversation
@@ -28,6 +28,9 @@ class Conversation
 
     /**
      * @ORM\ManyToMany(targetEntity="CF\UserBundle\Entity\User", inversedBy="conversations")
+     * @ORM\JoinTable(
+     *        name="cf_conversation_user"
+     * )
      */
     private $utilisateurs;
 

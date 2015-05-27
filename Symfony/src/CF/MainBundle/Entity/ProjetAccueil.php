@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ProjetAccueil
  *
- * @ORM\Table()
+ * @ORM\Table(name="cf_main_projetsAccueil")
  * @ORM\Entity(repositoryClass="CF\MainBundle\Entity\ProjetAccueilRepository")
  */
 class ProjetAccueil

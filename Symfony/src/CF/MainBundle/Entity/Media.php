@@ -3,12 +3,14 @@
 namespace CF\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Media
  * @ORM\Entity
- * @ORM\Table(name="media")
+ * @ORM\Table(name="cf_main_medias")
  * @ORM\HasLifecycleCallbacks
  */
 class Media
@@ -70,8 +72,8 @@ class Media
     }
 
     /**
-     *  @ORM\Prepersist()
-     *  @ORM\Preupdate()
+     *  @ORM\PrePersist()
+     *  @ORM\PreUpdate()
      */
     public function preUpload()
     {
@@ -84,8 +86,8 @@ class Media
     }
 
     /**
-     *  @ORM\Prepersist()
-     *  @ORM\Preupdate()
+     *  @ORM\PrePersist()
+     *  @ORM\PreUpdate()
      */
     public function upload()
     {

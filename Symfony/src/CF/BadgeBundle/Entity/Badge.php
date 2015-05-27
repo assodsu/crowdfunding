@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Badge
  *
- * @ORM\Table()
+ * @ORM\Table(name="cf_badge_badges")
  * @ORM\Entity(repositoryClass="CF\BadgeBundle\Entity\BadgeRepository")
  */
 class Badge

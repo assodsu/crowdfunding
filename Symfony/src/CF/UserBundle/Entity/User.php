@@ -10,7 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="user")
+ * @ORM\Table(name="cf_user_users")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"associations" = "Association", "entreprises" = "Entreprise", "particuliers" = "Particulier"})
@@ -87,6 +87,9 @@ abstract class User extends BaseUser
 
     /**
      * @ORM\ManyToMany(targetEntity="CF\BadgeBundle\Entity\Badge", cascade={"persist"})
+     * @ORM\JoinTable(
+     *        name="cf_user_badge"
+     * )
      */
     private $badges;
 
@@ -102,13 +105,16 @@ abstract class User extends BaseUser
 
     /**
      * @ORM\ManyToMany(targetEntity="CF\MainBundle\Entity\Projet", cascade={"persist"})
+     * @ORM\JoinTable(
+     *        name="cf_user_projets_suivis"
+     * )
      */
     private $projetsSuivis;
 
     /**
      * @ORM\ManyToMany(targetEntity="CF\MainBundle\Entity\Projet", cascade={"persist"})
      * @ORM\JoinTable(
-     *        name="user_projets_soutenus"
+     *        name="cf_user_projets_soutenus"
      * )
      */
     private $projetsSoutenus;

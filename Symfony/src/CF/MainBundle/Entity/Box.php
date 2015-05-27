@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Box
  *
- * @ORM\Table(name="box")
+ * @ORM\Table(name="cf_main_boxs")
  * @ORM\Entity(repositoryClass="CF\MainBundle\Entity\BoxRepository")
  */
 class Box

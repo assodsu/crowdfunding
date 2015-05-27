@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Projet
  *
- * @ORM\Table(name="projet")
+ * @ORM\Table(name="cf_main_projets")
  * @ORM\Entity(repositoryClass="CF\MainBundle\Entity\ProjetRepository")
  */
 class Projet
@@ -148,7 +148,7 @@ class Projet
 
     /**
     * @ORM\ManyToMany(targetEntity="CF\MainBundle\Entity\Tags", cascade={"persist"})
-    * @ORM\JoinTable(name="projet_tags")
+    * @ORM\JoinTable(name="cf_projet_tags")
     */
     private $tags;
 

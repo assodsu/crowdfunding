@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Thread
  *
- * @ORM\Table()
+ * @ORM\Table(name="cf_comment_threads")
  * @ORM\Entity
  */
 class Thread
