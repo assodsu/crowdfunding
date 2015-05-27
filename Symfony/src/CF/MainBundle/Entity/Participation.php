@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Participation
  *
- * @ORM\Table(name="participations")
+ * @ORM\Table(name="cf_main_participations")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */

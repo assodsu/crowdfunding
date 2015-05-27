@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Ressources
  *
- * @ORM\Table(name="ressources")
+ * @ORM\Table(name="cf_main_ressources")
  * @ORM\Entity
  */
 class Ressources
