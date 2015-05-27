@@ -29,18 +29,14 @@ body {
 }
 
 .alert-top {
-  display: none;
-  width: 800px;
+  width: 100%;
   top: 50px;
-  left: 50%;
-  margin-left: -400px;
   background-color: rgb(116, 184, 164);
-  border-left: 8px solid rgb(46, 126, 106);
-  border-right: 8px solid rgb(46, 126, 106);
   color: #FFFFFF;
   z-index: 10;
   position: fixed;
   padding: 16px;
+  text-align: center;
 }
 
 /*** NAVIGATION ***/

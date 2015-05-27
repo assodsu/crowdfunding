@@ -1,5 +1,8 @@
 $(document).ready(function(){
-	$('.alert-top').delay(300).slideDown(800).delay(6000).slideUp(800);
+	$('.alert-top .close').on('click', function() {
+		$('.alert-top').hide();
+	});
+
 	$('[data-toggle="tooltip"]').tooltip();
 
 	$('.profile-navigation').on('click', function() {
