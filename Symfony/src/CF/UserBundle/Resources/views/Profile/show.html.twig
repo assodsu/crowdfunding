@@ -10,98 +10,151 @@
 {% endblock %}
 
 {% block body %}
-	<div id="block-body">
-		<div class="panel-heading">
-			<img src="{{ asset('images/6.jpg')}}" id="banner"/>
-			<div id="layer"></div>
-			<div class="logo-name">
+	<div class="panel-heading">
+		<img src="{{ asset('images/6.jpg')}}" id="banner"/>
+		<div class="logo-name">
+			{% if user.typeUser == 'Particulier' and user.benevole %}
+				<p id='label'>Bénévole <i class="fa fa-check"></i></p>
+			{% elseif user.typeUser == 'Association' and user.certified %}
 				<p id='label'>Association certifiée <i class="fa fa-check"></i></p>
-				<img id='logo' class="img-circle" src="{{asset( user.logo.AssetPath )}}" alt="Logo" />
-				<div class="logo-username">
-					<h1>
-						{% if user.typeUser == "Association" %}
-							{{ user.nom }}
-                    	{% elseif user.typeUser == "Entreprise" %}
-							{{ user.nomEntreprise }}
-                    	{% else %}
-							{{ user.pseudo }}
-						{% endif %}
-					</h1>
-					<!-- Affichage du type d'utilisateur -->
-					<h2>
-						{% if (user.typeUser == "Particulier") and (user.benevole == 1) %}
-							- Bénévole
-						{% else %}
-							- {{ user.typeUser }}
-						{% endif %}
-					</h2>
-				</div>
-			</div>
-			<div class="content-panel-heading">
-				<ul class="nav nav-tabs btn-group" role='group'>
-					{% if user.typeUser == "Association" %}
-						<li class="btn btn-default active"><a href="#tab1" data-toggle="tab">Profil</a></li>
-						<li class="btn btn-default"><a href="#tab2" data-toggle="tab">Projets</a></li>
-						{% if app.user %}
-							{% if user.username == app.user.username %}
-								<li class="btn btn-default"><a href="#tab3" data-toggle="tab">Notifications</a></li>
-								<li class="btn btn-default"><a href="{{ path('fos_user_profile_edit') }}">Modifier</a></li>
-							{% endif %}
-						{% endif %}
-                	{% elseif user.typeUser == "Entreprise" %}
-						<li class="btn btn-default active"><a href="#tab1" data-toggle="tab">Profil</a></li>
-						<li class="btn btn-default"><a href="#tab2" data-toggle="tab">Participations</a></li>
-						{% if app.user.username == user.username %}
-							<li class="btn btn-default"><a href="#tab3" data-toggle="tab">Notifications</a></li>
-							<li class="btn btn-default"><a href="{{ path('fos_user_profile_edit') }}">Modifier</a></li>
-						{% endif %}
-                	{% else %}
-						<li class="btn btn-default active"><a href="#tab1" data-toggle="tab">Profil</a></li>
-						<li class="btn btn-default"><a href="#tab2" data-toggle="tab">Participations</a></li>
-						<li class="btn btn-default"><a href="#tab3" data-toggle="tab">Accomplissements</a></li>
-						{% if app.user.username == user.username %}
-							<li class="btn btn-default"><a href="#tab4" data-toggle="tab">Notifications</a></li>
-							<li class="btn btn-default"><a href="{{ path('fos_user_profile_edit') }}">Modifier</a></li>
-						{% endif %}
+			{% elseif user.typeUser == 'Entreprise' and user.certified %}
+				<p id='label'>Entreprise certifiée <i class="fa fa-check"></i></p>
+			{% else %}
+				<p id='label' style="visibility: hidden;">Blank</p>
+			{% endif %}
+			<img id='logo' class="img-circle" src="{{asset( user.logo.AssetPath )}}" alt="Logo" />
+			<div class="logo-username">
+				<h1>{{ user.nom }}</h1>
+				<h2>
+					{% if (user.typeUser == "Particulier") and user.benevole %}
+						Bénévole
+					{% else %}
+						{{ user.typeUser }}
 					{% endif %}
-				</ul>
+				</h2>
 			</div>
 		</div>
-		<div class="panel-body">
-			<div class="tab-content">
-				<div class="tab-pane fade in active" id="tab1">
-					{% if user.typeUser == "Association" %}
-						{% include "CFUserBundle:Profile:tabProfil/association.html.twig" %}
-                	{% elseif user.typeUser == "Entreprise" %}
-						{% include "CFUserBundle:Profile:tabProfil/entreprise.html.twig" %}
-                	{% else %}
-						{% include "CFUserBundle:Profile:tabProfil/particulier.html.twig" %}
+	</div>
+	<div class="content-panel-heading">
+		<ul class="nav nav-tabs btn-group" role='group'>
+			<li class="btn btn-default active"><a href="#tab1" data-toggle="tab">Général</a></li>
+			<li class="btn btn-default"><a href="#tab2" data-toggle="tab">Badges</a></li>
+			<li class="btn btn-default"><a href="#tab3" data-toggle="tab">Projets soutenus</a></li>
+			{% if user.typeUser == "Association" %}
+				<li class="btn btn-default"><a href="#tab4" data-toggle="tab">Projets proposés</a></li>
+			{% endif %}
+			{% if is_granted('IS_AUTHENTICATED_REMEMBERED') and user.username == app.user.username %}
+				<li class="btn btn-default"><a href="{{ path('fos_user_profile_edit') }}">Paramètres</a></li>
+			{% endif %}
+		</ul>
+	</div>
+	<div class="panel-body">
+		<div class="tab-content">
+			<div class="tab-pane fade in active" id="tab1">
+				<div class="tab-box">
+					<h1>Description</h1>
+					{% if user.typeUser == 'Association' %}
+						<p>Date de création : {{ user.dateCreationAsso|date("d/m/Y") }}</p>
+						<p>N° WALDEC : {{ user.numWaldec }}</p>
+						<p>{{ user.descriptionAsso }}</p>
+					{% elseif user.typeUser == 'Entreprise' %}
+						<p>Date de création : {{ user.dateCreationEntreprise|date("d/m/Y") }}</p>
+						<p>N° SIRET : {{ user.numSiret }}</p>
+					{% elseif user.typeUser == 'Particulier' %}
+						<p>Nom : {{ user.name }}</p>
+						<p>Prénom : {{ user.firstname }}</p>
+						<p>Date de naissance : {{ user.dateNaissance|date("d/m/Y") }}</p>
+						<p>Bénévole : {% if user.benevole %}Oui{% else %}Non{% endif %}</p>
+						<p>Ville : {{ user.ville }}</p>
 					{% endif %}
 				</div>
-				<div class="tab-pane fade" id="tab2">
+				<div class="tab-box">
+					<h1>Informations</h1>
+				  	<table class="table">
+				        <tbody>
+				        	{% if user.site %}
+								<tr><td>Site web :</td><td><a href="{{ user.site }}" target="_blank">{{ user.site }}</a></td></tr>
+							{% endif %}
+							{% if user.facebook or user.twitter or user.googleplus %}
+								<tr><td>Réseaux sociaux :</td>
+									<td>
+										{% if user.facebook %}
+											<a href="http://www.facebook.com/{{ user.facebook }}" id="facebook" target="_blank"><span class="fa fa-facebook"></span> Facebook</a><br>
+										{% endif %}
+										{% if user.twitter %}
+											<a href="http://www.twitter.com/{{ user.twitter }}" id="twitter" target="_blank"><span class="fa fa-twitter"></span> Twitter</a><br>
+										{% endif %}
+										{% if user.googleplus %}
+											<a href="http://plus.google.com/{{ user.googleplus }}" id="googleplus" target="_blank"><span class="fa fa-google-plus"></span> Google+</a>
+										{% endif %}
+									</td>
+								</tr>
+							{% endif %}
+							<tr><td>Adresse Email :</td><td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td></tr>
+							{% set phone = user.telephone|split('', 2) %}
+							{% set phoneNb = "" %}
+							{% for number in phone %}
+								{% set phoneNb = phoneNb ~ number ~ '.' %}
+							{% endfor %}
+							<tr><td>Tél. :</td><td>{{ phoneNb|trim('.') }}</td></tr>
+				        </tbody>
+				    </table>
+				</div>
+				{% if user.typeUser == 'Association' or user.typeUser == 'Entreprise' %}
 					<div class="tab-box full">
-						<h1>Vos projets :</h1>
+						<h1><i class="fa fa-map-marker"></i> Adresse</h1>
+						<div class="inner-left">
+					      	<table class="table">
+					            <tbody>
+									<tr><td>Ville :</td><td>{{ user.ville }}</td></tr>
+									<tr><td>Code postal :</td><td>{{ user.cp }}</td></tr>
+									<tr><td>Adresse :</td><td>{{ user.adresse }}</td></tr>
+					            </tbody>
+					    	</table>
+						</div>
+						<div class="inner-right">
+							<img src="{{ asset('images/google-map.png') }}"  class="center-block" />
+						</div>
+					</div>
+				{% endif %}
+			</div>
+			<div class="tab-pane fade" id="tab2">
+				<div class="tab-box full">
+					<h1>Badges</h1>
+					{% for b in user.badges %}
+						<div class="badge-profil">
+							<div class="titre badge">{{ b.titre }}</div>
+							<span data-toggle="tooltip" data-placement="bottom" title="{{ b.description }}">
+								<img src="{{ asset(b.image.AssetPath) }}" alt="{{ b.titre }}" />
+							</span>
+						</div>
+					{% else %}
+						<p>Aucun badge... Pour le moment !</p>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="tab-pane fade" id="tab3">
+				<div class="tab-box full">
+					<h1>Projets soutenus</h1>
+				</div>
+			</div>
+			{% if user.typeUser == 'Association' %}
+				<div class="tab-pane fade" id="tab4">
+					<div class="tab-box full">
+						<h1>Projets proposés</h1>
 						{% for projet in projets %}
 							<p><a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a></p>
+							<div class="project">
+								<div class="project-img"></div>
+								<a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a>
+								
+							</div>
 						{% else %}
-							<p>Vous n'avez aucun projet pour l'instant.</p>
-							<p>Si vous le souhaitez, vous pouvez en déposer un en <a href="{{ path('cf_main_addProjects') }}">cliquant ici</a></p>
+							<p>Aucun projet proposé pour l'instant.</p>
 						{% endfor %}
 					</div>
 				</div>
-				<div class="tab-pane fade" id="tab3">
-					{% if user.typeUser == "Particulier" %}
-						{% include "CFUserBundle:Profile:achievements_content.html.twig" %}
-                	{% else %}
-						{{ render(controller('CFNotificationBundle:Notification:index')) }}
-                	{% endif %}
-				</div>
-				<div class="tab-pane fade" id="tab4">
-					{% if user.typeUser == "Particulier" %}
-						{% include "CFUserBundle:Profile:notifications_content.html.twig" %}
-                	{% endif %}
-				</div>
-			</div>
+			{% endif %}
 		</div>
 	</div>
 {% endblock %}

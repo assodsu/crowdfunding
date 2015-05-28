@@ -1,9 +1,0 @@
-{% extends "CFMainBundle::layout.html.twig" %}
-
-{% block title %}
-  	{{ parent() }}
-{% endblock %}
-
-{% block body %}
-{{ projetsSuivis }}
-{% endblock body %}

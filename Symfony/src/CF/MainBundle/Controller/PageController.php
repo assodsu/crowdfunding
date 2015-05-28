@@ -22,9 +22,4 @@ class PageController extends Controller
         		)
         	);
     }
-
-    public function contactAction()
-    {
-    	return $this->render('CFMainBundle:Page:contact.html.twig');
-    }
 }

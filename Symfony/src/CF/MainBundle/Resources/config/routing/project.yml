@@ -1,12 +1,12 @@
 cf_main_project:
-    path:     /{slug}
+    path:     /voir/{slug}
     defaults: { _controller: CFMainBundle:Project:show }
     requirements:
         _method: GET
         slug: "[a-zA-Z0-9-]+"
 
 cf_main_addProjects:
-    path:     /creer/lancer-projet
+    path:     /creer
     defaults: { _controller: CFMainBundle:Project:add }
     requirements:
         _method: GET|POST

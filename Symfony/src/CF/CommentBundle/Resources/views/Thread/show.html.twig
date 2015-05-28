@@ -55,4 +55,6 @@
 		{{ render(controller('CFCommentBundle:Comment:reply', { 'id':thread.id, 'comment_id':comment.id })) }}
 		</div>
 	{% endif %}
+{% else %}
+	Aucun commentaire.
 {% endfor %}

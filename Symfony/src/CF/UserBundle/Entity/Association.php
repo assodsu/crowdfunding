@@ -21,6 +21,7 @@ class Association extends User
         $this->setTypeUser('Association');
         $this->setUsername(uniqid());
         $this->setRoles(array('ROLE_ASSOCIATION'));
+        $this->setCertified(false);
     }
 
     /**
@@ -44,6 +45,11 @@ class Association extends User
      * @ORM\Column(type="text")
      */
     protected $descriptionAsso;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $certified;
 
     /**
      * Get id
@@ -122,5 +128,29 @@ class Association extends User
     public function getDescriptionAsso()
     {
         return $this->descriptionAsso;
+    }
+
+    /**
+     * Set certified
+     *
+     * @param boolean $certified
+     *
+     * @return Association
+     */
+    public function setCertified($certified)
+    {
+        $this->certified = $certified;
+
+        return $this;
+    }
+
+    /**
+     * Get certified
+     *
+     * @return boolean
+     */
+    public function getCertified()
+    {
+        return $this->certified;
     }
 }

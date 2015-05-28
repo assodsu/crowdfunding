@@ -59,7 +59,7 @@
 			                <span class="caret"></span>
 			              </a>
 			              <ul class="dropdown-menu" role="menu" aria-labelledby="drop-user">
-						    <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-user"></i> Profil</a></li>
+						    <li><a href="{{ path('fos_user_profile_show', { slug : app.user.slug }) }}"><i class="fa fa-user"></i> Profil</a></li>
 						    <hr>
 						    <li><a href="{{ path('fos_user_profile_projects') }}"><i class="fa fa-folder-o"></i> Mes projets</a></li>
 						    <li><a href="{{ path('cf_user_projetsSuivis') }}"><i class="fa fa-heart-o"></i> Projets suivis</a></li>
@@ -96,43 +96,45 @@
 		{{ render(controller('FOSUserBundle:Security:loginModal')) }}
 		</section>
 
-		<footer>
-			<div id="footer-top">
-				<section>
-					<h1>C<span class="blue">o</span>cepti<span class="blue">o</span></h1>
-					<h2>Concevoir<br />Ensemble</h2>
-					<hr>
-					<div class="socials">
-						<div class="social facebook"><a href=""><i class="fa fa-facebook"></i></a></div>
-						<div class="social twitter"><a href=""><i class="fa fa-twitter"></i></a></div>
-						<div class="social gplus"><a href=""><i class="fa fa-google-plus"></i></a></div>
-					</div>
-				</section>
-				<section>
-					<h4>Plan du site</h4>
-					<ul>
-						<li><a href="#">Accueil</a></li>
-						<li><a href="#">Comment ça marche ?</a></li>
-						<li><a href="#">Les projets</a></li>
-						<li><a href="#">Soumettre un projet</a></li>
-						<li><a href="#">Mon profil</a></li>
-					</ul>
-				</section>
-				<section>
-					<h4>Informations</h4>
-					<ul>
-						<li><a href="#">Nous contacter</a></li>
-						<li><a href="#">Nos partenaires</a></li>
-						<li><a href="#">Les développeurs</a></li>
-						<li><a href="#">Conditions générales</a></li>
-						<li><a href="#">A propos</a></li>
-					</ul>
-				</section>
-			</div>
-			<div id="footer-bottom">
-				Copyright © 2015 DSU-CRAB - All rights reserved
-			</div>
-		</footer>
+		{% block footer %}
+			<footer>
+				<div id="footer-top">
+					<section>
+						<h1>C<span class="blue">o</span>cepti<span class="blue">o</span></h1>
+						<h2>Concevoir<br />Ensemble</h2>
+						<hr>
+						<div class="socials">
+							<div class="social facebook"><a href=""><i class="fa fa-facebook"></i></a></div>
+							<div class="social twitter"><a href=""><i class="fa fa-twitter"></i></a></div>
+							<div class="social gplus"><a href=""><i class="fa fa-google-plus"></i></a></div>
+						</div>
+					</section>
+					<section>
+						<h4>Plan du site</h4>
+						<ul>
+							<li><a href="#">Accueil</a></li>
+							<li><a href="#">Comment ça marche ?</a></li>
+							<li><a href="#">Les projets</a></li>
+							<li><a href="#">Soumettre un projet</a></li>
+							<li><a href="#">Mon profil</a></li>
+						</ul>
+					</section>
+					<section>
+						<h4>Informations</h4>
+						<ul>
+							<li><a href="#">Nous contacter</a></li>
+							<li><a href="#">Nos partenaires</a></li>
+							<li><a href="#">Les développeurs</a></li>
+							<li><a href="#">Conditions générales</a></li>
+							<li><a href="#">A propos</a></li>
+						</ul>
+					</section>
+				</div>
+				<div id="footer-bottom">
+					Copyright © 2015 DSU-CRAB - All rights reserved
+				</div>
+			</footer>
+		{% endblock %}
 	
 		{% block javascripts %}
 			<script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>

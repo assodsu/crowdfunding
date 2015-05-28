@@ -26,6 +26,7 @@ class EntrepriseAdmin extends Admin
             ->add('googleplus')
             ->add('dateCreationEntreprise')
             ->add('roles')
+            ->add('certified', null, array('label' => 'Certifié'))
             ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
@@ -37,6 +38,7 @@ class EntrepriseAdmin extends Admin
             ->add('nomEntreprise')
             ->add('email')
             ->add('numSiret')
+            ->add('certified', null, array('label' => 'Certifié'))
             ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
@@ -49,7 +51,8 @@ class EntrepriseAdmin extends Admin
             ->addIdentifier('nomEntreprise')
             ->add('email')
             ->add('numSiret')
-            ->add('enabled', null, array('label' => 'Activé'))
+            ->add('certified', null, array('label' => 'Certifié', 'editable' => true))
+            ->add('enabled', null, array('label' => 'Activé', 'editable' => true))
         ;
     }
 }

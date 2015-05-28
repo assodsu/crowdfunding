@@ -39,6 +39,12 @@ class Thread
      */
     protected $comments;
 
+    public function __construct() 
+    {
+        $this->setNbComment(0);
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get id
      *
@@ -72,14 +78,7 @@ class Thread
     {
         return $this->nbComment;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
+    
     /**
      * Set projet
      *
