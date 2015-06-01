@@ -1,0 +1,94 @@
+body {
+	color: #fff;
+	background: #5C97BF;
+	padding-top: 50px;
+	text-align: center;
+}
+
+h1 { 
+	font-size: 4em;
+}
+
+.container-inner {
+	width: 500px;
+	margin: 0px auto;
+}
+
+.form-register label {
+	font-size: 24px;
+	font-weight: 400;
+}
+
+.form-register input {
+	margin-bottom: 20px;
+}
+
+.form-register .btn {
+	margin-top: 10px;
+	width: 100%;
+}
+
+#steps {
+	text-align: left;
+	width: 960px;
+	margin: 60px auto;
+	position: relative;
+}
+
+.line-step {
+	width: 930px;
+	height: 20px;
+	background: #2574A9;
+	position: absolute;
+	top: 30px;
+	left: 15px;
+	z-index: 1;
+}
+
+.step-number {
+	background: #2574A9;
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
+	border-radius: 40px;
+	margin-right: 133px;
+	position: relative;
+	z-index: 2;
+	text-align: center;
+	color: #D8D8D8;
+	font-size: 36px;
+}
+
+.step {
+	display: inline-block;
+}
+
+.step-last {
+	margin-right: 0px;
+}
+
+.step-active {
+	vertical-align: middle;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	border-radius: 30px;
+	margin: 0px auto;
+	background: #D8D8D8;
+	margin-top: 10px;
+	color: #2574A9;
+}
+
+.step-text {
+	font-size: 13px;
+	text-align: center;
+	width: 100px;
+	margin-left: -10px;
+	margin-top: 10px;
+}
+
+.step a {
+	text-decoration: none;
+	color: #D8D8D8;
+}
