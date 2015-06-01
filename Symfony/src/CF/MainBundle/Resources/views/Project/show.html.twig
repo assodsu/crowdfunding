@@ -10,6 +10,8 @@
 	<link href="{{asset('css/style_participer_projet.css')}}" rel="stylesheet"/>
 {% endblock %}
 
+{% block footer %}{% endblock %}
+
 {% set pourcentageHumain = 0.0 %}
 {% set pourcentageMateriel = 0.0 %}
 {% set pourcentageComm = 0.0 %}
@@ -68,7 +70,7 @@
 							<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> Google+</a>
 						</div>
 					</div>
-					<a href="{{ path('fos_user_profile_user_show', { 'slug': projet.association.slug }) }}" class='btn btn-default'>Voir le profil <i class="fa fa-search"></i></a>
+					<a href="{{ path('fos_user_profile_show', { 'slug': projet.association.slug }) }}" class='btn btn-default'>Voir le profil <i class="fa fa-search"></i></a>
 				</div>
 			</div>
 			<div id='project-title'>{{ projet.nom }}</div>

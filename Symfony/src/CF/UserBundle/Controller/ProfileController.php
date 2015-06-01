@@ -31,27 +31,9 @@ use CF\UserBundle\Entity\User;
 class ProfileController extends Controller
 {
     /**
-     * Show the user
-     */
-    public function showAction()
-    {
-        $user = $this->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
-        }
-
-        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('association' => $user));
-
-        return $this->render('FOSUserBundle:Profile:show.html.twig', array(
-            'user' => $user,
-            'projets' => $projets
-        ));
-    }
-
-    /**
      * Consulting user's profile
      */
-    public function userShowAction(User $user)
+    public function showAction(User $user)
     {
         $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('association' => $user));
 

@@ -54,7 +54,7 @@ class ParticulierAdmin extends Admin
             ->add('nom')
             ->add('prenom')
             ->add('benevole')
-            ->add('enabled', null, array('label' => 'Activé'))
+            ->add('enabled', null, array('label' => 'Activé', 'editable' => true))
         ;
     }
 }

@@ -29,6 +29,7 @@ class AssociationAdmin extends Admin
             ->add('roles')
             ->add('badges')
             ->add('projetsSuivis')
+            ->add('certified', null, array('label' => 'Certifié'))
             ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
@@ -41,6 +42,7 @@ class AssociationAdmin extends Admin
             ->add('ville')
             ->add('email')
             ->add('numWaldec')
+            ->add('certified', null, array('label' => 'Certifié'))
             ->add('enabled', null, array('label' => 'Activé'))
         ;
     }
@@ -54,6 +56,7 @@ class AssociationAdmin extends Admin
             ->add('ville')
             ->add('email')
             ->add('numWaldec')
+            ->add('certified', null, array('label' => 'Certifié', 'editable' => true))
             ->add('enabled', null, array('label' => 'Activé', 'editable' => true))
        ;
     }

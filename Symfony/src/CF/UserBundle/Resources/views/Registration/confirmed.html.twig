@@ -4,13 +4,21 @@
 	{{ parent() }} - Confirmation d'inscription
 {% endblock %}
 
+{% block footer %}{% endblock %}
+
 {% block stylesheets %}
 	{{ parent() }}
-	<link href="{{ asset('css/style_register_form.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('css/style_registration_confirmed.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
-	 <p>
-	 	Félicitations, vous pouvez maintenant profiter pleinement de nos services !
-	 </p>
+	<h1>Inscription réussie !</h1>
+	<p>Vous pouvez maintenant profiter pleinement de nos services !</p>
+	<a href="{{ path('fos_user_profile_show', { slug : app.user.slug }) }}" class="btn btn-success">Accéder à votre profil<i class="fa fa-user"></i></a>
+	{% if is_granted('ROLE_ASSOCIATION') %}
+		<a href="{{ path('cf_main_addProjects') }}" class="btn btn-success">Déposer un projet<i class="fa fa-file-text"></i></a>
+	{% else %}
+		<a href="{{ path('cf_main_allProjects') }}" class="btn btn-success">Parcourir les projets<i class="fa fa-file-text"></i></a>
+	{% endif %}
+	<a href="{{ path('cf_main_homepage') }}" class="btn btn-success">Retourner à l'accueil<i class="fa fa-home"></i></a>
 {% endblock %}

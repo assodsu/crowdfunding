@@ -21,6 +21,7 @@ class Entreprise extends User
         $this->setTypeUser('Entreprise');
         $this->setUsername(uniqid());
         $this->setRoles(array('ROLE_ENTREPRISE'));
+        $this->setCertified(false);
     }
 
 
@@ -40,6 +41,11 @@ class Entreprise extends User
      * @ORM\Column(type="date")
      */
     protected $dateCreationEntreprise;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $certified;
 
     /**
      * Get id
@@ -95,5 +101,29 @@ class Entreprise extends User
     public function getDateCreationEntreprise()
     {
         return $this->dateCreationEntreprise;
+    }
+
+    /**
+     * Set certified
+     *
+     * @param boolean $certified
+     *
+     * @return Entreprise
+     */
+    public function setCertified($certified)
+    {
+        $this->certified = $certified;
+
+        return $this;
+    }
+
+    /**
+     * Get certified
+     *
+     * @return boolean
+     */
+    public function getCertified()
+    {
+        return $this->certified;
     }
 }

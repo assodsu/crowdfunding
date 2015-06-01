@@ -12,47 +12,100 @@
 {% set menulink_param = 1 %}
 
 {% block cfuserbundle_body %}
-	<div id="block-body">
-		<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-			{{ form_start(form) }}
-			<div class="panel-heading">
-				<div id="layer"></div>
-				<div class="logo-name">
-					<img id='logo' class="img-circle" src="{{asset( app.user.logo.AssetPath )}}" alt="Logo" />
-					<div class="logo-username">
-						<h1>{{ app.user.nom }}</h1>
-						<!-- Affichage du type d'utilisateur -->
-						<h2>
-							{% if (app.user.typeUser == "Particulier") and (app.user.benevole == 1) %}
-								- Bénévole
-							{% else %}
-								- {{ app.user.typeUser }}
-							{% endif %}
-						</h2>
-					</div>
-				</div>
-				<div class="content-panel-heading">
-					<ul class="nav nav-tabs btn-group" role='group'>
-						<li class="btn btn-default"><a href="{{ path('fos_user_profile_show') }}">Annuler</a></li>
-						<li class="btn btn-default"><input type="submit" value="Enregistrer"/></li>
-					</ul>
+	<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+		{{ form_start(form) }}
+		<div class="panel-heading">
+			<img src="{{ asset('images/6.jpg')}}" id="banner"/>
+			<div class="logo-name">
+				{% if app.user.typeUser == 'Particulier' and app.user.benevole %}
+					<p id='label'>Bénévole <i class="fa fa-check"></i></p>
+				{% elseif app.user.typeUser == 'Association' and app.user.certified %}
+					<p id='label'>Association certifiée <i class="fa fa-check"></i></p>
+				{% elseif app.user.typeUser == 'Entreprise' and app.user.certified %}
+					<p id='label'>Entreprise certifiée <i class="fa fa-check"></i></p>
+				{% else %}
+					<p id='label' style="visibility: hidden;">Bénévole <i class="fa fa-check"></i></p>
+				{% endif %}
+				<img id='logo' class="img-circle" src="{{asset( app.user.logo.AssetPath )}}" alt="Logo" />
+				<div class="logo-username">
+					<h1>{{ app.user.nom }}</h1>
+					<h2>
+						{% if (app.user.typeUser == "Particulier") and (app.user.benevole == 1) %}
+							Bénévole
+						{% else %}
+							{{ app.user.typeUser }}
+						{% endif %}
+					</h2>
 				</div>
 			</div>
-			<div class="panel-body">				
-                {{ form_errors(form) }}
-				<div class="tab-content">
-					<div class="tab-pane fade in active" id="tab1">
-						{% if app.user.typeUser == "Association" %}
-							{% include "CFUserBundle:Profile:tabProfil/association_edit.html.twig" %}
-	                	{% elseif app.user.typeUser == "Entreprise" %}
-							{% include "CFUserBundle:Profile:tabProfil/entreprise_edit.html.twig" %}
-	                	{% else %}
-							{% include "CFUserBundle:Profile:tabProfil/particulier_edit.html.twig" %}
+		</div>
+		<div class="content-panel-heading">
+			<ul class="nav nav-tabs btn-group" role='group'>
+				<a class="btn btn-danger" href="{{ path('fos_user_profile_show', { slug : app.user.slug }) }}">Annuler</a>
+				<input type="submit" value="Enregistrer" class="btn btn-success" />
+			</ul>
+		</div>
+		<div class="panel-body">				
+            {{ form_errors(form) }}
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="tab1">
+					<div class="tab-box">
+						<h1>Description</h1>
+						{% if app.user.typeUser == 'Association' %}
+							<p>Date de création : {{ app.user.dateCreationAsso|date("d/m/Y") }}</p>
+							<p>N° WALDEC : {{ app.user.numWaldec }}</p>
+							<p>{{ form_widget(form.descriptionAsso) }}</p>
+						{% elseif app.user.typeUser == 'Entreprise' %}
+							<p>Date de création : {{ app.user.dateCreationEntreprise|date("d/m/Y") }}</p>
+							<p>N° SIRET : {{ app.user.numSiret }}</p>
+						{% elseif app.user.typeUser == 'Particulier' %}
+							<p>Date de naissance : {{ form_row(form.dateNaissance) }}</p>
+							<p>Bénévole : {{ form_row(form.benevole) }}</p>
+							<p>Nom : {{ form_row(form.name) }}</p>
+							<p>Prénom : {{ form_row(form.firstname) }}</p>
+							<p>Sexe : {{ form_row(form.sexe) }}</p>
+							<p>Ville : {{ form_row(form.ville) }}</p>
+							<p>Code postal : {{ form_row(form.cp) }}</p>
+							<p>Adresse : {{ form_row(form.adresse) }}</p>
 						{% endif %}
 					</div>
+					<div class="tab-box">
+						<h1>Informations</h1>
+					  	<table class="table">
+					        <tbody>
+								<tr><td>Site web :</td><td>{{ form_row(form.site) }}</td></tr>
+								<tr><td>Réseaux sociaux :</td>
+									<td>
+										<span class="fa fa-facebook"></span> <div class="reseaux_sociaux"> {{ form_row(form.facebook) }}</div><br>
+					                    <span class="fa fa-twitter"></span> <div class="reseaux_sociaux">{{ form_row(form.twitter) }}</div><br>
+					                    <span class="fa fa-google-plus"></span> <div class="reseaux_sociaux">{{ form_row(form.googleplus) }}</div>
+									</td>
+								</tr>
+								<tr><td>Adresse Email :</td><td>{{ form_row(form.email) }}</td></tr>
+								<tr><td>Tél. :</td><td>{{ form_row(form.telephone) }}</td></tr>
+					        </tbody>
+					    </table>
+					</div>
+					{% if app.user.typeUser == 'Association' or app.user.typeUser == 'Entreprise' %}
+						<div class="tab-box full">
+							<h1><i class="fa fa-map-marker"></i> Adresse</h1>
+							<div class="inner-left">
+						      	<table class="table">
+						            <tbody>
+										<tr><td>Ville :</td><td>{{ form_row(form.ville) }}</td></tr>
+										<tr><td>Code postal :</td><td>{{ form_row(form.cp) }}</td></tr>
+										<tr><td>Adresse :</td><td>{{ form_row(form.adresse) }}</td></tr>
+						            </tbody>
+						    	</table>
+							</div>
+							<div class="inner-right">
+								<img src="{{ asset('images/google-map.png') }}"  class="center-block" />
+							</div>
+						</div>
+					{% endif %}
 				</div>
 			</div>
-			{{ form_end(form) }}
-		</form>
-	</div>
+		</div>
+		{{ form_end(form) }}
+	</form>
 {% endblock %}

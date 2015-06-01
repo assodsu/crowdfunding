@@ -10,6 +10,7 @@ use CF\MainBundle\Form\ProjetEditType;
 use CF\MainBundle\Entity\Participation;
 use CF\MainBundle\Form\ParticipationType;
 use CF\MessageBundle\Entity\Conversation;
+use CF\CommentBundle\Entity\Thread;
 
 class ProjectController extends Controller
 {
@@ -51,6 +52,9 @@ class ProjectController extends Controller
                 $em = $this->getDoctrine()->getEntityManager();
                 $projet = $form->getData();
 
+                $thread = new Thread();
+                $thread->setProjet($projet);
+
                 $besoins = $projet->getBesoins();
                 foreach($besoins as $besoin)
                 {
@@ -80,6 +84,7 @@ class ProjectController extends Controller
                     $box->setProjet($projet);
                 }
                 
+                $em->persist($thread);
                 $em->persist($projet);
                 $em->flush();
 
@@ -197,9 +202,9 @@ class ProjectController extends Controller
                     }
                 }
 
-                    $user->removeProjetsSoutenus($projet);
-                    $user->addProjetsSoutenus($projet);
-                    $em->persist($user);
+                $user->removeProjetsSoutenus($projet);
+                $user->addProjetsSoutenus($projet);
+                $em->persist($user);
             
                 $em->persist($participation);
                 $em->persist($conversation);
