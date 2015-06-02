@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	var $containerBesoins = $('div#cf_mainbundle_projet_besoins');
 
-	var $lienAjoutBesoins = $('<a href="#" id="ajout_besoin" class="btn btn-success"><i class="fa fa-plus"></i></a>');
+	var $lienAjoutBesoins = $('<div id="add-besoin-box"><a href="#">+</a></div>');
 
 	$lienAjoutBesoins.click(function(e) {
 		ajouterBesoin($containerBesoins);
@@ -26,14 +26,20 @@ $(document).ready(function() {
 
 		ajouterLienSuppressionBesoin($prototype);
 		$containerBesoins.append($prototype);
+		$containerBesoins.append('</div>');
+
 		indexBesoin++;
 
 		$containerBesoins.append($lienAjoutBesoins);
 	}
 
 	function ajouterLienSuppressionBesoin($prototype) {
-		$lienSuppression = $('<a href="#" class="btn btn-danger" id="suppr_besoin"><i class="fa fa-minus"></i></a>');
-		$prototype.append($lienSuppression);
+		$lienSuppression = $('<a href="#" class="delete-button"><span class="glyphicon glyphicon-remove"></span></a>');
+		$boite = $('<div class="besoin-box green" id="box-'+indexBesoin+'"></div>');
+		$boite.append($lienSuppression);
+		$boite.append('<div class="header-besoin-box"><span class="glyphicon glyphicon-user"></span></div>');
+		$($prototype.children('div#cf_mainbundle_projet_besoins_'+indexBesoin)).appendTo($boite);
+		$prototype.append($boite);
 
 		$lienSuppression.click(function(e) {
 			$prototype.remove();
@@ -41,6 +47,40 @@ $(document).ready(function() {
 			return false;
 		});
 	}
+
+	$(document).on('change', '.body-besoin', function(){
+
+		var index = $(this).attr('id');
+		console.log(index);
+		index = jQuery.trim(index).substring(29, 30);
+		console.log(index);
+
+		var newColor = "";
+		var icon = "";
+
+		if($(this).val() == 'benevole')
+		{
+			newColor = "green";
+			icon = "user";
+		}
+		else if($(this).val() == 'financier')
+		{
+			newColor = "red";
+			icon = "euro";
+		}
+		else if($(this).val() == 'materiel')
+		{
+			newColor = "purple";
+			icon = "tag";
+		}
+		else if($(this).val() == 'communication')
+		{
+			newColor = "grey";
+			icon = "tag";
+		}
+		$('#box-'+index).children('div.header-besoin-box').children('span').attr('class', "glyphicon glyphicon-"+icon);
+		$('#box-'+index).attr('class', "besoin-box "+newColor);
+    });
 
 	/**** BOXS HISTOIRE ****/
 
