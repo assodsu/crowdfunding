@@ -10,8 +10,6 @@
 	<link href="{{asset('css/style_participer_projet.css')}}" rel="stylesheet"/>
 {% endblock %}
 
-{% block footer %}{% endblock %}
-
 {% set pourcentageHumain = 0.0 %}
 {% set pourcentageMateriel = 0.0 %}
 {% set pourcentageComm = 0.0 %}
@@ -65,9 +63,9 @@
 					<div id='content-infos-second-row'>
 						<div id='town-asso'>{{ projet.association.ville }}</div>
 						<div id="reseaux_sociaux">
-							<a href="#" id="facebook"><span class="fa fa-facebook"></span> Facebook</a>
-							<a href="#" id="twitter"><span class="fa fa-twitter"></span> Twitter</a>
-							<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> Google+</a>
+							<a href="#" id="facebook"><span class="fa fa-facebook"></span> <span class="social">Facebook</span></a>
+							<a href="#" id="twitter"><span class="fa fa-twitter"></span> <span class="social">Twitter</span></a>
+							<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> <span class="social">Google+</span></a>
 						</div>
 					</div>
 					<a href="{{ path('fos_user_profile_show', { 'slug': projet.association.slug }) }}" class='btn btn-default'>Voir le profil <i class="fa fa-search"></i></a>
@@ -123,9 +121,9 @@
 				<li class="btn btn-default"><a href="#tabcomments" data-toggle="tab">Commentaires</a></li>
 				<li class="btn btn-default"><a href="#tabmore" data-toggle="tab">Plus d'informations</a></li>
 				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.hasProjetsSuivis(projet) %}
-					<li class="btn btn-default"><a href="{{ path('cf_main_not_suivre_projet', {id: projet.id}) }}">Ne plus suivre le projet</a></li>
+					<li class="btn btn-default"><a href="{{ path('cf_main_not_suivre_projet', {id: projet.id}) }}"><i class="fa fa-star" style="color:grey;"></i> Ne plus suivre le projet</a></li>
 				{% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-					<li class="btn btn-default"><a href="{{ path('cf_main_suivre_projet', {id: projet.id}) }}">Suivre le projet</a></li>
+					<li class="btn btn-default"><a href="{{ path('cf_main_suivre_projet', {id: projet.id}) }}"><i class="fa fa-star" style="color:gold;"></i> Suivre le projet</a></li>
 				{% endif %}
 			</ul>
 		</div>

@@ -75,9 +75,26 @@ $(document).ready(function(){
 		}
 	});
 
-	$('.apercu').mouseenter(function(){
-		$(this).children('div.filter').animate({ width: '45%'}, {queue : false, duration:300});
-	}).mouseleave(function(){
-		$(this).children('div.filter').animate({ width: '40%'}, {queue : false, duration:300});
-	});
+	if($(window).width() >= 520)
+	{
+		$('.apercu').mouseenter(function(){
+			if ($(window).width() >= 960) 
+			{
+				$(this).children('div.filter').animate({ width: '45%'}, {queue : false, duration:300});
+			}
+			else
+			{
+				$(this).children('div.filter').animate({ width: '75%'}, {queue : false, duration:300});
+			}
+		}).mouseleave(function(){
+			if ($(window).width() >= 960) 
+			{
+			$(this).children('div.filter').animate({ width: '40%'}, {queue : false, duration:300});
+			}
+			else
+			{
+			$(this).children('div.filter').animate({ width: '70%'}, {queue : false, duration:300});
+			}
+		});
+	}
 });

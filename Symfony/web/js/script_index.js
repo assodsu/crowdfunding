@@ -71,6 +71,7 @@ $(document).ready(function() {
 				nextArrow: '<button type="button" class="slick-next">></button>'
 
 			});
+			$('.project-infos .title').css('font-size','13px');
 		}
 		else if($(window).width() <= 960 )
 		{
@@ -84,6 +85,7 @@ $(document).ready(function() {
 				nextArrow: '<button type="button" class="slick-next">></button>'
 
 			});
+			$('.project-infos .title').css('font-size','20px');
 		}
 		else
 		{
@@ -95,8 +97,8 @@ $(document).ready(function() {
 				focusOnSelect: true,
 				prevArrow: '<button type="button" class="slick-prev"><</button>',
 				nextArrow: '<button type="button" class="slick-next">></button>'
-
 			});
+			$('.project-infos .title').css('font-size','22px');
 		}
 	}
 

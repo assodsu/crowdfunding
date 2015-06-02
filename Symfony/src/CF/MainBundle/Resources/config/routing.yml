@@ -9,9 +9,3 @@ cf_main_project:
 cf_main_projects:
     resource: routing/projects.yml
     prefix: /projets
-
-cf_main_contact:
-    path:    /contact
-    defaults: { _controller: CFMainBundle:Page:contact }
-    requirements:
-        _method: GET

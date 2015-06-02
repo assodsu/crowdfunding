@@ -47,12 +47,14 @@
 								{% set nbNotifs = nbNotifs + 1 %}
 							{% endif %}
 						{% endfor %}
-						<li class="dropdown">
-							<a id="drop-user" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-			                	<span class="badge">{{ nbNotifs }}</span>
-			              	</a>
-			              	{{ render(controller('CFNotificationBundle:Notification:index'))}}
-			            </li>
+						{% if nbNotifs > 0 %}
+							<li class="dropdown">
+								<a id="drop-notif" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+				                	<span class="badge">{{ nbNotifs }}</span>
+				              	</a>
+				              	{{ render(controller('CFNotificationBundle:Notification:index'))}}
+				            </li>
+			            {% endif %}
 						<li class="dropdown">
 			              <a id="drop-user" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
 			                <img src="{{asset( app.user.logo.AssetPath )}}">

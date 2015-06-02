@@ -29,6 +29,11 @@ class Actualite
     private $titre;
 
     /**
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="contenu", type="text")
@@ -36,11 +41,15 @@ class Actualite
     private $contenu;
 
     /**
-    *@ @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Projet", inversedBy="actualites")
+    *  @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Projet", inversedBy="actualites")
     *  @ORM\JoinColumn(name="projet")
     */
      private $projet;
 
+    public function __construct()
+    {
+        $this->setDate(new \DateTime());
+    }
 
     /**
      * Get id
@@ -119,5 +128,29 @@ class Actualite
     public function getProjet()
     {
         return $this->projet;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Actualite
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }
