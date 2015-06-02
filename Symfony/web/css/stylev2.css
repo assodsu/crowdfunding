@@ -39,6 +39,14 @@ body {
   text-align: center;
 }
 
+.alert-top-success {
+  background-color: #2ecc71;
+}
+
+.alert-top-danger {
+  background-color: #e74c3c;
+}
+
 /*** NAVIGATION ***/
 nav {
   height:50px;
@@ -462,6 +470,9 @@ footer #footer-bottom {
   color: #3498DB;
   text-decoration: none;
 }
+.navigation-bar-right li.btn-modal-sign a {
+  padding-top: 13px;
+}
 #toggle-menu {
   display: none;
   position: absolute;
@@ -472,6 +483,123 @@ footer #footer-bottom {
   border: 1px solid rgb(72, 72, 72);
   border-radius: 5px;
 }
+
+/* --------------------- */
+/* -- MODAL CONNEXION -- */
+/* --------------------- */
+.modal-connexion-dialog {
+  width: 400px !important;
+  margin: 20px auto;
+}
+.modal-connexion-content {
+  margin: auto;
+}
+.modal-connexion-header {
+  background: #5C97BF;
+  padding: 6px 12px;
+}
+
+.modal-connexion-title {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 8px;
+  font-size: 26px;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 12px 0px;
+  margin: 0;
+}
+
+.modal-connexion-body {
+  background: #FFFFFF;
+  padding: 20px;
+  line-height: normal;
+}
+
+.modal-connexion-body p {
+  text-transform: none;
+  text-align: justify;
+  margin-bottom: 30px;
+  color: #000;
+  font-size: 14px;
+}
+
+.modal-connexion-body input {
+  border: none;
+  padding-bottom: 8px;
+  width: 100%;
+  border-bottom: 1px solid #5A5F69;
+}
+
+.modal-connexion-body input:focus {
+  border: none;
+  outline:  none;
+  border-bottom: 1px solid #5A5F69;
+}
+
+.modal-connexion-body label {
+  font-weight: normal;
+  text-transform: none;
+  color: #000;
+}
+
+.modal-connexion-body a {
+  color: #5A5F69;
+  padding: 0;
+}
+
+.modal-connexion-body a:hover {
+  color: #5A5F69;
+  padding: 0;
+  text-decoration: underline;
+}
+
+input#remember_me.modal-connexion-checkbox {
+  width: 20px;
+}
+
+p.modal-connexion-center {
+  text-align: center;
+  line-height: 26px;
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.modal-connexion-footer {
+  background: #5C97BF;
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.modal-connexion-body .btn-success {
+  background: #73D78C;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  text-align: center;
+  border: none;
+  border-radius: 0px;
+}
+
+.modal-connexion-body .btn-success:hover {
+  opacity: 0.85;
+}
+
+.modal-connexion-footer .btn-primary {
+  background: #2574A9;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  text-align: center;
+  border: none;
+  border-radius: 0px;
+}
+
+.modal-connexion-footer .btn-primary:hover {
+  background: #FFF;
+  color: #2574A9;
+}
+
 @media (max-width: 760px) {
   #toggle-menu {
     display:block;

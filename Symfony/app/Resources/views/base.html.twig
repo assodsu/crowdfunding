@@ -73,8 +73,7 @@
 			              </ul>
 			            </li>
 				    {% else %}
-				      	<li><a href="#connexion" data-toggle="modal" data-target="#connection-modal"><i class="fa fa-sign-in"></i></a></li>
-				      	<li><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user-plus"></i></a></li>
+				      	<li class="btn-modal-sign"><a href="#connexion" data-toggle="modal" data-target="#connection-modal"><i class="fa fa-sign-in"></i></a></li>
 			      	{% endif %}
 			    </div>
 			    <button id="toggle-menu"><i class="fa fa-bars"></i></button>
@@ -91,7 +90,7 @@
 
 		<section id="main">
 		{% block body %}
-
+			
 		{% endblock %}
 		{{ render(controller('FOSUserBundle:Security:loginModal')) }}
 		</section>
@@ -126,7 +125,7 @@
 							<li><a href="#">Nos partenaires</a></li>
 							<li><a href="#">Les développeurs</a></li>
 							<li><a href="#">Conditions générales</a></li>
-							<li><a href="#">A propos</a></li>
+							<li><a href="#">À propos</a></li>
 						</ul>
 					</section>
 				</div>

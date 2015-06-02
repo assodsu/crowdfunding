@@ -1,5 +1,5 @@
 {% trans_default_domain 'FOSUserBundle' %}
-<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="form-user">
     <div class="connexion-content">
        {% if form_errors(form.plainPassword.first) %}
 		    <div class="alert alert-info alert-dismissible" role="alert">
@@ -12,11 +12,13 @@
         </p>
 
         <div class="form-group">
-            {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Entrez un nouveau mot de passe'} }) }}
+            <label>nouveau mot de passe</label>
+            {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
         </div>
 
         <div class="form-group">
-            {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Confirmez nouveau mot de passe'} }) }}
+            <label>confirmation du nouveau mot de passe</label>
+            {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
         </div>
 
         {{ form_rest(form) }}

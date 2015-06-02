@@ -1,0 +1,49 @@
+body {
+	color: #fff;
+	background: #5C97BF;
+	padding-top: 50px;
+	text-align: center;
+}
+
+h1 { 
+	font-size: 4em;
+	margin-bottom: 40px;
+}
+
+.form-user label {
+	font-size: 24px;
+	font-weight: 400;
+}
+
+.form-user input, .form-user textarea, .form-user select {
+	margin-bottom: 20px;
+	background: #2574A9;
+	color: #fff;
+	border: none;
+}
+
+.form-user .btn {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	width: auto;
+	background: #2574A9;
+	color: #FFF;
+}
+
+.form-user .btn:hover {
+	background: #FFF;
+	color: #5C97BF;
+}
+
+.connexion-center {
+	font-size: 14px;
+}
+
+@media (min-width: 992px) {
+	.form-user input, .form-user textarea, .form-user select {
+		width: 500px;
+		text-align: center;
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
