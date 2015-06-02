@@ -28,9 +28,7 @@ class RegistrationEntrepriseFormType extends AbstractType{
 
             ->add('numSiret', null, array('label' => "Numéro SIRET : "))
 
-            ->add('dateCreationEntreprise', null, array('label' => "Date de création : ",
-                                                          'years' => range(date('Y')-100,date('Y')))
-                                                          )
+            ->add('dateCreationEntreprise', 'date', array('widget' => 'single_text', 'input' => 'datetime', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control datepicker')))
 
             ->add('ville', null, array('label' => "Ville : "))
 

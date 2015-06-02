@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="cf_user_users")
@@ -32,6 +34,7 @@ abstract class User extends BaseUser
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Le nom ne doit pas être vide")
      */
     protected $nom;
 
@@ -42,16 +45,19 @@ abstract class User extends BaseUser
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank(message="Veuillez indiquer un nom de ville")
      */
     protected $ville;
 
     /**
      * @ORM\Column(type="string", length=5, nullable=true)
+     * @Assert\NotBlank(message="Veuillez indiquer un code postal")
      */
     protected $cp = null;
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
+     * @Assert\NotBlank(message="Veuillez indiquer un numéro de téléphone")
      */
     protected $telephone = null;
 

@@ -87,39 +87,60 @@ $(document).ready(function() {
 	}
 
 	/**** NAVIGATION ****/
-	var step = $('.stepwizard a');
-	var allForms = $('.step-content');
+    var navListItems = $('.step a'), allWells = $('.row.step-content');
 
-	allForms.hide();
-	$('#step-1').show();
+    allWells.hide();
+    $('#step-1').show();
 
-	step.click(function(e) {
-		var $target = $($(this).attr('href'));
+    navListItems.click(function(e)
+    {
+        e.preventDefault();
+        var target = $($(this).attr('href'));
+        var numberStep = '1';
+        console.log(target);
 
-		e.preventDefault();
-		allForms.hide(0);
-		$target.slideDown(1000);
-		step.closest('a').children().switchClass("btn-primary", "btn-default", 1000, "easeInOutQuad");
-		$(this).children().switchClass("btn-default", "btn-primary", 1000, "easeInOutQuad");
-	});
+        if ($(this).hasClass('step-1')) {
+            numberStep = '1';
+        } else if ($(this).hasClass('step-2')) {
+            numberStep = '2';
+        } else if ($(this).hasClass('step-3')) {
+            numberStep = '3';
+        } else if ($(this).hasClass('step-4')) {
+            numberStep = '4';
+        } else {
+            numberStep = '5';
+        }
 
-	$('#activate-step-2').on('click', function(e) {
-		allForms.hide();
-		$('a[href="#step-2"] button').removeAttr('disabled').trigger('click');
-	});
+        $('.step-' + numberStep).html('<div class="step-active">'+numberStep+'</div>');
+        
+        allWells.hide();
+        target.show();
+    });
 
-	$('#activate-step-3').on('click', function(e) {
-		allForms.hide();
-		$('a[href="#step-3"] button').removeAttr('disabled').trigger('click');
-	});
+    $('.step-last a').click(function(e)
+    {
+        e.preventDefault();
+        var target = $($(this).attr('href'));
+        var numberStep = '5';
+        $('.step-' + numberStep).html('<div class="step-active">'+numberStep+'</div>');
+        
+        allWells.hide();
+        target.show();
+    });
 
-	$('#activate-step-4').on('click', function(e) {
-		allForms.hide();
-		$('a[href="#step-4"] button').removeAttr('disabled').trigger('click');
-	});
+    $('#activate-step-2').on('click', function(e) {
+        $('a.step-2').trigger('click');
+    });
 
-	$('#activate-step-5').on('click', function(e) {
-		allForms.hide();
-		$('a[href="#step-5"] button').removeAttr('disabled').trigger('click');
-	});
+    $('#activate-step-3').on('click', function(e) {
+        $('a.step-3').trigger('click');
+    });
+
+    $('#activate-step-4').on('click', function(e) {
+        $('a.step-4').trigger('click');
+    });
+
+    $('#activate-step-5').on('click', function(e) {
+        $('a.step-5').trigger('click');   
+    });
 });

@@ -31,6 +31,17 @@ $(document).ready(function(){
         target.show();
     });
 
+    $('.step-last a').click(function(e)
+    {
+        e.preventDefault();
+        var target = $($(this).attr('href'));
+        var numberStep = '5';
+        $('.step-' + numberStep).html('<div class="step-active">'+numberStep+'</div>');
+        
+        allWells.hide();
+        target.show();
+    });
+
     $('#activate-step-2').on('click', function(e) {
         $('a.step-2').trigger('click');
     });

@@ -8,6 +8,7 @@
 {% block stylesheets %}
 	{{ parent() }}
 	<link href="{{ asset('css/style_register_form.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/jquery.datetimepicker.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
@@ -33,94 +34,93 @@
             <a class="step-number step-4" href="#step-4">4</a>
             <div class="step-text">Réseaux sociaux</div>
         </div>
-        <div class="step">
-            <a class="step-number step-5 step-last" href="#step-5">5</a>
+        <div class="step-last">
+            <a class="step-number step-5" href="#step-5">5</a>
             <div class="step-text">Description</div>
         </div>
     </div>
 </div>
 
-<div class="container-inner">
-    <form action="{{ path('association_registration') }}" {{ form_enctype(form) }} method="POST" class="form-register">
-        <!--<div class="alert alert-danger alert-dismissible" role="alert">
-            {{ form_errors(form.email) }}
-            {{ form_errors(form.plainPassword.first) }}
-            {{ form_errors(form.nom) }}
-            {{ form_errors(form.logo) }}
-            {{ form_errors(form.numWaldec) }}
-            {{ form_errors(form.dateCreationAsso) }}
-            {{ form_errors(form.telephone) }}
-            {{ form_errors(form.adresse) }}
-            {{ form_errors(form.cp) }}
-            {{ form_errors(form.ville) }}
-        </div>-->
+<div class="row">
+    <div class="col-sm-offset-2 col-xs-offset-1 col-sm-8 col-xs-10">
+    <form action="{{ path('association_registration') }}" method="POST" class="form-register">
+        {{ form_errors(form.email) }}
+        {{ form_errors(form.plainPassword.first) }}
+        {{ form_errors(form.nom) }}
+        {{ form_errors(form.logo) }}
+        {{ form_errors(form.numWaldec) }}
+        {{ form_errors(form.dateCreationAsso) }}
+        {{ form_errors(form.telephone) }}
+        {{ form_errors(form.adresse) }}
+        {{ form_errors(form.cp) }}
+        {{ form_errors(form.ville) }}
+
         {{ form_start(form) }}
-        {{ form_errors(form) }}
 
         <div class="row step-content" id="step-1">
-            {{ form_label(form.email) }}
+            {{ form_label(form.email, 'adresse e-mail') }}
             {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
 
-            {{ form_label(form.plainPassword.first) }}
+            {{ form_label(form.plainPassword.first, 'nouveau mot de passe') }}
             {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
 
-            {{ form_label(form.plainPassword.second) }}
+            {{ form_label(form.plainPassword.second,'confirmation du mot de passe') }}
             {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }} 
 
-            <a id="activate-step-2" class="btn btn-success btn-lg">Etape suivante</a>
+            <a id="activate-step-2" class="btn btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
         </div>
 
         <div class="row step-content" id="step-2">
-            {{ form_label(form.nom) }}
+            {{ form_label(form.nom, 'nom de votre association') }}
             {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }} 
        
-            {{ form_label(form.logo) }}
+            {{ form_label(form.logo, 'logo de votre association') }}
             {{ form_widget(form.logo) }} 
         
-            {{ form_label(form.numWaldec) }}
+            {{ form_label(form.numWaldec, 'numéro waldec') }}
             {{ form_widget(form.numWaldec, { 'attr': {'class': 'form-control'} }) }} 
         
-            {{ form_label(form.dateCreationAsso) }}
+            {{ form_label(form.dateCreationAsso, 'date de création de votre association') }}
             {{ form_widget(form.dateCreationAsso) }} 
         
-            {{ form_label(form.telephone) }}
+            {{ form_label(form.telephone, 'téléphone') }}
             {{ form_widget(form.telephone, { 'attr': {'class': 'form-control'} }) }} 
         
 
-            <a id="activate-step-3" class="btn btn-success btn-lg">Etape suivante</a>
+            <a id="activate-step-3" class="btn btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
         </div>
                 
         <div class="row step-content" id="step-3">
-            {{ form_label(form.adresse) }}
+            {{ form_label(form.adresse, 'adresse') }}
             {{ form_widget(form.adresse, { 'attr': {'class': 'form-control'} }) }}
         
-            {{ form_label(form.cp) }}
+            {{ form_label(form.cp, 'code postal') }}
             {{ form_widget(form.cp, { 'attr': {'class': 'form-control'} }) }}
        
-            {{ form_label(form.ville) }}
+            {{ form_label(form.ville, 'ville') }}
             {{ form_widget(form.ville, { 'attr': {'class': 'form-control'} }) }} 
                 
-            <a id="activate-step-4" class="btn btn-success btn-lg">Etape suivante</a>
+            <a id="activate-step-4" class="btn btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
         </div>  
 
         <div class="row step-content" id="step-4">
-            {{ form_label(form.site) }}
+            {{ form_label(form.site, 'site internet') }}
             {{ form_widget(form.site, { 'attr': {'class': 'form-control'} }) }}
         
-            {{ form_label(form.facebook) }}
+            {{ form_label(form.facebook, 'facebook') }}
             {{ form_widget(form.facebook, { 'attr': {'class': 'form-control'} }) }}
         
-            {{ form_label(form.twitter) }}
+            {{ form_label(form.twitter, 'twitter') }}
             {{ form_widget(form.twitter, { 'attr': {'class': 'form-control'} }) }} 
         
-            {{ form_label(form.googleplus) }}
+            {{ form_label(form.googleplus, 'google+') }}
             {{ form_widget(form.googleplus, { 'attr': {'class': 'form-control'} }) }} 
         
-            <a id="activate-step-5" class="btn btn-success btn-lg">Etape suivante</a>
+            <a id="activate-step-5" class="btn btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
         </div>      
            
         <div class="row step-content" id="step-5">
-            {{ form_label(form.descriptionAsso) }}
+            {{ form_label(form.descriptionAsso, 'description de votre association') }}
             {{ form_widget(form.descriptionAsso, { 'attr': {'class': 'form-control'} }) }}
         
             <button type="submit" class="btn btn-success btn-lg">S'inscrire !</button>
@@ -129,9 +129,14 @@
         {{ form_end(form) }}
     </form>
 </div>
+</div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{asset('js/controle_form_asso.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/register.js') }}"></script>
+    <script src="{{ asset('js/jquery.datetimepicker.js') }}"></script>
+    <script>
+        jQuery('#fos_user_registration_form_dateCreationAsso').datetimepicker({lang:'fr',format:'d/m/Y'});
+    </script>
 {% endblock %}
