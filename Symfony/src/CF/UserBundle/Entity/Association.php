@@ -4,6 +4,7 @@ namespace CF\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -22,6 +23,7 @@ class Association extends User
         $this->setUsername(uniqid());
         $this->setRoles(array('ROLE_ASSOCIATION'));
         $this->setCertified(false);
+        $this->dateCreationAsso = new \Datetime();
     }
 
     /**
@@ -33,6 +35,7 @@ class Association extends User
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank(message="Le numéro Waldec doit être renseigné")
      */
     protected $numWaldec;
 
@@ -42,7 +45,7 @@ class Association extends User
     protected $dateCreationAsso;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $descriptionAsso;
 

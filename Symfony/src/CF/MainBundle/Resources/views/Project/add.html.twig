@@ -13,149 +13,75 @@
 {% endblock %}
 
 {% block body %}
-<section id="main-with-title">
-<div class="container-inner">
-	<div class="stepwizard">
-	    <div class="stepwizard-row">
-	        <div class="stepwizard-step"><a href="#step-1">
-	            <button type="button" class="btn btn-primary btn-circle">1</button></a>
-	            <p>Général</p>
-	        </div>
-	        <div class="stepwizard-step"><a href="#step-2">
-	            <button type="button" class="btn btn-default btn-circle" disabled="disabled">2</button></a>
-	            <p>Description</p>
-	        </div>
-	        <div class="stepwizard-step"><a href="#step-3">
-	            <button type="button" class="btn btn-default btn-circle" disabled="disabled">3</button></a>
-	            <p>Histoire</p>
-	        </div> 
-	         <div class="stepwizard-step"><a href="#step-4">
-	            <button type="button" class="btn btn-default btn-circle" disabled="disabled">4</button></a>
-	            <p>Ressources</p>
-	        </div>
-	        <div class="stepwizard-step"><a href="#step-5">
-	            <button type="button" class="btn btn-default btn-circle" disabled="disabled">5</button></a>
-	            <p>Informations</p>
-	        </div> 
-	    </div>
-	</div>
+<h1>Lancez votre projet !</h1>
+<div id="steps">
+    <div class="steps-circle">
+        <div class="line-step"></div>
+        
+        <div class="step">
+            <a class="step-number step-1" href="#step-1"><div class="step-active">1</div></a>
+            <div class="step-text">Général</div>
+        </div>
+        <div class="step">
+            <a class="step-number step-2" href="#step-2">2</a>
+            <div class="step-text">Description</div>
+        </div>
+        <div class="step">
+            <a class="step-number step-3" href="#step-3">3</a>
+            <div class="step-text">Histoire</div>
+        </div>
+        <div class="step">
+            <a class="step-number step-4" href="#step-4">4</a>
+            <div class="step-text">Ressources</div>
+        </div>
+        <div class="step-last">
+            <a class="step-number step-5" href="#step-5">5</a>
+            <div class="step-text">Informations</div>
+        </div>
+    </div>
+</div>
 
-	<form action="{{ path('cf_main_addProjects')}}" method="post" {{ form_enctype(form) }}>
-		{{ form_start(form) }}
-		{{ form_errors(form) }}
+<div class="row">
+    <div class="col-sm-offset-2 col-xs-offset-1 col-sm-8 col-xs-10">
+		<form action="{{ path('cf_main_addProjects')}}" method="post" class="form-add-project">
+			{{ form_start(form) }}
+			{{ form_errors(form) }}
 
-		<div class="row step-content" id="step-1">
-			<div class="fieldset">
-				<div class="fieldset-form">
-					<div class="form-group">
-						{{ form_row(form.nom) }}
-					</div>
-				</div>
-
-				<div class="fieldset-separator"></div>
-
-				<div class="fieldset-infos">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. Etiam luctus lorem non velit congue molestie. Vivamus pulvinar nibh velit, nec rutrum arcu interdum eu.
-				</div>
-			</div>
-
-			<div class="fieldset">
-				<div class="fieldset-form">
-					<div class="row">
-						<div class="col-md-4">
-							<img src="{{ asset('images/image.png') }}" alt="image" style="height: 100px;" />
-						</div>
-						<div class="col-md-8">
-								<div class="form-group">
-							    {{ form_row(form.background) }}
-							  </div>
-						</div>
-					</div>
-				</div>
-
-				<div class="fieldset-separator"></div>
-
-				<div class="fieldset-infos">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. 
-				</div>
-			</div>
-
-			<div class="fieldset">
-				<div class="fieldset-form">
-			        {{ form_row(form.tags) }}
-				</div>
-				<div class="fieldset-separator"></div>
-
-				<div class="fieldset-infos">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. Etiam luctus lorem non velit congue molestie. Vivamus pulvinar nibh velit, nec rutrum arcu interdum eu.
-				</div>
-			</div>
-
-			<div class="fieldset-btn">
+			<div class="row step-content" id="step-1">
+				{{ form_row(form.nom) }}
+				{{ form_row(form.background) }}  
+				{{ form_row(form.tags) }}
+					
 				<a id="activate-step-2" class="btn btn-primary btn-lg">Etape suivante</a>
 			</div>
-		</div>
 
-		<div class="row step-content" id="step-2">
-			<div class="fieldset">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci dolor, iaculis sed lorem at, tincidunt finibus tellus. Nulla nec dapibus dolor. Phasellus cursus erat vitae erat viverra maximus. 
-				</p>
-				<div class="row">
-					<div class="form-group">
-				   		{{ form_row(form.description) }}
-				  	</div>
-				</div>
-			</div>
-
-			<div class="fieldset-btn">
+			<div class="row step-content" id="step-2">
+				{{ form_row(form.description) }}
+					  	
 				<a id="activate-step-3" class="btn btn-primary btn-lg">Etape suivante</a>
-			</div>
-	    </div>
+		    </div>
 
-	    <div class="row step-content" id="step-3">
-	        <div class="fieldset">
-	            <div class="col-md-12 text-center">
-	                <div id="boites">
-  						{{ form_row(form.boxs) }}
-	                </div>
-                </div>
-	       	</div>
+		    <div class="row step-content" id="step-3">
+	  			{{ form_row(form.boxs) }}
 
-	       	<div class="fieldset-btn">
 				<a id="activate-step-4" class="btn btn-primary btn-lg">Etape suivante</a>
-			</div>
-	    </div>
+		    </div>
 
-	    <div class="row step-content" id="step-4">
-	        <div class="fieldset">
-	            <div class="col-md-12 text-center">
-	                <div id="ressources">
-						{{ form_row(form.besoins) }}
-	                </div>
-                </div>
-	        </div>     
-            <div class="fieldset-btn">
+		    <div class="row step-content" id="step-4">
+				{{ form_row(form.besoins) }}
+
 				<a id="activate-step-5" class="btn btn-primary btn-lg">Etape suivante</a>
-			</div>
-	    </div>
+		    </div>
 
-	    <div class="row step-content" id="step-5">
-	        <div class="fieldset">
-	            <div class="col-md-12 text-center">
-	                <h1>Informations supplémentaires</h1>
-	                <div class="container">
-                		{{ form_row(form.infoSup) }}
-		            </div>
-	    			<button type="submit" class="btn btn-success btn-lg"/>Créer !</button>
-	            </div>
-	        </div>
-	    </div>
+		    <div class="row step-content" id="step-5">
+	            {{ form_row(form.infoSup) }}
+		    	<button type="submit" class="btn btn-success btn-lg"/>Créer !</button>
+		    </div>
 
-	    {{ form_end(form) }}
-	</form>
+		    {{ form_end(form) }}
+		</form>
+	</div>
 </div>
-</section>
 {% endblock %}
 
 {% block javascripts %}

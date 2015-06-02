@@ -1,3 +1,106 @@
+body {
+	color: #fff;
+	background: #5C97BF;
+	padding-top: 50px;
+	text-align: center;
+}
+
+h1 { 
+	font-size: 4em;
+}
+
+.form-add-project label {
+	font-size: 24px;
+	font-weight: 400;
+}
+
+.form-add-project input, .form-add-project textarea, .form-add-project select {
+	margin-bottom: 20px;
+	background: #2574A9;
+	color: #fff;
+	border: none;
+}
+
+.form-add-project .btn {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	width: auto;
+	background: #2574A9;
+	color: #FFF;
+}
+
+.form-add-project .btn:hover {
+	background: #FFF;
+	color: #5C97BF;
+}
+
+#steps {
+	text-align: center;
+	width: 980px;
+	margin: 60px auto;
+	position: relative;
+}
+
+.line-step {
+	width: 940px;
+	height: 20px;
+	background: #2574A9;
+	position: absolute;
+	top: 30px;
+	left: 15px;
+	z-index: 1;
+}
+
+.step-number {
+	background: #2574A9;
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
+	border-radius: 40px;
+	position: relative;
+	z-index: 2;
+	text-align: center;
+	color: #FFF;
+	font-size: 36px;
+}
+
+.step {
+	display: inline-block;
+
+	margin-right: 125px;
+}
+
+.step-last {
+	display: inline-block;
+	margin-right: 0px;
+}
+
+.step-active {
+	vertical-align: middle;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	border-radius: 30px;
+	margin: 0px auto;
+	background: #FFF;
+	margin-top: 10px;
+	color: #2574A9;
+}
+
+.step-text {
+	font-size: 13px;
+	text-align: center;
+	width: 100px;
+	margin-left: -10px;
+	margin-top: 10px;
+}
+
+.step a, .step-last a {
+	text-decoration: none;
+	color: #FFF;
+}
+
 #boites, #ressources {
 	text-align: left;
 	background-color: rgb(66, 139, 202);
@@ -47,4 +150,63 @@
 	width:80%;
 	margin-left:auto;
 	margin-right:auto;
+}
+
+@media (min-width: 992px) {
+	.form-add-project input, .form-add-project textarea, .form-add-project select {
+		width: 500px;
+		text-align: center;
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+@media (max-width: 960px) {
+	#steps {
+		width: 760px;
+	}
+	.step {
+		margin-right: 70px;
+	}
+
+	.line-step {
+		width: 730px;
+		left: 15px;
+	}
+}
+
+@media (max-width: 768px) {
+	#steps {
+		width: 90%;
+	}
+	.step {
+		margin-right: 10%;
+	}
+
+	.line-step {
+		width: 90%;
+		left: 5%;
+		top: 15px;
+		height: 10px;
+	}
+
+	.step-text {
+		display: none;
+	}
+
+	.step-number {
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		border-radius: 20px;
+		font-size: 24px;
+	}
+
+	.step-active {
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		border-radius: 15px;
+		margin-top: 5px;
+	}
 }

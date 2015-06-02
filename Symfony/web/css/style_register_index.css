@@ -1,10 +1,13 @@
-.container-register {
+body {
+	color: #fff;
+	background: #5C97BF;
+	padding-top: 50px;
 	text-align: center;
 }
 
-p {
-	margin-right: 5px;
+p#title {
 	font-size: 4em;
+	color: #fff;
 }
 
 #icons {
@@ -32,4 +35,10 @@ a {
 
 #icons img:hover {
 	opacity: 0.86;
+}
+
+p {
+	width: 960px;
+	margin: 20px auto;
+	color: rgb(190, 213, 229);
 }
