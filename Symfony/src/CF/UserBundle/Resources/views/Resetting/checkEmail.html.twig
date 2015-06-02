@@ -9,15 +9,17 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link href="{{ asset('css/style_user_form.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('css/style_user.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block fos_user_content %}
-<section id="main-with-title">
-    <div class="container-inner">
+<h1>Mot de passe oublié</h1>
+
+<div class="row">
+    <div class="col-sm-offset-2 col-xs-offset-1 col-sm-8 col-xs-10">
     	<p>
     		Un e-mail vient de vous être envoyé. Il contient un lien qui permettra de redéfinir votre mot de passe.
     	</p>
     </div>
-</section>
+</div>
 {% endblock fos_user_content %}

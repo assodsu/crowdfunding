@@ -1,4 +1,4 @@
-<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="form-user">
     <div class="connexion-content">
         {% if invalid_username is defined %}
             <div class="alert alert-info alert-dismissible" role="alert">
@@ -11,7 +11,8 @@
         </p>
 
         <div class="form-group">
-            <input placeholder="Entrez votre adresse e-mail" type="text" id="username" name="username" required="required" />
+            <label for="username">adresse e-mail</label>
+            <input class="form-control" type="text" id="username" name="username" required="required" />
         </div>
 
     </div>

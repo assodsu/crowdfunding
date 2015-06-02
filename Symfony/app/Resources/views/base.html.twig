@@ -75,7 +75,7 @@
 			              </ul>
 			            </li>
 				    {% else %}
-				      	<li><a href="#connexion" data-toggle="modal" data-target="#connection-modal">Connexion</a></li>
+				      	<li class="btn-modal-sign"><a href="#connexion" data-toggle="modal" data-target="#connection-modal"><i class="fa fa-sign-in"></i></a></li>
 			      	{% endif %}
 			    </div>
 			    <button id="toggle-menu"><i class="fa fa-bars"></i></button>
@@ -92,7 +92,7 @@
 
 		<section id="main">
 		{% block body %}
-
+			
 		{% endblock %}
 		{{ render(controller('FOSUserBundle:Security:loginModal')) }}
 		</section>

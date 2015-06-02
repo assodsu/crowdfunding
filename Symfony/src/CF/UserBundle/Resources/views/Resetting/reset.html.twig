@@ -4,20 +4,17 @@
 	{{ parent() }} - Redéfinir mon mot de passe
 {% endblock %}
 
-{% block page_title %}Mot de passe oublié ?{% endblock %}
-{% block page_subtitle %}{% endblock %}
-
 {% block stylesheets %}
 	{{ parent() }}
-	<link href="{{ asset('css/style_user_form.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('css/style_user.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block fos_user_content %}
-<section id="main-with-title">
-    <div class="container-inner">
-    	<div class="connexion">
-			{% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
-		</div>
-    </div>
-</section>
+<h1>Mot de passe oublié</h1>
+
+<div class="row">
+    <div class="col-sm-offset-2 col-xs-offset-1 col-sm-8 col-xs-10">
+		{% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
+	</div>
+</div>
 {% endblock fos_user_content %}
