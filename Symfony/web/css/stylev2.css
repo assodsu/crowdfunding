@@ -129,9 +129,14 @@ nav .navigation-bar .nav-middle-part img {
   height:50px;
   vertical-align: middle;
   display: block;
-  padding: 8px 10px;
-  font-size: 22px;
+  padding: 15px 0;
   color: rgb(72, 72, 72);
+}
+.navigation-bar-right #drop-user {
+  padding: 8px 10px;
+}
+.navigation-bar-right #drop-notif {
+  padding: 13px 0;
 }
 .navigation-bar-right a:hover, .navigation-bar-right a:focus {
   outline: none;
@@ -179,9 +184,8 @@ nav .navigation-bar .nav-middle-part img {
   height: 25px;
   width: 25px;
   border-radius: 25px;
-  background-color: red;
-  margin-top: 13px;
-  padding: 0;
+  background-color: #eb4d5c;
+  padding-top: 6px;
 }
 .navigation-bar-right .badge a{
   color: white;

@@ -113,7 +113,7 @@
 					    	</table>
 						</div>
 						<div class="inner-right">
-							<img src="{{ asset('images/google-map.png') }}"  class="center-block" />
+							<img src="{{ asset('images/google-map.jpg') }}"  class="center-block" />
 						</div>
 					</div>
 				{% endif %}
@@ -136,25 +136,101 @@
 			<div class="tab-pane fade" id="tab3">
 				<div class="tab-box full">
 					<h1>Projets soutenus</h1>
+					<div class="project-list">
+						{% for projet in user.projetsSoutenus %}
+							<div class="project" id="project-{{ projet.id }}">
+								<div class="project-background" img="{{ projet.background.path }}"></div>
+								<p><a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a></p>
+								{% set pourcentage = (projet.nbActuHumain + projet.nbActuMateriel + projet.nbActuComm + projet.nbActuFinancier)/projet.nbRessources %}
+								<div class='percentage'>Complété à {{ (pourcentage*100)|round }}%</div>
+								<div class="time-remaining">
+									<i class="fa fa-clock-o"></i> 
+									{% set difference = projet.dateFin.diff(date('now')) %}
+									{% set leftDays = difference.days %}
+									{% set leftHours = difference.h %}
+									{% set leftMinutes = difference.i %}
+									{% if projet.dateFin > date('now') %}
+										{% if leftDays > 1 %}
+											{{ leftDays }} jours
+										{% elseif leftDays == 1 %}
+											{{ leftDays }} jour
+										{% else %}
+											{% if leftHours > 1 %}
+												{{ leftHours }} heures
+											{% elseif leftHours == 1 %}
+												{{ leftHours }} heure
+											{% else %}
+												{% if leftMinutes > 0 %}
+													{{ leftMinutes }} minutes
+												{% endif %}
+											{% endif %}
+										{% endif %}
+									{% else %}
+										Projet terminé
+									{% endif %}
+								</div>
+							</div>
+						{% else %}
+							<p>Aucun projet soutenu pour l'instant.</p>
+						{% endfor %}
+					</div>
 				</div>
 			</div>
 			{% if user.typeUser == 'Association' %}
 				<div class="tab-pane fade" id="tab4">
 					<div class="tab-box full">
 						<h1>Projets proposés</h1>
-						{% for projet in projets %}
-							<p><a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a></p>
-							<div class="project">
-								<div class="project-img"></div>
-								<a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a>
-								
-							</div>
-						{% else %}
-							<p>Aucun projet proposé pour l'instant.</p>
-						{% endfor %}
+						<div class="project-list">
+							{% for projet in projets %}
+								<div class="project" id="project-{{ projet.id }}">
+									<div class="project-background" img="{{ projet.background.path }}"></div>
+									<p><a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a></p>
+									{% set pourcentage = (projet.nbActuHumain + projet.nbActuMateriel + projet.nbActuComm + projet.nbActuFinancier)/projet.nbRessources %}
+									<div class='percentage'>Complété à {{ (pourcentage*100)|round }}%</div>
+									<div class="time-remaining">
+										<i class="fa fa-clock-o"></i> 
+										{% set difference = projet.dateFin.diff(date('now')) %}
+										{% set leftDays = difference.days %}
+										{% set leftHours = difference.h %}
+										{% set leftMinutes = difference.i %}
+										{% if projet.dateFin > date('now') %}
+											{% if leftDays > 1 %}
+												{{ leftDays }} jours
+											{% elseif leftDays == 1 %}
+												{{ leftDays }} jour
+											{% else %}
+												{% if leftHours > 1 %}
+													{{ leftHours }} heures
+												{% elseif leftHours == 1 %}
+													{{ leftHours }} heure
+												{% else %}
+													{% if leftMinutes > 0 %}
+														{{ leftMinutes }} minutes
+													{% endif %}
+												{% endif %}
+											{% endif %}
+										{% else %}
+											Projet terminé
+										{% endif %}
+									</div>
+								</div>
+							{% else %}
+								<p>Aucun projet proposé pour l'instant.</p>
+							{% endfor %}
+						</div>
 					</div>
 				</div>
 			{% endif %}
 		</div>
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		{% for projet in projets %}
+			var img = $('#project-{{ projet.id }}').children('.project-background').attr('img');
+			$('#project-{{ projet.id }}').children('.project-background').css('background', 'url("../../../uploads/'+img+'") center center no-repeat').css('background-size','cover');
+		{% endfor %}
+	</script>
 {% endblock %}

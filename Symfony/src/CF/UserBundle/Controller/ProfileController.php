@@ -101,6 +101,8 @@ class ProfileController extends Controller
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
 
+        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('association' => $user));
+
         $notifs = $this->getDoctrine()->getRepository('CFNotificationBundle:Notification')->getProjetsEnCours($user);
 
         $em = $this->getDoctrine()->getEntityManager();
@@ -109,7 +111,7 @@ class ProfileController extends Controller
             $em->flush();
         }
 
-        return $this->render('CFUserBundle:Profile:projects.html.twig');
+        return $this->render('CFUserBundle:Profile:projects.html.twig', array('projets' => $projets));
     }
 
     public function messagesAction()

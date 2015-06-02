@@ -80,6 +80,7 @@ textarea {
 	margin-bottom: 10px;
 	width:95%;
 	height: 250px;
+	display:block;
 }
 /**** MENU ****/
 .panel-heading {
@@ -350,7 +351,7 @@ textarea {
 	width: 75%;
 }
 /** MEDIA QUERIES **/
-@media (max-width: 440px) {
+@media (max-width: 600px) {
 	.nav.nav-tabs.btn-group {
 		display:block;
 	}
@@ -369,7 +370,20 @@ textarea {
 		width: auto;
 		display: block;
 		margin-left: 0;
+		min-height: 0;
 	}  
+	.tab-box.full {
+		width: auto;
+		margin-left: 0;
+		min-height: 0;
+	}  
+	.tab-box.full .inner-right, .tab-box.full .inner-left  {
+		display:block;
+		width:100%;
+	}
+	.tab-box.full .inner-right {
+		float:none;
+	}
 }
 
 @media (min-width: 960px) {
@@ -554,4 +568,143 @@ textarea {
 
 .badge-profil .tooltip-inner, .badge-profil .tooltip-arrow {
 	margin-top: 30px;
+}
+
+/*------------------*/
+/* Projets en cours */
+/*------------------*/
+.profile-projects-list {
+	position:relative;
+	width:calc(100% - 20px);
+  	text-align: center;
+  	background:#fff;
+  	margin:20px 10px;
+	font-size: 30px;
+  	border-radius: 5px;
+}
+.profile-projects-list > div {
+	display:inline-block;
+}
+.buttonLeft, .buttonRight {
+	padding:6px 10px;
+	cursor:pointer;
+}
+.buttonLeft {
+	float:left;
+  	border-radius: 5px 0 0 5px;
+}
+.buttonRight {
+	float:right;
+  	border-radius: 0 5px 5px 0;
+}
+.projects-list a {
+	color: #4895D9;
+}
+.projects-list a:hover, .projects-list a:focus {
+	color: #34495E;
+	text-decoration: none;
+}
+.project {
+  	margin: 0 10px;
+}
+.project-header {
+  	position: relative;
+  	height: 300px;
+}
+.filter{
+	background:rgba(0,0,0,0.4);
+	position:absolute;
+	width:100%;
+	height:300px;
+  	border: 3px solid #fff;
+}
+.project-background {
+	height:300px;
+	width: 100%;
+	position: absolute;
+}
+.resources-percent {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-top: 200px;
+  color: #fff;
+  font-size: 20px;
+}
+.resources-percent .resource {
+  display: inline-block;
+  margin: 0 20px;
+}
+.resources-percent .resource i{
+  font-size: 30px;
+}
+.project-body {
+  margin-top: 10px;
+}
+.project-time-left {
+  text-align: center;
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+.project-time-left h2 {
+  font-size: 16px;
+  width: 33%;
+  margin:0;
+  display: inline-block;
+}
+.project-list .project {
+  margin: 10px;
+  width: 154px;
+  height: 200px;
+  display: inline-block;
+  vertical-align: top;
+  border:2px solid rgb(92, 151, 191);
+  border-radius: 5px;
+}
+.project-list .project-background {
+  height: 100px;
+  width: 150px;
+  position: relative;
+}
+.project-list .project p, .project-list .project .percentage, .project-list .project .time-remaining {
+  font-size: 14px;
+  text-align: center;
+}
+/*************/
+/* DIAGRAMME */
+/*************/
+.chart {
+	position: absolute;
+	width: 100%;
+	height: 150px;
+	right: 75;
+	text-align: center;
+	margin: 30px 0;
+}
+.pie, .chart > svg, .pie-content {
+	position:absolute;
+}
+.pie {
+	list-style:none;
+	-webkit-padding-start:0;
+}
+.chart > svg {
+	z-index:2;
+}
+.pie-content {
+	z-index: 3;
+	color: white;
+	width: 100%;
+	height: 150px;
+	text-align: center;
+	padding-top: 30px;
+	margin-left: 75px;
+}
+.pie-content .percentage {
+	font-size:35px;
+}
+.pie-content .name {
+	font-size:13px;
+	color:#aaafb2;
 }

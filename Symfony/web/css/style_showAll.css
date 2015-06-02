@@ -17,17 +17,14 @@
 
 .btn-discover-map {
 	display: inline;
-	border: 2px solid #5FCF80;
+	border: 2px solid #ADADAD;
 	padding: 10px 20px;
 	border-radius: 4px;
-	color: #5FCF80;
-	cursor: pointer;
+	color: #ADADAD;
 }
 
 .discover-map p {
 	margin-top: 18px;
-	margin-left: 39%;
-	text-align: left;
 	color: #FFFFFF;
 }
 /***********/
@@ -105,7 +102,7 @@
 	list-style: none;
 }
 .tag {
-	width: 100px;
+	min-width: 100px;
 	text-align: center;
 	display: inline-block;
 	float: left;
@@ -114,6 +111,7 @@
 	position: relative;
 	font-size: 12px;
 	margin-left: 20px;
+	margin-bottom: 5px;
 	padding: 0 10px 0 12px;
 	background: #3498db;
 	font-family: GothamMedium;
@@ -195,6 +193,44 @@
     .selector { margin: 0px 10px; }
 }
 
+@media (max-width: 960px) {
+	.filter {
+		width:70%;
+	}
+	.project-title {
+	  width: calc(70% - 100px);
+	}
+	.time-remaining {
+	  width: calc(70% - 100px);
+	}
+	.project-tags {
+	  width: calc(70% - 100px);
+	}
+}
+
 @media (max-width: 520px) {
     .selector { margin: 0px 0px; }
+	.project-title {
+	  font-size: 18px;
+	}
+	.filter {
+		width:100%;
+		clip-path:none;
+		-webkit-clip-path:none;
+	}
+	.project-title {
+	  width: 100%;
+	}
+	.time-remaining {
+	  width: 100%;
+	}
+	.project-tags {
+	  width: 70%;
+	  margin-left:0;
+	  bottom:0;
+	}
+	.chart {
+	  right: 10px;
+	  bottom: 10;
+	}
 }

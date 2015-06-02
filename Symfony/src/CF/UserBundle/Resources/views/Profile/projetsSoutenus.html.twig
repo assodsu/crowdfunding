@@ -1,7 +1,7 @@
 {% extends "CFUserBundle::layout_profile.html.twig" %}
 
 {% block title %}
-	{{ parent() }} - Modification de profil
+	{{ parent() }} - Projets soutenus
 {% endblock %}
 
 {% block stylesheets %}
@@ -12,9 +12,196 @@
 {% set menulink_projetsSoutenus = 1 %}
 
 {% block cfuserbundle_body %}
-{% for p in app.user.projetsSoutenus %}
-	{{ p.nom }}<br />
-{% else %}
-	Vous n'avez soutenus aucun projet pour le moment.
-{% endfor %}
+	<div class="profile-menu-projects">
+		<div class="profile-projects-list">
+			<a href="#" class="buttonLeft"><i class="fa fa-chevron-circle-left"></i></a>
+			<a href="#" class="buttonRight"><i class="fa fa-chevron-circle-right"></i></a>
+			<div class="projects-list">
+				{% set projectIndex = 1 %}
+				{% for projet in app.user.projetsSoutenus %}
+					<a href="{{ path('cf_main_project', {'slug' : projet.slug}) }}" class="project project-{{projectIndex}}">{{ projet.nom }}</a>
+					{% set projectIndex = projectIndex + 1 %}
+				{% else %}
+					<p class="project project-{{projectIndex}}">Vous n'avez soutenus aucun projet.</p>
+				{% endfor %}
+			</div>
+		</div>
+		{% set projectIndex = 1 %}
+		{% for projet in app.user.projetsSoutenus %}
+			<div class="project project-{{projectIndex}}">
+				<div class="project-header">
+					<div img="{{ projet.background.path }}" class="project-background"></div>
+					<div class="filter"></div>
+					<div class='chart'>
+						<svg height="150" width="150">
+							<circle cx="75" cy="75" r="70" fill="#34495E" />
+						</svg>
+						<div class='pie-content'>
+							{% set pourcentage = (projet.nbActuHumain + projet.nbActuMateriel + projet.nbActuComm + projet.nbActuFinancier)/projet.nbRessources %}
+							<div class='percentage'>{{ (pourcentage*100)|round }}%</div>
+							<div class='name'>ressources</br>collectées</div>
+						</div>
+						<ul class="pie">
+							<li class='visualize ressource-materiel' data-color='#a66abe' data-value='{{ (projet.nbActuMateriel/projet.nbRessources)*100 }}'></li>
+							<li class='visualize ressource-financiere' data-color='#ea5f50' data-value='{{ (projet.nbActuFinancier/projet.nbRessources)*100 }}'></li>
+							<li class='visualize' data-value='{{ (100-(projet.nbActuMateriel/projet.nbRessources)*100 - (projet.nbActuFinancier/projet.nbRessources)*100 - (projet.nbActuHumain/projet.nbRessources)*100 - (projet.nbActuComm/projet.nbRessources)*100)|round }}' data-color='rgba(0,0,0,0)'></li><li class='visualize ressource-humain' data-color='#70d48d' data-value='{{ (projet.nbActuHumain/projet.nbRessources)*100 }}'></li>
+							<li class='visualize ressource-info' data-color='#99a5af' data-value='{{ (projet.nbActuComm/projet.nbRessources)*100 }}'></li>
+						</ul>
+					</div>
+					<div class="resources-percent">
+						<p class="resource"><i class="fa fa-tag"></i><br>{% if projet.nbDemandeComm > 0 %}{{ (projet.nbActuComm/projet.nbDemandeComm)*100 }}%{% else %}Non demandée{% endif %}</p>
+						<p class="resource"><i class="fa fa-bar-chart"></i><br>{% if projet.nbDemandeFinancier > 0 %}{{ (projet.nbActuFinancier/projet.nbDemandeFinancier)*100 }}%{% else %}Non demandée{% endif %}</p>
+						<p class="resource"><i class="fa fa-users"></i><br>{% if projet.nbDemandeHumain > 0 %}{{ (projet.nbActuHumain/projet.nbDemandeHumain)*100 }}%{% else %}Non demandée{% endif %}</p>
+						<p class="resource"><i class="fa fa-desktop"></i><br>{% if projet.nbDemandeMateriel > 0 %}{{ (projet.nbActuMateriel/projet.nbDemandeMateriel)*100 }}%{% else %}Non demandée{% endif %}</p>
+					</div>
+				</div>
+				<div class="project-body">
+					<div class="project-time-left">
+						<h2>Créé le : {{ projet.dateCreation|date('d/m/Y') }}</h2>
+
+						{% set difference = projet.dateFin.diff(date('now')) %}
+						{% set leftDays = difference.days %}
+						{% set leftHours = difference.h %}
+						{% set leftMinutes = difference.i %}
+						<h2>
+							<i class="fa fa-clock-o"></i> 
+							{% if projet.dateFin > date('now') %}
+								<strong>Temps restant :</strong> 
+								{% if leftDays > 1 %}
+									{{ leftDays }} jours
+								{% elseif leftDays == 1 %}
+									{{ leftDays }} jour
+								{% else %}
+									{% if leftHours > 1 %}
+										{{ leftHours }} heures
+									{% elseif leftHours == 1 %}
+										{{ leftHours }} heure
+									{% else %}
+										{% if leftMinutes > 0 %}
+											{{ leftMinutes }} minutes
+										{% endif %}
+									{% endif %}
+								{% endif %}
+							{% else %}
+								Projet terminé
+							{% endif %}
+						</h2>
+
+						{% if projet.valider %}<h2 style="color:green;">Validé{% else %}<h2 style="color:red;">En cours de validation{% endif %}</h2>
+					</div>
+					<div class="project-box-container">
+						<div class='tab-box aside'>
+							<h1>Ressources</h1>
+							{% for besoin in projet.besoins %}
+								{% if besoin.type == "materiel" %}
+									<p><strong>{{ besoin.ressource }}</strong><span class="pull-right label label-success">Collecté : {{ besoin.quantiteActuelle }} sur {{ besoin.quantiteDemande }}</span></p>
+									{% set pourcentage = ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+									<div class="progress">
+										<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ pourcentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ pourcentage }}%">
+											<span class="sr-only">{{ pourcentage }}% Complete</span>
+										</div>
+									</div>
+								{% elseif besoin.type == "benevole" %}
+									<p><strong>{{ besoin.ressource }}</strong><span class="pull-right label label-info">Réuni : {{ besoin.quantiteActuelle }} sur {{ besoin.quantiteDemande }}</span></p>
+									{% set pourcentage = ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+									<div class="progress">
+										<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{ pourcentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ pourcentage }}%">
+											<span class="sr-only">{{ pourcentage }}% Complete</span>
+										</div>
+									</div>
+								{% elseif besoin.type == "financier" %}
+									<p><strong>{{ besoin.ressource }}</strong><span class="pull-right label label-danger">Collecté : {{ besoin.quantiteActuelle }}€ sur {{ besoin.quantiteDemande }}€</span></p>
+									{% set pourcentage = ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+									<div class="progress">
+										<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{ pourcentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ pourcentage }}%">
+											<span class="sr-only">{{ pourcentage }}% Complete</span>
+										</div>
+									</div>
+								{% elseif besoin.type == "communication" %}	
+									<p><strong>{{ besoin.ressource }}</strong><span class="pull-right label label-warning">Collecté : {{ besoin.quantiteActuelle }} sur {{ besoin.quantiteDemande }}</span></p>
+									{% set pourcentage = ((besoin.quantiteActuelle / besoin.quantiteDemande) * 100) %}
+									<div class="progress">
+										<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{ pourcentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ pourcentage }}%">
+											<span class="sr-only">{{ pourcentage }}% Complete</span>
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+						<div class='tab-box aside full'>
+							<h1>Dernière actualité</h1>
+							{% for actualite in projet.actualites|reverse[:1] %}
+								<div class='update-date'>Le {{ actualite.date|date('d/m/Y - H') }}h{{ actualite.date|date('i') }}</div>
+								<h2>{{ actualite.titre }}</h2>
+								{{ actualite.contenu }}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% set projectIndex = projectIndex + 1 %}
+		{% endfor %}
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript" src="{{ asset('js/visualize.js') }}"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$('.pie').visualize({
+				width: 150,
+				height: 150,
+				type: 'pie',
+				legend: false
+			});
+
+			var index = 1;
+			var nbProjects = $('.projects-list .project').length;
+
+			for (var i = 1; i <= nbProjects; i++) {
+				$('.project-'+i).children('div.project-header').children('div.project-background').css('background', 'url("../../uploads/'+$('.project-'+i).children('div.project-header').children('div.project-background').attr('img')+'") center center no-repeat').css('background-size','cover');
+			};
+
+			carouselProjectsSlide();
+
+			function carouselProjectsSlide() {
+				$('.project').hide();
+				$('.project-'+index).show();
+				if(index == nbProjects)
+				{
+					$('.buttonRight').css('background', '#ececec').css('color', 'rgb(123, 123, 123)');
+				}
+				else {
+					$('.buttonRight').css('background', '#5FCF80').css('color', 'white');
+				}
+				if(index == 1)
+				{
+					$('.buttonLeft').css('background', '#ececec').css('color', 'rgb(123, 123, 123)');
+				}
+				else {
+					$('.buttonLeft').css('background', '#5FCF80').css('color', 'white');
+				}
+			}
+
+			$('.buttonRight').on('click', function(e){
+				e.preventDefault();
+				if(index < nbProjects)
+				{
+					index++;
+					carouselProjectsSlide();
+				}
+			});
+
+			$('.buttonLeft').on('click', function(e){
+				e.preventDefault();
+				if(index > 1)
+				{
+					index--;
+					carouselProjectsSlide();
+				}
+			});
+		});
+	</script>
 {% endblock %}

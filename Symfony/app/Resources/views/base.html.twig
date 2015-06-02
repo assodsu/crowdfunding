@@ -47,12 +47,14 @@
 								{% set nbNotifs = nbNotifs + 1 %}
 							{% endif %}
 						{% endfor %}
-						<li class="dropdown">
-							<a id="drop-user" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-			                	<span class="badge">{{ nbNotifs }}</span>
-			              	</a>
-			              	{{ render(controller('CFNotificationBundle:Notification:index'))}}
-			            </li>
+						{% if nbNotifs > 0 %}
+							<li class="dropdown">
+								<a id="drop-notif" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+				                	<span class="badge">{{ nbNotifs }}</span>
+				              	</a>
+				              	{{ render(controller('CFNotificationBundle:Notification:index'))}}
+				            </li>
+			            {% endif %}
 						<li class="dropdown">
 			              <a id="drop-user" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
 			                <img src="{{asset( app.user.logo.AssetPath )}}">
@@ -73,8 +75,7 @@
 			              </ul>
 			            </li>
 				    {% else %}
-				      	<li><a href="#connexion" data-toggle="modal" data-target="#connection-modal"><i class="fa fa-sign-in"></i></a></li>
-				      	<li><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user-plus"></i></a></li>
+				      	<li><a href="#connexion" data-toggle="modal" data-target="#connection-modal">Connexion</a></li>
 			      	{% endif %}
 			    </div>
 			    <button id="toggle-menu"><i class="fa fa-bars"></i></button>
@@ -126,7 +127,7 @@
 							<li><a href="#">Nos partenaires</a></li>
 							<li><a href="#">Les développeurs</a></li>
 							<li><a href="#">Conditions générales</a></li>
-							<li><a href="#">A propos</a></li>
+							<li><a href="#">À propos</a></li>
 						</ul>
 					</section>
 				</div>
