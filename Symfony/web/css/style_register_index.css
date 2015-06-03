@@ -5,9 +5,10 @@ body {
 	text-align: center;
 }
 
-p#title {
+h1 {
 	font-size: 4em;
 	color: #fff;
+	text-align: center;
 }
 
 #icons {
@@ -37,8 +38,36 @@ a {
 	opacity: 0.86;
 }
 
-p {
-	width: 960px;
-	margin: 20px auto;
+.row.subtext {
 	color: rgb(190, 213, 229);
+}
+
+@media (max-width: 926px) {
+	.icon img {
+		width: 200px;
+	}
+}
+
+@media (max-width: 758px) {
+	.icon img {
+		width: 100px;
+	}
+
+	.icon .texte {
+		font-size: 22px;
+	}
+}
+
+@media (max-width: 460px) {
+	.icon img {
+		width: 80px;
+	}
+
+	.icon .texte {
+		font-size: 12px;
+	}
+
+	a {
+		padding: 0px 10px;
+	}
 }

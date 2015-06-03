@@ -29,4 +29,24 @@ $(document).ready(function(){
 
 		$(this).scrollTop();
 	});
+
+	$('#footer-top section.footer-plan').on('click', function() {
+		if ($('#footer-top ul.footer-plan').is(':visible')) {
+			$('#footer-top ul.footer-plan').slideUp();
+			$('#footer-top h4.footer-plan').html('<i class="fa fa-chevron-right"></i> Plan du site');
+		} else {
+			$('#footer-top ul.footer-plan').slideDown();
+			$('#footer-top h4.footer-plan').html('<i class="fa fa-chevron-down"></i> Plan du site');
+		}
+	});
+
+	$('#footer-top section.footer-infos').on('click', function() {
+		if ($('#footer-top ul.footer-infos').is(':visible')) {
+			$('#footer-top ul.footer-infos').slideUp();
+			$('#footer-top h4.footer-infos').html('<i class="fa fa-chevron-right"></i> Informations');
+		} else {
+			$('#footer-top ul.footer-infos').slideDown();
+			$('#footer-top h4.footer-infos').html('<i class="fa fa-chevron-down"></i> Informations');
+		}
+	});
 });
