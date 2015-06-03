@@ -322,6 +322,12 @@
 .slick-next {
 	right:0;
 }
+.arrow-slider {
+	width:100%;
+}
+.slick-next:hover, .slick-prev:hover {
+  background-color: #5FCF80;
+}
 
 /****************/
 /* ITEMS SLIDER */

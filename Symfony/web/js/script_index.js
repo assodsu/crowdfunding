@@ -67,8 +67,8 @@ $(document).ready(function() {
 				dots: false,
 				centerMode: false,
 				focusOnSelect: true,
-				prevArrow: '<button type="button" class="slick-prev"><</button>',
-				nextArrow: '<button type="button" class="slick-next">></button>'
+				prevArrow: '<button type="button" class="slick-prev"><img class="arrow-slider" src="../images/icones/arrowLeft.png" alt="previous"/></button>',
+				nextArrow: '<button type="button" class="slick-next"><img class="arrow-slider" src="../images/icones/arrowRight.png" alt="next"/></button>'
 
 			});
 			$('.project-infos .title').css('font-size','13px');
@@ -81,8 +81,8 @@ $(document).ready(function() {
 				dots: false,
 				centerMode: false,
 				focusOnSelect: true,
-				prevArrow: '<button type="button" class="slick-prev"><</button>',
-				nextArrow: '<button type="button" class="slick-next">></button>'
+				prevArrow: '<button type="button" class="slick-prev"><img class="arrow-slider" src="../images/icones/arrowLeft.png" alt="previous"/></button>',
+				nextArrow: '<button type="button" class="slick-next"><img class="arrow-slider" src="../images/icones/arrowRight.png" alt="next"/></button>'
 
 			});
 			$('.project-infos .title').css('font-size','20px');
@@ -95,18 +95,14 @@ $(document).ready(function() {
 				dots: false,
 				centerMode: false,
 				focusOnSelect: true,
-				prevArrow: '<button type="button" class="slick-prev"><</button>',
-				nextArrow: '<button type="button" class="slick-next">></button>'
+				prevArrow: '<button type="button" class="slick-prev"><img class="arrow-slider" src="../images/icones/arrowLeft.png" alt="previous"/></button>',
+				nextArrow: '<button type="button" class="slick-next"><img class="arrow-slider" src="../images/icones/arrowRight.png" alt="next"/></button>'
 			});
 			$('.project-infos .title').css('font-size','22px');
 		}
 	}
 
 	toSlick();
-
-	$(window).on('resize', function(){
-		toSlick();
-	});
 
 	$(".mask").css('opacity','0');
 
@@ -118,10 +114,10 @@ $(document).ready(function() {
 	    $(this).children('div.project-more-infos').animate({ bottom: "-30px" }, {duration: 200, queue: false});
 	});
 
-	function imagesSlide() {
-		var firstProjectSlide = $('div.slider.active > div > div > div.item-slider.slick-slide.slick-active').first();
+	function imagesSlide(firstProjectSlide) {
 		var img = firstProjectSlide.children('div.slide-image').attr('img');
 		$('.carousel-front').css('background', 'url("../uploads/'+img+'") center center no-repeat').css('background-size','cover');
+		
 		$('.carousel-front-texte').animate(
 				{right:'-400px'},
 				{duration: 0,queue: false}
@@ -136,10 +132,13 @@ $(document).ready(function() {
 		toSlick();
 	}
 
-	imagesSlide();
+	imagesSlide($('div.slider.active > div > div > div.item-slider.slick-slide.slick-active').first());
 	
-	$('.sidebar-projects a, .slick-prev, .slick-next, .item-slider').on('click', function(){
-		imagesSlide();
+	$('.sidebar-projects a, .slick-prev, .slick-next').on('click', function(){
+		imagesSlide($('div.slider.active > div > div > div.item-slider.slick-slide.slick-active').first());
+	});
+	$('.item-slider').on('click', function(){
+		imagesSlide($(this));
 	});
 	$( ".slide-image" ).each(function() {
 		var img = $(this).attr('img');		
