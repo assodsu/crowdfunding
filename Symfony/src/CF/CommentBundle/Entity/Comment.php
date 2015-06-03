@@ -75,6 +75,7 @@ class Comment
     {
         $this->setModerate(false);
         $this->setDate(new \DateTime());
+        $this->setReport(0);
     }
 
     /**

@@ -1,7 +1,3 @@
-body {
-	background: #5C97BF;
-}
-
 td {
 	border:none !important;
 }
@@ -452,27 +448,13 @@ textarea {
 	display: inline-block;
 	content: " ";
 }
-.modal-message-body p.fromYou:before {
-  right: -15px;
-  border-top: 15px solid transparent;
-  border-left: 15px solid rgb(184, 184, 184);
-  border-right: 0 solid rgb(184, 184, 184);
-  border-bottom: 15px solid transparent;
-}
 .modal-message-body p.fromYou:after {
   top: 11px;
   right: -14px;
   border-top: 14px solid transparent;
-  border-left: 14px solid rgb(225, 225, 225);
-  border-right: 0 solid rgb(225, 225, 225);
+  border-left: 14px solid rgb(218, 227, 255);
+  border-right: 0 solid rgb(218, 227, 255);
   border-bottom: 14px solid transparent;
-}
-.modal-message-body p.fromAnother:before {
-  left: -15px;
-  border-top: 15px solid transparent;
-  border-left: 0 solid rgb(184, 184, 184);
-  border-right: 15px solid rgb(184, 184, 184);
-  border-bottom: 15px solid transparent;
 }
 .modal-message-body p.fromAnother:after {
   top: 11px;
@@ -485,7 +467,6 @@ textarea {
 .modal-message-body p {
 	padding: 10px;
 	margin: 20px 80px;
-	border: 1px solid rgb(184, 184, 184);
 	border-radius: 5px;
 	min-height: 60px;
   	position: relative;
@@ -496,7 +477,8 @@ textarea {
 	background: rgb(245, 245, 245);
 }
 .modal-message-body p.fromYou {
-	background: rgb(225, 225, 225);
+	background: rgb(218, 227, 255);
+	text-align: right;
 }
 .modal-message-body p small {
 	font-size: 12px;
@@ -551,8 +533,8 @@ textarea {
 
 .badge-profil img {
 	margin: 10px 0;
-	width: 64px;
-	height: 64px;
+	width: 64px !important;
+	height: 64px !important;
 }
 
 .badge-profil .titre {
@@ -688,6 +670,9 @@ textarea {
 .pie {
 	list-style:none;
 	-webkit-padding-start:0;
+	width: 100%;
+	text-align: center;
+	margin-left: 75px;
 }
 .chart > svg {
 	z-index:2;
@@ -707,4 +692,30 @@ textarea {
 .pie-content .name {
 	font-size:13px;
 	color:#aaafb2;
+}
+
+/**-----**/
+/** Messages **/
+/**------*/
+.panel-profile-heading {
+  height: 150px;
+  position: relative;
+}
+.panel-profile-heading #layer{
+  background: rgba(0,0,0,.5);
+  height: 150px;
+  position: absolute;
+  width: 100%;
+}
+.panel-profile-heading .title-panel-heading{
+  width: 100%;
+  text-align: center;
+  position: absolute;
+}
+
+.panel-profile-heading .title-panel-heading h1{
+  margin: 0;
+  line-height: 150px;
+  vertical-align: middle;
+  color: #fff;
 }

@@ -10,6 +10,10 @@ fos_user_profile_messages:
     path:     /messages
     defaults: { _controller: FOSUserBundle:Profile:messages }
 
+fos_user_profile_badges:
+    path:     /badges
+    defaults: { _controller: FOSUserBundle:Profile:badges }
+
 cf_user_projetsSuivis:
     path:   /projets-suivis
     defaults: { _controller: CFUserBundle:Profile:projetsSuivis }

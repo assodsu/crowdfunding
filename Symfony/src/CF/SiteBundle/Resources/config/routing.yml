@@ -9,3 +9,15 @@ cf_site_partenaires:
 cf_site_contact:
     path:     /contact
     defaults: { _controller: CFSiteBundle:Pages:contact }
+
+cf_site_developpeurs:
+    path:     /developpeurs
+    defaults: { _controller: CFSiteBundle:Pages:developpeurs }
+
+cf_site_conditions:
+    path:     /conditions
+    defaults: { _controller: CFSiteBundle:Pages:conditions }
+
+cf_site_apropos:
+    path:     /a-propos
+    defaults: { _controller: CFSiteBundle:Pages:apropos }
