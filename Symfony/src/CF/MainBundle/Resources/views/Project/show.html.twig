@@ -40,11 +40,7 @@
 	{% set pourcentageComm = projet.nbActuComm*100 %}
 {% endif %}
 
-{% if projet.nbDemandeComm > 0 %}
-	{% set pourcentageTotal = ((projet.nbActuMateriel + projet.nbActuHumain + projet.nbActuComm + projet.nbActuFinancier) / projet.nbRessources)*100 %}
-{% else %}
-	{% set pourcentageTotal = ((projet.nbActuMateriel + projet.nbActuHumain + projet.nbActuComm + projet.nbActuFinancier))*100 %}
-{% endif %}
+{% set pourcentageTotal = ((projet.nbActuMateriel + projet.nbActuHumain + projet.nbActuComm + projet.nbActuFinancier) / projet.nbRessources)*100 %}
 
 {% block body %}
 <section id="main-without-title">

@@ -1,0 +1,26 @@
+{% extends "CFUserBundle::layout_profile.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Mes badges
+{% endblock %}
+
+{% set menulink_badges = 1 %}
+
+{% block cfuserbundle_body %}
+	<div class="panel-profile-heading">
+		<div id="layer"></div>
+		<div class="title-panel-heading">
+			<h1><i class="fa fa-envelope-o"></i> Mes badges</h1>
+		</div>
+	</div>
+	{% for b in app.user.badges %}
+		<div class="badge-profil">
+			<div class="titre badge">{{ b.titre }}</div>
+			<span data-toggle="tooltip" data-placement="bottom" title="{{ b.description }}">
+				<img src="{{ asset(b.image.AssetPath) }}" alt="{{ b.titre }}" />
+			</span>
+		</div>
+	{% else %}
+		<p>Aucun badge... Pour le moment !</p>
+	{% endfor %}
+{% endblock %}

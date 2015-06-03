@@ -20,4 +20,19 @@ class PagesController extends Controller
     {
         return $this->render('CFSiteBundle:Pages:contact.html.twig');
     }
+
+    public function developpeursAction()
+    {
+        return $this->render('CFSiteBundle:Pages:developpeurs.html.twig');
+    }
+
+    public function conditionsAction()
+    {
+        return $this->render('CFSiteBundle:Pages:conditions.html.twig');
+    }
+
+    public function aproposAction()
+    {
+        return $this->render('CFSiteBundle:Pages:apropos.html.twig');
+    }
 }

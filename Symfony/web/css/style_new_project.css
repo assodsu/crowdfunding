@@ -1,11 +1,10 @@
-body {
+#main {
 	color: #fff;
-	background: #5C97BF;
 	padding-top: 50px;
 	text-align: center;
 }
 
-h1 { 
+#main h1 { 
 	font-size: 4em;
 }
 
@@ -101,13 +100,13 @@ h1 {
 	color: #FFF;
 }
 
-#boites, #ressources {
+#boites {
 	text-align: left;
 	background-color: rgb(66, 139, 202);
 	padding: 20px;
 	border: 1px solid;
 }
-#cf_mainbundle_projet_boxs > div, #cf_mainbundle_projet_besoins > div {
+#cf_mainbundle_projet_boxs > div {
 	margin:5px;
 	width: 200px;
 	height:auto;
@@ -120,7 +119,7 @@ h1 {
 #cf_mainbundle_projet_boxs > div{
 	width: calc(50% - 10px);
 }
-#ajout_besoin, #ajout_box {
+ #ajout_box {
   height: 90px;
   line-height: 75px;
   width: 90px;
@@ -130,11 +129,11 @@ h1 {
 #ajout_box {
 	margin: 64px calc(25% - 49px);
 }
-#ajout_besoin > i, #ajout_box > i {
+#ajout_box > i {
   font-size: 30pt;
   vertical-align: middle;
 }
-#suppr_besoin, #suppr_box {
+#suppr_box {
   margin-left: 25%;
   margin-top: 10px;
   width: 50%;
@@ -150,6 +149,218 @@ h1 {
 	width:80%;
 	margin-left:auto;
 	margin-right:auto;
+}
+/* BOITES DES RESSOURCES */
+.besoin-box > .delete-button {
+	position:absolute;
+	right:0;
+	margin-right: 2.5px;
+	margin-top:1.5px;
+	color:white;
+	z-index:2;
+}
+.header-besoin-box {
+	padding: 10px 0;
+}
+.header-besoin-box > span {
+	color:white;
+	display:block;
+	text-align: center;
+	margin-bottom:5px;
+	font-size: 20pt;
+}
+.besoin-box, #add-besoin-box {
+	width:250px;
+	height:220px;
+	display:inline-block;
+	vertical-align: top;
+	border-radius:8px;
+	margin:27px;
+	position: relative;
+	background:#fff;
+}
+.styled-input {
+	border-radius: 5px;
+	height: 40px;
+	width: 85% !important;
+	text-align: left!important;
+	display: block;
+	padding-left: 5px;
+	background:none!important;
+	color:rgb(56, 56, 56)!important;
+	margin: 10px auto !important;
+}
+.styled-input::-webkit-input-placeholder {
+   color: rgb(182, 182, 182);
+}
+
+.styled-input:-moz-placeholder { /* Firefox 18- */
+   color: rgb(182, 182, 182);  
+}
+
+.styled-input::-moz-placeholder {  /* Firefox 19+ */
+   color: rgb(182, 182, 182);  
+}
+
+.styled-input:-ms-input-placeholder {  
+   color: rgb(182, 182, 182);  
+}
+.body-besoin-box .input-group {
+	margin-top:15px;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.body-besoin-box > p {
+	font-size:10pt;
+	font-weight: bold;
+	padding:10px;
+}
+.body-besoin-box > p > .red {
+	color:red;
+}
+
+/* AJOUT BOITE RESSOURCES */
+#add-besoin-box {
+	font-size: 130pt;
+	font-weight: 100;
+	vertical-align: middle;
+	line-height: 220px;
+	text-align: center;
+  	background: none;
+}
+#add-besoin-box > a {
+	color:#5d5d5d;
+ 	text-decoration: none;
+}
+#add-besoin-box > a:hover {
+	color:#70D48D;
+}
+
+#cf_mainbundle_projet_dons > div {
+	height: auto;
+	display:inline-block;
+	vertical-align: top;
+	border-radius: 8px;
+	position: relative;
+}
+/* STYLE POUR LES SELECTS */
+.styled-select {
+	width:85%;
+	height:30px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 10px;
+	overflow: hidden;
+	position:relative;
+}
+.styled-select > span {
+	position:absolute;
+	right:5px;
+	margin-top:5px;
+	color:white;
+	pointer-events:none;
+}
+.styled-select > select {
+	position: relative;
+	background: transparent;
+	color: white;
+	border: none;
+	width: 100% !important;
+	height: 30px;
+	padding: 5px;
+	font-size: 16px;
+	line-height: 1;
+	-webkit-appearance: none;
+}
+.styled-select > select:focus {
+	outline:0;
+}
+.styled-select > select > option {
+	color:black;
+}
+.styled-select.body-besoin {
+	border-radius: 5px;
+	margin-top: 15px;
+	height: 40px;
+
+  margin-left: 7%;
+}
+.styled-select.body-besoin select {
+	color: grey;
+	height: 35px;
+}
+.styled-select.body-besoin span {
+	margin-top:8px;
+}
+/* COULEURS DES BOITES */
+.besoin-box.green {
+	border:3px solid #70d48d;
+}
+.besoin-box.green .header-besoin-box,
+.besoin-box.green span.input-group-addon {
+	background: #70d48d;
+}
+.besoin-box.green .styled-select.body-besoin,
+.besoin-box.green .styled-input,
+.besoin-box.green span.input-group-addon {
+	border: 2px solid #70d48d;
+}
+.besoin-box.green .styled-select.body-besoin span {
+	color: #70d48d;
+}
+.besoin-box.red {
+	border:3px solid #ea5f50;
+}
+.besoin-box.red .header-besoin-box,
+.besoin-box.red span.input-group-addon {
+	background: #ea5f50;
+}
+.besoin-box.red .styled-select.body-besoin,
+.besoin-box.red .styled-input,
+.besoin-box.red span.input-group-addon {
+	border: 2px solid #ea5f50;
+}
+.besoin-box.red .styled-select.body-besoin span {
+	color: #ea5f50;
+}
+.besoin-box.purple {
+	border:3px solid #a66abe;
+}
+.besoin-box.purple .header-besoin-box,
+.besoin-box.purple span.input-group-addon {
+	background: #a66abe;
+}
+.besoin-box.purple .styled-select.body-besoin,
+.besoin-box.purple .styled-input,
+.besoin-box.purple span.input-group-addon {
+	border: 2px solid #a66abe;
+}
+.besoin-box.purple .styled-select.body-besoin span {
+	color: #a66abe;
+}
+.besoin-box.grey {
+	border:3px solid #99a5af;
+}
+.besoin-box.grey .header-besoin-box,
+.besoin-box.grey span.input-group-addon {
+	background: #99a5af;
+}
+.besoin-box.grey .styled-select.body-besoin,
+.besoin-box.grey .styled-input,
+.besoin-box.grey span.input-group-addon {
+	border: 2px solid #99a5af;
+}
+.besoin-box.grey .styled-select.body-besoin span {
+	color: #99a5af;
+}
+
+#cf_mainbundle_projet_besoins label {
+	display:none;
+}
+#cf_mainbundle_projet_besoins > div {
+	display:inline-block;
+	vertical-align: top;
 }
 
 @media (min-width: 992px) {

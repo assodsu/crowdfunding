@@ -232,5 +232,9 @@
 			var img = $('#project-{{ projet.id }}').children('.project-background').attr('img');
 			$('#project-{{ projet.id }}').children('.project-background').css('background', 'url("../../../uploads/'+img+'") center center no-repeat').css('background-size','cover');
 		{% endfor %}
+		{% for projet in user.projetsSoutenus %}
+			var img = $('#project-{{ projet.id }}').children('.project-background').attr('img');
+			$('#project-{{ projet.id }}').children('.project-background').css('background', 'url("../../../uploads/'+img+'") center center no-repeat').css('background-size','cover');
+		{% endfor %}
 	</script>
 {% endblock %}

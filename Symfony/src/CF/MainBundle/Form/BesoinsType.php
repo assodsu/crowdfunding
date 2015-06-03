@@ -16,12 +16,13 @@ class BesoinsType extends AbstractType
     {
         $builder
             ->add('type', 'choice', array(
-                    'choices'   => array('materiel' => 'Matériel', 'financier' => 'Financier', 'benevole' => 'Bénévole', 'communication' => 'Communication'),
+                    'choices'   => array('benevole' => 'Bénévole', 'materiel' => 'Matériel', 'financier' => 'Financier', 'communication' => 'Communication'),
                     'required'  => true,
-                    'attr' => array('class' => 'form-control'),
+                    'attr' => array('class' => 'styled-input body-besoin'),
+                    'label' => false
                 ))
-            ->add('quantiteDemande', null ,array('label' => "Quantité : ", 'attr' => array('class' => 'form-control')))
-            ->add('ressource', 'text', array('label' => "Nom : ", 'attr' => array('class' => 'form-control')))
+            ->add('ressource', 'text', array('label' => false, 'attr' => array('class' => 'styled-input', 'placeholder' => 'Nom de la ressource')))
+            ->add('quantiteDemande', null ,array('label' => false, 'attr' => array('class' => 'styled-input', 'placeholder' => 'Quantité')))
         ;
     }
     

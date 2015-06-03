@@ -129,6 +129,11 @@ class ProfileController extends Controller
         return $this->render('CFUserBundle:Profile:messages.html.twig');
     }
 
+    public function badgesAction()
+    {
+        return $this->render('CFUserBundle:Profile:badges.html.twig');
+    }
+
     public function projetsSuivisAction() {
         return $this->render('CFUserBundle:Profile:projetsSuivis.html.twig');
     }
