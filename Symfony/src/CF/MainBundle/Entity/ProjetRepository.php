@@ -16,7 +16,6 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         $qb->join('p.boxs', 'b')
            ->where('p.id = :idProjet')
            ->setParameter('idProjet', $projet->getId())
-          // ->orderBy('b.ordre', 'DESC')
            ;
                  
         return $qb->getQuery()->getSingleResult();
