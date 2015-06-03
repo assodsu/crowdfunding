@@ -129,12 +129,12 @@ h1 {
 		width: 90%;
 	}
 	.step {
-		margin-right: 10%;
+		margin-right: 6%;
 	}
 
 	.line-step {
-		width: 90%;
-		left: 5%;
+		width: 80%;
+		left: 10%;
 		top: 15px;
 		height: 10px;
 	}

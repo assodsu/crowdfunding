@@ -10,28 +10,34 @@
 {% endblock %}
 
 {% block body %}
-<p id="title">Qui êtes-vous ?</p>
-<div id="icons">
-	<div class="icon">
-		<a href="{{ path('association_registration') }}" id="asso"><img src="{{ asset('images/user/asso.png') }}" alt="Association" /></a>
-		<div class="texte">Association</div>
-	</div>
-	<div class="icon">
-		<a href="{{ path('entreprise_registration') }}" id="entr"><img src="{{ asset('images/user/entreprise.png') }}" alt="Entreprise" /></a>
-		<div class="texte">Entreprise</div>
-	</div>
-	<div class="icon">
-		<a href="{{ path('particulier_registration') }}" id="part"><img src="{{ asset('images/user/particulier.png') }}" alt="Particulier" /></a>
-		<div class="texte">Particulier</div>
+<h1>Qui êtes-vous ?</h1>
+
+<div class="row">
+    <div class="col-md-12">
+		<div id="icons">
+			<div class="icon">
+				<a href="{{ path('association_registration') }}" id="asso"><img src="{{ asset('images/user/asso.png') }}" alt="Association" /></a>
+				<div class="texte">Association</div>
+			</div>
+			<div class="icon">
+				<a href="{{ path('entreprise_registration') }}" id="entr"><img src="{{ asset('images/user/entreprise.png') }}" alt="Entreprise" /></a>
+				<div class="texte">Entreprise</div>
+			</div>
+			<div class="icon">
+				<a href="{{ path('particulier_registration') }}" id="part"><img src="{{ asset('images/user/particulier.png') }}" alt="Particulier" /></a>
+				<div class="texte">Particulier</div>
+			</div>
+		</div>
 	</div>
 </div>
 
-<p>
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec neque ligula. Integer in facilisis neque. Sed id sem eget arcu luctus condimentum aliquam quis tellus. Suspendisse potenti. Donec congue fringilla placerat. Nulla magna dolor, finibus id metus at, eleifend efficitur sapien.
-</p>
-
-<p>
-	Pellentesque dapibus ornare felis ut ultricies. Aliquam finibus mauris vitae viverra pulvinar. In sagittis felis vel tellus accumsan viverra. Ut ullamcorper sagittis tellus elementum varius. Nam nec sapien ut dolor feugiat suscipit. Integer varius eu metus eget varius. Fusce hendrerit eros quis odio lacinia, ac maximus tortor vestibulum. Donec vel libero eget mi tristique ultricies.
-</p>
+<div class="row subtext">
+    <div class="col-lg-offset-2 col-lg-8">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec neque ligula. Integer in facilisis neque. Sed id sem eget arcu luctus condimentum aliquam quis tellus. Suspendisse potenti. Donec congue fringilla placerat. Nulla magna dolor, finibus id metus at, eleifend efficitur sapien.<br /><br />
+	</div>
+	<div class="col-lg-offset-2 col-lg-8">
+		Pellentesque dapibus ornare felis ut ultricies. Aliquam finibus mauris vitae viverra pulvinar. In sagittis felis vel tellus accumsan viverra. Ut ullamcorper sagittis tellus elementum varius. Nam nec sapien ut dolor feugiat suscipit. Integer varius eu metus eget varius. Fusce hendrerit eros quis odio lacinia, ac maximus tortor vestibulum. Donec vel libero eget mi tristique ultricies.<br /><br />
+	</div>
+</div>
 {% endblock %}
 
