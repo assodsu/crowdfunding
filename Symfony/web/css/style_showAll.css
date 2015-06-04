@@ -2,7 +2,7 @@
 /* PAGE */
 /********/
 .search {
-	margin-top: 4px;
+	margin-top: 2px;
 }
 
 .titre-recherche {
@@ -10,9 +10,6 @@
 	font-weight: 300;
 	color: #FFFFFF;
 	padding: 10px 0px;
-}
-.discover-map {
-	margin-top: 80px;
 }
 
 .btn-discover-map {
@@ -26,6 +23,9 @@
 .discover-map p {
 	margin-top: 18px;
 	color: #FFFFFF;
+}
+.search-button-select {
+  margin: 25px 0;
 }
 /***********/
 /* CONTENU */
@@ -70,7 +70,7 @@
 	height:175px;
 	pointer-events:none;
 
-	/**/
+	/*Mozilla*/
 	clip-path: url(../svg/projects.svg#maskClip);
 
 	/*Chrome,Safari*/

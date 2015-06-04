@@ -1,10 +1,10 @@
-body {
+#main {
 	color: #fff;
 	padding-top: 50px;
 	text-align: center;
 }
 
-h1 {
+#main h1 {
 	font-size: 4em;
 	color: #fff;
 	text-align: center;
@@ -14,16 +14,13 @@ h1 {
 	margin: 50px auto;
 }
 
-a {
-	padding: 0px 20px;
-}
-
 .icon {
 	display: inline-block;
 }
 
 .icon a {
 	display: block;
+	padding: 0px 20px;
 }
 
 .icon .texte {
@@ -81,7 +78,7 @@ a {
 		font-size: 12px;
 	}
 
-	a {
+	.icon a {
 		padding: 0px 10px;
 	}
 }

@@ -1,11 +1,10 @@
-body {
+#main {
 	color: #fff;
-	background: #5C97BF;
 	padding-top: 50px;
 	text-align: center;
 }
 
-h1 { 
+#main h1 { 
 	font-size: 4em;
 }
 

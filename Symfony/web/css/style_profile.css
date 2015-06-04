@@ -1,8 +1,8 @@
-td {
+tr:first-child td {
 	border:none !important;
 }
 .content-panel-heading .btn.btn-danger {
-  height: 30px;
+  height: 38px;
 }
 /**** BANNER ****/
 #banner {
@@ -54,6 +54,7 @@ td {
 	display:inline-block;
 	margin-top:5px;
 	margin-left:5px;
+  	width: calc(100% - 22px);
 }
 span.fa.fa-facebook {
 	width: 13px;
@@ -75,10 +76,10 @@ textarea {
 .tab-box.full img {
 	margin-bottom: 10px;
 	width:95%;
-	height: 250px;
+	height: auto;
 	display:block;
 }
-/**** MENU ****/
+/**** HEAD ****/
 .panel-heading {
 	padding:0;
 	width:100%;
@@ -88,38 +89,6 @@ textarea {
 	text-align: center;
 	height:30px;
   	margin-top: 300px;
-}
-.btn-group {
-	margin-top:15px;
-    text-align: center;
-    display: inline-block;
-}
-.nav-tabs {
-	border:none;
-}
-.nav-tabs li.active {
-	background-color:#fff;
-	border-bottom:3px solid #428bca;
-}
-.nav-tabs li {
-	padding:0;
-}
-.nav-tabs li:hover {
-	background-color:#fff;
-	border-bottom:3px solid #428bca;
-}
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus, .nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
-	border:1px solid #fff;
-	color:#428bca;
-	background-color:#fff;
-}
-.nav-tabs>li>a, .nav-tabs>li>input {
-	border:1px solid #fff;
-	color:grey;
-	background-color:#fff;
-	position: relative;
-	display: block;
-	padding: 10px 15px;
 }
 /**** ACHIEVEMENTS ****/
 .achievement {
@@ -347,41 +316,11 @@ textarea {
 	width: 75%;
 }
 /** MEDIA QUERIES **/
-@media (max-width: 600px) {
-	.nav.nav-tabs.btn-group {
-		display:block;
-	}
-	.nav.nav-tabs.btn-group li {
-		width:100%;
-		display:block;
-	}
-}
 @media (max-width: 700px) {
 	.logo-name h1 {
 	  font-size: 18pt;
 	}
 }
-@media (max-width: 800px) {
-	.tab-box {
-		width: auto;
-		display: block;
-		margin-left: 0;
-		min-height: 0;
-	}  
-	.tab-box.full {
-		width: auto;
-		margin-left: 0;
-		min-height: 0;
-	}  
-	.tab-box.full .inner-right, .tab-box.full .inner-left  {
-		display:block;
-		width:100%;
-	}
-	.tab-box.full .inner-right {
-		float:none;
-	}
-}
-
 @media (min-width: 960px) {
 	.profile-left-menu {
 		display: inline-block;
@@ -402,10 +341,6 @@ textarea {
 		display: none;
 		width: 100%;
 	}
-
-	.profile-menu a {
-	}
-
 	.profile-content {
 		margin-left: 0;
 		width: 100%;
@@ -558,6 +493,8 @@ textarea {
 .profile-projects-list {
 	position:relative;
 	width:calc(100% - 20px);
+	height:42px;
+	line-height: 42px;
   	text-align: center;
   	background:#fff;
   	margin:20px 10px;
@@ -615,7 +552,8 @@ textarea {
 }
 .resources-percent .resource {
   display: inline-block;
-  margin: 0 20px;
+  margin: 0 5px;
+  width: 20%;
 }
 .resources-percent .resource i{
   font-size: 30px;
@@ -631,7 +569,8 @@ textarea {
 }
 .project-time-left h2 {
   font-size: 16px;
-  width: 33%;
+  width: 32%;
+  vertical-align: middle;
   margin:0;
   display: inline-block;
 }
@@ -652,6 +591,40 @@ textarea {
 .project-list .project p, .project-list .project .percentage, .project-list .project .time-remaining {
   font-size: 14px;
   text-align: center;
+}
+@media(max-width: 750px) {
+	.resources-percent .resource {
+		font-size: 16px;
+	}
+	.project-time-left h2 {
+		font-size: 14px;
+	}
+}
+@media (max-width: 680px) {
+	.projects-list {
+		font-size: 18px;
+	}
+}
+@media(max-width: 600px) {
+	.resources-percent .resource {
+		font-size: 13px;
+	}
+}
+@media(max-width: 500px) {
+	.resources-percent .resource {
+		font-size: 10px;
+	}
+	.project-time-left h2 {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 440px) {
+	.projects-list {
+	  line-height: 20px;
+	  font-size: 15px;
+	  width: calc(100% - 100px);
+	}
 }
 /*************/
 /* DIAGRAMME */
@@ -694,9 +667,9 @@ textarea {
 	color:#aaafb2;
 }
 
-/**-----**/
-/** Messages **/
-/**------*/
+/*-----------*/
+/*  Messages */
+/*-----------*/
 .panel-profile-heading {
   height: 150px;
   position: relative;
