@@ -261,6 +261,11 @@ textarea {
 	letter-spacing: 10px;
 }
 
+.profile-menus {
+	overflow: auto;
+	height: 500px;
+}
+
 .profile-menu {
 	margin-top: 40px;
 }
