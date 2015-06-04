@@ -110,7 +110,7 @@ nav > .navigation-bar .nav-content li a:hover{
   background-color: transparent;
   border-bottom: 5px solid #3498DB;
   padding-bottom: 10px;
-  transition: all 0.5s;
+  transition: all 0.1s;
 }
 
 nav .navigation-bar .nav-middle-part li{
@@ -244,8 +244,9 @@ nav .navigation-bar .nav-middle-part img {
 .search {
   height: 60px;
   width: 100%;
-  background: #D8D8D8;
+  background: #2574A9;
   cursor: text;
+  color: #fff;
 }
 
 .search #search-bar {
@@ -271,9 +272,9 @@ nav .navigation-bar .nav-middle-part img {
   background: transparent;
   border: none;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 500;
   padding-top: 16px;
-  color: #4A4A4A;
+  color: #FFFFFF;
 }
 
 .search input:focus {
@@ -283,19 +284,19 @@ nav .navigation-bar .nav-middle-part img {
 
 .search button {
   border: none;
-  color: #3498DB;
+  color: #FFF;
   background: none;
   font-size: 18pt;
 }
 
 ::-webkit-input-placeholder {
-    color: #4A4A4A;
+    color: #FFF;
 }
 :-moz-placeholder {
-    color: #4A4A4A;
+    color: #FFF;
 }
 ::-moz-placeholder {
-    color: #4A4A4A;
+    color: #FFF;
 }
 .selectors {
   display: inline-block;
@@ -485,14 +486,10 @@ footer #footer-bottom {
   top: 10px;
   font-size: 24px;
   background: #fff;
-  border: 1px solid rgb(221, 221, 221);
+  border: none;
   border-radius: 5px;
   color: rgb(136, 136, 136);
   padding: 3px 9px;
-}
-
-#toggle-menu:hover, #toggle-menu:active {
-  background: rgb(221, 221, 221);
 }
 
 /* --------------------- */

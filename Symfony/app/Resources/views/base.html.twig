@@ -62,14 +62,7 @@
 			              </a>
 			              <ul class="dropdown-menu" role="menu" aria-labelledby="drop-user">
 						    <li><a href="{{ path('fos_user_profile_show', { slug : app.user.slug }) }}"><i class="fa fa-user"></i> Profil</a></li>
-						    <hr>
-						    <li><a href="{{ path('fos_user_profile_projects') }}"><i class="fa fa-folder-o"></i> Mes projets</a></li>
-						    <li><a href="{{ path('cf_user_projetsSuivis') }}"><i class="fa fa-heart-o"></i> Projets suivis</a></li>
-						    <li><a href="{{ path('cf_user_projetsSoutenus') }}"><i class="fa fa-hand-o-right"></i> Projets soutenus</a></li>
-						    <hr>
-						    <li><a href="#"><i class="fa fa-trophy"></i> Mes badges</a></li>
-						    <li><a href="{{ path('fos_user_profile_messages') }}"><i class="fa fa-comment-o"></i> Messages</a></li>
-						    <li><a href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-wrench"></i> Paramètres</a></li>
+						    <li><a href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-wrench"></i> Tableau de bord</a></li>
 						    <hr>
 						    <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Deconnexion</a></li>
 			              </ul>
