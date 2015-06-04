@@ -9,8 +9,9 @@
 .search {
   height: 60px;
   width: 100%;
-  background: #D8D8D8;
+  background: #2574A9;
   cursor: text;
+  color: #fff;
 }
 
 .search #search-bar {
@@ -36,9 +37,9 @@
   background: transparent;
   border: none;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 500;
   padding-top: 16px;
-  color: #4A4A4A;
+  color: #FFFFFF;
 }
 
 .search input:focus {
@@ -48,19 +49,19 @@
 
 .search button {
   border: none;
-  color: #3498DB;
+  color: #FFF;
   background: none;
   font-size: 18pt;
 }
 
 ::-webkit-input-placeholder {
-    color: #4A4A4A;
+    color: #FFF;
 }
 :-moz-placeholder {
-    color: #4A4A4A;
+    color: #FFF;
 }
 ::-moz-placeholder {
-    color: #4A4A4A;
+    color: #FFF;
 }
 
 /**** SELECTORS ****/

@@ -113,11 +113,12 @@
 .carousel-front {
 	display: inline-block;
 	width: 100%;
-	background: blue;
+	background: yellow;
 	height: 595px;
 	position: absolute;
 	vertical-align: top;
 	background-size: cover;
+	z-index: 1000;
 }
 
 .carousel-front-texte {
@@ -295,6 +296,7 @@
 	cursor:pointer;
 	overflow: hidden;
 }
+
 .slide-image, .slide-image-blured {
 	position:absolute;
 	width:100%;
