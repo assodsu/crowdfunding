@@ -4,6 +4,13 @@
 	box-shadow: none;
 }
 
+@media (max-width: 930px) {
+	.modal-participer-dialog {
+		width:100%;
+		margin:0;
+	}
+}
+
 /* HEADER DU MODAL */
 .modal-title {
 	text-transform: uppercase;

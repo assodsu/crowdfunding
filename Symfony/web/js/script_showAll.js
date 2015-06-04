@@ -97,4 +97,8 @@ $(document).ready(function(){
 			}
 		});
 	}
+
+	$('#search-button-select').on('click', function(){
+		$('#search-button button').trigger('click');
+	});
 });

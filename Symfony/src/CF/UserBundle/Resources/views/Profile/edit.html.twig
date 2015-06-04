@@ -6,7 +6,6 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link href="{{ asset('css/style_profile.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% set menulink_param = 1 %}
@@ -40,7 +39,7 @@
 			</div>
 		</div>
 		<div class="content-panel-heading">
-			<ul class="nav nav-tabs btn-group" role='group'>
+			<ul class="nav nav-tabs btn-group edit-profile" role='group'>
 				<a class="btn btn-danger" href="{{ path('fos_user_profile_show', { slug : app.user.slug }) }}">Annuler</a>
 				<input type="submit" value="Enregistrer" class="btn btn-success" />
 			</ul>
@@ -71,32 +70,29 @@
 					</div>
 					<div class="tab-box">
 						<h1>Informations</h1>
-					  	<table class="table">
-					        <tbody>
-								<tr><td>Site web :</td><td>{{ form_row(form.site) }}</td></tr>
-								<tr><td>Réseaux sociaux :</td>
-									<td>
-										<span class="fa fa-facebook"></span> <div class="reseaux_sociaux"> {{ form_row(form.facebook) }}</div><br>
-					                    <span class="fa fa-twitter"></span> <div class="reseaux_sociaux">{{ form_row(form.twitter) }}</div><br>
-					                    <span class="fa fa-google-plus"></span> <div class="reseaux_sociaux">{{ form_row(form.googleplus) }}</div>
-									</td>
-								</tr>
-								<tr><td>Adresse Email :</td><td>{{ form_row(form.email) }}</td></tr>
-								<tr><td>Tél. :</td><td>{{ form_row(form.telephone) }}</td></tr>
-					        </tbody>
-					    </table>
+						<div class="form-group">
+							<label>Site web :</label>{{ form_row(form.site) }}
+						</div>
+						<div class="form-group">
+							Réseaux sociaux :<br>
+								<span class="fa fa-facebook"></span> <div class="reseaux_sociaux"> {{ form_row(form.facebook) }}</div><br>
+			                    <span class="fa fa-twitter"></span> <div class="reseaux_sociaux">{{ form_row(form.twitter) }}</div><br>
+			                    <span class="fa fa-google-plus"></span> <div class="reseaux_sociaux">{{ form_row(form.googleplus) }}</div>
+						</div>
+						<div class="form-group">
+							<label>Adresse Email :</label>{{ form_row(form.email) }}
+						</div>
+						<div class="form-group">
+							<label>Tél. :</label>{{ form_row(form.telephone) }}
+						</div>
 					</div>
 					{% if app.user.typeUser == 'Association' or app.user.typeUser == 'Entreprise' %}
 						<div class="tab-box full">
 							<h1><i class="fa fa-map-marker"></i> Adresse</h1>
 							<div class="inner-left">
-						      	<table class="table">
-						            <tbody>
-										<tr><td>Ville :</td><td>{{ form_row(form.ville) }}</td></tr>
-										<tr><td>Code postal :</td><td>{{ form_row(form.cp) }}</td></tr>
-										<tr><td>Adresse :</td><td>{{ form_row(form.adresse) }}</td></tr>
-						            </tbody>
-						    	</table>
+								<div class="form-group"><label>Ville :</label>{{ form_row(form.ville) }}</div>
+								<div class="form-group"><label>Code postal :</label>{{ form_row(form.cp) }}</div>
+								<div class="form-group"><label>Adresse :</label>{{ form_row(form.adresse) }}</div>
 							</div>
 							<div class="inner-right">
 								<img src="{{ asset('images/google-map.jpg') }}"  class="center-block" />
