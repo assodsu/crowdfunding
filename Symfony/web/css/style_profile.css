@@ -458,6 +458,18 @@ textarea {
 	text-align: center;
 	font-weight: bold;
 }
+
+@media (max-width: 600px) {
+	.modal-message-dialog {
+		width: 100% !important;
+		margin: 0;
+	}
+}
+@media (max-width: 600px) {
+	.modal-message-body p {
+		margin: 20px 15px;
+	}
+}
 /** BADGES **/
 .badge-profil {
 	display: inline-block;
