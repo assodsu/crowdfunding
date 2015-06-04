@@ -24,9 +24,9 @@ class ProfileParticulierFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array('label' => false))
+            ->add('name', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('firstname', null, array('label' => false))
+            ->add('firstname', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
             ->add('sexe', 'choice', array('label' => false,
                                           'choices' => array('m' => 'Homme', 'f' => 'Femme'),
@@ -39,21 +39,21 @@ class ProfileParticulierFormType extends AbstractType{
                                               'years' => range(date('Y')-100,date('Y')))
                                               )
 
-            ->add('ville', null, array('label' => false))
+            ->add('ville', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('cp', null, array('label' => false))
+            ->add('cp', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('adresse', null, array('label' => false))
+            ->add('adresse', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('telephone', null, array('label' => false))
+            ->add('telephone', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('site', null, array('label' => false))
+            ->add('site', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('facebook', null, array('label' => false))
+            ->add('facebook', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('twitter', null, array('label' => false))
+            ->add('twitter', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('googleplus', null, array('label' => false))
+            ->add('googleplus', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
             ->add('benevole', 'choice', array('label' => false,
                                           'choices' => array('1' => 'Oui', '0' => 'Non'),
@@ -62,7 +62,7 @@ class ProfileParticulierFormType extends AbstractType{
                                              'data' => '0'
                                           ))
 
-            ->add('email', 'email', array('label' => false))
+            ->add('email', 'email', array('label' => false, 'attr' => array('class' => 'form-control')))
         ;
     }
 

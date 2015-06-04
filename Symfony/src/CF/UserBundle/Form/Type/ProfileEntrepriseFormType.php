@@ -24,23 +24,23 @@ class ProfileEntrepriseFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', 'email', array('label' => false))
+            ->add('email', 'email', array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('ville', null, array('label' => false))
+            ->add('ville', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('cp', null, array('label' => false))
+            ->add('cp', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('adresse', null, array('label' => false))
+            ->add('adresse', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('telephone', null, array('label' => false))
+            ->add('telephone', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('site', null, array('label' => false))
+            ->add('site', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('facebook', null, array('label' => false))
+            ->add('facebook', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('twitter', null, array('label' => false))
+            ->add('twitter', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('googleplus', null, array('label' => false))
+            ->add('googleplus', null, array('label' => false, 'attr' => array('class' => 'form-control')))
         ;
     }
 

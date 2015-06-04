@@ -57,7 +57,7 @@
 						{% elseif app.user.typeUser == 'Entreprise' %}
 							<p>Date de création : {{ app.user.dateCreationEntreprise|date("d/m/Y") }}</p>
 							<p>N° SIRET : {{ app.user.numSiret }}</p>
-						{% elseif app.user.typeUser == 'Particulier' %}
+						{% elseif app.user.typeUser == 'Particulier' or app.user.typeUser == 'Bénévole' %}
 							<p>Date de naissance : {{ form_row(form.dateNaissance) }}</p>
 							<p>Bénévole : {{ form_row(form.benevole) }}</p>
 							<p>Nom : {{ form_row(form.name) }}</p>
