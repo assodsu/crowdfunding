@@ -25,6 +25,7 @@
 	{% endif %}
 {% endfor %}
 <div class="block-new-project text-center">
+	<div class="btn btn-success profile-navigation">Accéder au menu</div>
 	<div class="btn btn-success">Nouveau projet</div>
 </div>
 
@@ -33,7 +34,7 @@
 		COCEPTIO
 	</div>
 	<div class="profile-left-menu-subtitle text-center">
-		Administration
+		tableau de bord
 	</div>
 
 	<div class="profile-menus">
@@ -52,7 +53,7 @@
 			<div class="profile-menu-content">
 				<a {% if menulink_messages is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_messages') }}">{% if nbNotif_messages > 0 %}<div class="notif">{{ nbNotif_messages }}</div>{% endif %}<i class="fa fa-envelope-o"></i> Messages</a>
 				<!--a href="#"><i class="fa fa-comment-o"></i> Informations</a-->
-				<a {% if menulink_badges is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_badges') }}"><i class="fa fa-trophy"></i> Badges</a>
+				<a {% if menulink_badges is defined %}class="active" {% endif %}href="#"><i class="fa fa-trophy"></i> Badges (bientôt)</a>
 				<a {% if menulink_param is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-gears"></i> Paramètres</a>
 				<!--a href="#"><i class="fa fa-plus-square"></i> Plus</a-->
 			</div>
