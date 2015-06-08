@@ -63,7 +63,7 @@ nav {
   background: #fff;
   position:fixed;
   top: 0;
-  z-index:1010;
+  z-index:9;
 }
 nav > .navigation-bar {
   width:80%;

@@ -1,3 +1,7 @@
+#main {
+	padding-bottom: 100px;
+}
+
 tr:first-child td {
 	border:none !important;
 }
@@ -211,13 +215,7 @@ textarea {
 /** NEW STYLE **/
 .profile-navigation {
 	display: none;
-	float: left;
-	margin-top: 8px;
-	margin-left: 8px;
 	z-index: 1;
-	background: white;
-	border-radius: 4px;
-	padding: 6px;
 	cursor: pointer;
 }
 
@@ -231,7 +229,7 @@ textarea {
 
 .block-new-project {
 	position: fixed;
-	z-index: 1;
+	z-index: 11;
 	bottom: 0;
 	left: 0;
 	padding: 30px;
@@ -258,7 +256,7 @@ textarea {
 .profile-left-menu-subtitle {
 	text-transform: lowercase;
 	font-size: 12px;
-	letter-spacing: 10px;
+	letter-spacing: 6px;
 }
 
 .profile-menus {
@@ -344,7 +342,11 @@ textarea {
 
 	.profile-left-menu {
 		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
 		width: 100%;
+		z-index: 10;
 	}
 	.profile-content {
 		margin-left: 0;
