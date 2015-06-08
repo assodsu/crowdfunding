@@ -46,7 +46,7 @@ body{
 	margin-top: 50px;
 }
 .btn {
-  font-family: 'Avenir';
+  font-family: 'Open Sans';
   font-size:13px !important;
   padding: 10px 20px;
 }
@@ -334,7 +334,8 @@ footer #footer-bottom {
   color:#4A4A4A;
 }
 #footer-top h1 {
-  margin-top: 10px;
+  margin-top: 0;
+  padding-top:10px;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 10px;
@@ -355,7 +356,7 @@ footer #footer-bottom {
   color:rgb(141, 145, 145);
 }
 #footer-top section hr {
-  width:65%;
+  width:200px;
   border-color:#919191;
 }
 #footer-top .social {
@@ -392,11 +393,6 @@ footer #footer-bottom {
 
   #footer-top section {
     display: block;
-    cursor: pointer;
-  }
-
-  #footer-top ul {
-    display: none;
   }
 
   #footer-top section + section {
@@ -404,6 +400,11 @@ footer #footer-bottom {
     margin: 0px;
     padding-top: 12px;
     border-top: 1px solid rgb(145, 145, 145);
+    text-align: center;
+  }
+
+  #footer-top section + section h4 i {
+    display:none;
   }
 
   .socials {

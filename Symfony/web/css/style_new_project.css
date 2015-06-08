@@ -20,17 +20,8 @@
 	border: none;
 }
 
-.form-add-project .btn {
-	margin-top: 10px;
-	margin-bottom: 20px;
-	width: auto;
-	background: #2574A9;
-	color: #FFF;
-}
-
-.form-add-project .btn:hover {
-	background: #FFF;
-	color: #5C97BF;
+.btn.btn-success {
+	margin-top: 15px;
 }
 
 #steps {
@@ -107,36 +98,69 @@
 	border: 1px solid;
 }
 #cf_mainbundle_projet_boxs > div {
-	margin:5px;
-	width: 200px;
+	width: calc(50% - 10px);
 	height:auto;
+	margin:5px;
 	display:inline-block;
 	padding:10px;
-	border:1px solid black;
+	border: 5px solid rgb(37, 116, 169);
+	background: #fff;
+	color: #000;
 	border-radius: 5px;
-	background: whitesmoke;
+	position: relative;
+  	min-height: 370px;
 }
-#cf_mainbundle_projet_boxs > div{
-	width: calc(50% - 10px);
+#cf_mainbundle_projet_boxs > div > div {
+	position: absolute;
+	width: calc(100% - 20px);
+	margin-top: 25px;
 }
- #ajout_box {
-  height: 90px;
-  line-height: 75px;
-  width: 90px;
-  margin: 64px 60px;
+#cf_mainbundle_projet_boxs > div > div > div:nth-child(3),
+#cf_mainbundle_projet_boxs > div > div > div:nth-child(4) {
+	width:50%;
+	display: inline-block;
+}
+#cf_mainbundle_projet_boxs .box-order {
+	display: inline-block;
+	width: 50% !important;
+	margin-left: 10px;
+	vertical-align: top;
+}
+#cf_mainbundle_projet_boxs .form-control {
+	width: 100%;
+	background: none;
+	border: 3px solid #2574A9;
+	color: #2574A9;
+}
+#cf_mainbundle_projet_boxs input[type="checkbox"] {
+  width: 20px;
+  margin-left: 10px;
+  display: inline-block;
   vertical-align: top;
 }
+#cf_mainbundle_projet_boxs > div > label {
+	display:none;
+}
 #ajout_box {
-	margin: 64px calc(25% - 49px);
+  height: 370px;
+  line-height: 75px;
+  width: calc(50% - 10px);
+  margin: 5px;
+  vertical-align: top;
+  padding-top: 145px;
+  background: #2574A9;
 }
 #ajout_box > i {
-  font-size: 30pt;
+  font-size: 90px;
   vertical-align: middle;
 }
-#suppr_box {
-  margin-left: 25%;
-  margin-top: 10px;
-  width: 50%;
+#ajout_box:hover {
+	background:#9BC4DF;
+}
+.delete-button {
+	position: absolute;
+	right: 10;
+	font-size: 25px;
 }
 .container {
 	margin-bottom:20px;
@@ -149,6 +173,14 @@
 	width:80%;
 	margin-left:auto;
 	margin-right:auto;
+}
+@media (max-width: 1040px) {
+	#cf_mainbundle_projet_boxs > div {
+		width: 100%;
+	}
+	#ajout_box {
+	  width: 100%;
+	}
 }
 /* BOITES DES RESSOURCES */
 .besoin-box > .delete-button {

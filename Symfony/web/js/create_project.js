@@ -51,9 +51,7 @@ $(document).ready(function() {
 	$(document).on('change', '.body-besoin', function(){
 
 		var index = $(this).attr('id');
-		console.log(index);
 		index = jQuery.trim(index).substring(29, 30);
-		console.log(index);
 
 		var newColor = "";
 		var icon = "";
@@ -116,7 +114,7 @@ $(document).ready(function() {
 	}
 
 	function ajouterLienSuppressionBox($prototype) {
-		$lienSuppression = $('<a href="#" class="btn btn-danger" id="suppr_box"><i class="fa fa-minus"></i></a>');
+		$lienSuppression = $('<a href="#" class="delete-button"><span class="glyphicon glyphicon-remove"></span></a>');
 		$prototype.append($lienSuppression);
 
 		$lienSuppression.click(function(e) {
@@ -137,7 +135,6 @@ $(document).ready(function() {
         e.preventDefault();
         var target = $($(this).attr('href'));
         var numberStep = '1';
-        console.log(target);
 
         if ($(this).hasClass('step-1')) {
             numberStep = '1';

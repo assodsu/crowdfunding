@@ -1,7 +1,7 @@
 {% extends "CFMainBundle::layout.html.twig" %}
 
 {% block title %}
-  	{{ parent() }} - Lancer votre projet
+  	{{ parent() }} - Lancez votre projet
 {% endblock %}
 
 {% block page_title %}Lancez votre projet{% endblock %}
@@ -52,25 +52,25 @@
 				{{ form_row(form.background) }}  
 				{{ form_row(form.tags) }}
 					
-				<a id="activate-step-2" class="btn btn-primary btn-lg">Etape suivante</a>
+				<a id="activate-step-2" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-chevron-right"></i></a>
 			</div>
 
 			<div class="row step-content" id="step-2">
 				{{ form_row(form.description) }}
 					  	
-				<a id="activate-step-3" class="btn btn-primary btn-lg">Etape suivante</a>
+				<a id="activate-step-3" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-chevron-right"></i></a>
 		    </div>
 
 		    <div class="row step-content" id="step-3">
 	  			{{ form_row(form.boxs) }}
 
-				<a id="activate-step-4" class="btn btn-primary btn-lg">Etape suivante</a>
+				<a id="activate-step-4" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-chevron-right"></i></a>
 		    </div>
 
 		    <div class="row step-content" id="step-4">
 				{{ form_row(form.besoins) }}
 
-				<a id="activate-step-5" class="btn btn-primary btn-lg">Etape suivante</a>
+				<a id="activate-step-5" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-chevron-right"></i></a>
 		    </div>
 
 		    <div class="row step-content" id="step-5">
