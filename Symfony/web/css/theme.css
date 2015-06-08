@@ -1,8 +1,4 @@
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700');
-@import url('http://fonts.googleapis.com/css?family=Lato');
-@font-face {font-family: GothamMedium;src: url('../fonts/Gotham Medium.otf');}
-@font-face {font-family: GothamLight;src: url('../fonts/Gotham Light.otf');}
-@font-face {font-family: Avenir;src: url('../fonts/AvenirLTStd-Book.otf');font-weight: 100;}
 
 html {
 	height:100%;
@@ -16,7 +12,7 @@ body{
 	padding: 0;
   	background: #5C97BF;
 	overflow-x: hidden;
-	font-family: 'Avenir';
+	font-family: 'Open Sans';
 	font-size: 13px;
 }
 
@@ -116,14 +112,14 @@ nav > .navigation-bar .nav-content li a{
   height:100%;
   padding: 15px 0;
   text-decoration: none;
-  font-family: 'GothamMedium';
+  font-weight: 600;
 }
 
 nav > .navigation-bar .nav-content li a:hover{
   background-color: transparent;
   border-bottom: 5px solid #3498DB;
   padding-bottom: 10px;
-  transition: all 0.5s;
+  transition: all 0.1s;
 }
 
 nav .navigation-bar .nav-middle-part li{
@@ -263,7 +259,7 @@ nav .navigation-bar .nav-middle-part img {
   top: 10px;
   font-size: 24px;
   background: #fff;
-  border: 1px solid rgb(221, 221, 221);
+  border: 0px solid black;
   border-radius: 5px;
   color: rgb(136, 136, 136);
   padding: 3px 9px;
@@ -376,7 +372,6 @@ footer #footer-bottom {
   font-size: 20px;
   margin:0;
   margin-bottom: 6px;
-  font-weight: bold;
   letter-spacing: 2px;
   color:rgb(221, 221, 221);
 }

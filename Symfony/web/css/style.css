@@ -54,13 +54,13 @@
   font-size: 18pt;
 }
 
-::-webkit-input-placeholder {
+.search::-webkit-input-placeholder {
     color: #FFF;
 }
-:-moz-placeholder {
+.search:-moz-placeholder {
     color: #FFF;
 }
-::-moz-placeholder {
+.search::-moz-placeholder {
     color: #FFF;
 }
 
