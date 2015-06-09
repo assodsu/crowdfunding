@@ -37,6 +37,16 @@ class ProjectController extends Controller
 
     public function addAction(Request $request)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_USER')) {
+            $this->get('session')->getFlashBag()->add('warning', 'Vous devez être obligatoirement authentifié sur le site en tant qu\'association pour pouvoir déposer un projet.');
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
+        if (!$this->get('security.context')->isGranted('ROLE_ASSOCIATION')) {
+            $this->get('session')->getFlashBag()->add('warning', 'Vous devez être obligatoirement authentifié sur le site en tant qu\'association pour pouvoir déposer un projet.');
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $projet = new Projet();
         $form = $this->createForm(new ProjetType(), $projet);
 

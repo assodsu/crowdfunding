@@ -350,6 +350,13 @@ p.modal-connexion-center {
   width:70%;
 }
 
+.input-group-addon:first-child {
+  border: 0px solid #2574A9;
+  border-right:0;
+  background: #FFF; 
+  color: #2574A9;
+}
+
 @media (max-width: 940px) {
   .tab-box.aside {
     width: 100%;

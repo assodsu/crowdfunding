@@ -1,6 +1,6 @@
 #main {
 	color: #fff;
-	padding-top: 50px;
+	padding-top: 30px;
 	text-align: center;
 }
 
@@ -30,8 +30,14 @@
 	font-weight: 300;
 }
 
+.icon img {
+	width: 200px;
+}
+
 .row.subtext {
-	color: rgb(190, 213, 229);
+	font-size: 24px;
+	text-align: justify;
+	font-weight: 300;
 }
 
 .hvr-shrink {

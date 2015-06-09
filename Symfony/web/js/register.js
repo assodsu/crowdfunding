@@ -5,6 +5,15 @@ $(document).ready(function(){
 
     allWells.hide();
     $('#step-1').show();
+    changeActuelStep();
+
+    function changeActuelStep() {
+        for (var i = 1; i <= 5; i++)
+            if ($('#step-'+ i).is(':visible'))
+                $('a.step-'+i+' .step-active').css('background-color', '#449d44');
+            else
+                $('a.step-'+i+' .step-active').css('background-color', 'white');
+    }
 
     navListItems.click(function(e)
     {
@@ -29,6 +38,8 @@ $(document).ready(function(){
         
         allWells.hide();
         target.show();
+
+        changeActuelStep();
     });
 
     $('.step-last a').click(function(e)
@@ -36,10 +47,13 @@ $(document).ready(function(){
         e.preventDefault();
         var target = $($(this).attr('href'));
         var numberStep = '5';
+
         $('.step-' + numberStep).html('<div class="step-active">'+numberStep+'</div>');
         
         allWells.hide();
         target.show();
+
+        changeActuelStep();
     });
 
     $('#activate-step-2').on('click', function(e) {

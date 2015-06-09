@@ -47,12 +47,18 @@ tr:first-child td {
 	font-size: 12pt;
 }
 #logo {
-	width: 150px;
-	height: 150px;
+	height: 120px;
 	margin-left: 50px;
-	border: 2px solid white;
+	border: 1px solid white;
 	display: block;
 	margin: 0 auto;
+	margin-bottom: 12px;
+}
+
+.img-circle {
+	border-radius:8px;
+	background: rgba(0,0,0,0.5);
+	padding: 10px;
 }
 .reseaux_sociaux {
 	display:inline-block;
@@ -93,6 +99,15 @@ textarea {
 	text-align: center;
 	height:30px;
   	margin-top: 300px;
+}
+
+.panel-profile-heading .title-panel-heading h1 {
+	margin: 0;
+	line-height: 200px;
+	vertical-align: middle;
+	color: #fff;
+	background: url('../images/messages.jpg') center;
+	height: 200px;
 }
 /**** ACHIEVEMENTS ****/
 .achievement {

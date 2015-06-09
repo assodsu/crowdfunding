@@ -14,10 +14,9 @@
 }
 
 .form-register input, .form-register textarea, .form-register select {
-	margin-bottom: 20px;
 	background: #2574A9;
 	color: #fff;
-	border: none;
+	border: 0px solid white;
 }
 
 .form-register .btn {

@@ -24,7 +24,7 @@
 					<div class="profile-circle" style="background-color: #83d29a;"></div>
 				</div>
 				<div class="item">
-					<p>Je suis un particulier et je souhaites participer aux projets associatifs.</p>
+					<p>Je suis un particulier et je souhaite participer aux projets associatifs.</p>
 					<div class="profile-circle" style="background-color: #c0392b;"></div>
 				</div>
 				<div class="item">
@@ -40,8 +40,11 @@
 			</ol>
 		</div>
 	</div>
-	<a href="{{ path('fos_user_registration_register') }}" class="btn btn-success">Je m'inscris <span class="glyphicon glyphicon-user"></span></a>
-
+	{% if not app.user  %}
+		<a href="{{ path('fos_user_registration_register') }}" class="btn btn-success">Je m'inscris <span class="glyphicon glyphicon-user"></span></a>
+	{% else %}
+		<a href="{{ path('cf_site_commentcamarche') }}" class="btn btn-success">Comment ça marche ?</a>
+	{% endif %}
 	<div class="sidebar-projects">
 		<a id="linkProjetsAccueil" href="#" class="active">Les projets en pôle position</a>
 		<a id="linkProjetsAboutissants" href="#">Les projets aboutissants</a>
