@@ -40,12 +40,12 @@ class ActualiteController extends Controller
                 $em->flush();
             }
 
-            $this->get('session')->getFlashBag()->add('info', 'La mise à jour a bien été ajoutée !');
+            $this->get('session')->getFlashBag()->add('info', 'L\'actualité a bien été ajoutée !');
 
             return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
         }
 
-        return $this->render('CFMainBundle:Actualite:add.html.twig', array('form' => $form->createView()));
+        return $this->render('CFMainBundle:Actualite:add.html.twig', array('form' => $form->createView(), 'projet' => $projet));
     }
 
     public function editerAction(Request $request, Actualite $actualite) {
@@ -77,7 +77,7 @@ class ActualiteController extends Controller
             return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $actualite->getProjet()->getSlug())));
         }
 
-        return $this->render('CFMainBundle:Actualite:add.html.twig', array('form' => $form->createView()));
+        return $this->render('CFMainBundle:Actualite:add.html.twig', array('form' => $form->createView(), 'projet' => $actualite->getProjet()));
     }
 
     public function supprimerAction(Request $request, Actualite $actualite) {

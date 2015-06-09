@@ -60,15 +60,6 @@
 	</div>
 	</div>
 	<div class="slider active" id="projetsAccueil">
-		<div class="item-slider">
-		<div class="slide-image" text="Association ? Mettez en lumière vos projets et faites vous soutenir" slugProject="../" img="carousel-d.jpg"></div>
-  		<div class="mask">
-		    <img src="{{ asset('images/uploads/carousel-d.jpg') }}" class="slide-image-blured">
-		</div>
-  		<div class="project-infos">
-  			<span class="title"></span>
-  		</div>
-	  </div>
 	  {% for pa in projetsAccueil %}
 	  	<div class="item-slider">
 		<div class="slide-image" text="{{ pa.text }}" slugProject="{{ pa.projet.slug }}" img="{{ pa.projet.background.path }}"></div>

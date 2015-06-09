@@ -14,6 +14,7 @@ class TagsAdmin extends Admin
     {
         $formMapper
             ->add('nom')
+            ->add('couleur')
         ;
     }
 

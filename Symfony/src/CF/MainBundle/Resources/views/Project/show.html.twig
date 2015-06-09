@@ -45,7 +45,7 @@
 {% block body %}
 	<div id='block-head'>
 		<div class='content'>
-			<img id='background-img' src="{{asset(projet.background.AssetPath) }}"/>
+			<div id='background-img' style="background: 50% 50% url('../../../{{ projet.background.AssetPath }}'); background-size:cover;"></div>
 		</div>
 		<div class='content'>
 			<div id='infos-asso'>
@@ -97,7 +97,15 @@
 					
 					<div id='project-tags'>
 						{% for tag in projet.tags %}
-							<div class='tag'>{{ tag.nom }}</div>
+							<style>
+								.tag-{{ tag.id }} {
+									background: #{{ tag.couleur }} !important;
+								}
+								.tag-{{ tag.id }}::before {
+									border-color: transparent #{{ tag.couleur }} transparent transparent !important;
+								}
+							</style>
+							<div class='tag-{{ tag.id }}'>{{ tag.nom }}</div>
 						{% endfor %}
 					</div>
 				</div>
@@ -219,17 +227,17 @@
 			</div>
 			<div class="tab-pane fade" id="tabupdates">
 				{% if app.user == projet.association %}
-				<a href="{{ path('cf_main_rediger_actu', {id: projet.id}) }}">Rédiger une actualité</a>
+				<a href="{{ path('cf_main_rediger_actu', {id: projet.id}) }}" class="btn btn-success">Rédiger une actualité <i class="fa fa-plus"></i></a>
 				{% endif %}
 				{% for a in projet.actualites %}
 					<div class='tab-box full'>
 						{% if app.user == a.projet.association %}
-						<a href="{{ path('cf_main_edit_actu', {id: a.id}) }}">Editer</a> -
-						<a href="{{ path('cf_main_delete_actu', {id: a.id}) }}">Supprimer</a>
+						<a href="{{ path('cf_main_edit_actu', {id: a.id}) }}" class="btn btn-warning">Editer <i class="fa fa-pencil-square-o"></i></a>
+						<a href="{{ path('cf_main_delete_actu', {id: a.id}) }}" class="btn btn-danger">Supprimer <i class="fa fa-trash-o"></i></a>
 						{% endif %}
-						<div class='update-date'>Le 25 janvier 2015 - 11h38</div>
+						<div class='update-date'>Le {{ a.date|date('d/m/Y - H') }}h{{ a.date|date('i') }}</div>
 						<h1>{{ a.titre }}</h1>
-						{{ a.contenu }}
+						{{ a.contenu|raw|nl2br }}
 					</div>
 				{% endfor %}
 

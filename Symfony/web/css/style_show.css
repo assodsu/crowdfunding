@@ -35,7 +35,6 @@
 	border: 3px solid rgb(138, 202, 139);
 	border-radius: 5px;
 	background: rgb(138, 202, 139);
-	font-family: 'GothamMedium';
 }
 #certification #logo {
 	width:150px;
@@ -203,7 +202,7 @@
 #project-tags {
   padding: 10px 20px;
 }
-.tag {
+#project-tags div {
 	min-width: 100px;
 	text-align: center;
 	display: inline-block;
@@ -216,7 +215,6 @@
 	padding: 0 10px 0 12px;
 	margin-bottom: 5px;
 	background: #3498db;
-	font-family: GothamMedium;
 	color:#fff;
 	-moz-border-radius-bottomright: 4px;
 	-webkit-border-bottom-right-radius: 4px;
@@ -226,7 +224,7 @@
 	border-top-right-radius: 4px;
 }
 
-.tag:before {
+#project-tags div:before {
 	content:"";
 	float:left;
 	position:absolute;
@@ -239,7 +237,7 @@
 	border-width:12px 12px 12px 0;
 }
 
-.tag:after {
+#project-tags div:after {
 	content:"";
 	position:absolute;
 	top:10px;
@@ -251,9 +249,6 @@
 	-webkit-border-radius:2px;
 	border-radius:2px;
 	background:#fff;
-	-moz-box-shadow:-1px -1px 2px #004977;
-	-webkit-box-shadow:-1px -1px 2px #004977;
-	box-shadow:-1px -1px 2px #004977;
 }
 
 /**** BLOC CORPS DE PRESENTATION PROJET ****/
@@ -274,6 +269,18 @@
 	width:100%;
   	text-align: center;
 }
+/**** UPDATES ****/
+.form-submit-actu {
+	margin-bottom: 15px;
+}
+.form-submit-actu > form > div {
+	margin-top: 10px;
+}
+.btn-submit-actu {
+	margin: 10px auto;
+	display: block;
+}
+
 /**** COMMENTAIRES ****/
 .tab-box.comment {
 	min-height:0;

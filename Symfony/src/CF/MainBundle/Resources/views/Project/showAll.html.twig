@@ -7,6 +7,7 @@
 {% block stylesheets %}
 	{{ parent() }}
 	<link href="{{ asset('css/style_showAll.css') }}" rel="stylesheet"/>
+
 {% endblock %}
 
 {% block footer %}{% endblock %}
@@ -24,41 +25,41 @@
 			</div>
 			<div class="selector">
 				<div class="container-select">
-					<div class="select">Action humanitaire</div>
+					<div class="select" style="color: #5fcf80;">Action humanitaire</div>
 				</div>
 				<div class="container-select">
-					<div class="select">Action sociale</div>
+					<div class="select" style="color: #9b59b6;">Action sociale</div>
 				</div>
 				<div class="container-select">
-					<div class="select">Santé</div>
+					<div class="select" style="color: #1abc9c;">Santé</div>
 				</div>
 				<div class="container-select">
-					<div class="select">Opinions, droits et causes</div>
+					<div class="select" style="color: #f1c40f;">Opinions, droits et causes</div>
 				</div>
 				<div class="container-select">
-					<div class="select">Loisirs</div>
+					<div class="select" style="color: #3498db;">Loisirs</div>
 				</div>
 				<div class="container-select">
-					<div class="select">Education, formations et insertion</div>
+					<div class="select" style="color: #e74c3c;">Education, formations et insertion</div>
 				</div>
 			</div><div class="selector">
 				<div class="container-select">
-					<div class="select">Sciences et numérique</div>
+					<div class="select" style="color: #f1c40f;">Sciences et numérique</div>
 				</div>
 				<div class="container-select">
-					<div class="select">Tourisme</div>
+					<div class="select" style="color: #3498db;">Tourisme</div>
 				</div>
 				<div class="container-select">
-					<div class="select">Culture</div>
+					<div class="select" style="color: #e67e22;">Culture</div>
 				</div>
 				<div class="container-select">
-					<div class="select">Sport</div>
+					<div class="select" style="color: #5d495e;">Sport</div>
 				</div>
 				<div class="container-select">
-					<div class="select">Vie et développement local</div>
+					<div class="select" style="color: #e74c3c;">Vie et développement local</div>
 				</div>
 				<div class="container-select">
-					<div class="select">Nature et environnements</div>
+					<div class="select" style="color: #5fcf80;">Nature et environnements</div>
 				</div>
 			</div><div style="display: inline-block"><div class="selector">
 					<div class="container-select">
@@ -80,10 +81,6 @@
 					<div class="container-select">
 						<div class="select">Fiennes</div>
 					</div>
-				</div>
-
-				<div class="search-button-select">
-					<button type="button" class="btn btn-success" id="search-button-select">Rechercher <span class="glyphicon glyphicon-search"></span></button>
 				</div>
 				<div class="discover-map">
 					<div class="btn-discover-map">Découvrir sur carte intéractive</div>
@@ -133,7 +130,15 @@
 					</div>
 					<ul class="project-tags">
 						{% for tag in projet.tags %}
-							<li class="tag">{{ tag.nom }}</li>
+							<style>
+								.tag-{{ tag.id }} {
+									background: #{{ tag.couleur }} !important;
+								}
+								.tag-{{ tag.id }}::before {
+									border-color: transparent #{{ tag.couleur }} transparent transparent !important;
+								}
+							</style>
+							<li class="tag-{{ tag.id }}">{{ tag.nom }}</li>
 						{% endfor %}
 					</ul>
 					<div class='chart'>

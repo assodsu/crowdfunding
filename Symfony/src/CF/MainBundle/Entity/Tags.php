@@ -29,6 +29,13 @@ class Tags
     private $nom;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="couleur", type="string", length=6)
+     */
+    private $couleur;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -59,5 +66,29 @@ class Tags
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set couleur
+     *
+     * @param string $couleur
+     *
+     * @return Tags
+     */
+    public function setCouleur($couleur)
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }
+
+    /**
+     * Get couleur
+     *
+     * @return string
+     */
+    public function getCouleur()
+    {
+        return $this->couleur;
     }
 }
