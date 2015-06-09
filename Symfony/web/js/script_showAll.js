@@ -27,17 +27,16 @@ $(document).ready(function(){
 		$('.select').each(function() {
 			$(this).removeClass('active');
 			$(this).parent().children('span').remove();
-			if ($('.search input').val().sansAccent().toLowerCase().indexOf($(this).text().sansAccent().toLowerCase()) > -1) {
+			if ($('.search input').val().toUpperCase().indexOf($(this).text().toUpperCase()) > -1) {
 				$(this).addClass('active');
 				$(this).parent().append('<span class="glyphicon glyphicon-ok checkmark"></span>');
 			}
 		});
-		$('.search input').val($('.search input').val().sansAccent().toLowerCase());
 	}
 
 	selectionSelect();
 
-	$('.search input').keypress(function() {
+	$('.search input').keyup(function() {
 		selectionSelect();	
 	});
 	
@@ -47,8 +46,8 @@ $(document).ready(function(){
 			$(this).removeClass('active');
 			$(this).parent().children('span').remove();
 			
-			var chaine = $('.search input').val().sansAccent().toLowerCase();
-			chaine = chaine.replace($select.text().sansAccent().toLowerCase(),'');
+			var chaine = $('.search input').val();
+			chaine = chaine.replace($select.text(),'');
 			
 			$('.search input').val($.trim(chaine));
 		} else {

@@ -47,9 +47,7 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
          
         $qb->leftJoin('p.association', 'a')
             ->leftJoin('p.tags', 't')
-        	->where('p.nom LIKE :motcle')
-        	->orWhere('a.ville LIKE :motcle')
-            ->orWhere('t.nom LIKE :motcle')
+        	->where('p.valider = 1 AND (p.nom LIKE :motcle OR a.ville LIKE :motcle OR t.nom LIKE :motcle)')
             ->setParameter('motcle', '%'.$motcle.'%');
                  
         return $qb->getQuery()->getResult();
