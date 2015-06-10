@@ -23,64 +23,39 @@
 					rechercher par ville
 				</div>
 			</div>
-			<div class="selector">
-				<div class="container-select">
-					<div class="select" style="color: #5fcf80;">Action humanitaire</div>
-				</div>
-				<div class="container-select">
-					<div class="select" style="color: #9b59b6;">Action sociale</div>
-				</div>
-				<div class="container-select">
-					<div class="select" style="color: #1abc9c;">Santé</div>
-				</div>
-				<div class="container-select">
-					<div class="select" style="color: #f1c40f;">Opinions, droits et causes</div>
-				</div>
-				<div class="container-select">
-					<div class="select" style="color: #3498db;">Loisirs</div>
-				</div>
-				<div class="container-select">
-					<div class="select" style="color: #e74c3c;">Education, formations et insertion</div>
-				</div>
-			</div><div class="selector">
-				<div class="container-select">
-					<div class="select" style="color: #f1c40f;">Sciences et numérique</div>
-				</div>
-				<div class="container-select">
-					<div class="select" style="color: #3498db;">Tourisme</div>
-				</div>
-				<div class="container-select">
-					<div class="select" style="color: #e67e22;">Culture</div>
-				</div>
-				<div class="container-select">
-					<div class="select" style="color: #5d495e;">Sport</div>
-				</div>
-				<div class="container-select">
-					<div class="select" style="color: #e74c3c;">Vie et développement local</div>
-				</div>
-				<div class="container-select">
-					<div class="select" style="color: #5fcf80;">Nature et environnements</div>
-				</div>
-			</div><div style="display: inline-block"><div class="selector">
-					<div class="container-select">
-						<div class="select">Wimereux</div>
-					</div>
-					<div class="container-select">
-						<div class="select">Lille</div>
-					</div>
-					<div class="container-select">
-						<div class="select">Calais</div>
-					</div>
+
+				<div class="selector">
+					{% for s in selecteurs %}
+						{% if s.colonne == 1 %}
+						<div class="container-select">
+							<div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
+						</div>
+						{% endif %}
+					{% endfor %}
 				</div><div class="selector">
-					<div class="container-select">
-						<div class="select">Boulogne sur mer</div>
-					</div>
-					<div class="container-select">
-						<div class="select">Samer</div>
-					</div>
-					<div class="container-select">
-						<div class="select">Fiennes</div>
-					</div>
+					{% for s in selecteurs %}
+						{% if s.colonne == 2 %}
+						<div class="container-select">
+							<div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
+						</div>
+						{% endif %}
+					{% endfor %}
+				</div><div style="display: inline-block"><div class="selector">
+					{% for s in selecteurs %}
+						{% if s.colonne == 3 %}
+						<div class="container-select">
+							<div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
+						</div>
+						{% endif %}
+					{% endfor %}
+				</div><div class="selector">
+					{% for s in selecteurs %}
+						{% if s.colonne == 4 %}
+						<div class="container-select">
+							<div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
+						</div>
+						{% endif %}
+					{% endfor %}
 				</div>
 				<div class="discover-map">
 					<div class="btn-discover-map">Découvrir sur carte intéractive</div>

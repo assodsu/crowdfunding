@@ -138,51 +138,43 @@
 <div id="search-content">
 	<div class="selectors">
 		<div class="selector">
-			<div class="container-select">
-				<div class="select">Numérique</div>
-			</div>
-			<div class="container-select">
-				<div class="select">Loisirs</div>
-			</div>
-			<div class="container-select">
-				<div class="select">Culture</div>
-			</div>
+			{% for s in selecteurs %}
+				{% if s.colonne == 1 %}
+				<div class="container-select">
+					<div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
+				</div>
+				{% endif %}
+			{% endfor %}
 		</div>
 
 		<div class="selector">
-			<div class="container-select">
-				<div class="select">Samer</div>
-			</div>
-			<div class="container-select">
-				<div class="select">Fiennes</div>
-			</div>
-			<div class="container-select">
-				<div class="select">Boulogne Sur Mer</div>
-			</div>
+			{% for s in selecteurs %}
+				{% if s.colonne == 2 %}
+				<div class="container-select">
+					<div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
+				</div>
+				{% endif %}
+			{% endfor %}
 		</div>
 
 		<div class="selector">
-			<div class="container-select">
-				<div class="select">Wimereux</div>
-			</div>
-			<div class="container-select">
-				<div class="select">Lille</div>
-			</div>
-			<div class="container-select">
-				<div class="select">Calais</div>
-			</div>
+			{% for s in selecteurs %}
+				{% if s.colonne == 3 %}
+				<div class="container-select">
+					<div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
+				</div>
+				{% endif %}
+			{% endfor %}
 		</div>
 
 		<div class="selector">
-			<div class="container-select">
-				<div class="select">Santé</div>
-			</div>
-			<div class="container-select">
-				<div class="select">Sports</div>
-			</div>
-			<div class="container-select">
-				<div class="select">Formations</div>
-			</div>
+			{% for s in selecteurs %}
+				{% if s.colonne == 4 %}
+				<div class="container-select">
+					<div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
+				</div>
+				{% endif %}
+			{% endfor %}
 		</div>
 	</div>
 </div>

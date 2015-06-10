@@ -9,6 +9,8 @@ class RechercheController extends Controller
 {
 	public function searchAction(Request $request) 
 	{
+		$selecteurs = $this->getDoctrine()->getRepository('CFMainBundle:Selecteur')->getSelecteursLesProjets();
+
 		$form = $this->createFormBuilder()
             ->add('recherche', 'text')
             ->getForm();
@@ -43,6 +45,7 @@ class RechercheController extends Controller
 
 			return $this->render('CFMainBundle:Project:showAll.html.twig', array
 				(
+					'selecteurs' => $selecteurs,
 					'projets' => $recherche,
 					'recherche' => $request->request->get($form->getName())['recherche']
 				)
@@ -50,7 +53,7 @@ class RechercheController extends Controller
         }
 
 		$all = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findAll();
-        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$all,'categories'=>'All'));
+        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$all,'categories'=>'All', 'selecteurs' => $selecteurs));
 	}
 
 	public function renderSearchAction()

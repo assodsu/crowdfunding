@@ -8,7 +8,7 @@
 	position:absolute;
 	width:100%;
 	height:100%;
-	background-color: rgba(10,10,10,.4);
+	background-color: rgba(10,10,10,.2);
 }
 #background-img {
 	width:100%;
@@ -32,16 +32,14 @@
 #certification #label {
 	color: #fff;
 	padding: 10px 25px;
-	border: 3px solid rgb(138, 202, 139);
+	border: 2px solid rgb(138, 202, 139);
 	border-radius: 5px;
-	background: rgb(138, 202, 139);
+	background: rgba(0,0,0,0.2);
 }
 #certification #logo {
 	height:100px;
-	border-radius:75px;
-	border:2px solid #fff;
-	border-radius:8px;
-	background: rgba(0,0,0,0.5);
+	border-radius:4px;
+	background: rgba(0,0,0,0.3);
 	padding: 10px;
 }
 #content-infos{
@@ -116,6 +114,8 @@
 	height:250px;
 	position:relative;
 	width:100%;
+	padding-top: 20px;
+	background: rgba(0,0,0,0.5);
 }
 #content-ressources {
 	width:100%;

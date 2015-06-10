@@ -12,13 +12,15 @@ class PageController extends Controller
     	$projetsAccueil = $this->getDoctrine()->getRepository('CFMainBundle:ProjetAccueil')->findAll();
         $projetsAboutissants = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getProjetsAboutissants();
         $projetsNouveaux = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getProjetsNouveaux();
+        $selecteurs = $this->getDoctrine()->getRepository('CFMainBundle:Selecteur')->getSelecteursAccueil();
 
         return $this->render('CFMainBundle:Page:index.html.twig', 
         	array(
         		'projets' => $projets,
         		'projetsAccueil' => $projetsAccueil,
                 'projetsAboutissants' => $projetsAboutissants,
-                'projetsNouveaux' => $projetsNouveaux
+                'projetsNouveaux' => $projetsNouveaux,
+                'selecteurs' => $selecteurs
         		)
         	);
     }

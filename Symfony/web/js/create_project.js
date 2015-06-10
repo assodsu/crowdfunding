@@ -136,7 +136,7 @@ $(document).ready(function() {
             if ($('#step-'+ i).is(':visible'))
                 $('a.step-'+i+' .step-active').css('background-color', '#449d44').css('color', 'white');
             else
-                $('a.step-'+i+' .step-active').css('background-color', 'white');
+                $('a.step-'+i+' .step-active').css('background-color', 'white').css('color', '#2574A9');
     }
 
     navListItems.click(function(e)

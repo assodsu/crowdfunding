@@ -32,6 +32,17 @@ services:
         calls:
             - [ setTranslationDomain, [CFMainBundle]]
 
+    sonata.admin.selecteur:
+        class: CF\MainBundle\Admin\SelecteurAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Projets", label: "Sélecteurs" }
+        arguments:
+            - ~
+            - CF\MainBundle\Entity\Selecteur
+            - ~
+        calls:
+            - [ setTranslationDomain, [CFMainBundle]]
+
     sonata.admin.notif:
         class: CF\NotificationBundle\Admin\NotificationAdmin
         tags:

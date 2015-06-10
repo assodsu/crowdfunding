@@ -31,8 +31,9 @@ class ProjectController extends Controller
     public function showAllAction()
     {	
 		$projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate();
+        $selecteurs = $this->getDoctrine()->getRepository('CFMainBundle:Selecteur')->getSelecteursLesProjets();
 		
-        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$projets));
+        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$projets, 'selecteurs' => $selecteurs));
     }
 
     public function addAction(Request $request)
