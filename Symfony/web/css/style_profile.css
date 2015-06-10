@@ -339,6 +339,11 @@ textarea {
 	margin-left: 25%;
 	width: 75%;
 }
+.errors {
+	color:red;
+	text-align: center;
+	font-weight: bold;
+}
 /** MEDIA QUERIES **/
 @media (max-width: 700px) {
 	.logo-name h1 {
@@ -375,129 +380,6 @@ textarea {
 	}
 }
 
-/* --------------------- */
-/* -- MODAL CONNEXION -- */
-/* --------------------- */
-.modal-message-dialog {
-	width: 600px !important;
-	margin: 20px auto;
-}
-.modal-message-content {
-	margin: auto;
-}
-.modal-message-header {
-	background: #5A5F69;
-	padding: 6px 12px;
-}
-
-.modal-message-title {
-	text-transform: uppercase;
-	font-weight: 300;
-	letter-spacing: 8px;
-	font-size: 26px;
-	color: #FFFFFF;
-	text-align: center;
-	padding: 12px 0px;
-	margin: 0;
-}
-
-.modal-message-body {
-	background: #FFFFFF;
-	padding-bottom: 20px;
-	line-height: normal;
-}
-.modal-message-body p:before, .modal-message-body p:after {
-	position: absolute;
-	display: inline-block;
-	content: " ";
-}
-.modal-message-body p.fromYou:after {
-  top: 11px;
-  right: -14px;
-  border-top: 14px solid transparent;
-  border-left: 14px solid rgb(218, 227, 255);
-  border-right: 0 solid rgb(218, 227, 255);
-  border-bottom: 14px solid transparent;
-}
-.modal-message-body p.fromAnother:after {
-  top: 11px;
-  left: -14px;
-  border-top: 14px solid transparent;
-  border-left: 0 solid rgb(245, 245, 245);
-  border-right: 14px solid rgb(245, 245, 245);
-  border-bottom: 14px solid transparent;
-}
-.modal-message-body p {
-	padding: 10px;
-	margin: 20px 80px;
-	border-radius: 5px;
-	min-height: 60px;
-  	position: relative;
-	font-size: 14px;
-	font-weight: bold;
-}
-.modal-message-body p.fromAnother {
-	background: rgb(245, 245, 245);
-}
-.modal-message-body p.fromYou {
-	background: rgb(218, 227, 255);
-	text-align: right;
-}
-.modal-message-body p small {
-	font-size: 12px;
-	font-weight: 100;
-	top: 5px;
-}
-.modal-message-body input {
-	padding: 8px;
-	width: 80%;
-	height: 35px;
-	display:inline-block;
-	border-bottom: 1px solid #5A5F69;
-	border-radius: 0;
-}
-
-.modal-message-body input:focus {
-	border: none;
-	outline:  none;
-	border-bottom: 1px solid #5A5F69;
-}
-
-.modal-message-body input.btn {
-	width:20%;
-	border:none;
-}
-.modal-message-footer {
-	background: #5A5F69;
-	padding: 16px;
-	text-align: center;
-}
-.messages-list {
-	max-height: 350px;
-	overflow:auto;
-}
-.loading {
-	text-align: center;
-	font-size: 50px;
-	color: rgb(95, 207, 128);
-}
-.errors {
-	color:red;
-	text-align: center;
-	font-weight: bold;
-}
-
-@media (max-width: 600px) {
-	.modal-message-dialog {
-		width: 100% !important;
-		margin: 0;
-	}
-}
-@media (max-width: 600px) {
-	.modal-message-body p {
-		margin: 20px 15px;
-	}
-}
 /** BADGES **/
 .badge-profil {
 	display: inline-block;
@@ -707,9 +589,6 @@ textarea {
 	color:#aaafb2;
 }
 
-/*-----------*/
-/*  Messages */
-/*-----------*/
 .panel-profile-heading {
   height: 150px;
   position: relative;

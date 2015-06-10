@@ -1,0 +1,254 @@
+.conversations {
+  width: 85%;
+  margin: 0 auto;
+}
+.conversation {
+  margin:20px 0;
+  max-width: 860px;
+}
+.conversation-background {
+  background: #fff;
+}
+.conversation section {
+  width: 64.5%;
+  display: inline-block;
+  vertical-align: top;
+  height: 100px;
+  position: relative;
+  min-height: 150px;
+}
+.conversation-project-background {
+	background: url('../img/project.jpg') 50% 50%;
+	background-size: cover;
+  	width: 35% !important;
+}
+.conversation-project-filter {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.5);
+  position: absolute;
+}
+.wrapper-title {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.conversation-project-title {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  font-size: 25px;
+  padding: 0 40px;
+  line-height: 25px;
+  position: relative;
+  top: 50%;
+  transform: translate(0,-50%);
+}
+.conversation-project-title a {
+  color: #fff;
+  text-decoration: none;
+}
+.conversation-project-title a:hover {
+	color: #5FCF80;
+}
+.conversation-infos > div {
+  display: inline-block;
+  vertical-align: top;
+}
+.conversation-infos > div:nth-child(3) {
+  width: calc(100% - 134px);
+}
+.conversation-donator{
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  padding-top: 15px;
+}
+.conversation-donator a{
+  color:#333;
+  text-decoration: none;
+}
+.conversation-donator-logo {
+  width: 80px;
+  margin-left: -40px;
+  border: 5px solid #fff;
+  margin-top: calc(50% - 10px);
+}
+.conversation-last-message {
+  width: 90%;
+  font-size: 13px;
+  color: #fff;
+  background: #5fcf80;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+.conversation-time {
+  font-size: 10px;
+  text-align: right;
+  margin-right: 30px;
+}
+.conversation-show {
+  margin-top: 30px;
+	background: none;
+	border: 3px solid rgb(95, 207, 128);
+	color: rgb(95, 207, 128);
+}
+.conversation-show:hover, .conversation-show:active, .conversation-show:focus {
+	background: #F7F7F7;
+	border: 3px solid rgb(95, 207, 128);
+	color: rgb(95, 207, 128);
+}
+.conversation-resources {
+  width: 65%;
+  margin-left: 35%;
+  background: #d8d8d8;
+}
+.conversation-resources-link, .conversation-resources-link:focus {
+  display: block;
+  padding: 8px 10px;
+  color: #444;
+  background: #b4aeae;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.conversation-resources-link:hover, .conversation-resources-link:active {
+  background: #A19696;
+  color: #444;
+  text-decoration: none;
+}
+.conversation-resources-list {
+  list-style: none;
+  display:none;
+  padding: 0;
+}
+.conversation-resources-list li {
+  display: block;
+  font-size: 12px;
+  padding: 3px 40px;
+}
+.conversation-resources-list li:nth-child(2n+0) {
+    background: #C7C7C7;
+}
+
+/* --------------------- */
+/* -- MODAL MESSAGES  -- */
+/* --------------------- */
+.modal-message-dialog {
+  width: 600px !important;
+  margin: 20px auto;
+}
+.modal-message-content {
+  margin: auto;
+}
+.modal-message-header {
+  background: #5A5F69;
+  padding: 6px 12px;
+}
+
+.modal-message-title {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 8px;
+  font-size: 26px;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 12px 0px;
+  margin: 0;
+}
+
+.modal-message-body {
+  background: #FFFFFF;
+  padding-bottom: 20px;
+  line-height: normal;
+}
+.modal-message-body p:before, .modal-message-body p:after {
+  position: absolute;
+  display: inline-block;
+  content: " ";
+}
+.modal-message-body p.fromYou:after {
+  top: 11px;
+  right: -14px;
+  border-top: 14px solid transparent;
+  border-left: 14px solid rgb(218, 227, 255);
+  border-right: 0 solid rgb(218, 227, 255);
+  border-bottom: 14px solid transparent;
+}
+.modal-message-body p.fromAnother:after {
+  top: 11px;
+  left: -14px;
+  border-top: 14px solid transparent;
+  border-left: 0 solid rgb(245, 245, 245);
+  border-right: 14px solid rgb(245, 245, 245);
+  border-bottom: 14px solid transparent;
+}
+.modal-message-body p {
+  padding: 10px;
+  margin: 20px 80px;
+  border-radius: 5px;
+  min-height: 60px;
+    position: relative;
+  font-size: 14px;
+  font-weight: bold;
+}
+.modal-message-body p.fromAnother {
+  background: rgb(245, 245, 245);
+}
+.modal-message-body p.fromYou {
+  background: rgb(218, 227, 255);
+  text-align: right;
+}
+.modal-message-body p small {
+  font-size: 12px;
+  font-weight: 100;
+  top: 5px;
+}
+.modal-message-body input {
+  padding: 8px;
+  width: 80%;
+  height: 35px;
+  display:inline-block;
+  border-bottom: 1px solid #5A5F69;
+  border-radius: 0;
+}
+
+.modal-message-body input:focus {
+  border: none;
+  outline:  none;
+  border-bottom: 1px solid #5A5F69;
+}
+
+.modal-message-body input.btn {
+  width:20%;
+  border:none;
+}
+.modal-message-footer {
+  background: #5A5F69;
+  padding: 16px;
+  text-align: center;
+}
+.messages-list {
+  max-height: 350px;
+  overflow:auto;
+}
+.loading {
+  text-align: center;
+  font-size: 50px;
+  color: rgb(95, 207, 128);
+}
+
+@media (max-width: 600px) {
+  .modal-message-dialog {
+    width: 100% !important;
+    margin: 0;
+  }
+}
+@media (max-width: 600px) {
+  .modal-message-body p {
+    margin: 20px 15px;
+  }
+}

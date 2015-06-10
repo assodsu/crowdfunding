@@ -1,63 +1,46 @@
-<ul class="timeline">
-	{% for conversation in conversations|reverse %}
+<div class="conversations">
+  {% for conversation in conversations|reverse %}
       {% set userSource = null %}
       {% if conversation.utilisateurs[0].username == app.user.username %}
         {% set userSource = conversation.utilisateurs[1] %}
       {% else %}
         {% set userSource = conversation.utilisateurs[0] %}
       {% endif %}
-      <li>
-        	<div class="timeline-badge"><img class="img-circle" src="{{ asset(userSource.logo.AssetPath) }}"/></div>
-        	<div class="timeline-panel">
-            {% for message in conversation.messages|reverse[:1] %}
-            	<div class="timeline-heading">
-                  <h3><i class="fa fa-file-text-o"></i> Projet : <a href="{{ path('cf_main_project', { slug : conversation.projet.slug } ) }}">{{ conversation.projet.nom }}</a></h3>
-              		<h4 class="timeline-title"><i class="fa fa-user"></i> Acteur : <a href="{{ path('fos_user_profile_show' , { slug: userSource.slug}) }}">{{ userSource.nom }}</a></h4>
-                  <p class="date-notif"><small class="text-muted"><i class="glyphicon glyphicon-time"></i> le {{ message.date|date("d/m/Y") }} à {{ message.date|date("H:i") }}</small></p>
-            	</div>
-            	<div class="timeline-body">
-              	<p><i>Dernier message dans la conversation :</i> <i class="fa fa-angle-double-left"></i> {{ message.content }} <i class="fa fa-angle-double-right"></i></p>
-                <p>Contributions :</p>
-                <ul>
-                  {% for don in conversation.dons %}
-                    {% if don.quantite > 1 %}
-                      <li>{{ don.quantite }} {{ don.besoin.ressource }}s</li>
-                    {% else %}
-                      <li>{{ don.quantite }} {{ don.besoin.ressource }}</li>
-                    {% endif %}
-                  {% endfor %}
-                </ul>
-                <a data-toggle="modal" data-target="#message-modal-{{ conversation.id }}" class='btn btn-success'>Voir les messages</a>
-            	</div>
-            {% else %}
-              <div class="timeline-heading">
-                  <h3><i class="fa fa-file-text-o"></i> Projet : <a href="{{ path('cf_main_project', { slug : conversation.projet.slug } ) }}">{{ conversation.projet.nom }}</a></h3>
-                  <h4 class="timeline-title"><i class="fa fa-user"></i> Acteur : <a href="{{ path('fos_user_profile_show' , { slug: userSource.slug}) }}">{{ userSource.nom }}</a></h4>
-              </div>
-              <div class="timeline-body">
-                <p>Contributions :</p>
-                <ul>
-                  {% for don in conversation.dons %}
-                    {% if don.quantite > 1 %}
-                      <li>{{ don.quantite }} {{ don.besoin.ressource }}s</li>
-                    {% else %}
-                      <li>{{ don.quantite }} {{ don.besoin.ressource }}</li>
-                    {% endif %}
-                  {% endfor %}
-                </ul>
-                <a data-toggle="modal" data-target="#message-modal-{{ conversation.id }}" class='btn btn-success'>Débuter la conversation</a>
-              </div>
+
+      <div class="conversation">
+        <div class="conversation-background">
+          <section class="conversation-project-background" style="background: url('../../{{ conversation.projet.background.AssetPath }}') 50% 50%; background-size:cover;">
+            <div class="conversation-project-filter"></div>
+            <div class="wrapper-title"><h1 class="conversation-project-title"><a href="{{ path('cf_main_project', { slug : conversation.projet.slug } ) }}">{{ conversation.projet.nom }}</a></h1></div>
+          </section><section class="conversation-infos">
+            <h3 class="conversation-donator"><a href="{{ path('fos_user_profile_show' , { slug: userSource.slug}) }}">{{ userSource.nom }}</a></h3>
+            <div><img class="conversation-donator-logo img-circle" src="{{ asset(userSource.logo.AssetPath) }}"></img></div>
+            <div>
+              {% for message in conversation.messages|reverse[:1] %}
+                <p class="conversation-last-message">{{ message.content|slice(0, 100) }}...</p>
+                {% if message.user.username == app.user.username %}
+                  <p class="conversation-time"><i class="glyphicon glyphicon-time"></i> Envoyé le {{ message.date|date("d/m/Y") }} à {{ message.date|date("H:i") }}</p>
+                {% else %}
+                  <p class="conversation-time"><i class="glyphicon glyphicon-time"></i> Reçu le {{ message.date|date("d/m/Y") }} à {{ message.date|date("H:i") }}</p>
+                {% endif %}
+              {% else %}
+                <p class="conversation-last-message">Aucune message dans cette conversation. Pour débuter la conversation, cliquez sur "Voir".</p>
+              {% endfor %}
+            </div>
+              <button data-toggle="modal" data-target="#message-modal-{{ conversation.id }}" class="btn btn-success conversation-show">Voir</button>
+          </section>
+        </div>
+        <div class="conversation-resources">
+          <a href="#" class="conversation-resources-link"><i class="fa fa-chevron-down"></i> Ressource(s) apportée(s)</a>
+          <ul class="conversation-resources-list">
+            {% for don in conversation.dons %}
+              <li>{{ don.besoin.ressource }} (Quantité : {{don.quantite}})</li>
             {% endfor %}
-        	</div>
-      </li>
-      {{ render(controller('CFMessageBundle:Conversation:show', { 'id' : conversation.id } )) }}
-  {% else %}
-    <li>
-      <div class="timeline-panel">
-        <div class="timeline-body">
-          <p>Aucune conversation pour le moment.</p>
+          </ul>
         </div>
       </div>
-    </li>
-	{% endfor %}
-</ul>
+      {{ render(controller('CFMessageBundle:Conversation:show', { 'id' : conversation.id } )) }}
+  {% else %}
+      <p>Aucune conversation pour le moment.</p>
+  {% endfor %}
+</div>

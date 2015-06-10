@@ -1,11 +1,31 @@
 #main {
 	color: #fff;
-	padding-top: 50px;
 	text-align: center;
 }
 
 #main h1 { 
 	font-size: 4em;
+}
+
+.head-registration {
+  width: 100%;
+  background-color: rgb(36, 116, 169);
+  position: relative;
+  height: 200px;
+  text-align: center;
+}
+
+.head-registration img {
+  position: absolute;
+  display: block;
+  left: calc( 50% - 500px);
+}
+
+.head-registration h1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 65px;
 }
 
 .form-register label {

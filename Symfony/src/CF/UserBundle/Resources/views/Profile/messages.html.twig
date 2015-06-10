@@ -4,6 +4,11 @@
 	{{ parent() }} - Mes messages
 {% endblock %}
 
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style_messages.css') }}">
+{% endblock %}
+
 {% set menulink_messages = 1 %}
 
 {% block cfuserbundle_body %}
@@ -14,4 +19,9 @@
 		</div>
 	</div>
 	{{ render(controller('CFMessageBundle:Conversation:list')) }}
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript" src="{{ asset('js/messages.js') }}"></script>
 {% endblock %}
