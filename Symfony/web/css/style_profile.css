@@ -323,7 +323,11 @@ textarea {
 	border-left: 5px solid rgb(72, 149, 217);
 	color: #FFFFFF;
 	text-indent: 18px;
-  transition: all 0.2s;
+    transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -ms-transition: all 0.2s;
 }
 
 .profile-menu a i {

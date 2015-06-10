@@ -124,6 +124,10 @@ nav > .navigation-bar .nav-content li a:hover{
   border-bottom: 5px solid #3498DB;
   padding-bottom: 10px;
   transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  -ms-transition: all 0.1s;
 }
 
 nav .navigation-bar .nav-middle-part li{
@@ -218,6 +222,10 @@ color: #FFF;
   border-left: 5px solid #3498DB;
   text-indent: 4px;
   transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -ms-transition: all 0.2s;
 }
 .navigation-bar-right .badge {
   height: 25px;
