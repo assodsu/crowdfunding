@@ -1,5 +1,5 @@
-<form action="{{ path('cf_comment_comment_report', { 'id' : thread.id, 'comment_id' : comment.id }) }}" method="post" >
-  <div class="form-group">
-    <button type="submit" class="btn btn-warning"><i class='fa fa-exclamation-triangle'></i></button>
+<form action="{{ path('cf_comment_comment_report_update', { 'id' : comment.id }) }}" id="comment-report-{{ comment.id }}" method="post" >
+  <div class="form-group report">
+    <button type="button" class="btn-report" id-comment="{{ comment.id }}" data-toggle="tooltip" data-placement="bottom" title="Signaler"><i class='fa fa-exclamation-triangle'></i></button>
   </div>
 </form>

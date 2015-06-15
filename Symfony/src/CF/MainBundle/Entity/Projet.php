@@ -6,13 +6,15 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 
+use JsonSerializable;
+
 /**
  * Projet
  *
  * @ORM\Table(name="cf_main_projets")
  * @ORM\Entity(repositoryClass="CF\MainBundle\Entity\ProjetRepository")
  */
-class Projet
+class Projet implements JsonSerializable
 {
     /**
      * @var integer
@@ -175,6 +177,26 @@ class Projet
     */
     private $actualites;
 
+    public function jsonSerialize()
+    {
+        return array(
+            'id' => $this->getId(),
+            'nom' => $this->getNom(),
+            'slug' => $this->getSlug(),
+            'nom' => $this->getNom(),
+            'background' => $this->getBackground()->getAssetPath(),
+            'dateFin' => $this->getDateFin(),
+            'nbActuMateriel' => $this->getNbActuMateriel(),
+            'nbActuComm' => $this->getNbActuComm(),
+            'nbActuHumain' => $this->getNbActuHumain(),
+            'nbActuFinancier' => $this->getNbActuFinancier(),
+            'nbRessources' => $this->getNbRessources(),
+            'nbDemandeMateriel' => $this->getNbDemandeMateriel(),
+            'nbDemandeComm' => $this->getNbDemandeComm(),
+            'nbDemandeHumain' => $this->getNbDemandeHumain(),
+            'nbDemandeFinancier' => $this->getNbDemandeFinancier()
+        );
+    }
 
     public function __construct()
     {

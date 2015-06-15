@@ -25,7 +25,8 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
     {  
         $qb = $this->createQueryBuilder('p');
          
-        $qb->orderBy('p.dateFin', 'ASC')
+        $qb->where('p.valider = true')
+           ->orderBy('p.dateFin', 'ASC')
            ->setMaxResults(10);
                  
         return $qb->getQuery()->getResult();
@@ -35,7 +36,8 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
     {  
         $qb = $this->createQueryBuilder('p');
          
-        $qb->orderBy('p.dateCreation', 'DESC')
+        $qb->where('p.valider = true')
+           ->orderBy('p.dateCreation', 'DESC')
            ->setMaxResults(10);
                  
         return $qb->getQuery()->getResult();
@@ -53,11 +55,15 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function getValidate()
+    public function getValidate($index, $nb)
     {
         $qb = $this->createQueryBuilder('p');
          
-        $qb->where('p.valider = true');
+        $qb->where('p.valider = true')
+           ->orderBy('p.dateCreation', 'DESC')
+           ->setFirstResult($index)
+           ->setMaxResults($nb)
+        ;
                  
         return $qb->getQuery()->getResult();
     }

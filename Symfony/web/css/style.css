@@ -31,7 +31,7 @@
 }
 
 .search #search-button {
-  width: 30%;
+  width: 100px;
   height: 100%;
   padding-top: 15px;
   display: inline-block;
@@ -73,6 +73,16 @@
 }
 .search::-moz-placeholder {
     color: #FFF;
+}
+
+@media (max-width: 500px) {
+  .search #search-bar {
+    width: calc(100% - 150px);
+  }
+  .search input {
+    float:left;
+    padding: 16px 10px;
+  }
 }
 
 /**** SELECTORS ****/

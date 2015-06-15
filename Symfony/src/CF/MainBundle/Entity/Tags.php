@@ -4,13 +4,15 @@ namespace CF\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use JsonSerializable;
+
 /**
  * Tags
  *
  * @ORM\Table(name="cf_main_tags")
  * @ORM\Entity
  */
-class Tags
+class Tags implements JsonSerializable
 {
     /**
      * @var integer
@@ -34,6 +36,15 @@ class Tags
      * @ORM\Column(name="couleur", type="string", length=6)
      */
     private $couleur;
+
+    public function jsonSerialize()
+    {
+        return array(
+            'id' => $this->getId(),
+            'nom' => $this->getNom(),
+            'couleur' => $this->getCouleur(),
+        );
+    }
 
     /**
      * Get id

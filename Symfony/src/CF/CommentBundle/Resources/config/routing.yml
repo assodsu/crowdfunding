@@ -6,10 +6,22 @@ cf_comment_comment_new:
     path:     /thread/{id}/comment/new
     defaults: { _controller: CFCommentBundle:Comment:new }
 
+cf_comment_comment_update:
+    path:     /thread/{id}/comment/update
+    defaults: { _controller: CFCommentBundle:Comment:update }
+
 cf_comment_comment_reply:
     path:     /thread/{id}/comment/reply/{comment_id}
     defaults: { _controller: CFCommentBundle:Comment:reply }
 
+cf_comment_comment_reply_update:
+    path:     /thread/{id}/comment/reply/{comment_id}/update
+    defaults: { _controller: CFCommentBundle:Comment:replyUpdate }
+
 cf_comment_comment_report:
     path:     /thread/{id}/comment/report/{comment_id}
     defaults: { _controller: CFCommentBundle:Comment:report }
+
+cf_comment_comment_report_update:
+    path:     /comment/report/{id}
+    defaults: { _controller: CFCommentBundle:Comment:reportUpdate }

@@ -85,11 +85,4 @@ $(document).ready(function(){
 		}
 	});
 
-	$('.project').mouseover(function() {
-		$(this).children('div.apercu').children('div.filter').animate({backgroundColor: "rgba(92, 151, 191, 0.6)"}, {queue: false}, 100);
-	})
-	.mouseleave(function(){
-		$(this).children('div.apercu').children('div.filter').animate({backgroundColor: "rgba(0, 0, 0, 0.6)"}, {queue: false}, 100);
-	});
-	
 });
