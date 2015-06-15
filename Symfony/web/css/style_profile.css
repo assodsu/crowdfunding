@@ -590,12 +590,12 @@ textarea {
 }
 
 .panel-profile-heading {
-  height: 150px;
+  height: 200px;
   position: relative;
 }
 .panel-profile-heading #layer{
   background: rgba(0,0,0,.5);
-  height: 150px;
+  height: 200px;
   position: absolute;
   width: 100%;
 }
@@ -607,7 +607,7 @@ textarea {
 
 .panel-profile-heading .title-panel-heading h1{
   margin: 0;
-  line-height: 150px;
+  line-height: 200px;
   vertical-align: middle;
   color: #fff;
 }

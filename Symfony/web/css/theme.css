@@ -53,6 +53,7 @@ body{
   font-family: 'Open Sans';
   font-size:13px !important;
   padding: 10px 20px;
+  font-weight: 600;
 }
 .btn-success {
   background-color: #5FCF80;
