@@ -230,7 +230,7 @@
     }
     .sidebar-left a.btn {
 	  display: block;
-	  width: 40%;
+  	  width: 200px;
 	  margin: 10px auto;
 	}
 

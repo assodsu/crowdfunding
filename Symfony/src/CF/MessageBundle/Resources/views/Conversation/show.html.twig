@@ -39,12 +39,24 @@
                 url: $('#form-new-message-{{ conversation.id }}').attr('action'),
                 success: function(data) {
                   var currentdate = new Date(); 
-                  var date = currentdate.getDate() + "/"
-                                + (currentdate.getMonth()+1)  + "/" 
-                                + currentdate.getFullYear();
+                  var mois = currentdate.getMonth()+1;
 
-                  var time = currentdate.getHours() + ":"  
-                                + currentdate.getMinutes();
+                  if (mois.length == 1)
+                  {
+                  mois = "0" + mois;
+                  }
+                  var date = currentdate.getDate() + "/"
+                          + mois  + "/" 
+                          + currentdate.getFullYear();
+
+                  var minutes = currentdate.getMinutes();
+
+                  if (minutes.length == 1)
+                  {
+                    minutes = "0" + minutes;
+                  }
+
+                  var time = currentdate.getHours() + ":" + minutes;
 
                   $('.messages-list-{{conversation.id}}').prepend('<p class="fromYou"><small class="text-muted date-notif">Envoyé le '+date+' à '+time+'</small><br>'+data.message+'</p>');
                   $('#button-new-message-{{conversation.id}}').removeAttr("disabled");

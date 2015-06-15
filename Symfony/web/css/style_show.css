@@ -114,7 +114,7 @@
 	height:250px;
 	position:relative;
 	width:100%;
-	padding-top: 20px;
+	padding-top: 10px;
 	background: rgba(0,0,0,0.5);
 }
 #content-ressources {
@@ -157,7 +157,7 @@
 	width:250px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:20px;
+	margin-top:10px;
 	background:none;
 	color:white;
 }
@@ -314,6 +314,12 @@
 	min-height:0;
 	padding:10px;
 }
+#tabcomments > h3 {
+  color: #fff;
+}
+#tabcomments input[type="button"] {
+  margin: 5px;
+}
 .tab-box.comment .comment-author, .tab-box.comment .comment-date, .tab-box.comment .comment-avatar, .tab-box.comment .comment-hour {
 	display: inline-block;
 }
@@ -343,7 +349,6 @@
 }
 .tab-box.comment textarea{
 	width:100%;
-	height:100px;
 }
 .tab-box.comment h3{
 	font-size:18pt;
@@ -351,6 +356,16 @@
 	margin-bottom:5px;
 	margin-left:5px;
 	font-family: arial;
+}
+.tab-box.comment .form-group.report {
+	text-align: right;
+}
+.tab-box.comment .btn-report {
+	background: none;
+	border: none;
+	color: rgb(240, 173, 78);
+	font-size: 18px;
+	outline:none;
 }
 
 @media (max-width: 940px) {

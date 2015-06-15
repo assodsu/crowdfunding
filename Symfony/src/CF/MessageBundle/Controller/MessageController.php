@@ -13,7 +13,7 @@ use CF\NotificationBundle\Entity\Notification;
 
 class MessageController extends Controller
 {
-    public function addAction(Request $request, Conversation $conversation)
+    public function addAction(Conversation $conversation)
     {
 		$message = new Message();
         $form = $this->createForm(new MessageType(), $message);

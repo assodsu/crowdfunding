@@ -2,6 +2,12 @@ cf_main_allProjects:
     path:     /tous
     defaults: { _controller: CFMainBundle:Project:showAll }
 
+cf_main_updateProjects:
+    path:     /tous/update
+    defaults: { _controller: CFMainBundle:Project:update }
+    requirements:
+        _method: POST
+
 cf_main_recherche:
     path:   /recherche
     defaults: { _controller: CFMainBundle:Recherche:search }

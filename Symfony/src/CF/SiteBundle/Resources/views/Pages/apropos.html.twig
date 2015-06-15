@@ -7,12 +7,15 @@
 {% block stylesheets %}
 	{{ parent() }}
 	<!-- CUSTOMS CSS -->
-
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style_siteBundle.css') }}">
 {% endblock %}
 
 {% block body %}
 	
-	<p>Contenu</p>
+	<div class="head-site">
+		<img src="{{ asset('images/icones/bannieres/working.jpg') }}">
+		<h1>En co-construction...</h1>
+	</div>
 
 {% endblock %}
 

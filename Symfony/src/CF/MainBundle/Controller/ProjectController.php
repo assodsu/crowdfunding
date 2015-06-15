@@ -4,6 +4,7 @@ namespace CF\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use CF\MainBundle\Entity\Projet;
 use CF\MainBundle\Form\ProjetType;
 use CF\MainBundle\Form\ProjetEditType;
@@ -20,7 +21,7 @@ class ProjectController extends Controller
 
         if($projet->getValider() == false)
         {
-            $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate();
+            $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate(0,1);
         
             return $this->render('CFMainBundle:Project:showAll.html.twig', array('projets'=>$projets));
         }
@@ -30,10 +31,23 @@ class ProjectController extends Controller
 	
     public function showAllAction()
     {	
-		$projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate();
+		$projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate(0,1);
         $selecteurs = $this->getDoctrine()->getRepository('CFMainBundle:Selecteur')->getSelecteursLesProjets();
 		
         return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$projets, 'selecteurs' => $selecteurs));
+    }
+
+    public function updateAction()
+    {
+        $request = $this->get('request');
+        $index = $request->request->get('index');
+
+        $updateProjets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate($index, 1);
+
+        $return=array("responseCode"=>200,  "updateProjets"=>$updateProjets);
+
+        $return=json_encode($updateProjets);
+        return new Response($return,200,array('Content-Type'=>'application/json'));
     }
 
     public function addAction(Request $request)

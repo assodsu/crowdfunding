@@ -1,60 +1,199 @@
 <h3>{{ thread.nbComment }} commentaires</h3>
 
-<h3>Ajouter un commentaire</h3>
+<div class="tab-box full comment">
+	<h3>Ajouter un commentaire</h3>
+	{{ render(controller('CFCommentBundle:Comment:new', { id : thread.id })) }}
+</div>
 
-{{ render(controller('CFCommentBundle:Comment:new', { id : thread.id })) }}
+<div class="comments-list">
+	{% for comment in thread.comments|reverse %}
 
-{% for comment in thread.comments|reverse %}
+		{% if comment.parent is null %}
+			<div id="comment_{{ comment.id }}" class="tab-box full comment">
 
-	{% if comment.parent is null %}
-		<div id="comment_{{ comment.id }}" class="tab-box full comment">
-
-	    	<div class="comment-avatar">
-	    		<img src="{{ asset(comment.user.logo.AssetPath) }}" alt='logo'/>
-	    	</div>
-	        <span class="comment-author">
-	            {{ comment.user.nom }}
-	        </span>
-	        <div class="comment-hour">- {{ comment.date|date('H:i') }}</div>
-	        <div class="comment-date">
-	        	{{ comment.date|date('d/m/Y') }}
-				{{ render(controller('CFCommentBundle:Comment:report', { 'id' : thread.id, 'comment_id':comment.id })) }}
-			</div>
-	        {% if comment.moderate == false %}
-		    	<p>{{ comment.content|nl2br }}</p>
-		    {% else %}
-		    	<p style="color:rgb(216,28,28);">[[ Commentaire modéré ]]</p>
-		    {% endif %}
-	{% endif %}
-		    {% for commentChildren in comment.childrens %}
-		    	<div id="comment_{{ commentChildren.id }}" class="tab-box full comment">
-
-			    	<div class="comment-avatar">
-			    		<img src="{{ asset(commentChildren.user.logo.AssetPath) }}" alt='logo'/>
-			    	</div>
-			        <span class="comment-author">
-			            {{ commentChildren.user.nom }}
-			        </span>
-			        <div class="comment-hour">- {{ commentChildren.date|date('H:i') }}</div>
-			        <div class="comment-date">
-			        	{{ commentChildren.date|date('d/m/Y') }}
-						{{ render(controller('CFCommentBundle:Comment:report', { 'id' : thread.id, 'comment_id':commentChildren.id })) }}
-					</div>
-
-			        {% if commentChildren.moderate == false %}
-				    	<p>{{ commentChildren.content|nl2br }}</p>
-				    {% else %}
-				    	<p style="color:rgb(216,28,28);">[[ Commentaire modéré ]]</p>
-				    {% endif %}
-
+		    	<div class="comment-avatar">
+		    		<img src="{{ asset(comment.user.logo.AssetPath) }}" alt='logo'/>
+		    	</div>
+		        <span class="comment-author">
+		            {{ comment.user.nom }}
+		        </span>
+		        <div class="comment-hour">- {{ comment.date|date('H:i') }}</div>
+		        <div class="comment-date">
+		        	{{ comment.date|date('d/m/Y') }}
+					{% if app.user and app.user != comment.user %}
+						{{ render(controller('CFCommentBundle:Comment:report', { 'id' : thread.id, 'comment_id':comment.id })) }}
+					{% endif %}
 				</div>
-		    {% endfor %}
+		        {% if comment.moderate == false %}
+			    	<p>{{ comment.content|nl2br }}</p>
+			    {% else %}
+			    	<p style="color:rgb(216,28,28);">[[ Commentaire modéré ]]</p>
+			    {% endif %}
+		{% endif %}
+				<div id="comment-list-reply-{{comment.id}}">
+			    {% for commentChildren in comment.childrens %}
+			    	<div id="comment_{{ commentChildren.id }}" class="tab-box full comment">
 
-	{% if comment.parent is null %}
-		<h3>Répondre :</h3>
-		{{ render(controller('CFCommentBundle:Comment:reply', { 'id':thread.id, 'comment_id':comment.id })) }}
-		</div>
-	{% endif %}
-{% else %}
-	Aucun commentaire.
-{% endfor %}
+				    	<div class="comment-avatar">
+				    		<img src="{{ asset(commentChildren.user.logo.AssetPath) }}" alt='logo'/>
+				    	</div>
+				        <span class="comment-author">
+				            {{ commentChildren.user.nom }}
+				        </span>
+						<div class="comment-hour">- {{ commentChildren.date|date('H:i') }}</div>
+						<div class="comment-date">
+				        	{{ commentChildren.date|date('d/m/Y') }}
+				        	{% if app.user and app.user != commentChildren.user %}
+								{{ render(controller('CFCommentBundle:Comment:report', { 'id' : thread.id, 'comment_id':commentChildren.id })) }}
+							{% endif %}
+						</div>
+
+				        {% if commentChildren.moderate == false %}
+					    	<p>{{ commentChildren.content|nl2br }}</p>
+					    {% else %}
+					    	<p style="color:rgb(216,28,28);">[[ Commentaire modéré ]]</p>
+					    {% endif %}
+
+					</div>
+			    {% endfor %}
+			    </div>
+		{% if comment.parent is null %}
+			<button class="btn btn-default btn-comment-response">Répondre</button>
+			{{ render(controller('CFCommentBundle:Comment:reply', { 'id':thread.id, 'comment_id':comment.id })) }}
+			</div>
+		{% endif %}
+	{% else %}
+		Aucun commentaire.
+	{% endfor %}
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+	  function ajaxSubmitComment () {
+	  	if($('#form-new-comment #cf_commentbundle_comment_content').val().length > 2)
+      	{
+	      $('.comments-list').prepend('<div class="loading"><i class="fa fa-spinner fa-pulse"></i></div>');
+
+	      var params = "message="+$('#form-new-comment #cf_commentbundle_comment_content').val();
+
+          $('#form-new-comment #cf_commentbundle_comment_content').val('');
+          $('#form-new-comment #button-new-comment').attr("disabled", "disabled");
+          $('#form-new-comment #cf_commentbundle_comment_content').attr("disabled", "disabled");
+
+	      $.ajax({
+	        type: 'POST',
+	        data: params,
+	        url: $('#form-new-comment').attr('action'),
+	        success: function(data) {
+	          var currentdate = new Date(); 
+	          var mois = currentdate.getMonth()+1;
+
+	          if (mois.length == 1)
+	   		  {
+		   		mois = "0" + mois;
+		      }
+	          var date = currentdate.getDate() + "/"
+	                        + mois  + "/" 
+	                        + currentdate.getFullYear();
+
+	          var minutes = currentdate.getMinutes();
+
+	          if (minutes.length == 1)
+	   		  {
+		   		minutes = "0" + minutes;
+		      }
+
+	          var time = currentdate.getHours() + ":" + minutes;
+
+	          $('.loading').remove();
+              $('.comments-list').prepend('<div class="tab-box full comment"><div class="comment-avatar"><img src="{{ asset(app.user.logo.AssetPath) }}" alt="logo"/></div><span class="comment-author">{{ app.user.nom }}</span><div class="comment-hour">- '+time+'</div><div class="comment-date">'+date+'</div><p>'+data.message+'</p></div>');
+	          $('#form-new-comment #button-new-comment').removeAttr("disabled");
+	          $('#form-new-comment #cf_commentbundle_comment_content').removeAttr("disabled");
+	        }
+	      });
+	    }
+	    else 
+	    {
+	      $('.errors').html('Votre commentaire doit contenir au moins 3 caractères.');
+	    }
+	  }
+
+	  $('#button-new-comment').on('click', function(){
+	    ajaxSubmitComment();
+	  });
+
+	  function ajaxReplyComment (parentID) {
+	  	if($('#form-reply-comment-'+parentID+' #cf_commentbundle_comment_content').val().length > 2)
+      	{
+	      $('#comment-list-reply-'+parentID).append('<div class="loading"><i class="fa fa-spinner fa-pulse"></i></div>');
+
+	      var params = "message="+$('#form-reply-comment-'+parentID+' #cf_commentbundle_comment_content').val();
+
+          $('#form-reply-comment-'+parentID+' #cf_commentbundle_comment_content').val('');
+          $('#form-reply-comment-'+parentID+' .button-reply-comment').attr("disabled", "disabled");
+          $('#form-reply-comment-'+parentID+' #cf_commentbundle_comment_content').attr("disabled", "disabled");
+
+	      $.ajax({
+	        type: 'POST',
+	        data: params,
+	        url: $('#form-reply-comment-'+parentID).attr('action'),
+	        success: function(data) {
+	          var currentdate = new Date(); 
+	          var mois = currentdate.getMonth()+1;
+
+	          if (mois.length == 1)
+	   		  {
+		   		mois = "0" + mois;
+		      }
+	          var date = currentdate.getDate() + "/"
+	                        + mois  + "/" 
+	                        + currentdate.getFullYear();
+
+	          var minutes = currentdate.getMinutes();
+
+	          if (minutes.length == 1)
+	   		  {
+		   		minutes = "0" + minutes;
+		      }
+
+	          var time = currentdate.getHours() + ":" + minutes;
+
+	          $('.loading').remove();
+              $('#comment-list-reply-'+parentID).append('<div class="tab-box full comment"><div class="comment-avatar"><img src="{{ asset(app.user.logo.AssetPath) }}" alt="logo"/></div><span class="comment-author">{{ app.user.nom }}</span><div class="comment-hour">- '+time+'</div><div class="comment-date">'+date+'</div><p>'+data.message+'</p></div>');
+	          $('#form-reply-comment-'+parentID+' .button-reply-comment').removeAttr("disabled");
+	          $('#form-reply-comment-'+parentID+' #cf_commentbundle_comment_content').removeAttr("disabled");
+	        }
+	      });
+	    }
+	    else 
+	    {
+	      $('.errors').html('Votre commentaire doit contenir au moins 3 caractères.');
+	    }
+	  }
+
+	  $('.button-reply-comment').on('click', function(){
+	    ajaxReplyComment($(this).attr("parent-id"));
+	  });
+
+	  $('form.form-reply-comment').hide();
+	  $('.btn-comment-response').on('click', function(){
+	  	$(this).parent().children('form.form-reply-comment').stop().slideToggle();
+	  });
+
+	  function ajaxReportComment(commentID) {
+	  	$.ajax({
+	        type: 'POST',
+	        url: $('#comment-report-'+commentID).attr('action'),
+	        success: function(data) {
+			  	$('.btn-report[id-comment="'+commentID+'"]').attr('title', 'Commentaire signalé').css('color','grey');
+	        }
+	     });
+	  }
+	  $('.btn-report').on('click', function(){
+	  	$(this).attr('disabled', 'disabled');
+	  	ajaxReportComment($(this).attr('id-comment'));
+	  });
+
+	});
+</script>

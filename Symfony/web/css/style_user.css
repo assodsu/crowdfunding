@@ -1,12 +1,30 @@
 #main {
 	color: #fff;
-	padding-top: 50px;
 	text-align: center;
 }
+.head-connection {
+  width: 100%;
+  background-color: rgb(36, 116, 169);
+  position: relative;
+  height: 200px;
+  text-align: center;
+  margin-bottom: 50px;
+}
 
-#main h1 { 
-	font-size: 4em;
-	margin-bottom: 40px;
+.head-connection img {
+  position: absolute;
+  display: block;
+  left: calc( 50% - 432px);
+}
+
+.head-connection h1 {
+	position: absolute;
+	left: 0;
+	right: 0;
+	vertical-align: middle;
+	color: #fff;
+	line-height: 200px;
+	margin: 0;
 }
 
 .form-user label {

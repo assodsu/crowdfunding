@@ -84,7 +84,7 @@
 		{% for projet in projets %}
 			<a href="{{ path('cf_main_project', {'slug' : projet.slug}) }}" class="project">
 				<div  id="project-{{ projet.id }}" class="apercu">
-					<div img="{{ projet.background.path }}" class="project-background"></div>
+					<div style="background: url('../../{{ projet.background.AssetPath }}') 50% 50%; background-size:cover;" class="project-background"></div>
 					<div class="filter"></div>
 					<div class="project-title">{{ projet.nom }}</div>
 					<div class="time-remaining">
@@ -154,19 +154,107 @@
 	<script type="text/javascript" src="{{ asset('js/script_showAll.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/visualize.js') }}"></script>
 	<script type="text/javascript">
-		$('.pie').visualize({
-			width: 105,
-			height: 105,
-			type: 'pie',
-			legend: false
-		});
+		
 		{% if recherche is defined %}
 			$('.search input').val('{{ recherche }}');
 		{% endif %}
 
-		{% for projet in projets %}
-			var img = $('#project-{{ projet.id }}').children('.project-background').attr('img');
-			$('#project-{{ projet.id }}').css('background', 'url("../../uploads/'+img+'") center center no-repeat').css('background-size','cover');
-		{% endfor %}
+		updateProjects();
+
+		function updateProjects()
+		{
+			$('.pie').visualize({
+				width: 105,
+				height: 105,
+				type: 'pie',
+				legend: false
+			});
+
+			$('.project').on('mouseover', function() {
+				$(this).children('div.apercu').children('div.filter').animate({backgroundColor: "rgba(92, 151, 191, 0.6)"}, {queue: false}, 100);
+			})
+			.on('mouseleave', function(){
+				$(this).children('div.apercu').children('div.filter').animate({backgroundColor: "rgba(0, 0, 0, 0.6)"}, {queue: false}, 100);
+			});
+		}
+
+		var load = false;
+
+		$(window).scroll(function(){
+        	if($(window).scrollTop() == $(document).height() - $(window).height() && load == false) {
+
+        		load = true;
+
+        		$('#content').append('<div class="loading"><i class="fa fa-spinner fa-pulse"></i></div>');
+
+        		var params = 'index='+$('#content > a').length;
+
+	            $.ajax({
+	                url: '../projets/tous/update',
+	                type: 'POST',
+	                data: params,
+	                success: function(data) {
+
+                        $('.loading').remove();
+
+                        load = false;
+
+	                    if(data) {
+	                    	var taille = data.length;
+							for(i=0;i<taille;i++)
+							{
+
+                   				console.log(data[i]);
+
+								var pourcentage = Math.round(((data[i].nbActuHumain + data[i].nbActuMateriel + data[i].nbActuComm + data[i].nbActuFinancier)/data[i].nbRessources)*100);
+
+								var imagePath = "../../"+data[i].background;
+
+							    var start_actual_time = new Date($.now());
+							    var end_actual_time = new Date(data[i].dateFin.date);
+
+							    var diff = end_actual_time - start_actual_time;
+
+							    var minutes = Math.round(diff/1000/60);
+							    var hours = Math.round(minutes/60);
+							    var days = Math.round(hours/24);
+
+							    var dateFin = "";
+
+							    if (minutes > 0) {
+							    	dateFin = "Temps restant : ";
+							    	if (days > 1) {
+							    		dateFin += days + " jours";
+							    	}
+							    	else if (days == 1) {
+							    		dateFin += days + " jour";
+							    	}
+							    	else {
+							    		if(hours > 1) {
+							    			dateFin += hours + " heures";
+							    		}
+							    		else if (hours == 1) {
+							    			dateFin += hours + " heure";
+							    		}
+							    		else {
+							    			if(minutes > 0) {
+							    				dateFin += minutes + " minutes";
+							    			}
+							    		}
+							    	}
+							    }
+							    else {
+							    	dateFin = "Projet terminé";
+							    }
+
+								$('#content').append('<a href="../projet/voir/'+data[i].slug+'" class="project"><div  id="project-'+data[i].id+'" class="apercu"><div  style="background: url('+imagePath+') 50% 50%; background-size:cover;" class="project-background"></div><div class="filter"></div><div class="project-title">'+data[i].nom+'</div><div class="time-remaining"><i class="fa fa-clock-o"></i> '+dateFin+'</div><ul class="project-tags"></ul><div class="chart"><svg height="105" width="105"><circle cx="52.5" cy="52.5" r="45" fill="#34495E" /></svg><div class="pie-content"><div class="percentage">'+pourcentage+'%</div><div class="name">ressources</br>collectées</div></div><ul class="pie"><li class="visualize ressource-materiel" data-color="#a66abe" data-value="'+(data[i].nbActuMateriel / data[i].nbRessources)*100+'"></li><li class="visualize ressource-financiere" data-color="#ea5f50" data-value="'+(data[i].nbActuFinancier / data[i].nbRessources)*100+'"></li><li class="visualize" data-value="'+Math.round((100-(data[i].nbActuMateriel / data[i].nbRessources)*100 - (data[i].nbActuFinancier / data[i].nbRessources )*100 - (data[i].nbActuHumain / data[i].nbRessources )*100 - (data[i].nbActuComm / data[i].nbRessources )*100))+'" data-color="rgba(0,0,0,0)"></li><li class="visualize ressource-humain" data-color="#70d48d" data-value="'+(data[i].nbActuHumain / data[i].nbRessources)*100+'"></li><li class="visualize ressource-info" data-color="#99a5af" data-value="'+(data[i].nbActuComm / data[i].nbRessources)*100+'"></li></ul></div></div></a>');
+
+								updateProjects();
+							}
+	                    }
+	                }
+	            });
+	        }
+     	});
 	</script>
 {% endblock %}

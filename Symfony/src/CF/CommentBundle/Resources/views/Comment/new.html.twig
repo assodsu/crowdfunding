@@ -1,9 +1,9 @@
-<form action="{{ path('cf_comment_comment_new', { 'id' : thread.id }) }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('cf_comment_comment_update', { 'id' : thread.id }) }}" id="form-new-comment" method="post" {{ form_enctype(form) }}>
   {{ form_start(form) }}
   {{ form_errors(form) }}
   <div class="form-group">
     {{ form_widget(form.content) }}
-    <input type="submit" class="btn btn-success" value="Envoyer" />
+    <input type="button" class="btn btn-success" value="Envoyer" id="button-new-comment" />
   </div>
   {{ form_end(form) }}
 </form>
