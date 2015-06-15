@@ -60,75 +60,86 @@
             {{ form_errors(form) }}
 
             <div class="row step-content" id="step-1">
-                {{ form_label(form.nom, 'nom d\'utilisateur (pseudo)') }}
-                {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}
-           
-                {{ form_label(form.email, 'e-mail') }}
-                {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
-            
-                {{ form_label(form.plainPassword.first, 'nouveau mot de passe') }}
-                {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
-            
-                {{ form_label(form.plainPassword.second, 'confirmation du mot de passe') }}
-                {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }} 
+                <div class="form-group">
+                  <label><i class="fa fa-user"></i></label>{{ form_widget(form.nom, {'attr': {'placeholder': 'nom d\'utilisateur'}}) }}
+                </div>
+                <div class="form-group">
+                  <label><i class="fa fa-envelope-o"></i></label>{{ form_widget(form.email, {'attr': {'placeholder': 'adresse e-mail'}}) }}
+                </div>
+                <div class="form-group">
+                      <label><i class="fa fa-unlock-alt"></i></label>{{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'mot de passe'}}) }}
+                </div>
+                <div class="form-group">
+                      <label><i class="fa fa-unlock-alt"></i></label>{{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'confirmation du mot de passe'}}) }}
+                </div>
                     
                 <a id="activate-step-2" class="btn btn-primary btn-lg">Etape suivante</a>
             </div>
 
             <div class="row step-content" id="step-2">
-                {{ form_label(form.sexe, 'sexe') }}
-                {{ form_widget(form.sexe) }} 
-            
-                {{ form_label(form.name, 'nom') }}
-                {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }} 
-            
-                {{ form_label(form.firstname, 'prénom') }}
-                {{ form_widget(form.firstname, { 'attr': {'class': 'form-control'} }) }} 
-            
-                {{ form_label(form.dateNaissance, 'date de naissance') }}
-                {{ form_widget(form.dateNaissance) }} 
-            
-                {{ form_label(form.logo, 'avatar') }}
-                {{ form_widget(form.logo) }} 
-            
-                {{ form_label(form.telephone, 'téléphone') }}
-                {{ form_widget(form.telephone, { 'attr': {'class': 'form-control'} }) }} 
+                <div class="form-group">
+                  <label><i class="fa fa-venus-mars"></i></label>{{ form_widget(form.sexe) }}
+                </div>
+                <div class="form-group">
+                  <label><i class="fa fa-envelope-o"></i></label>{{ form_widget(form.name, {'attr': {'placeholder': 'nom de famille'}}) }}
+                </div>
+                <div class="form-group">
+                      <label><i class="fa fa-unlock-alt"></i></label>{{ form_widget(form.firstname, {'attr': {'placeholder': 'prénom'}}) }}
+                </div>
+                <div class="form-group">
+                    <label><i class="fa fa-calendar"></i></label>{{ form_widget(form.dateNaissance, {'attr': {'placeholder': 'date de naissance', 'value': ''}}) }}
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa fa-picture-o"></i></label>{{ form_widget(form.logo, {'attr': {'class': 'filestyle', 'data-buttonText': 'Avatar'}}) }} 
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa fa-phone"></i></label>{{ form_widget(form.telephone, {'attr': {'placeholder': 'téléphone'}}) }}
+                </div>
+                
                    
                 <a id="activate-step-3" class="btn btn-primary btn-lg">Etape suivante</a>
             </div>
                     
             <div class="row step-content" id="step-3">
-                {{ form_label(form.adresse, 'adresse') }}
-                {{ form_widget(form.adresse, { 'attr': {'class': 'form-control'} }) }}
-            
-                {{ form_label(form.cp, 'code postal') }}
-                {{ form_widget(form.cp, { 'attr': {'class': 'form-control'} }) }}
-            
-                {{ form_label(form.ville, 'ville') }}
-                {{ form_widget(form.ville, { 'attr': {'class': 'form-control'} }) }} 
+                <div class="form-group">
+                    <label><i class="fa fa-road"></i></label>{{ form_widget(form.adresse, {'attr': {'placeholder': 'adresse'}}) }}
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa fa-road"></i></label>{{ form_widget(form.cp, {'attr': {'placeholder': 'téléphone'}}) }}
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa fa-road"></i></label>{{ form_widget(form.ville, {'attr': {'placeholder': 'téléphone'}}) }}
+                </div> 
                     
                 <a id="activate-step-4" class="btn btn-primary btn-lg">Etape suivante</a>
             </div>  
 
             <div class="row step-content" id="step-4">
-                {{ form_label(form.site, 'site internet') }}
-                {{ form_widget(form.site, { 'attr': {'class': 'form-control'} }) }}
-           
-                {{ form_label(form.facebook, 'facebook') }}
-                {{ form_widget(form.facebook, { 'attr': {'class': 'form-control'} }) }}
-            
-                {{ form_label(form.twitter, 'twitter') }}
-                {{ form_widget(form.twitter, { 'attr': {'class': 'form-control'} }) }} 
-            
-                {{ form_label(form.googleplus, 'google+') }}
-                {{ form_widget(form.googleplus, { 'attr': {'class': 'form-control'} }) }} 
+                <div class="form-group">
+                    <label><i class="fa fa-at"></i></label>{{ form_widget(form.site, {'attr': {'placeholder': 'site internet'}}) }}
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa fa-facebook-square"></i></label>{{ form_widget(form.facebook, {'attr': {'placeholder': 'facebook'}}) }}
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa fa-twitter-square"></i></label>{{ form_widget(form.twitter, {'attr': {'placeholder': 'twitter'}}) }}
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa fa-google-plus-square"></i></label>{{ form_widget(form.googleplus, {'attr': {'placeholder': 'google+'}}) }}
+                </div> 
                     
                 <a id="activate-step-5" class="btn btn-primary btn-lg">Etape suivante</a>
             </div>      
                
             <div class="row step-content" id="step-5">
-                {{ form_label(form.benevole, 'bénévole') }}
-                {{ form_widget(form.benevole, { 'attr': {'class': 'form-control'} }) }}
+                <label><i class="fa fa-male"></i></label>{{ form_widget(form.benevole, { 'attr': {'class': 'form-control'} }) }}
                    
                 <button type="submit" class="btn btn-success btn-lg">S'inscrire !</button>
             </div>
@@ -142,4 +153,12 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/register.js') }}"></script>
+    <script src="{{ asset('js/jquery.datetimepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.js') }}"> </script>
+    <script>
+        jQuery('#fos_user_registration_form_dateNaissance').datetimepicker({lang:'fr',format:'d/m/Y'});
+        $(":file").filestyle({input: false});
+        $('.buttonText').text('choisissez votre avatar');
+        $('.glyphicon-folder-open').hide();
+    </script>
 {% endblock %}

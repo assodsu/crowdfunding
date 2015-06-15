@@ -10,7 +10,7 @@ $(document).ready(function(){
     function changeActuelStep() {
         for (var i = 1; i <= 5; i++)
             if ($('#step-'+ i).is(':visible'))
-                $('a.step-'+i+' .step-active').css('background-color', '#449d44').css('color', 'white');
+                $('a.step-'+i+' .step-active').css('background-color', '#2ECC71').css('color', 'white');
             else
                 $('a.step-'+i+' .step-active').css('background-color', 'white').css('color', '#2574A9');
     }

@@ -45,7 +45,7 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-offset-2 col-xs-offset-1 col-sm-8 col-xs-10">
+    <div class="col-sm-offset-2 col-sm-8 col-xs-12">
     <form action="{{ path('association_registration') }}" method="POST" class="form-register" {{form_enctype(form)}}>
         {{ form_errors(form.email) }}
         {{ form_errors(form.plainPassword.first) }}
@@ -62,78 +62,80 @@
 
         <div class="row step-content" id="step-1">
             <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-addon">adresse e-mail</div>
-                  {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
-                </div>
+                  <label><i class="fa fa-envelope-o"></i></label>{{ form_widget(form.email, {'attr': {'placeholder': 'adresse e-mail'}}) }}
             </div>
             <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-addon">mot de passe</div>
-                  {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
-                </div>
+                  <label><i class="fa fa-unlock-alt"></i></label>{{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'mot de passe'}}) }}
             </div>
             <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-addon">confirmation</div>
-                  {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
-                </div>
+                  <label><i class="fa fa-unlock-alt"></i></label>{{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'confirmation du mot de passe'}}) }}
             </div>
 
-            <a id="activate-step-2" class="btn btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
+            <a id="activate-step-2" class="btn btn-next btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
         </div>
 
         <div class="row step-content" id="step-2">
-            {{ form_label(form.nom, 'nom de votre association') }}
-            {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }} 
-       
-            {{ form_label(form.logo, 'logo de votre association') }}
-            {{ form_widget(form.logo) }} 
-        
-            {{ form_label(form.numWaldec, 'numéro waldec') }}
-            {{ form_widget(form.numWaldec, { 'attr': {'class': 'form-control'} }) }} 
-        
-            {{ form_label(form.dateCreationAsso, 'date de création de votre association') }}
-            {{ form_widget(form.dateCreationAsso) }} 
-        
-            {{ form_label(form.telephone, 'téléphone') }}
-            {{ form_widget(form.telephone, { 'attr': {'class': 'form-control'} }) }} 
-        
+            <div class="form-group">
+                <label><i class="fa fa-home"></i></label>{{ form_widget(form.nom, {'attr': {'placeholder': 'nom de l\'association'}}) }}
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fa fa-picture-o"></i></label>{{ form_widget(form.logo, {'attr': {'class': 'filestyle', 'data-buttonText': 'Logo de l\'association'}}) }} 
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa fa-sort-numeric-asc"></i></label>{{ form_widget(form.numWaldec, {'attr': {'placeholder': 'numéro waldec'}}) }}
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa fa-calendar"></i></label>{{ form_widget(form.dateCreationAsso, {'attr': {'placeholder': 'date création association', 'value': ''}}) }}
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa fa-phone"></i></label>{{ form_widget(form.telephone, {'attr': {'placeholder': 'téléphone'}}) }}
+            </div>
 
             <a id="activate-step-3" class="btn btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
         </div>
                 
         <div class="row step-content" id="step-3">
-            {{ form_label(form.adresse, 'adresse') }}
-            {{ form_widget(form.adresse, { 'attr': {'class': 'form-control'} }) }}
-        
-            {{ form_label(form.cp, 'code postal') }}
-            {{ form_widget(form.cp, { 'attr': {'class': 'form-control'} }) }}
-       
-            {{ form_label(form.ville, 'ville') }}
-            {{ form_widget(form.ville, { 'attr': {'class': 'form-control'} }) }} 
+            <div class="form-group">
+                <label><i class="fa fa-road"></i></label>{{ form_widget(form.adresse, {'attr': {'placeholder': 'adresse'}}) }}
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa fa-road"></i></label>{{ form_widget(form.cp, {'attr': {'placeholder': 'téléphone'}}) }}
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa fa-road"></i></label>{{ form_widget(form.ville, {'attr': {'placeholder': 'téléphone'}}) }}
+            </div>
                 
             <a id="activate-step-4" class="btn btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
         </div>  
 
         <div class="row step-content" id="step-4">
-            {{ form_label(form.site, 'site internet') }}
-            {{ form_widget(form.site, { 'attr': {'class': 'form-control'} }) }}
-        
-            {{ form_label(form.facebook, 'facebook') }}
-            {{ form_widget(form.facebook, { 'attr': {'class': 'form-control'} }) }}
-        
-            {{ form_label(form.twitter, 'twitter') }}
-            {{ form_widget(form.twitter, { 'attr': {'class': 'form-control'} }) }} 
-        
-            {{ form_label(form.googleplus, 'google+') }}
-            {{ form_widget(form.googleplus, { 'attr': {'class': 'form-control'} }) }} 
+            <div class="form-group">
+                <label><i class="fa fa-at"></i></label>{{ form_widget(form.site, {'attr': {'placeholder': 'site internet'}}) }}
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa fa-facebook-square"></i></label>{{ form_widget(form.facebook, {'attr': {'placeholder': 'facebook'}}) }}
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa fa-twitter-square"></i></label>{{ form_widget(form.twitter, {'attr': {'placeholder': 'twitter'}}) }}
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa fa-google-plus-square"></i></label>{{ form_widget(form.googleplus, {'attr': {'placeholder': 'google+'}}) }}
+            </div>
         
             <a id="activate-step-5" class="btn btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
         </div>      
            
         <div class="row step-content" id="step-5">
-            {{ form_label(form.descriptionAsso, 'description de votre association') }}
+            <label><i class="fa fa-user-plus"></i></label>
             {{ form_widget(form.descriptionAsso, { 'attr': {'class': 'form-control'} }) }}
         
             <button type="submit" class="btn btn-success btn-lg">S'inscrire !</button>
@@ -149,7 +151,12 @@
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/register.js') }}"></script>
     <script src="{{ asset('js/jquery.datetimepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.js') }}"> </script>
     <script>
         jQuery('#fos_user_registration_form_dateCreationAsso').datetimepicker({lang:'fr',format:'d/m/Y'});
+        $(":file").filestyle({input: false});
+        $('.buttonText').text('choisir le logo de l\'association');
+        $('.glyphicon-folder-open').hide();
+        $('#fos_user_registration_form_dateCreationAsso').value('');
     </script>
 {% endblock %}

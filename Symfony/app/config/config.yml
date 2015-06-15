@@ -93,10 +93,53 @@ sonata_block:
         # Enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts:   [admin]
+        sonata.block.service.text:
+            contexts: [admin]
         # Your other blocks
 
 sonata_admin:
-    title:      Coceptio Administration
+    title: Administration
+    dashboard:
+        blocks:
+            -
+                position: top
+                type: sonata.block.service.text
+                class: col-md-12
+                settings:
+                    content: > 
+                        <h2 style="margin-top: -20px; text-align: center">Bienvenue dans l'interface d'administration de Coceptio !</h2>
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: ["Général", "Projets"]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: ["Utilisateurs", "Notifications", "Badges"]
+
+        groups:
+            "Général":
+                items:
+                    - sonata.admin.projet_accueil
+                    - sonata.admin.selecteur
+            "Projets":
+                items:
+                    - sonata.admin.projet
+                    - sonata.admin.tags
+                    - sonata.admin.comment
+            "Utilisateurs":
+                items:
+                    - sonata.admin.association
+                    - sonata.admin.entreprise
+                    - sonata.admin.particulier
+            "Notifications":
+                items:
+                    - sonata.admin.notif
+            "Badges":
+                items:
+                    - sonata.admin.badge
 
 # Stof\DoctrineExtensionBundle configuration
 stof_doctrine_extensions:

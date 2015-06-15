@@ -7,7 +7,18 @@
 {% block stylesheets %}
 	{{ parent() }}
 	<link href="{{ asset('css/style_showAll.css') }}" rel="stylesheet"/>
-
+	<style>
+		{% for projet in projets %}
+		{% for tag in projet.tags %}
+		.tag-{{ tag.id }} {
+			background: #{{ tag.couleur }} !important;
+		}
+		.tag-{{ tag.id }}::before {
+			border-color: transparent #{{ tag.couleur }} transparent transparent !important;
+		}
+		{% endfor %}
+		{% endfor %}
+	</style>
 {% endblock %}
 
 {% block footer %}{% endblock %}
@@ -105,14 +116,6 @@
 					</div>
 					<ul class="project-tags">
 						{% for tag in projet.tags %}
-							<style>
-								.tag-{{ tag.id }} {
-									background: #{{ tag.couleur }} !important;
-								}
-								.tag-{{ tag.id }}::before {
-									border-color: transparent #{{ tag.couleur }} transparent transparent !important;
-								}
-							</style>
 							<li class="tag-{{ tag.id }}">{{ tag.nom }}</li>
 						{% endfor %}
 					</ul>

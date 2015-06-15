@@ -9,15 +9,75 @@
 }
 
 .form-add-project label {
-	font-size: 24px;
-	font-weight: 400;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	display: inline-block;
+	background: #2ECC71;
+	vertical-align: middle;
+	font-size: 28px;
 }
 
-.form-add-project input, .form-add-project textarea, .form-add-project select {
-	margin-bottom: 20px;
-	background: #2574A9;
-	color: #fff;
+#step-3 label, #step-5 label {
+	font-weight: 400;
+	background: none;
+	width: auto;
+	height: auto;
+	color: #FFF;
+	border-radius: 4px;
+	margin-right: -4px;
+	font-size: 20px;
+}
+
+#step-3 label {
+	color: #333;
+}
+
+.form-add-project label i {
+	margin-top: 10px;
+}
+
+#step-1 input, #step-1 textarea, #step-1 select {
+	display: inline-block;
+	width: 55% !important;
+	vertical-align: middle;
+	height: 50px;
+	margin-top: -6px;
 	border: none;
+	color: #333;
+	font-size: 18px;
+	text-align: left !important;
+	padding-left: 16px;
+	
+border-radius: 0px;
+}
+
+.form-add-project input:focus, .form-add-project textarea:focus, .form-add-project select:focus {
+	border:none;
+	outline: none;
+}
+
+.form-add-project .input-group .btn {
+	margin-top: 15px;
+	margin-bottom: 20px;
+	width: auto;
+	background: #999;
+	color: #333;
+	border: none;
+	padding: 0 6px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	margin-left: 15px;
+}
+
+.form-add-project .input-group .btn:hover {
+	background: #AAA;
+	color: #333;
+}
+
+.form-add-project .input-group .btn:focus {
+	outline: 0;
 }
 
 .btn.btn-success {
@@ -393,6 +453,20 @@
 #cf_mainbundle_projet_besoins > div {
 	display:inline-block;
 	vertical-align: top;
+}
+
+div#cf_mainbundle_projet_background {
+	display: inline-block;
+	width: 55%;
+	background: white;
+	height: 50px;
+	padding-top: 20px;
+	margin-top: -6px;
+	vertical-align: middle;
+}
+
+.input-group {
+	margin-top: -30px;
 }
 
 @media (min-width: 992px) {

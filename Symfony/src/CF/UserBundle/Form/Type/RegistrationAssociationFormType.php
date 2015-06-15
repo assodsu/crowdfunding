@@ -28,7 +28,7 @@ class RegistrationAssociationFormType extends AbstractType{
 
             ->add('numWaldec', null, array('label' => "Numéro WALDEC"))
 
-            ->add('dateCreationAsso', 'date', array('widget' => 'single_text', 'input' => 'datetime', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control datepicker')))
+            ->add('dateCreationAsso', 'date', array('widget' => 'single_text', 'input' => 'datetime', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'datepicker')))
 
             ->add('ville', null, array('label' => "Ville"))
 

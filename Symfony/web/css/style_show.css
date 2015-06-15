@@ -271,6 +271,32 @@
 	width:100%;
   	text-align: center;
 }
+
+.project-menu {
+	text-align: center;
+	background: white;
+	margin-bottom: 20px;
+	border-bottom: 2px solid #2574A9;
+}
+.project-menu a {
+	display: inline-block;
+	padding: 14px 12px;
+	padding-bottom: 9px;
+	border-bottom: 4px solid transparent;
+	text-transform: uppercase;
+	color: #333;
+	font-weight: 500;
+}
+.project-menu a:hover {
+	text-decoration: none;
+	border-bottom: 4px solid #2574A9;
+	transition: all 0.2s;
+	 -webkit-transition: all 0.2s;
+	 -moz-transition: all 0.2s;
+	 -o-transition: all 0.2s;
+	 -ms-transition: all 0.2s;
+}
+
 /**** UPDATES ****/
 .form-submit-actu {
 	margin-bottom: 15px;

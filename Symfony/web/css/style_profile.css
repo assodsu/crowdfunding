@@ -488,6 +488,7 @@ textarea {
   background: #fff;
   padding: 10px;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 .project-time-left h2 {
   font-size: 16px;
@@ -610,4 +611,30 @@ textarea {
   line-height: 150px;
   vertical-align: middle;
   color: #fff;
+}
+
+.profil-menu {
+	margin-top: 298px;
+	text-align: center;
+	background: white;
+	margin-bottom: 20px;
+	border-bottom: 2px solid #2574A9;
+}
+.profil-menu a {
+	display: inline-block;
+	padding: 14px 12px;
+	padding-bottom: 9px;
+	border-bottom: 4px solid transparent;
+	text-transform: uppercase;
+	color: #333;
+	font-weight: 500;
+}
+.profil-menu a:hover {
+	text-decoration: none;
+	border-bottom: 4px solid #2574A9;
+	transition: all 0.2s;
+	 -webkit-transition: all 0.2s;
+	 -moz-transition: all 0.2s;
+	 -o-transition: all 0.2s;
+	 -ms-transition: all 0.2s;
 }

@@ -1,6 +1,8 @@
 cf_comment_thread_show:
     path:     /thread/{id}
     defaults: { _controller: CFCommentBundle:Thread:show }
+    requirements:
+        id: \d*
 
 cf_comment_comment_new:
     path:     /thread/{id}/comment/new

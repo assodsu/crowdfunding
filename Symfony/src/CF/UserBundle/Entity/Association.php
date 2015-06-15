@@ -26,6 +26,10 @@ class Association extends User
         $this->dateCreationAsso = new \Datetime();
     }
 
+    public function __toString() {
+        return $this->nom;
+    }
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")

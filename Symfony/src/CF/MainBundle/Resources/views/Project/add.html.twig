@@ -45,9 +45,17 @@
 			{{ form_errors(form) }}
 
 			<div class="row step-content" id="step-1">
-				{{ form_row(form.nom) }}
-				{{ form_row(form.background) }}  
-				{{ form_row(form.tags) }}
+				<div class="form-group">
+	                <label><i class="fa fa-folder-open"></i></label>{{ form_widget(form.nom, {'attr': {'placeholder': 'nom de votre projet'}}) }}
+	            </div>
+
+	            <div class="form-group">
+	                <label><i class="fa fa-picture-o"></i></label>{{ form_widget(form.background, {'attr': {'class': 'filestyle', 'data-buttonText': 'image de fond'}}) }} 
+	            </div>
+
+	            <div class="form-group">
+	                <label><i class="fa fa-tags"></i></label>{{ form_widget(form.tags) }}
+	            </div>
 					
 				<a id="activate-step-2" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-chevron-right"></i></a>
 			</div>
@@ -85,4 +93,11 @@
 	{{ parent() }}
 	<script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/create_project.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.js') }}"> </script>
+    <script>
+        $(":file").filestyle({input: false});
+        $('.buttonText').text('choisir l\'image de fond du projet');
+        $('.glyphicon-folder-open').hide();
+        $('#fos_user_registration_form_dateCreationAsso').value('');
+    </script>
 {% endblock %}
