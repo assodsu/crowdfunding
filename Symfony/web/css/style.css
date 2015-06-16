@@ -1,5 +1,14 @@
 .profile-navigation {
   display: none;
+  float: left;
+  color: white;
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+a.profile-navigation:hover {
+  color: #FFF;
+  text-decoration: none;
 }
 
 /*** RECHERCHE ***/
