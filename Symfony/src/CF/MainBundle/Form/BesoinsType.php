@@ -16,7 +16,7 @@ class BesoinsType extends AbstractType
     {
         $builder
             ->add('type', 'choice', array(
-                    'choices'   => array('benevole' => 'Bénévole', 'materiel' => 'Matériel', 'financier' => 'Financier', 'communication' => 'Communication'),
+                    'choices'   => array('benevole' => 'Bénévole', 'materiel' => 'Matériel', 'communication' => 'Communication'),
                     'required'  => true,
                     'attr' => array('class' => 'styled-input body-besoin'),
                     'label' => false

@@ -25,7 +25,17 @@
 				{% else %}
 					<p id='label' style="visibility: hidden;">Bénévole <i class="fa fa-check"></i></p>
 				{% endif %}
-				<img id='logo' class="img-circle" src="{{asset( app.user.logo.AssetPath )}}" alt="Logo" />
+				{% if app.user.logo.path is not null %}
+					<img id='logo' class="img-circle" src="{{asset( app.user.logo.AssetPath )}}" alt="Logo" />
+				{% else %}
+					{% if app.user.typeUser == 'Association' %}
+						<img id='logo' src="{{asset( 'images/icones/avatars/association_avatar.png') }}"/>
+					{% elseif app.user.typeUser == 'Entreprise' %}
+						<img id='logo' src="{{asset( 'images/icones/avatars/entreprise_avatar.png') }}"/>
+					{% elseif app.user.typeUser == 'Particulier' or app.user.typeUser == 'Benevole' %}
+						<img id='logo' src="{{asset( 'images/icones/avatars/particulier_avatar.png') }}"/>
+					{% endif %}
+				{% endif %}
 				<div class="logo-username">
 					<h1>{{ app.user.nom }}</h1>
 					<h2>
@@ -53,6 +63,7 @@
 						{% if app.user.typeUser == 'Association' %}
 							<p>Date de création : {{ app.user.dateCreationAsso|date("d/m/Y") }}</p>
 							<p>N° WALDEC : {{ app.user.numWaldec }}</p>
+							<p>Logo : {{ form_row(form.logo) }}</p>
 							<div class="form-group">
 							    <div class="input-group">
 							      <div class="input-group-addon">Description</div>

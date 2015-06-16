@@ -57,7 +57,17 @@
 			            {% endif %}
 						<li class="dropdown">
 			              <a id="drop-user" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-			                <img src="{{asset( app.user.logo.AssetPath )}}">
+			              	{% if app.user.logo.path is not null %}
+								<img src="{{asset( app.user.logo.AssetPath )}}" alt="Logo" />
+							{% else %}
+								{% if app.user.typeUser == 'Association' %}
+									<img alt="Logo" src="{{asset( 'images/icones/avatars/association_avatar.png') }}"/>
+								{% elseif app.user.typeUser == 'Entreprise' %}
+									<img alt="Logo" src="{{asset( 'images/icones/avatars/entreprise_avatar.png') }}"/>
+								{% elseif app.user.typeUser == 'Particulier' or app.user.typeUser == 'Benevole' %}
+									<img alt="Logo" src="{{asset( 'images/icones/avatars/particulier_avatar.png') }}"/>
+								{% endif %}
+							{% endif %}
 			                <span class="caret"></span>
 			              </a>
 			              <ul class="dropdown-menu" role="menu" aria-labelledby="drop-user">

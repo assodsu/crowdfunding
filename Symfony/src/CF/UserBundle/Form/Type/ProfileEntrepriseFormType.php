@@ -41,6 +41,8 @@ class ProfileEntrepriseFormType extends AbstractType{
             ->add('twitter', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
             ->add('googleplus', null, array('label' => false, 'attr' => array('class' => 'form-control')))
+
+            ->add('logo', new MediaType(), array('label' => false, 'attr' => array('class' => 'form-control')))
         ;
     }
 

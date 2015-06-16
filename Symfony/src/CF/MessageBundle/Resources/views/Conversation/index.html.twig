@@ -14,7 +14,19 @@
             <div class="wrapper-title"><h1 class="conversation-project-title"><a href="{{ path('cf_main_project', { slug : conversation.projet.slug } ) }}">{{ conversation.projet.nom }}</a></h1></div>
           </section><section class="conversation-infos">
             <h3 class="conversation-donator"><a href="{{ path('fos_user_profile_show' , { slug: userSource.slug}) }}">{{ userSource.nom }}</a></h3>
-            <div><img class="conversation-donator-logo img-circle" src="{{ asset(userSource.logo.AssetPath) }}"></img></div>
+            <div>
+              {% if userSource.logo.path is not null %}
+                <img class="conversation-donator-logo img-circle" src="{{ asset(userSource.logo.AssetPath) }}"></img>
+              {% else %}
+                {% if user.typeUser == 'Association' %}
+                  <img class="conversation-donator-logo img-circle" src="{{asset( 'images/icones/avatars/association_avatar.png') }}"></img>
+                {% elseif user.typeUser == 'Entreprise' %}
+                  <img class="conversation-donator-logo img-circle" src="{{asset( 'images/icones/avatars/entreprise_avatar.png') }}"></img>
+                {% elseif user.typeUser == 'Particulier' or user.typeUser == 'Benevole' %}
+                  <img class="conversation-donator-logo img-circle" src="{{asset( 'images/icones/avatars/particulier_avatar.png') }}"></img>
+                {% endif %}
+              {% endif %}
+            </div>
             <div>
               {% for message in conversation.messages|reverse[:1] %}
                 <p class="conversation-last-message">{{ message.content|slice(0, 100) }}...</p>

@@ -2,7 +2,11 @@
 
 <div class="tab-box full comment">
 	<h3>Ajouter un commentaire</h3>
-	{{ render(controller('CFCommentBundle:Comment:new', { id : thread.id })) }}
+	{% if app.user %}
+		{{ render(controller('CFCommentBundle:Comment:new', { id : thread.id })) }}
+	{% else %}
+		<p>Vous devez être <a href="{{ path('fos_user_security_login') }}">connecté</a> pour ajouter un commentaire.</p>
+	{% endif %}
 </div>
 
 <div class="comments-list">
@@ -12,7 +16,17 @@
 			<div id="comment_{{ comment.id }}" class="tab-box full comment">
 
 		    	<div class="comment-avatar">
-		    		<img src="{{ asset(comment.user.logo.AssetPath) }}" alt='logo'/>
+		    		{% if comment.user.logo.path is not null %}
+						<img src="{{asset( comment.user.logo.AssetPath )}}" alt="Logo" />
+					{% else %}
+						{% if comment.user.typeUser == "Association" %}
+							<img src="{{asset( 'images/icones/avatars/association_avatar.png') }}"/>
+						{% elseif comment.user.typeUser == "Entreprise" %}
+							<img src="{{asset( 'images/icones/avatars/entreprise_avatar.png') }}"/>
+						{% elseif comment.user.typeUser == "Particulier" or comment.user.typeUser == "Benevole" %}
+							<img src="{{asset( 'images/icones/avatars/particulier_avatar.png') }}"/>
+						{% endif %}
+					{% endif %}
 		    	</div>
 		        <span class="comment-author">
 		            {{ comment.user.nom }}
@@ -35,7 +49,17 @@
 			    	<div id="comment_{{ commentChildren.id }}" class="tab-box full comment">
 
 				    	<div class="comment-avatar">
-				    		<img src="{{ asset(commentChildren.user.logo.AssetPath) }}" alt='logo'/>
+				    		{% if commentChildren.user.logo.path is not null %}
+								<img src="{{asset( commentChildren.user.logo.AssetPath )}}" alt="Logo" />
+							{% else %}
+								{% if commentChildren.user.typeUser == "Association" %}
+									<img src="{{asset( 'images/icones/avatars/association_avatar.png') }}"/>
+								{% elseif commentChildren.user.typeUser == "Entreprise" %}
+									<img src="{{asset( 'images/icones/avatars/entreprise_avatar.png') }}"/>
+								{% elseif commentChildren.user.typeUser == "Particulier" or app.commentChildren.typeUser == "Benevole" %}
+									<img src="{{asset( 'images/icones/avatars/particulier_avatar.png') }}"/>
+								{% endif %}
+							{% endif %}
 				    	</div>
 				        <span class="comment-author">
 				            {{ commentChildren.user.nom }}
@@ -59,7 +83,11 @@
 			    </div>
 		{% if comment.parent is null %}
 			<button class="btn btn-default btn-comment-response">Répondre</button>
-			{{ render(controller('CFCommentBundle:Comment:reply', { 'id':thread.id, 'comment_id':comment.id })) }}
+			{% if app.user %}
+				{{ render(controller('CFCommentBundle:Comment:reply', { 'id':thread.id, 'comment_id':comment.id })) }}
+			{% else %}
+				<p>Vous devez être <a href="{{ path('fos_user_security_login') }}">connecté</a> pour répondre à ce commentaire.</p>
+			{% endif %}
 			</div>
 		{% endif %}
 	{% else %}
@@ -107,7 +135,7 @@
 	          var time = currentdate.getHours() + ":" + minutes;
 
 	          $('.loading').remove();
-              $('.comments-list').prepend('<div class="tab-box full comment"><div class="comment-avatar"><img src="{{ asset(app.user.logo.AssetPath) }}" alt="logo"/></div><span class="comment-author">{{ app.user.nom }}</span><div class="comment-hour">- '+time+'</div><div class="comment-date">'+date+'</div><p>'+data.message+'</p></div>');
+              $('.comments-list').prepend('{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<div class="tab-box full comment"><div class="comment-avatar">{% if app.user.logo.path is not null %}<img src="{{asset( app.user.logo.AssetPath )}}" alt="Logo" />{% else %}{% if app.user.typeUser == "Association" %}<img src="{{asset("images/icones/avatars/association_avatar.png") }}"/>{% elseif app.user.typeUser == "Entreprise" %}<img src="{{asset("/avatars/entreprise_avatar.png") }}"/>{% elseif app.user.typeUser == "Particulier" or app.user.typeUser == "Benevole" %}<img src="{{asset("images/icones/avatars/particulier_avatar.png") }}"/>{% endif %}{% endif %}</div><span class="comment-author">{{ app.user.nom }}</span><div class="comment-hour">- '+time+'</div><div class="comment-date">'+date+'</div><p>'+data.message+'</p></div>{% endif %}');
 	          $('#form-new-comment #button-new-comment').removeAttr("disabled");
 	          $('#form-new-comment #cf_commentbundle_comment_content').removeAttr("disabled");
 	        }
@@ -160,7 +188,7 @@
 	          var time = currentdate.getHours() + ":" + minutes;
 
 	          $('.loading').remove();
-              $('#comment-list-reply-'+parentID).append('<div class="tab-box full comment"><div class="comment-avatar"><img src="{{ asset(app.user.logo.AssetPath) }}" alt="logo"/></div><span class="comment-author">{{ app.user.nom }}</span><div class="comment-hour">- '+time+'</div><div class="comment-date">'+date+'</div><p>'+data.message+'</p></div>');
+              $('#comment-list-reply-'+parentID).append('{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<div class="tab-box full comment"><div class="comment-avatar">{% if app.user.logo.path is not null %}<img src="{{asset( app.user.logo.AssetPath )}}" alt="Logo" />{% else %}{% if app.user.typeUser == "Association" %}<img src="{{asset("images/icones/avatars/association_avatar.png") }}"/>{% elseif app.user.typeUser == "Entreprise" %}<img src="{{asset("images/icones/avatars/entreprise_avatar.png") }}"/>{% elseif app.user.typeUser == "Particulier" or app.user.typeUser == "Benevole" %}<img src="{{asset("images/icones/avatars/particulier_avatar.png") }}"/>{% endif %}{% endif %}</div><span class="comment-author">{{ app.user.nom }}</span><div class="comment-hour">- '+time+'</div><div class="comment-date">'+date+'</div><p>'+data.message+'</p></div>{% endif %}');
 	          $('#form-reply-comment-'+parentID+' .button-reply-comment').removeAttr("disabled");
 	          $('#form-reply-comment-'+parentID+' #cf_commentbundle_comment_content').removeAttr("disabled");
 	        }
@@ -177,8 +205,11 @@
 	  });
 
 	  $('form.form-reply-comment').hide();
+	  $('.btn-comment-response').parent().children('p').hide();
+	  
 	  $('.btn-comment-response').on('click', function(){
 	  	$(this).parent().children('form.form-reply-comment').stop().slideToggle();
+	  	$(this).parent().children('p').stop().slideToggle();
 	  });
 
 	  function ajaxReportComment(commentID) {

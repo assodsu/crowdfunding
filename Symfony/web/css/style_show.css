@@ -30,7 +30,9 @@
 	margin-top:10px;
 }
 #certification #label {
-	color: #fff;
+	color: #8ACA8B;
+	font-weight: 600;
+	letter-spacing: 1px;
 	padding: 10px 25px;
 	border: 2px solid rgb(138, 202, 139);
 	border-radius: 5px;
@@ -191,12 +193,17 @@
 }
 #text-ressource-info {
 	color: #99a5af;
+	height: 100%;
+	vertical-align: middle;
+	line-height: 130px;
 }
 #text-ressource-financiere {
 	color: #ea5f50;
+	display: none;
 }
 #text-ressource-humaine {
 	color: #70d48d;
+  	padding-right: 10px;
 }
 #text-ressource-materiel {
 	color:#a66abe;
@@ -206,6 +213,7 @@
 }
 #project-tags div {
 	min-width: 100px;
+	font-weight: 600;
 	text-align: center;
 	display: inline-block;
 	float: right;

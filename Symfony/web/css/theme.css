@@ -60,7 +60,9 @@ body{
   border: none;
   letter-spacing: 1px;
 }
-
+.row {
+  margin:0;
+}
 /*** NAVIGATION ***/
 nav {
   height:50px;

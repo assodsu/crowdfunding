@@ -42,10 +42,9 @@
 						</ul>
 					</div>
 					<div class="resources-percent">
-						<p class="resource"><i class="fa fa-tag"></i><br>{% if projet.nbDemandeComm > 0 %}{{ (projet.nbActuComm/projet.nbDemandeComm)*100 }}%{% else %}Non demandée{% endif %}</p>
-						<p class="resource"><i class="fa fa-bar-chart"></i><br>{% if projet.nbDemandeFinancier > 0 %}{{ (projet.nbActuFinancier/projet.nbDemandeFinancier)*100 }}%{% else %}Non demandée{% endif %}</p>
-						<p class="resource"><i class="fa fa-users"></i><br>{% if projet.nbDemandeHumain > 0 %}{{ (projet.nbActuHumain/projet.nbDemandeHumain)*100 }}%{% else %}Non demandée{% endif %}</p>
-						<p class="resource"><i class="fa fa-desktop"></i><br>{% if projet.nbDemandeMateriel > 0 %}{{ (projet.nbActuMateriel/projet.nbDemandeMateriel)*100 }}%{% else %}Non demandée{% endif %}</p>
+						<p class="resource"><i class="fa fa-tag"></i><br>{% if projet.nbDemandeComm > 0 %}{{ ((projet.nbActuComm/projet.nbDemandeComm)*100)|round }}%{% else %}Non demandée{% endif %}</p>
+						<p class="resource"><i class="fa fa-users"></i><br>{% if projet.nbDemandeHumain > 0 %}{{ ((projet.nbActuHumain/projet.nbDemandeHumain)*100)|round }}%{% else %}Non demandée{% endif %}</p>
+						<p class="resource"><i class="fa fa-desktop"></i><br>{% if projet.nbDemandeMateriel > 0 %}{{ ((projet.nbActuMateriel/projet.nbDemandeMateriel)*100)|round }}%{% else %}Non demandée{% endif %}</p>
 					</div>
 				</div>
 				<div class="project-body">

@@ -63,6 +63,8 @@ class ProfileParticulierFormType extends AbstractType{
                                           ))
 
             ->add('email', 'email', array('label' => false, 'attr' => array('class' => 'form-control')))
+
+            ->add('logo', new MediaType(), array('label' => false, 'attr' => array('class' => 'form-control')))
         ;
     }
 

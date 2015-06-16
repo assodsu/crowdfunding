@@ -5,6 +5,7 @@ namespace CF\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use CF\MainBundle\Entity\Projet;
 use CF\MainBundle\Form\ProjetType;
 use CF\MainBundle\Form\ProjetEditType;
@@ -17,21 +18,23 @@ class ProjectController extends Controller
 {
 	public function showAction(Projet $projet)
     {
-        $boxs = $this->getDoctrine()->getEntityManager()->getRepository('CFMainBundle:Box')->getBoxsCroissant($projet);
+        $user = $this->container->get('security.context')->getToken()->getUser();
 
-        if($projet->getValider() == false)
+        if($projet->getValider() == true || $this->container->get('security.context')->isGranted('ROLE_ADMIN') || $projet->getAssociation() == $user )
         {
-            $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate(0,1);
-        
-            return $this->render('CFMainBundle:Project:showAll.html.twig', array('projets'=>$projets));
-        }
+            $boxs = $this->getDoctrine()->getEntityManager()->getRepository('CFMainBundle:Box')->getBoxsCroissant($projet);
 
-        return $this->render('CFMainBundle:Project:show.html.twig', array('projet' => $projet, 'boxs' => $boxs));
+            return $this->render('CFMainBundle:Project:show.html.twig', array('projet' => $projet, 'boxs' => $boxs));
+        }
+        else 
+        {
+            throw $this->createNotFoundException('Ce projet n\'a pas encore été validé par l\'administrateur');
+        }
     }
 	
     public function showAllAction()
     {	
-		$projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate(0,1);
+		$projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate(0,5);
         $selecteurs = $this->getDoctrine()->getRepository('CFMainBundle:Selecteur')->getSelecteursLesProjets();
 		
         return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$projets, 'selecteurs' => $selecteurs));
@@ -42,7 +45,7 @@ class ProjectController extends Controller
         $request = $this->get('request');
         $index = $request->request->get('index');
 
-        $updateProjets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate($index, 1);
+        $updateProjets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate($index, 5);
 
         $return=array("responseCode"=>200,  "updateProjets"=>$updateProjets);
 

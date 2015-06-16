@@ -8,6 +8,16 @@
 	{{ parent() }}
 	<link href="{{asset('css/style_show.css')}}" rel="stylesheet"/>
 	<link href="{{asset('css/style_participer_projet.css')}}" rel="stylesheet"/>
+	<style>
+		{% for tag in projet.tags %}
+			.tag-{{ tag.id }} {
+				background: #{{ tag.couleur }} !important;
+			}
+			.tag-{{ tag.id }}::before {
+				border-color: transparent #{{ tag.couleur }} transparent transparent !important;
+			}
+		{% endfor %}
+	</style>
 {% endblock %}
 
 {% set pourcentageHumain = 0.0 %}
@@ -51,7 +61,11 @@
 			<div id='infos-asso'>
 				<div id='certification'>
 					<p id='label'>Association certifiée <i class="fa fa-check"></i></p>
-					<img id='logo' src="{{asset( projet.association.logo.AssetPath) }}"/>
+					{% if projet.association.logo.path is not null %}
+						<img id='logo' src="{{asset( projet.association.logo.AssetPath) }}"/>
+					{% else %}
+						<img id='logo' src="{{asset( 'images/icones/avatars/association_avatar.png') }}"/>
+					{% endif %}
 				</div>
 				<div id='content-infos'>
 					<h1>{{ projet.association.nom }}</h1>
@@ -97,14 +111,6 @@
 					
 					<div id='project-tags'>
 						{% for tag in projet.tags %}
-							<style>
-								.tag-{{ tag.id }} {
-									background: #{{ tag.couleur }} !important;
-								}
-								.tag-{{ tag.id }}::before {
-									border-color: transparent #{{ tag.couleur }} transparent transparent !important;
-								}
-							</style>
 							<div class='tag-{{ tag.id }}'>{{ tag.nom }}</div>
 						{% endfor %}
 					</div>
@@ -211,8 +217,6 @@
 				</div>
 			</div>
 			<div class="tab-pane fade" id="tabhistory">
-				<h1 class='tab-title'><i class="fa fa-quote-left"></i> Redynamiser le développement numérique à Boulogne sur mer <i class="fa fa-quote-right"></i></h1>
-				<div class='tab-media'><iframe width="100%" height="400" src="https://www.youtube.com/embed/ScMzIvxBSi4" frameborder="0" allowfullscreen></iframe></div>
 				{% for box in boxs %}
 					{% if box.fullWidth %}
 						<div class='tab-box full'>

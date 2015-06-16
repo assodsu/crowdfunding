@@ -22,7 +22,17 @@
 			{% else %}
 				<p id='label' style="visibility: hidden;">Blank</p>
 			{% endif %}
-			<img id='logo' class="img-circle" src="{{asset( user.logo.AssetPath )}}" alt="Logo" />
+			{% if user.logo.path is not null %}
+				<img id='logo' class="img-circle" src="{{asset( user.logo.AssetPath )}}" alt="Logo" />
+			{% else %}
+				{% if user.typeUser == 'Association' %}
+					<img id='logo' src="{{asset( 'images/icones/avatars/association_avatar.png') }}"/>
+				{% elseif user.typeUser == 'Entreprise' %}
+					<img id='logo' src="{{asset( 'images/icones/avatars/entreprise_avatar.png') }}"/>
+				{% elseif user.typeUser == 'Particulier' or user.typeUser == 'Benevole' %}
+					<img id='logo' src="{{asset( 'images/icones/avatars/particulier_avatar.png') }}"/>
+				{% endif %}
+			{% endif %}
 			<div class="logo-username">
 				<h1>{{ user.nom }}</h1>
 				<h2>

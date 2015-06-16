@@ -16,14 +16,15 @@ tr:first-child td {
 }
 
 #label {
-	color: #fff;
-	padding: 10px 25px;
-	background: rgb(138,202,139);
-	border-radius: 5px;
-	width: 205px;
+	color: #8ACA8B;
+	font-weight: 600;
+	width: 250px;
 	margin: 10px auto;
-	font-family: 'GothamMedium';
-  	display: block;
+	letter-spacing: 1px;
+	padding: 10px 25px;
+	border: 2px solid rgb(138, 202, 139);
+	border-radius: 5px;
+	background: rgba(0,0,0,0.2);
 }
 .logo-name {
 	width: 100%;
@@ -276,7 +277,7 @@ textarea {
 
 .profile-menus {
 	overflow: auto;
-	height: 500px;
+	height: calc( 100% - 210px);
 }
 
 .profile-menu {
@@ -555,7 +556,7 @@ textarea {
 	position: absolute;
 	width: 100%;
 	height: 150px;
-	right: 75;
+	padding-right: 150px;
 	text-align: center;
 	margin: 30px 0;
 }
@@ -567,7 +568,6 @@ textarea {
 	-webkit-padding-start:0;
 	width: 100%;
 	text-align: center;
-	margin-left: 75px;
 }
 .chart > svg {
 	z-index:2;
@@ -579,7 +579,6 @@ textarea {
 	height: 150px;
 	text-align: center;
 	padding-top: 30px;
-	margin-left: 75px;
 }
 .pie-content .percentage {
 	font-size:35px;

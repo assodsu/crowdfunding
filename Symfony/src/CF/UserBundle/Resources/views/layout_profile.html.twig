@@ -26,7 +26,11 @@
 {% endfor %}
 <div class="block-new-project text-center">
 	<a class="btn btn-success profile-navigation">Accéder au menu</a>
-	<a class="btn btn-success" href="{{ path('cf_main_addProjects') }}">Nouveau projet</a>
+	{% if app.user.typeUser == 'Association' %}
+		<a class="btn btn-success" href="{{ path('cf_main_addProjects') }}">Nouveau projet</a>
+	{% else %}
+		<a class="btn btn-success" href="{{ path('cf_main_allProjects') }}">Parcourir</a>
+	{% endif %}
 </div>
 
 <div class="profile-left-menu">
