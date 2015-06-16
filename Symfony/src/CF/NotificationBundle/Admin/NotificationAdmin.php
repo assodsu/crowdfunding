@@ -19,9 +19,6 @@ class NotificationAdmin extends Admin
             ->add('type', 'choice', array(
                 'choices' => array(1 => 'Message', 2 => 'Projets')))
             ->add('user')
-
-            ->add('vu')
-        ;
         ;
     }
 
@@ -44,7 +41,6 @@ class NotificationAdmin extends Admin
             ->addIdentifier('contenu')
             ->add('type')
             ->add('user')
-            
             ->add('vu')
         ;
     }

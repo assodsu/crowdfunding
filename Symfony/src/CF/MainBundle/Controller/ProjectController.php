@@ -118,7 +118,7 @@ class ProjectController extends Controller
 
                 $this->get('session')->getFlashBag()->add('info', 'Votre projet a bien été déposé, il est en attente de validation par un administrateur. Un e-mail vous sera envoyé pour savoir si oui ou non votre projet a été accepté');
                 
-                return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
+                return $this->redirect($this->generateUrl('fos_user_profile_projects'));
             }
         }
 

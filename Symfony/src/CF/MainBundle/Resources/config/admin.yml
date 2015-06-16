@@ -13,7 +13,7 @@ services:
     sonata.admin.projet_accueil:
         class: CF\MainBundle\Admin\ProjetAccueilAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Projets", label: "Accueil" }
+            - { name: sonata.admin, manager_type: orm, group: "Projets", label: "Projets en pôle position" }
         arguments:
             - ~
             - CF\MainBundle\Entity\ProjetAccueil
@@ -24,7 +24,7 @@ services:
     sonata.admin.tags:
         class: CF\MainBundle\Admin\TagsAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Projets", label: "Catégories" }
+            - { name: sonata.admin, manager_type: orm, group: "Projets", label: "Tags" }
         arguments:
             - ~
             - CF\MainBundle\Entity\Tags

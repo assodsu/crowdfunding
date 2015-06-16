@@ -11,10 +11,10 @@
 	<style>
 		{% for tag in projet.tags %}
 			.tag-{{ tag.id }} {
-				background: #{{ tag.couleur }} !important;
+				background: {{ tag.couleur }} !important;
 			}
 			.tag-{{ tag.id }}::before {
-				border-color: transparent #{{ tag.couleur }} transparent transparent !important;
+				border-color: transparent {{ tag.couleur }} transparent transparent !important;
 			}
 		{% endfor %}
 	</style>
@@ -109,9 +109,9 @@
 						<a  data-toggle="modal" data-target="#modal-participate" class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a>
 					{% endif %}
 					
-					<div id='project-tags'>
+					<div id="project-tags">
 						{% for tag in projet.tags %}
-							<div class='tag-{{ tag.id }}'>{{ tag.nom }}</div>
+							<div class="tag-{{ tag.id }}">{{ tag.nom }}</div>
 						{% endfor %}
 					</div>
 				</div>
@@ -121,20 +121,20 @@
 	{% if app.user != projet.association %}
 		{{ render(controller('CFMainBundle:Project:participate', { id : projet.id } )) }}
 	{% endif %}
-	<div class="panel-content-heading">
-		<ul class="nav nav-tabs btn-group" role='group'>
-			<li class="btn btn-default active"><a href="#tabproject" data-toggle="tab">Le projet</a></li>
-			<li class="btn btn-default"><a href="#tabhistory" data-toggle="tab">Son histoire</a></li>
-			<li class="btn btn-default"><a href="#tabupdates" data-toggle="tab">Les mises à jour</a></li>
-			<li class="btn btn-default"><a href="#tabcomments" data-toggle="tab">Commentaires</a></li>
-			<li class="btn btn-default"><a href="#tabmore" data-toggle="tab">Plus d'informations</a></li>
-			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.hasProjetsSuivis(projet) %}
-				<li class="btn btn-default"><a href="{{ path('cf_main_not_suivre_projet', {id: projet.id}) }}"><i class="fa fa-star" style="color:grey;"></i> Ne plus suivre le projet</a></li>
-			{% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-				<li class="btn btn-default"><a href="{{ path('cf_main_suivre_projet', {id: projet.id}) }}"><i class="fa fa-star" style="color:gold;"></i> Suivre le projet</a></li>
-			{% endif %}
-		</ul>
+
+	<div class="project-menu">
+		<a href="#tabproject" data-toggle="tab">Le projet</a>
+		<a href="#tabhistory" data-toggle="tab">Son histoire</a>
+		<a href="#tabupdates" data-toggle="tab">Les mises à jour</a>
+		<a href="#tabcomments" data-toggle="tab">Commentaires</a>
+		<a href="#tabmore" data-toggle="tab">Plus d'informations</a>
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.hasProjetsSuivis(projet) %}
+			<a href="{{ path('cf_main_not_suivre_projet', {id: projet.id}) }}"><i class="fa fa-star" style="color:grey;"></i> Ne plus suivre le projet</a>
+		{% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			<a href="{{ path('cf_main_suivre_projet', {id: projet.id}) }}"><i class="fa fa-star" style="color:gold;"></i> Suivre le projet</a>
+		{% endif %}	
 	</div>
+
 	<div class="panel-body">
 		<div class="tab-content">
 			<div class="tab-pane fade in active" id="tabproject">
@@ -249,7 +249,7 @@
 
 			</div>
 			<div class="tab-pane fade" id="tabcomments">
-				{{ render(controller('CFCommentBundle:Thread:show', { 'id' : projet.id })) }}
+				{{ render(controller('CFCommentBundle:Thread:show', {'id': projet.id })) }}
 			</div>
 			<div class="tab-pane fade" id="tabmore">
 				<div class='tab-box full'>

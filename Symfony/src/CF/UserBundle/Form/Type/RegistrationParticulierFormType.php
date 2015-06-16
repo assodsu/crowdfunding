@@ -32,15 +32,13 @@ class RegistrationParticulierFormType extends AbstractType{
 
             ->add('sexe', 'choice', array('label' => "Sexe : ",
                                           "attr"=>array('class'=>'form-control'),
-                                          'choices' => array('m' => 'Homme', 'f' => 'Femme','n'=>'Ne souahite pas communiquer'),
+                                          'choices' => array('m' => 'Homme', 'f' => 'Femme','n'=>'Ne souhaite pas communiquer'),
                                              'expanded' => false,
                                              'multiple' => false,
                                              'data' => 'm'
                                           ))
 
-            ->add('dateNaissance', null, array('label' => "Date de naissance : ",
-                                              'years' => range(date('Y')-100,date('Y')))
-                                              )
+            ->add('dateNaissance', 'date', array('widget' => 'single_text', 'input' => 'datetime', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control datepicker')))
 
             ->add('ville', null, array('label' => "Ville : ","attr"=>array('class'=>'form-control')))
 

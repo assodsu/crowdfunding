@@ -19,7 +19,7 @@ class ProjetAdmin extends Admin
             ->add('dateCreation','date')
             ->add('dateFin','date')
             ->add('infoSup')
-            ->add('association.nom', null, array('label' => 'Association'))
+            ->add('association', null, array('label' => 'Association'))
             ->add('nbDonateur')
         ;
     }
