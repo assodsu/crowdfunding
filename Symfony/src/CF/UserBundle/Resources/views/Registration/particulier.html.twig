@@ -81,10 +81,10 @@
                   <label><i class="fa fa-venus-mars"></i></label>{{ form_widget(form.sexe) }}
                 </div>
                 <div class="form-group">
-                  <label><i class="fa fa-envelope-o"></i></label>{{ form_widget(form.name, {'attr': {'placeholder': 'nom de famille'}}) }}
+                  <label><i class="fa fa-user"></i></label>{{ form_widget(form.name, {'attr': {'placeholder': 'nom de famille'}}) }}
                 </div>
                 <div class="form-group">
-                      <label><i class="fa fa-unlock-alt"></i></label>{{ form_widget(form.firstname, {'attr': {'placeholder': 'prénom'}}) }}
+                      <label><i class="fa fa-user"></i></label>{{ form_widget(form.firstname, {'attr': {'placeholder': 'prénom'}}) }}
                 </div>
                 <div class="form-group">
                     <label><i class="fa fa-calendar"></i></label>{{ form_widget(form.dateNaissance, {'attr': {'placeholder': 'date de naissance', 'value': ''}}) }}
@@ -108,11 +108,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label><i class="fa fa-road"></i></label>{{ form_widget(form.cp, {'attr': {'placeholder': 'téléphone'}}) }}
+                    <label><i class="fa fa-road"></i></label>{{ form_widget(form.cp, {'attr': {'placeholder': 'code postal'}}) }}
                 </div>
 
                 <div class="form-group">
-                    <label><i class="fa fa-road"></i></label>{{ form_widget(form.ville, {'attr': {'placeholder': 'téléphone'}}) }}
+                    <label><i class="fa fa-road"></i></label>{{ form_widget(form.ville, {'attr': {'placeholder': 'ville'}}) }}
                 </div> 
                     
                 <a id="activate-step-4" class="btn btn-primary btn-lg">Etape suivante</a>
@@ -139,6 +139,7 @@
             </div>      
                
             <div class="row step-content" id="step-5">
+                <p>Êtes-vous bénévole ?</p>
                 <label><i class="fa fa-male"></i></label>{{ form_widget(form.benevole, { 'attr': {'class': 'form-control'} }) }}
                    
                 <button type="submit" class="btn btn-success btn-lg">S'inscrire !</button>

@@ -20,13 +20,6 @@ class ProjetEditType extends AbstractType
             ->add('description', 'textarea',  array('label' => false, 'attr' => array('class' => 'tinymce')))
             ->add('infoSup', 'textarea',  array('label' => "Informations supplémentaires", 'attr' => array('class' => 'tinymce')))
             ->add('background', new MediaType(),  array('label' => "Image de fond", 'attr' => array('class' => 'file')))
-            ->add('boxs', 'collection', array('label' => false,
-                'type' => new BoxType(),
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'by_reference' => false,
-                ))
         ;
     }
     

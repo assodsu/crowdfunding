@@ -24,27 +24,31 @@ class ProfileAssociationFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', 'email', array('label' => false, 'attr' => array('class' => 'form-control')))
+            ->add('email', 'email', array('label' => false))
 
-            ->add('ville', null, array('label' => false, 'attr' => array('class' => 'form-control')))
+            ->add('ville', null, array('label' => false))
 
-            ->add('cp', null, array('label' => false, 'attr' => array('class' => 'form-control')))
+            ->add('numWaldec', null, array('label' => false))
 
-            ->add('adresse', null, array('label' => false, 'attr' => array('class' => 'form-control')))
+            ->add('dateCreationAsso', 'date', array('widget' => 'single_text', 'input' => 'datetime', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'datepicker')))
 
-            ->add('telephone', null, array('label' => false, 'attr' => array('class' => 'form-control')))
+            ->add('cp', null, array('label' => false))
 
-            ->add('descriptionAsso', 'textarea', array('label' => false, 'attr' => array('class' => 'form-control', 'rows' => '6')))
+            ->add('adresse', null, array('label' => false))
 
-            ->add('site', null, array('label' => false, 'attr' => array('class' => 'form-control')))
+            ->add('telephone', null, array('label' => false))
 
-            ->add('facebook', null, array('label' => false, 'attr' => array('class' => 'form-control')))
+            ->add('descriptionAsso', 'textarea', array('label' => false))
 
-            ->add('twitter', null, array('label' => false, 'attr' => array('class' => 'form-control')))
+            ->add('site', null, array('label' => false))
 
-            ->add('googleplus', null, array('label' => false, 'attr' => array('class' => 'form-control')))
+            ->add('facebook', null, array('label' => false))
 
-            ->add('logo', new MediaType(), array('label' => false, 'attr' => array('class' => 'form-control')))
+            ->add('twitter', null, array('label' => false))
+
+            ->add('googleplus', null, array('label' => false))
+
+            ->add('logo', new MediaType(), array('label' => false))
         ;
     }
 

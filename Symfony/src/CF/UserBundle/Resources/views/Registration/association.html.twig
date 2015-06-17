@@ -104,11 +104,11 @@
             </div>
 
             <div class="form-group">
-                <label><i class="fa fa-road"></i></label>{{ form_widget(form.cp, {'attr': {'placeholder': 'téléphone'}}) }}
+                <label><i class="fa fa-road"></i></label>{{ form_widget(form.cp, {'attr': {'placeholder': 'code postal'}}) }}
             </div>
 
             <div class="form-group">
-                <label><i class="fa fa-road"></i></label>{{ form_widget(form.ville, {'attr': {'placeholder': 'téléphone'}}) }}
+                <label><i class="fa fa-road"></i></label>{{ form_widget(form.ville, {'attr': {'placeholder': 'ville'}}) }}
             </div>
                 
             <a id="activate-step-4" class="btn btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
@@ -157,6 +157,5 @@
         $(":file").filestyle({input: false});
         $('.buttonText').text('choisir le logo de l\'association');
         $('.glyphicon-folder-open').hide();
-        $('#fos_user_registration_form_dateCreationAsso').value('');
     </script>
 {% endblock %}

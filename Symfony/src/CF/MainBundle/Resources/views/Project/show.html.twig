@@ -125,7 +125,7 @@
 	<div class="project-menu">
 		<a href="#tabproject" data-toggle="tab">Le projet</a>
 		<a href="#tabhistory" data-toggle="tab">Son histoire</a>
-		<a href="#tabupdates" data-toggle="tab">Les mises à jour</a>
+		<a href="#tabupdates" data-toggle="tab">Les actualités</a>
 		<a href="#tabcomments" data-toggle="tab">Commentaires</a>
 		<a href="#tabmore" data-toggle="tab">Plus d'informations</a>
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.hasProjetsSuivis(projet) %}
@@ -244,7 +244,9 @@
 						{{ a.contenu|raw|nl2br }}
 					</div>
 				{% else %}
-				test
+					<div class='tab-box full'>
+						<h1>Aucune actualité rédigée pour le moment.</h1>
+					</div>
 				{% endfor %}
 
 			</div>
@@ -366,10 +368,12 @@
 				ajouterLienSuppressionDon($prototype);
 				$containerDons.append($prototype);
 				$containerDons.append('</div>');
+				changeSelectedResource($('#box-'+indexDon+' .header-besoin-box select'));
 
 				indexDon++;
 
 				$containerDons.append($lienAjoutDons);
+
 			}
 
 			function ajouterLienSuppressionDon($prototype) {
@@ -387,9 +391,11 @@
 				});
 			}
 
-			$(document).on('change', '.header-besoin-box select', function(){
+			changeSelectedResource($('.header-besoin-box select[data-index-select="0"]'));
 
-				var index = $(this).attr('data-index-select');
+			function changeSelectedResource(selectIndex) {
+
+				var index = selectIndex.attr('data-index-select');
 
 				var newColor = "";
 				var icon = "";
@@ -425,28 +431,34 @@
 				  	}
 				});
 
-				if($(this).val() == 'benevole')
+				if(selectIndex.val() == 'benevole')
 				{
 					newColor = "green";
 					icon = "user";
 				}
-				else if($(this).val() == 'financier')
+				else if(selectIndex.val() == 'financier')
 				{
 					newColor = "red";
 					icon = "euro";
 				}
-				else if($(this).val() == 'materiel')
+				else if(selectIndex.val() == 'materiel')
 				{
 					newColor = "purple";
 					icon = "tag";
 				}
-				else if($(this).val() == 'communication')
+				else if(selectIndex.val() == 'communication')
 				{
 					newColor = "grey";
 					icon = "tag";
 				}
 				$('#box-'+index).children('div.header-besoin-box').children('span').attr('class', "glyphicon glyphicon-"+icon);
 				$('#box-'+index).attr('class', "besoin-box "+newColor);
+
+			}
+
+
+			$(document).on('change', '.header-besoin-box select', function(){
+				changeSelectedResource($(this));
 		    });
 		});
 	</script>

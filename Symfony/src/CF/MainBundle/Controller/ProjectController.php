@@ -116,48 +116,13 @@ class ProjectController extends Controller
                 $em->persist($projet);
                 $em->flush();
 
-                $this->get('session')->getFlashBag()->add('info', 'Votre projet a bien été déposé, il est en attente de validation par un administrateur. Un e-mail vous sera envoyé pour savoir si oui ou non votre projet a été accepté');
+                $this->get('session')->getFlashBag()->add('info', 'Votre projet a bien été déposé, il est en attente de validation par un administrateur. Un e-mail vous sera envoyé prochainement pour vous indiquez de son état de validation');
                 
                 return $this->redirect($this->generateUrl('fos_user_profile_projects'));
             }
         }
 
         return $this->render('CFMainBundle:Project:add.html.twig', array('form' => $form->createView()));
-    }
-
-    public function redigerActuAction(Projet $projet,Request $request)
-    {
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        if(!$user)
-        {
-                return $this->redirect('fos_user_security_login');
-        }
-        else
-        {
-            $actu = new Actualites();
-            $form= $this->createForm(new ActualitesType(),$actu);
-
-            $actu->setIdProjet($projet);
-
-            if($request->getMethod()=='POST')
-            {
-                $form->bind($request);
-                if($form->isValid())
-                {
-                    $em=$this->getDoctrine()->getEntityManager();
-                    $actu = $form->getData();
-
-                    $em->persist($actu);
-                    $em->flush();
-
-                    $this->get('session')->getFlashBag()->add('info', 'Votre actualité a bien été ajouté.');
-
-                    return $this->redirect('cf_main_project',array('id'=>$actu->getIdProjet()));
-                }
-            }
-            return $this->render('CFMainBundle:Project:redigerActu.html.twig',array('projet'=>$projet));
-        }
-        
     }
 
     public function participateAction(Projet $projet, Request $request) 
@@ -185,6 +150,7 @@ class ProjectController extends Controller
                 $participation = $form->getData();
 
                 $projet->setNbDonateur($projet->getNbDonateur()+1);
+                $projet->addActeur($user);
 
                 $conversation = $this->getDoctrine()->getEntityManager()
                     ->createQuery('SELECT c FROM CFMessageBundle:Conversation c JOIN c.utilisateurs u WHERE (u.id = :user AND c.projet = :projet)')
@@ -233,12 +199,12 @@ class ProjectController extends Controller
                 $user->removeProjetsSoutenus($projet);
                 $user->addProjetsSoutenus($projet);
                 $em->persist($user);
-            
+                $em->persist($projet);
                 $em->persist($participation);
                 $em->persist($conversation);
                 $em->flush();
 
-                $this->get('session')->getFlashBag()->add('info', 'Votre participation a bien été prise en compte.');
+                $this->get('session')->getFlashBag()->add('info', 'Merci ! Votre participation a bien été prise en compte.');
 
                 return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
             } else {

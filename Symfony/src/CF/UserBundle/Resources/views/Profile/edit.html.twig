@@ -6,6 +6,8 @@
 
 {% block stylesheets %}
 	{{ parent() }}
+    <link href="{{ asset('css/jquery.datetimepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style_edit_profile.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% set menulink_param = 1 %}
@@ -61,110 +63,112 @@
 					<div class="tab-box">
 						<h1>Description</h1>
 						{% if app.user.typeUser == 'Association' %}
-							<p>Date de création : {{ app.user.dateCreationAsso|date("d/m/Y") }}</p>
-							<p>N° WALDEC : {{ app.user.numWaldec }}</p>
-							<p>Logo : {{ form_row(form.logo) }}</p>
 							<div class="form-group">
-							    <div class="input-group">
-							      <div class="input-group-addon">Description</div>
-							      {{ form_row(form.descriptionAsso) }}
-							    </div>
+				                <label><i class="fa fa-calendar"></i></label>{{ form_widget(form.dateCreationAsso, {'attr': {'placeholder': 'date création association', 'value': ''}}) }}
+				            </div>
+				            <div class="form-group">
+				                <label><i class="fa fa-sort-numeric-asc"></i></label>{{ form_widget(form.numWaldec, {'attr': {'placeholder': 'numéro waldec'}}) }}
+				            </div>
+							<div class="form-group">
+				                <label><i class="fa fa-picture-o"></i></label>{{ form_widget(form.logo, {'attr': {'class': 'filestyle', 'data-buttonText': 'Logo de l\'association'}}) }} 
+				            </div>
+							<div class="form-group">
+        						{{ form_widget(form.descriptionAsso, { 'attr': {'class': 'form-control', 'placeholder' : 'description...'} }) }}
 							</div>
 						{% elseif app.user.typeUser == 'Entreprise' %}
-							<p>Date de création : {{ app.user.dateCreationEntreprise|date("d/m/Y") }}</p>
-							<p>N° SIRET : {{ app.user.numSiret }}</p>
+							<div class="form-group">
+				                <label><i class="fa fa-calendar"></i></label>{{ form_widget(form.dateCreationEntreprise, {'attr': {'placeholder': 'date création entreprise', 'value': ''}}) }}
+				            </div>
+							<div class="form-group">
+				                <label><i class="fa fa-sort-numeric-asc"></i></label>{{ form_widget(form.numSiret, {'attr': {'placeholder': 'numéro siret'}}) }}
+				            </div>
+							<div class="form-group">
+				                <label><i class="fa fa-picture-o"></i></label>{{ form_widget(form.logo, {'attr': {'class': 'filestyle', 'data-buttonText': 'Logo de l\'entreprise'}}) }} 
+				            </div>
 						{% elseif app.user.typeUser == 'Particulier' or app.user.typeUser == 'Bénévole' %}
-							<p>Date de naissance : {{ form_row(form.dateNaissance) }}</p>
-							
-							<p>Bénévole : {{ form_row(form.benevole) }}</p>
 
 							<div class="form-group">
-							    <div class="input-group">
-							      <div class="input-group-addon">Nom</div>
-							      {{ form_row(form.name) }}
-							    </div>
-							</div>
+			                  <label><i class="fa fa-user"></i></label>{{ form_widget(form.name, {'attr': {'placeholder': 'nom de famille'}}) }}
+			                </div>
+			                <div class="form-group">
+			                      <label><i class="fa fa-user"></i></label>{{ form_widget(form.firstname, {'attr': {'placeholder': 'prénom'}}) }}
+			                </div>
+			                <div class="form-group">
+			                    <label><i class="fa fa-calendar"></i></label>{{ form_widget(form.dateNaissance, {'attr': {'placeholder': 'date de naissance', 'value': ''}}) }}
+			                </div>
+
 							<div class="form-group">
-							    <div class="input-group">
-							      <div class="input-group-addon">Prénom</div>
-							      {{ form_row(form.firstname) }}
-							    </div>
-							</div>
-							<p>Sexe : {{ form_row(form.sexe) }}</p>
+			                    <label><i class="fa fa-venus-mars"></i></label>{{ form_widget(form.sexe) }}
+			                </div>
+
+			                <div class="form-group">
+			                    <label><i class="fa fa-picture-o"></i></label>{{ form_widget(form.logo, {'attr': {'class': 'filestyle', 'data-buttonText': 'Avatar'}}) }} 
+			                </div>
+
+			                <p>Êtes-vous bénévole ?</p>
 							<div class="form-group">
-							    <div class="input-group">
-							      <div class="input-group-addon">Ville</div>
-							      {{ form_row(form.ville) }}
-							    </div>
-							</div><div class="form-group">
-							    <div class="input-group">
-							      <div class="input-group-addon">Code postal</div>
-							      {{ form_row(form.cp) }}
-							    </div>
-							</div>
-							<div class="form-group">
-							    <div class="input-group">
-							      <div class="input-group-addon">Adresse</div>
-							      {{ form_row(form.adresse) }}
-							    </div>
-							</div>
+								<label><i class="fa fa-male"></i></label>{{ form_widget(form.benevole, { 'attr': {'class': 'form-control'} }) }}
+			                </div>
+
 						{% endif %}
 					</div>
 					<div class="tab-box">
 						<h1>Informations</h1>
 						<div class="form-group">
-							<div class="input-group">
-						      <div class="input-group-addon">Site web</div>
-						      {{ form_row(form.site) }}
-						    </div>
-						</div>
+			                <label><i class="fa fa-at"></i></label>{{ form_widget(form.site, {'attr': {'placeholder': 'site internet'}}) }}
+			            </div>
 						<div class="form-group">
-							<div class="input-group">
-						      <div class="input-group-addon">Facebook</div>
-						      {{ form_row(form.facebook) }}
-						    </div>
-						</div>
+			                <label><i class="fa fa-facebook-square"></i></label>{{ form_widget(form.facebook, {'attr': {'placeholder': 'facebook'}}) }}
+			            </div>
+
+			            <div class="form-group">
+			                <label><i class="fa fa-twitter-square"></i></label>{{ form_widget(form.twitter, {'attr': {'placeholder': 'twitter'}}) }}
+			            </div>
+
+			            <div class="form-group">
+			                <label><i class="fa fa-google-plus-square"></i></label>{{ form_widget(form.googleplus, {'attr': {'placeholder': 'google+'}}) }}
+			            </div>
 						<div class="form-group">
-						    <div class="input-group">
-						      <div class="input-group-addon">Twitter</div>
-						      {{ form_row(form.twitter) }}
-						    </div>
-						</div>
+			                <label><i class="fa fa-envelope-o"></i></label>{{ form_widget(form.email, {'attr': {'placeholder': 'adresse e-mail'}}) }}
+			            </div>
 						<div class="form-group">
-						    <div class="input-group">
-						      <div class="input-group-addon">Google+</div>
-						      {{ form_row(form.googleplus) }}
-						    </div>
-						</div>
-						<div class="form-group">
-						    <div class="input-group">
-						      <div class="input-group-addon">E-mail</div>
-						      {{ form_row(form.email) }}
-						    </div>
-						</div>
-						<div class="form-group">
-						    <div class="input-group">
-						      <div class="input-group-addon">Téléphone</div>
-						      {{ form_row(form.telephone) }}
-						    </div>
+			                <label><i class="fa fa-phone"></i></label>{{ form_widget(form.telephone, {'attr': {'placeholder': 'téléphone'}}) }}
+			            </div>
+					</div>
+					<div class="tab-box full">
+						<h1><i class="fa fa-map-marker"></i> Adresse</h1>
+						<div class="inner-left">
+							<div class="form-group">
+				                <label><i class="fa fa-road"></i></label>{{ form_widget(form.adresse, {'attr': {'placeholder': 'adresse'}}) }}
+				            </div>
+
+				            <div class="form-group">
+				                <label><i class="fa fa-road"></i></label>{{ form_widget(form.cp, {'attr': {'placeholder': 'code postal'}}) }}
+				            </div>
+
+				            <div class="form-group">
+				                <label><i class="fa fa-road"></i></label>{{ form_widget(form.ville, {'attr': {'placeholder': 'ville'}}) }}
+				            </div>							
+				        </div>
+						<div class="inner-right">
+							<img src="{{ asset('images/google-map.jpg') }}"  class="center-block" />
 						</div>
 					</div>
-					{% if app.user.typeUser == 'Association' or app.user.typeUser == 'Entreprise' %}
-						<div class="tab-box full">
-							<h1><i class="fa fa-map-marker"></i> Adresse</h1>
-							<div class="inner-left">
-								<div class="form-group"><label>Ville :</label>{{ form_row(form.ville) }}</div>
-								<div class="form-group"><label>Code postal :</label>{{ form_row(form.cp) }}</div>
-								<div class="form-group"><label>Adresse :</label>{{ form_row(form.adresse) }}</div>
-							</div>
-							<div class="inner-right">
-								<img src="{{ asset('images/google-map.jpg') }}"  class="center-block" />
-							</div>
-						</div>
-					{% endif %}
 				</div>
 			</div>
 		</div>
 		{{ form_end(form) }}
 	</form>
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+    <script src="{{ asset('js/jquery.datetimepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.js') }}"> </script>
+    <script>
+        jQuery('#fos_user_profile_form_dateCreationAsso').datetimepicker({lang:'fr',format:'d/m/Y'});
+        $(":file").filestyle({input: false});
+        $('.buttonText').text('Modifier le logo');
+        $('.glyphicon-folder-open').hide();
+    </script>
 {% endblock %}

@@ -1,0 +1,81 @@
+.fos_user_profile_edit label {
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	display: inline-block;
+	background: #2ECC71;
+	vertical-align: middle;
+	font-size: 28px;
+	margin-bottom: 0;
+}
+
+.fos_user_profile_edit label i {
+	margin-top: 10px;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.fos_user_profile_edit .form-group {
+  border: 3px solid #2ECC71;
+  border-radius: 5px;
+}
+
+.fos_user_profile_edit input[type="text"], .fos_user_profile_edit input[type="select"], .fos_user_profile_edit input[type="email"], .fos_user_profile_edit input[type="file"], .fos_user_profile_edit textarea, .fos_user_profile_edit select {
+  display: inline-block;
+  width: 85% !important;
+  vertical-align: middle;
+  height: 50px;
+  border: none;
+  color: #333;
+  font-size: 18px;
+  text-align: left !important;
+  padding-left: 16px;
+  border-radius: 0px;
+}
+
+.fos_user_profile_edit input[type="text"]:focus, .fos_user_profile_edit input[type="select"]:focus, .fos_user_profile_edit input[type="email"]:focus, .fos_user_profile_edit input[type="file"], .fos_user_profile_edit textarea:focus, .fos_user_profile_edit select:focus {
+	border:none;
+	outline: none;
+}
+
+.fos_user_profile_edit textarea {
+	height: 150px;
+	width: 100% !important;
+}
+
+div#fos_user_profile_form_logo_file {
+	display: inline-block;
+	width: 85%;
+	background: white;
+	height: 50px;
+	padding-top: 20px;
+	margin-top: -6px;
+	vertical-align: middle;
+}
+
+.input-group {
+	margin-top: -30px;
+}
+
+.fos_user_profile_edit .input-group .btn {
+	margin-top: -15px;
+	margin-bottom: 5px;
+	width: auto;
+	background: #999;
+	color: #333;
+	border: none;
+	padding: 0 6px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	margin-left: 60px;
+}
+
+.fos_user_profile_edit .input-group .btn:hover {
+	background: #AAA;
+	color: #333;
+}
+
+.fos_user_profile_edit .input-group .btn:focus {
+	outline: 0;
+}

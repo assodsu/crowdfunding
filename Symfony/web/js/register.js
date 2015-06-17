@@ -20,7 +20,6 @@ $(document).ready(function(){
         e.preventDefault();
         var target = $($(this).attr('href'));
         var numberStep = '1';
-        console.log(target);
 
         if ($(this).hasClass('step-1')) {
             numberStep = '1';

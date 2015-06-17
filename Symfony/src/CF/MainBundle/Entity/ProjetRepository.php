@@ -67,4 +67,32 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
                  
         return $qb->getQuery()->getResult();
     }
+
+    public function getProjetsProfilEnCours($user)
+    {
+        $qb = $this->createQueryBuilder('p');
+         
+        $qb->join('p.association', 'u')
+           ->where('u.id = :userId')
+           ->setParameter('userId', $user->getId())
+           ->andWhere('p.dateFin >= :today')
+           ->setParameter('today', new \DateTime())
+        ;
+                 
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getProjetsProfilFini($user)
+    {
+        $qb = $this->createQueryBuilder('p');
+         
+        $qb->join('p.association', 'u')
+           ->where('u.id = :userId')
+           ->setParameter('userId', $user->getId())
+           ->andWhere('p.dateFin < :today')
+           ->setParameter('today', new \DateTime())
+        ;
+                 
+        return $qb->getQuery()->getResult();
+    }
 }

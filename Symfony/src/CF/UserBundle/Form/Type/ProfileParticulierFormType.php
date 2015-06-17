@@ -28,16 +28,15 @@ class ProfileParticulierFormType extends AbstractType{
 
             ->add('firstname', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('sexe', 'choice', array('label' => false,
-                                          'choices' => array('m' => 'Homme', 'f' => 'Femme'),
-                                             'expanded' => true,
+            ->add('sexe', 'choice', array('label' => "Sexe : ",
+                                          "attr"=>array('class'=>'form-control'),
+                                          'choices' => array('m' => 'Homme', 'f' => 'Femme','n'=>'Ne souhaite pas communiquer'),
+                                             'expanded' => false,
                                              'multiple' => false,
                                              'data' => 'm'
                                           ))
 
-            ->add('dateNaissance', null, array('label' => false,
-                                              'years' => range(date('Y')-100,date('Y')))
-                                              )
+            ->add('dateNaissance', 'date', array('widget' => 'single_text', 'input' => 'datetime', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control datepicker')))
 
             ->add('ville', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
@@ -55,17 +54,19 @@ class ProfileParticulierFormType extends AbstractType{
 
             ->add('googleplus', null, array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('benevole', 'choice', array('label' => false,
-                                          'choices' => array('1' => 'Oui', '0' => 'Non'),
-                                             'expanded' => true,
+            ->add('benevole', 'choice', array('label' => "Voudriez vous participer à du bénévolat ? ",
+                                          'block_name' => "optionsRadios",
+                                             "attr"=>array('class'=>'form-control'),                                        
+                                             'choices' => array('1' => 'Oui', '0' => 'Non'),
+                                             'expanded' => false,
                                              'multiple' => false,
                                              'data' => '0'
                                           ))
 
             ->add('email', 'email', array('label' => false, 'attr' => array('class' => 'form-control')))
 
-            ->add('logo', new MediaType(), array('label' => false, 'attr' => array('class' => 'form-control')))
-        ;
+            ->add('logo', new MediaType(), array('label' => "Logo/Avatar : "))
+            ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

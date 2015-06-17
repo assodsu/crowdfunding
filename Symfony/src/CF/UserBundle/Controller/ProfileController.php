@@ -101,7 +101,7 @@ class ProfileController extends Controller
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
 
-        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findBy(array('association' => $user));
+        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getProjetsProfilEnCours($user);
 
         $notifs = $this->getDoctrine()->getRepository('CFNotificationBundle:Notification')->getProjetsEnCours($user);
 
@@ -140,5 +140,14 @@ class ProfileController extends Controller
 
     public function projetsSoutenusAction() {
         return $this->render('CFUserBundle:Profile:projetsSoutenus.html.twig');
+    }
+
+    public function projetsFiniAction()
+    {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getProjetsProfilFini($user);
+
+        return $this->render('CFUserBundle:Profile:projetsFini.html.twig', array('projets' => $projets));
     }
 }

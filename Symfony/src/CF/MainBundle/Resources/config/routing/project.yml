@@ -11,13 +11,6 @@ cf_main_addProjects:
     requirements:
         _method: GET|POST
 
-cf_main_newActualite:
-    path:    /rediger-actualite/{id}
-    defaults: { _controller: CFMainBundle:Project:redigerActu }
-    requirements:
-        _method: GET|POST
-        id: \d+
-
 cf_main_participate:
     path:    /{id}/participer
     defaults: { _controller: CFMainBundle:Project:participate }

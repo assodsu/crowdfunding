@@ -155,6 +155,13 @@ class Projet implements JsonSerializable
     private $tags;
 
     /**
+    * @ORM\ManyToMany(targetEntity="CF\UserBundle\Entity\User", cascade={"persist"})
+    * @ORM\JoinTable(name="cf_projet_acteurs")
+    * @ORM\JoinColumn(nullable=true)
+    */
+    private $acteurs;
+
+    /**
     * @ORM\OneToMany(targetEntity="CF\MainBundle\Entity\Box", cascade={"persist"}, mappedBy="projet")
     */
     private $boxs;
@@ -839,5 +846,39 @@ class Projet implements JsonSerializable
     public function getActualites()
     {
         return $this->actualites;
+    }
+
+    /**
+     * Add acteur
+     *
+     * @param \CF\UserBundle\Entity\User $acteur
+     *
+     * @return Projet
+     */
+    public function addActeur(\CF\MainBundle\Entity\User $acteur)
+    {
+        $this->acteurs[] = $acteur;
+
+        return $this;
+    }
+
+    /**
+     * Remove acteur
+     *
+     * @param \CF\UserBundle\Entity\User $acteur
+     */
+    public function removeActeur(\CF\MainBundle\Entity\User $acteur)
+    {
+        $this->acteurs->removeElement($acteur);
+    }
+
+    /**
+     * Get acteurs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActeurs()
+    {
+        return $this->acteurs;
     }
 }

@@ -22,6 +22,10 @@ cf_user_projetsSoutenus:
     path:   /projets-soutenus
     defaults: { _controller: CFUserBundle:Profile:projetsSoutenus }
 
+cf_user_projetsFini:
+    path:   /projets-fini
+    defaults: { _controller: CFUserBundle:Profile:projetsFini }
+
 fos_user_profile_show:
     path:     /voir/{slug}
     defaults: { _controller: FOSUserBundle:Profile:show}
