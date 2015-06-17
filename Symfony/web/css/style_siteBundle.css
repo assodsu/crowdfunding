@@ -1,23 +1,10 @@
 .head-site {
 	width: 100%;
-	background-color: rgb(235, 149, 50);
-	position: relative;
 	height: 200px;
 	text-align: center;
-}
-
-.head-site img {
-	position: absolute;
-	display: block;
-	left: calc( 50% - 450px);
+	background: url('../images/icones/bannieres/working.jpg') center center rgb(235, 149, 50) no-repeat;
 }
 
 .head-site h1 { 
-	position: absolute;
-	left: 0;
-	right: 0;
-	vertical-align: middle;
-	color: #fff;
 	line-height: 200px;
-	margin: 0;
 }

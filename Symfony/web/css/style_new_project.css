@@ -5,22 +5,12 @@
 
 .head-new-project {
   width: 100%;
-  background-color: rgb(36, 116, 169);
-  position: relative;
+  background: url('../images/icones/bannieres/projet.jpg') center center no-repeat rgb(36, 116, 169);
   height: 200px;
   text-align: center;
 }
 
-.head-new-project img {
-  position: absolute;
-  display: block;
-  left: calc( 50% - 450px);
-}
-
 .head-new-project h1 {
-	position: absolute;
-	left: 0;
-	right: 0;
 	vertical-align: middle;
 	color: #fff;
 	line-height: 200px;

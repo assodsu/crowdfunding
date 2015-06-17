@@ -138,4 +138,11 @@ class Media
     {
         return $this->path;
     }
+
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
 }

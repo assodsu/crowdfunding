@@ -58,7 +58,8 @@
 				<a {% if menulink_messages is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_messages') }}">{% if nbNotif_messages > 0 %}<div class="notif">{{ nbNotif_messages }}</div>{% endif %}<i class="fa fa-envelope-o"></i> Messages</a>
 				<!--a href="#"><i class="fa fa-comment-o"></i> Informations</a-->
 				<a {% if menulink_badges is defined %}class="active" {% endif %}href="#"><i class="fa fa-trophy"></i> Badges (bientôt)</a>
-				<a {% if menulink_param is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-gears"></i> Paramètres</a>
+				<a {% if menulink_editPassword is defined %}class="active" {% endif %}href="{{ path('fos_user_change_password') }}"><i class="fa fa-unlock-alt"></i> Modifier son mot de passe</a>
+				<a {% if menulink_apram is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-gears"></i> Paramètres</a>
 				<!--a href="#"><i class="fa fa-plus-square"></i> Plus</a-->
 			</div>
 		</div>

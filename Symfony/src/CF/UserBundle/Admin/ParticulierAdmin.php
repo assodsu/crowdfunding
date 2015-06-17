@@ -13,10 +13,10 @@ class ParticulierAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('pseudo')
-            ->add('email')
             ->add('nom')
-            ->add('prenom')
+            ->add('email')
+            ->add('name')
+            ->add('firstname')
             ->add('benevole')
             ->add('sexe')
             ->add('adresse')
@@ -37,9 +37,9 @@ class ParticulierAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('pseudo')
             ->add('nom')
-            ->add('prenom')
+            ->add('name')
+            ->add('firstname')
             ->add('benevole')
             ->add('enabled', null, array('label' => 'Activé'))
         ;
@@ -49,10 +49,10 @@ class ParticulierAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('pseudo')
+            ->addIdentifier('nom')
             ->add('email')
-            ->add('nom')
-            ->add('prenom')
+            ->add('name')
+            ->add('firstname')
             ->add('benevole')
             ->add('enabled', null, array('label' => 'Activé', 'editable' => true))
         ;

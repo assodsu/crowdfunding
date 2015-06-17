@@ -22,6 +22,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use CF\UserBundle\Entity\User;
+use CF\MainBundle\Entity\Media;
 
 /**
  * Controller managing the user profile
@@ -77,6 +78,14 @@ class ProfileController extends Controller
 
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
+
+            $media = new Media();
+            $data  = $request->files->get($form->getName());
+            
+            foreach ($data['logo'] as $l)
+                $media->setFile($l);
+
+            $user->setLogo($media);
 
             $userManager->updateUser($user);
 
