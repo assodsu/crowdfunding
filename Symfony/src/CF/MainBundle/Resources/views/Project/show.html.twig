@@ -104,9 +104,9 @@
 						</ul>
 					</div>
 					{% if app.user == projet.association %}
-						<a href="{{ path('cf_main_modifier_projet', {'id': projet.id}) }}" class='btn btn-default'>Modifier mon projet <i class="fa fa-play"></i></a>
+						<a href="{{ path('cf_main_modifier_projet', {'id': projet.id}) }}" class='btn btn-success'>Modifier mon projet <i class="fa fa-play"></i></a>
 					{% else %}
-						<a  data-toggle="modal" data-target="#modal-participate" class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a>
+						<a  data-toggle="modal" data-target="#modal-participate" class='btn btn-success'>Soutenir ce projet <i class="fa fa-play"></i></a>
 					{% endif %}
 					
 					<div id="project-tags">

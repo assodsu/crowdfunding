@@ -13,6 +13,10 @@
 			<h1>Mes badges</h1>
 		</div>
 	</div>
+	<div class="alert alert-warning alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <i class="fa fa-exclamation-triangle"></i> Cette fonctionnalité apparaîtra dans une prochaine mise à jour.
+    </div>
 	{% for b in app.user.badges %}
 		<div class="badge-profil">
 			<div class="titre badge">{{ b.titre }}</div>
@@ -20,7 +24,5 @@
 				<img src="{{ asset(b.image.AssetPath) }}" alt="{{ b.titre }}" />
 			</span>
 		</div>
-	{% else %}
-		<p>Aucun badge... Pour le moment !</p>
 	{% endfor %}
 {% endblock %}
