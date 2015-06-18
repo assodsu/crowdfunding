@@ -93,6 +93,19 @@ border-radius: 0px;
 	margin-top: 15px;
 }
 
+#cf_mainbundle_projet_tags input {
+	width: 15px !important;
+	margin-top: 0;
+	margin-left:25px;
+}
+
+#cf_mainbundle_projet_tags label {
+	width: auto !important;
+	line-height: 52px;
+	background: none;
+	font-size: 14px;
+}
+
 #steps {
 	text-align: center;
 	width: 980px;
