@@ -1,0 +1,90 @@
+{% extends "CFMainBundle::layout.html.twig" %}
+
+{% block title %}
+  	{{ parent() }} - Ajouter une actualité
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{asset('css/style_show.css')}}" rel="stylesheet"/>
+	<style>
+		body { margin-top: 70px; }
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div class="tab-box full form-submit-actu">
+		<form method="post">
+			<ul class="nav nav-pills">
+			  <li role="presentation" class="texte active"><a href="#">Texte</a></li>
+			  <li role="presentation" class="image"><a href="#">Image</a></li>
+			  <li role="presentation" class="video"><a href="#">Video</a></li>
+			</ul>
+
+			{{ form_row(form.titre) }}
+			<div id="form-texte">
+			{{ form_row(form.contenu) }}
+		</div>
+			<div id="form-image">
+			{{ form_row(form.urlImage) }}
+		</div>
+			<div id="form-video">
+			{{ form_row(form.urlVideo) }}
+		</div>
+			{{ form_row(form.fullWidth) }}
+			{{ form_row(form.ordre) }}
+
+			{{ form_rest(form) }}
+
+			<button type="submit" class="btn btn-success btn-submit-actu">Publier</button>
+		</form>
+	</div>
+{% endblock body %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
+	<script type="text/javascript">
+
+		function removeClassActiveNavPills() {
+			$('.nav-pills li').each(function() {
+				$(this).removeClass('active');
+			});
+		}
+
+		function hideTexteImageVideo() {
+			$('#form-texte').hide();
+			$('#form-image').hide();
+			$('#form-video').hide();
+		}
+
+		function emptyTexteImageVideo() {
+			$('#cf_mainbundle_box_contenu').val('');
+			$('#cf_mainbundle_box_urlVImage').val('');
+			$('#cf_mainbundle_box_urlVideo').val('');
+		}
+
+		hideTexteImageVideo();
+		$('#form-texte').show();
+
+		$('.nav-pills li').on('click', function() {
+			removeClassActiveNavPills();
+			$(this).addClass('active');
+
+			if ($(this).hasClass('texte')) {
+				hideTexteImageVideo();
+				$('#form-texte').show();
+				emptyTexteImageVideo();
+			} else if ($(this).hasClass('image')) {
+				hideTexteImageVideo();
+				$('#form-image').show();
+				emptyTexteImageVideo();
+			} else if ($(this).hasClass('video')) {
+				hideTexteImageVideo();
+				$('#form-video').show();
+				emptyTexteImageVideo();
+			}
+		});
+    </script>
+	<script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+{% endblock %}

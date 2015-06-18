@@ -53,3 +53,21 @@ cf_main_delete_actu:
     defaults: { _controller: CFMainBundle:Actualite:supprimer }
     requirements:
         id: \d+
+
+cf_main_rediger_box:
+    path:  /box/rediger/{id}
+    defaults: { _controller: CFMainBundle:Box:rediger }
+    requirements:
+        id: \d+
+
+cf_main_edit_box:
+    path:  /box/editer/{id}
+    defaults: { _controller: CFMainBundle:Box:editer }
+    requirements:
+        id: \d+
+
+cf_main_delete_box:
+    path:  /box/supprimer/{id}
+    defaults: { _controller: CFMainBundle:Box:supprimer }
+    requirements:
+        id: \d+

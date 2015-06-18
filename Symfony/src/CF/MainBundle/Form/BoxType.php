@@ -17,6 +17,8 @@ class BoxType extends AbstractType
         $builder
             ->add('titre','text', array('label' => 'Titre', 'attr' => array('class' => 'form-control')))
             ->add('contenu','textarea', array('label' => 'Contenu','attr' => array('class' => 'form-control', 'rows' => '5')))
+            ->add('urlImage','text', array('label' => 'Url image', 'attr' => array('class' => 'form-control')))
+            ->add('urlVideo','text', array('label' => 'Url vidéo', 'attr' => array('class' => 'form-control')))
             ->add('fullWidth', 'checkbox', array('label' => 'Un bloc','attr' => array('class' => 'form-control box-width')))
             ->add('ordre',null, array('label' => 'Ordre','attr' => array('class' => 'form-control box-order')))
         ;

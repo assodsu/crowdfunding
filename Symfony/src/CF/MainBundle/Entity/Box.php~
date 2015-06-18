@@ -31,21 +31,21 @@ class Box
     /**
      * @var string
      *
-     * @ORM\Column(name="contenu", type="text", nullable=true)
+     * @ORM\Column(name="contenu", type="text")
      */
     private $contenu;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="urlImage", type="string", length=255, nullable=true)
+     * @ORM\Column(name="urlImage", type="string", length=255)
      */
     private $urlImage;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="urlVideo", type="string", length=255, nullable=true)
+     * @ORM\Column(name="urlVideo", type="string", length=255)
      */
     private $urlVideo;
 
@@ -194,53 +194,5 @@ class Box
     public function getOrdre()
     {
         return $this->ordre;
-    }
-
-    /**
-     * Set urlImage
-     *
-     * @param string $urlImage
-     *
-     * @return Box
-     */
-    public function setUrlImage($urlImage)
-    {
-        $this->urlImage = $urlImage;
-
-        return $this;
-    }
-
-    /**
-     * Get urlImage
-     *
-     * @return string
-     */
-    public function getUrlImage()
-    {
-        return $this->urlImage;
-    }
-
-    /**
-     * Set urlVideo
-     *
-     * @param string $urlVideo
-     *
-     * @return Box
-     */
-    public function setUrlVideo($urlVideo)
-    {
-        $this->urlVideo = $urlVideo;
-
-        return $this;
-    }
-
-    /**
-     * Get urlVideo
-     *
-     * @return string
-     */
-    public function getUrlVideo()
-    {
-        return $this->urlVideo;
     }
 }
