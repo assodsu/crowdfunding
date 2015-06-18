@@ -52,8 +52,8 @@
 		</div>
 		<div class="content-panel-heading">
 			<ul class="nav nav-tabs btn-group edit-profile" role='group'>
-				<a class="btn btn-danger" href="{{ path('fos_user_profile_show', { slug : app.user.slug }) }}">Annuler</a>
-				<input type="submit" value="Enregistrer" class="btn btn-success" />
+				<a class="btn btn-danger" href="{{ path('fos_user_profile_show', { slug : app.user.slug }) }}">Annuler <i class="fa fa-undo"></i></a>
+				<button type="submit" class="btn btn-success">Enregistrer <i class="fa fa-floppy-o"></i></button>
 			</ul>
 		</div>
 		<div class="panel-body">				

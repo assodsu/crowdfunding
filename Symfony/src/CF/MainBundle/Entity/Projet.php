@@ -855,7 +855,7 @@ class Projet implements JsonSerializable
      *
      * @return Projet
      */
-    public function addActeur(\CF\MainBundle\Entity\User $acteur)
+    public function addActeur(\CF\UserBundle\Entity\User $acteur)
     {
         $this->acteurs[] = $acteur;
 
@@ -867,7 +867,7 @@ class Projet implements JsonSerializable
      *
      * @param \CF\UserBundle\Entity\User $acteur
      */
-    public function removeActeur(\CF\MainBundle\Entity\User $acteur)
+    public function removeActeur(\CF\UserBundle\Entity\User $acteur)
     {
         $this->acteurs->removeElement($acteur);
     }

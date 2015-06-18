@@ -26,9 +26,10 @@ class ProjetType extends AbstractType
                 'allow_add'    => true,
                 'allow_delete' => true
                 ))
-            ->add('tags',  'entity', array('attr' => array('class' => 'form-control'),
+            ->add('tags',  'entity', array(
                 'class'    => 'CFMainBundle:Tags',
                 'property' => 'nom',
+                'expanded'=>true,
                 'multiple' => true
                 ))
             ->add('boxs', 'collection', array('label' => false,

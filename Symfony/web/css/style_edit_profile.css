@@ -15,14 +15,9 @@
   margin-left: 10px;
 }
 
-.fos_user_profile_edit .form-group {
-  border: 3px solid #2ECC71;
-  border-radius: 5px;
-}
-
 .fos_user_profile_edit input[type="text"], .fos_user_profile_edit input[type="select"], .fos_user_profile_edit input[type="email"], .fos_user_profile_edit input[type="file"], .fos_user_profile_edit textarea, .fos_user_profile_edit select {
   display: inline-block;
-  width: 85% !important;
+  width: calc( 100% - 50px) !important;
   vertical-align: middle;
   height: 50px;
   border: none;
@@ -51,6 +46,10 @@ div#fos_user_profile_form_logo_file {
 	padding-top: 20px;
 	margin-top: -6px;
 	vertical-align: middle;
+}
+
+.tab-box {
+  background-color: #ecf0f1;
 }
 
 .input-group {
