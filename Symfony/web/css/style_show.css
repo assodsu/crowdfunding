@@ -104,7 +104,7 @@
 	margin-right:auto;
 	width:600px;
 	height:210px;
-	font-size:35pt;
+	font-size:40px;
 	color:white;
 	text-transform:uppercase;
 	vertical-align:middle;
@@ -196,6 +196,9 @@
 	height: 100%;
 	vertical-align: middle;
 	line-height: 130px;
+}
+#text-ressource-info:hover, #text-ressource-humaine:hover, #text-ressource-materiel:hover {
+	opacity: 0.7;
 }
 #text-ressource-financiere {
 	color: #ea5f50;

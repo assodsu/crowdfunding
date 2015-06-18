@@ -316,7 +316,7 @@ p.modal-connexion-center {
 
 /**** TAB-BOX ****/
 .tab-box {
-  background-color:#fff;
+  background-color:#ecf0f1;
   border-radius: 5px;
   width: calc(50% - 32px);
   min-height:300px;

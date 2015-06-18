@@ -22,7 +22,7 @@
 
 .fos_user_profile_edit input[type="text"], .fos_user_profile_edit input[type="select"], .fos_user_profile_edit input[type="email"], .fos_user_profile_edit input[type="file"], .fos_user_profile_edit textarea, .fos_user_profile_edit select {
   display: inline-block;
-  width: 85% !important;
+  width: 90.6% !important;
   vertical-align: middle;
   height: 50px;
   border: none;

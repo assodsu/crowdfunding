@@ -8,7 +8,7 @@
 
 {% block cfuserbundle_body %}
 	<div class="profile-menu-projects">
-		<div class="profile-projects-list">
+		{% if projets %}<div class="profile-projects-list">
 			<a href="#" class="buttonLeft"><i class="fa fa-chevron-circle-left"></i></a>
 			<a href="#" class="buttonRight"><i class="fa fa-chevron-circle-right"></i></a>
 			<div class="projects-list">
@@ -18,7 +18,7 @@
 					{% set projectIndex = projectIndex + 1 %}
 				{% endfor %}
 			</div>
-		</div>
+		</div>{% endif %}
 		{% set projectIndex = 1 %}
 		{% for projet in projets %}
 			<div class="project project-{{projectIndex}}">
@@ -130,6 +130,10 @@
 				</div>
 			</div>
 		{% set projectIndex = projectIndex + 1 %}
+		{% else %}
+			<div class="alert-top alert-top-warning" style="text-align: left;">
+				<i class="fa fa-exclamation-triangle"></i> Vous n'avez aucun projet pour le moment.
+			</div>
 		{% endfor %}
 	</div>
 {% endblock %}
