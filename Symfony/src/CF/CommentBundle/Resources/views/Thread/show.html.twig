@@ -205,11 +205,9 @@
 	  });
 
 	  $('form.form-reply-comment').hide();
-	  $('.btn-comment-response').parent().children('p').hide();
-	  
+
 	  $('.btn-comment-response').on('click', function(){
 	  	$(this).parent().children('form.form-reply-comment').stop().slideToggle();
-	  	$(this).parent().children('p').stop().slideToggle();
 	  });
 
 	  function ajaxReportComment(commentID) {

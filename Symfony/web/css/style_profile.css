@@ -361,7 +361,7 @@ textarea {
 
 .profile-menus {
 	overflow: auto;
-	height: calc( 100% - 210px);
+  height: calc( 100% - 170px);
 }
 
 .profile-menu {
@@ -458,6 +458,9 @@ textarea {
 		left: 0;
 		width: 100%;
 		z-index: 10;
+	}
+	.profile-menus {
+  		height: calc( 100% - 120px);
 	}
 	.profile-content {
 		margin-left: 0;

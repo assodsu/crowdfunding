@@ -6,67 +6,43 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link href="{{asset('css/style_show.css')}}" rel="stylesheet"/>
+	<link href="{{asset('css/style_edit_projet.css')}}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
+	<h1 class="title-edit-project">Modifier le projet</h1>
+	<form action="{{ path('cf_main_modifier_projet', { id : projet.id}) }}" {{ form_enctype(form) }} method="POST" class="form-edit-project">
+		{{ form_errors(form) }}
+		{{ form_start(form) }}
 
-<form method="post">
-
-	{{ form_rest(form) }}
-
-	<button type="submit">Modifier</button>
-</form>
+		<div class="tab-box">
+			<h1>Image de fond</h1>
+			<div class="form-group">
+	            <label><i class="fa fa-picture-o"></i></label>{{ form_widget(form.background, {'attr': {'class': 'filestyle', 'data-buttonText': 'Choisir l\'image de fond'}}) }} 
+	        </div>
+		</div>
+		<div class="tab-box">
+			<h1>Informations supplémentaires</h1>
+			<div class="form-group">
+				{{ form_widget(form.infoSup, { 'attr': {'class': 'form-control ckeditor', 'placeholder' : 'Saisissez les informations supplémentaires...'} }) }}
+			</div>
+		</div>
+		<div class="btn-edit-project">
+			<ul class="nav nav-tabs btn-group" role='group'>
+				<a class="btn btn-danger" href="{{ path('fos_user_profile_show', { slug : app.user.slug }) }}">Annuler <i class="fa fa-undo"></i></a>
+				<button type="submit" class="btn btn-success">Enregistrer <i class="fa fa-floppy-o"></i></button>
+			</ul>
+		</div>
+		{{ form_end(form) }}
+	</form>
 {% endblock %}
 
 {% block javascripts %}
-	{{ parent() }}
-	<script type="text/javascript" src="{{ asset('js/create_project.js') }}"></script>
-	<script>
-		$(document).ready(function() {
-			/**** BOXS HISTOIRE ****/
-
-	var $containerBox = $('div#cf_mainbundle_projetedit_boxs');
-
-	var $lienAjoutBox = $('<a href="#" id="ajout_box" class="btn btn-success"><i class="fa fa-plus"></i></a>');
-
-	$lienAjoutBox.click(function(e) {
-		ajouterBox($containerBox);
-		e.preventDefault();
-		return false;
-	});
-
-	var indexBox = $containerBox.find(':input').length;
-
-	if (indexBox == 0) {
-		ajouterBox($containerBox);
-	} 
-	else {
-		$containerBox.children('div').each(function() {
-			ajouterLienSuppressionBox($(this));
-		});
-	}
-
-	function ajouterBox($containerBox) {
-		var $prototype = $($containerBox.attr('data-prototype').replace(/__name__label__/g, 'Boîte').replace(/__name__/g, indexBox));
-
-		ajouterLienSuppressionBox($prototype);
-		$containerBox.append($prototype);
-		indexBox++;
-
-		$containerBox.append($lienAjoutBox);
-	}
-
-	function ajouterLienSuppressionBox($prototype) {
-		$lienSuppression = $('<a href="#" class="btn btn-danger" id="suppr_box"><i class="fa fa-minus"></i></a>');
-		$prototype.append($lienSuppression);
-
-		$lienSuppression.click(function(e) {
-			$prototype.remove();
-			e.preventDefault();
-			return false;
-		});
-	}
-		});
-	</script>
+	<script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.js') }}"> </script>
+    <script>
+        $(":file").filestyle({input: false});
+        $('.buttonText').text('Modifier l\'image de fond');
+        $('.glyphicon-folder-open').hide();
+    </script>
 {% endblock %}

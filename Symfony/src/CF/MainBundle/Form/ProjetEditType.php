@@ -17,9 +17,8 @@ class ProjetEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('description', 'textarea',  array('label' => false, 'attr' => array('class' => 'tinymce')))
-            ->add('infoSup', 'textarea',  array('label' => "Informations supplémentaires", 'attr' => array('class' => 'tinymce')))
-            ->add('background', new MediaType(),  array('label' => "Image de fond", 'attr' => array('class' => 'file')))
+            ->add('infoSup', 'textarea',  array('label' => false, 'attr' => array('class' => 'ckeditor')))
+            ->add('background', new MediaType(),  array('label' => false, 'attr' => array('class' => 'file')))
         ;
     }
     

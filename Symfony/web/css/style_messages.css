@@ -136,6 +136,32 @@
     background: #C7C7C7;
 }
 
+@media (max-width: 600px) {
+  .conversation-show {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .conversation section {
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
+  .conversation-infos > div:nth-child(3) {
+    width: calc(100% - 90px);
+  }
+  .conversation-project-background {
+    width: 100% !important;
+  }
+  .conversation-donator-logo {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .conversation-resources {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
 /* --------------------- */
 /* -- MODAL MESSAGES  -- */
 /* --------------------- */

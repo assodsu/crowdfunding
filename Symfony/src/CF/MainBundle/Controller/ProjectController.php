@@ -219,43 +219,43 @@ class ProjectController extends Controller
 
     public function modifierAction(Projet $projet, Request $request) 
     {
-        
-        if (!$projet) {
-            throw $this->createNotFoundException(
-                'Aucun projet trouvé pour cet id : '.$projet->getId());
-        }
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if($projet->getAssociation() == $user) {
+            $form = $this->createForm(new ProjetEditType(), $projet);
 
-        $form = $this->createForm(new ProjetEditType(), $projet);
-
-        if($request->getMethod() == 'POST')
-        {
-            $form->bind($request);
-
-            if($form->isValid())
+            if($request->getMethod() == 'POST')
             {
-                $em = $this->getDoctrine()->getEntityManager();
-                $projet = $form->getData();
+                $form->bind($request);
 
-
-                $boxs = $projet->getBoxs();
-                foreach($boxs as $box)
+                if($form->isValid())
                 {
-                    $box->setProjet($projet);
+                    $em = $this->getDoctrine()->getEntityManager();
+                    $projet = $form->getData();
+
+
+                    $boxs = $projet->getBoxs();
+                    foreach($boxs as $box)
+                    {
+                        $box->setProjet($projet);
+                    }
+                    
+                    $em->persist($projet);
+                    $em->flush();
+                    
+                    $this->get('session')->getFlashBag()->add('info', 'Votre projet a bien été modifié !');
+
+                    return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
                 }
-                
-                $em->persist($projet);
-                $em->flush();
-                
-                $this->get('session')->getFlashBag()->add('info', 'Votre projet a bien été modifié !');
-
-                return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
             }
-        }
 
-        return $this->render('CFMainBundle:Project:modifier.html.twig', array(
-                'form' => $form->createView(),
-                'projet' => $projet
-            ));
+            return $this->render('CFMainBundle:Project:modifier.html.twig', array(
+                    'form' => $form->createView(),
+                    'projet' => $projet
+                ));
+        }
+        else {
+            throw $this->createNotFoundException('Vous n\'êtes pas le créateur de ce projet !');
+        }
     }
 
     public function suivreProjetAction(Projet $projet) 

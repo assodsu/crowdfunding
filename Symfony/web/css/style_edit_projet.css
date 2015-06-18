@@ -1,0 +1,77 @@
+.title-edit-project {
+	color: #fff;
+	text-align: center;
+	padding: 50px 0;
+ }
+ .tab-box {
+ 	background: #ecf0f1;
+ }
+ .form-edit-project label {
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	display: inline-block;
+	background: #2ECC71;
+	vertical-align: middle;
+	font-size: 28px;
+	margin-bottom: 0;
+}
+
+.form-edit-project label i {
+	margin-top: 10px;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.form-edit-project input, .form-edit-project textarea{
+	display: inline-block;
+	width: calc( 100% - 50px) !important;
+	vertical-align: middle;
+	height: 50px;
+	border: none;
+	color: #333;
+	font-size: 18px;
+	text-align: left !important;
+	padding-left: 16px;
+	border-radius: 0px;
+}
+
+.form-edit-project textarea {
+	width:100% !important;
+}
+
+div.btn-edit-project {
+	text-align: center;
+ 	 margin-bottom: 30px;
+}
+
+div#cf_mainbundle_projetedit_background {
+	display: inline-block;
+	width: 85%;
+	background: white;
+	height: 50px;
+	padding-top: 20px;
+	vertical-align: middle;
+}
+.form-edit-project .input-group .btn {
+	margin-top: -15px;
+	margin-bottom: 5px;
+	width: auto;
+	background: #999;
+	color: #333;
+	border: none;
+	padding: 0 6px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	margin-left: 10px;
+}
+
+.form-edit-project .input-group .btn:hover {
+	background: #AAA;
+	color: #333;
+}
+
+.form-edit-project .input-group .btn:focus {
+	outline: 0;
+}

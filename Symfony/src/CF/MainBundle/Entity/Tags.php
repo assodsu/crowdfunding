@@ -33,7 +33,7 @@ class Tags implements JsonSerializable
     /**
      * @var string
      *
-     * @ORM\Column(name="couleur", type="string", length=6)
+     * @ORM\Column(name="couleur", type="string")
      */
     private $couleur;
 
