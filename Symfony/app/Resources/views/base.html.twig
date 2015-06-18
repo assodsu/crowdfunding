@@ -88,7 +88,7 @@
 			{% for message in app.session.flashbag.get(type) %}
 				<div class="alert-top alert-top-{{ type }}">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					{{ message }}
+					{% if type == 'info' %}<i class="fa fa-check"></i>{% endif %} {{ message }}
 				</div>
 			{% endfor %}
 		{% endfor %}

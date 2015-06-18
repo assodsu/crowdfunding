@@ -27,9 +27,9 @@
 <div class="block-new-project text-center">
 	<a class="profile-navigation"><i class="fa fa-bars"></i> Menu</a>
 	{% if app.user.typeUser == 'Association' %}
-		<a class="btn btn-success" href="{{ path('cf_main_addProjects') }}">Nouveau projet</a>
+		<a class="btn btn-success" href="{{ path('cf_main_addProjects') }}"><i class="fa fa-plus"></i> Nouveau projet</a>
 	{% else %}
-		<a class="btn btn-success" href="{{ path('cf_main_allProjects') }}">Parcourir</a>
+		<a class="btn btn-success" href="{{ path('cf_main_allProjects') }}"><i class="fa fa-circle-o-notch fa-spin"></i> Parcourir</a>
 	{% endif %}
 </div>
 
@@ -46,9 +46,9 @@
 			<div class="profile-menu-title">Projets et soutients</div>
 			<div class="profile-menu-content">
 				<a {% if menulink_currentProjects is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_projects') }}">{% if nbNotif_projetsEnCours > 0 %}<div class="notif">{{ nbNotif_projetsEnCours }}</div>{% endif %}<i class="fa fa-bar-chart"></i> Projets en cours</a>
-				<a {% if menulink_projetsSuivis is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsSuivis') }}"><i class="fa fa-eye"></i> Projets suivis</a>
-				<a {% if menulink_projetsSoutenus is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsSoutenus') }}"><i class="fa fa-clock-o"></i> Projets soutenus</a>
-				<a {% if menulink_endedProjects is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsFini') }}"><i class="fa fa-tag"></i> Projets terminés</a>
+				<a {% if menulink_projetsSuivis is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsSuivis') }}"><i class="fa fa-star"></i> Projets suivis</a>
+				<a {% if menulink_projetsSoutenus is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsSoutenus') }}"><i class="fa fa-thumbs-up"></i> Projets soutenus</a>
+				<a {% if menulink_endedProjects is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsFini') }}"><i class="fa fa-check-square-o"></i> Projets terminés</a>
 			</div>
 		</div>
 

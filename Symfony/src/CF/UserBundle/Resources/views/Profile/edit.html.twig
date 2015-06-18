@@ -31,7 +31,7 @@
 					<img id='logo' class="img-circle" src="{{asset( app.user.logo.AssetPath )}}" alt="Logo" />
 				{% else %}
 					{% if app.user.typeUser == 'Association' %}
-						<img id='logo' src="{{asset( 'images/icones/avatars/association_avatar.png') }}"/>
+						<img id='logo' src="{{asset('images/icones/avatars/association_avatar.png') }}"/>
 					{% elseif app.user.typeUser == 'Entreprise' %}
 						<img id='logo' src="{{asset( 'images/icones/avatars/entreprise_avatar.png') }}"/>
 					{% elseif app.user.typeUser == 'Particulier' or app.user.typeUser == 'Benevole' %}
@@ -105,7 +105,7 @@
 			                    <label><i class="fa fa-picture-o"></i></label>{{ form_widget(form.logo, {'attr': {'class': 'filestyle', 'data-buttonText': 'Avatar'}}) }} 
 			                </div>
 
-			                <p>Êtes-vous bénévole ?</p>
+			                <p>Se proposer bénévole ?</p>
 							<div class="form-group">
 								<label><i class="fa fa-male"></i></label>{{ form_widget(form.benevole, { 'attr': {'class': 'form-control'} }) }}
 			                </div>
