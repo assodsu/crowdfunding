@@ -14,7 +14,7 @@
 
 {% block body %}
 	<div class="tab-box full form-submit-actu">
-		<form method="post">
+		<form action="{{ path('cf_main_rediger_box', { id : projet.id }) }}" method="post">
 			<ul class="nav nav-pills">
 			  <li role="presentation" class="texte active"><a href="#">Texte</a></li>
 			  <li role="presentation" class="image"><a href="#">Image</a></li>

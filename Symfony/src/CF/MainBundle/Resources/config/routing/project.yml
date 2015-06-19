@@ -19,10 +19,10 @@ cf_main_participate:
         id: \d+
 
 cf_main_modifier_projet:
-    path:    /modifier/{id}
+    path:    /modifier/{slug}
     defaults: { _controller: CFMainBundle:Project:modifier }
     requirements:
-        id: \d+
+        slug: "[a-zA-Z0-9-]+"
 
 cf_main_suivre_projet:
     path:   /suivre/{id}

@@ -125,7 +125,6 @@ class Projet implements JsonSerializable
 
     /**
      *  @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Media", cascade={"persist","remove"})
-     *  @ORM\JoinColumn(nullable=false)
      */
     protected $background;
 
@@ -185,7 +184,12 @@ class Projet implements JsonSerializable
 
     public function jsonSerialize()
     {
-        return array(
+        $array = array();
+        foreach ($this->getTags() as $tag) {
+            $array[] = array('id' => $tag->getId(),'nom' => $tag->getNom(), 'couleur' => $tag->getCouleur());
+        };
+
+        return array_merge(array(
             'id' => $this->getId(),
             'nom' => $this->getNom(),
             'slug' => $this->getSlug(),
@@ -201,7 +205,7 @@ class Projet implements JsonSerializable
             'nbDemandeComm' => $this->getNbDemandeComm(),
             'nbDemandeHumain' => $this->getNbDemandeHumain(),
             'nbDemandeFinancier' => $this->getNbDemandeFinancier()
-        );
+        ), array('tags' => $array));
     }
 
     public function __construct()
@@ -226,6 +230,7 @@ class Projet implements JsonSerializable
 
         $this->besoins = new \Doctrine\Common\Collections\ArrayCollection();
         $this->boxs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function __toString() {

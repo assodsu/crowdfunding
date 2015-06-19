@@ -117,7 +117,7 @@
 						</ul>
 					</div>
 					{% if app.user == projet.association %}
-						<a href="{{ path('cf_main_modifier_projet', {'id': projet.id}) }}" class='btn btn-success'>Modifier mon projet <i class="fa fa-play"></i></a>
+						<a href="{{ path('cf_main_modifier_projet', {'slug': projet.slug}) }}" class='btn btn-success'>Modifier mon projet <i class="fa fa-pencil"></i></a>
 					{% else %}
 						<a  data-toggle="modal" data-target="#modal-participate" class='btn btn-success'>Soutenir ce projet <i class="fa fa-play"></i></a>
 					{% endif %}
@@ -137,7 +137,6 @@
 
 	<div class="project-menu">
 		<a href="#tabproject" data-toggle="tab">Le projet</a>
-		<a href="#tabhistory" data-toggle="tab">Son histoire</a>
 		<a href="#tabupdates" data-toggle="tab">Les actualités</a>
 		<a href="#tabcomments" data-toggle="tab">Commentaires</a>
 		<a href="#tabmore" data-toggle="tab">Plus d'informations</a>
@@ -224,51 +223,55 @@
 						<p><a data-toggle="modal" data-target="#modal-participate" class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a><p>
 					{% endif %}
 				</div>
-				<div class='tab-box full aside'>
-					<h1>Le projet</h1>
-					{{ projet.description|raw|nl2br }}
-				</div>
-			</div>
-			<div class="tab-pane fade" id="tabhistory">
-				{% if app.user == projet.association %}
-					<div style="margin-bottom: 20px"><a href="{{ path('cf_main_rediger_box', {id: projet.id}) }}" class="btn btn-success">Rédiger une histoire <i class="fa fa-plus"></i></a></div>
-				{% endif %}
-
-				{% for box in boxs %}
-					{% if box.fullWidth %}
-						<div class='tab-box full'>
-							{% if app.user == box.projet.association %}
-							<a href="{{ path('cf_main_edit_box', {id: box.id}) }}" class="btn btn-warning">Editer <i class="fa fa-pencil-square-o"></i></a>
-							<a href="{{ path('cf_main_delete_box', {id: box.id}) }}" class="btn btn-danger">Supprimer <i class="fa fa-trash-o"></i></a>
-							{% endif %}
-					{% else %}
-						<div class="tab-box">
-							{% if app.user == box.projet.association %}
-							<a href="{{ path('cf_main_edit_box', {id: box.id}) }}" class="btn btn-warning">Editer <i class="fa fa-pencil-square-o"></i></a>
-							<a href="{{ path('cf_main_delete_box', {id: box.id}) }}" class="btn btn-danger">Supprimer <i class="fa fa-trash-o"></i></a>
-							{% endif %}
+				<div class="project-description">
+					{% if app.user == projet.association %}
+						<div style="margin-bottom: 20px; margin-left:20px;"><a href="{{ path('cf_main_rediger_box', {id: projet.id}) }}" class="btn btn-success">Rédiger une histoire <i class="fa fa-plus"></i></a></div>
 					{% endif %}
-					
-						<h1>{{ box.titre }}</h1>
-						{% if box.contenu %}
-							<p>{{ box.contenu }}</p>
-						{% elseif box.urlImage %}
-							<img src="{{ box.urlImage }}" alt="image" />
-						{% elseif box.urlVideo %}
-							<div class="videoWrapper"><iframe width="560" height="349" src="{{ box.urlVideo }}" frameborder="0" allowfullscreen></iframe></div>
+
+					{% for box in boxs %}
+						{% if box.fullWidth %}
+							<div class='tab-box full'>
+								{% if app.user == box.projet.association %}
+								<div style="margin-bottom: 20px;">
+									<a href="{{ path('cf_main_edit_box', {id: box.id}) }}" class="btn btn-warning">Editer <i class="fa fa-pencil-square-o"></i></a>
+									<a href="{{ path('cf_main_delete_box', {id: box.id}) }}" class="btn btn-danger">Supprimer <i class="fa fa-trash-o"></i></a>
+								</div>
+								{% endif %}
+						{% else %}
+							<div class="tab-box">
+								{% if app.user == box.projet.association %}
+								<div style="margin-bottom: 20px;">
+									<a href="{{ path('cf_main_edit_box', {id: box.id}) }}" class="btn btn-warning">Editer <i class="fa fa-pencil-square-o"></i></a>
+									<a href="{{ path('cf_main_delete_box', {id: box.id}) }}" class="btn btn-danger">Supprimer <i class="fa fa-trash-o"></i></a>
+								</div>
+								{% endif %}
 						{% endif %}
-					</div>
-				{% endfor %}
+						
+							<h1>{{ box.titre }}</h1>
+							{% if box.contenu %}
+								<p>{{ box.contenu }}</p>
+							{% elseif box.urlImage %}
+								<img src="{{ box.urlImage }}" alt="image" />
+							{% elseif box.urlVideo %}
+								<div class="videoWrapper"><iframe width="560" height="349" src="{{ box.urlVideo }}" frameborder="0" allowfullscreen></iframe></div>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
 			</div>
 			<div class="tab-pane fade" id="tabupdates">
 				{% if app.user == projet.association %}
-				<a href="{{ path('cf_main_rediger_actu', {id: projet.id}) }}" class="btn btn-success">Rédiger une actualité <i class="fa fa-plus"></i></a>
+					<div style="margin-bottom: 20px; margin-left:20px;">
+						<a href="{{ path('cf_main_rediger_actu', {id: projet.id}) }}" class="btn btn-success">Rédiger une actualité <i class="fa fa-plus"></i></a>
+					</div>
 				{% endif %}
 				{% for a in projet.actualites %}
 					<div class='tab-box full'>
 						{% if app.user == a.projet.association %}
-						<a href="{{ path('cf_main_edit_actu', {id: a.id}) }}" class="btn btn-warning">Editer <i class="fa fa-pencil-square-o"></i></a>
-						<a href="{{ path('cf_main_delete_actu', {id: a.id}) }}" class="btn btn-danger">Supprimer <i class="fa fa-trash-o"></i></a>
+							<div style="margin-bottom: 20px;">
+								<a href="{{ path('cf_main_edit_actu', {id: a.id}) }}" class="btn btn-warning">Editer <i class="fa fa-pencil-square-o"></i></a>
+								<a href="{{ path('cf_main_delete_actu', {id: a.id}) }}" class="btn btn-danger">Supprimer <i class="fa fa-trash-o"></i></a>
+							</div>
 						{% endif %}
 						<div class='update-date'>Le {{ a.date|date('d/m/Y - H') }}h{{ a.date|date('i') }}</div>
 						<h1>{{ a.titre }}</h1>

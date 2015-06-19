@@ -81,6 +81,9 @@
 
 						{% if projet.valider %}<h2 style="color:green;">Validé{% else %}<h2 style="color:red;">En cours de validation{% endif %}</h2>
 					</div>
+					<div class="btn-modify">
+						<a href="{{ path('cf_main_modifier_projet', { slug : projet.slug }) }}" class="btn btn-success">Modifier ce projet <i class="fa fa-pencil"></i></a>
+					</div>
 					<div class="project-box-container">
 						<div class='tab-box aside'>
 							<h1>Ressources</h1>

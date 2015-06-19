@@ -13,6 +13,7 @@ use CF\MainBundle\Entity\Participation;
 use CF\MainBundle\Form\ParticipationType;
 use CF\MessageBundle\Entity\Conversation;
 use CF\CommentBundle\Entity\Thread;
+use CF\MainBundle\Entity\Media;
 
 class ProjectController extends Controller
 {
@@ -243,6 +244,13 @@ class ProjectController extends Controller
                     $em = $this->getDoctrine()->getEntityManager();
                     $projet = $form->getData();
 
+                    $media = new Media();
+                    $data  = $request->files->get($form->getName());
+                    
+                    foreach ($data['background'] as $l)
+                        $media->setFile($l);
+
+                    $projet->setBackground($media);
 
                     $boxs = $projet->getBoxs();
                     foreach($boxs as $box)
