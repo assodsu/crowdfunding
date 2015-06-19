@@ -157,7 +157,6 @@ class Projet implements JsonSerializable
     /**
     * @ORM\ManyToMany(targetEntity="CF\UserBundle\Entity\User", cascade={"persist"})
     * @ORM\JoinTable(name="cf_projet_acteurs")
-    * @ORM\JoinColumn(nullable=true)
     */
     private $acteurs;
 

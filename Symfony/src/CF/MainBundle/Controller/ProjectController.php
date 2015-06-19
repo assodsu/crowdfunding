@@ -150,7 +150,18 @@ class ProjectController extends Controller
                 $participation = $form->getData();
 
                 $projet->setNbDonateur($projet->getNbDonateur()+1);
-                $projet->addActeur($user);
+                
+                $alreadyActor = false;
+                foreach ($projet->getActeurs() as $acteur) {
+                    if($acteur == $user)
+                    {
+                        $alreadyActor = true;
+                    }
+                }
+                if($alreadyActor == false)
+                {
+                    $projet->addActeur($user);
+                }
 
                 $conversation = $this->getDoctrine()->getEntityManager()
                     ->createQuery('SELECT c FROM CFMessageBundle:Conversation c JOIN c.utilisateurs u WHERE (u.id = :user AND c.projet = :projet)')
