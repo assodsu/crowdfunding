@@ -56,6 +56,7 @@
 	            </div>
 
 	            <div class="form-group">
+	            	Tags
 	                {{ form_widget(form.tags) }}
 	            </div>
 					
@@ -101,5 +102,8 @@
         $('.buttonText').text('choisir l\'image de fond du projet');
         $('.glyphicon-folder-open').hide();
         $('#fos_user_registration_form_dateCreationAsso').value('');
+    </script>
+    <script type="text/javascript">
+    	$('.form-image').hide();
     </script>
 {% endblock %}

@@ -22,6 +22,10 @@
 			width: 100%;
 			height: 100%;
 		}
+		.imageWrapper img {
+			width: 100% !important;
+			height: auto !important;
+		}
 		{% for tag in projet.tags %}
 			.tag-{{ tag.id }} {
 				background: {{ tag.couleur }} !important;
@@ -253,7 +257,7 @@
 						{% if box.contenu %}
 							<p>{{ box.contenu }}</p>
 						{% elseif box.urlImage %}
-							<img src="{{ box.urlImage }}" alt="image" />
+							<div class="imageWrapper"><img src="{{ box.urlImage }}" alt="image" /></div>
 						{% elseif box.urlVideo %}
 							<div class="videoWrapper"><iframe width="560" height="349" src="{{ box.urlVideo }}" frameborder="0" allowfullscreen></iframe></div>
 						{% endif %}
@@ -368,10 +372,14 @@
 			drawDiagramme();
 		}
 
+		var str = $('iframe').attr('src');
+		var res = str.replace("watch?v=", "embed/");
+		$('iframe').attr('src', res);
     </script>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user != projet.association %}
     <script type="text/javascript">
 		$(document).ready(function() {
+
 		    var $containerDons = $('div#cf_mainbundle_projet_dons');
 
 			var $lienAjoutDons = $('<div id="add-besoin-box"><a href="#">+</a></div>');

@@ -69,6 +69,10 @@ class Box
     */
     private $projet;
 
+    public function __construct() {
+        $this->ordre = 0;
+    }
+
     /**
      * Get id
      *

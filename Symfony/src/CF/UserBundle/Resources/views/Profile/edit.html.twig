@@ -135,9 +135,8 @@
 			                <label><i class="fa fa-phone"></i></label>{{ form_widget(form.telephone, {'attr': {'placeholder': 'téléphone'}}) }}
 			            </div>
 					</div>
-					<div class="tab-box full">
+					<div class="tab-box">
 						<h1><i class="fa fa-map-marker"></i> Adresse</h1>
-						<div class="inner-left">
 							<div class="form-group">
 				                <label><i class="fa fa-road"></i></label>{{ form_widget(form.adresse, {'attr': {'placeholder': 'adresse'}}) }}
 				            </div>
@@ -148,11 +147,7 @@
 
 				            <div class="form-group">
 				                <label><i class="fa fa-road"></i></label>{{ form_widget(form.ville, {'attr': {'placeholder': 'ville'}}) }}
-				            </div>							
-				        </div>
-						<div class="inner-right">
-							<img src="{{ asset('images/google-map.jpg') }}"  class="center-block" />
-						</div>
+				            </div>	
 					</div>
 				</div>
 			</div>

@@ -107,6 +107,7 @@ $(document).ready(function() {
 		var $prototype = $($containerBox.attr('data-prototype').replace(/__name__label__/g, 'Boîte').replace(/__name__/g, indexBox));
 
 		ajouterLienSuppressionBox($prototype);
+		$prototype.append('<ul class="nav nav-pills"><li role="presentation" class="texte active"><a href="#">Texte</a></li><li role="presentation" class="image"><a href="#">Image</a></li><li role="presentation" class="video"><a href="#">Video</a></li></ul>');
 		$containerBox.append($prototype);
 		indexBox++;
 
