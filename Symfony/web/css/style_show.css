@@ -19,6 +19,11 @@
 	position:relative;
 	z-index:1;
 }
+.project-description {
+  width: 70%;
+  display: inline-block;
+  vertical-align: top;
+}
 /**** INFORMATIONS HEADER ASSOCIATION ****/
 #infos-asso {
 	height:150px;

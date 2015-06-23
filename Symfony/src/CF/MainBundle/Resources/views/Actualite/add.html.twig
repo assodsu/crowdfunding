@@ -9,183 +9,20 @@
 	<link href="{{asset('css/style_show.css')}}" rel="stylesheet"/>
 {% endblock %}
 
-{% set pourcentageHumain = 0.0 %}
-{% set pourcentageMateriel = 0.0 %}
-{% set pourcentageComm = 0.0 %}
-{% set pourcentageFinancier = 0.0 %}
-{% set pourcentageTotal = 0.0 %}
-
-{% if projet.nbDemandeFinancier > 0 %}
-	{% set pourcentageFinancier = (projet.nbActuFinancier/projet.nbDemandeFinancier)*100 %}
-{% else %}
-	{% set pourcentageFinancier = projet.nbActuFinancier*100 %}
-{% endif %}
-
-{% if projet.nbDemandeMateriel > 0 %}
-	{% set pourcentageMateriel = (projet.nbActuMateriel/projet.nbDemandeMateriel)*100 %}
-{% else %}
-	{% set pourcentageMateriel = projet.nbActuMateriel*100 %}
-{% endif %}
-
-{% if projet.nbDemandeHumain > 0 %}
-	{% set pourcentageHumain = (projet.nbActuHumain/projet.nbDemandeHumain)*100 %}
-{% else %}
-	{% set pourcentageHumain = projet.nbActuHumain*100 %}
-{% endif %}
-
-{% if projet.nbDemandeComm > 0 %}
-	{% set pourcentageComm = (projet.nbActuComm/projet.nbDemandeComm)*100 %}
-{% else %}
-	{% set pourcentageComm = projet.nbActuComm*100 %}
-{% endif %}
-
-{% set pourcentageTotal = ((projet.nbActuMateriel + projet.nbActuHumain + projet.nbActuComm + projet.nbActuFinancier) / projet.nbRessources)*100 %}
-
 {% block body %}
-	<div id='block-head'>
-		<div class='content'>
-			<div id='background-img' style="background: center center url('../../../{{ projet.background.AssetPath }}'); background-size:cover;"></div>
-		</div>
-		<div class='content'>
-			<div id='infos-asso'>
-				<div id='certification'>
-					<p id='label'>Association certifiée <i class="fa fa-check"></i></p>
-					<img id='logo' src="{{asset( projet.association.logo.AssetPath) }}"/>
-				</div>
-				<div id='content-infos'>
-					<h1>{{ projet.association.nom }}</h1>
-					<div id='content-infos-second-row'>
-						<div id='town-asso'>{{ projet.association.ville }}</div>
-						<div id="reseaux_sociaux">
-							<a href="#" id="facebook"><span class="fa fa-facebook"></span> <span class="social">Facebook</span></a>
-							<a href="#" id="twitter"><span class="fa fa-twitter"></span> <span class="social">Twitter</span></a>
-							<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> <span class="social">Google+</span></a>
-						</div>
-					</div>
-					<a href="{{ path('fos_user_profile_show', { 'slug': projet.association.slug }) }}" class='btn btn-default'>Voir le profil <i class="fa fa-search"></i></a>
-				</div>
-			</div>
-			<div id='project-title'>{{ projet.nom }}</div>
-			<div id='project-ressources'>
-				<div id='content-ressources'>
-					<div id='text-ressources'>
-						<div id='left-ressources'>
-							<div id='text-ressource-info'>Informations <i class="fa fa-tag"></i></div>
-							<div id='text-ressource-financiere'>Financières <i class="fa fa-bar-chart"></i></div>
-						</div>
-						<div id='right-ressources'>
-							<div id='text-ressource-humaine'><i class="fa fa-users"></i> Humaines</div>
-							<div id='text-ressource-materiel'><i class="fa fa-desktop"></i> Matérielles</div>
-						</div>
-					</div>
-
-					<div id='diagramme'>
-						<svg height="150" width="150">
-							<circle cx="75" cy="75" r="65" fill="#34495E" />
-						</svg>
-						<div class="pie-content">
-						</div>
-						<ul class="pie">
-						</ul>
-					</div>
-					{% if app.user == projet.association %}
-						<a href="{{ path('cf_main_modifier_projet', {'id': projet.id}) }}" class='btn btn-default'>Modifier mon projet <i class="fa fa-play"></i></a>
-					{% else %}
-						<a  data-toggle="modal" data-target="#modal-participate" class='btn btn-default'>Soutenir ce projet <i class="fa fa-play"></i></a>
-					{% endif %}
-					
-					<div id='project-tags'>
-						{% for tag in projet.tags %}
-							<div class='tag'>{{ tag.nom }}</div>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<div class="tab-box full form-submit-actu">
-		<form method="post">
+		<form action="{{  path('cf_main_rediger_actu', { id : projet.id }) }}" method="post">
+			{{ form_start(form) }}
 			{{ form_row(form.titre) }}
 			{{ form_row(form.contenu) }}
 
 			<button type="submit" class="btn btn-success btn-submit-actu">Publier</button>
+			{{ form_end(form) }}
 		</form>
 	</div>
 {% endblock body %}
 
 {% block javascripts %}
 	{{ parent() }}
-	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
-	<script type="text/javascript">
-
-		fullfilDiagramme();
-		var speed = 200;
-
-		$('#text-ressource-financiere').mouseenter(function(){
-			$('.pie').hide().html("<li class='visualize ressource-financiere' data-color='#ea5f50' data-value='{{pourcentageFinancier}}'></li><li class='visualize' data-color='rgba(0,0,0,0)' data-value='{{ 100 - pourcentageFinancier}}'></li>").fadeIn(speed);
-			{% if projet.nbDemandeFinancier == 0 %}
-			$('.pie-content').hide().html("<div class='name'>Non demandée</div>").fadeIn(speed);
-			{% else %}
-			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageFinancier|round}}%</div><div class='name'>Financières</div>").fadeIn(speed);
-			{% endif %}
-			drawDiagramme();
-		}).mouseleave(function(){
-			fullfilDiagramme();
-		});
-
-		$('#text-ressource-materiel').mouseenter(function(){
-			$('.pie').hide().html("<li class='visualize ressource-materiel' data-color='#a66abe' data-value='"+{{pourcentageMateriel}}+"'></li><li class='visualize' data-color='rgba(0,0,0,0)' data-value='"+(100 - {{pourcentageMateriel}})+"'></li>").fadeIn(speed);
-			{% if projet.nbDemandeMateriel == 0 %}
-			$('.pie-content').hide().html("<div class='name'>Non demandée</div>").fadeIn(speed);
-			{% else %}
-			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageMateriel|round}}%</div><div class='name'>Matérielles</div>").fadeIn(speed);
-			{% endif %}
-			drawDiagramme();
-		}).mouseleave(function(){
-			fullfilDiagramme();
-		});
-
-		$('#text-ressource-humaine').mouseenter(function(){
-			$('.pie').hide().html("<li class='visualize ressource-humaine' data-color='#70d48d' data-value='"+{{pourcentageHumain}}+"'></li><li class='visualize' data-color='rgba(0,0,0,0)' data-value='"+(100 - {{pourcentageHumain}})+"'></li>").fadeIn(speed);
-			{% if projet.nbDemandeHumain == 0 %}
-			$('.pie-content').hide().html("<div class='name'>Non demandée</div>").fadeIn(speed);
-			{% else %}
-			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageHumain|round}}%</div><div class='name'>Humaines</div>").fadeIn(speed);
-			{% endif %}
-			drawDiagramme();
-		}).mouseleave(function(){
-			fullfilDiagramme();
-		});
-
-		$('#text-ressource-info').mouseenter(function(){
-			$('.pie').hide().html("<li class='visualize ressource-info' data-color='#99a5af' data-value='"+{{pourcentageComm}}+"'></li><li class='visualize' data-color='rgba(0,0,0,0)' data-value='"+(100 - {{pourcentageComm}})+"'></li>").fadeIn(speed);
-			{% if projet.nbDemandeComm == 0 %}
-			$('.pie-content').hide().html("<div class='name'>Non demandée</div>").fadeIn(speed);
-			{% else %}
-			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageComm|round}}%</div><div class='name'>Communication</div>").fadeIn(speed);
-			{% endif %}
-			drawDiagramme();
-		}).mouseleave(function(){
-			fullfilDiagramme();
-		});
-		
-		function drawDiagramme()
-		{
-			$('.pie').visualize({
-				width: 150,
-				height: 150,
-				type: 'pie',
-				legend: false
-			});
-		}
-
-		function fullfilDiagramme()
-		{
-			$('.pie').hide().html("<li class='visualize ressource-materiel' data-color='#a66abe' data-value='{{ (projet.nbActuMateriel/projet.nbRessources)*100 }}'></li><li class='visualize ressource-financiere' data-color='#ea5f50' data-value='{{ (projet.nbActuFinancier/projet.nbRessources)*100 }}'></li><li class='visualize' data-value='{{ (100 - (projet.nbActuMateriel/projet.nbRessources)*100 - (projet.nbActuFinancier/projet.nbRessources)*100 - (projet.nbActuHumain/projet.nbRessources)*100 - (projet.nbActuComm/projet.nbRessources)*100)|round }}' data-color='rgba(0,0,0,0)'></li><li class='visualize ressource-humain' data-color='#70d48d' data-value='{{ (projet.nbActuHumain/projet.nbRessources)*100 }}'></li><li class='visualize ressource-info' data-color='#99a5af' data-value='{{ (projet.nbActuComm/projet.nbRessources)*100 }}'></li>").fadeIn(speed);
-			$('.pie-content').hide().html("<div class='percentage'>{{pourcentageTotal|round}}%</div><div class='name'>Ressources</div>").fadeIn(speed);
-			drawDiagramme();
-		}
-
-    </script>
 	<script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 {% endblock %}

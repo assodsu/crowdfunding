@@ -83,6 +83,11 @@ tr:first-child td {
 .content-panel-heading .btn.btn-danger {
   height: 38px;
 }
+
+.btn-modify {
+  text-align: center;
+  margin: 20px;
+}
 /**** BANNER ****/
 #banner {
 	width:100%;
