@@ -140,14 +140,14 @@
 	{% endif %}
 
 	<div class="project-menu">
-		<a href="#tabproject" data-toggle="tab">Le projet</a>
-		<a href="#tabupdates" data-toggle="tab">Les actualités</a>
-		<a href="#tabcomments" data-toggle="tab">Commentaires</a>
-		<a href="#tabmore" data-toggle="tab">Plus d'informations</a>
+		<a class="menuTab active" href="#tabproject" data-toggle="tab">Le projet</a>
+		<a class="menuTab" href="#tabupdates" data-toggle="tab">Les actualités</a>
+		<a class="menuTab" href="#tabcomments" data-toggle="tab">Commentaires</a>
+		<a class="menuTab" href="#tabmore" data-toggle="tab">Plus d'informations</a>
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.hasProjetsSuivis(projet) %}
-			<a href="{{ path('cf_main_not_suivre_projet', {id: projet.id}) }}"><i class="fa fa-star" style="color:grey;"></i> Ne plus suivre le projet</a>
+			<a class="menuTab" href="{{ path('cf_main_not_suivre_projet', {id: projet.id}) }}"><i class="fa fa-star" style="color:grey;"></i> Ne plus suivre le projet</a>
 		{% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-			<a href="{{ path('cf_main_suivre_projet', {id: projet.id}) }}"><i class="fa fa-star" style="color:gold;"></i> Suivre le projet</a>
+			<a class="menuTab" href="{{ path('cf_main_suivre_projet', {id: projet.id}) }}"><i class="fa fa-star" style="color:gold;"></i> Suivre le projet</a>
 		{% endif %}	
 	</div>
 
@@ -307,6 +307,17 @@
 	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
 	<script type="text/javascript">
 
+		function deleteAllmenuTabActive() {
+			$('.menuTab').each(function() {
+				$(this).removeClass('active');
+			});
+		}
+
+		$('.menuTab').on('click', function() {
+			deleteAllmenuTabActive();
+			$(this).addClass('active');
+		});
+
 		fullfilDiagramme();
 		var speed = 200;
 
@@ -378,6 +389,7 @@
 		var str = $('iframe').attr('src');
 		var res = str.replace("watch?v=", "embed/");
 		$('iframe').attr('src', res);
+
     </script>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user != projet.association %}
     <script type="text/javascript">
@@ -502,6 +514,7 @@
 			$(document).on('change', '.header-besoin-box select', function(){
 				changeSelectedResource($(this));
 		    });
+
 		});
 	</script>
 	{% endif %}

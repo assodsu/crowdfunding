@@ -47,14 +47,14 @@
 		</div>
 	</div>
 	<div class="profil-menu">
-		<a href="#tab1" data-toggle="tab">Général</a>
-		<a href="#tab2" data-toggle="tab">Badges</a>
-		<a href="#tab3" data-toggle="tab">Projets soutenus</a>
+		<a class="menuTab active" href="#tab1" data-toggle="tab">Général</a>
+		<a class="menuTab" href="#tab2" data-toggle="tab">Badges</a>
+		<a class="menuTab" href="#tab3" data-toggle="tab">Projets soutenus</a>
 		{% if user.typeUser == "Association" %}
-		<a href="#tab4" data-toggle="tab">Projets proposés</a>
+		<a class="menuTab" href="#tab4" data-toggle="tab">Projets proposés</a>
 		{% endif %}
 		{% if is_granted('IS_AUTHENTICATED_REMEMBERED') and user.username == app.user.username %}
-		<a href="{{ path('fos_user_profile_edit') }}">Paramètres</a>
+		<a class="menuTab" href="{{ path('fos_user_profile_edit') }}">Paramètres</a>
 		{% endif %}
 	</div>
 	
@@ -111,9 +111,8 @@
 				    </table>
 				</div>
 				{% if user.typeUser == 'Association' or user.typeUser == 'Entreprise' %}
-					<div class="tab-box full">
+					<div class="tab-box">
 						<h1><i class="fa fa-map-marker"></i> Adresse</h1>
-						<div class="inner-left">
 					      	<table class="table">
 					            <tbody>
 									<tr><td>Ville :</td><td>{{ user.ville }}</td></tr>
@@ -121,10 +120,6 @@
 									<tr><td>Adresse :</td><td>{{ user.adresse }}</td></tr>
 					            </tbody>
 					    	</table>
-						</div>
-						<div class="inner-right">
-							<img src="{{ asset('images/google-map.jpg') }}"  class="center-block" />
-						</div>
 					</div>
 				{% endif %}
 			</div>
@@ -144,8 +139,7 @@
 				</div>
 			</div>
 			<div class="tab-pane fade" id="tab3">
-				<div class="tab-box full">
-					<h1>Projets soutenus</h1>
+				<div style="text-align: center">
 					<div class="project-list">
 						{% for projet in user.projetsSoutenus %}
 							<div class="project" id="project-{{ projet.id }}">
@@ -188,9 +182,9 @@
 			</div>
 			{% if user.typeUser == 'Association' %}
 				<div class="tab-pane fade" id="tab4">
-					<div class="tab-box full">
-						<h1>Projets proposés</h1>
+					<div style="text-align: center">
 						<div class="project-list">
+							
 							{% for projet in projets %}
 								<div class="project" id="project-{{ projet.id }}">
 									<div class="project-background" img="{{ projet.background.path }}"></div>
@@ -246,5 +240,16 @@
 			var img = $('#project-{{ projet.id }}').children('.project-background').attr('img');
 			$('#project-{{ projet.id }}').children('.project-background').css('background', 'url("../../../uploads/'+img+'") center center no-repeat').css('background-size','cover');
 		{% endfor %}
+
+		function deleteAllmenuTabActive() {
+			$('.menuTab').each(function() {
+				$(this).removeClass('active');
+			});
+		}
+
+		$('.menuTab').on('click', function() {
+			deleteAllmenuTabActive();
+			$(this).addClass('active');
+		});
 	</script>
 {% endblock %}

@@ -77,7 +77,7 @@ class BoxController extends Controller
             return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $box->getProjet()->getSlug())));
         }
 
-        return $this->render('CFMainBundle:Box:add.html.twig', array('form' => $form->createView(), 'projet' => $box->getProjet()));
+        return $this->render('CFMainBundle:Box:add.html.twig', array('editer' => true, 'form' => $form->createView(), 'projet' => $box->getProjet()));
     }
 
     public function supprimerAction(Request $request, Box $box) {

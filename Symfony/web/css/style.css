@@ -243,6 +243,7 @@ a.profile-navigation:hover {
   padding-bottom: 8px;
   width: 100%;
   border-bottom: 1px solid #5A5F69;
+  color: #000;
 }
 
 .modal-connexion-body input:focus {

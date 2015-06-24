@@ -105,13 +105,6 @@ class Projet implements JsonSerializable
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
-     */
-    private $description;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="nom", type="string", length=200)
      */
     private $nom;

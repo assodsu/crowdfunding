@@ -18,7 +18,6 @@ class ProjetType extends AbstractType
     {
         $builder
             ->add('nom', null, array('label' => "nom du projet"))
-            ->add('description', 'textarea',  array('label' => false, 'attr' => array('class' => 'ckeditor')))
             ->add('infoSup', 'textarea',  array('label' => "Informations supplémentaires", 'attr' => array('class' => 'ckeditor')))
             ->add('background', new MediaType(),  array('label' => "image de fond"))
             ->add('besoins', 'collection', array('label' => false,
@@ -31,13 +30,6 @@ class ProjetType extends AbstractType
                 'property' => 'nom',
                 'expanded'=>true,
                 'multiple' => true
-                ))
-            ->add('boxs', 'collection', array('label' => false,
-                'type' => new BoxType(),
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'by_reference' => false,
                 ))
         ;
     }

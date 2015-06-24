@@ -1,4 +1,4 @@
-#main {
+<div class="project"#main {
 	padding-bottom: 100px;
 }
 
@@ -540,6 +540,7 @@ textarea {
 }
 .project {
   	margin: 0 10px;
+  	background: white;
 }
 .project-header {
   	position: relative;
@@ -556,6 +557,7 @@ textarea {
 	height:300px;
 	width: 100%;
 	position: absolute;
+	border-radius: 4px 4px 0 0;
 }
 .resources-percent {
   position: absolute;
@@ -719,8 +721,9 @@ textarea {
 	text-transform: uppercase;
 	color: #333;
 	font-weight: 500;
+	margin: 0;
 }
-.profil-menu a:hover {
+.profil-menu a:hover, .profil-menu a.active {
 	text-decoration: none;
 	border-bottom: 4px solid #2574A9;
 	transition: all 0.2s;

@@ -11,7 +11,16 @@
 {% set menulink_projetsSoutenus = 1 %}
 
 {% block cfuserbundle_body %}
+
 	<div class="profile-menu-projects">
+		{% set aaa = 0 %}
+		{% for projet in app.user.projetsSoutenus %}
+
+		{% else %}
+			{% set aaa = 1 %}
+		{% endfor %}
+
+		{% if aaa == 0 %}
 		<div class="profile-projects-list">
 			<a href="#" class="buttonLeft"><i class="fa fa-chevron-circle-left"></i></a>
 			<a href="#" class="buttonRight"><i class="fa fa-chevron-circle-right"></i></a>
@@ -21,11 +30,14 @@
 					<a href="{{ path('cf_main_project', {'slug' : projet.slug}) }}" class="project project-{{projectIndex}}">{{ projet.nom }}</a>
 					{% set projectIndex = projectIndex + 1 %}
 				{% else %}
-					<p class="project project-{{projectIndex}}">Vous n'avez soutenus aucun projet.</p>
+					<p class="project project-{{projectIndex}}">Vous n'avez soutenu aucun projet.</p>
 				{% endfor %}
 			</div>
 		</div>
 		{% set projectIndex = 1 %}
+		{% else %}
+			<div class="alert-top alert-top-danger" style="text-align: left;">Vous n'avez soutenu aucun projet pour le moment.</div>
+		{% endif %}
 		{% for projet in app.user.projetsSoutenus %}
 			<div class="project project-{{projectIndex}}">
 				<div class="project-header">

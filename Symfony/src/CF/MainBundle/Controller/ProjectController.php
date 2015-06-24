@@ -117,7 +117,7 @@ class ProjectController extends Controller
                 $em->persist($projet);
                 $em->flush();
 
-                $this->get('session')->getFlashBag()->add('info', 'Votre projet a bien été déposé, il est en attente de validation par un administrateur. Un e-mail vous sera envoyé prochainement pour vous indiquez de son état de validation');
+                $this->get('session')->getFlashBag()->add('info', 'Votre projet a bien été déposé, il est en attente de validation par un administrateur.');
                 
                 return $this->redirect($this->generateUrl('fos_user_profile_projects'));
             }

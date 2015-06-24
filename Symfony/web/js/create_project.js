@@ -80,50 +80,7 @@ $(document).ready(function() {
 		$('#box-'+index).attr('class', "besoin-box "+newColor);
     });
 
-	/**** BOXS HISTOIRE ****/
-
-	var $containerBox = $('div#cf_mainbundle_projet_boxs');
-
-	var $lienAjoutBox = $('<a href="#" id="ajout_box" class="btn btn-success"><i class="fa fa-plus"></i></a>');
-
-	$lienAjoutBox.click(function(e) {
-		ajouterBox($containerBox);
-		e.preventDefault();
-		return false;
-	});
-
-	var indexBox = $containerBox.find(':input').length;
-
-	if (indexBox == 0) {
-		ajouterBox($containerBox);
-	} 
-	else {
-		$containerBox.children('div').each(function() {
-			ajouterLienSuppressionBox($(this));
-		});
-	}
-
-	function ajouterBox($containerBox) {
-		var $prototype = $($containerBox.attr('data-prototype').replace(/__name__label__/g, 'Boîte').replace(/__name__/g, indexBox));
-
-		ajouterLienSuppressionBox($prototype);
-		$prototype.append('<ul class="nav nav-pills"><li role="presentation" class="texte active"><a href="#">Texte</a></li><li role="presentation" class="image"><a href="#">Image</a></li><li role="presentation" class="video"><a href="#">Video</a></li></ul>');
-		$containerBox.append($prototype);
-		indexBox++;
-
-		$containerBox.append($lienAjoutBox);
-	}
-
-	function ajouterLienSuppressionBox($prototype) {
-		$lienSuppression = $('<a href="#" class="delete-button"><span class="glyphicon glyphicon-remove"></span></a>');
-		$prototype.append($lienSuppression);
-
-		$lienSuppression.click(function(e) {
-			$prototype.remove();
-			e.preventDefault();
-			return false;
-		});
-	}
+	
 
 	/**** NAVIGATION ****/
     var navListItems = $('.step a'), allWells = $('.row.step-content');
