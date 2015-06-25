@@ -164,7 +164,12 @@
 	width:250px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:10px;
+	margin-top:40px;
+}
+.txt-ressource {
+	display: inline-block;
+	font-size: 22px;
+	margin: 0 20px;
 }
 #text-ressources {
 	position:absolute;
@@ -173,6 +178,8 @@
 	margin-right:auto;
 	right:0;
 	left:0;
+	text-align: center;
+	margin-top: -60px;
 }
 #left-ressources, #right-ressources {
 	width:50%;
@@ -190,7 +197,7 @@
 }
 #text-ressource-info, #text-ressource-financiere, #text-ressource-humaine, #text-ressource-materiel {
 	height:50%;
-	padding-top:20px;
+	padding-top:10px;
 	padding-bottom:20px;
 	cursor:default;
 }
@@ -216,6 +223,7 @@
 }
 #project-tags {
   padding: 10px 20px;
+  margin-top: -30px
 }
 #project-tags div {
 	min-width: 100px;

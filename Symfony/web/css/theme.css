@@ -26,6 +26,7 @@ body{
   position: fixed;
   padding: 16px;
   text-align: center;
+  font-size: 16px;
 }
 
 .alert-top-success {
@@ -53,12 +54,10 @@ body{
   font-family: 'Open Sans';
   font-size:13px !important;
   padding: 10px 20px;
-  font-weight: 600;
 }
 .btn-success {
   background-color: #5FCF80;
   border: none;
-  letter-spacing: 1px;
 }
 .row {
   margin:0;

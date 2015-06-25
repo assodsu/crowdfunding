@@ -52,7 +52,7 @@
         </div>
       </div>
       {{ render(controller('CFMessageBundle:Conversation:show', { 'id' : conversation.id } )) }}
+    </div>
   {% else %}
-      <p>Aucune conversation pour le moment.</p>
+      </div><p class="alert alert-top-warning" style="color: white; font-size: 16px; text-align: center;">Aucune conversation pour le moment.</p>
   {% endfor %}
-</div>

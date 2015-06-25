@@ -100,17 +100,6 @@
 			<div id='project-title'>{{ projet.nom }}</div>
 			<div id='project-ressources'>
 				<div id='content-ressources'>
-					<div id='text-ressources'>
-						<div id='left-ressources'>
-							<div id='text-ressource-info'>Informations <i class="fa fa-tag"></i></div>
-							<div id='text-ressource-financiere'>Financières <i class="fa fa-bar-chart"></i></div>
-						</div>
-						<div id='right-ressources'>
-							<div id='text-ressource-humaine'><i class="fa fa-users"></i> Humaines</div>
-							<div id='text-ressource-materiel'><i class="fa fa-desktop"></i> Matérielles</div>
-						</div>
-					</div>
-
 					<div id='diagramme'>
 						<svg height="150" width="150">
 							<circle cx="75" cy="75" r="65" fill="#34495E" />
@@ -120,10 +109,16 @@
 						<ul class="pie">
 						</ul>
 					</div>
+					<div id='text-ressources'>
+						<div class="txt-ressource" id='text-ressource-info'>Informations <i class="fa fa-tag"></i></div>
+						<div class="txt-ressource" id='text-ressource-humaine'><i class="fa fa-users"></i> Humaines</div>
+						<div class="txt-ressource" id='text-ressource-materiel'><i class="fa fa-desktop"></i> Matérielles</div>
+					</div>
+
 					{% if app.user == projet.association %}
 						<a href="{{ path('cf_main_modifier_projet', {'slug': projet.slug}) }}" class='btn btn-success'>Modifier mon projet <i class="fa fa-pencil"></i></a>
 					{% else %}
-						<a  data-toggle="modal" data-target="#modal-participate" class='btn btn-success'>Soutenir ce projet <i class="fa fa-play"></i></a>
+						<a data-toggle="modal" data-target="#modal-participate" class='btn btn-success'>Soutenir ce projet <i class="fa fa-play"></i></a>
 					{% endif %}
 					
 					<div id="project-tags">

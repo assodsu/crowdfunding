@@ -29,7 +29,7 @@
 	{% if app.user.typeUser == 'Association' %}
 		<a class="btn btn-success" href="{{ path('cf_main_addProjects') }}"><i class="fa fa-plus"></i> Nouveau projet</a>
 	{% else %}
-		<a class="btn btn-success" href="{{ path('cf_main_allProjects') }}"><i class="fa fa-circle-o-notch fa-spin"></i> Parcourir les projets</a>
+		<a class="btn btn-success" href="{{ path('cf_main_allProjects') }}"><i class="fa fa-chevron-right"></i> Parcourir les projets</a>
 	{% endif %}
 </div>
 
@@ -45,10 +45,15 @@
 		<div class="profile-menu">
 			<div class="profile-menu-title">Projets et soutients</div>
 			<div class="profile-menu-content">
-				<a {% if menulink_currentProjects is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_projects') }}">{% if nbNotif_projetsEnCours > 0 %}<div class="notif">{{ nbNotif_projetsEnCours }}</div>{% endif %}<i class="fa fa-bar-chart"></i> Projets en cours</a>
+				{% if app.user.typeUser == 'Association' %}<a {% if menulink_currentProjects is defined %}class="active" {% endif %}href="{{ path('fos_user_profile_projects') }}">{% if nbNotif_projetsEnCours > 0 %}
+				
+					<div class="notif">{{ nbNotif_projetsEnCours }}</div>{% endif %}<i class="fa fa-bar-chart"></i> Projets en cours</a>
+				{% endif %}
 				<a {% if menulink_projetsSuivis is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsSuivis') }}"><i class="fa fa-star"></i> Projets suivis</a>
 				<a {% if menulink_projetsSoutenus is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsSoutenus') }}"><i class="fa fa-thumbs-up"></i> Projets soutenus</a>
+				{% if app.user.typeUser == 'Association' %}
 				<a {% if menulink_endedProjects is defined %}class="active" {% endif %}href="{{ path('cf_user_projetsFini') }}"><i class="fa fa-check-square-o"></i> Projets terminés</a>
+				{% endif %}
 			</div>
 		</div>
 

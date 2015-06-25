@@ -3,8 +3,5 @@
 	height: 200px;
 	text-align: center;
 	background: url('../images/icones/bannieres/working.jpg') center center rgb(235, 149, 50) no-repeat;
-}
-
-.head-site h1 { 
-	line-height: 200px;
+	padding-top: 10px;
 }

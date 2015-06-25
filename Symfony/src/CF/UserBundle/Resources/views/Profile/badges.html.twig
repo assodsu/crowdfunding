@@ -8,15 +8,12 @@
 
 {% block cfuserbundle_body %}
 	<div class="panel-profile-heading">
-		<img id="layer" src="{{ asset('images/icones/bannieres/badges.jpg') }}"></img>
-		<div class="title-panel-heading">
+		<div class="title-panel-heading-badges">
 			<h1>Mes badges</h1>
 		</div>
 	</div>
-	<div class="alert alert-warning alert-dismissible fade in" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-      <i class="fa fa-exclamation-triangle"></i> Cette fonctionnalité apparaîtra dans une prochaine mise à jour.
-    </div>
+	<p class="alert alert-top-warning" style="color: white; font-size: 16px; text-align: center;">Cette fonctionnalité apparaîtra dans une prochaine mise à jour.
+    </p>
 	{% for b in app.user.badges %}
 		<div class="badge-profil">
 			<div class="titre badge">{{ b.titre }}</div>

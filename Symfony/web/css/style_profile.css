@@ -1,4 +1,4 @@
-<div class="project"#main {
+#main {
 	padding-bottom: 100px;
 }
 
@@ -187,6 +187,16 @@ textarea {
 	color: #fff;
 	background: url('../images/icones/bannieres/messages.jpg') center center;
 	height: 200px;
+}
+
+.panel-profile-heading .title-panel-heading-badges h1 {
+	margin: 0;
+	line-height: 200px;
+	vertical-align: middle;
+	color: #fff;
+	background: url('../images/icones/bannieres/badges.jpg') center center;
+	height: 200px;
+	text-align: center;
 }
 
 .panel-profile-heading .title-panel-heading-mdp h1 {
@@ -533,6 +543,7 @@ textarea {
 }
 .projects-list a {
 	color: #4895D9;
+	font-size: 22px;
 }
 .projects-list a:hover, .projects-list a:focus {
 	color: #34495E;
@@ -686,6 +697,9 @@ textarea {
 .panel-profile-heading {
   height: 200px;
   position: relative;
+}
+.panel-profile-heading .badges {
+	background: url('../images/icones/bannieres/badges.jpg');
 }
 .panel-profile-heading #layer{
   background: rgba(0,0,0,.5);

@@ -29,7 +29,8 @@
 		</div>
 		{% set projectIndex = 1 %}
 			{% else %}
-			<div class="alert-top alert-top-danger" style="text-align: left;">Vous n'avez aucun projet terminé pour le moment.</div>
+			<div class="alert-top alert-top-warning" style="text-align: left; padding-left: 30%">
+				<i class="fa fa-exclamation-triangle">Vous n'avez aucun projet terminé pour le moment.</div>
 		{% endif %}
 		{% for projet in projets %}
 			<div class="project project-{{projectIndex}}">

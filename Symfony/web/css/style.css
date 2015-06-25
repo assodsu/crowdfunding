@@ -293,6 +293,7 @@ p.modal-connexion-center {
   margin: 0 auto;
   width: auto;
   display: block;
+  color: #FFF;
 }
 
 .modal-connexion-body .btn-success:hover {
