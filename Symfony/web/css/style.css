@@ -74,13 +74,13 @@ a.profile-navigation:hover {
   font-size: 18pt;
 }
 
-.search::-webkit-input-placeholder {
+#form_recherche::-webkit-input-placeholder {
     color: #FFF;
 }
-.search:-moz-placeholder {
+#form_recherche:-moz-placeholder {
     color: #FFF;
 }
-.search::-moz-placeholder {
+#form_recherche::-moz-placeholder {
     color: #FFF;
 }
 
