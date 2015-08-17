@@ -64,7 +64,7 @@
 									<img alt="Logo" src="{{asset( 'images/icones/avatars/association_avatar.png') }}"/>
 								{% elseif app.user.typeUser == 'Entreprise' %}
 									<img alt="Logo" src="{{asset( 'images/icones/avatars/entreprise_avatar.png') }}"/>
-								{% elseif app.user.typeUser == 'Particulier' or app.user.typeUser == 'Benevole' %}
+								{% elseif app.user.typeUser == 'Particulier' or app.user.typeUser == 'Bénévole' %}
 									<img alt="Logo" src="{{asset( 'images/icones/avatars/particulier_avatar.png') }}"/>
 								{% endif %}
 							{% endif %}
@@ -73,6 +73,9 @@
 			              <ul class="dropdown-menu" role="menu" aria-labelledby="drop-user">
 						    <li><a href="{{ path('fos_user_profile_show', { slug : app.user.slug }) }}"><i class="fa fa-user"></i> Profil</a></li>
 						    <li><a href="{{ path('fos_user_profile_projects') }}"><i class="fa fa-wrench"></i> Tableau de bord</a></li>
+						    {% if is_granted('ROLE_ADMIN') %}
+						    	<li><a href="{{ path('sonata_admin_dashboard') }}"><i class="fa fa-wrench"></i> Administration</a></li>
+						    {% endif %}
 						    <li><a class="red" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Deconnexion</a></li>
 			              </ul>
 			            </li>

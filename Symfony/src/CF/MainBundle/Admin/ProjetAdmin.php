@@ -15,7 +15,6 @@ class ProjetAdmin extends Admin
         $formMapper
             ->add('nom')
             ->add('valider', null, array('label' => 'Validé'))
-            ->add('description')
             ->add('dateCreation','date')
             ->add('dateFin','date')
             ->add('infoSup')
@@ -41,7 +40,7 @@ class ProjetAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->addIdentifier('nom')
+            ->addIdentifier('nom', 'string', array('template' => 'CFMainBundle:Project:show_admin.html.twig'))
             ->add('association.nom', null, array('label' => 'Association'))
             ->add('dateCreation')
             ->add('dateFin')

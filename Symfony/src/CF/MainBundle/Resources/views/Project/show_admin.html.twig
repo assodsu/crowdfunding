@@ -1,0 +1,7 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+        <strong><a href="{{ path('cf_main_project', {slug : object.slug }) }}">{{ object.nom }}</a></strong> <br />
+    </div>
+{% endblock %}

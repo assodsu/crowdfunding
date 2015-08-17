@@ -71,7 +71,7 @@
                   <label><i class="fa fa-unlock-alt"></i></label>{{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'confirmation du mot de passe'}}) }}
             </div>
 
-            <a id="activate-step-2" class="btn btn-next btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
+            <a id="activate-step-2" class="btn btn-next btn-success btn-lg">Etape suivante <i class="fa fa-arrow-circle-right"></i></a>
         </div>
 
         <div class="row step-content" id="step-2">
@@ -95,7 +95,7 @@
                 <label><i class="fa fa-phone"></i></label>{{ form_widget(form.telephone, {'attr': {'placeholder': 'téléphone'}}) }}
             </div>
 
-            <a id="activate-step-3" class="btn btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
+            <a id="activate-step-3" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-arrow-circle-right"></i></a>
         </div>
                 
         <div class="row step-content" id="step-3">
@@ -111,7 +111,7 @@
                 <label><i class="fa fa-road"></i></label>{{ form_widget(form.ville, {'attr': {'placeholder': 'ville'}}) }}
             </div>
                 
-            <a id="activate-step-4" class="btn btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
+            <a id="activate-step-4" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-arrow-circle-right"></i></a>
         </div>  
 
         <div class="row step-content" id="step-4">
@@ -131,11 +131,10 @@
                 <label><i class="fa fa-google-plus-square"></i></label>{{ form_widget(form.googleplus, {'attr': {'placeholder': 'google+'}}) }}
             </div>
         
-            <a id="activate-step-5" class="btn btn-success btn-lg"><i class="fa fa-arrow-circle-right"></i></a>
+            <a id="activate-step-5" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-arrow-circle-right"></i></a>
         </div>      
            
         <div class="row step-content" id="step-5">
-            <label><i class="fa fa-user-plus"></i></label>
             {{ form_widget(form.descriptionAsso, { 'attr': {'class': 'form-control'} }) }}
         
             <button type="submit" class="btn btn-success btn-lg">S'inscrire !</button>

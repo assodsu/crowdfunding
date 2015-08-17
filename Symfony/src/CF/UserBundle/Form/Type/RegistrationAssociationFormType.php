@@ -38,7 +38,7 @@ class RegistrationAssociationFormType extends AbstractType{
 
             ->add('telephone', null, array('label' => "Numéro de téléphone"))
 
-            ->add('descriptionAsso', null, array('label' => "Description"))
+            ->add('descriptionAsso', null, array('label' => "Description", 'attr' => array('placeholder' => 'Saisissez la description de votre association ...')))
 
             ->add('site', null, array('label' => "Site internet"))
 

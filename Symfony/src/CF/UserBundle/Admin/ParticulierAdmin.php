@@ -17,7 +17,7 @@ class ParticulierAdmin extends Admin
             ->add('email')
             ->add('name')
             ->add('firstname')
-            ->add('benevole')
+            ->add('benevole', null, array('required' => false))
             ->add('sexe')
             ->add('adresse')
             ->add('ville')

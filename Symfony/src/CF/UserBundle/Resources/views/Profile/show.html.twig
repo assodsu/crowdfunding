@@ -30,7 +30,7 @@
 					<img id='logo' src="{{asset( 'images/icones/avatars/association_avatar.png') }}"/>
 				{% elseif user.typeUser == 'Entreprise' %}
 					<img id='logo' src="{{asset( 'images/icones/avatars/entreprise_avatar.png') }}"/>
-				{% elseif user.typeUser == 'Particulier' or user.typeUser == 'Benevole' %}
+				{% elseif user.typeUser == 'Particulier' or user.typeUser == 'Bénévole' %}
 					<img id='logo' src="{{asset( 'images/icones/avatars/particulier_avatar.png') }}"/>
 				{% endif %}
 			{% endif %}
@@ -89,13 +89,13 @@
 								<tr><td>Réseaux sociaux :</td>
 									<td>
 										{% if user.facebook %}
-											<a href="http://www.facebook.com/{{ user.facebook }}" id="facebook" target="_blank"><span class="fa fa-facebook"></span> Facebook</a><br>
+											<a href="{{ user.facebook }}" id="facebook" target="_blank"><span class="fa fa-facebook"></span> Facebook</a><br>
 										{% endif %}
 										{% if user.twitter %}
-											<a href="http://www.twitter.com/{{ user.twitter }}" id="twitter" target="_blank"><span class="fa fa-twitter"></span> Twitter</a><br>
+											<a href="{{ user.twitter }}" id="twitter" target="_blank"><span class="fa fa-twitter"></span> Twitter</a><br>
 										{% endif %}
 										{% if user.googleplus %}
-											<a href="http://plus.google.com/{{ user.googleplus }}" id="googleplus" target="_blank"><span class="fa fa-google-plus"></span> Google+</a>
+											<a href="{{ user.googleplus }}" id="googleplus" target="_blank"><span class="fa fa-google-plus"></span> Google+</a>
 										{% endif %}
 									</td>
 								</tr>

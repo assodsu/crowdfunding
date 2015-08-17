@@ -34,7 +34,7 @@
 						<img id='logo' src="{{asset('images/icones/avatars/association_avatar.png') }}"/>
 					{% elseif app.user.typeUser == 'Entreprise' %}
 						<img id='logo' src="{{asset( 'images/icones/avatars/entreprise_avatar.png') }}"/>
-					{% elseif app.user.typeUser == 'Particulier' or app.user.typeUser == 'Benevole' %}
+					{% elseif app.user.typeUser == 'Particulier' or app.user.typeUser == 'Bénévole' %}
 						<img id='logo' src="{{asset( 'images/icones/avatars/particulier_avatar.png') }}"/>
 					{% endif %}
 				{% endif %}
@@ -94,7 +94,7 @@
 			                      <label><i class="fa fa-user"></i></label>{{ form_widget(form.firstname, {'attr': {'placeholder': 'prénom'}}) }}
 			                </div>
 			                <div class="form-group">
-			                    <label><i class="fa fa-calendar"></i></label>{{ form_widget(form.dateNaissance, {'attr': {'placeholder': 'date de naissance', 'value': ''}}) }}
+			                    <label><i class="fa fa-calendar"></i></label>{{ form_widget(form.dateNaissance, {'attr': {'placeholder': 'date de naissance'}}) }}
 			                </div>
 
 							<div class="form-group">
@@ -162,6 +162,8 @@
     <script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.js') }}"> </script>
     <script>
         jQuery('#fos_user_profile_form_dateCreationAsso').datetimepicker({lang:'fr',format:'d/m/Y'});
+        jQuery('#fos_user_profile_form_dateNaissance').datetimepicker({lang:'fr',format:'d/m/Y'});
+        jQuery('#fos_user_profile_form_dateCreationEntreprise').datetimepicker({lang:'fr',format:'d/m/Y'});
         $(":file").filestyle({input: false});
         $('.buttonText').text('Modifier le logo');
         $('.glyphicon-folder-open').hide();
