@@ -56,6 +56,41 @@ class RechercheController extends Controller
         return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$all,'categories'=>'All', 'selecteurs' => $selecteurs));
 	}
 
+    public function updateSearchAction()
+    {
+        $request = $this->get('request');
+        $index = $request->request->get('index');
+        $motcles = $request->request->get('search');
+
+        $motcles = explode(' ', $motcles['recherche']);
+     
+        $em = $this->getDoctrine()
+                   ->getEntityManager();
+
+        $resultats = array();
+
+        foreach ($motcles as $m) {
+        	if (strlen($m) > 3) {
+        		$resultats[] = $em->getRepository('CFMainBundle:Projet')
+                		->getSearchList($m);
+        	}
+        }
+
+        $recherche = array();
+        foreach ($resultats as $resultat) {
+        	foreach ($resultat as $r) {
+        		$recherche[] = $r;
+        	}
+        }
+
+        $recherche = array_unique($recherche);
+
+        $return=array("responseCode"=>200,  "updateProjets"=>$recherche);
+
+        $return=json_encode($recherche);
+        return new Response($return,200,array('Content-Type'=>'application/json'));
+    }
+
 	public function renderSearchAction()
 	{
 		$form = $this->createFormBuilder()

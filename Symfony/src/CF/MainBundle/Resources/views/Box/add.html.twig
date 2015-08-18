@@ -26,20 +26,19 @@
 
 			{{ form_row(form.titre) }}
 			<div id="form-texte">
-			{{ form_row(form.contenu) }}
-		</div>
+				{{ form_row(form.contenu) }}
+			</div>
 			<div id="form-image">
-			{{ form_row(form.urlImage) }}
-		</div>
+				{{ form_row(form.urlImage) }}
+			</div>
 			<div id="form-video">
-			{{ form_row(form.urlVideo) }}
-		</div>
+				{{ form_row(form.urlVideo) }}
+			</div>
 			{{ form_row(form.fullWidth) }}
-			{{ form_row(form.ordre) }}
 
 			{{ form_rest(form) }}
 
-				<button type="submit" class="btn btn-success btn-submit-actu">Publier</button>
+			<button type="submit" class="btn btn-success btn-submit-actu">Publier</button>
 		</form>
 	</div>
 {% endblock body %}

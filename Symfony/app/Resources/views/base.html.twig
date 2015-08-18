@@ -40,7 +40,7 @@
 				    </div>
 				</div>
 				<div class="navigation-bar-right">
-					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+					{% if app.security.token is not empty and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 						{% set nbNotifs = 0 %}
 						{% for n in app.user.notifications %}
 							{% if n.vu == 0 %}
@@ -73,7 +73,7 @@
 			              <ul class="dropdown-menu" role="menu" aria-labelledby="drop-user">
 						    <li><a href="{{ path('fos_user_profile_show', { slug : app.user.slug }) }}"><i class="fa fa-user"></i> Profil</a></li>
 						    <li><a href="{{ path('fos_user_profile_projects') }}"><i class="fa fa-wrench"></i> Tableau de bord</a></li>
-						    {% if is_granted('ROLE_ADMIN') %}
+						    {% if app.security.token is not empty and is_granted('ROLE_ADMIN') %}
 						    	<li><a href="{{ path('sonata_admin_dashboard') }}"><i class="fa fa-wrench"></i> Administration</a></li>
 						    {% endif %}
 						    <li><a class="red" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Deconnexion</a></li>
@@ -123,7 +123,7 @@
 							<li><a href="{{ path('cf_site_commentcamarche') }}">Comment ça marche ?</a></li>
 							<li><a href="{{ path('cf_main_allProjects') }}">Les projets</a></li>
 							<li><a href="{{ path('cf_main_addProjects') }}">Soumettre un projet</a></li>
-							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+							{% if app.security.token is not empty and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 								<li><a href="{{ path('fos_user_profile_show', { slug : app.user.slug }) }}">Mon profil</a></li>
 							{% else %}
 								<li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>

@@ -60,7 +60,7 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this->createQueryBuilder('p');
          
         $qb->where('p.valider = true')
-           ->orderBy('p.dateCreation', 'DESC')
+           ->orderBy('p.dateCreation','DESC')
            ->setFirstResult($index)
            ->setMaxResults($nb)
         ;

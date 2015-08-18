@@ -20,7 +20,6 @@ class BoxType extends AbstractType
             ->add('urlImage','text', array('label' => 'Url image', 'attr' => array('class' => 'form-control')))
             ->add('urlVideo','text', array('label' => 'Url vidéo', 'attr' => array('class' => 'form-control')))
             ->add('fullWidth', 'checkbox', array('label' => 'Souhaitez-vous un seul bloc sur la ligne ?','attr' => array('class' => 'form-control box-width')))
-            ->add('ordre',null, array('label' => 'Ordre','attr' => array('class' => 'form-control box-order')))
         ;
     }
     

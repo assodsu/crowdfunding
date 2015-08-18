@@ -45,6 +45,7 @@ class ProjectController extends Controller
     {
         $request = $this->get('request');
         $index = $request->request->get('index');
+        $search = $request->request->get('search');
 
         $updateProjets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate($index, 5);
 

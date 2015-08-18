@@ -57,13 +57,6 @@ class Box
     private $fullWidth;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="ordre", type="integer")
-     */
-    private $ordre;
-
-    /**
     * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Projet", inversedBy="boxs")
     * @ORM\JoinColumn(nullable=false)
     */
@@ -174,30 +167,6 @@ class Box
     public function getFullWidth()
     {
         return $this->fullWidth;
-    }
-
-    /**
-     * Set ordre
-     *
-     * @param integer $ordre
-     *
-     * @return Box
-     */
-    public function setOrdre($ordre)
-    {
-        $this->ordre = $ordre;
-
-        return $this;
-    }
-
-    /**
-     * Get ordre
-     *
-     * @return integer
-     */
-    public function getOrdre()
-    {
-        return $this->ordre;
     }
 
     /**

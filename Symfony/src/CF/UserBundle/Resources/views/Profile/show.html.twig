@@ -5,11 +5,6 @@
 	{{ parent() }} - Profil utilisateur
 {% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link href="{{ asset('css/style_profile.css') }}" rel="stylesheet"/>
-{% endblock %}
-
 {% block body %}
 	<div class="panel-heading">
 		<img src="{{ asset('images/6.jpg')}}" id="banner"/>
@@ -143,35 +138,37 @@
 					<div class="project-list">
 						{% for projet in user.projetsSoutenus %}
 							<div class="project" id="project-{{ projet.id }}">
-								<div class="project-background" img="{{ projet.background.path }}"></div>
-								<p><a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a></p>
+								<div class="project-background" img="{{ projet.background.AssetPath }}" style="background : url('../../../uploads/{{ projet.background.AssetPath }}') center center no-repeat; background-size : cover;">
+									<a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a>
+								</div>
 								{% set pourcentage = (projet.nbActuHumain + projet.nbActuMateriel + projet.nbActuComm + projet.nbActuFinancier)/projet.nbRessources %}
-								<div class='percentage'>Complété à {{ (pourcentage*100)|round }}%</div>
+								<div class='percentage'>Complété à<span>{{ (pourcentage*100)|round }}%</span></div>
 								<div class="time-remaining">
-									<i class="fa fa-clock-o"></i> 
-									{% set difference = projet.dateFin.diff(date('now')) %}
-									{% set leftDays = difference.days %}
-									{% set leftHours = difference.h %}
-									{% set leftMinutes = difference.i %}
-									{% if projet.dateFin > date('now') %}
-										{% if leftDays > 1 %}
-											{{ leftDays }} jours
-										{% elseif leftDays == 1 %}
-											{{ leftDays }} jour
-										{% else %}
-											{% if leftHours > 1 %}
-												{{ leftHours }} heures
-											{% elseif leftHours == 1 %}
-												{{ leftHours }} heure
+									Temps restant
+									<span>
+										{% set difference = projet.dateFin.diff(date('now')) %}
+										{% set leftDays = difference.days %}
+										{% set leftHours = difference.h %}
+										{% set leftMinutes = difference.i %}
+										{% if projet.dateFin > date('now') %}
+											{% if leftDays >= 1 %}
+												{{ leftDays }} j.
 											{% else %}
-												{% if leftMinutes > 0 %}
-													{{ leftMinutes }} minutes
+												{% if leftHours >= 1 %}
+													{{ leftHours }} h.
+												{% else %}
+													{% if leftMinutes > 0 %}
+														{{ leftMinutes }} m.
+													{% endif %}
 												{% endif %}
 											{% endif %}
+										{% else %}
+											Projet terminé
 										{% endif %}
-									{% else %}
-										Projet terminé
-									{% endif %}
+									</span>
+								</div>
+								<div class="discover">
+									<a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}" class="btn btn-success">Découvrir <span class="glyphicon glyphicon-menu-right"></span></a>
 								</div>
 							</div>
 						{% else %}
@@ -187,35 +184,37 @@
 							
 							{% for projet in projets %}
 								<div class="project" id="project-{{ projet.id }}">
-									<div class="project-background" img="{{ projet.background.path }}"></div>
-									<p><a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a></p>
+									<div class="project-background" img="{{ projet.background.AssetPath }}"  style="background : url('../../../uploads/{{ projet.background.AssetPath }}') center center no-repeat; background-size : cover;">
+										<a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a>
+									</div>
 									{% set pourcentage = (projet.nbActuHumain + projet.nbActuMateriel + projet.nbActuComm + projet.nbActuFinancier)/projet.nbRessources %}
-									<div class='percentage'>Complété à {{ (pourcentage*100)|round }}%</div>
+									<div class='percentage'>Complété à<span>{{ (pourcentage*100)|round }}%</span></div>
 									<div class="time-remaining">
-										<i class="fa fa-clock-o"></i> 
-										{% set difference = projet.dateFin.diff(date('now')) %}
-										{% set leftDays = difference.days %}
-										{% set leftHours = difference.h %}
-										{% set leftMinutes = difference.i %}
-										{% if projet.dateFin > date('now') %}
-											{% if leftDays > 1 %}
-												{{ leftDays }} jours
-											{% elseif leftDays == 1 %}
-												{{ leftDays }} jour
-											{% else %}
-												{% if leftHours > 1 %}
-													{{ leftHours }} heures
-												{% elseif leftHours == 1 %}
-													{{ leftHours }} heure
+										Temps restant
+										<span>
+											{% set difference = projet.dateFin.diff(date('now')) %}
+											{% set leftDays = difference.days %}
+											{% set leftHours = difference.h %}
+											{% set leftMinutes = difference.i %}
+											{% if projet.dateFin > date('now') %}
+												{% if leftDays >= 1 %}
+													{{ leftDays }} j.
 												{% else %}
-													{% if leftMinutes > 0 %}
-														{{ leftMinutes }} minutes
+													{% if leftHours >= 1 %}
+														{{ leftHours }} h.
+													{% else %}
+														{% if leftMinutes > 0 %}
+															{{ leftMinutes }} m.
+														{% endif %}
 													{% endif %}
 												{% endif %}
+											{% else %}
+												Projet terminé
 											{% endif %}
-										{% else %}
-											Projet terminé
-										{% endif %}
+										</span>
+									</div>
+									<div class="discover">
+										<a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}" class="btn btn-success">Découvrir <span class="glyphicon glyphicon-menu-right"></span></a>
 									</div>
 								</div>
 							{% else %}

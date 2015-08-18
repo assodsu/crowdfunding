@@ -605,21 +605,47 @@ textarea {
 }
 .project-list .project {
   margin: 10px;
-  width: 154px;
-  height: 200px;
+  width: 504px;
+  height: 250px;
   display: inline-block;
   vertical-align: top;
   border:2px solid rgb(92, 151, 191);
   border-radius: 5px;
 }
 .project-list .project-background {
-  height: 100px;
-  width: 150px;
+  height: 150px;
+  width: 500px;
   position: relative;
 }
-.project-list .project p, .project-list .project .percentage, .project-list .project .time-remaining {
-  font-size: 14px;
-  text-align: center;
+.project-background a {
+	width: 100%;
+    display: block;
+    line-height: 150px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 100;
+    text-transform: uppercase;
+    background: rgba(0,0,0,.2);
+}
+.project-background a:hover {
+	text-decoration: none;
+}
+.percentage, .time-remaining, .discover {
+	font-size: 14px;
+    width: 30%;
+    margin: 5px;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+}
+.discover {
+    text-align: center;
+    margin-top: 25px;
+}
+.percentage > span, .time-remaining > span {
+	display: block;
+    text-align: left;
+    font-size: 32px;
 }
 @media(max-width: 750px) {
 	.resources-percent .resource {

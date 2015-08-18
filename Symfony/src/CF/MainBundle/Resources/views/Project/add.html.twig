@@ -57,6 +57,8 @@
 			<div class="row step-content" id="step-2">
 				<div class="form-group">
 	                <label><i class="fa fa-picture-o"></i></label>{{ form_widget(form.background, {'attr': {'class': 'filestyle', 'data-buttonText': 'image de fond'}}) }}
+	                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"><i class="fa fa-plus"></i></button>
+	                {{ form_row(form.boxs) }}
 	            </div>
 
 				<a id="activate-step-3" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-chevron-right"></i></a>
@@ -85,6 +87,41 @@
 		    </div>
 		    {{ form_end(form) }}
 		</form>
+		<div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="modalFormLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="modalFormLabel">Nouveau bloc</h4>
+		        <input type="text" placeholder="Titre du bloc">
+		      </div>
+		      <div class="modal-body">
+		      	<ul class="nav-modal-form">
+				  <li class="texte active"><a href="#form-texte">Texte</a></li>
+				  <li class="image"><a href="#form-image">Image</a></li>
+				  <li class="video"><a href="#form-video">Video</a></li>
+				</ul>
+
+				<div class="form-choice-box" id="form-texte">
+					<textarea id="editor" name="editor"></textarea>
+				</div>
+				<div class="form-choice-box" id="form-image">
+					<input type="file">
+				</div>
+				<div class="form-choice-box" id="form-video">
+					<input type="text" placeholder="Entrez l'url de la vidéo (ex : http://youtube.com/azeaze123aze)">
+				</div>
+		      </div>
+		      <div class="modal-footer">
+		      	<div class="radio-width">
+		      		<label><input type="radio" name="sex" value="male" checked> 1 colonne </label>
+		      		<label><input type="radio" name="sex" value="female"> 2 colonnes</label>
+		      	</div>
+		        <button type="button" class="btn btn-success" id="button-validation-modal">Insérer le bloc</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	</div>
 </div>
 {% endblock %}
@@ -95,9 +132,19 @@
 	<script type="text/javascript" src="{{ asset('js/create_project.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.js') }}"> </script>
     <script>
+    	CKEDITOR.replace( 'editor' );
         $(":file").filestyle({input: false});
         $('.buttonText').text('choisir l\'image de fond du projet');
         $('.glyphicon-folder-open').hide();
-        $('#fos_user_registration_form_dateCreationAsso').value('');
+
+        $('.form-choice-box').hide();
+        $('#form-texte').show();
+        $('.modal-body .nav-modal-form li a').on('click', function(e) {
+        	e.preventDefault();
+       		$('.form-choice-box').hide();
+        	$('.modal-body .nav-modal-form li.active').removeClass('active');
+        	$($(this).attr('href')).show();
+        	$(this).parent().addClass('active');
+        });
     </script>
 {% endblock %}

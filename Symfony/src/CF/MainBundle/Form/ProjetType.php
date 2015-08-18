@@ -31,6 +31,13 @@ class ProjetType extends AbstractType
                 'expanded'=>true,
                 'multiple' => true
                 ))
+            ->add('boxs', 'collection', array('label' => false,
+                'type' => new BoxType(),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+                ))
         ;
     }
     
