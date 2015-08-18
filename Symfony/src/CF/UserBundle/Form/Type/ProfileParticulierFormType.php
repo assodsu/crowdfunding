@@ -59,8 +59,7 @@ class ProfileParticulierFormType extends AbstractType{
                                              "attr"=>array('class'=>'form-control'),                                        
                                              'choices' => array('1' => 'Oui', '0' => 'Non'),
                                              'expanded' => false,
-                                             'multiple' => false,
-                                             'data' => '0'
+                                             'multiple' => false
                                           ))
 
             ->add('email', 'email', array('label' => false, 'attr' => array('class' => 'form-control')))

@@ -8,17 +8,23 @@
 
 {% block cfuserbundle_body %}
 	<div class="profile-menu-projects">
-		{% if projets %}<div class="profile-projects-list">
-			<a href="#" class="buttonLeft"><i class="fa fa-chevron-circle-left"></i></a>
-			<a href="#" class="buttonRight"><i class="fa fa-chevron-circle-right"></i></a>
-			<div class="projects-list">
-				{% set projectIndex = 1 %}
-				{% for projet in projets %}
-					<a href="{{ path('cf_main_project', {'slug' : projet.slug}) }}" class="project project-{{projectIndex}}">{{ projet.nom }}</a>
-					{% set projectIndex = projectIndex + 1 %}
-				{% endfor %}
+		{% if projets %}
+			<div class="profile-projects-list">
+				<a href="#" class="buttonLeft"><i class="fa fa-chevron-circle-left"></i></a>
+				<a href="#" class="buttonRight"><i class="fa fa-chevron-circle-right"></i></a>
+				<div class="projects-list">
+					{% set projectIndex = 1 %}
+					{% for projet in projets %}
+						<a href="{{ path('cf_main_project', {'slug' : projet.slug}) }}" class="project project-{{projectIndex}}">{{ projet.nom }}</a>
+						{% set projectIndex = projectIndex + 1 %}
+					{% endfor %}
+				</div>
 			</div>
-		</div>{% endif %}
+		{% else %}
+			<div class="alert-top alert-top-warning" style="width:75%;">
+				<i class="fa fa-exclamation-triangle"></i> Vous n'avez aucun projet en cours.
+			</div>
+		{% endif %}
 		{% set projectIndex = 1 %}
 		{% for projet in projets %}
 			<div class="project project-{{projectIndex}}">

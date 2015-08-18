@@ -4,10 +4,6 @@
 	{{ parent() }} - Projets suivis
 {% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-{% endblock %}
-
 {% set menulink_projetsSuivis = 1 %}
 
 {% block cfuserbundle_body %}
@@ -35,8 +31,8 @@
 		</div>
 		{% set projectIndex = 1 %}
 			{% else %}
-			<div class="alert-top alert-top-warning" style="text-align: left; padding-left: 30%">
-				<i class="fa fa-exclamation-triangle">Vous n'avez suivi aucun projet pour le moment.</div>
+			<div class="alert-top alert-top-warning" style="width:75%;">
+				<i class="fa fa-exclamation-triangle"></i> Vous n'avez suivi aucun projet pour le moment.</div>
 		{% endif %}
 		{% for projet in app.user.projetsSuivis %}
 			<div class="project project-{{projectIndex}}">

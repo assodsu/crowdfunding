@@ -18,11 +18,11 @@
               {% if userSource.logo.path is not null %}
                 <img class="conversation-donator-logo img-circle" src="{{ asset(userSource.logo.AssetPath) }}"></img>
               {% else %}
-                {% if user.typeUser == 'Association' %}
+                {% if userSource.typeUser == 'Association' %}
                   <img class="conversation-donator-logo img-circle" src="{{asset( 'images/icones/avatars/association_avatar.png') }}"></img>
-                {% elseif user.typeUser == 'Entreprise' %}
+                {% elseif userSource.typeUser == 'Entreprise' %}
                   <img class="conversation-donator-logo img-circle" src="{{asset( 'images/icones/avatars/entreprise_avatar.png') }}"></img>
-                {% elseif user.typeUser == 'Particulier' or user.typeUser == 'Benevole' %}
+                {% elseif userSource.typeUser == 'Particulier' or userSource.typeUser == 'Benevole' %}
                   <img class="conversation-donator-logo img-circle" src="{{asset( 'images/icones/avatars/particulier_avatar.png') }}"></img>
                 {% endif %}
               {% endif %}

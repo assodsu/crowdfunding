@@ -89,9 +89,15 @@
 					<div id='content-infos-second-row'>
 						<div id='town-asso'>{{ projet.association.ville }}</div>
 						<div id="reseaux_sociaux">
-							<a href="#" id="facebook"><span class="fa fa-facebook"></span> <span class="social">Facebook</span></a>
-							<a href="#" id="twitter"><span class="fa fa-twitter"></span> <span class="social">Twitter</span></a>
-							<a href="#" id="googleplus"><span class="fa fa-google-plus"></span> <span class="social">Google+</span></a>
+							{% if projet.association.facebook %}
+								<a href="{{ projet.association.facebook }}" id="facebook"><span class="fa fa-facebook"></span> <span class="social">Facebook</span></a>
+							{% endif %}
+							{% if projet.association.twitter %}
+								<a href="{{ projet.association.twitter }}" id="twitter"><span class="fa fa-twitter"></span> <span class="social">Twitter</span></a>
+							{% endif %}
+							{% if projet.association.googleplus %}
+								<a href="{{ projet.association.googleplus }}" id="googleplus"><span class="fa fa-google-plus"></span> <span class="social">Google+</span></a>
+							{% endif %}
 						</div>
 					</div>
 					<a href="{{ path('fos_user_profile_show', { 'slug': projet.association.slug }) }}" class='btn btn-default'>Voir le profil <i class="fa fa-search"></i></a>
