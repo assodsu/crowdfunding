@@ -15,7 +15,6 @@ class BoxRepository extends \Doctrine\ORM\EntityRepository
          
         $qb->where('b.projet = :projet')
            ->setParameter('projet', $projet)
-           ->orderBy('b.ordre', 'ASC')
            ;
                  
         return $qb->getQuery()->getResult();

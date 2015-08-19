@@ -105,9 +105,9 @@ $(document).ready(function() {
 
 		ajouterLienSuppressionBox($prototype);
 		$containerBox.append($prototype);
-		indexBox++;
 
-		$containerBox.append($lienAjoutBox);
+
+		indexBox++;
 	}
 
 	function ajouterLienSuppressionBox($prototype) {
@@ -122,10 +122,146 @@ $(document).ready(function() {
 	}
 
 	$('#button-validation-modal').on('click', function(e){
-		ajouterBox($containerBox);
 		e.preventDefault();
-		
-		return false;
+
+		if($('#box-title-form').val() != "")
+		{
+			if((CKEDITOR.instances['editor'].getData() != "") || ($('#form-video input').val() != "") || ($('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_urlImage_file').val() != ""))
+			{
+				$('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_titre').val($('#box-title-form').val());
+
+				$icone = '<i class="fa fa-pencil"></i>';
+				$type = 'text';
+
+				if(CKEDITOR.instances['editor'].getData() != "")
+				{
+					$('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_contenu').html(CKEDITOR.instances['editor'].getData());
+				}
+				else if($('#form-video input').val() != "")
+				{
+					$('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_urlVideo').val($('#form-video input').val());
+					$icone = '<i class="fa fa-video-camera"></i>';
+					$type = 'video';
+				}
+				else if($('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_urlImage_file').val() != "")
+				{
+					$icone = '<i class="fa fa-picture-o"></i>';
+					$type = 'picture';
+				}
+				
+				$widthBox = '';
+				if($('#radio-width-box input[name=box-width]:checked').val() == 0)
+				{
+					$('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_fullWidth').prop('checked', false);
+				}
+				else
+				{
+					$('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_fullWidth').prop('checked', true);
+					$widthBox = ' large';
+				}
+
+				$('#modalForm').modal('hide');
+
+				$('.blocs').append('<div class="bloc-'+(indexBox-1)+$widthBox+'"><div class="bloc-head">'+$icone+'</div><div class="bloc-body"><h1 class="bloc-title">'+$('#box-title-form').val()+'</h1><a href="#" class="config-bloc" id-bloc="'+(indexBox-1)+'" type-bloc="'+$type+'" data-toggle="modal" data-target="#modalEditForm">Config</a> <a href="#" class="delete-bloc" id-bloc="'+(indexBox-1)+'">Delete</a></div></div>');
+				
+			}
+			else
+			{
+				console.log('ERREUR : REMPLIR LES CHAMPS');
+			}
+		}
+		else
+		{
+			console.log('ERREUR : REMPLIR LES CHAMPS');
+		}
+	});
+
+	$('#add-box').on('click', function(e){
+		ajouterBox($containerBox);
+		$('#box-title-form').val('');
+		CKEDITOR.instances['editor'].setData('');
+		$('#form-video input').val('');
+	});
+
+	$('#file-form-image').on('click', function(e) {
+		e.preventDefault();
+	    $('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_urlImage_file').trigger('click');
+	});
+
+	$('.blocs').on("click", ".config-bloc", function(e) {
+		$idBlock = $(this).attr('id-bloc');
+		$typeBlock = $(this).attr('type-bloc');
+		$('#modalEditForm .modal-body').html('');
+		$('#box-title-formEdit').val($('#cf_mainbundle_projet_boxs_'+$idBlock+'_titre').val());
+		if($typeBlock == 'text')
+		{
+			$('#modalEditForm .modal-body').append('<textarea id="editorEdit" name="editor"></textarea>');
+    		CKEDITOR.replace( 'editorEdit' );
+			CKEDITOR.instances['editorEdit'].setData($('#cf_mainbundle_projet_boxs_'+$idBlock+'_contenu').val());
+		}
+		else if($typeBlock == 'video')
+		{
+			$('#modalEditForm .modal-body').append('<input type="text" id="video-edit-form" placeholder="Entrez l\'url de la vidéo (ex : http://youtube.com/azeaze123aze)">');
+			$('#video-edit-form').val($('#cf_mainbundle_projet_boxs_'+$idBlock+'_urlVideo').val());
+		}
+		else if($typeBlock == 'picture')
+		{
+			$('#modalEditForm .modal-body').append('<a href="#" id="file-formEdit-image">Choisir une image pour le bloc</a>');
+		}
+	});
+
+	$('#modalEditForm').on("click", "#file-formEdit-image", function(e) {
+		e.preventDefault();
+	    $('#cf_mainbundle_projet_boxs_'+$idBlock+'_urlImage_file').trigger('click');
+	});
+
+	$('#button-validation-modalEdit').on('click', function(e){
+		e.preventDefault();
+
+		if($('#box-title-form').val() != "")
+		{
+			if((CKEDITOR.instances['editor'].getData() != "") || ($('#form-video input').val() != "") || ($('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_urlImage_file').val() != ""))
+			{
+				if($typeBlock == 'text')
+				{
+					$('#cf_mainbundle_projet_boxs_'+$idBlock+'_contenu').html(CKEDITOR.instances['editorEdit'].getData());
+				}
+				else if($typeBlock == 'video')
+				{
+					$('#cf_mainbundle_projet_boxs_'+$idBlock+'_urlVideo').val($('#form-video input').val());
+				}
+
+				if($('#radio-width-box-edit input[name=box-width-edit]:checked').val() == 0)
+				{
+					if($('.bloc-'+$idBlock).hasClass('large'))
+					{
+						$('.bloc-'+$idBlock).removeClass('large');
+					}
+				}
+				else
+				{
+					if(!$('.bloc-'+$idBlock).hasClass('large'))
+					{
+						$('.bloc-'+$idBlock).addClass('large');
+					}
+				}
+
+				$('#modalFormEdit').modal('hide');
+			}
+			else
+			{
+				console.log('ERREUR : REMPLIR LES CHAMPS');
+			}
+		}
+		else
+		{
+			console.log('ERREUR : REMPLIR LES CHAMPS');
+		}
+	});
+
+	$('.blocs').on("click", ".delete-bloc", function(e) {
+		$('#cf_mainbundle_projet_boxs_'+$(this).attr('id-bloc')).parent().children('a').trigger('click');
+		$('.bloc-'+$(this).attr('id-bloc')).remove();
 	});
 
 	/**** NAVIGATION ****/

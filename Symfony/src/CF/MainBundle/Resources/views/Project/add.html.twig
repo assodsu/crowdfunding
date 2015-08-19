@@ -57,7 +57,10 @@
 			<div class="row step-content" id="step-2">
 				<div class="form-group">
 	                <label><i class="fa fa-picture-o"></i></label>{{ form_widget(form.background, {'attr': {'class': 'filestyle', 'data-buttonText': 'image de fond'}}) }}
-	                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm"><i class="fa fa-plus"></i></button>
+	                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" id="add-box"><i class="fa fa-plus"></i></button>
+	                <div class="blocs">
+	                	
+	                </div>
 	                {{ form_row(form.boxs) }}
 	            </div>
 
@@ -85,15 +88,15 @@
 	            {{ form_row(form.infoSup) }}
 		    	<button type="submit" class="btn btn-success btn-lg"/>Soumettre mon projet</button>
 		    </div>
-		    {{ form_end(form) }}
+		    {{ form_rest(form) }}
 		</form>
 		<div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="modalFormLabel">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="delete-box"><span aria-hidden="true">&times;</span></button>
 		        <h4 class="modal-title" id="modalFormLabel">Nouveau bloc</h4>
-		        <input type="text" placeholder="Titre du bloc">
+		        <input type="text" placeholder="Titre du bloc" id="box-title-form">
 		      </div>
 		      <div class="modal-body">
 		      	<ul class="nav-modal-form">
@@ -106,18 +109,39 @@
 					<textarea id="editor" name="editor"></textarea>
 				</div>
 				<div class="form-choice-box" id="form-image">
-					<input type="file">
+					<a href="#" id="file-form-image">Choisir une image pour le bloc</a>
 				</div>
 				<div class="form-choice-box" id="form-video">
 					<input type="text" placeholder="Entrez l'url de la vidéo (ex : http://youtube.com/azeaze123aze)">
 				</div>
 		      </div>
 		      <div class="modal-footer">
-		      	<div class="radio-width">
-		      		<label><input type="radio" name="sex" value="male" checked> 1 colonne </label>
-		      		<label><input type="radio" name="sex" value="female"> 2 colonnes</label>
+		      	<div class="radio-width" id="radio-width-box">
+		      		<label><input type="radio" name="box-width" value="0" checked> 1 colonne </label>
+		      		<label><input type="radio" name="box-width" value="1"> 2 colonnes</label>
 		      	</div>
 		        <button type="button" class="btn btn-success" id="button-validation-modal">Insérer le bloc</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<div class="modal fade" id="modalEditForm" tabindex="-1" role="dialog" aria-labelledby="modalEditFormLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="delete-box"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="modalEditFormLabel">Editer un bloc</h4>
+		        <input type="text" placeholder="Titre du bloc" id="box-title-formEdit">
+		      </div>
+		      <div class="modal-body">
+
+		      </div>
+		      <div class="modal-footer">
+		      	<div class="radio-width" id="radio-width-box-edit">
+		      		<label><input type="radio" name="box-width-edit" value="0" checked> 1 colonne </label>
+		      		<label><input type="radio" name="box-width-edit" value="1"> 2 colonnes</label>
+		      	</div>
+		        <button type="button" class="btn btn-success" id="button-validation-modalEdit">Modifier le bloc</button>
 		      </div>
 		    </div>
 		  </div>

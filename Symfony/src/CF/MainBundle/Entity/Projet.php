@@ -221,6 +221,8 @@ class Projet implements JsonSerializable
         $this->setNbDemandeHumain(0);
         $this->setNbDemandeComm(0);
 
+        $this->setNbRessources(0);
+
         $this->besoins = new \Doctrine\Common\Collections\ArrayCollection();
         $this->boxs = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
