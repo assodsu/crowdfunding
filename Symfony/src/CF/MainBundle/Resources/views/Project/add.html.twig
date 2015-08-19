@@ -1,7 +1,7 @@
 {% extends "CFMainBundle::layout.html.twig" %}
 
 {% block title %}
-  	{{ parent() }} - Lancez votre projet
+	{{ parent() }} - Lancez votre projet
 {% endblock %}
 
 {% block stylesheets %}
@@ -10,83 +10,153 @@
 {% endblock %}
 
 {% block body %}
-<div class="head-new-project">
-	<h1>Lancer votre projet</h1>
-</div>
-<div id="steps">
-    <div class="steps-circle">
-        <div class="line-step"></div>
-        
-        <div class="step">
-            <a class="step-number step-1" href="#step-1"><div class="step-active">1</div></a>
-            <div class="step-text">Général</div>
-        </div>
-        <div class="step">
-            <a class="step-number step-2" href="#step-2">2</a>
-            <div class="step-text">Image de fond</div>
-        </div>
-        <div class="step">
-            <a class="step-number step-3" href="#step-3">3</a>
-            <div class="step-text">Tags</div>
-        </div>
-        <div class="step">
-            <a class="step-number step-4" href="#step-4">4</a>
-            <div class="step-text">Ressources</div>
-        </div>
-        <div class="step-last">
-            <a class="step-number step-5" href="#step-5">5</a>
-            <div class="step-text">Informations</div>
-        </div>
-    </div>
-</div>
+	<div class="head-new-project">
+		<h1>Lancer votre projet</h1>
+	</div>
 
-<div class="row">
-    <div class="col-sm-offset-2 col-xs-offset-1 col-sm-8 col-xs-10">
+	<!-- DEBUT BOOTSNIPP TIMELINE WIZARD -->
+	<div class="wizard">
+		<div class="wizard-inner">
+			<div class="connecting-line"></div>
+			<ul class="nav nav-tabs" role="tablist">
+
+				<li role="presentation" class="active">
+					<a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="G&eacute;n&eacute;ral">
+						<span class="round-tab">
+							<i class="#"></i>
+						</span>
+					</a>
+				</li>
+
+				<li role="presentation" class="disabled">
+					<a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Histoire">
+						<span class="round-tab">
+							<i class="#"></i>
+						</span>
+					</a>
+				</li>
+				<li role="presentation" class="disabled">
+					<a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Ressources">
+						<span class="round-tab">
+							<i class="#"></i>
+						</span>
+					</a>
+				</li>
+
+				<li role="presentation" class="disabled">
+					<a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Informations">
+						<span class="round-tab">
+							<i class="#"></i>
+						</span>
+					</a>
+				</li>
+
+				<li role="presentation" class="disabled">
+					<a href="#step5" data-toggle="tab" aria-controls="step5" role="tab" title="Soumettre">
+						<span class="round-tab">
+							<i class="#"></i>
+						</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- FIN BOOTSNIPP TIMELINE WIZARD -->
+
+		<!-- DEBUT BOOTSNIPP NOUVEAU FORMULAIRE AVEC INTEGRATION TWIG DE L'ANCIEN FORMULAIRE -->
 		<form action="{{ path('cf_main_addProjects')}}" method="post" class="form-add-project" {{ form_enctype(form) }}>
 			{{ form_start(form) }}
 			{{ form_errors(form) }}
+			<div class="tab-content">
 
-			<div class="row step-content" id="step-1">
-				<div class="form-group">
-	                <label><i class="fa fa-folder-open"></i></label>{{ form_widget(form.nom, {'attr': {'placeholder': 'nom de votre projet'}}) }}
-	            </div>
-					
-				<a id="activate-step-2" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-chevron-right"></i></a>
+				{# STEP 1 IDENTIFICATION PROJET #}
+				<div class="tab-pane active" role="tabpanel" id="step1">
+					<h3>Bien identifier votre projet</h3>
+					<p>Cr&eacute;er un impact fort en d&eacute;finissant une image parlante avec un titre saisissant.</p>
+
+					<!-- DEBUT FORMULAIRE TWIG "NOM DU PROJET" -->
+					<div class="form-group">
+						<label><i class="fa fa-folder-open"></i></label>{{ form_widget(form.nom, {'attr': {'placeholder': 'Nom de votre projet'}}) }}
+					</div>
+					<!-- FIN FORMULAIRE TWIG "NOM DU PROJET" -->
+
+					<!-- DEBUT FORMULAIRE TWIG "IMAGE FOND" -->
+					<div class="form-group">
+						<label><i class="fa fa-picture-o"></i></label>{{ form_widget(form.background, {'attr': {'class': 'filestyle', 'data-buttonText': ''}}) }}
+					</div>
+					<!-- FIN FORMULAIRE SYMFONY "IMAGE FOND" -->
+
+					<ul class="list-inline">
+						<li><button type="button" class="btn btn-primary next-step">Suivant</button></li>
+					</ul>
+				</div>
+
+				{# STEP 2 HISTOIRE #}
+				<div class="tab-pane" role="tabpanel" id="step2">
+					<h3>D&eacute;finissez l'histoire de votre projet</h3>
+					<p>Cr&eacute;er pas à pas la page que les internautes verront pour votre projet :<br>D&eacute;finissez des "blocs d'informations" avec soit du texte, uin lien vid&eacute;o ou encore une image !</p><p>Cela sera toujours plus joli qu'un gros pav&eacute; de texte non ?</p>
+
+
+					<ul class="list-inline">
+						<li><button type="button" class="btn btn-default prev-step">Pr&eacute;c&eacute;dent</button></li>
+						<li><button type="button" class="btn btn-primary next-step">Suivant</button></li>
+					</ul>
+				</div>
+
+				{# STEP 3 TAG #}
+				<div class="tab-pane" role="tabpanel" id="step3">
+					<h3>Des ressources. à volonté.</h3>
+					<p>Définissez ici toutes les ressources dont vous avez besoin pour que votre projet soit une véritable réussite.<br>Soyez le plus précis possible. En effet, chaque ressource doit bien être catégorisée et vous devez préciser la quantité souhaitée.</p>
+
+					<!-- DEBUT FORMULAIRE SYMFONY "BESOINS" -->
+					{{ form_row(form.besoins) }}
+					<!-- FIN FORMULAIRE SYMFONY "BESOINS" -->
+
+					<ul class="list-inline">
+						<li><button type="button" class="btn btn-default prev-step">Pr&eacute;c&eacute;dent</button></li>
+						<li><button type="button" class="btn btn-primary btn-info-full next-step">Suivant</button></li>
+					</ul>
+				</div>
+
+				{# STEP 4 BESOINS #}
+				<div class="tab-pane" role="tabpanel" id="step4">
+					<h3>Des informations. En veux-tu, en voilà.</h3>
+					<p>This is step 4</p>
+
+					<!-- DEBUT FORMULAIRE SYMFONY "TAGS" -->
+					<div class="form-group">
+						<label style="color: #FFF">Tags</label>
+						<div class="checkboxes">
+							{{ form_widget(form.tags) }}
+						</div>
+					</div>
+					<!-- FIN FORMULAIRE SYMFONY "TAGS" -->
+
+					<ul class="list-inline">
+						<li><button type="button" class="btn btn-default prev-step">Pr&eacute;c&eacute;dent</button></li>
+						<li><button type="button" class="btn btn-primary btn-info-full next-step">Suivant</button></li>
+					</ul>
+				</div>
+
+				{# STEP 5 INFOS.SUPP #}
+				<div class="tab-pane" role="tabpanel" id="step5">
+					<h3>Un petit r&eacute;capitulatif.</h3>
+					<p>Avant d'envoyer tous ces gros paquets de données, vérifions ensemble que tout est correct !</p>
+
+					<!-- DEBUT FORMULAIRE SYMFONY "INFOS SUPP." -->
+					{{ form_row(form.infoSup) }}
+					<!-- FIN FORMULAIRE SYMFONY "INFOS SUPP." -->
+
+					<ul class="list-inline">
+						<li><button type="button" class="btn btn-default prev-step">Pr&eacute;c&eacute;dent</button></li>
+						<li><button type="submit" class="btn btn-success btn-info-full next-step">Soumettre mon projet</button></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
 			</div>
-
-			<div class="row step-content" id="step-2">
-				<div class="form-group">
-	                <label><i class="fa fa-picture-o"></i></label>{{ form_widget(form.background, {'attr': {'class': 'filestyle', 'data-buttonText': 'image de fond'}}) }}
-	            </div>
-
-				<a id="activate-step-3" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-chevron-right"></i></a>
-		    </div>
-
-		    <div class="row step-content" id="step-3">
-	  			<div class="form-group">
-	            	<label style="color: #FFF">Tags</label>
-	            	<div class="checkboxes">
-	                {{ form_widget(form.tags) }}
-	            	</div>
-	            </div>
-
-				<a id="activate-step-4" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-chevron-right"></i></a>
-		    </div>
-
-		    <div class="row step-content" id="step-4">
-				{{ form_row(form.besoins) }}
-
-				<a id="activate-step-5" class="btn btn-success btn-lg">Etape suivante <i class="fa fa-chevron-right"></i></a>
-		    </div>
-
-		    <div class="row step-content" id="step-5">
-	            {{ form_row(form.infoSup) }}
-		    	<button type="submit" class="btn btn-success btn-lg"/>Soumettre mon projet</button>
-		    </div>
-		    {{ form_end(form) }}
+			{{ form_end(form) }}
 		</form>
 	</div>
-</div>
+	<!-- FIN BOOTSNIPP NOUVEAU FORMULAIRE AVEC INTEGRATION TWIG DE L'ANCIEN FORMULAIRE -->
 {% endblock %}
 
 {% block javascripts %}
@@ -94,10 +164,49 @@
 	<script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/create_project.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.js') }}"> </script>
-    <script>
-        $(":file").filestyle({input: false});
-        $('.buttonText').text('choisir l\'image de fond du projet');
-        $('.glyphicon-folder-open').hide();
-        $('#fos_user_registration_form_dateCreationAsso').value('');
-    </script>
+	<script>
+	$(":file").filestyle({input: false});
+	$('.buttonText').text('Image couverture du projet');
+	$('.glyphicon-folder-open').hide();
+	$('#fos_user_registration_form_dateCreationAsso').value('');
+	</script>
+	<!-- DEBUT JAVASCRIPT BOOTSNIPP TIMELINE -->
+	<script>
+	$(document).ready(function () {
+	    //Initialize tooltips
+	    $('.nav-tabs > li a[title]').tooltip();
+	    
+	    //Wizard
+	    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+	    	var $target = $(e.target);
+
+	    	if ($target.parent().hasClass('disabled')) {
+	    		return false;
+	    	}
+	    });
+
+	    $(".next-step").click(function (e) {
+
+	    	var $active = $('.wizard .nav-tabs li.active');
+	    	$active.next().removeClass('disabled');
+	    	nextTab($active);
+
+	    });
+	    $(".prev-step").click(function (e) {
+
+	    	var $active = $('.wizard .nav-tabs li.active');
+	    	prevTab($active);
+
+	    });
+	});
+
+	function nextTab(elem) {
+		$(elem).next().find('a[data-toggle="tab"]').click();
+	}
+	function prevTab(elem) {
+		$(elem).prev().find('a[data-toggle="tab"]').click();
+	}
+	</script>
+	<!-- FIN JAVASCRIPT BOOTSNIPP TIMELINE -->
 {% endblock %}
