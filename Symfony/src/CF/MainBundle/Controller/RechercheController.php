@@ -4,6 +4,7 @@ namespace CF\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class RechercheController extends Controller
 {
@@ -28,9 +29,9 @@ class RechercheController extends Controller
 	        $resultats = array();
 
 	        foreach ($motcles as $m) {
-	        	if (strlen($m) > 3) {
+	        	if (strlen($m) > 2) {
 	        		$resultats[] = $em->getRepository('CFMainBundle:Projet')
-	                		->getSearchList($m);
+	                		->getValidateSearch(0,5,$m);
 	        	}
 	        }
 
@@ -60,9 +61,9 @@ class RechercheController extends Controller
     {
         $request = $this->get('request');
         $index = $request->request->get('index');
-        $motcles = $request->request->get('search');
+        $search = $request->request->get('search');
 
-        $motcles = explode(' ', $motcles['recherche']);
+        $motcles = explode(' ', $search);
      
         $em = $this->getDoctrine()
                    ->getEntityManager();
@@ -72,7 +73,7 @@ class RechercheController extends Controller
         foreach ($motcles as $m) {
         	if (strlen($m) > 3) {
         		$resultats[] = $em->getRepository('CFMainBundle:Projet')
-                		->getSearchList($m);
+                		->getValidateSearch($index, 5, $m);
         	}
         }
 
@@ -85,10 +86,7 @@ class RechercheController extends Controller
 
         $recherche = array_unique($recherche);
 
-        $return=array("responseCode"=>200,  "updateProjets"=>$recherche);
-
-        $return=json_encode($recherche);
-        return new Response($return,200,array('Content-Type'=>'application/json'));
+        return new JsonResponse($recherche);
     }
 
 	public function renderSearchAction()

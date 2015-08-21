@@ -15,7 +15,7 @@
 	<h1>Inscription réussie !</h1>
 	<p>Vous pouvez maintenant profiter pleinement de nos services !</p>
 	<a href="{{ path('fos_user_profile_show', { slug : app.user.slug }) }}" class="btn btn-success">Accéder à votre profil<i class="fa fa-user"></i></a>
-	{% if is_granted('ROLE_ASSOCIATION') %}
+	{% if app.user.typeUser == 'Association' %}
 		<a href="{{ path('cf_main_addProjects') }}" class="btn btn-success">Déposer un projet<i class="fa fa-file-text"></i></a>
 	{% else %}
 		<a href="{{ path('cf_main_allProjects') }}" class="btn btn-success">Parcourir les projets<i class="fa fa-file-text"></i></a>

@@ -274,6 +274,9 @@ ul.nav-modal-form > li a:hover, ul.nav-modal-form > li a:active, ul.nav-modal-fo
 .blocs > div h1.bloc-title {
     color: #5C97BF;
 }
+#cf_mainbundle_projet_boxs {
+	display:none;
+}
 /* BOITES DES RESSOURCES */
 .besoin-box > .delete-button {
 	position:absolute;

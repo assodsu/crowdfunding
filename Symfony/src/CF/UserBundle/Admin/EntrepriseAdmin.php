@@ -25,9 +25,9 @@ class EntrepriseAdmin extends Admin
             ->add('twitter')
             ->add('googleplus')
             ->add('dateCreationEntreprise')
-            ->add('roles')
-            ->add('certified', null, array('label' => 'Certifié'))
-            ->add('enabled', null, array('label' => 'Activé'))
+            ->add('roles', null, array('required' => false))
+            ->add('certified', null, array('label' => 'Certifié', 'required' => false))
+            ->add('enabled', null, array('label' => 'Activé', 'required' => false))
         ;
     }
 

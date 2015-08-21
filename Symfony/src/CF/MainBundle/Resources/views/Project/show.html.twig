@@ -230,7 +230,8 @@
 				</div>
 				<div class="project-description">
 					{% if app.user == projet.association %}
-						<div style="margin-bottom: 20px; margin-left:20px;"><a href="{{ path('cf_main_rediger_box', {id: projet.id}) }}" class="btn btn-success">Rédiger une histoire <i class="fa fa-plus"></i></a></div>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalAddBlock">Launch demo modal</button>
+						{{ render(controller('CFMainBundle:Box:rediger', {'id': projet.id })) }}
 					{% endif %}
 
 					{% for box in boxs %}
@@ -256,7 +257,7 @@
 							{% if box.contenu %}
 								<p>{{ box.contenu }}</p>
 							{% elseif box.urlImage %}
-								<div class="imageWrapper"><img src="{{ box.urlImage }}" alt="image" /></div>
+								<div class="imageWrapper"><img src="{{ asset(box.urlImage.AssetPath) }}" alt="image" /></div>
 							{% elseif box.urlVideo %}
 								<div class="videoWrapper"><iframe width="560" height="349" src="{{ box.urlVideo }}" frameborder="0" allowfullscreen></iframe></div>
 							{% endif %}

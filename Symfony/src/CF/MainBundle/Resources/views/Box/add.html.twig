@@ -1,109 +1,36 @@
-{% extends "CFMainBundle::layout.html.twig" %}
-
-{% block title %}
-  	{{ parent() }} - Ajouter une actualité
-{% endblock %}
-
-{% block stylesheets %}
-	{{ parent() }}
-	<link href="{{asset('css/style_show.css')}}" rel="stylesheet"/>
-	<style>
-		body { margin-top: 70px; }
-	</style>
-{% endblock %}
-
-{% block body %}
-	<div class="row">
-		<div class="col-md-12">&nbsp;<a href="{{ path('cf_main_project', {'slug': projet.slug}) }}" class="btn btn-default"><i class="fa fa-chevron-left"></i> Retour au projet</a><br /><br /></div>
-	</div>
-	<div class="tab-box full form-submit-actu">
-		<form action="" method="post">
-			<ul class="nav nav-pills">
-			  <li role="presentation" class="texte active"><a href="#">Texte</a></li>
-			  <li role="presentation" class="image"><a href="#">Image</a></li>
-			  <li role="presentation" class="video"><a href="#">Video</a></li>
+<div class="modal fade" id="modalAddBlock" tabindex="-1" role="dialog" aria-labelledby="modalAddBlockLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form action="{{ path('cf_main_rediger_box', { id : projet.id } )}}" method="post" {{ form_enctype(form) }}>
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="modalAddBlockLabel">Ajouter un bloc</h4>
+	        {{ form_row(form.titre) }}
+	      </div>
+	      <div class="modal-body">
+	      <ul class="nav-modal-form">
+			  <li class="texte active"><a href="#form-texte">Texte</a></li>
+			  <li class="image"><a href="#form-image">Image</a></li>
+			  <li class="video"><a href="#form-video">Video</a></li>
 			</ul>
 
-			{{ form_row(form.titre) }}
-			<div id="form-texte">
+			<div class="form-choice-box" id="form-texte">
 				{{ form_row(form.contenu) }}
 			</div>
-			<div id="form-image">
+			<div class="form-choice-box" id="form-image">
 				{{ form_row(form.urlImage) }}
 			</div>
-			<div id="form-video">
+			<div class="form-choice-box" id="form-video">
 				{{ form_row(form.urlVideo) }}
 			</div>
-			{{ form_row(form.fullWidth) }}
-
-			{{ form_rest(form) }}
-
-			<button type="submit" class="btn btn-success btn-submit-actu">Publier</button>
-		</form>
-	</div>
-{% endblock body %}
-
-{% block javascripts %}
-	{{ parent() }}
-	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
-	<script type="text/javascript">
-
-		function removeClassActiveNavPills() {
-			$('.nav-pills li').each(function() {
-				$(this).removeClass('active');
-			});
-		}
-
-		function hideTexteImageVideo() {
-			$('#form-texte').hide();
-			$('#form-image').hide();
-			$('#form-video').hide();
-		}
-
-		function emptyTexteImageVideo() {
-			$('#cf_mainbundle_box_contenu').val('');
-			$('#cf_mainbundle_box_urlImage').val('');
-			$('#cf_mainbundle_box_urlVideo').val('');
-		}
-
-		$contenu = $('#cf_mainbundle_box_contenu').val();
-		$image = $('#cf_mainbundle_box_urlImage').val();
-		$video = $('#cf_mainbundle_box_urlVideo').val();
-
-		hideTexteImageVideo();
-		$('#form-texte').show();
-
-		$('.nav-pills li').on('click', function() {
-			removeClassActiveNavPills();
-			$(this).addClass('active');
-
-			if ($(this).hasClass('texte')) {
-				hideTexteImageVideo();
-				$('#form-texte').show();
-				emptyTexteImageVideo();
-			} else if ($(this).hasClass('image')) {
-				hideTexteImageVideo();
-				$('#form-image').show();
-				emptyTexteImageVideo();
-			} else if ($(this).hasClass('video')) {
-				hideTexteImageVideo();
-				$('#form-video').show();
-				emptyTexteImageVideo();
-			}
-		});
-
-		{% if editer is defined %}
-			if ($('#cf_mainbundle_box_contenu').val() == '' && $('#cf_mainbundle_box_urlImage').val() == '') {
-				$('.nav-pills li.video').trigger('click');
-				$('#cf_mainbundle_box_urlVideo').val($video);
-			} else if ($('#cf_mainbundle_box_urlVideo').val() == '' && $('#cf_mainbundle_box_urlImage').val() == '') {
-				$('.nav-pills li.contenu').trigger('click');
-				$('#cf_mainbundle_box_contenu').val($contenu);
-			} else if ($('#cf_mainbundle_box_contenu').val() == '' && $('#cf_mainbundle_box_urlVideo').val() == '') {
-				$('.nav-pills li.image').trigger('click');
-				$('#cf_mainbundle_box_urlImage').val($image);
-			}
-		{% endif %}
-    </script>
-	<script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-{% endblock %}
+	      </div>
+	      <div class="modal-footer">
+	      	<div class="radio-width" id="radio-width-box">
+	      		{{ form_row(form.fullWidth) }}
+	      	</div>
+	        <button type="submit" class="btn btn-success" id="button-validation-modal">Insérer le bloc</button>
+	      </div>
+	    </form>
+    </div>
+  </div>
+</div>

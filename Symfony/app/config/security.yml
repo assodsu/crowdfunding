@@ -3,24 +3,12 @@ imports:
 
 security:
     role_hierarchy:
-        ROLE_ASSOCIATION: 
-            - ROLE_USER
-        ROLE_ENTREPRISE:  
-            - ROLE_USER
-        ROLE_BENEVOLE:    
-            - ROLE_USER
         ROLE_ADMIN:       
             - ROLE_USER
-            - ROLE_BENEVOLE
-            - ROLE_ENTREPRISE
-            - ROLE_ASSOCIATION
             - ROLE_SONATA_ADMIN
         ROLE_SUPER_ADMIN: 
             - ROLE_USER
             - ROLE_ADMIN
-            - ROLE_BENEVOLE
-            - ROLE_ENTREPRISE
-            - ROLE_ASSOCIATION
             - ROLE_SONATA_ADMIN
 
     access_control:
@@ -29,5 +17,4 @@ security:
         - { path: ^/profil/voir/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/profil/, role: IS_AUTHENTICATED_REMEMBERED }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/projet/creer/, role: ROLE_ASSOCIATION}
         - { path: ^/admin/, role: ROLE_ADMIN }

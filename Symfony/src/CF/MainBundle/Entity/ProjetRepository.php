@@ -68,6 +68,22 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function getValidateSearch($index, $nb, $motcle)
+    {
+        $qb = $this->createQueryBuilder('p');
+         
+        $qb->leftJoin('p.association', 'a')
+           ->leftJoin('p.tags', 't')
+           ->where('p.valider = 1 AND (p.nom LIKE :motcle OR a.ville LIKE :motcle OR t.nom LIKE :motcle)')
+           ->setParameter('motcle', '%'.$motcle.'%')
+           ->orderBy('p.dateCreation','DESC')
+           ->setFirstResult($index)
+           ->setMaxResults($nb)
+        ;
+                 
+        return $qb->getQuery()->getResult();
+    }
+
     public function getProjetsProfilEnCours($user)
     {
         $qb = $this->createQueryBuilder('p');

@@ -20,7 +20,6 @@ class Entreprise extends User
 
         $this->setTypeUser('Entreprise');
         $this->setUsername(uniqid());
-        $this->setRoles(array('ROLE_ENTREPRISE'));
         $this->setCertified(false);
         $this->dateCreationEntreprise = new \Datetime();
     }

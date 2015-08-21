@@ -17,11 +17,11 @@ class BoxType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre','text', array('label' => 'Titre','required'  => false, 'attr' => array('class' => 'form-control')))
-            ->add('contenu','textarea', array('label' => 'Contenu','required'  => false,'attr' => array('class' => 'form-control', 'rows' => '5')))
-            ->add('urlImage',new MediaType(), array('label' => 'Url image','required'  => false, 'attr' => array('class' => 'form-control')))
-            ->add('urlVideo','text', array('label' => 'Url vidéo','required'  => false, 'attr' => array('class' => 'form-control')))
-            ->add('fullWidth', 'checkbox', array('label' => 'Souhaitez-vous un seul bloc sur la ligne ?','required'  => false,'attr' => array('class' => 'form-control box-width')))
+            ->add('titre','text', array('label' => false,'required'  => false))
+            ->add('contenu','textarea', array('label' => false,'required'  => false))
+            ->add('urlImage',new MediaType(), array('label' => false,'required'  => false))
+            ->add('urlVideo','text', array('label' => false,'required'  => false))
+            ->add('fullWidth', 'choice', array('label' => false, 'expanded' => true,'choices' => array('0' => '1 colonne', '1' => '2 colonnes')))
         ;
     }
     

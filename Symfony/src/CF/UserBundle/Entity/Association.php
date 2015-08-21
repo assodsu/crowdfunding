@@ -21,7 +21,6 @@ class Association extends User
 
         $this->setTypeUser('Association');
         $this->setUsername(uniqid());
-        $this->setRoles(array('ROLE_ASSOCIATION'));
         $this->setCertified(false);
         $this->dateCreationAsso = new \Datetime();
     }

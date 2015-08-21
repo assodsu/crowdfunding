@@ -800,6 +800,17 @@ class Projet implements JsonSerializable
     {
         $this->valider = $valider;
 
+        if($valider == true)
+        {
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Votre projet a été validé !')
+                ->setFrom('noreply@coceptio.fr')
+                ->setTo($this->getAssociation()->getEmail())
+                ->setBody($this->renderView('CFMainBundle:Project:email.txt.twig', array('projet' => $this)))
+            ;
+            $this->get('mailer')->send($message);
+        }
+
         return $this;
     }
 

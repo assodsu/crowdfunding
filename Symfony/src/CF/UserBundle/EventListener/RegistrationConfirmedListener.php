@@ -25,7 +25,7 @@ class RegistrationConfirmedListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-                FOSUserEvents::REGISTRATION_CONFIRM => 'onRegistrationConfirm'
+                FOSUserEvents::REGISTRATION_CONFIRM => 'onRegistrationConfirmed'
         );
     }
 

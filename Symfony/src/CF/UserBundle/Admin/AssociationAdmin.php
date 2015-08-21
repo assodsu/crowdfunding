@@ -26,11 +26,11 @@ class AssociationAdmin extends Admin
             ->add('googleplus')
             ->add('dateCreationAsso')
             ->add('descriptionAsso')
-            ->add('roles')
+            ->add('roles', null, array('required' => false))
             ->add('badges')
             ->add('projetsSuivis')
-            ->add('certified', null, array('label' => 'Certifié'))
-            ->add('enabled', null, array('label' => 'Activé'))
+            ->add('certified', null, array('label' => 'Certifié', 'required' => false))
+            ->add('enabled', null, array('label' => 'Activé', 'required' => false))
         ;
     }
 

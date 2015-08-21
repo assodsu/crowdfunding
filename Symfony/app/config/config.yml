@@ -87,6 +87,9 @@ fos_user:
     user_class: CF\UserBundle\Entity\User
     service:
         user_manager: pugx_user_manager
+    registration:
+        confirmation:
+            enabled:    true
 
 sonata_block:
     default_contexts: [cms]

@@ -4,8 +4,8 @@ namespace CF\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use CF\MainBundle\Entity\Projet;
 use CF\MainBundle\Form\ProjetType;
 use CF\MainBundle\Form\ProjetEditType;
@@ -49,10 +49,7 @@ class ProjectController extends Controller
 
         $updateProjets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate($index, 5);
 
-        $return=array("responseCode"=>200,  "updateProjets"=>$updateProjets);
-
-        $return=json_encode($updateProjets);
-        return new Response($return,200,array('Content-Type'=>'application/json'));
+        return new JsonResponse($updateProjets);
     }
 
     public function addAction(Request $request)
@@ -62,7 +59,7 @@ class ProjectController extends Controller
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
-        if (!$this->get('security.context')->isGranted('ROLE_ASSOCIATION')) {
+        if (!$this->get('security.context')->getToken()->getUser()->getTypeUser() == 'Association') {
             $this->get('session')->getFlashBag()->add('warning', 'Vous devez être obligatoirement authentifié sur le site en tant qu\'association pour pouvoir déposer un projet.');
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
