@@ -37,7 +37,7 @@ $(document).ready(function() {
 		$lienSuppression = $('<a href="#" class="delete-button"><span class="glyphicon glyphicon-remove"></span></a>');
 		$boite = $('<div class="besoin-box green" id="box-'+indexBesoin+'"></div>');
 		$boite.append($lienSuppression);
-		$boite.append('<div class="header-besoin-box"><span class="glyphicon glyphicon-user"></span></div>');
+		$boite.append('<div class="header-besoin-box"><span class="fa fa-users"></span></div>');
 		$($prototype.children('div#cf_mainbundle_projet_besoins_'+indexBesoin)).appendTo($boite);
 		$prototype.append($boite);
 
@@ -59,7 +59,7 @@ $(document).ready(function() {
 		if($(this).val() == 'benevole')
 		{
 			newColor = "green";
-			icon = "user";
+			icon = "users";
 		}
 		else if($(this).val() == 'financier')
 		{
@@ -69,14 +69,14 @@ $(document).ready(function() {
 		else if($(this).val() == 'materiel')
 		{
 			newColor = "purple";
-			icon = "tag";
+			icon = "cube";
 		}
 		else if($(this).val() == 'communication')
 		{
 			newColor = "grey";
 			icon = "tag";
 		}
-		$('#box-'+index).children('div.header-besoin-box').children('span').attr('class', "glyphicon glyphicon-"+icon);
+		$('#box-'+index).children('div.header-besoin-box').children('span').attr('class', "fa fa-"+icon);
 		$('#box-'+index).attr('class', "besoin-box "+newColor);
     });
 

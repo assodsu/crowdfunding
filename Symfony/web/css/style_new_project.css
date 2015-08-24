@@ -365,17 +365,18 @@
 	color:red;
 }
 
-/* AJOUT BOITE RESSOURCES */
+/* AJOUT DE RESSOURCES BOX */
 #add-besoin-box {
-	font-size: 130pt;
-	font-weight: 100;
-	vertical-align: middle;
-	line-height: 220px;
-	text-align: center;
-  	background: none;
+    font-size: 10em;
+    font-weight: 100;
+    vertical-align: middle;
+    line-height: 220px;
+    text-align: center;
+    background: none;
+    border: 1px dashed whitesmoke;
 }
 #add-besoin-box > a {
-	color:#5d5d5d;
+	color: whitesmoke;
  	text-decoration: none;
 }
 #add-besoin-box > a:hover {
