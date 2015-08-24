@@ -205,9 +205,14 @@ border-radius: 0px;
 	}
 }
 /* BLOCS HISTOIRE MODAL */
-#modalForm .modal-title, #modalEditForm .modal-title, {
+#modalForm .modal-title, #modalEditForm .modal-title {
 	font-size: 35px;
     margin-bottom: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 8px;
+    color: #fff;
 }
 #modalForm .modal-header, #modalEditForm .modal-header {
     background: #2374A9;
@@ -219,6 +224,9 @@ border-radius: 0px;
     font-size: 20px;
     width: 75%;
     border-radius: 5px;
+}
+.radio-width label {
+    margin: 0 10px;
 }
 ul.nav-modal-form {
     list-style: none;

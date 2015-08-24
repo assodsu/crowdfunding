@@ -630,7 +630,7 @@ textarea {
 .project-background a:hover {
 	text-decoration: none;
 }
-.percentage, .time-remaining, .discover {
+.project-list .percentage, .project-list .time-remaining, .project-list .discover {
 	font-size: 14px;
     width: 30%;
     margin: 5px;

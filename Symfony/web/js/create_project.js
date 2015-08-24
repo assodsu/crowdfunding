@@ -51,7 +51,8 @@ $(document).ready(function() {
 	$(document).on('change', '.body-besoin', function(){
 
 		var index = $(this).attr('id');
-		index = jQuery.trim(index).substring(29, 30);
+		index = index.slice(0, -5);
+		index = index.slice(29, index.length);
 
 		var newColor = "";
 		var icon = "";
@@ -152,13 +153,15 @@ $(document).ready(function() {
 				$widthBox = '';
 				if($('#radio-width-box input[name=box-width]:checked').val() == 0)
 				{
-					$('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_fullWidth').prop('checked', false);
+					$('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_fullWidth input[name="cf_mainbundle_projet[boxs]['+(indexBox-1)+'][fullWidth]"][value="0"]').prop('checked', true);
 				}
 				else
 				{
-					$('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_fullWidth').prop('checked', true);
+					$('#cf_mainbundle_projet_boxs_'+(indexBox-1)+'_fullWidth input[name="cf_mainbundle_projet[boxs]['+(indexBox-1)+'][fullWidth]"][value="1"]').prop('checked', true);
 					$widthBox = ' large';
 				}
+
+				console.log($('#radio-width-box input[name=box-width]:checked').val());
 
 				$('#modalForm').modal('hide');
 

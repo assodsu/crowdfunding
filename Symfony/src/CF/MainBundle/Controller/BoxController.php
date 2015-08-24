@@ -63,7 +63,6 @@ class BoxController extends Controller
 
         if($request->getMethod() == 'POST')
         {
-            
             $form->bind($request);
             if($form->isValid())
             {
@@ -77,7 +76,7 @@ class BoxController extends Controller
             return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $box->getProjet()->getSlug())));
         }
 
-        return $this->render('CFMainBundle:Box:add.html.twig', array('editer' => true, 'form' => $form->createView(), 'projet' => $box->getProjet()));
+        return $this->render('CFMainBundle:Box:edit.html.twig', array('form' => $form->createView(), 'box' => $box));
     }
 
     public function supprimerAction(Request $request, Box $box) {
@@ -108,9 +107,6 @@ class BoxController extends Controller
         }
          
         // Affichage de la confirmation de suppression
-        return $this->render('CFMainBundle:Box:supprimer.html.twig', 
-                 array(
-                       'form' => $form->createView()
-                       ));
+        return $this->render('CFMainBundle:Box:supprimer.html.twig', array('form' => $form->createView(), 'box' => $box));
     }
 }

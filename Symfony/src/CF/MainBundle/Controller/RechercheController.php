@@ -27,11 +27,11 @@ class RechercheController extends Controller
 	                   ->getEntityManager();
 
 	        $resultats = array();
+	        $resultats = $em->getRepository('CFMainBundle:Projet')->getValidateSearch(0,5,array_values($motcles)[0]);
 
-	        foreach ($motcles as $m) {
+	        foreach ($motcles as $key => $m) {
 	        	if (strlen($m) > 2) {
-	        		$resultats[] = $em->getRepository('CFMainBundle:Projet')
-	                		->getValidateSearch(0,5,$m);
+	        		$resultats[] = array_intersect($resultats, $em->getRepository('CFMainBundle:Projet')->getValidateSearch(0,5,$m));
 	        	}
 	        }
 
