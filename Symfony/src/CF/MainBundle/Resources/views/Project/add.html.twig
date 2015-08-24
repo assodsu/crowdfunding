@@ -120,16 +120,19 @@
 				{# STEP 4 BESOINS #}
 				<div class="tab-pane" role="tabpanel" id="step4">
 					<h3>Des informations. En veux-tu, en voilà.</h3>
-					<p>This is step 4</p>
+					<p>Maintenant, dites-nous comment vous catégoriseriez (on ne l'entend pas souvent celui là dis donc) votre projet.<br>Et pour finir, toutes les informations utiles pour vous contacter en cas de questions</p>
 
 					<!-- DEBUT FORMULAIRE SYMFONY "TAGS" -->
 					<div class="form-group">
-						<label style="color: #FFF">Tags</label>
 						<div class="checkboxes">
 							{{ form_widget(form.tags) }}
 						</div>
 					</div>
 					<!-- FIN FORMULAIRE SYMFONY "TAGS" -->
+
+					<!-- DEBUT FORMULAIRE SYMFONY "INFOS SUPP." -->
+					{{ form_row(form.infoSup) }}
+					<!-- FIN FORMULAIRE SYMFONY "INFOS SUPP." -->
 
 					<ul class="list-inline">
 						<li><button type="button" class="btn btn-default prev-step">Pr&eacute;c&eacute;dent</button></li>
@@ -142,13 +145,10 @@
 					<h3>Un petit r&eacute;capitulatif.</h3>
 					<p>Avant d'envoyer tous ces gros paquets de données, vérifions ensemble que tout est correct !</p>
 
-					<!-- DEBUT FORMULAIRE SYMFONY "INFOS SUPP." -->
-					{{ form_row(form.infoSup) }}
-					<!-- FIN FORMULAIRE SYMFONY "INFOS SUPP." -->
 
 					<ul class="list-inline">
 						<li><button type="button" class="btn btn-default prev-step">Pr&eacute;c&eacute;dent</button></li>
-						<li><button type="submit" class="btn btn-success btn-info-full next-step">Soumettre mon projet</button></li>
+						<li><button type="submit" class="btn btn-success btn-info-full">Soumettre mon projet</button></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
