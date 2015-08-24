@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use CF\MainBundle\Form\MediaType;
+
 class BoxType extends AbstractType
 {
     /**
@@ -15,12 +17,11 @@ class BoxType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre','text', array('label' => 'Titre', 'attr' => array('class' => 'form-control')))
-            ->add('contenu','textarea', array('label' => 'Contenu','attr' => array('class' => 'form-control', 'rows' => '5')))
-            ->add('urlImage','text', array('label' => 'Url image', 'attr' => array('class' => 'form-control')))
-            ->add('urlVideo','text', array('label' => 'Url vidéo', 'attr' => array('class' => 'form-control')))
-            ->add('fullWidth', 'checkbox', array('label' => 'Souhaitez-vous un seul bloc sur la ligne ?','attr' => array('class' => 'form-control box-width')))
-            ->add('ordre',null, array('label' => 'Ordre','attr' => array('class' => 'form-control box-order')))
+            ->add('titre','text', array('label' => false, 'attr' => array('placeholder' => 'Titre du bloc')))
+            ->add('contenu','textarea', array('label' => false,'required'  => false, 'attr' => array('class' => 'ckeditor')))
+            ->add('urlImage',new MediaType(), array('label' => false,'required'  => false))
+            ->add('urlVideo','text', array('label' => false,'required'  => false, 'attr' => array('placeholder' => 'Entrez l\'url de la vidéo (ex : http://youtube.com/watch?v=code)')))
+            ->add('fullWidth', 'choice', array('label' => false,'expanded' => true,'choices' => array('0' => '1 colonne', '1' => '2 colonnes')))
         ;
     }
     

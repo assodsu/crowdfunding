@@ -204,72 +204,6 @@
 	color: #FFF;
 }
 
-#boites {
-	text-align: left;
-	background-color: rgb(66, 139, 202);
-	padding: 20px;
-	border: 1px solid;
-}
-#cf_mainbundle_projet_boxs > div {
-	width: calc(50% - 10px);
-	height:auto;
-	margin:5px;
-	display:inline-block;
-	padding:10px;
-	border: 5px solid rgb(37, 116, 169);
-	background: #fff;
-	color: #000;
-	border-radius: 5px;
-	position: relative;
-  	min-height: 370px;
-}
-#cf_mainbundle_projet_boxs > div > div {
-	position: absolute;
-	width: calc(100% - 20px);
-	margin-top: 25px;
-}
-#cf_mainbundle_projet_boxs > div > div > div:nth-child(3),
-#cf_mainbundle_projet_boxs > div > div > div:nth-child(4) {
-	width:50%;
-	display: inline-block;
-}
-#cf_mainbundle_projet_boxs .box-order {
-	display: inline-block;
-	width: 50% !important;
-	margin-left: 10px;
-	vertical-align: top;
-}
-#cf_mainbundle_projet_boxs .form-control {
-	width: 100%;
-	background: none;
-	border: 3px solid #2574A9;
-	color: #2574A9;
-}
-#cf_mainbundle_projet_boxs input[type="checkbox"] {
-  width: 20px;
-  margin-left: 10px;
-  display: inline-block;
-  vertical-align: top;
-}
-#cf_mainbundle_projet_boxs > div > label {
-	display:none;
-}
-#ajout_box {
-  height: 370px;
-  line-height: 75px;
-  width: calc(50% - 10px);
-  margin: 5px;
-  vertical-align: top;
-  padding-top: 145px;
-  background: #2574A9;
-}
-#ajout_box > i {
-  font-size: 90px;
-  vertical-align: middle;
-}
-#ajout_box:hover {
-	background:#9BC4DF;
-}
 .delete-button {
 	position: absolute;
 	right: 10;
@@ -294,6 +228,87 @@
 	#ajout_box {
 	  width: 100%;
 	}
+}
+/* BLOCS HISTOIRE MODAL */
+#modalForm .modal-title, #modalEditForm .modal-title {
+	font-size: 35px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 8px;
+    color: #fff;
+}
+#modalForm .modal-header, #modalEditForm .modal-header {
+    background: #2374A9;
+}
+#modalForm .modal-header input[type="text"], #modalEditForm .modal-header input[type="text"] {
+	background: none;
+    border: 2px solid white;
+    padding: 10px;
+    font-size: 20px;
+    width: 75%;
+    border-radius: 5px;
+}
+.radio-width label {
+    margin: 0 10px;
+}
+ul.nav-modal-form {
+    list-style: none;
+    padding: 0;
+}
+ul.nav-modal-form > li {
+    display: inline-block;
+    margin: 0px 70px;
+    padding: 0 5px;
+    vertical-align: top;
+}
+ul.nav-modal-form > li.active {
+    border-bottom:2px solid #eee;
+}
+ul.nav-modal-form > li a:hover, ul.nav-modal-form > li a:active, ul.nav-modal-form > li a:focus {
+    text-decoration: none;
+}
+#modalForm #form-video input, #modalEditForm #video-edit-form {
+	border-radius: 5px;
+    border: 2px solid #FFFFFF;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    color: black;
+}
+#modalForm .modal-body, #modalEditForm .modal-body {
+	background:#D8D8D8;
+}
+#modalForm .modal-footer, #modalEditForm .modal-footer {
+    background: #272E35;
+    text-align: center;
+}
+.blocs > div {
+    width: calc(50% - 50px);
+    background: white;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 20px;
+    box-shadow: 5px 6px 10px black;
+}
+.blocs > div.large {
+    width: calc(100% - 50px);
+}
+.blocs > div .bloc-head {
+    background: #CECECE;
+    border-radius: 5px 5px 0 0;
+}
+.blocs > div .bloc-head i {
+    font-size: 80px;
+    margin: 10px 0;
+    color: #5C97BF;
+}
+.blocs > div h1.bloc-title {
+    color: #5C97BF;
+}
+#cf_mainbundle_projet_boxs {
+	display:none;
 }
 /* BOITES DES RESSOURCES */
 .besoin-box > .delete-button {

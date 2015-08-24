@@ -444,3 +444,63 @@
 		height:640px;
 	}
 }
+
+/* BLOCS HISTOIRE MODAL */
+.modalBlock .modal-title {
+	font-size: 35px;
+    margin-bottom: 10px;
+}
+.modalBlock .modal-header {
+    background: #2374A9;
+    text-align: center;
+}
+#cf_mainbundle_box_fullWidth label {
+	 color: #fff;
+    padding-right: 20px;
+}
+#btn-add-block {
+	display:block;
+    margin: 0 20px;
+    margin-bottom: 20px;
+}
+.modalBlock .modal-header input[type="text"] {
+	background: none;
+    border: 2px solid white;
+    padding: 10px;
+    font-size: 20px;
+    width: 75%;
+    border-radius: 5px;
+    color: #fff;
+}
+.modalBlock ul {
+    list-style: none;
+    padding: 0;
+}
+.modalBlock ul > li {
+    display: inline-block;
+    margin: 0px 70px;
+    padding: 0 5px;
+    vertical-align: top;
+}
+.modalBlock ul > li.active {
+    border-bottom:2px solid #eee;
+}
+.modalBlock ul > li a:hover, .modalBlock ul > li a:active, .modalBlock ul > li a:focus {
+    text-decoration: none;
+}
+.modalBlock #form-video input, #cf_mainbundle_box_urlVideo {
+	border-radius: 5px;
+    border: 2px solid #FFFFFF;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    color: black;
+}
+.modalBlock .modal-body {
+	background:#D8D8D8;
+    padding: 15px;
+}
+.modalBlock .modal-footer {
+    background: #272E35;
+    text-align: center;
+}

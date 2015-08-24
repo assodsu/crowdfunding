@@ -60,7 +60,23 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this->createQueryBuilder('p');
          
         $qb->where('p.valider = true')
-           ->orderBy('p.dateCreation', 'DESC')
+           ->orderBy('p.dateCreation','DESC')
+           ->setFirstResult($index)
+           ->setMaxResults($nb)
+        ;
+                 
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getValidateSearch($index, $nb, $motcle)
+    {
+        $qb = $this->createQueryBuilder('p');
+         
+        $qb->leftJoin('p.association', 'a')
+           ->leftJoin('p.tags', 't')
+           ->where('p.valider = 1 AND (p.nom LIKE :motcle OR a.ville LIKE :motcle OR t.nom LIKE :motcle)')
+           ->setParameter('motcle', '%'.$motcle.'%')
+           ->orderBy('p.dateCreation','DESC')
            ->setFirstResult($index)
            ->setMaxResults($nb)
         ;

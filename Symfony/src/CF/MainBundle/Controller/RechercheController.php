@@ -4,6 +4,7 @@ namespace CF\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class RechercheController extends Controller
 {
@@ -26,11 +27,11 @@ class RechercheController extends Controller
 	                   ->getEntityManager();
 
 	        $resultats = array();
+	        $resultats = $em->getRepository('CFMainBundle:Projet')->getValidateSearch(0,5,array_values($motcles)[0]);
 
-	        foreach ($motcles as $m) {
-	        	if (strlen($m) > 3) {
-	        		$resultats[] = $em->getRepository('CFMainBundle:Projet')
-	                		->getSearchList($m);
+	        foreach ($motcles as $key => $m) {
+	        	if (strlen($m) > 2) {
+	        		$resultats[] = array_intersect($resultats, $em->getRepository('CFMainBundle:Projet')->getValidateSearch(0,5,$m));
 	        	}
 	        }
 
@@ -55,6 +56,38 @@ class RechercheController extends Controller
 		$all = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findAll();
         return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$all,'categories'=>'All', 'selecteurs' => $selecteurs));
 	}
+
+    public function updateSearchAction()
+    {
+        $request = $this->get('request');
+        $index = $request->request->get('index');
+        $search = $request->request->get('search');
+
+        $motcles = explode(' ', $search);
+     
+        $em = $this->getDoctrine()
+                   ->getEntityManager();
+
+        $resultats = array();
+
+        foreach ($motcles as $m) {
+        	if (strlen($m) > 3) {
+        		$resultats[] = $em->getRepository('CFMainBundle:Projet')
+                		->getValidateSearch($index, 5, $m);
+        	}
+        }
+
+        $recherche = array();
+        foreach ($resultats as $resultat) {
+        	foreach ($resultat as $r) {
+        		$recherche[] = $r;
+        	}
+        }
+
+        $recherche = array_unique($recherche);
+
+        return new JsonResponse($recherche);
+    }
 
 	public function renderSearchAction()
 	{

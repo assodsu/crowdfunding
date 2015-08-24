@@ -188,80 +188,155 @@
 
         		$('#content').append('<div class="loading"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
 
-        		var params = 'index='+$('#content > a').length;
+        		if($('#search-bar input').val() == 0)
+        		{
+        			var params = 'index='+($('#content > a').length);
 
-	            $.ajax({
-	                url: '../projets/tous/update',
-	                type: 'POST',
-	                data: params,
-	                success: function(data) {
+		            $.ajax({
+		                url: '../projets/tous/update',
+		                type: 'POST',
+		                data: params,
+		                success: function(data) {
 
-                        $('.loading').remove();
+	                        $('.loading').remove();
 
-                        load = false;
+	                        load = false;
 
-	                    if(data) {
-	                    	var taille = data.length;
-							for(i=0;i<taille;i++)
-							{
+		                    if(data) {
+		                    	var taille = data.length;
+								for(i=0;i<taille;i++)
+								{
+									var pourcentage = Math.round(((data[i].nbActuHumain + data[i].nbActuMateriel + data[i].nbActuComm + data[i].nbActuFinancier)/data[i].nbRessources)*100);
 
-                   				console.log(data[i]);
+									var imagePath = "../../"+data[i].background;
 
-								var pourcentage = Math.round(((data[i].nbActuHumain + data[i].nbActuMateriel + data[i].nbActuComm + data[i].nbActuFinancier)/data[i].nbRessources)*100);
+								    var start_actual_time = new Date($.now());
+								    var end_actual_time = new Date(data[i].dateFin.date);
 
-								var imagePath = "../../"+data[i].background;
+								    var diff = end_actual_time - start_actual_time;
 
-							    var start_actual_time = new Date($.now());
-							    var end_actual_time = new Date(data[i].dateFin.date);
+								    var minutes = Math.round(diff/1000/60);
+								    var hours = Math.round(minutes/60);
+								    var days = Math.round(hours/24);
 
-							    var diff = end_actual_time - start_actual_time;
+								    var dateFin = "";
 
-							    var minutes = Math.round(diff/1000/60);
-							    var hours = Math.round(minutes/60);
-							    var days = Math.round(hours/24);
+								    if (minutes > 0) {
+								    	dateFin = "Temps restant : ";
+								    	if (days > 1) {
+								    		dateFin += days + " jours";
+								    	}
+								    	else if (days == 1) {
+								    		dateFin += days + " jour";
+								    	}
+								    	else {
+								    		if(hours > 1) {
+								    			dateFin += hours + " heures";
+								    		}
+								    		else if (hours == 1) {
+								    			dateFin += hours + " heure";
+								    		}
+								    		else {
+								    			if(minutes > 0) {
+								    				dateFin += minutes + " minutes";
+								    			}
+								    		}
+								    	}
+								    }
+								    else {
+								    	dateFin = "Projet terminé";
+								    }
 
-							    var dateFin = "";
+								    var projectTags = '';
 
-							    if (minutes > 0) {
-							    	dateFin = "Temps restant : ";
-							    	if (days > 1) {
-							    		dateFin += days + " jours";
-							    	}
-							    	else if (days == 1) {
-							    		dateFin += days + " jour";
-							    	}
-							    	else {
-							    		if(hours > 1) {
-							    			dateFin += hours + " heures";
-							    		}
-							    		else if (hours == 1) {
-							    			dateFin += hours + " heure";
-							    		}
-							    		else {
-							    			if(minutes > 0) {
-							    				dateFin += minutes + " minutes";
-							    			}
-							    		}
-							    	}
-							    }
-							    else {
-							    	dateFin = "Projet terminé";
-							    }
+								    for (var j = 0; j < data[i].tags.length; j++) {
+								    	projectTags += '<li class="tag-'+data[i].tags[j].id+'">'+data[i].tags[j].nom+'</li>';
+								 		$('.tags-style').append('.tag-'+data[i].tags[j].id+' {background: '+data[i].tags[j].couleur+' !important; }.tag-'+data[i].tags[j].id+'::before {border-color: transparent '+data[i].tags[j].couleur+' transparent transparent !important;}');
+								    };
 
-							    var projectTags = '';
+									$('#content').append('<a href="../projet/voir/'+data[i].slug+'" class="project"><div  id="project-'+data[i].id+'" class="apercu"><div  style="background: url('+imagePath+') 50% 50%; background-size:cover;" class="project-background"></div><div class="filter"></div><div class="project-title">'+data[i].nom+'</div><div class="time-remaining"><i class="fa fa-clock-o"></i> '+dateFin+'</div><ul class="project-tags">'+projectTags+'</ul><div class="chart"><svg height="105" width="105"><circle cx="52.5" cy="52.5" r="45" fill="#34495E" /></svg><div class="pie-content"><div class="percentage">'+pourcentage+'%</div><div class="name">ressources</br>collectées</div></div><ul class="pie"><li class="visualize ressource-materiel" data-color="#a66abe" data-value="'+(data[i].nbActuMateriel / data[i].nbRessources)*100+'"></li><li class="visualize ressource-financiere" data-color="#ea5f50" data-value="'+(data[i].nbActuFinancier / data[i].nbRessources)*100+'"></li><li class="visualize" data-value="'+Math.round((100-(data[i].nbActuMateriel / data[i].nbRessources)*100 - (data[i].nbActuFinancier / data[i].nbRessources )*100 - (data[i].nbActuHumain / data[i].nbRessources )*100 - (data[i].nbActuComm / data[i].nbRessources )*100))+'" data-color="rgba(0,0,0,0)"></li><li class="visualize ressource-humain" data-color="#70d48d" data-value="'+(data[i].nbActuHumain / data[i].nbRessources)*100+'"></li><li class="visualize ressource-info" data-color="#99a5af" data-value="'+(data[i].nbActuComm / data[i].nbRessources)*100+'"></li></ul></div></div></a>');
 
-							    for (var j = 0; j < data[i].tags.length; j++) {
-							    	projectTags += '<li class="tag-'+data[i].tags[j].id+'">'+data[i].tags[j].nom+'</li>';
-							 		$('.tags-style').append('.tag-'+data[i].tags[j].id+' {background: '+data[i].tags[j].couleur+' !important; }.tag-'+data[i].tags[j].id+'::before {border-color: transparent '+data[i].tags[j].couleur+' transparent transparent !important;}');
-							    };
+									updateProjects();
+								}
+		                    }
+		                }
+		            });
+        		}
+        		else
+        		{
+        			var params = 'index='+($('#content > a').length)+'&search='+$('#search-bar input').val();
 
-								$('#content').append('<a href="../projet/voir/'+data[i].slug+'" class="project"><div  id="project-'+data[i].id+'" class="apercu"><div  style="background: url('+imagePath+') 50% 50%; background-size:cover;" class="project-background"></div><div class="filter"></div><div class="project-title">'+data[i].nom+'</div><div class="time-remaining"><i class="fa fa-clock-o"></i> '+dateFin+'</div><ul class="project-tags">'+projectTags+'</ul><div class="chart"><svg height="105" width="105"><circle cx="52.5" cy="52.5" r="45" fill="#34495E" /></svg><div class="pie-content"><div class="percentage">'+pourcentage+'%</div><div class="name">ressources</br>collectées</div></div><ul class="pie"><li class="visualize ressource-materiel" data-color="#a66abe" data-value="'+(data[i].nbActuMateriel / data[i].nbRessources)*100+'"></li><li class="visualize ressource-financiere" data-color="#ea5f50" data-value="'+(data[i].nbActuFinancier / data[i].nbRessources)*100+'"></li><li class="visualize" data-value="'+Math.round((100-(data[i].nbActuMateriel / data[i].nbRessources)*100 - (data[i].nbActuFinancier / data[i].nbRessources )*100 - (data[i].nbActuHumain / data[i].nbRessources )*100 - (data[i].nbActuComm / data[i].nbRessources )*100))+'" data-color="rgba(0,0,0,0)"></li><li class="visualize ressource-humain" data-color="#70d48d" data-value="'+(data[i].nbActuHumain / data[i].nbRessources)*100+'"></li><li class="visualize ressource-info" data-color="#99a5af" data-value="'+(data[i].nbActuComm / data[i].nbRessources)*100+'"></li></ul></div></div></a>');
+		            $.ajax({
+		                url: '../projets/recherche/update',
+		                type: 'POST',
+		                data: params,
+		                success: function(data) {
 
-								updateProjects();
-							}
-	                    }
-	                }
-	            });
+	                        $('.loading').remove();
+
+	                        load = false;
+
+		                    if(data) {
+		                    	var taille = data.length;
+								for(i=0;i<taille;i++)
+								{
+									var pourcentage = Math.round(((data[i].nbActuHumain + data[i].nbActuMateriel + data[i].nbActuComm + data[i].nbActuFinancier)/data[i].nbRessources)*100);
+
+									var imagePath = "../../"+data[i].background;
+
+								    var start_actual_time = new Date($.now());
+								    var end_actual_time = new Date(data[i].dateFin.date);
+
+								    var diff = end_actual_time - start_actual_time;
+
+								    var minutes = Math.round(diff/1000/60);
+								    var hours = Math.round(minutes/60);
+								    var days = Math.round(hours/24);
+
+								    var dateFin = "";
+
+								    if (minutes > 0) {
+								    	dateFin = "Temps restant : ";
+								    	if (days > 1) {
+								    		dateFin += days + " jours";
+								    	}
+								    	else if (days == 1) {
+								    		dateFin += days + " jour";
+								    	}
+								    	else {
+								    		if(hours > 1) {
+								    			dateFin += hours + " heures";
+								    		}
+								    		else if (hours == 1) {
+								    			dateFin += hours + " heure";
+								    		}
+								    		else {
+								    			if(minutes > 0) {
+								    				dateFin += minutes + " minutes";
+								    			}
+								    		}
+								    	}
+								    }
+								    else {
+								    	dateFin = "Projet terminé";
+								    }
+
+								    var projectTags = '';
+
+								    for (var j = 0; j < data[i].tags.length; j++) {
+								    	projectTags += '<li class="tag-'+data[i].tags[j].id+'">'+data[i].tags[j].nom+'</li>';
+								 		$('.tags-style').append('.tag-'+data[i].tags[j].id+' {background: '+data[i].tags[j].couleur+' !important; }.tag-'+data[i].tags[j].id+'::before {border-color: transparent '+data[i].tags[j].couleur+' transparent transparent !important;}');
+								    };
+
+									$('#content').append('<a href="../projet/voir/'+data[i].slug+'" class="project"><div  id="project-'+data[i].id+'" class="apercu"><div  style="background: url('+imagePath+') 50% 50%; background-size:cover;" class="project-background"></div><div class="filter"></div><div class="project-title">'+data[i].nom+'</div><div class="time-remaining"><i class="fa fa-clock-o"></i> '+dateFin+'</div><ul class="project-tags">'+projectTags+'</ul><div class="chart"><svg height="105" width="105"><circle cx="52.5" cy="52.5" r="45" fill="#34495E" /></svg><div class="pie-content"><div class="percentage">'+pourcentage+'%</div><div class="name">ressources</br>collectées</div></div><ul class="pie"><li class="visualize ressource-materiel" data-color="#a66abe" data-value="'+(data[i].nbActuMateriel / data[i].nbRessources)*100+'"></li><li class="visualize ressource-financiere" data-color="#ea5f50" data-value="'+(data[i].nbActuFinancier / data[i].nbRessources)*100+'"></li><li class="visualize" data-value="'+Math.round((100-(data[i].nbActuMateriel / data[i].nbRessources)*100 - (data[i].nbActuFinancier / data[i].nbRessources )*100 - (data[i].nbActuHumain / data[i].nbRessources )*100 - (data[i].nbActuComm / data[i].nbRessources )*100))+'" data-color="rgba(0,0,0,0)"></li><li class="visualize ressource-humain" data-color="#70d48d" data-value="'+(data[i].nbActuHumain / data[i].nbRessources)*100+'"></li><li class="visualize ressource-info" data-color="#99a5af" data-value="'+(data[i].nbActuComm / data[i].nbRessources)*100+'"></li></ul></div></div></a>');
+
+									updateProjects();
+								}
+		                    }
+		                }
+		            });
+        		}
+        		
 	        }
      	});
 	</script>

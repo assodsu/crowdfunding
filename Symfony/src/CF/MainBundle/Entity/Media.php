@@ -29,9 +29,6 @@ class Media
      */
     private $updated_at;
 
-    public function __toString() {
-        return $this->path;
-    }
 
     /**
      * @ORM\PostLoad()
@@ -46,8 +43,12 @@ class Media
      */
     private $path;
 
+    public function __toString() {
+        return (string) $this->getPath();
+    }
+
     /**
-     * @Assert\File(maxSize="1M", mimeTypes = {"image/jpeg", "image/png"}, mimeTypesMessage = "Vous devez choisir un fichier valide (.jpeg, .png)")
+     * @Assert\File(maxSize="2M", mimeTypes = {"image/jpeg", "image/png"}, mimeTypesMessage = "Vous devez choisir un fichier valide (.jpeg, .png)")
      */
     public $file;
 

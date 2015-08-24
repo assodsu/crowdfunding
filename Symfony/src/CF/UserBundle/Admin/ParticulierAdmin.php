@@ -28,8 +28,8 @@ class ParticulierAdmin extends Admin
             ->add('twitter')
             ->add('googleplus')
             ->add('dateNaissance')
-            ->add('roles')
-            ->add('enabled', null, array('label' => 'Activé'))
+            ->add('roles', null, array('required' => false))
+            ->add('enabled', null, array('label' => 'Activé', 'required' => false))
         ;
     }
 

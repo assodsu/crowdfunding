@@ -77,7 +77,9 @@
 		<div class='content'>
 			<div id='infos-asso'>
 				<div id='certification'>
-					<p id='label'>Association certifiée <i class="fa fa-check"></i></p>
+					{% if projet.association.certified %}
+						<p id='label'>Association certifiée <i class="fa fa-check"></i></p>
+					{% endif %}
 					{% if projet.association.logo.path is not null %}
 						<img id='logo' src="{{asset( projet.association.logo.AssetPath) }}"/>
 					{% else %}
@@ -230,7 +232,8 @@
 				</div>
 				<div class="project-description">
 					{% if app.user == projet.association %}
-						<div style="margin-bottom: 20px; margin-left:20px;"><a href="{{ path('cf_main_rediger_box', {id: projet.id}) }}" class="btn btn-success">Rédiger une histoire <i class="fa fa-plus"></i></a></div>
+						<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalAddBlock" id="btn-add-block"><i class="fa fa-plus"></i> Ajouter un bloc</button>
+						{{ render(controller('CFMainBundle:Box:rediger', {'id': projet.id })) }}
 					{% endif %}
 
 					{% for box in boxs %}
@@ -238,25 +241,29 @@
 							<div class='tab-box full'>
 								{% if app.user == box.projet.association %}
 								<div style="margin-bottom: 20px;">
-									<a href="{{ path('cf_main_edit_box', {id: box.id}) }}" class="btn btn-warning">Editer <i class="fa fa-pencil-square-o"></i></a>
-									<a href="{{ path('cf_main_delete_box', {id: box.id}) }}" class="btn btn-danger">Supprimer <i class="fa fa-trash-o"></i></a>
+									<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#modalEditBlock{{ box.id }}">Modifier</button>
+									{{ render(controller('CFMainBundle:Box:editer', {'id': box.id })) }}
+									<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modalDeleteBlock{{ box.id }}">Supprimer</button>
+									{{ render(controller('CFMainBundle:Box:supprimer', {'id': box.id })) }}
 								</div>
 								{% endif %}
 						{% else %}
 							<div class="tab-box">
 								{% if app.user == box.projet.association %}
 								<div style="margin-bottom: 20px;">
-									<a href="{{ path('cf_main_edit_box', {id: box.id}) }}" class="btn btn-warning">Editer <i class="fa fa-pencil-square-o"></i></a>
-									<a href="{{ path('cf_main_delete_box', {id: box.id}) }}" class="btn btn-danger">Supprimer <i class="fa fa-trash-o"></i></a>
+									<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#modalEditBlock{{ box.id }}">Modifier</button>
+									{{ render(controller('CFMainBundle:Box:editer', {'id': box.id })) }}
+									<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modalDeleteBlock{{ box.id }}">Supprimer</button>
+									{{ render(controller('CFMainBundle:Box:supprimer', {'id': box.id })) }}
 								</div>
 								{% endif %}
 						{% endif %}
 						
 							<h1>{{ box.titre }}</h1>
 							{% if box.contenu %}
-								<p>{{ box.contenu }}</p>
+								<p>{{ box.contenu|raw }}</p>
 							{% elseif box.urlImage %}
-								<div class="imageWrapper"><img src="{{ box.urlImage }}" alt="image" /></div>
+								<div class="imageWrapper"><img src="{{ asset(box.urlImage.AssetPath) }}" alt="image" /></div>
 							{% elseif box.urlVideo %}
 								<div class="videoWrapper"><iframe width="560" height="349" src="{{ box.urlVideo }}" frameborder="0" allowfullscreen></iframe></div>
 							{% endif %}
@@ -305,8 +312,33 @@
 
 {% block javascripts %}
 	{{ parent() }}
+	<script src="//cdn.ckeditor.com/4.5.3/basic/ckeditor.js"></script>
+	<script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.js') }}"> </script>
 	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
 	<script type="text/javascript">
+		$(":file").filestyle({input: false});
+
+        $('.form-choice-box').hide();
+        $('#form-texte').show();
+        $('.modal-body .nav-modal-form li a').on('click', function(e) {
+        	e.preventDefault();
+       		$('.form-choice-box').hide();
+        	$('.modal-body .nav-modal-form li.active').removeClass('active');
+        	$($(this).attr('href')).show();
+        	$(this).parent().addClass('active');
+        });
+
+        {% for box in boxs %}
+        	$('.form-choice-box-{{ box.id }}').hide();
+	        $('#form-texte-{{ box.id }}').show();
+	        $('.modal-body .nav-modal-form-{{ box.id }} li a').on('click', function(e) {
+	        	e.preventDefault();
+	       		$('.form-choice-box-{{ box.id }}').hide();
+	        	$('.modal-body .nav-modal-form-{{ box.id }} li.active').removeClass('active');
+	        	$($(this).attr('href')).show();
+	        	$(this).parent().addClass('active');
+	        });
+        {% endfor %}
 
 		function deleteAllmenuTabActive() {
 			$('.menuTab').each(function() {

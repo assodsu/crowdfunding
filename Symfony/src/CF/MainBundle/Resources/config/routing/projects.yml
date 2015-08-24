@@ -11,3 +11,7 @@ cf_main_updateProjects:
 cf_main_recherche:
     path:   /recherche
     defaults: { _controller: CFMainBundle:Recherche:search }
+
+cf_main_rechercheUpdate:
+    path:   /recherche/update
+    defaults: { _controller: CFMainBundle:Recherche:updateSearch }

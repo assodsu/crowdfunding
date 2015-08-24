@@ -36,9 +36,7 @@ class Box
     private $contenu;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="urlImage", type="string", length=255, nullable=true)
+     *  @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Media", cascade={"persist","remove"})
      */
     private $urlImage;
 
@@ -57,21 +55,10 @@ class Box
     private $fullWidth;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="ordre", type="integer")
-     */
-    private $ordre;
-
-    /**
     * @ORM\ManyToOne(targetEntity="CF\MainBundle\Entity\Projet", inversedBy="boxs")
     * @ORM\JoinColumn(nullable=false)
     */
     private $projet;
-
-    public function __construct() {
-        $this->ordre = 0;
-    }
 
     /**
      * Get id
@@ -177,37 +164,12 @@ class Box
     }
 
     /**
-     * Set ordre
-     *
-     * @param integer $ordre
-     *
-     * @return Box
-     */
-    public function setOrdre($ordre)
-    {
-        $this->ordre = $ordre;
-
-        return $this;
-    }
-
-    /**
-     * Get ordre
-     *
-     * @return integer
-     */
-    public function getOrdre()
-    {
-        return $this->ordre;
-    }
-
-    /**
      * Set urlImage
      *
-     * @param string $urlImage
-     *
+     * @param \CF\MainBundle\Entity\Media $urlImage
      * @return Box
      */
-    public function setUrlImage($urlImage)
+    public function setUrlImage(\CF\MainBundle\Entity\Media $urlImage)
     {
         $this->urlImage = $urlImage;
 
@@ -217,7 +179,7 @@ class Box
     /**
      * Get urlImage
      *
-     * @return string
+     * @return \CF\MainBundle\Entity\Media 
      */
     public function getUrlImage()
     {

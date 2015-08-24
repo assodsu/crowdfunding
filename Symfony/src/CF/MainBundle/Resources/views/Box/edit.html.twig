@@ -1,0 +1,38 @@
+<div class="modal fade modalBlock" id="modalEditBlock{{ box.id }}" tabindex="-1" role="dialog" aria-labelledby="modalEditBlockLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form action="{{ path('cf_main_edit_box', { id : box.id } )}}" method="post" {{ form_enctype(form) }}>
+    		{{ form_start(form) }}
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="modalEditBlockLabel">Modifier un bloc</h4>
+	        {{ form_row(form.titre) }}
+	      </div>
+	      <div class="modal-body">
+	      <ul class="nav-modal-form-{{ box.id }}">
+			  <li class="texte active"><a href="#form-texte-{{ box.id }}">Texte</a></li>
+			  <li class="image"><a href="#form-image-{{ box.id }}">Image</a></li>
+			  <li class="video"><a href="#form-video-{{ box.id }}">Video</a></li>
+			</ul>
+
+			<div class="form-choice-box-{{ box.id }}" id="form-texte-{{ box.id }}">
+				{{ form_row(form.contenu) }}
+			</div>
+			<div class="form-choice-box-{{ box.id }}" id="form-image-{{ box.id }}">
+				{{ form_row(form.urlImage) }}
+			</div>
+			<div class="form-choice-box-{{ box.id }}" id="form-video-{{ box.id }}">
+				{{ form_row(form.urlVideo) }}
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	      	<div class="radio-width" id="radio-width-box">
+	      		{{ form_row(form.fullWidth) }}
+	      	</div>
+	        <button type="submit" class="btn btn-success" id="button-validation-modal">Modifier le bloc</button>
+	        {{ form_rest(form) }}
+	      </div>
+	    </form>
+    </div>
+  </div>
+</div>

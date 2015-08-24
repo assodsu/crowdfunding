@@ -1,16 +1,16 @@
-{% extends "CFMainBundle::layout.html.twig" %}
-
-{% block title %}
-  	{{ parent() }} - Supprimer une Box
-{% endblock %}
-
-{% block body %}
-<form method="post">
-	<p>
-		Etes vous sur de vouloir supprimer cette box ?
-	</p>
-	{{ form_rest(form) }}
-
-	<button type="submit">Oui</button>
-</form>
-{% endblock body %}
+<div class="modal fade modalBlock" id="modalDeleteBlock{{ box.id }}" tabindex="-1" role="dialog" aria-labelledby="modalDeleteBlockLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form action="{{ path('cf_main_delete_box', { id : box.id } )}}" method="post" {{ form_enctype(form) }}>
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="modalDeleteBlockLabel">Êtes-vous sûr ?</h4>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="submit" class="btn btn-danger" id="button-validation-modal">Oui, supprimer le bloc</button>
+	        {{ form_rest(form) }}
+	      </div>
+	    </form>
+    </div>
+  </div>
+</div>

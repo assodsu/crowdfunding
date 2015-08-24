@@ -95,6 +95,11 @@
 					<h3>D&eacute;finissez l'histoire de votre projet</h3>
 					<p>Cr&eacute;er pas à pas la page que les internautes verront pour votre projet :<br>D&eacute;finissez des "blocs d'informations" avec soit du texte, uin lien vid&eacute;o ou encore une image !</p><p>Cela sera toujours plus joli qu'un gros pav&eacute; de texte non ?</p>
 
+					{# BOXS HISTOIRE #}
+					<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" id="add-box"><i class="fa fa-plus"></i></button>
+					<div class="blocs">
+	                	{{ form_row(form.boxs) }}
+	                </div>
 
 					<ul class="list-inline">
 						<li><button type="button" class="btn btn-default prev-step">Pr&eacute;c&eacute;dent</button></li>
@@ -153,25 +158,82 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-			{{ form_end(form) }}
+			{{ form_rest(form) }}
+
 		</form>
+		<div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="modalFormLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="delete-box"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="modalFormLabel">Nouveau bloc</h4>
+		        <input type="text" placeholder="Titre du bloc" id="box-title-form">
+		      </div>
+		      <div class="modal-body">
+		      	<ul class="nav-modal-form">
+				  <li class="texte active"><a href="#form-texte">Texte</a></li>
+				  <li class="image"><a href="#form-image">Image</a></li>
+				  <li class="video"><a href="#form-video">Video</a></li>
+				</ul>
+
+				<div class="form-choice-box" id="form-texte">
+					<textarea id="editor" name="editor"></textarea>
+				</div>
+				<div class="form-choice-box" id="form-image">
+					<p>Attention ! L'image doit faire au maximum 1Mo.</p>
+					<a href="#" id="file-form-image">Choisir une image pour le bloc</a>
+				</div>
+				<div class="form-choice-box" id="form-video">
+					<input type="text" placeholder="Entrez l'url de la vidéo (ex : http://youtube.com/watch?v=code)">
+				</div>
+		      </div>
+		      <div class="modal-footer">
+		      	<div class="radio-width" id="radio-width-box">
+		      		<label><input type="radio" name="box-width" value="0" checked> 1 colonne </label>
+		      		<label><input type="radio" name="box-width" value="1"> 2 colonnes</label>
+		      	</div>
+		        <button type="button" class="btn btn-success" id="button-validation-modal">Insérer le bloc</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<div class="modal fade" id="modalEditForm" tabindex="-1" role="dialog" aria-labelledby="modalEditFormLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="delete-box"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="modalEditFormLabel">Editer un bloc</h4>
+		        <input type="text" placeholder="Titre du bloc" id="box-title-formEdit">
+		      </div>
+		      <div class="modal-body">
+
+		      </div>
+		      <div class="modal-footer">
+		      	<div class="radio-width" id="radio-width-box-edit">
+		      		<label><input type="radio" name="box-width-edit" value="0" checked> 1 colonne </label>
+		      		<label><input type="radio" name="box-width-edit" value="1"> 2 colonnes</label>
+		      	</div>
+		        <button type="button" class="btn btn-success" id="button-validation-modalEdit">Modifier le bloc</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	</div>
 	<!-- FIN BOOTSNIPP NOUVEAU FORMULAIRE AVEC INTEGRATION TWIG DE L'ANCIEN FORMULAIRE -->
 {% endblock %}
 
 {% block javascripts %}
 	{{ parent() }}
-	<script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+	<script src="//cdn.ckeditor.com/4.5.3/basic/ckeditor.js"></script>
 	<script type="text/javascript" src="{{ asset('js/create_project.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.js') }}"> </script>
+
 	<script>
 	$(":file").filestyle({input: false});
 	$('.buttonText').text('Image couverture du projet');
 	$('.glyphicon-folder-open').hide();
-	$('#fos_user_registration_form_dateCreationAsso').value('');
-	</script>
-	<!-- DEBUT JAVASCRIPT BOOTSNIPP TIMELINE -->
-	<script>
+
+	// DEBUT JAVASCRIPT BOOTSNIPP TIMELINE
 	$(document).ready(function () {
 	    //Initialize tooltips
 	    $('.nav-tabs > li a[title]').tooltip();
@@ -207,6 +269,18 @@
 	function prevTab(elem) {
 		$(elem).prev().find('a[data-toggle="tab"]').click();
 	}
+	// FIN JAVASCRIPT BOOTSNIPP TIMELINE
+
+	CKEDITOR.replace( 'editor' );
+	$('.form-choice-box').hide();
+	$('#form-texte').show();
+	$('.modal-body .nav-modal-form li a').on('click', function(e) {
+		e.preventDefault();
+		$('.form-choice-box').hide();
+		$('.modal-body .nav-modal-form li.active').removeClass('active');
+		$($(this).attr('href')).show();
+		$(this).parent().addClass('active');
+	});
 	</script>
-	<!-- FIN JAVASCRIPT BOOTSNIPP TIMELINE -->
+
 {% endblock %}
