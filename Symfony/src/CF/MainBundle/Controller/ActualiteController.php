@@ -38,11 +38,11 @@ class ActualiteController extends Controller
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($actualite);
                 $em->flush();
+                $this->get('session')->getFlashBag()->add('info', 'L\'actualité a bien été ajoutée !');
+
+                return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
             }
 
-            $this->get('session')->getFlashBag()->add('info', 'L\'actualité a bien été ajoutée !');
-
-            return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
         }
 
         return $this->render('CFMainBundle:Actualite:add.html.twig', array('form' => $form->createView(), 'projet' => $projet));
@@ -63,7 +63,6 @@ class ActualiteController extends Controller
 
         if($request->getMethod() == 'POST')
         {
-            
             $form->bind($request);
             if($form->isValid())
             {
@@ -77,7 +76,7 @@ class ActualiteController extends Controller
             return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $actualite->getProjet()->getSlug())));
         }
 
-        return $this->render('CFMainBundle:Actualite:add.html.twig', array('form' => $form->createView(), 'projet' => $actualite->getProjet()));
+        return $this->render('CFMainBundle:Actualite:edit.html.twig', array('form' => $form->createView(), 'actualite' => $actualite));
     }
 
     public function supprimerAction(Request $request, Actualite $actualite) {
@@ -110,7 +109,8 @@ class ActualiteController extends Controller
         // Affichage de la confirmation de suppression
         return $this->render('CFMainBundle:Actualite:supprimer.html.twig', 
                  array(
-                       'form' => $form->createView()
+                       'form' => $form->createView(), 
+                       'actualite' => $actualite
                        ));
     }
 }

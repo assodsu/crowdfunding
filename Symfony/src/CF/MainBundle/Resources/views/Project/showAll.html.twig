@@ -156,8 +156,12 @@
 	<script type="text/javascript" src="{{ asset('js/visualize.js') }}"></script>
 	<script type="text/javascript">
 		
-		{% if recherche is defined %}
-			$('.search input').val('{{ recherche }}');
+		{% if rechercheName is defined %}
+			$('.search #search-bar input').val('{{ rechercheName }}');
+		{% endif %}
+
+		{% if rechercheTags is defined %}
+			$('.search #form_tags').val('{{ rechercheTags }}');
 		{% endif %}
 
 		updateProjects();
@@ -264,7 +268,7 @@
         		}
         		else
         		{
-        			var params = 'index='+($('#content > a').length)+'&search='+$('#search-bar input').val();
+        			var params = 'index='+($('#content > a').length)+'&search='+$('#search-bar input').val()+'&tags='+$('#form_tags').val();
 
 		            $.ajax({
 		                url: '../projets/recherche/update',

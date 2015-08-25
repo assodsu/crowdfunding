@@ -83,6 +83,9 @@ a.profile-navigation:hover {
 .search::-moz-placeholder {
     color: #FFF;
 }
+input#form_tags {
+    display: none;
+}
 
 @media (max-width: 500px) {
   .search #search-bar {

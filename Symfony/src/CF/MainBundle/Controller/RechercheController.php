@@ -13,13 +13,61 @@ class RechercheController extends Controller
 		$selecteurs = $this->getDoctrine()->getRepository('CFMainBundle:Selecteur')->getSelecteursLesProjets();
 
 		$form = $this->createFormBuilder()
-            ->add('recherche', 'text')
+            ->add('recherche', 'text', array('required' => false))
+            ->add('tags', 'text', array('attr' => array('id' => 'tags-form-hidden'), 'required' => false))
             ->getForm();
  
         if ($request->isMethod('POST'))
         {
             $form->bind($request);
- 
+
+            $data = $request->request->get($form->getName());
+            $nomProjet = $data['recherche'];
+            $tags = explode(' ', $data['tags']);
+
+            $em = $this->getDoctrine()
+	                   ->getEntityManager();
+
+	        $projetsByName = $em->getRepository('CFMainBundle:Projet')->getSearchNameList($nomProjet);
+
+	        if(count($tags) > 0 && $tags[0] != "")
+	        {
+	        	$projetsByTags = array();
+		        foreach ($tags as $key => $tag) {
+		        	if (strlen($tag) > 2) {
+		        		$projetsByTags[] = $em->getRepository('CFMainBundle:Projet')->getSearchTagsList($tag);
+					}
+				}
+
+				$projetsByTagsTest = array();
+
+				foreach ($projetsByTags as $resultat) {
+					foreach ($resultat as $r) {
+						$projetsByTagsTest[] = $r;
+					}
+				}
+
+		        $projetsByTagsTest = array_unique($projetsByTagsTest);
+
+				$results = array_intersect($projetsByName, $projetsByTagsTest);
+	        }
+	        else
+	        {
+	        	$results = $projetsByName;
+	        }
+
+	        $results = array_slice($results, 0, 5);
+
+			return $this->render('CFMainBundle:Project:showAll.html.twig', array
+				(
+					'selecteurs' => $selecteurs,
+					'projets' => $results,
+					'rechercheName' => $request->request->get($form->getName())['recherche'],
+					'rechercheTags' => $request->request->get($form->getName())['tags']
+				)
+			);
+
+ 			/*
             $motcles = $request->request->get($form->getName());
 			$motcles = explode(' ', $motcles['recherche']);
      
@@ -32,15 +80,15 @@ class RechercheController extends Controller
 	        foreach ($motcles as $key => $m) {
 	        	if (strlen($m) > 2) {
 	        		$resultats[] = array_intersect($resultats, $em->getRepository('CFMainBundle:Projet')->getValidateSearch(0,5,$m));
-	        	}
-	        }
+				}
+			}
 
-	        $recherche = array();
-	        foreach ($resultats as $resultat) {
-	        	foreach ($resultat as $r) {
-	        		$recherche[] = $r;
-	        	}
-	        }
+			$recherche = array();
+			foreach ($resultats as $resultat) {
+				foreach ($resultat as $r) {
+					$recherche[] = $r;
+				}
+			}
 
 	        $recherche = array_unique($recherche);
 
@@ -50,7 +98,7 @@ class RechercheController extends Controller
 					'projets' => $recherche,
 					'recherche' => $request->request->get($form->getName())['recherche']
 				)
-			);
+			);*/
         }
 
 		$all = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findAll();
@@ -61,38 +109,52 @@ class RechercheController extends Controller
     {
         $request = $this->get('request');
         $index = $request->request->get('index');
-        $search = $request->request->get('search');
+        $nomProjet = $request->request->get('recherche');
+        $tags = explode(' ', $request->request->get('tags'));
 
-        $motcles = explode(' ', $search);
-     
+        dump($index);
+
         $em = $this->getDoctrine()
                    ->getEntityManager();
 
-        $resultats = array();
+        $projetsByName = $em->getRepository('CFMainBundle:Projet')->getSearchNameList($nomProjet);
 
-        foreach ($motcles as $m) {
-        	if (strlen($m) > 3) {
-        		$resultats[] = $em->getRepository('CFMainBundle:Projet')
-                		->getValidateSearch($index, 5, $m);
-        	}
+        if(count($tags) > 0 && $tags[0] != "")
+        {
+        	$projetsByTags = array();
+	        foreach ($tags as $key => $tag) {
+	        	if (strlen($tag) > 2) {
+	        		$projetsByTags[] = $em->getRepository('CFMainBundle:Projet')->getSearchTagsList($tag);
+				}
+			}
+
+			$projetsByTagsTest = array();
+
+			foreach ($projetsByTags as $resultat) {
+				foreach ($resultat as $r) {
+					$projetsByTagsTest[] = $r;
+				}
+			}
+
+	        $projetsByTagsTest = array_unique($projetsByTagsTest);
+
+			$results = array_intersect($projetsByName, $projetsByTagsTest);
+        }
+        else
+        {
+        	$results = $projetsByName;
         }
 
-        $recherche = array();
-        foreach ($resultats as $resultat) {
-        	foreach ($resultat as $r) {
-        		$recherche[] = $r;
-        	}
-        }
+        $results = array_slice($results, $index, 5);
 
-        $recherche = array_unique($recherche);
-
-        return new JsonResponse($recherche);
+        return new JsonResponse($results);
     }
 
 	public function renderSearchAction()
 	{
 		$form = $this->createFormBuilder()
-            ->add('recherche', 'text')
+            ->add('recherche', 'text', array('required' => false))
+            ->add('tags', 'text', array('attr' => array('id' => 'tags-form-hidden'), 'required' => false))
             ->getForm();
 
         return $this->render('CFMainBundle:Recherche:search_form.html.twig', array

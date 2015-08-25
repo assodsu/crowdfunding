@@ -1,18 +1,18 @@
-<div class="modal fade modalBlock" id="modalActu" tabindex="-1" role="dialog" aria-labelledby="modalActuLabel">
+<div class="modal fade modalBlock" id="modalActuEdit{{ actualite.id }}" tabindex="-1" role="dialog" aria-labelledby="modalActuEditLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-    	<form action="{{ path('cf_main_rediger_actu', { id : projet.id } )}}" method="post" {{ form_enctype(form) }}>
+    	<form action="{{ path('cf_main_edit_actu', { id : actualite.id } )}}" method="post" {{ form_enctype(form) }}>
     		{{ form_start(form) }}
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="modalActuLabel">Ajouter une actualité</h4>
+	        <h4 class="modal-title" id="modalActuEditLabel">Modifier une actualité</h4>
 	        {{ form_row(form.titre) }}
 	      </div>
 	      <div class="modal-body">
 			{{ form_row(form.contenu) }}
 	      </div>
 	      <div class="modal-footer">
-	        <button type="submit" class="btn btn-success" id="button-validation-modal">Ajouter l'actualité</button>
+	        <button type="submit" class="btn btn-success" id="button-validation-modal">Modifier l'actualité</button>
 	        {{ form_rest(form) }}
 	      </div>
 	    </form>

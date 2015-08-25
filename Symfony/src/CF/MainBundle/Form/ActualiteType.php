@@ -15,8 +15,8 @@ class ActualiteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre', null, array('label' => 'Titre de l\'actualité', 'attr' => array('class' => 'form-control')))
-            ->add('contenu', 'textarea', array('label' => 'Contenu de l\'actualité', 'attr' => array('class' => 'ckeditor')))
+            ->add('titre', null, array('label' => false, 'attr' => array('class' => 'form-control', 'placeholder' => 'Titre de l\'actualité')))
+            ->add('contenu', 'textarea', array('label' => false, 'attr' => array('class' => 'ckeditor')))
         ;
     }
     
