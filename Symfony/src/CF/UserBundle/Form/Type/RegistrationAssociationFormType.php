@@ -40,6 +40,13 @@ class RegistrationAssociationFormType extends AbstractType{
 
             ->add('descriptionAsso', null, array('label' => "Description", 'attr' => array('placeholder' => 'Saisissez la description de votre association ...')))
 
+            ->add('tags',  'entity', array(
+                'class'    => 'CFMainBundle:Tags',
+                'property' => 'nom',
+                'expanded'=>true,
+                'multiple' => true
+                ))
+
             ->add('site', null, array('label' => "Site internet"))
 
             ->add('facebook', null, array('label' => "Facebook"))

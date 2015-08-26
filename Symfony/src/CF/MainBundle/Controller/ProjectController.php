@@ -38,18 +38,7 @@ class ProjectController extends Controller
 		$projets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate(0,5);
         $selecteurs = $this->getDoctrine()->getRepository('CFMainBundle:Selecteur')->getSelecteursLesProjets();
 		
-        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$projets, 'selecteurs' => $selecteurs));
-    }
-
-    public function updateAction()
-    {
-        $request = $this->get('request');
-        $index = $request->request->get('index');
-        $search = $request->request->get('search');
-
-        $updateProjets = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->getValidate($index, 5);
-
-        return new JsonResponse($updateProjets);
+        return $this->render('CFMainBundle:Project:showAll.html.twig',array('projets'=>$projets, 'selecteurs' => $selecteurs, 'type' => 'projet'));
     }
 
     public function addAction(Request $request)
@@ -244,11 +233,19 @@ class ProjectController extends Controller
 
                     $media = new Media();
                     $data  = $request->files->get($form->getName());
+
+                    $testBackground = '';
                     
                     foreach ($data['background'] as $l)
-                        $media->setFile($l);
+                        $testBackground = $l;
 
-                    $projet->setBackground($media);
+                    if($testBackground != '')
+                    {
+                        foreach ($data['background'] as $l)
+                            $media->setFile($l);
+
+                        $projet->setBackground($media);
+                    }
 
                     $boxs = $projet->getBoxs();
                     foreach($boxs as $box)

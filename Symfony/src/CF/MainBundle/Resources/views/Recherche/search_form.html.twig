@@ -1,4 +1,5 @@
-<form method="post" action="{{ path('cf_main_recherche') }}">
+<form method="post" action="{{ path('cf_main_recherche') }}" id="form-search">
 	{{ form_widget(form.tags) }}
-	<div id="search-bar">{{ form_widget(form.recherche, {'attr': {'placeholder': 'Tapez ici votre recherche ou sélectionnez vos critères'}}) }}</div><div id="search-button"><button class="btn btn-success" type="submit">Rechercher <span class="glyphicon glyphicon-search"></span></button></div>
+	<div id="type-search">Rechercher parmis les {{ form_widget(form.type) }}</div> 
+	<div class="searchBar"><div id="search-bar">{{ form_widget(form.recherche, {'attr': {'placeholder': 'Tapez ici votre recherche ou sélectionnez vos critères'}}) }}</div><div id="search-button"><button class="btn btn-success" type="submit">Rechercher <span class="glyphicon glyphicon-search"></span></button></div></div>
 </form>

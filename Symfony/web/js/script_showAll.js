@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	$('.search').on('click', function() {
-		$('.search #search-bar input').focus();
+	$('#search-bar').on('click', function() {
+		$('#search-bar input').focus();
 	});
 
 	String.prototype.sansAccent = function(){

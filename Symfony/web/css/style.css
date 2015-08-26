@@ -15,20 +15,23 @@ a.profile-navigation:hover {
 #search-content {
   text-align: center;
 }
-.search {
+.searchBar {
   height: 60px;
   width: 100%;
   background: #2574A9;
   cursor: text;
   color: #fff;
 }
+.search {
+    width: 100%;
+}
 
-.search .btn {
+.searchBar .btn {
   margin-top: -4px;
   background-color: #5cb85c;
 }
 
-.search .btn:hover {
+.searchBar .btn:hover {
   margin-top: -4px;
   background-color: #449d44;
 }
@@ -47,7 +50,7 @@ a.profile-navigation:hover {
   vertical-align: top;
 }
 
-.search input {
+#search-bar input {
   display: block;
   float: right;
   width: 100%;
@@ -62,7 +65,7 @@ a.profile-navigation:hover {
   box-shadow: none;
 }
 
-.search input:focus {
+#search-bar input:focus {
   border: none;
   outline: none;
 }
@@ -74,6 +77,24 @@ a.profile-navigation:hover {
   font-size: 18pt;
 }
 
+#type-search {
+    color: #fff;
+    text-align: center;
+    background: #2A638A;
+    padding: 10px;
+    font-size: 25px;
+}
+
+select#form_type {
+    border-radius: 5px;
+    border: none;
+    color: #5C97BF;
+    background: #FFFFFF;
+}
+
+#form-search {
+  margin:0;
+}
 .search::-webkit-input-placeholder {
     color: #FFF;
 }

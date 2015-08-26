@@ -55,6 +55,46 @@
 	background: #e74c3c;
 	padding: 20px 0;
 }
+/****************/
+/* ASSOCIATIONS */
+/****************/
+#content .association {
+    background: #E6E6E6;
+    height: 140px;
+}
+#content .association > div {
+    padding: 10px;
+    position: relative;
+}
+.association-name {
+    display: inline-block;
+    font-size: 30px;
+}
+#content .association .project-tags {
+	right: 0;
+    padding: 0 10px;
+}
+#content .association .project-tags li {
+	float:right;
+}
+.group-name-asso {
+    display: inline-block;
+    margin: 0 20px;
+}
+.logo-asso {
+	vertical-align: top;
+    height: 120px;
+}
+p.label-certified {
+    color: #8ACA8B;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 10px 25px;
+    border: 2px solid rgb(138, 202, 139);
+    border-radius: 5px;
+    text-align: center;
+    width: 221px;
+}
 /***********/
 /* PROJETS */
 /***********/
@@ -84,7 +124,7 @@
 	position: absolute;
 	margin-top: 30px;
 	text-align: center;
-	width: calc(40% - 100px);
+	width: calc(40% - 105px);
 }
 .project-background {
   height: 100%;
