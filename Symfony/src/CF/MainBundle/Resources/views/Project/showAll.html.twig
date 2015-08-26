@@ -192,7 +192,7 @@
 
         		$('#content').append('<div class="loading"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
 
-        		if($('#search-bar input').val() == 0)
+        		if($('#search-bar input').val() == '' && $('#form_tags').val() == '')
         		{
         			var params = 'index='+($('#content > a').length);
 
@@ -268,7 +268,13 @@
         		}
         		else
         		{
-        			var params = 'index='+($('#content > a').length)+'&search='+$('#search-bar input').val()+'&tags='+$('#form_tags').val();
+        			var params = '';
+        			if($('#search-bar input').val() != '' && $('#form_tags').val() != '')
+        				params = 'index='+($('#content > a').length)+'&search='+$('#search-bar input').val()+'&tags='+$('#form_tags').val();
+        			else if($('#search-bar input').val() != '')
+        				params = 'index='+($('#content > a').length)+'&search='+$('#search-bar input').val();
+        			else if($('#form_tags').val() != '')
+        				params = 'index='+($('#content > a').length)+'&tags='+$('#form_tags').val();
 
 		            $.ajax({
 		                url: '../projets/recherche/update',

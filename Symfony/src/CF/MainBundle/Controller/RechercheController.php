@@ -23,15 +23,15 @@ class RechercheController extends Controller
 
             $data = $request->request->get($form->getName());
             $nomProjet = $data['recherche'];
-            $tags = explode(' ', $data['tags']);
 
-            $em = $this->getDoctrine()
-	                   ->getEntityManager();
+	        $em = $this->getDoctrine()->getEntityManager();
 
 	        $projetsByName = $em->getRepository('CFMainBundle:Projet')->getSearchNameList($nomProjet);
 
-	        if(count($tags) > 0 && $tags[0] != "")
+			if($data['tags'])
 	        {
+	        	$tags = explode(' ', $data['tags']);
+
 	        	$projetsByTags = array();
 		        foreach ($tags as $key => $tag) {
 		        	if (strlen($tag) > 2) {
@@ -62,43 +62,10 @@ class RechercheController extends Controller
 				(
 					'selecteurs' => $selecteurs,
 					'projets' => $results,
-					'rechercheName' => $request->request->get($form->getName())['recherche'],
-					'rechercheTags' => $request->request->get($form->getName())['tags']
+					'rechercheName' => $data['recherche'],
+					'rechercheTags' => $data['tags']
 				)
 			);
-
- 			/*
-            $motcles = $request->request->get($form->getName());
-			$motcles = explode(' ', $motcles['recherche']);
-     
-	        $em = $this->getDoctrine()
-	                   ->getEntityManager();
-
-	        $resultats = array();
-	        $resultats = $em->getRepository('CFMainBundle:Projet')->getValidateSearch(0,5,array_values($motcles)[0]);
-
-	        foreach ($motcles as $key => $m) {
-	        	if (strlen($m) > 2) {
-	        		$resultats[] = array_intersect($resultats, $em->getRepository('CFMainBundle:Projet')->getValidateSearch(0,5,$m));
-				}
-			}
-
-			$recherche = array();
-			foreach ($resultats as $resultat) {
-				foreach ($resultat as $r) {
-					$recherche[] = $r;
-				}
-			}
-
-	        $recherche = array_unique($recherche);
-
-			return $this->render('CFMainBundle:Project:showAll.html.twig', array
-				(
-					'selecteurs' => $selecteurs,
-					'projets' => $recherche,
-					'recherche' => $request->request->get($form->getName())['recherche']
-				)
-			);*/
         }
 
 		$all = $this->getDoctrine()->getRepository('CFMainBundle:Projet')->findAll();
@@ -109,18 +76,16 @@ class RechercheController extends Controller
     {
         $request = $this->get('request');
         $index = $request->request->get('index');
-        $nomProjet = $request->request->get('recherche');
-        $tags = explode(' ', $request->request->get('tags'));
+        $nomProjet = $request->request->get('search');
 
-        dump($index);
-
-        $em = $this->getDoctrine()
-                   ->getEntityManager();
+        $em = $this->getDoctrine()->getEntityManager();
 
         $projetsByName = $em->getRepository('CFMainBundle:Projet')->getSearchNameList($nomProjet);
 
-        if(count($tags) > 0 && $tags[0] != "")
+		if($request->request->get('tags'))
         {
+        	$tags = explode(' ', $request->request->get('tags'));
+
         	$projetsByTags = array();
 	        foreach ($tags as $key => $tag) {
 	        	if (strlen($tag) > 2) {
