@@ -1,4 +1,5 @@
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700');
+@import url('http://fonts.googleapis.com/css?family=Lato:400,300,700,100');
 
 html {
 	height:100%;
@@ -10,7 +11,7 @@ body{
 	top:0;
 	margin: 0;
 	padding: 0;
-  	background: #5C97BF;
+  background: #34495E;
 	overflow-x: hidden;
 	font-family: "Helvetica Neue", "Open Sans", Arial,sans-serif;
 	font-size: 13px;
@@ -337,7 +338,7 @@ color: #FFF;
 
   }
 }
-/**** FOOTER ****/
+/* Propriétés du FOOTER */
 footer {
 	text-align: center;
 	position: absolute;
@@ -347,14 +348,18 @@ footer {
 }
 footer #footer-top {
   background: #272E35;
-  margin:0 auto;
+  margin: 0 auto;
   display: block;
-  width:100%;
+  width: 100%;
+  position: relative;
+  bottom: 0;
 }
 footer #footer-bottom {
-  height:40px;
+  height: 40px;
   background: #191F27;
   display: block;
+  bottom: 0;
+  position: initial;
 }
 #footer-bottom {
   color:#fff;

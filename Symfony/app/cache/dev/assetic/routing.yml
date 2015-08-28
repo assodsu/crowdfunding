@@ -2,4 +2,4 @@ _assetic:
     resource: .
     type: assetic
 _app:
-    resource: 'D:\wamp\www\crowdfunding\Symfony\app/config/routing_dev.yml'
+    resource: 'C:\Users\PC1\Documents\SITES\GITHUB\crowdfunding\Symfony\app/config/routing_dev.yml'

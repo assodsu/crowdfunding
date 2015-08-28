@@ -76,7 +76,6 @@ a.profile-navigation:hover {
   background: none;
   font-size: 18pt;
 }
-
 #type-search {
     color: #fff;
     text-align: center;
@@ -95,13 +94,13 @@ select#form_type {
 #form-search {
   margin:0;
 }
-.search::-webkit-input-placeholder {
+#form_recherche::-webkit-input-placeholder {
     color: #FFF;
 }
-.search:-moz-placeholder {
+#form_recherche:-moz-placeholder {
     color: #FFF;
 }
-.search::-moz-placeholder {
+#form_recherche::-moz-placeholder {
     color: #FFF;
 }
 input#form_tags {
@@ -188,15 +187,13 @@ input#form_tags {
   border:none;
 }
 .nav-tabs li.active {
-  background-color:#fff;
-  border-bottom:3px solid #428bca;
+  /*border-bottom:3px solid #428bca;*/
 }
 .nav-tabs li {
   padding:0;
 }
 .nav-tabs li:hover {
-  background-color:#fff;
-  border-bottom:3px solid #428bca;
+  /*border-bottom:3px solid #428bca;*/
 }
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus, .nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
   border:1px solid #fff;
@@ -450,3 +447,31 @@ p.modal-connexion-center {
     padding:10px;
   }  
 }
+
+/*Spinner style*/
+.fa-circle-o-notch {
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: whitesmoke;
+  border-left-color: whitesmoke;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+          animation: nprogress-spinner 400ms linear infinite;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes nprogress-spinner {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.fa-circle-o-notch::before{
+  content: none;
+} 
