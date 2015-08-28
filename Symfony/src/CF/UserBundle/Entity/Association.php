@@ -14,7 +14,7 @@ use JsonSerializable;
  * @UniqueEntity(fields = "username", targetClass = "CF\UserBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "CF\UserBundle\Entity\User", message="fos_user.email.already_used")
  */
-class Association extends User
+class Association extends User implements JsonSerializable
 {
     // construct
     public function __construct()

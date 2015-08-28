@@ -290,6 +290,9 @@ ul.nav-modal-form > li a:hover, ul.nav-modal-form > li a:active, ul.nav-modal-fo
     margin-top: 15px;
     border: 1px solid #B4486D;
 }
+#cf_mainbundle_projet_boxs {
+	display:none;
+}
 /* BOITES DES RESSOURCES */
 .besoin-box > .delete-button {
 	position:absolute;

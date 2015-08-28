@@ -90,7 +90,7 @@ class RechercheController extends Controller
 		        	$results = $assosByName;
 		        }
 		        
-	        	$results = array_slice($results, 0, 1);
+	        	$results = array_slice($results, 0, 5);
 
 				return $this->render('CFMainBundle:Project:showAll.html.twig', array
 					(
@@ -194,7 +194,7 @@ class RechercheController extends Controller
 	        }
 	    }
 
-        $results = array_slice($results, $index, 1);
+        $results = array_slice($results, $index, 5);
 
         return new JsonResponse($results);
     }
