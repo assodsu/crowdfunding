@@ -14,6 +14,7 @@ use CF\MainBundle\Form\ParticipationType;
 use CF\MessageBundle\Entity\Conversation;
 use CF\CommentBundle\Entity\Thread;
 use CF\MainBundle\Entity\Media;
+use CF\NotificationBundle\Entity\Notification;
 
 class ProjectController extends Controller
 {
@@ -320,6 +321,36 @@ class ProjectController extends Controller
         } else {
             $this->get('session')->getFlashBag()->add('info', 'Vous ne suivez déjà pas ce projet.');
         }
+
+        return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
+    }
+
+    public function validerProjetAction(Projet $projet) 
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $projet->setValider(true);
+
+        $em->persist($projet);
+        $em->flush();
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Coceptio : Votre projet a été validé !')
+            ->setFrom('noreply@coceptio.fr')
+            ->setTo($projet->getAssociation()->getEmail())
+            ->setBody($this->renderView('CFMainBundle:Project:emailValider.txt.twig', array('user' => $projet->getAssociation(), 'projet' => $projet)))
+        ;
+        $this->get('mailer')->send($message);
+
+        $notif = new Notification();
+        $notif->setType(2);
+        $notif->setContenu('Votre projet "'.$projet->getNom().'" a été validé !');
+        $notif->setUser($projet->getAssociation());
+
+        $em->persist($notif);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('info', 'Le projet a bien été validé !');
 
         return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
     }

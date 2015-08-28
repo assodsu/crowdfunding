@@ -44,7 +44,7 @@ class ProjetAdmin extends Admin
             ->add('association.nom', null, array('label' => 'Association'))
             ->add('dateCreation')
             ->add('dateFin')
-            ->add('valider', null, array('label' => 'Validé', 'editable' => true))
+            ->add('valider', null, array('label' => 'Validé'))
         ;
     }
 }

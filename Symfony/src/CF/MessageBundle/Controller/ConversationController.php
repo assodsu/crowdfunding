@@ -3,6 +3,8 @@
 namespace CF\MessageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use CF\MessageBundle\Entity\Message;
+use CF\MessageBundle\Form\MessageType;
 
 class ConversationController extends Controller
 {
@@ -19,6 +21,9 @@ class ConversationController extends Controller
     {
     	$conversation = $this->getDoctrine()->getRepository('CFMessageBundle:Conversation')->findOneById($id);
 
-        return $this->render('CFMessageBundle:Conversation:show.html.twig', array('conversation' => $conversation));
+        $message = new Message();
+        $form = $this->createForm(new MessageType(), $message);
+
+        return $this->render('CFMessageBundle:Conversation:show.html.twig', array('form' => $form->createView(), 'conversation' => $conversation));
     }
 }
