@@ -120,7 +120,12 @@ $(document).ready(function() {
 			e.preventDefault();
 			return false;
 		});
+
 	}
+
+	$('#delete-box').click(function() {
+		$('#cf_mainbundle_projet_boxs_'+(indexBox-1)).parent().remove();
+	});
 
 	$('#button-validation-modal').on('click', function(e){
 		e.preventDefault();
@@ -161,21 +166,27 @@ $(document).ready(function() {
 					$widthBox = ' large';
 				}
 
-				console.log($('#radio-width-box input[name=box-width]:checked').val());
-
 				$('#modalForm').modal('hide');
+
+				$('#modalForm .error').remove();
 
 				$('.blocs').append('<div class="bloc-'+(indexBox-1)+$widthBox+'"><div class="bloc-head">'+$icone+'</div><div class="bloc-body"><h1 class="bloc-title">'+$('#box-title-form').val()+'</h1><a href="#" class="config-bloc" id-bloc="'+(indexBox-1)+'" type-bloc="'+$type+'" data-toggle="modal" data-target="#modalEditForm">Config</a> <a href="#" class="delete-bloc" id-bloc="'+(indexBox-1)+'">Delete</a></div></div>');
 				
 			}
 			else
 			{
-				console.log('ERREUR : REMPLIR LES CHAMPS');
+				if($('#modalForm .modal-body .error').length == 0)
+				{
+					$('#modalForm .modal-body').append('<div class="error"><i class="fa fa-exclamation-triangle"></i> Vous devez renseigner le champ ci-dessus.</div>');
+				}
 			}
 		}
 		else
 		{
-			console.log('ERREUR : REMPLIR LES CHAMPS');
+			if($('#modalForm .modal-header .error').length == 0)
+			{
+				$('#modalForm .modal-header').append('<div class="error"><i class="fa fa-exclamation-triangle"></i> Vous devez renseigner le champ ci-dessus.</div>');
+			}
 		}
 	});
 
@@ -253,19 +264,27 @@ $(document).ready(function() {
 			}
 			else
 			{
-				console.log('ERREUR : REMPLIR LES CHAMPS');
+				if($('#modalFormEdit .modal-body .error').length == 0)
+				{
+					$('#modalFormEdit .modal-body').append('<div class="error"><i class="fa fa-exclamation-triangle"></i> Vous devez renseigner le champ ci-dessus.</div>');
+				}
 			}
 		}
 		else
 		{
-			console.log('ERREUR : REMPLIR LES CHAMPS');
+			if($('#modalFormEdit .modal-header .error').length == 0)
+			{
+				$('#modalFormEdit .modal-header').append('<div class="error"><i class="fa fa-exclamation-triangle"></i> Vous devez renseigner le champ ci-dessus.</div>');
+			}
 		}
 	});
 
 	$('.blocs').on("click", ".delete-bloc", function(e) {
+		e.preventDefault();
 		$('#cf_mainbundle_projet_boxs_'+$(this).attr('id-bloc')).parent().children('a').trigger('click');
 		$('.bloc-'+$(this).attr('id-bloc')).remove();
 	});
+
 
 	/**** NAVIGATION ****/
     var navListItems = $('.step a'), allWells = $('.row.step-content');

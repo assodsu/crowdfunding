@@ -8,16 +8,29 @@
 	{{ parent() }}
 	<link href="{{ asset('css/style_showAll.css') }}" rel="stylesheet"/>
 	<style class="tags-style">
-		{% for projet in projets %}
-		{% for tag in projet.tags %}
-		.tag-{{ tag.id }} {
-			background: {{ tag.couleur }} !important;
-		}
-		.tag-{{ tag.id }}::before {
-			border-color: transparent {{ tag.couleur }} transparent transparent !important;
-		}
-		{% endfor %}
-		{% endfor %}
+		{% if type == 'projet' %}
+			{% for projet in projets %}
+				{% for tag in projet.tags %}
+					.tag-{{ tag.id }} {
+						background: {{ tag.couleur }} !important;
+					}
+					.tag-{{ tag.id }}::before {
+						border-color: transparent {{ tag.couleur }} transparent transparent !important;
+					}
+				{% endfor %}
+			{% endfor %}
+		{% else %}
+			{% for association in associations %}
+				{% for tag in association.tags %}
+					.tag-{{ tag.id }} {
+						background: {{ tag.couleur }} !important;
+					}
+					.tag-{{ tag.id }}::before {
+						border-color: transparent {{ tag.couleur }} transparent transparent !important;
+					}
+				{% endfor %}
+			{% endfor %}
+		{% endif %}
 	</style>
 {% endblock %}
 
@@ -82,65 +95,90 @@
 
 	<div id="content-scrolling">
 		<div id="content">
-		{% for projet in projets %}
-			<a href="{{ path('cf_main_project', {'slug' : projet.slug}) }}" class="project">
-				<div  id="project-{{ projet.id }}" class="apercu">
-					<div style="background: url('../../{{ projet.background.AssetPath }}') 50% 50%; background-size:cover;" class="project-background"></div>
-					<div class="filter"></div>
-					<div class="project-title">{{ projet.nom }}</div>
-					<div class="time-remaining">
-						<i class="fa fa-clock-o"></i> 
-						{% set difference = projet.dateFin.diff(date('now')) %}
-						{% set leftDays = difference.days %}
-						{% set leftHours = difference.h %}
-						{% set leftMinutes = difference.i %}
-						{% if projet.dateFin > date('now') %}
-							<strong>Temps restant :</strong> 
-							{% if leftDays > 1 %}
-								{{ leftDays }} jours
-							{% elseif leftDays == 1 %}
-								{{ leftDays }} jour
-							{% else %}
-								{% if leftHours > 1 %}
-									{{ leftHours }} heures
-								{% elseif leftHours == 1 %}
-									{{ leftHours }} heure
-								{% else %}
-									{% if leftMinutes > 0 %}
-										{{ leftMinutes }} minutes
+			{% if type == 'projet' %}
+				{% for projet in projets %}
+					<a href="{{ path('cf_main_project', {'slug' : projet.slug}) }}" class="project">
+						<div  id="project-{{ projet.id }}" class="apercu">
+							<div style="background: url('../../{{ projet.background.AssetPath }}') 50% 50%; background-size:cover;" class="project-background"></div>
+							<div class="filter"></div>
+							<div class="project-title">{{ projet.nom }}</div>
+							<div class="time-remaining">
+								<i class="fa fa-clock-o"></i> 
+								{% set difference = projet.dateFin.diff(date('now')) %}
+								{% set leftDays = difference.days %}
+								{% set leftHours = difference.h %}
+								{% set leftMinutes = difference.i %}
+								{% if projet.dateFin > date('now') %}
+									<strong>Temps restant :</strong> 
+									{% if leftDays > 1 %}
+										{{ leftDays }} jours
+									{% elseif leftDays == 1 %}
+										{{ leftDays }} jour
+									{% else %}
+										{% if leftHours > 1 %}
+											{{ leftHours }} heures
+										{% elseif leftHours == 1 %}
+											{{ leftHours }} heure
+										{% else %}
+											{% if leftMinutes > 0 %}
+												{{ leftMinutes }} minutes
+											{% endif %}
+										{% endif %}
 									{% endif %}
+								{% else %}
+									Projet terminé
 								{% endif %}
-							{% endif %}
-						{% else %}
-							Projet terminé
-						{% endif %}
-					</div>
-					<ul class="project-tags">
-						{% for tag in projet.tags %}
-							<li class="tag-{{ tag.id }}">{{ tag.nom }}</li>
-						{% endfor %}
-					</ul>
-					<div class='chart'>
-						<svg height="105" width="105">
-							<circle cx="52.5" cy="52.5" r="45" fill="#34495E" />
-						</svg>
-						<div class='pie-content'>
-							{% set pourcentage = (projet.nbActuHumain + projet.nbActuMateriel + projet.nbActuComm + projet.nbActuFinancier)/projet.nbRessources %}
-							<div class='percentage'>{{ (pourcentage*100)|round }}%</div>
-							<div class='name'>ressources</br>collectées</div>
+							</div>
+							<ul class="project-tags">
+								{% for tag in projet.tags %}
+									<li class="tag-{{ tag.id }}">{{ tag.nom }}</li>
+								{% endfor %}
+							</ul>
+							<div class='chart'>
+								<svg height="105" width="105">
+									<circle cx="52.5" cy="52.5" r="45" fill="#34495E" />
+								</svg>
+								<div class='pie-content'>
+									{% set pourcentage = (projet.nbActuHumain + projet.nbActuMateriel + projet.nbActuComm + projet.nbActuFinancier)/projet.nbRessources %}
+									<div class='percentage'>{{ (pourcentage*100)|round }}%</div>
+									<div class='name'>ressources</br>collectées</div>
+								</div>
+								<ul class="pie">
+									<li class='visualize ressource-materiel' data-color='#a66abe' data-value='{{ (projet.nbActuMateriel/projet.nbRessources)*100 }}'></li>
+									<li class='visualize ressource-financiere' data-color='#ea5f50' data-value='{{ (projet.nbActuFinancier/projet.nbRessources)*100 }}'></li>
+									<li class='visualize' data-value='{{ (100-(projet.nbActuMateriel/projet.nbRessources)*100 - (projet.nbActuFinancier/projet.nbRessources)*100 - (projet.nbActuHumain/projet.nbRessources)*100 - (projet.nbActuComm/projet.nbRessources)*100)|round }}' data-color='rgba(0,0,0,0)'></li><li class='visualize ressource-humain' data-color='#70d48d' data-value='{{ (projet.nbActuHumain/projet.nbRessources)*100 }}'></li>
+									<li class='visualize ressource-info' data-color='#99a5af' data-value='{{ (projet.nbActuComm/projet.nbRessources)*100 }}'></li>
+								</ul>
+							</div>
 						</div>
-						<ul class="pie">
-							<li class='visualize ressource-materiel' data-color='#a66abe' data-value='{{ (projet.nbActuMateriel/projet.nbRessources)*100 }}'></li>
-							<li class='visualize ressource-financiere' data-color='#ea5f50' data-value='{{ (projet.nbActuFinancier/projet.nbRessources)*100 }}'></li>
-							<li class='visualize' data-value='{{ (100-(projet.nbActuMateriel/projet.nbRessources)*100 - (projet.nbActuFinancier/projet.nbRessources)*100 - (projet.nbActuHumain/projet.nbRessources)*100 - (projet.nbActuComm/projet.nbRessources)*100)|round }}' data-color='rgba(0,0,0,0)'></li><li class='visualize ressource-humain' data-color='#70d48d' data-value='{{ (projet.nbActuHumain/projet.nbRessources)*100 }}'></li>
-							<li class='visualize ressource-info' data-color='#99a5af' data-value='{{ (projet.nbActuComm/projet.nbRessources)*100 }}'></li>
-						</ul>
-					</div>
-				</div>
-			</a>
-		{% else %}
-			<div class="error">Aucun projet ne correspond à vos critères de recherche… :(</div>
-		{% endfor %}
+					</a>
+				{% else %}
+					<div class="error">Aucun projet ne correspond à vos critères de recherche… :(</div>
+				{% endfor %}
+			{% else %}
+				{% for association in associations %}
+					<a href="{{ path('fos_user_profile_show', {slug : association.slug}) }}" class="association">
+						<div  id="asso-{{ association.id }}">
+							{% if association.logo.path is not null %}
+								<img class='logo-asso' src="{{asset( association.logo.AssetPath) }}"/>
+							{% else %}
+								<img class='logo-asso' src="{{asset( 'images/icones/avatars/association_avatar.png') }}"/>
+							{% endif %}
+							<div class="group-name-asso">
+								{% if association.certified %}<p class='label-certified'>Association certifiée <i class="fa fa-check"></i></p>{% endif %}
+								<div class="association-name">{{ association.nom }}</div>
+							</div>
+							<ul class="project-tags">
+								{% for tag in association.tags %}
+									<li class="tag-{{ tag.id }}">{{ tag.nom }}</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</a>
+				{% else %}
+					<div class="error">Aucune association ne correspond à vos critères de recherche… :(</div>
+				{% endfor %}
+			{% endif %}
 		</div>
 		<div class="scrolling-text">
 			<img src="{{ asset('images/icones/arrowDown.png') }}" alt="arrowDown" class="icon-medium">
@@ -156,8 +194,16 @@
 	<script type="text/javascript" src="{{ asset('js/visualize.js') }}"></script>
 	<script type="text/javascript">
 		
-		{% if recherche is defined %}
-			$('.search input').val('{{ recherche }}');
+		{% if rechercheName is defined %}
+			$('.search #search-bar input').val('{{ rechercheName }}');
+		{% endif %}
+
+		{% if rechercheTags is defined %}
+			$('.search #form_tags').val('{{ rechercheTags }}');
+		{% endif %}
+
+		{% if type is defined %}
+			$("#form_type").val('{{ type }}');
 		{% endif %}
 
 		updateProjects();
@@ -188,83 +234,9 @@
 
         		$('#content').append('<div class="loading"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
 
-        		if($('#search-bar input').val() == 0)
+        		if('{{ type }}' == 'projet')
         		{
-        			var params = 'index='+($('#content > a').length);
-
-		            $.ajax({
-		                url: '../projets/tous/update',
-		                type: 'POST',
-		                data: params,
-		                success: function(data) {
-
-	                        $('.loading').remove();
-
-	                        load = false;
-
-		                    if(data) {
-		                    	var taille = data.length;
-								for(i=0;i<taille;i++)
-								{
-									var pourcentage = Math.round(((data[i].nbActuHumain + data[i].nbActuMateriel + data[i].nbActuComm + data[i].nbActuFinancier)/data[i].nbRessources)*100);
-
-									var imagePath = "../../"+data[i].background;
-
-								    var start_actual_time = new Date($.now());
-								    var end_actual_time = new Date(data[i].dateFin.date);
-
-								    var diff = end_actual_time - start_actual_time;
-
-								    var minutes = Math.round(diff/1000/60);
-								    var hours = Math.round(minutes/60);
-								    var days = Math.round(hours/24);
-
-								    var dateFin = "";
-
-								    if (minutes > 0) {
-								    	dateFin = "Temps restant : ";
-								    	if (days > 1) {
-								    		dateFin += days + " jours";
-								    	}
-								    	else if (days == 1) {
-								    		dateFin += days + " jour";
-								    	}
-								    	else {
-								    		if(hours > 1) {
-								    			dateFin += hours + " heures";
-								    		}
-								    		else if (hours == 1) {
-								    			dateFin += hours + " heure";
-								    		}
-								    		else {
-								    			if(minutes > 0) {
-								    				dateFin += minutes + " minutes";
-								    			}
-								    		}
-								    	}
-								    }
-								    else {
-								    	dateFin = "Projet terminé";
-								    }
-
-								    var projectTags = '';
-
-								    for (var j = 0; j < data[i].tags.length; j++) {
-								    	projectTags += '<li class="tag-'+data[i].tags[j].id+'">'+data[i].tags[j].nom+'</li>';
-								 		$('.tags-style').append('.tag-'+data[i].tags[j].id+' {background: '+data[i].tags[j].couleur+' !important; }.tag-'+data[i].tags[j].id+'::before {border-color: transparent '+data[i].tags[j].couleur+' transparent transparent !important;}');
-								    };
-
-									$('#content').append('<a href="../projet/voir/'+data[i].slug+'" class="project"><div  id="project-'+data[i].id+'" class="apercu"><div  style="background: url('+imagePath+') 50% 50%; background-size:cover;" class="project-background"></div><div class="filter"></div><div class="project-title">'+data[i].nom+'</div><div class="time-remaining"><i class="fa fa-clock-o"></i> '+dateFin+'</div><ul class="project-tags">'+projectTags+'</ul><div class="chart"><svg height="105" width="105"><circle cx="52.5" cy="52.5" r="45" fill="#34495E" /></svg><div class="pie-content"><div class="percentage">'+pourcentage+'%</div><div class="name">ressources</br>collectées</div></div><ul class="pie"><li class="visualize ressource-materiel" data-color="#a66abe" data-value="'+(data[i].nbActuMateriel / data[i].nbRessources)*100+'"></li><li class="visualize ressource-financiere" data-color="#ea5f50" data-value="'+(data[i].nbActuFinancier / data[i].nbRessources)*100+'"></li><li class="visualize" data-value="'+Math.round((100-(data[i].nbActuMateriel / data[i].nbRessources)*100 - (data[i].nbActuFinancier / data[i].nbRessources )*100 - (data[i].nbActuHumain / data[i].nbRessources )*100 - (data[i].nbActuComm / data[i].nbRessources )*100))+'" data-color="rgba(0,0,0,0)"></li><li class="visualize ressource-humain" data-color="#70d48d" data-value="'+(data[i].nbActuHumain / data[i].nbRessources)*100+'"></li><li class="visualize ressource-info" data-color="#99a5af" data-value="'+(data[i].nbActuComm / data[i].nbRessources)*100+'"></li></ul></div></div></a>');
-
-									updateProjects();
-								}
-		                    }
-		                }
-		            });
-        		}
-        		else
-        		{
-        			var params = 'index='+($('#content > a').length)+'&search='+$('#search-bar input').val();
+    				var params = 'index='+($('#content > a').length)+'&type=projet'+'&search='+$('#search-bar input').val()+'&tags='+$('#form_tags').val();
 
 		            $.ajax({
 		                url: '../projets/recherche/update',
@@ -336,7 +308,53 @@
 		                }
 		            });
         		}
-        		
+        		else
+        		{
+    				var params = 'index='+($('#content > a').length)+'&type=association'+'&search='+$('#search-bar input').val()+'&tags='+$('#form_tags').val();
+
+    				console.log(params);
+
+		            $.ajax({
+		                url: '../projets/recherche/update',
+		                type: 'POST',
+		                data: params,
+		                success: function(data) {
+
+	                        $('.loading').remove();
+
+	                        load = false;
+
+	                        console.log(data);
+
+		                    if(data) {
+		                    	var taille = data.length;
+								for(i=0;i<taille;i++)
+								{
+									var imagePath = '';
+
+									if(data[i].logo)
+										imagePath = "../../"+data[i].logo;
+									else
+										imagePath = "{{asset( 'images/icones/avatars/association_avatar.png') }}";
+
+									var certifiedAsso = '';
+
+									if(data[i].certified)
+										certifiedAsso = '<p class="label-certified">Association certifiée <i class="fa fa-check"></i></p>';
+
+								    var projectTags = '';
+
+								    for (var j = 0; j < data[i].tags.length; j++) {
+								    	projectTags += '<li class="tag-'+data[i].tags[j].id+'">'+data[i].tags[j].nom+'</li>';
+								 		$('.tags-style').append('.tag-'+data[i].tags[j].id+' {background: '+data[i].tags[j].couleur+' !important; }.tag-'+data[i].tags[j].id+'::before {border-color: transparent '+data[i].tags[j].couleur+' transparent transparent !important;}');
+								    };
+
+								    $('#content').append('<a href="../profil/voir/'+data[i].slug+'" class="association"><div  id="asso-'+data[i].id+'"><img class="logo-asso" src="'+imagePath+'"/><div class="group-name-asso">'+certifiedAsso+'<div class="association-name">'+data[i].nom+'</div></div><ul class="project-tags">'+projectTags+'</ul></div></a>');
+								}
+		                    }
+		                }
+		            });
+        		}
 	        }
      	});
 	</script>

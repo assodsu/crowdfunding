@@ -81,12 +81,19 @@ class ProfileController extends Controller
 
             $media = new Media();
             $data  = $request->files->get($form->getName());
-            
+
+            $testLogo = '';
             foreach ($data['logo'] as $l)
-                $media->setFile($l);
+                $testLogo = $l;
+            
+            if($testLogo != '')
+            {
+                foreach ($data['logo'] as $l)
+                    $media->setFile($l);
 
-            $user->setLogo($media);
-
+                $user->setLogo($media);
+            }
+            
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {

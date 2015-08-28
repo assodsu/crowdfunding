@@ -14,6 +14,8 @@
 	<form action="{{ path('cf_main_modifier_projet', { slug : projet.slug}) }}" {{ form_enctype(form) }} method="POST" class="form-edit-project">
 		{{ form_errors(form) }}
 		{{ form_start(form) }}
+		
+		{{ form_widget(form.nom) }}
 
 		<div class="tab-box">
 			<h1>Image de fond</h1>
@@ -23,6 +25,9 @@
 		</div>
 		<div class="tab-box">
 			<h1>Informations supplémentaires</h1>
+			<div class="form-group">
+				{{ form_widget(form.tags) }}
+			</div>
 			<div class="form-group">
 				{{ form_widget(form.infoSup, { 'attr': {'class': 'form-control ckeditor', 'placeholder' : 'Saisissez les informations supplémentaires...'} }) }}
 			</div>

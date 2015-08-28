@@ -17,6 +17,13 @@ class ProjetEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('nom', null, array('label' => "nom du projet"))
+            ->add('tags',  'entity', array(
+                'class'    => 'CFMainBundle:Tags',
+                'property' => 'nom',
+                'expanded'=>true,
+                'multiple' => true
+                ))
             ->add('infoSup', 'textarea',  array('label' => false, 'attr' => array('class' => 'ckeditor')))
             ->add('background', new MediaType(),  array('label' => false, 'attr' => array('class' => 'file')))
         ;

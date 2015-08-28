@@ -471,7 +471,7 @@ textarea {
 		position: fixed;
 		top: 0;
 		left: 0;
-		width: 100%;
+		width: 40%;
 		z-index: 10;
 	}
 	.profile-menus {
@@ -482,7 +482,21 @@ textarea {
 		width: 100%;
 	}
 }
-
+@media (max-width: 675px) {
+	.profile-left-menu {
+		width: 55%;
+	}
+}
+@media (max-width: 530px) {
+	.profile-left-menu {
+		width: 65%;
+	}
+}
+@media (max-width: 440px) {
+	.profile-left-menu {
+		width: 100%;
+	}
+}
 /** BADGES **/
 .badge-profil {
 	display: inline-block;
@@ -582,6 +596,7 @@ textarea {
   display: inline-block;
   margin: 0 5px;
   width: 20%;
+  vertical-align: top;
 }
 .resources-percent .resource i{
   font-size: 30px;
@@ -617,30 +632,40 @@ textarea {
   width: 500px;
   position: relative;
 }
+.back-filter {
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    background: rgba(0,0,0,.4);
+}
 .project-background a {
 	width: 100%;
     display: block;
-    line-height: 150px;
     color: #fff;
     font-size: 32px;
     font-weight: 100;
     text-transform: uppercase;
-    background: rgba(0,0,0,.2);
+    position: relative;
+    top: 50%;
+    -ms-transform: translate(0,-50%);
+    -webkit-transform: translate(0,-50%);
+    transform: translate(0,-50%);
 }
-.project-background a:hover {
+.project-background a:hover,.project-background a:active, .project-background a:focus {
 	text-decoration: none;
 }
 .project-list .percentage, .project-list .time-remaining, .project-list .discover {
-	font-size: 14px;
-    width: 30%;
-    margin: 5px;
+    font-size: 14px;
+    width: calc(33% - 32px);
+    margin: 10px;
+    padding: 5px;
     display: inline-block;
     text-align: left;
     vertical-align: top;
 }
 .discover {
-    text-align: center;
-    margin-top: 25px;
+    text-align: center !important;
+    margin-top: 25px !important;
 }
 .percentage > span, .time-remaining > span {
 	display: block;
@@ -664,6 +689,20 @@ textarea {
 	.resources-percent .resource {
 		font-size: 13px;
 	}
+
+	.project-list .project-background {
+	    width: 100%;
+	}
+	.project-list .project {
+	    width: calc(100% - 20px);
+	}
+	.project-background a {
+	    font-size: 24px;
+    	font-weight: 400;
+	}
+	.projects-list a {
+	    font-size: 17px;
+	}
 }
 @media(max-width: 500px) {
 	.resources-percent .resource {
@@ -672,13 +711,36 @@ textarea {
 	.project-time-left h2 {
 		font-size: 12px;
 	}
+	.projects-list a {
+	    font-size: 16px;
+	}
 }
 
 @media (max-width: 440px) {
 	.projects-list {
-	  line-height: 20px;
-	  font-size: 15px;
-	  width: calc(100% - 100px);
+	  line-height: 42px;
+	}
+	.projects-list a {
+	    font-size: 13px;
+	}
+	.project-list .percentage, .project-list .time-remaining, .project-list .discover {
+	    width: calc(50% - 32px);
+	    font-size: 12px;
+	}
+	.project-list .project {
+	    height: 230px;
+	}
+	.discover {
+	    display:none !important;
+	}
+	.percentage > span, .time-remaining > span {
+	    font-size: 25px;
+	}
+}
+
+@media (max-width: 400px) {
+	.projects-list a {
+	    font-size: 11px;
 	}
 }
 /*************/

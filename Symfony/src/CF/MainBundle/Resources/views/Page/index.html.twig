@@ -1,207 +1,207 @@
 {% extends "CFMainBundle::layout.html.twig" %}
 
 {% block title %}
-  	{{ parent() }} - Accueil
+    {{ parent() }} - Accueil
 {% endblock %}
 
 {% block stylesheets %}
-	{{ parent() }}
-	<link href="{{ asset('css/style_index.css') }}" rel="stylesheet"/>
+    {{ parent() }}
+    <link href="{{ asset('css/style_index.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
-	<div id="main-top">
-<div class="sidebar-left">
-	<div class="sidebar-left-title">C<span class="blue">o</span>cepti<span class="blue">o</span></div>
-	<div class="sidebar-left-slogan">Concevoir<br />Ensemble</div>
-	<hr>
-	<div class="sidebar-left-inscription">
-		<div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
-			<!-- Carousel items -->
-			<div class="carousel-inner">
-				<div class="active item">
-					<p>Je suis une association et j'ai besoin d'être soutenu pour mes projets !</p>
-					<div class="profile-circle" style="background-color: #83d29a;"></div>
-				</div>
-				<div class="item">
-					<p>Je suis un particulier et je souhaite participer aux projets associatifs.</p>
-					<div class="profile-circle" style="background-color: #c0392b;"></div>
-				</div>
-				<div class="item">
-					<p>Je suis une entreprise et je désire supporter des projets associatifs.</p>
-					<div class="profile-circle" style="background-color: #2980b9;"></div>
-				</div>
-			</div>
-			<!-- Carousel indicators -->
-			<ol class="carousel-indicators">
-				<li data-target="#fade-quote-carousel" data-slide-to="0" class="active green"></li>
-				<li data-target="#fade-quote-carousel" data-slide-to="1" class="red"></li>
-				<li data-target="#fade-quote-carousel" data-slide-to="2" class="blue"></li>
-			</ol>
-		</div>
-	</div>
-	{% if not app.user  %}
-		<a href="{{ path('fos_user_registration_register') }}" class="btn btn-success">Je m'inscris <span class="glyphicon glyphicon-user"></span></a>
-	{% else %}
-		<a href="{{ path('cf_site_commentcamarche') }}" class="btn btn-success">Comment ça marche ?</a>
-	{% endif %}
-	<div class="sidebar-projects">
-		<a id="linkProjetsAccueil" href="#" class="active">Les projets en pôle position</a>
-		<a id="linkProjetsAboutissants" href="#">Les projets aboutissants</a>
-		<a id="linkProjetsNouveaux" href="#">Les nouveaux nés</a>
-		<a href="{{ path('cf_main_allProjects') }}">Tous les projets</a>
-	</div>
-	</div><div class="carousel-front">
-		<div class="carousel-front-texte">
-			<p class="text-selected-project"></p>
-			<a href="#" id="hrefBtnDiscover" class="btn btn-success">Découvrir le projet <span class="glyphicon glyphicon-menu-right"></span></a>
-  			<div class="jauge">
-  				<div class="jauge-inner" style="width:66%;"></div>
-  			</div>
-			<p class="project-selected-infos"></p>
-		</div>
-	</div>
-	</div>
-	<div class="slider active" id="projetsAccueil">
-	  {% for pa in projetsAccueil %}
-	  	<div class="item-slider">
-		<div class="slide-image" text="{{ pa.text }}" slugProject="{{ pa.projet.slug }}" img="{{ pa.projet.background.path }}"></div>
-  		<div class="mask">
-		    <img src="{{ asset(pa.projet.background.AssetPath) }}" class="slide-image-blured">
-		</div>
-  		<div class="project-infos">
-  			<span class="title">{{ pa.projet.nom }}</span>
-  		</div>
-  		<div class="project-more-infos">
-  			{% set pourcentage = (pa.projet.nbActuHumain + pa.projet.nbActuMateriel + pa.projet.nbActuComm + pa.projet.nbActuFinancier)/pa.projet.nbRessources %}
-  			<div class="jauge">
-  				<div class="jauge-inner" style="width:{{ (pourcentage*100) }}%; max-width:100%;"></div>
-  			</div>
-  			<div class="text-infos">
-	  			<p>{{ (pourcentage*100)|round }}% | {{ pa.projet.nbDonateur }} acteurs</p>
-	  		</div>
-  		</div>
-	  </div>
-	 {% endfor %}
-	</div>
-
-	<div class="slider" id="projetsAboutissants">
-		 {% for p in projetsAboutissants %}
-	  	<div class="item-slider">
-		<div class="slide-image" text="{{ p.nom }}" slugProject="{{ p.slug }}" img="{{ p.background.path }}"></div>
-  		<div class="mask">
-	  		<div class="slide-image-blured"></div>
-		</div>
-  		<div class="project-infos">
-  			<span class="title">{{ p.nom }}</span>
-  		</div>
-  		<div class="project-more-infos">
-  			{% set pourcentage = (p.nbActuHumain + p.nbActuMateriel + p.nbActuComm + p.nbActuFinancier)/p.nbRessources %}
-  			<div class="jauge">
-  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%; max-width:100%;"></div>
-  			</div>
-  			<div class="text-infos">
-	  			<p>{{ pourcentage*100|round }}% | {{ p.nbDonateur }} acteurs</p>
-	  		</div>
-  		</div>
-	  </div>
-	 {% endfor %}
-		</div>
-
-		<div class="slider" id="projetsNouveaux">
-		 {% for p in projetsNouveaux %}
-	  	<div class="item-slider">
-		<div class="slide-image" text="{{ p.nom }}" slugProject="{{ p.slug }}" img="{{ p.background.path }}"></div>
-  		<div class="mask">
-		    <div class="slide-image-blured"></div>
-		</div>
-  		<div class="project-infos">
-  			<span class="title">{{ p.nom }}</span>
-  		</div>
-  		<div class="project-more-infos">
-  			{% set pourcentage = (p.nbActuHumain + p.nbActuMateriel + p.nbActuComm + p.nbActuFinancier)/p.nbRessources %}
-  			<div class="jauge">
-  				<div class="jauge-inner" style="width:{{ pourcentage*100 }}%; max-width:100%;"></div>
-  			</div>
-  			<div class="text-infos">
-	  			<p>{{ pourcentage*100|round }}% | {{ p.nbDonateur }} acteurs</p>
-	  		</div>
-  		</div>
-	  </div>
-	 {% endfor %}
-		</div>
-
-	<div class="search">
-		{{ render(controller('CFMainBundle:Recherche:renderSearch')) }}
-	</div>
-
-<div id="search-content">
-	<div class="selectors">
-		<div class="selector">
-			{% for s in selecteurs %}
-				{% if s.colonne == 1 %}
-				<div class="container-select">
-					<div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
-				</div>
-				{% endif %}
-			{% endfor %}
-		</div>
-
-		<div class="selector">
-			{% for s in selecteurs %}
-				{% if s.colonne == 2 %}
-				<div class="container-select">
-					<div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
-				</div>
-				{% endif %}
-			{% endfor %}
-		</div>
-
-		<div class="selector">
-			{% for s in selecteurs %}
-				{% if s.colonne == 3 %}
-				<div class="container-select">
-					<div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
-				</div>
-				{% endif %}
-			{% endfor %}
-		</div>
-
-		<div class="selector">
-			{% for s in selecteurs %}
-				{% if s.colonne == 4 %}
-				<div class="container-select">
-					<div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
-				</div>
-				{% endif %}
-			{% endfor %}
-		</div>
-	</div>
+    <div id="main-top">
+        <div class="sidebar-left">
+            <div class="sidebar-left-title">C<span class="blue">o</span>cepti<span class="blue">o</span></div>
+            <div class="sidebar-left-slogan">Concevoir<br />Ensemble</div>
+            <hr>
+            <div class="sidebar-left-inscription">
+                <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <div class="active item">
+                            <p>Je suis une association et j'ai besoin d'être soutenu pour mes projets !</p>
+                            <div class="profile-circle" style="background-color: #83d29a;"></div>
+                        </div>
+                        <div class="item">
+                            <p>Je suis un particulier et je souhaite participer aux projets associatifs.</p>
+                            <div class="profile-circle" style="background-color: #c0392b;"></div>
+                        </div>
+                        <div class="item">
+                            <p>Je suis une entreprise et je désire supporter des projets associatifs.</p>
+                            <div class="profile-circle" style="background-color: #2980b9;"></div>
+                        </div>
+                    </div>
+                    <!-- Carousel indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#fade-quote-carousel" data-slide-to="0" class="active green"></li>
+                        <li data-target="#fade-quote-carousel" data-slide-to="1" class="red"></li>
+                        <li data-target="#fade-quote-carousel" data-slide-to="2" class="blue"></li>
+                    </ol>
+                </div>
+            </div>
+            {% if not app.user  %}
+                <a href="{{ path('fos_user_registration_register') }}" class="btn btn-success">Je m'inscris <span class="glyphicon glyphicon-user"></span></a>
+                {% else %}
+                <a href="{{ path('cf_site_commentcamarche') }}" class="btn btn-success">Comment ça marche ?</a>
+            {% endif %}
+            <div class="sidebar-projects">
+                <a id="linkProjetsAccueil" href="#" class="active">Les projets en pôle position</a>
+                <a id="linkProjetsAboutissants" href="#">Les projets aboutissants</a>
+                <a id="linkProjetsNouveaux" href="#">Les nouveaux nés</a>
+                <a href="{{ path('cf_main_allProjects') }}">Tous les projets</a>
+            </div>
+        </div><div class="carousel-front">
+        <div class="carousel-front-texte">
+            <p class="text-selected-project"></p>
+            <a href="#" id="hrefBtnDiscover" class="btn btn-success">Découvrir le projet <span class="glyphicon glyphicon-menu-right"></span></a>
+            <div class="jauge">
+                <div class="jauge-inner" style="width:66%;"></div>
+            </div>
+            <p class="project-selected-infos"></p>
+        </div>
+    </div>
+</div>
+<div class="slider active" id="projetsAccueil">
+{% for pa in projetsAccueil %}
+    <div class="item-slider">
+        <div class="slide-image" text="{{ pa.text }}" slugProject="{{ pa.projet.slug }}" img="{{ pa.projet.background.path }}"></div>
+        <div class="mask">
+            <img src="{{ asset(pa.projet.background.AssetPath) }}" class="slide-image-blured">
+        </div>
+        <div class="project-infos">
+            <span class="title">{{ pa.projet.nom }}</span>
+        </div>
+        <div class="project-more-infos">
+            {% set pourcentage = (pa.projet.nbActuHumain + pa.projet.nbActuMateriel + pa.projet.nbActuComm + pa.projet.nbActuFinancier)/pa.projet.nbRessources %}
+                <div class="jauge">
+                    <div class="jauge-inner" style="width:{{ (pourcentage*100) }}%; max-width:100%;"></div>
+                </div>
+                <div class="text-infos">
+                    <p>{{ (pourcentage*100)|round }}% | {{ pa.projet.nbDonateur }} acteurs</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 </div>
 
-<div style="margin: 20px 0; text-align: center">
-<a class="btn btn-success" href="{{ path('cf_main_allProjects') }}"><i class="fa fa-chevron-right"></i> Plus de critères</a>
-</div>
+    <div class="slider" id="projetsAboutissants">
+        {% for p in projetsAboutissants %}
+            <div class="item-slider">
+                <div class="slide-image" text="{{ p.nom }}" slugProject="{{ p.slug }}" img="{{ p.background.path }}"></div>
+                <div class="mask">
+                    <div class="slide-image-blured"></div>
+                </div>
+                <div class="project-infos">
+                    <span class="title">{{ p.nom }}</span>
+                </div>
+                <div class="project-more-infos">
+                    {% set pourcentage = (p.nbActuHumain + p.nbActuMateriel + p.nbActuComm + p.nbActuFinancier)/p.nbRessources %}
+                        <div class="jauge">
+                            <div class="jauge-inner" style="width:{{ pourcentage*100 }}%; max-width:100%;"></div>
+                        </div>
+                        <div class="text-infos">
+                            <p>{{ (pourcentage*100)|round }}% | {{ p.nbDonateur }} acteurs</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
 
-<div id="more-infos">
-	<h3>TITLE</h3>
-	<div>
-	<div class="more-infos-block">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra turpis at interdum hendrerit. Curabitur quis finibus nibh. Donec non iaculis neque, ultrices lobortis tortor. Nullam tristique bibendum consequat. Etiam vel gravida lectus. Etiam vel diam vel sem porttitor mattis.
-	</div>
-	<div class="more-infos-block">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra turpis at interdum hendrerit. Curabitur quis finibus nibh. Donec non iaculis neque, ultrices lobortis tortor. Nullam tristique bibendum consequat. Etiam vel gravida lectus. Etiam vel diam vel sem porttitor mattis.
-	</div>
-	<div class="more-infos-block">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra turpis at interdum hendrerit. Curabitur quis finibus nibh. Donec non iaculis neque, ultrices lobortis tortor. Nullam tristique bibendum consequat. Etiam vel gravida lectus. Etiam vel diam vel sem porttitor mattis.
-	</div>
-</div>
-	<a class="btn btn-success" href="{{ path('cf_site_commentcamarche') }}"><i class="fa fa-chevron-right"></i> Plus d'explications</a>
-</div>
-{% endblock %}
+        <div class="slider" id="projetsNouveaux">
+            {% for p in projetsNouveaux %}
+                <div class="item-slider">
+                    <div class="slide-image" text="{{ p.nom }}" slugProject="{{ p.slug }}" img="{{ p.background.path }}"></div>
+                    <div class="mask">
+                        <div class="slide-image-blured"></div>
+                    </div>
+                    <div class="project-infos">
+                        <span class="title">{{ p.nom }}</span>
+                    </div>
+                    <div class="project-more-infos">
+                        {% set pourcentage = (p.nbActuHumain + p.nbActuMateriel + p.nbActuComm + p.nbActuFinancier)/p.nbRessources %}
+                            <div class="jauge">
+                                <div class="jauge-inner" style="width:{{ pourcentage*100 }}%; max-width:100%;"></div>
+                            </div>
+                            <div class="text-infos">
+                                <p>{{ (pourcentage*100)|round }}% | {{ p.nbDonateur }} acteurs</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
 
-{% block javascripts %}
-	{{ parent() }}
-	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
-	<script type="text/javascript" src="{{ asset('js/script_index.js') }}"></script>
-{% endblock %}
+            <div class="search">
+                {{ render(controller('CFMainBundle:Recherche:renderSearch')) }}
+            </div>
+
+            <div id="search-content">
+                <div class="selectors">
+                    <div class="selector">
+                        {% for s in selecteurs %}
+                            {% if s.colonne == 1 %}
+                                <div class="container-select">
+                                    <div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="selector">
+                        {% for s in selecteurs %}
+                            {% if s.colonne == 2 %}
+                                <div class="container-select">
+                                    <div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="selector">
+                        {% for s in selecteurs %}
+                            {% if s.colonne == 3 %}
+                                <div class="container-select">
+                                    <div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="selector">
+                        {% for s in selecteurs %}
+                            {% if s.colonne == 4 %}
+                                <div class="container-select">
+                                    <div class="select" style="color: {{ s.couleur }}">{{ s.texte }}</div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin: 20px 0; text-align: center">
+                <a class="btn btn-success" href="{{ path('cf_main_allProjects') }}"><i class="fa fa-chevron-right"></i> Plus de critères</a>
+            </div>
+
+            <div id="more-infos">
+                <h3>TITLE</h3>
+                <div>
+                    <div class="more-infos-block">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra turpis at interdum hendrerit. Curabitur quis finibus nibh. Donec non iaculis neque, ultrices lobortis tortor. Nullam tristique bibendum consequat. Etiam vel gravida lectus. Etiam vel diam vel sem porttitor mattis.
+                    </div>
+                    <div class="more-infos-block">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra turpis at interdum hendrerit. Curabitur quis finibus nibh. Donec non iaculis neque, ultrices lobortis tortor. Nullam tristique bibendum consequat. Etiam vel gravida lectus. Etiam vel diam vel sem porttitor mattis.
+                    </div>
+                    <div class="more-infos-block">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra turpis at interdum hendrerit. Curabitur quis finibus nibh. Donec non iaculis neque, ultrices lobortis tortor. Nullam tristique bibendum consequat. Etiam vel gravida lectus. Etiam vel diam vel sem porttitor mattis.
+                    </div>
+                </div>
+                <a class="btn btn-success" href="{{ path('cf_site_commentcamarche') }}"><i class="fa fa-chevron-right"></i> Plus d'explications</a>
+            </div>
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ parent() }}
+            <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
+            <script type="text/javascript" src="{{ asset('js/script_index.js') }}"></script>
+        {% endblock %}

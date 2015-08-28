@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% set menulink_currentProjects = 1 %}
+{% block footer %}{% endblock %}
 
 {% block cfuserbundle_body %}
 	<div class="profile-menu-projects">
@@ -15,7 +16,7 @@
 				<div class="projects-list">
 					{% set projectIndex = 1 %}
 					{% for projet in projets %}
-						<a href="{{ path('cf_main_project', {'slug' : projet.slug}) }}" class="project project-{{projectIndex}}">{{ projet.nom }}</a>
+						<a href="{{ path('cf_main_project', {'slug' : projet.slug}) }}" class="project project-{{projectIndex}}">{{ projet.nom|length > 35 ? projet.nom|slice(0, 35) ~ '...' : projet.nom  }}</a>
 						{% set projectIndex = projectIndex + 1 %}
 					{% endfor %}
 				</div>

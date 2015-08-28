@@ -43,6 +43,31 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function getSearchNameList($search)
+    {  
+        $qb = $this->createQueryBuilder('p');
+         
+        $qb->where('p.valider = 1')
+           ->andWhere('p.nom LIKE :search')
+           ->setParameter('search', '%'.$search.'%')
+           ->orderBy('p.dateCreation','DESC');
+                 
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getSearchTagsList($tag)
+    {  
+        $qb = $this->createQueryBuilder('p');
+         
+        $qb->leftJoin('p.tags', 't')
+           ->leftJoin('p.association', 'a')
+           ->where('p.valider = 1 AND (a.ville LIKE :tag OR t.nom LIKE :tag)')
+           ->setParameter('tag', '%'.$tag.'%')
+           ->orderBy('p.dateCreation','DESC');
+                 
+        return $qb->getQuery()->getResult();
+    }
+
 	public function getSearchList($motcle)
     {  
         $qb = $this->createQueryBuilder('p');

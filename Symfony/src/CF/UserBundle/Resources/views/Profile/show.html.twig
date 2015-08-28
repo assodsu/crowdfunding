@@ -139,6 +139,7 @@
 						{% for projet in user.projetsSoutenus %}
 							<div class="project" id="project-{{ projet.id }}">
 								<div class="project-background" img="{{ projet.background.path }}" style="background : url('../../../{{ projet.background.AssetPath }}') center center no-repeat; background-size : cover;">
+									<div class="back-filter"></div>
 									<a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a>
 								</div>
 								{% set pourcentage = (projet.nbActuHumain + projet.nbActuMateriel + projet.nbActuComm + projet.nbActuFinancier)/projet.nbRessources %}
@@ -185,6 +186,7 @@
 							{% for projet in projets %}
 								<div class="project" id="project-{{ projet.id }}">
 									<div class="project-background" img="{{ projet.background.path }}"  style="background : url('../../../{{ projet.background.AssetPath }}') center center no-repeat; background-size : cover;">
+										<div class="back-filter"></div>
 										<a href="{{ path('cf_main_project', { 'slug' : projet.slug }) }}">{{ projet.nom }}</a>
 									</div>
 									{% set pourcentage = (projet.nbActuHumain + projet.nbActuMateriel + projet.nbActuComm + projet.nbActuFinancier)/projet.nbRessources %}

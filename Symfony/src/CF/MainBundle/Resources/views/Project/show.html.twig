@@ -232,7 +232,7 @@
 				</div>
 				<div class="project-description">
 					{% if app.user == projet.association %}
-						<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalAddBlock" id="btn-add-block"><i class="fa fa-plus"></i> Ajouter un bloc</button>
+						<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalAddBlock" id="btn-add-block">Ajouter un bloc <i class="fa fa-plus"></i></button>
 						{{ render(controller('CFMainBundle:Box:rediger', {'id': projet.id })) }}
 					{% endif %}
 
@@ -274,15 +274,18 @@
 			<div class="tab-pane fade" id="tabupdates">
 				{% if app.user == projet.association %}
 					<div style="margin-bottom: 20px; margin-left:20px;">
-						<a href="{{ path('cf_main_rediger_actu', {id: projet.id}) }}" class="btn btn-success">Rédiger une actualité <i class="fa fa-plus"></i></a>
+						<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalActu">Ajouter une actualité <i class="fa fa-plus"></i></button>
+						{{ render(controller('CFMainBundle:Actualite:rediger', {'id': projet.id })) }}
 					</div>
 				{% endif %}
 				{% for a in projet.actualites %}
 					<div class='tab-box full'>
 						{% if app.user == a.projet.association %}
 							<div style="margin-bottom: 20px;">
-								<a href="{{ path('cf_main_edit_actu', {id: a.id}) }}" class="btn btn-warning">Editer <i class="fa fa-pencil-square-o"></i></a>
-								<a href="{{ path('cf_main_delete_actu', {id: a.id}) }}" class="btn btn-danger">Supprimer <i class="fa fa-trash-o"></i></a>
+								<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#modalActuEdit{{ a.id }}">Modifier</button>
+								{{ render(controller('CFMainBundle:Actualite:editer', {'id': a.id })) }}
+								<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modalDeleteActu{{ a.id }}">Supprimer</button>
+								{{ render(controller('CFMainBundle:Actualite:supprimer', {'id': a.id })) }}
 							</div>
 						{% endif %}
 						<div class='update-date'>Le {{ a.date|date('d/m/Y - H') }}h{{ a.date|date('i') }}</div>
@@ -316,8 +319,6 @@
 	<script type="text/javascript" src="{{ asset('js/bootstrap-filestyle.js') }}"> </script>
 	<script type="text/javascript" src="{{asset('js/visualize.js')}}"></script>
 	<script type="text/javascript">
-		$(":file").filestyle({input: false});
-
         $('.form-choice-box').hide();
         $('#form-texte').show();
         $('.modal-body .nav-modal-form li a').on('click', function(e) {
@@ -420,8 +421,11 @@
 		}
 
 		var str = $('iframe').attr('src');
-		var res = str.replace("watch?v=", "embed/");
-		$('iframe').attr('src', res);
+		if(str)
+		{
+			var res = str.replace("watch?v=", "embed/");
+			$('iframe').attr('src', res);
+		}
 
     </script>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user != projet.association %}

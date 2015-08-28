@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use CF\MainBundle\Entity\Box;
 use CF\MainBundle\Entity\Projet;
 use CF\MainBundle\Form\BoxType;
+use CF\MainBundle\Entity\Media;
 
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -67,13 +68,32 @@ class BoxController extends Controller
             if($form->isValid())
             {
                 $em = $this->getDoctrine()->getEntityManager();
+
+                $media = new Media();
+                $data  = $request->files->get($form->getName());
+
+                $testBackground = '';
+                
+                foreach ($data['urlImage'] as $l)
+                    $testBackground = $l;
+
+                if($testBackground != '')
+                {
+                    foreach ($data['urlImage'] as $l)
+                        $media->setFile($l);
+
+                    $box->setUrlImage($media);
+                }
+                
                 $em->persist($box);
                 $em->flush();
+
+                $this->get('session')->getFlashBag()->add('info', 'La box a bien été modifiée !');
+
             }
-
-            $this->get('session')->getFlashBag()->add('info', 'La box a bien été modifiée !');
-
+            
             return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $box->getProjet()->getSlug())));
+
         }
 
         return $this->render('CFMainBundle:Box:edit.html.twig', array('form' => $form->createView(), 'box' => $box));

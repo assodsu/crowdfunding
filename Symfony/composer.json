@@ -27,7 +27,8 @@
         "sonata-project/admin-bundle": "2.4.*@dev",
         "sonata-project/doctrine-orm-admin-bundle": "~2.3",
         "stof/doctrine-extensions-bundle": "~1.1",
-        "coresphere/console-bundle": "dev-master"
+        "coresphere/console-bundle": "dev-master",
+        "symfony/var-dumper": "^2.7"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
