@@ -40,8 +40,9 @@ class ActualiteController extends Controller
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('info', 'L\'actualité a bien été ajoutée !');
 
-                return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
             }
+            
+            return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
 
         }
 
@@ -69,9 +70,9 @@ class ActualiteController extends Controller
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($actualite);
                 $em->flush();
-            }
 
-            $this->get('session')->getFlashBag()->add('info', 'La mise à jour a bien été modifiée !');
+                $this->get('session')->getFlashBag()->add('info', 'La mise à jour a bien été modifiée !');
+            }
 
             return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $actualite->getProjet()->getSlug())));
         }
@@ -102,8 +103,9 @@ class ActualiteController extends Controller
                   
                 $this->get('session')->getFlashBag()->add('info', 'La mise à jour a bien été supprimée.');
 
-                return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $actualite->getProjet()->getSlug())));
             }
+            
+            return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $actualite->getProjet()->getSlug())));
         }
          
         // Affichage de la confirmation de suppression

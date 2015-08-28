@@ -45,7 +45,7 @@ class MessageController extends Controller
         }
 
         $message = \Swift_Message::newInstance()
-            ->setSubject('Vous avez un nouveau message !')
+            ->setSubject('Coceptio : Vous avez reçu un nouveau message !')
             ->setFrom('noreply@coceptio.fr')
             ->setTo($toUtilisateur->getEmail())
             ->setBody($this->renderView('CFMessageBundle:Message:email.txt.twig', array('u' => $toUtilisateur, 'u2' => $fromUtilisateur)))
@@ -54,7 +54,7 @@ class MessageController extends Controller
 
         $notif = new Notification();
         $notif->setType(1);
-        $notif->setContenu('Nouveau message');
+        $notif->setContenu('Message de '.$fromUtilisateur);
         $notif->setUser($toUtilisateur);
 
         $em->persist($notif);

@@ -41,9 +41,9 @@ class BoxController extends Controller
                 $em->persist($projet);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('info', 'La box a bien été ajoutée !');
-
-                return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
             }
+            
+            return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $projet->getSlug())));
         }
 
         return $this->render('CFMainBundle:Box:add.html.twig', array('form' => $form->createView(), 'projet' => $projet));
@@ -121,9 +121,9 @@ class BoxController extends Controller
                 $em->flush();
                   
                 $this->get('session')->getFlashBag()->add('info', 'La box a bien été supprimée.');
-
-                return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $box->getProjet()->getSlug())));
             }
+            
+            return $this->redirect($this->generateUrl('cf_main_project', array('slug' => $box->getProjet()->getSlug())));
         }
          
         // Affichage de la confirmation de suppression
