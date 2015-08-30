@@ -18,9 +18,10 @@ a.profile-navigation:hover {
 .searchBar {
   height: 60px;
   width: 100%;
-  background: #2574A9;
+  background: #34495E;
   cursor: text;
   color: #fff;
+  box-shadow: black;
 }
 .search {
     width: 100%;
@@ -51,23 +52,33 @@ a.profile-navigation:hover {
 }
 
 #search-bar input {
-  display: block;
-  float: right;
-  width: 100%;
-  margin-right: 20px;
-  padding-left: 38%;
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  font-weight: 500;
-  padding-top: 16px;
-  color: #FFFFFF;
-  box-shadow: none;
+    display: block;
+    float: right;
+    width: 75%;
+    background: transparent;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: none;
+    margin: 10px;
+    border-radius: 3px;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    background: none;
+    display: inline-block;
+    border: 2px solid #ADADAD;
+    padding: 5px 5px;
+    border-radius: 4px;
+    color: #ADADAD;
 }
 
+
 #search-bar input:focus {
-  border: none;
   outline: none;
+  content:none;
+}
+
+#search-bar input[placeholder] {
+  padding-bottom: 10px;
 }
 
 .search button {
@@ -79,16 +90,26 @@ a.profile-navigation:hover {
 #type-search {
     color: #fff;
     text-align: center;
-    background: #2A638A;
+    background: rgb(52, 73, 94);
     padding: 10px;
-    font-size: 25px;
+    font-size: 18px;
 }
 
 select#form_type {
-    border-radius: 5px;
-    border: none;
-    color: #5C97BF;
-    background: #FFFFFF;
+    border-radius: 3px;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    background: none;
+    /* height: 40px; */
+    display: inline-block;
+    border: 2px solid #ADADAD;
+    padding: 5px 5px;
+    border-radius: 4px;
+    margin-top: 30px;
+}
+
+select#form_type option {
+  color: #5C97BF;
 }
 
 #form-search {
