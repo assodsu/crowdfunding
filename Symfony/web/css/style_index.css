@@ -6,7 +6,7 @@
 }
 .sidebar-left {
 	display: inline-block;
-	background: #D8D8D8;
+	background: #F9F9FB;
 	height: 240px;
 	width: 300px;
 	position: absolute;
@@ -87,7 +87,7 @@
 }
 
 .sidebar-projects {
-	background: #34495E;
+	background: #19242E;
 	height: 242px;
 	padding-top: 10px;
 }
@@ -419,22 +419,24 @@
 #more-infos {
 	margin-top: 20px;
 	text-align: center;
-	background: #2574A9;
+	background: #F9F9FB;
 	padding: 20px 0;
 }
 
 #more-infos h3 {
-	color: #FFF;
+	color: #34495E;
 	font-weight: 300;
 	letter-spacing: 4px;
 }
 
 .more-infos-block {
 	display: inline-block;
-	vertical-align: top;
-	width: 250px;
-	color: #fff;
-	margin: 10px;
+    vertical-align: top;
+    width: 250px;
+    color: #34495E;
+    margin: 10px;
+    font-size: 16px;
+    margin-bottom: 25px;
 }
 
 /** MEDIA QUERIES **/

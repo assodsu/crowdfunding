@@ -11,14 +11,14 @@ a.profile-navigation:hover {
   text-decoration: none;
 }
 
-/*** RECHERCHE ***/
+/* Recherche detaillee */
 #search-content {
   text-align: center;
 }
 .searchBar {
   height: 60px;
   width: 100%;
-  background: #34495E;
+  background: #19242E;
   cursor: text;
   color: #fff;
   box-shadow: black;
@@ -53,21 +53,18 @@ a.profile-navigation:hover {
 
 #search-bar input {
     display: block;
-    float: right;
+    float: left;
     width: 75%;
     background: transparent;
-    font-size: 16px;
-    text-align: center;
+    font-size: 18px;
+    text-align: right;
     box-shadow: none;
     margin: 10px;
-    border-radius: 3px;
-    border: 1px solid whitesmoke;
+    border: none;
     color: whitesmoke;
     background: none;
     display: inline-block;
-    border: 2px solid #ADADAD;
     padding: 5px 5px;
-    border-radius: 4px;
     color: #ADADAD;
 }
 
@@ -90,8 +87,7 @@ a.profile-navigation:hover {
 #type-search {
     color: #fff;
     text-align: center;
-    background: rgb(52, 73, 94);
-    padding: 10px;
+    background: #19242E;
     font-size: 18px;
 }
 
@@ -100,12 +96,11 @@ select#form_type {
     border: 1px solid whitesmoke;
     color: whitesmoke;
     background: none;
-    /* height: 40px; */
     display: inline-block;
     border: 2px solid #ADADAD;
     padding: 5px 5px;
     border-radius: 4px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 select#form_type option {
