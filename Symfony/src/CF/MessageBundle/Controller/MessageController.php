@@ -4,7 +4,7 @@ namespace CF\MessageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use CF\MessageBundle\Entity\Message;
 use CF\MessageBundle\Form\MessageType;
@@ -13,14 +13,6 @@ use CF\NotificationBundle\Entity\Notification;
 
 class MessageController extends Controller
 {
-    public function addAction(Conversation $conversation)
-    {
-		$message = new Message();
-        $form = $this->createForm(new MessageType(), $message);
-
-        return $this->render('CFMessageBundle:Message:add.html.twig', array('form' => $form->createView(), 'conversation' => $conversation));
-    }
-
     public function updateAction(Conversation $conversation)
     {
         $request = $this->get('request');
@@ -45,7 +37,7 @@ class MessageController extends Controller
         }
 
         $message = \Swift_Message::newInstance()
-            ->setSubject('Vous avez un nouveau message !')
+            ->setSubject('Coceptio : Vous avez reçu un nouveau message !')
             ->setFrom('noreply@coceptio.fr')
             ->setTo($toUtilisateur->getEmail())
             ->setBody($this->renderView('CFMessageBundle:Message:email.txt.twig', array('u' => $toUtilisateur, 'u2' => $fromUtilisateur)))
@@ -54,15 +46,13 @@ class MessageController extends Controller
 
         $notif = new Notification();
         $notif->setType(1);
-        $notif->setContenu('Nouveau message');
+        $notif->setContenu('Message de '.$fromUtilisateur->getNom());
         $notif->setUser($toUtilisateur);
 
         $em->persist($notif);
         $em->flush();
         
-        $return=array("responseCode"=>200,  "message"=>$messageContent);
-
-        $return=json_encode($return);
-        return new Response($return,200,array('Content-Type'=>'application/json'));
+        $return=array("message"=>$messageContent);
+        return new JsonResponse($return);
     }
 }

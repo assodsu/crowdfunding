@@ -6,7 +6,14 @@
         <h4 class="modal-message-title" id="message-modal-label">Messages</h4>
       </div>
       <div class="modal-message-body">
-      	{{ render(controller('CFMessageBundle:Message:add', { 'id' : conversation.id } )) }}
+      	<form id="form-new-message-{{ conversation.id }}" action="{{ path('cf_message_update_ajax', { 'id' : conversation.id }) }}" method="post">
+          {{ form_start(form) }}
+          {{ form_errors(form) }}
+          <div class="form-group">
+            {{ form_widget(form.content, { 'attr': {'class': 'form-control new-message-' ~ conversation.id } }) }}<input type="button" id="button-new-message-{{conversation.id}}" class="btn btn-success" value="Envoyer" />
+          </div>
+          {{ form_end(form) }}
+        </form>
         <div class="errors"></div>
         <div class="loading"><i class="fa fa-spinner fa-pulse"></i></div>
         <div class="messages-list messages-list-{{conversation.id}}">

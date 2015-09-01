@@ -43,8 +43,3 @@ monolog:
 
 assetic:
     use_controller: true
-
-swiftmailer:
-    transport: gmail
-    username:  rudy.devisscher.crab
-    password:  projet21

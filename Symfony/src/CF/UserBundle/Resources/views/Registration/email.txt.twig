@@ -1,14 +1,14 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {% block subject %}
 {% autoescape false %}
-Réinitialisation de votre mot de passe Coceptio
+Bienvenue sur Coceptio, {{ user.nom }} !
 {% endautoescape %}
 {% endblock %}
 {% block body_text %}
 {% autoescape false %}
-Bonjour !
+Bonjour et bienvenue sur la plate-forme Coceptio !
 
-Pour réinitialiser votre mot de passe, merci de vous rendre sur {{ confirmationUrl }}
+Pour finaliser votre inscription, vous devez vous rendre sur {{ confirmationUrl }}
 
 Cordialement,
 Coceptio.

@@ -36,6 +36,12 @@ cf_main_not_suivre_projet:
     requirements:
         id: \d+
 
+cf_main_valider_projet:
+    path:   /valider/{id}
+    defaults: { _controller: CFMainBundle:Project:validerProjet }
+    requirements:
+        id: \d+
+
 cf_main_rediger_actu:
     path:  /mises-a-jours/rediger/{id}
     defaults: { _controller: CFMainBundle:Actualite:rediger }

@@ -125,8 +125,19 @@
 
 					{% if app.user == projet.association %}
 						<a href="{{ path('cf_main_modifier_projet', {'slug': projet.slug}) }}" class='btn btn-success'>Modifier mon projet <i class="fa fa-pencil"></i></a>
+						{% if projet.valider == false %}
+							{% if app.security.token is not empty and is_granted('ROLE_ADMIN') %}
+						    	<a href="{{ path('cf_main_valider_projet', { id : projet.id }) }}" class='btn btn-success'>Valider le projet <i class="fa fa-check"></i></a>
+						    {% endif %}
+					    {% endif %}
 					{% else %}
-						<a data-toggle="modal" data-target="#modal-participate" class='btn btn-success'>Soutenir ce projet <i class="fa fa-play"></i></a>
+						{% if projet.valider == false %}
+							{% if app.security.token is not empty and is_granted('ROLE_ADMIN') %}
+						    	<a href="{{ path('cf_main_valider_projet', { id : projet.id }) }}" class='btn btn-success'>Valider le projet <i class="fa fa-check"></i></a>
+						    {% endif %}
+					    {% else %}
+							<a data-toggle="modal" data-target="#modal-participate" class='btn btn-success'>Soutenir ce projet <i class="fa fa-play"></i></a>
+						{% endif %}
 					{% endif %}
 					
 					<div id="project-tags">
