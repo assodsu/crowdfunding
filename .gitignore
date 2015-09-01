@@ -14,3 +14,8 @@ Symfony/app/cache/dev/profiler/index.csv
 
 # Parameter
 Symfony/app/config/parameters.yml
+Symfony/app/cache/dev/appDevDebugProjectContainer.php
+Symfony/app/cache/dev/appDevDebugProjectContainer.php.meta
+Symfony/app/cache/dev/appDevUrlGenerator.php.meta
+Symfony/app/cache/dev/assetic/routing.yml
+Symfony/app/cache/dev/classes.map
